@@ -33,3 +33,11 @@
 
 *.vsidx
 *.opendb
+
+.vs/
+x64/
+Debug/
+Release/
+# Build results
+[Bb]in/
+[Oo]bj/
