@@ -1,0 +1,112 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F14239E3-4ED8-6B39-A0E7-1F6B2BEF629E}|BankingApp_winform\\BankingApp_winform.vcxproj|E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\RegisterForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F14239E3-4ED8-6B39-A0E7-1F6B2BEF629E}|BankingApp_winform\\BankingApp_winform.vcxproj|solutionrelative:BankingApp_winform\\RegisterForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F14239E3-4ED8-6B39-A0E7-1F6B2BEF629E}|BankingApp_winform\\BankingApp_winform.vcxproj|E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\User.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F14239E3-4ED8-6B39-A0E7-1F6B2BEF629E}|BankingApp_winform\\BankingApp_winform.vcxproj|solutionrelative:BankingApp_winform\\User.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F14239E3-4ED8-6B39-A0E7-1F6B2BEF629E}|BankingApp_winform\\BankingApp_winform.vcxproj|E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F14239E3-4ED8-6B39-A0E7-1F6B2BEF629E}|BankingApp_winform\\BankingApp_winform.vcxproj|solutionrelative:BankingApp_winform\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F14239E3-4ED8-6B39-A0E7-1F6B2BEF629E}|BankingApp_winform\\BankingApp_winform.vcxproj|E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\RegisterForm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F14239E3-4ED8-6B39-A0E7-1F6B2BEF629E}|BankingApp_winform\\BankingApp_winform.vcxproj|solutionrelative:BankingApp_winform\\RegisterForm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F14239E3-4ED8-6B39-A0E7-1F6B2BEF629E}|BankingApp_winform\\BankingApp_winform.vcxproj|E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\RegisterForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form",
+      "RelativeMoniker": "D:0:0:{F14239E3-4ED8-6B39-A0E7-1F6B2BEF629E}|BankingApp_winform\\BankingApp_winform.vcxproj|solutionrelative:BankingApp_winform\\RegisterForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterForm.cpp",
+              "DocumentMoniker": "E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\RegisterForm.cpp",
+              "RelativeDocumentMoniker": "BankingApp_winform\\RegisterForm.cpp",
+              "ToolTip": "E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\RegisterForm.cpp",
+              "RelativeToolTip": "BankingApp_winform\\RegisterForm.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-23T13:37:43.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Main.cpp",
+              "DocumentMoniker": "E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\Main.cpp",
+              "RelativeDocumentMoniker": "BankingApp_winform\\Main.cpp",
+              "ToolTip": "E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\Main.cpp",
+              "RelativeToolTip": "BankingApp_winform\\Main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-23T13:37:15.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.h",
+              "DocumentMoniker": "E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\User.h",
+              "RelativeDocumentMoniker": "BankingApp_winform\\User.h",
+              "ToolTip": "E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\User.h",
+              "RelativeToolTip": "BankingApp_winform\\User.h",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-02-23T13:27:37.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RegisterForm.h",
+              "DocumentMoniker": "E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\RegisterForm.h",
+              "RelativeDocumentMoniker": "BankingApp_winform\\RegisterForm.h",
+              "ToolTip": "E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\RegisterForm.h",
+              "RelativeToolTip": "BankingApp_winform\\RegisterForm.h",
+              "ViewState": "AgIAANEAAAAAAAAAAAAqwN0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-02-23T13:19:27.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RegisterForm.h [Design]",
+              "DocumentMoniker": "E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\RegisterForm.h",
+              "RelativeDocumentMoniker": "BankingApp_winform\\RegisterForm.h",
+              "ToolTip": "E:\\WORKSPACE\\CODE\\PBL\\BankingApp_winform\\BankingApp_winform\\RegisterForm.h [Design]",
+              "RelativeToolTip": "BankingApp_winform\\RegisterForm.h [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-02-23T13:16:21.599Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
