@@ -13,11 +13,9 @@ namespace BankingAppwinform {
 	/// <summary>
 	/// Summary for RegisterForm
 	/// </summary>
-	public ref class RegisterForm : public System::Windows::Forms::Form
-	{
+	public ref class RegisterForm : public System::Windows::Forms::Form {
 	public:
-		RegisterForm(void)
-		{
+		RegisterForm(void) {
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -28,8 +26,7 @@ namespace BankingAppwinform {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~RegisterForm()
-		{
+		~RegisterForm() {
 			if (components)
 			{
 				delete components;
@@ -51,19 +48,12 @@ namespace BankingAppwinform {
 	private: System::Windows::Forms::LinkLabel^ linkLabel1;
 
 	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
 		System::ComponentModel::Container ^components;
 	private: System::Windows::Forms::Label^ labelUser;
 
 	private: array<User^>^ users;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
 		void InitializeComponent(void)
 		{
 			this->userName = (gcnew System::Windows::Forms::TextBox());
