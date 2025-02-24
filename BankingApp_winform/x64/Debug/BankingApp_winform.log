@@ -1,1 +1,1 @@
-﻿  BankingApp_winform.vcxproj -> E:\WORKSPACE\CODE\PBL\BankingApp_winform\x64\Debug\BankingApp_winform.exe
+﻿LINK : fatal error LNK1104: cannot open file 'D:\CODE\PBL1\PBL_winform\x64\Debug\BankingApp_winform.exe'

@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "User.h"
+#include "File.h"
 
 namespace BankingAppwinform {
 
@@ -10,24 +11,15 @@ namespace BankingAppwinform {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Summary for RegisterForm
-	/// </summary>
 	public ref class RegisterForm : public System::Windows::Forms::Form
 	{
 	public:
 		RegisterForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
 		~RegisterForm()
 		{
 			if (components)
@@ -51,19 +43,13 @@ namespace BankingAppwinform {
 	private: System::Windows::Forms::LinkLabel^ linkLabel1;
 
 	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
 		System::ComponentModel::Container ^components;
 	private: System::Windows::Forms::Label^ labelUser;
 
 	private: array<User^>^ users;
+	private: array<User^>^ output;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
 		void InitializeComponent(void)
 		{
 			this->userName = (gcnew System::Windows::Forms::TextBox());
@@ -81,9 +67,10 @@ namespace BankingAppwinform {
 			// 
 			this->userName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->userName->Location = System::Drawing::Point(229, 95);
+			this->userName->Location = System::Drawing::Point(305, 117);
+			this->userName->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->userName->Name = L"userName";
-			this->userName->Size = System::Drawing::Size(483, 31);
+			this->userName->Size = System::Drawing::Size(643, 37);
 			this->userName->TabIndex = 0;
 			// 
 			// label1
@@ -92,9 +79,10 @@ namespace BankingAppwinform {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label1->Location = System::Drawing::Point(80, 98);
+			this->label1->Location = System::Drawing::Point(107, 121);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(113, 25);
+			this->label1->Size = System::Drawing::Size(139, 31);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"Họ và tên";
 			// 
@@ -104,9 +92,10 @@ namespace BankingAppwinform {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label2->Location = System::Drawing::Point(80, 155);
+			this->label2->Location = System::Drawing::Point(107, 191);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(109, 25);
+			this->label2->Size = System::Drawing::Size(133, 31);
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Mật khẩu";
 			// 
@@ -114,9 +103,10 @@ namespace BankingAppwinform {
 			// 
 			this->password->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->password->Location = System::Drawing::Point(229, 152);
+			this->password->Location = System::Drawing::Point(305, 187);
+			this->password->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->password->Name = L"password";
-			this->password->Size = System::Drawing::Size(483, 31);
+			this->password->Size = System::Drawing::Size(643, 37);
 			this->password->TabIndex = 2;
 			// 
 			// label3
@@ -125,9 +115,10 @@ namespace BankingAppwinform {
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label3->Location = System::Drawing::Point(80, 213);
+			this->label3->Location = System::Drawing::Point(107, 262);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(143, 25);
+			this->label3->Size = System::Drawing::Size(176, 31);
 			this->label3->TabIndex = 5;
 			this->label3->Text = L"Xn mật khẩu";
 			// 
@@ -135,9 +126,10 @@ namespace BankingAppwinform {
 			// 
 			this->passwordConfirm->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->passwordConfirm->Location = System::Drawing::Point(229, 210);
+			this->passwordConfirm->Location = System::Drawing::Point(305, 258);
+			this->passwordConfirm->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->passwordConfirm->Name = L"passwordConfirm";
-			this->passwordConfirm->Size = System::Drawing::Size(483, 31);
+			this->passwordConfirm->Size = System::Drawing::Size(643, 37);
 			this->passwordConfirm->TabIndex = 4;
 			// 
 			// btnRegister
@@ -145,9 +137,10 @@ namespace BankingAppwinform {
 			this->btnRegister->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnRegister->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->btnRegister->Location = System::Drawing::Point(538, 270);
+			this->btnRegister->Location = System::Drawing::Point(717, 332);
+			this->btnRegister->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnRegister->Name = L"btnRegister";
-			this->btnRegister->Size = System::Drawing::Size(174, 42);
+			this->btnRegister->Size = System::Drawing::Size(232, 52);
 			this->btnRegister->TabIndex = 6;
 			this->btnRegister->Text = L"Đăng kí";
 			this->btnRegister->UseVisualStyleBackColor = true;
@@ -158,9 +151,10 @@ namespace BankingAppwinform {
 			this->linkLabel1->AutoSize = true;
 			this->linkLabel1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->linkLabel1->Location = System::Drawing::Point(358, 428);
+			this->linkLabel1->Location = System::Drawing::Point(477, 527);
+			this->linkLabel1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->linkLabel1->Name = L"linkLabel1";
-			this->linkLabel1->Size = System::Drawing::Size(103, 24);
+			this->linkLabel1->Size = System::Drawing::Size(129, 29);
 			this->linkLabel1->TabIndex = 7;
 			this->linkLabel1->TabStop = true;
 			this->linkLabel1->Text = L"Đăng nhập";
@@ -171,17 +165,18 @@ namespace BankingAppwinform {
 			this->labelUser->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->labelUser->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->labelUser->Location = System::Drawing::Point(89, 335);
+			this->labelUser->Location = System::Drawing::Point(119, 412);
+			this->labelUser->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->labelUser->Name = L"labelUser";
-			this->labelUser->Size = System::Drawing::Size(0, 25);
+			this->labelUser->Size = System::Drawing::Size(0, 31);
 			this->labelUser->TabIndex = 8;
 			// 
 			// RegisterForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(784, 461);
+			this->ClientSize = System::Drawing::Size(1045, 567);
 			this->Controls->Add(this->labelUser);
 			this->Controls->Add(this->linkLabel1);
 			this->Controls->Add(this->btnRegister);
@@ -192,6 +187,7 @@ namespace BankingAppwinform {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->userName);
 			this->ForeColor = System::Drawing::SystemColors::ControlDarkDark;
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"RegisterForm";
 			this->Text = L"RegisterForm";
 			this->ResumeLayout(false);
@@ -199,6 +195,8 @@ namespace BankingAppwinform {
 
 		}
 #pragma endregion
+
+	public: bool showHome = false;
 
 	private: System::Void btnRegister_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ name = userName->Text;
@@ -211,13 +209,13 @@ namespace BankingAppwinform {
 			MessageBox::Show("Mật khẩu không khớp", "Thông báo", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
 		else {
-			User^ user = gcnew User();
-			user->userName = name;
-			user->password = pass;
-			users = user->ReadUserArray("users.dat");
+			User^ user = gcnew User(name, pass);
+
+			users = ReadUserArray("users.dat");
 			if (users == nullptr) {
 				users = gcnew array<User^>(1);
 				users[0] = user;
+				this->labelUser->Text = users[0]->userName;
 			}
 			else {
 				array<User^>^ temp = gcnew array<User^>(users->Length + 1);
@@ -227,14 +225,14 @@ namespace BankingAppwinform {
 				temp[users->Length] = user;
 				users = temp;
 			}
-			user->WriteUserArray(users, "users.dat");
-			MessageBox::Show("Đăng kí thành công", "Thông báo", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+			WriteUserArray(users, "users.dat");
 			userName->Text = "";
 			password->Text = "";
 			passwordConfirm->Text = "";
-			for (int i = 0; i < users->Length; i++) {
-				this->labelUser->Text = this->labelUser->Text + users[i]->userName + " - ";
-			}
+			this->showHome = true;
+			this->Close();
+
 		}
 	}
 };
