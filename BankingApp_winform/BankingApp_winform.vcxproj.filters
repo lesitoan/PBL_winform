@@ -1,41 +1,121 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Data">
       <UniqueIdentifier>{57b5c483-ab88-4dde-a472-dcb9c85292cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{0f55c805-fe94-4c24-9ceb-422ba5de8404}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RegisterForm.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="File.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="HomeForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="RegisterForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="AccountForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="SignupForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="TransferMoneyForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="WithdrawMoneyForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="HistoryForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="AuthForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadChildForm.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ForgotPwForm.cpp">
+      <Filter>Form</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RegisterForm.h">
-      <Filter>Header Files</Filter>
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeForm.h">
+      <Filter>Form</Filter>
     </ClInclude>
     <ClInclude Include="User.h">
-      <Filter>Header Files</Filter>
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="MainForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="TransferMoneyForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="WithdrawMoneyForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="HistoryForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="AuthForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="SignupForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadChildForm.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ForgotPwForm.h">
+      <Filter>Form</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="users.dat">
+    <Text Include="xyz.txt">
       <Filter>Data</Filter>
-    </None>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.clang-format" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="avatar.jpg">
+      <Filter>Data</Filter>
+    </Image>
+    <Image Include="—Pngtree—concept banking logo_4017929.png">
+      <Filter>Data</Filter>
+    </Image>
   </ItemGroup>
 </Project>

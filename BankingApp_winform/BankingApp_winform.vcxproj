@@ -120,22 +120,103 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AccountForm.cpp" />
+    <ClCompile Include="AuthForm.cpp" />
+    <ClCompile Include="ForgotPwForm.cpp" />
+    <ClCompile Include="LoadChildForm.cpp" />
+    <ClCompile Include="File.cpp" />
+    <ClCompile Include="HistoryForm.cpp" />
+    <ClCompile Include="HomeForm.cpp" />
+    <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="RegisterForm.cpp" />
+    <ClCompile Include="SignupForm.cpp" />
+    <ClCompile Include="TransferMoneyForm.cpp" />
+    <ClCompile Include="WithdrawMoneyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AccountForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AuthForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ForgotPwForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="LoadChildForm.h" />
+    <ClInclude Include="File.h" />
+    <ClInclude Include="HistoryForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="HomeForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="LoginForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MainForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="RegisterForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="SignupForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="TransferMoneyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="User.h" />
+    <ClInclude Include="WithdrawMoneyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AccountForm.resx">
+      <DependentUpon>AccountForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuthForm.resx">
+      <DependentUpon>AuthForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgotPwForm.resx">
+      <DependentUpon>ForgotPwForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryForm.resx">
+      <DependentUpon>HistoryForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomeForm.resx">
+      <DependentUpon>HomeForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SignupForm.resx">
+      <DependentUpon>SignupForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransferMoneyForm.resx">
+      <DependentUpon>TransferMoneyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WithdrawMoneyForm.resx">
+      <DependentUpon>WithdrawMoneyForm.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="users.dat" />
+    <Text Include="xyz.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.clang-format" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="avatar.jpg" />
+    <Image Include="—Pngtree—concept banking logo_4017929.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

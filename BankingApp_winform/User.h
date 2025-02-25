@@ -1,57 +1,31 @@
 #pragma once
+#include "User.h"
 using namespace System;
 
 using namespace System::IO;
 using namespace System::Collections::Generic;
 
+
 public ref class User {
 public:
-	String^ userName;
-	String^ password;
-    void WriteUserArray(array<User^>^ users, String^ filePath)
-    {
-        try
-        {
-            FileStream^ fs = gcnew FileStream(filePath, FileMode::Create);
-            BinaryWriter^ writer = gcnew BinaryWriter(fs);
-            writer->Write(users->Length);
-            for each (User ^ user in users)
-            {
-                writer->Write(user->userName);
-                writer->Write(user->password);
-            }
+    String^ userName;
+    String^ password;
+    int accountNumber;
+    int balance;
+    bool isAdmin;
+    int pin;
 
-            writer->Close();
-        }
-        catch (Exception^ ex)
-        {
-            return;
-        }
+public:
+    User(String^ _userName, String^ _password, int _accountNumber, int _balance, bool _isAdmin, int _pin) {
+        userName = _userName;
+        password = _password;
+        accountNumber = _accountNumber;
+        balance = _balance;
+        isAdmin = _isAdmin;
+        pin = _pin;
     }
 
-    array<User^>^ ReadUserArray(String^ filePath)
-    {
-        try
-        {
-            FileStream^ fs = gcnew FileStream(filePath, FileMode::Open);
-            BinaryReader^ reader = gcnew BinaryReader(fs);
-
-            int count = reader->ReadInt32();
-            array<User^>^ users = gcnew array<User^>(count);
-
-            for (int i = 0; i < count; i++)
-            {
-                users[i] = gcnew User();
-                users[i]->userName = reader->ReadString();
-                users[i]->password = reader->ReadString();
-            }
-            reader->Close();
-            return users;
-        }
-        catch (Exception^ ex)
-        {
-            return nullptr;
-        }
-    }
-
+    User(String^ _userName, String^ _password) : User(_userName, _password, 12345, 0, false, 1) {}
+	User() : User("", "", 0, 0, false, 1) {}
+   
 };
