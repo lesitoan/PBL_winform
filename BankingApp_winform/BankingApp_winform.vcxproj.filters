@@ -15,58 +15,55 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Data\Images">
+      <UniqueIdentifier>{25ba7e33-8e38-4199-8991-0948475d58b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\AppData">
+      <UniqueIdentifier>{82702df1-e03f-47ef-9b0f-01305f36494a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form\Cpp">
+      <UniqueIdentifier>{9b4560cc-d26e-4785-accf-7560eb312e05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="File.cpp">
+    <ClCompile Include="HandleFile.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="HomeForm.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
-    <ClCompile Include="RegisterForm.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MainForm.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
-    <ClCompile Include="AccountForm.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
-    <ClCompile Include="LoginForm.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
-    <ClCompile Include="SignupForm.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
-    <ClCompile Include="TransferMoneyForm.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
-    <ClCompile Include="WithdrawMoneyForm.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
-    <ClCompile Include="HistoryForm.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
-    <ClCompile Include="AuthForm.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
     <ClCompile Include="LoadChildForm.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="AuthForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="AccountForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
     <ClCompile Include="ForgotPwForm.cpp">
-      <Filter>Form</Filter>
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="HistoryForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="MainForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="SignupForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="TransferMoneyForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="WithdrawMoneyForm.cpp">
+      <Filter>Form\Cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RegisterForm.h">
-      <Filter>Form</Filter>
-    </ClInclude>
-    <ClInclude Include="File.h">
+    <ClInclude Include="HandleFile.h">
       <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="HomeForm.h">
-      <Filter>Form</Filter>
     </ClInclude>
     <ClInclude Include="User.h">
       <Filter>Models</Filter>
@@ -101,21 +98,22 @@
     <ClInclude Include="ForgotPwForm.h">
       <Filter>Form</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="xyz.txt">
-      <Filter>Data</Filter>
-    </Text>
+    <ClInclude Include="GlobalData.h">
+      <Filter>Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
+    <None Include="users.dat">
+      <Filter>Data\AppData</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="avatar.jpg">
-      <Filter>Data</Filter>
+      <Filter>Data\Images</Filter>
     </Image>
     <Image Include="—Pngtree—concept banking logo_4017929.png">
-      <Filter>Data</Filter>
+      <Filter>Data\Images</Filter>
     </Image>
   </ItemGroup>
 </Project>

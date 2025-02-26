@@ -1,4 +1,7 @@
 #pragma once
+#include "HandleFile.h"
+#include "LoginForm.h"
+#include "User.h"
 
 namespace BankingAppwinform {
 
@@ -35,13 +38,16 @@ ref class SignupForm : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::Label ^ label3;
 
+  private:
+    System::Windows::Forms::TextBox ^ password;
+
   protected:
   private:
-    System::Windows::Forms::TextBox ^ textBox2;
+  private:
+    System::Windows::Forms::TextBox ^ fullName;
 
   private:
-    System::Windows::Forms::TextBox ^ textBox1;
-
+  private:
   private:
     System::Windows::Forms::Label ^ label2;
 
@@ -52,14 +58,16 @@ ref class SignupForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Button ^ btnSubmit;
 
   private:
-    System::Windows::Forms::TextBox ^ textBox3;
+    System::Windows::Forms::TextBox ^ phoneNumber;
 
+  private:
   private:
     System::Windows::Forms::Label ^ label4;
 
   private:
-    System::Windows::Forms::TextBox ^ textBox4;
+    System::Windows::Forms::TextBox ^ passwordConfirm;
 
+  private:
   private:
     System::Windows::Forms::Label ^ label5;
 
@@ -76,14 +84,14 @@ ref class SignupForm : public System::Windows::Forms::Form {
     /// </summary>
     void InitializeComponent(void) {
         this->label3 = (gcnew System::Windows::Forms::Label());
-        this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-        this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+        this->password = (gcnew System::Windows::Forms::TextBox());
+        this->fullName = (gcnew System::Windows::Forms::TextBox());
         this->label2 = (gcnew System::Windows::Forms::Label());
         this->label1 = (gcnew System::Windows::Forms::Label());
         this->btnSubmit = (gcnew System::Windows::Forms::Button());
-        this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+        this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
         this->label4 = (gcnew System::Windows::Forms::Label());
-        this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+        this->passwordConfirm = (gcnew System::Windows::Forms::TextBox());
         this->label5 = (gcnew System::Windows::Forms::Label());
         this->SuspendLayout();
         //
@@ -101,26 +109,26 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->label3->TabIndex = 29;
         this->label3->Text = L"Dang ki";
         //
-        // textBox2
+        // password
         //
-        this->textBox2->Font =
+        this->password->Font =
             (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
                                          System::Drawing::FontStyle::Bold));
-        this->textBox2->Location = System::Drawing::Point(16, 210);
-        this->textBox2->Name = L"textBox2";
-        this->textBox2->PasswordChar = '*';
-        this->textBox2->Size = System::Drawing::Size(289, 27);
-        this->textBox2->TabIndex = 28;
+        this->password->Location = System::Drawing::Point(16, 210);
+        this->password->Name = L"password";
+        this->password->PasswordChar = '*';
+        this->password->Size = System::Drawing::Size(289, 27);
+        this->password->TabIndex = 28;
         //
-        // textBox1
+        // fullName
         //
-        this->textBox1->Font =
+        this->fullName->Font =
             (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
                                          System::Drawing::FontStyle::Bold));
-        this->textBox1->Location = System::Drawing::Point(16, 91);
-        this->textBox1->Name = L"textBox1";
-        this->textBox1->Size = System::Drawing::Size(289, 27);
-        this->textBox1->TabIndex = 25;
+        this->fullName->Location = System::Drawing::Point(16, 91);
+        this->fullName->Name = L"fullName";
+        this->fullName->Size = System::Drawing::Size(289, 27);
+        this->fullName->TabIndex = 25;
         //
         // label2
         //
@@ -168,16 +176,18 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->btnSubmit->TabIndex = 26;
         this->btnSubmit->Text = L"Dang ki";
         this->btnSubmit->UseVisualStyleBackColor = false;
+        this->btnSubmit->Click +=
+            gcnew System::EventHandler(this, &SignupForm::btnSubmit_Click);
         //
-        // textBox3
+        // phoneNumber
         //
-        this->textBox3->Font =
+        this->phoneNumber->Font =
             (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
                                          System::Drawing::FontStyle::Bold));
-        this->textBox3->Location = System::Drawing::Point(16, 148);
-        this->textBox3->Name = L"textBox3";
-        this->textBox3->Size = System::Drawing::Size(289, 27);
-        this->textBox3->TabIndex = 31;
+        this->phoneNumber->Location = System::Drawing::Point(16, 148);
+        this->phoneNumber->Name = L"phoneNumber";
+        this->phoneNumber->Size = System::Drawing::Size(289, 27);
+        this->phoneNumber->TabIndex = 31;
         //
         // label4
         //
@@ -193,16 +203,16 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->label4->TabIndex = 30;
         this->label4->Text = L"So dien thoai:";
         //
-        // textBox4
+        // passwordConfirm
         //
-        this->textBox4->Font =
+        this->passwordConfirm->Font =
             (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
                                          System::Drawing::FontStyle::Bold));
-        this->textBox4->Location = System::Drawing::Point(16, 275);
-        this->textBox4->Name = L"textBox4";
-        this->textBox4->PasswordChar = '*';
-        this->textBox4->Size = System::Drawing::Size(289, 27);
-        this->textBox4->TabIndex = 33;
+        this->passwordConfirm->Location = System::Drawing::Point(16, 275);
+        this->passwordConfirm->Name = L"passwordConfirm";
+        this->passwordConfirm->PasswordChar = '*';
+        this->passwordConfirm->Size = System::Drawing::Size(289, 27);
+        this->passwordConfirm->TabIndex = 33;
         //
         // label5
         //
@@ -224,21 +234,88 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->BackColor = System::Drawing::SystemColors::ActiveCaption;
         this->ClientSize = System::Drawing::Size(324, 377);
-        this->Controls->Add(this->textBox4);
+        this->Controls->Add(this->passwordConfirm);
         this->Controls->Add(this->label5);
-        this->Controls->Add(this->textBox3);
+        this->Controls->Add(this->phoneNumber);
         this->Controls->Add(this->label4);
         this->Controls->Add(this->label3);
-        this->Controls->Add(this->textBox2);
-        this->Controls->Add(this->textBox1);
+        this->Controls->Add(this->password);
+        this->Controls->Add(this->fullName);
         this->Controls->Add(this->label2);
         this->Controls->Add(this->label1);
         this->Controls->Add(this->btnSubmit);
         this->Name = L"SignupForm";
         this->Text = L"SignupForm";
+        this->Load +=
+            gcnew System::EventHandler(this, &SignupForm::SignupForm_Load);
         this->ResumeLayout(false);
         this->PerformLayout();
     }
 #pragma endregion
+  private:
+    System::Void SignupForm_Load(System::Object ^ sender,
+                                 System::EventArgs ^ e) {}
+
+  public:
+    event EventHandler ^ SignupSuccess;
+
+  private:
+    System::Void btnSubmit_Click(System::Object ^ sender,
+                                 System::EventArgs ^ e) {
+        // kiem tra da nhap du thong tin chua
+        if (fullName->Text->Length == 0 || password->Text->Length == 0 ||
+            passwordConfirm->Text->Length == 0 ||
+            phoneNumber->Text->Length == 0) {
+            MessageBox::Show("Vui long nhap day du thong tin !", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        }
+
+        if (password->Text != passwordConfirm->Text) {
+            MessageBox::Show("Mat khau khong khop !", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        }
+        if (password->Text->Length < 6) {
+            MessageBox::Show("Mat khau phai co it nhat 6 ki tu !", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        }
+
+        if (phoneNumber->Text->Length != 10) {
+            MessageBox::Show("Sai dinh dang so dien thoai !", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        }
+        // kiem tra ten > 5 ki tu
+        if (fullName->Text->Length < 5) {
+            MessageBox::Show("Ten phai co it nhat 5 ki tu !", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        }
+
+        // luu user vao file
+        User ^ user = gcnew User(fullName->Text, password->Text, phoneNumber->Text);
+        array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+        if (users == nullptr) {
+            users = gcnew array<User ^>{user};
+        } else {
+            array<User ^> ^ newUsers = gcnew array<User ^>(users->Length + 1);
+            for (int i = 0; i < users->Length; i++) {
+                newUsers[i] = users[i];
+            }
+            newUsers[users->Length] = user;
+            users = newUsers;
+        }
+        bool isSaved =
+            HandleFile::WriteUserArray(users, "users.dat");
+        if (isSaved) {
+            MessageBox::Show("Dang ki thanh cong !", "Success",
+                             MessageBoxButtons::OK,
+                             MessageBoxIcon::Information);
+            // Chuyen sang trang dang nhap
+            SignupSuccess(this, EventArgs::Empty);
+        }
+    }
 };
 } // namespace BankingAppwinform

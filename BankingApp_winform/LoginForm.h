@@ -1,4 +1,7 @@
 #pragma once
+#include "HandleFile.h"
+#include "User.h"
+#include "GlobalData.h"
 
 namespace BankingAppwinform {
 
@@ -9,23 +12,15 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-/// <summary>
-/// Summary for LoginForm
-/// </summary>
 public
 ref class LoginForm : public System::Windows::Forms::Form {
   public:
     LoginForm(void) {
         InitializeComponent();
-        //
-        // TODO: Add the constructor code here
-        //
     }
+    event EventHandler ^ LoginSuccess;
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
     ~LoginForm() {
         if (components) {
             delete components;
@@ -34,30 +29,12 @@ ref class LoginForm : public System::Windows::Forms::Form {
 
   private:
     System::Windows::Forms::Label ^ label3;
-
-  private:
     System::Windows::Forms::TextBox ^ password;
-
-  protected:
-  private:
-  private:
     System::Windows::Forms::TextBox ^ phoneNumber;
-
-  private:
-  private:
     System::Windows::Forms::Label ^ label2;
-
-  private:
     System::Windows::Forms::Label ^ label1;
-
-  private:
     System::Windows::Forms::Button ^ btnSubmit;
-
-  private:
     System::ComponentModel::Container ^ components;
-
-  public:
-    event EventHandler ^ LoginSuccess;
 
 #pragma region Windows Form Designer generated code
 
@@ -168,22 +145,38 @@ ref class LoginForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->btnSubmit);
         this->Name = L"LoginForm";
         this->Text = L"LoginForm";
+        this->Load +=
+            gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
         this->ResumeLayout(false);
         this->PerformLayout();
     }
+
 #pragma endregion
   private:
     System::Void btnSubmit_Click(System::Object ^ sender,
                                  System::EventArgs ^ e) {
-        String ^ name = phoneNumber->Text;
+        String ^ phone = phoneNumber->Text;
         String ^ pass = password->Text;
-        if (name == "" || pass == "") {
+        if (phone == "" || pass == "") {
             MessageBox::Show("Vui long nhap day du thong tin");
             return;
         } else {
-            MessageBox::Show("Dang nhap thanh cong");
-            LoginSuccess(this, EventArgs::Empty);
+            array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+            for each (User ^ user in users) {
+                if (user->getPhoneNumber() == phone &&
+                    user->getPassword() == pass) {
+                    GlobalData::SetCurrentUser(user);
+                    MessageBox::Show("Dang nhap thanh cong");
+                    LoginSuccess(this, EventArgs::Empty);
+                    return;
+                }
+            }
+            MessageBox::Show("Dang nhap that bai");
         }
     }
+
+  private:
+    System::Void LoginForm_Load(System::Object ^ sender,
+                                System::EventArgs ^ e) {}
 };
 } // namespace BankingAppwinform

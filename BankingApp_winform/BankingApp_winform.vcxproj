@@ -124,13 +124,11 @@
     <ClCompile Include="AuthForm.cpp" />
     <ClCompile Include="ForgotPwForm.cpp" />
     <ClCompile Include="LoadChildForm.cpp" />
-    <ClCompile Include="File.cpp" />
+    <ClCompile Include="HandleFile.cpp" />
     <ClCompile Include="HistoryForm.cpp" />
-    <ClCompile Include="HomeForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainForm.cpp" />
-    <ClCompile Include="RegisterForm.cpp" />
     <ClCompile Include="SignupForm.cpp" />
     <ClCompile Include="TransferMoneyForm.cpp" />
     <ClCompile Include="WithdrawMoneyForm.cpp" />
@@ -145,21 +143,16 @@
     <ClInclude Include="ForgotPwForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="GlobalData.h" />
     <ClInclude Include="LoadChildForm.h" />
-    <ClInclude Include="File.h" />
+    <ClInclude Include="HandleFile.h" />
     <ClInclude Include="HistoryForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="HomeForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MainForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="RegisterForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SignupForm.h">
@@ -186,17 +179,11 @@
     <EmbeddedResource Include="HistoryForm.resx">
       <DependentUpon>HistoryForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HomeForm.resx">
-      <DependentUpon>HomeForm.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegisterForm.resx">
-      <DependentUpon>RegisterForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignupForm.resx">
       <DependentUpon>SignupForm.h</DependentUpon>
@@ -209,10 +196,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="xyz.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\.clang-format" />
+    <None Include="users.dat" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="avatar.jpg" />

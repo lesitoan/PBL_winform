@@ -19,9 +19,6 @@ ref class AuthForm : public System::Windows::Forms::Form {
   public:
     AuthForm(void) {
         InitializeComponent();
-        //
-        // TODO: Add the constructor code here
-        //
     }
 
   protected:
@@ -36,24 +33,14 @@ ref class AuthForm : public System::Windows::Forms::Form {
 
   private:
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
     System::Windows::Forms::Panel ^ Panel3;
-
-  private:
     System::Windows::Forms::PictureBox ^ pictureBox1;
-
-  private:
     System::Windows::Forms::Panel ^ panelContent;
-
-  private:
     System::Windows::Forms::Label ^ labelAuth;
-
-  private:
     System::Windows::Forms::Label ^ labelForgotPw;
-
-  private:
     System::ComponentModel::Container ^ components;
+
+
 
 #pragma region Windows Form Designer generated code
 
@@ -111,7 +98,7 @@ ref class AuthForm : public System::Windows::Forms::Form {
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->labelAuth->ForeColor = System::Drawing::Color::Blue;
-        this->labelAuth->Location = System::Drawing::Point(96, 421);
+        this->labelAuth->Location = System::Drawing::Point(86, 421);
         this->labelAuth->Name = L"labelAuth";
         this->labelAuth->Size = System::Drawing::Size(56, 19);
         this->labelAuth->TabIndex = 1;
@@ -186,6 +173,17 @@ ref class AuthForm : public System::Windows::Forms::Form {
         MainForm ^ mainForm = gcnew MainForm();
         mainForm->ShowDialog();
         this->Close();
+
+    }
+
+
+    System::Void OnSignupSuccess(System::Object ^ sender,
+                                 System::EventArgs ^ e) {
+        LoginForm ^ loginForm = gcnew LoginForm();
+        loginForm->LoginSuccess +=
+            gcnew EventHandler(this, &AuthForm::OnLoginSuccess);
+        LoadChildForm::LoadForm(this->panelContent, loginForm);
+        this->labelAuth->Text = "Dang ki";
     }
 
   private:
@@ -210,7 +208,10 @@ ref class AuthForm : public System::Windows::Forms::Form {
             currentForm = "login";
 
         } else {
-            LoadChildForm::LoadForm(this->panelContent, gcnew SignupForm());
+            SignupForm ^ signupForm = gcnew SignupForm();
+            LoadChildForm::LoadForm(this->panelContent, signupForm);
+            signupForm->SignupSuccess +=
+                gcnew EventHandler(this, &AuthForm::OnSignupSuccess);
             this->labelAuth->Text = "Dang nhap";
             currentForm = "signup";
         }

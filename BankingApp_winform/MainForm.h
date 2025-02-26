@@ -4,6 +4,8 @@
 #include "LoadChildForm.h"
 #include "TransferMoneyForm.h"
 #include "WithdrawMoneyForm.h"
+#include "User.h"
+#include "GlobalData.h"
 
 namespace BankingAppwinform {
 
@@ -17,11 +19,8 @@ using namespace System::Drawing;
 public
 ref class MainForm : public System::Windows::Forms::Form {
   public:
-    MainForm(void) {
+    MainForm() {
         InitializeComponent();
-        //
-        // TODO: Add the constructor code here
-        //
     }
 
   protected:
@@ -30,6 +29,8 @@ ref class MainForm : public System::Windows::Forms::Form {
             delete components;
         }
     }
+
+
 
   private:
     System::Windows::Forms::Panel ^ panelHeader;
@@ -58,6 +59,9 @@ ref class MainForm : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::Button ^ btnTransfer;
 
+  private:
+    System::Windows::Forms::Label ^ labelFullName;
+
   protected:
   protected:
   private:
@@ -75,6 +79,8 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnAccount = (gcnew System::Windows::Forms::Button());
         this->panelContent = (gcnew System::Windows::Forms::Panel());
         this->panel1 = (gcnew System::Windows::Forms::Panel());
+        this->labelFullName = (gcnew System::Windows::Forms::Label());
+        this->panelHeader->SuspendLayout();
         this->panelNav->SuspendLayout();
         this->panelContent->SuspendLayout();
         this->SuspendLayout();
@@ -82,6 +88,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         // panelHeader
         //
         this->panelHeader->BackColor = System::Drawing::Color::MediumSeaGreen;
+        this->panelHeader->Controls->Add(this->labelFullName);
         this->panelHeader->Dock = System::Windows::Forms::DockStyle::Top;
         this->panelHeader->Location = System::Drawing::Point(0, 0);
         this->panelHeader->Name = L"panelHeader";
@@ -234,6 +241,20 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panel1->Size = System::Drawing::Size(584, 29);
         this->panel1->TabIndex = 0;
         //
+        // labelFullName
+        //
+        this->labelFullName->AutoSize = true;
+        this->labelFullName->Font =
+            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
+                                         System::Drawing::FontStyle::Bold,
+                                         System::Drawing::GraphicsUnit::Point,
+                                         static_cast<System::Byte>(0)));
+        this->labelFullName->Location = System::Drawing::Point(20, 5);
+        this->labelFullName->Name = L"labelFullName";
+        this->labelFullName->Size = System::Drawing::Size(80, 21);
+        this->labelFullName->TabIndex = 19;
+        this->labelFullName->Text = L"Xin chao: ";
+        //
         // MainForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -249,6 +270,8 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->Text = L"MainForm";
         this->Load +=
             gcnew System::EventHandler(this, &MainForm::MainForm_Load);
+        this->panelHeader->ResumeLayout(false);
+        this->panelHeader->PerformLayout();
         this->panelNav->ResumeLayout(false);
         this->panelContent->ResumeLayout(false);
         this->ResumeLayout(false);
@@ -258,6 +281,8 @@ ref class MainForm : public System::Windows::Forms::Form {
   private:
     System::Void MainForm_Load(System::Object ^ sender, System::EventArgs ^ e) {
         // System::Windows::Forms::FormBorderStyle::None;
+        User ^ user = GlobalData::GetCurrentUser();
+        this->labelFullName->Text += user->getFullName();
     }
 
   private:
@@ -292,8 +317,10 @@ ref class MainForm : public System::Windows::Forms::Form {
                                   "Đăng xuất", MessageBoxButtons::YesNo,
                                   MessageBoxIcon::Question);
         if (result == System::Windows::Forms::DialogResult::Yes) {
+            GlobalData::SetCurrentUser(nullptr);
             this->Close();
         }
     }
+
 };
 } // namespace BankingAppwinform

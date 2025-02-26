@@ -1,28 +1,31 @@
-#include "File.h"
+#include "HandleFile.h"
 #include "User.h"
 
-void WriteUserArray(array<User^>^ users, String^ filePath) {
+bool HandleFile::WriteUserArray(array<User^>^ users, String^ filePath) {
     try {
         FileStream^ fs = gcnew FileStream(filePath, FileMode::Create);
         BinaryWriter^ writer = gcnew BinaryWriter(fs);
         writer->Write(users->Length);
         for each (User ^ user in users) {
-            writer->Write(user->userName);
-            writer->Write(user->password);
-            writer->Write(user->accountNumber);
-            writer->Write(user->balance);
-            writer->Write(user->isAdmin);
-            writer->Write(user->pin);
+            writer->Write(user->getFullName());
+            writer->Write(user->getPassword());
+            writer->Write(user->getPhoneNumber());
+            writer->Write(user->getAccountNumber());
+            writer->Write(user->getBalance());
+            writer->Write(user->getIsAdmin());
+            writer->Write(user->getPin());
         }
         writer->Close();
+        return true;
     }
     catch (Exception^ ex)
     {
         MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+        return false;
     }
 }
 
-array<User^>^ ReadUserArray(String^ filePath)
+array<User^>^ HandleFile::ReadUserArray(String^ filePath)
 {
     try
     {
@@ -34,13 +37,14 @@ array<User^>^ ReadUserArray(String^ filePath)
 
         for (int i = 0; i < count; i++)
         {
-            String^ _userName = reader->ReadString();
-            String^ _password = reader->ReadString();
+            String^ _fullName = reader->ReadString();
+            String ^ _password = reader->ReadString();
+            String ^ _phoneNumber = reader->ReadString();
             int _accountNumber = reader->ReadInt32();
-            int _balance = reader->ReadInt32();
+            double _balance = reader->ReadDouble();
             bool _isAdmin = reader->ReadBoolean();
             int _pin = reader->ReadInt32();
-            users[i] = gcnew User(_userName, _password);
+            users[i] = gcnew User(_fullName, _password, _phoneNumber);
         }
         reader->Close();
         return users;

@@ -2,13 +2,11 @@ E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AccountForm.cpp;E:\W
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AuthForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\AuthForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ForgotPwForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\ForgotPwForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\LoadChildForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\LoadChildForm.obj
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\File.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\File.obj
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\HandleFile.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\HandleFile.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\HistoryForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\HistoryForm.obj
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\HomeForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\HomeForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\LoginForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\LoginForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\Main.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\Main.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\MainForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\MainForm.obj
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\RegisterForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\RegisterForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SignupForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\SignupForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\TransferMoneyForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\TransferMoneyForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\WithdrawMoneyForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\WithdrawMoneyForm.obj
