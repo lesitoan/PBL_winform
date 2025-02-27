@@ -1,9 +1,5 @@
 #pragma once
-#include "User.h"
 using namespace System;
-
-using namespace System::IO;
-using namespace System::Collections::Generic;
 
 public
 ref class User {
@@ -15,10 +11,11 @@ ref class User {
     double balance;
     bool isAdmin;
     int pin;
+    String ^ bankName;
 
     int randomAccountNumber() {
         Random ^ random = gcnew Random();
-        return random->Next(10000, 99999);
+        return random->Next(100000000, 999999999);
     }
 
   public:
@@ -26,13 +23,15 @@ ref class User {
         fullName = _fullName;
         password = _password;
         phoneNumber = _phoneNumber;
-        balance = 0;
+        balance = 1000000;
         isAdmin = false;
         pin = 0;
         accountNumber = this->randomAccountNumber();
+        bankName = "BIDV";
     }
     User(String ^ _fullName, String ^ _password, String ^ _phoneNumber,
-         int _accountNumber, double _balance, bool _isAdmin, int _pin) {
+         int _accountNumber, double _balance, bool _isAdmin, int _pin,
+         String ^ _bankName) {
         fullName = _fullName;
         password = _password;
         phoneNumber = _phoneNumber;
@@ -40,9 +39,10 @@ ref class User {
         isAdmin = _isAdmin;
         pin = _pin;
         accountNumber = _accountNumber;
+        bankName = _bankName;
     }
 
-    User() : User("", "", "", 0, 0, false, 0) {};
+    User() : User("", "", "", 0, 0, false, 0, "BIDV") {};
 
     String^ getFullName() { return fullName; }
     String^ getPassword() { return password; } 
@@ -51,4 +51,11 @@ ref class User {
     bool getIsAdmin() { return isAdmin; }
     int getPin() { return pin; }
     String ^ getPhoneNumber() { return phoneNumber; }
+    String ^ getBankName() { return bankName; }
+
+    void setPassword(String ^ _password) {
+        this->password = _password;
+    }
+    void setPin(int _pin) { this->pin = _pin; }
+    void setBalance(double _balance) { this->balance = _balance; }
 };

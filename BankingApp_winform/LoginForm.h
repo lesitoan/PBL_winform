@@ -179,4 +179,4 @@ ref class LoginForm : public System::Windows::Forms::Form {
     System::Void LoginForm_Load(System::Object ^ sender,
                                 System::EventArgs ^ e) {}
 };
-} // namespace BankingAppwinform
+}

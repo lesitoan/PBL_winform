@@ -1,7 +1,9 @@
 #pragma once
+#include "Transaction.h"
+#include "HandleFile.h"
+#include "GlobalData.h"
 
 namespace BankingAppwinform {
-
 using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Collections;
@@ -9,23 +11,15 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-/// <summary>
-/// Summary for HistoryForm
-/// </summary>
 public
 ref class HistoryForm : public System::Windows::Forms::Form {
   public:
     HistoryForm(void) {
         InitializeComponent();
-        //
-        // TODO: Add the constructor code here
-        //
+
     }
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
     ~HistoryForm() {
         if (components) {
             delete components;
@@ -33,139 +27,100 @@ ref class HistoryForm : public System::Windows::Forms::Form {
     }
 
   private:
-    System::Windows::Forms::Panel ^ panel1;
-
-  protected:
-  private:
-    System::Windows::Forms::Panel ^ panel2;
-
-  private:
-    System::Windows::Forms::Label ^ label7;
-
-  private:
-    System::Windows::Forms::Label ^ label6;
-
-  private:
-    System::Windows::Forms::Label ^ label5;
-
-  private:
-    System::Windows::Forms::Label ^ label4;
-
-  private:
+    System::Windows::Forms::Panel ^ panelContent;
     System::Windows::Forms::Label ^ label3;
-
-  private:
     System::Windows::Forms::Label ^ label1;
-
-  private:
-    System::Windows::Forms::Label ^ label8;
-
-  private:
-    System::Windows::Forms::Label ^ label2;
-
-  private:
-    System::Windows::Forms::Label ^ label9;
-
-  private:
-    System::Windows::Forms::Label ^ label11;
-
-  private:
-    System::Windows::Forms::Label ^ label10;
-
-  private:
-    System::Windows::Forms::Label ^ label13;
-
-  private:
-    System::Windows::Forms::Label ^ label12;
-
-  private:
-  private:
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
+    System::Windows::Forms::Button ^ btnActiveTransferList;
+    System::Windows::Forms::Button ^ btnActiveWithDrawList;
     System::ComponentModel::Container ^ components;
 
+    String ^ activePanel = "TRANSFER";
+    array<Transaction ^> ^ transactions;
+
+    void loadContent(array<Transaction ^> ^ transactions, Panel ^ panel, String ^ type) {
+
+        int yOffset = 10;
+        panel->Controls->Clear();
+
+        Label ^ headerText = gcnew Label();
+        headerText->ForeColor = Color::Black;
+        headerText->Font =
+            gcnew System::Drawing::Font("Arial", 12, FontStyle::Bold);
+        headerText->AutoSize = true;
+        headerText->Location = System::Drawing::Point(10, yOffset);
+
+        if (transactions == nullptr) {
+            headerText->Text = "CHUA CO LICH SU GIAO DICH";
+            panel->Controls->Add(headerText);
+            return;
+        } else if (type == "TRANSFER") {
+            headerText->Text = "LICH SU CHUYEN KHOAN";
+            panel->Controls->Add(headerText);
+            yOffset += 30;
+        } else {
+            headerText->Text = "LICH SU RUT TIEN";
+            panel->Controls->Add(headerText);
+            yOffset += 30;
+        }
+
+
+        for each (Transaction ^ transaction in transactions) {
+            Label ^ lblTransaction = gcnew Label();
+            if (transaction->getToAccount() == 0 && type == "WITHDRAW") {
+                lblTransaction->Text =
+                    "Rut tien: " + transaction->getAmount().ToString("N0") +
+                    " VND - " + transaction->getCreatedAt();
+                lblTransaction->ForeColor = Color::Red;
+            } else if (type == "TRANSFER") {
+                if (transaction->getFromAccount() ==
+                         GlobalData::GetCurrentUser()->getAccountNumber()) {
+                    lblTransaction->Text =
+                        "Chuyen tien: " +
+                        transaction->getAmount().ToString("N0") +
+                        " VND - den: " + transaction->getToAccount() + " - " +
+                        transaction->getCreatedAt();
+                    lblTransaction->ForeColor = Color::Red;
+                }
+                else {
+                    lblTransaction->Text =
+                        "nhan tien: " +
+                        transaction->getAmount().ToString("N0") +
+                        " VND - tu: " + transaction->getFromAccount() + " - " +
+                        transaction->getCreatedAt();
+                    lblTransaction->ForeColor = Color::Green;
+                }
+            }
+            //lblTransaction->ForeColor = Color::Red;
+            lblTransaction->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+            lblTransaction->AutoSize = true;
+            lblTransaction->Location = System::Drawing::Point(10, yOffset);
+            panel->Controls->Add(lblTransaction);
+            yOffset += 30;
+        }
+    }
+
+
+
 #pragma region Windows Form Designer generated code
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
     void InitializeComponent(void) {
-        this->panel1 = (gcnew System::Windows::Forms::Panel());
-        this->panel2 = (gcnew System::Windows::Forms::Panel());
-        this->label1 = (gcnew System::Windows::Forms::Label());
-        this->label2 = (gcnew System::Windows::Forms::Label());
+        this->panelContent = (gcnew System::Windows::Forms::Panel());
         this->label3 = (gcnew System::Windows::Forms::Label());
-        this->label4 = (gcnew System::Windows::Forms::Label());
-        this->label5 = (gcnew System::Windows::Forms::Label());
-        this->label6 = (gcnew System::Windows::Forms::Label());
-        this->label7 = (gcnew System::Windows::Forms::Label());
-        this->label8 = (gcnew System::Windows::Forms::Label());
-        this->label9 = (gcnew System::Windows::Forms::Label());
-        this->label10 = (gcnew System::Windows::Forms::Label());
-        this->label11 = (gcnew System::Windows::Forms::Label());
-        this->label12 = (gcnew System::Windows::Forms::Label());
-        this->label13 = (gcnew System::Windows::Forms::Label());
-        this->panel1->SuspendLayout();
-        this->panel2->SuspendLayout();
+        this->label1 = (gcnew System::Windows::Forms::Label());
+        this->btnActiveTransferList = (gcnew System::Windows::Forms::Button());
+        this->btnActiveWithDrawList = (gcnew System::Windows::Forms::Button());
+        this->panelContent->SuspendLayout();
         this->SuspendLayout();
         //
-        // panel1
+        // panelContent
         //
-        this->panel1->BackColor = System::Drawing::SystemColors::ActiveCaption;
-        this->panel1->Controls->Add(this->label7);
-        this->panel1->Controls->Add(this->label6);
-        this->panel1->Controls->Add(this->label5);
-        this->panel1->Controls->Add(this->label4);
-        this->panel1->Controls->Add(this->label3);
-        this->panel1->Controls->Add(this->label1);
-        this->panel1->Location = System::Drawing::Point(22, 13);
-        this->panel1->Name = L"panel1";
-        this->panel1->Size = System::Drawing::Size(254, 368);
-        this->panel1->TabIndex = 0;
-        //
-        // panel2
-        //
-        this->panel2->BackColor = System::Drawing::SystemColors::ActiveCaption;
-        this->panel2->Controls->Add(this->label13);
-        this->panel2->Controls->Add(this->label12);
-        this->panel2->Controls->Add(this->label8);
-        this->panel2->Controls->Add(this->label2);
-        this->panel2->Controls->Add(this->label9);
-        this->panel2->Controls->Add(this->label11);
-        this->panel2->Controls->Add(this->label10);
-        this->panel2->Location = System::Drawing::Point(298, 13);
-        this->panel2->Name = L"panel2";
-        this->panel2->Size = System::Drawing::Size(254, 368);
-        this->panel2->TabIndex = 1;
-        //
-        // label1
-        //
-        this->label1->AutoSize = true;
-        this->label1->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label1->Location = System::Drawing::Point(53, 11);
-        this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(150, 21);
-        this->label1->TabIndex = 8;
-        this->label1->Text = L"L?ch su chuyen tien";
-        //
-        // label2
-        //
-        this->label2->AutoSize = true;
-        this->label2->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label2->Location = System::Drawing::Point(74, 11);
-        this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(117, 21);
-        this->label2->TabIndex = 9;
-        this->label2->Text = L"L?ch su rut tien";
+        this->panelContent->BackColor =
+            System::Drawing::SystemColors::ActiveCaption;
+        this->panelContent->Controls->Add(this->label3);
+        this->panelContent->Controls->Add(this->label1);
+        this->panelContent->Location = System::Drawing::Point(22, 81);
+        this->panelContent->Name = L"panelContent";
+        this->panelContent->Size = System::Drawing::Size(530, 341);
+        this->panelContent->TabIndex = 0;
         //
         // label3
         //
@@ -176,221 +131,114 @@ ref class HistoryForm : public System::Windows::Forms::Form {
                                          System::Drawing::GraphicsUnit::Point,
                                          static_cast<System::Byte>(0)));
         this->label3->ForeColor = System::Drawing::Color::Green;
-        this->label3->Location = System::Drawing::Point(39, 50);
+        this->label3->Location = System::Drawing::Point(33, 41);
         this->label3->Name = L"label3";
         this->label3->Size = System::Drawing::Size(175, 21);
         this->label3->TabIndex = 9;
-        this->label3->Text = L"+435.000? 20/02/2025";
-        this->label3->Click +=
-            gcnew System::EventHandler(this, &HistoryForm::label3_Click);
+        this->label3->Text = L"+435.000\? 20/02/2025";
         //
-        // label4
+        // label1
         //
-        this->label4->AutoSize = true;
-        this->label4->Font =
+        this->label1->AutoSize = true;
+        this->label1->Font =
             (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
                                          System::Drawing::FontStyle::Bold,
                                          System::Drawing::GraphicsUnit::Point,
                                          static_cast<System::Byte>(0)));
-        this->label4->ForeColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(192)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)));
-        this->label4->Location = System::Drawing::Point(39, 83);
-        this->label4->Name = L"label4";
-        this->label4->Size = System::Drawing::Size(175, 21);
-        this->label4->TabIndex = 10;
-        this->label4->Text = L"-435.000? 20/02/2025";
-        this->label4->Click +=
-            gcnew System::EventHandler(this, &HistoryForm::label4_Click);
+        this->label1->Location = System::Drawing::Point(197, 11);
+        this->label1->Name = L"label1";
+        this->label1->Size = System::Drawing::Size(150, 21);
+        this->label1->TabIndex = 8;
+        this->label1->Text = L"Lich su chuyen tien";
         //
-        // label5
+        // btnActiveTransferList
         //
-        this->label5->AutoSize = true;
-        this->label5->Font =
+        this->btnActiveTransferList->BackColor =
+            System::Drawing::SystemColors::ActiveCaption;
+        this->btnActiveTransferList->Cursor =
+            System::Windows::Forms::Cursors::Hand;
+        this->btnActiveTransferList->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
+        this->btnActiveTransferList->Font =
             (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label5->ForeColor = System::Drawing::Color::Green;
-        this->label5->Location = System::Drawing::Point(39, 118);
-        this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(175, 21);
-        this->label5->TabIndex = 11;
-        this->label5->Text = L"+435.000? 20/02/2025";
-        this->label5->Click +=
-            gcnew System::EventHandler(this, &HistoryForm::label5_Click);
+                                         System::Drawing::FontStyle::Bold));
+        this->btnActiveTransferList->ForeColor = System::Drawing::Color::Black;
+        this->btnActiveTransferList->Location = System::Drawing::Point(22, 12);
+        this->btnActiveTransferList->Name = L"btnActiveTransferList";
+        this->btnActiveTransferList->Size = System::Drawing::Size(262, 53);
+        this->btnActiveTransferList->TabIndex = 21;
+        this->btnActiveTransferList->Text = L"Lich su chuyen khoan";
+        this->btnActiveTransferList->UseVisualStyleBackColor = false;
+        this->btnActiveTransferList->Click += gcnew System::EventHandler(
+            this, &HistoryForm::btnActiveTransferList_Click);
         //
-        // label6
+        // btnActiveWithDrawList
         //
-        this->label6->AutoSize = true;
-        this->label6->Font =
+        this->btnActiveWithDrawList->BackColor =
+            System::Drawing::SystemColors::ActiveCaption;
+        this->btnActiveWithDrawList->Cursor =
+            System::Windows::Forms::Cursors::Hand;
+        this->btnActiveWithDrawList->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
+        this->btnActiveWithDrawList->Font =
             (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label6->ForeColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(192)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)));
-        this->label6->Location = System::Drawing::Point(39, 152);
-        this->label6->Name = L"label6";
-        this->label6->Size = System::Drawing::Size(175, 21);
-        this->label6->TabIndex = 12;
-        this->label6->Text = L"-435.000? 20/02/2025";
-        this->label6->Click +=
-            gcnew System::EventHandler(this, &HistoryForm::label6_Click);
-        //
-        // label7
-        //
-        this->label7->AutoSize = true;
-        this->label7->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label7->ForeColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(192)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)));
-        this->label7->Location = System::Drawing::Point(39, 186);
-        this->label7->Name = L"label7";
-        this->label7->Size = System::Drawing::Size(175, 21);
-        this->label7->TabIndex = 13;
-        this->label7->Text = L"-435.000? 20/02/2025";
-        this->label7->Click +=
-            gcnew System::EventHandler(this, &HistoryForm::label7_Click);
-        //
-        // label8
-        //
-        this->label8->AutoSize = true;
-        this->label8->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label8->ForeColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(192)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)));
-        this->label8->Location = System::Drawing::Point(45, 50);
-        this->label8->Name = L"label8";
-        this->label8->Size = System::Drawing::Size(175, 21);
-        this->label8->TabIndex = 18;
-        this->label8->Text = L"-435.000? 20/02/2025";
-        //
-        // label9
-        //
-        this->label9->AutoSize = true;
-        this->label9->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label9->ForeColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(192)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)));
-        this->label9->Location = System::Drawing::Point(45, 152);
-        this->label9->Name = L"label9";
-        this->label9->Size = System::Drawing::Size(175, 21);
-        this->label9->TabIndex = 17;
-        this->label9->Text = L"-435.000? 20/02/2025";
-        //
-        // label10
-        //
-        this->label10->AutoSize = true;
-        this->label10->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label10->ForeColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(192)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)));
-        this->label10->Location = System::Drawing::Point(45, 118);
-        this->label10->Name = L"label10";
-        this->label10->Size = System::Drawing::Size(0, 21);
-        this->label10->TabIndex = 16;
-        //
-        // label11
-        //
-        this->label11->AutoSize = true;
-        this->label11->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label11->ForeColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(192)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(0)));
-        this->label11->Location = System::Drawing::Point(45, 83);
-        this->label11->Name = L"label11";
-        this->label11->Size = System::Drawing::Size(175, 21);
-        this->label11->TabIndex = 15;
-        this->label11->Text = L"-435.000? 20/02/2025";
-        //
-        // label12
-        //
-        this->label12->AutoSize = true;
-        this->label12->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label12->ForeColor = System::Drawing::Color::Green;
-        this->label12->Location = System::Drawing::Point(45, 118);
-        this->label12->Name = L"label12";
-        this->label12->Size = System::Drawing::Size(175, 21);
-        this->label12->TabIndex = 14;
-        this->label12->Text = L"+435.000? 20/02/2025";
-        //
-        // label13
-        //
-        this->label13->AutoSize = true;
-        this->label13->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label13->ForeColor = System::Drawing::Color::Green;
-        this->label13->Location = System::Drawing::Point(45, 186);
-        this->label13->Name = L"label13";
-        this->label13->Size = System::Drawing::Size(175, 21);
-        this->label13->TabIndex = 14;
-        this->label13->Text = L"+435.000? 20/02/2025";
+                                         System::Drawing::FontStyle::Bold));
+        this->btnActiveWithDrawList->ForeColor = System::Drawing::Color::Black;
+        this->btnActiveWithDrawList->Location = System::Drawing::Point(290, 12);
+        this->btnActiveWithDrawList->Name = L"btnActiveWithDrawList";
+        this->btnActiveWithDrawList->Size = System::Drawing::Size(262, 53);
+        this->btnActiveWithDrawList->TabIndex = 22;
+        this->btnActiveWithDrawList->Text = L"Lich su rut tien";
+        this->btnActiveWithDrawList->UseVisualStyleBackColor = false;
+        this->btnActiveWithDrawList->Click += gcnew System::EventHandler(
+            this, &HistoryForm::btnActiveWithDrawList_Click);
         //
         // HistoryForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->ClientSize = System::Drawing::Size(573, 393);
-        this->Controls->Add(this->panel2);
-        this->Controls->Add(this->panel1);
+        this->ClientSize = System::Drawing::Size(573, 434);
+        this->Controls->Add(this->btnActiveWithDrawList);
+        this->Controls->Add(this->btnActiveTransferList);
+        this->Controls->Add(this->panelContent);
         this->Name = L"HistoryForm";
         this->Text = L"HistoryForm";
-        this->panel1->ResumeLayout(false);
-        this->panel1->PerformLayout();
-        this->panel2->ResumeLayout(false);
-        this->panel2->PerformLayout();
+        this->Load +=
+            gcnew System::EventHandler(this, &HistoryForm::HistoryForm_Load);
+        this->panelContent->ResumeLayout(false);
+        this->panelContent->PerformLayout();
         this->ResumeLayout(false);
     }
+
 #pragma endregion
   private:
-    System::Void label4_Click(System::Object ^ sender, System::EventArgs ^ e) {}
+    System::Void HistoryForm_Load(System::Object ^ sender,
+                                  System::EventArgs ^ e) {
+        transactions = HandleFile::ReadTransactionArray("transactions.dat");
+        loadContent(transactions, panelContent, "TRANSFER");
+    }
+  private:
+    System::Void btnActiveTransferList_Click(System::Object ^ sender,
+                                             System::EventArgs ^ e) {
+        if (activePanel == "TRANSFER") {
+            return;
+        } else {
+            activePanel = "TRANSFER";
+            loadContent(transactions, panelContent, "TRANSFER");
+        }
+    }
 
   private:
-    System::Void label6_Click(System::Object ^ sender, System::EventArgs ^ e) {}
+    System::Void btnActiveWithDrawList_Click(System::Object ^ sender,
+                                             System::EventArgs ^ e) {
+        if (activePanel == "WITHDRAW") {
+            return;
+        } else {
+            activePanel = "WITHDRAW";
+            loadContent(transactions, panelContent, "WITHDRAW");
+        }
+    }
 
-  private:
-    System::Void label5_Click(System::Object ^ sender, System::EventArgs ^ e) {}
-
-  private:
-    System::Void label3_Click(System::Object ^ sender, System::EventArgs ^ e) {}
-
-  private:
-    System::Void label7_Click(System::Object ^ sender, System::EventArgs ^ e) {}
+  
 };
-} // namespace BankingAppwinform
+}

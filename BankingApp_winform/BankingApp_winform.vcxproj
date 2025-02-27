@@ -122,6 +122,7 @@
   <ItemGroup>
     <ClCompile Include="AccountForm.cpp" />
     <ClCompile Include="AuthForm.cpp" />
+    <ClCompile Include="ChangePwForm.cpp" />
     <ClCompile Include="ForgotPwForm.cpp" />
     <ClCompile Include="LoadChildForm.cpp" />
     <ClCompile Include="HandleFile.cpp" />
@@ -129,8 +130,10 @@
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainForm.cpp" />
+    <ClCompile Include="SetPinForm.cpp" />
     <ClCompile Include="SignupForm.cpp" />
     <ClCompile Include="TransferMoneyForm.cpp" />
+    <ClCompile Include="Validate.cpp" />
     <ClCompile Include="WithdrawMoneyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +141,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AuthForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ChangePwForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ForgotPwForm.h">
@@ -155,13 +161,18 @@
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="SetPinForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="SignupForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Transaction.h" />
     <ClInclude Include="TransferMoneyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="User.h" />
+    <ClInclude Include="Validate.h" />
     <ClInclude Include="WithdrawMoneyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -172,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AuthForm.resx">
       <DependentUpon>AuthForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePwForm.resx">
+      <DependentUpon>ChangePwForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForgotPwForm.resx">
       <DependentUpon>ForgotPwForm.h</DependentUpon>
@@ -185,6 +199,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SetPinForm.resx">
+      <DependentUpon>SetPinForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SignupForm.resx">
       <DependentUpon>SignupForm.h</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +214,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
+    <None Include="transactions.dat" />
     <None Include="users.dat" />
   </ItemGroup>
   <ItemGroup>

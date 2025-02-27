@@ -1,5 +1,6 @@
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AccountForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\AccountForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AuthForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\AuthForm.obj
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ChangePwForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\ChangePwForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ForgotPwForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\ForgotPwForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\LoadChildForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\LoadChildForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\HandleFile.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\HandleFile.obj
@@ -7,7 +8,9 @@ E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\HistoryForm.cpp;E:\W
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\LoginForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\LoginForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\Main.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\Main.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\MainForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\MainForm.obj
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetPinForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\SetPinForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SignupForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\SignupForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\TransferMoneyForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\TransferMoneyForm.obj
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\Validate.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\Validate.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\WithdrawMoneyForm.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\WithdrawMoneyForm.obj
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp;E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.obj

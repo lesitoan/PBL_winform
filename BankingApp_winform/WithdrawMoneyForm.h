@@ -70,11 +70,11 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
     /// </summary>
     void InitializeComponent(void) {
         this->panel1 = (gcnew System::Windows::Forms::Panel());
+        this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+        this->label2 = (gcnew System::Windows::Forms::Label());
         this->btnSubmit = (gcnew System::Windows::Forms::Button());
         this->textBox1 = (gcnew System::Windows::Forms::TextBox());
         this->label1 = (gcnew System::Windows::Forms::Label());
-        this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-        this->label2 = (gcnew System::Windows::Forms::Label());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->label3 = (gcnew System::Windows::Forms::Label());
         this->panel1->SuspendLayout();
@@ -91,8 +91,33 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         this->panel1->Controls->Add(this->label1);
         this->panel1->Location = System::Drawing::Point(24, 84);
         this->panel1->Name = L"panel1";
-        this->panel1->Size = System::Drawing::Size(522, 297);
+        this->panel1->Size = System::Drawing::Size(522, 333);
         this->panel1->TabIndex = 0;
+        //
+        // textBox2
+        //
+        this->textBox2->Font =
+            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
+                                         System::Drawing::FontStyle::Bold));
+        this->textBox2->Location = System::Drawing::Point(85, 149);
+        this->textBox2->Name = L"textBox2";
+        this->textBox2->PasswordChar = '*';
+        this->textBox2->Size = System::Drawing::Size(343, 27);
+        this->textBox2->TabIndex = 11;
+        //
+        // label2
+        //
+        this->label2->AutoSize = true;
+        this->label2->Font =
+            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
+                                         System::Drawing::FontStyle::Bold,
+                                         System::Drawing::GraphicsUnit::Point,
+                                         static_cast<System::Byte>(0)));
+        this->label2->Location = System::Drawing::Point(81, 116);
+        this->label2->Name = L"label2";
+        this->label2->Size = System::Drawing::Size(60, 21);
+        this->label2->TabIndex = 10;
+        this->label2->Text = L"Ma pin:";
         //
         // btnSubmit
         //
@@ -137,31 +162,6 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         this->label1->TabIndex = 7;
         this->label1->Text = L"Nhap so tien:";
         //
-        // textBox2
-        //
-        this->textBox2->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold));
-        this->textBox2->Location = System::Drawing::Point(85, 149);
-        this->textBox2->Name = L"textBox2";
-        this->textBox2->PasswordChar = '*';
-        this->textBox2->Size = System::Drawing::Size(343, 27);
-        this->textBox2->TabIndex = 11;
-        //
-        // label2
-        //
-        this->label2->AutoSize = true;
-        this->label2->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label2->Location = System::Drawing::Point(81, 116);
-        this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(60, 21);
-        this->label2->TabIndex = 10;
-        this->label2->Text = L"Ma pin:";
-        //
         // panel2
         //
         this->panel2->BackColor = System::Drawing::SystemColors::ActiveCaption;
@@ -189,7 +189,7 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->ClientSize = System::Drawing::Size(573, 393);
+        this->ClientSize = System::Drawing::Size(573, 429);
         this->Controls->Add(this->panel2);
         this->Controls->Add(this->panel1);
         this->Name = L"WithdrawMoneyForm";

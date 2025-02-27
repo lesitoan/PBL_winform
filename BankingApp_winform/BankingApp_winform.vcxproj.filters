@@ -60,6 +60,15 @@
     <ClCompile Include="WithdrawMoneyForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
+    <ClCompile Include="ChangePwForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="SetPinForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Validate.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -98,13 +107,26 @@
     <ClInclude Include="ForgotPwForm.h">
       <Filter>Form</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalData.h">
+    <ClInclude Include="ChangePwForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="SetPinForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="Validate.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalData.h" />
+    <ClInclude Include="Transaction.h">
       <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
     <None Include="users.dat">
+      <Filter>Data\AppData</Filter>
+    </None>
+    <None Include="transactions.dat">
       <Filter>Data\AppData</Filter>
     </None>
   </ItemGroup>

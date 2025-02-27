@@ -30,47 +30,23 @@ ref class MainForm : public System::Windows::Forms::Form {
         }
     }
 
-
-
   private:
     System::Windows::Forms::Panel ^ panelHeader;
-
-  private:
     System::Windows::Forms::Panel ^ panelNav;
-
-  private:
     System::Windows::Forms::Panel ^ panelContent;
-
-  private:
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
     System::Windows::Forms::Button ^ btnAccount;
-
-  private:
     System::Windows::Forms::Button ^ btnLogout;
-
-  private:
     System::Windows::Forms::Button ^ btnWithdraw;
-
-  private:
     System::Windows::Forms::Button ^ btnHistory;
-
-  private:
     System::Windows::Forms::Button ^ btnTransfer;
-
-  private:
     System::Windows::Forms::Label ^ labelFullName;
-
-  protected:
-  protected:
-  private:
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
-
     void InitializeComponent(void) {
         this->panelHeader = (gcnew System::Windows::Forms::Panel());
+        this->labelFullName = (gcnew System::Windows::Forms::Label());
         this->panelNav = (gcnew System::Windows::Forms::Panel());
         this->btnLogout = (gcnew System::Windows::Forms::Button());
         this->btnWithdraw = (gcnew System::Windows::Forms::Button());
@@ -79,7 +55,6 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnAccount = (gcnew System::Windows::Forms::Button());
         this->panelContent = (gcnew System::Windows::Forms::Panel());
         this->panel1 = (gcnew System::Windows::Forms::Panel());
-        this->labelFullName = (gcnew System::Windows::Forms::Label());
         this->panelHeader->SuspendLayout();
         this->panelNav->SuspendLayout();
         this->panelContent->SuspendLayout();
@@ -95,6 +70,20 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panelHeader->Size = System::Drawing::Size(784, 29);
         this->panelHeader->TabIndex = 0;
         //
+        // labelFullName
+        //
+        this->labelFullName->AutoSize = true;
+        this->labelFullName->Font =
+            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
+                                         System::Drawing::FontStyle::Bold,
+                                         System::Drawing::GraphicsUnit::Point,
+                                         static_cast<System::Byte>(0)));
+        this->labelFullName->Location = System::Drawing::Point(20, 5);
+        this->labelFullName->Name = L"labelFullName";
+        this->labelFullName->Size = System::Drawing::Size(80, 21);
+        this->labelFullName->TabIndex = 19;
+        this->labelFullName->Text = L"Xin chao: ";
+        //
         // panelNav
         //
         this->panelNav->BackColor = System::Drawing::SystemColors::WindowFrame;
@@ -108,7 +97,7 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Drawing::SystemColors::InactiveCaptionText;
         this->panelNav->Location = System::Drawing::Point(0, 29);
         this->panelNav->Name = L"panelNav";
-        this->panelNav->Size = System::Drawing::Size(200, 432);
+        this->panelNav->Size = System::Drawing::Size(200, 445);
         this->panelNav->TabIndex = 1;
         //
         // btnLogout
@@ -228,7 +217,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panelContent->Dock = System::Windows::Forms::DockStyle::Fill;
         this->panelContent->Location = System::Drawing::Point(200, 29);
         this->panelContent->Name = L"panelContent";
-        this->panelContent->Size = System::Drawing::Size(584, 432);
+        this->panelContent->Size = System::Drawing::Size(584, 445);
         this->panelContent->TabIndex = 2;
         //
         // panel1
@@ -241,25 +230,11 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panel1->Size = System::Drawing::Size(584, 29);
         this->panel1->TabIndex = 0;
         //
-        // labelFullName
-        //
-        this->labelFullName->AutoSize = true;
-        this->labelFullName->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->labelFullName->Location = System::Drawing::Point(20, 5);
-        this->labelFullName->Name = L"labelFullName";
-        this->labelFullName->Size = System::Drawing::Size(80, 21);
-        this->labelFullName->TabIndex = 19;
-        this->labelFullName->Text = L"Xin chao: ";
-        //
         // MainForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->ClientSize = System::Drawing::Size(784, 461);
+        this->ClientSize = System::Drawing::Size(784, 474);
         this->Controls->Add(this->panelContent);
         this->Controls->Add(this->panelNav);
         this->Controls->Add(this->panelHeader);
@@ -280,36 +255,26 @@ ref class MainForm : public System::Windows::Forms::Form {
 #pragma endregion
   private:
     System::Void MainForm_Load(System::Object ^ sender, System::EventArgs ^ e) {
-        // System::Windows::Forms::FormBorderStyle::None;
         User ^ user = GlobalData::GetCurrentUser();
         this->labelFullName->Text += user->getFullName();
+        LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm());
     }
-
-  private:
     System::Void btnAccount_Click(System::Object ^ sender,
                                   System::EventArgs ^ e) {
         LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm());
     }
-
-  private:
     System::Void btnTransfer_Click(System::Object ^ sender,
                                    System::EventArgs ^ e) {
         LoadChildForm::LoadForm(this->panelContent, gcnew TransferMoneyForm());
     }
-
-  private:
     System::Void btnWithdraw_Click(System::Object ^ sender,
                                    System::EventArgs ^ e) {
         LoadChildForm::LoadForm(this->panelContent, gcnew WithdrawMoneyForm());
     }
-
-  private:
     System::Void btnHistory_Click(System::Object ^ sender,
                                   System::EventArgs ^ e) {
         LoadChildForm::LoadForm(this->panelContent, gcnew HistoryForm());
     }
-
-  private:
     System::Void btnLogout_Click(System::Object ^ sender,
                                  System::EventArgs ^ e) {
         System::Windows::Forms::DialogResult result;
@@ -323,4 +288,4 @@ ref class MainForm : public System::Windows::Forms::Form {
     }
 
 };
-} // namespace BankingAppwinform
+}

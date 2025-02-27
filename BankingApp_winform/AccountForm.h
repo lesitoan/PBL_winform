@@ -1,4 +1,9 @@
 #pragma once
+#include "GlobalData.h"
+#include "User.h"
+#include "ChangePwForm.h"
+#include "LoadChildForm.h"
+#include "SetPinForm.h"
 
 namespace BankingAppwinform {
 
@@ -9,23 +14,13 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-/// <summary>
-/// Summary for AccountForm
-/// </summary>
-public
-ref class AccountForm : public System::Windows::Forms::Form {
+public ref class AccountForm : public System::Windows::Forms::Form {
   public:
     AccountForm(void) {
         InitializeComponent();
-        //
-        // TODO: Add the constructor code here
-        //
     }
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
     ~AccountForm() {
         if (components) {
             delete components;
@@ -34,55 +29,35 @@ ref class AccountForm : public System::Windows::Forms::Form {
 
   private:
     System::Windows::Forms::Panel ^ panel1;
-
-  protected:
-  private:
-    System::Windows::Forms::Panel ^ panel2;
-
-  private:
+    System::Windows::Forms::Panel ^ panelContent;
     System::Windows::Forms::Panel ^ panel3;
-
-  private:
     System::Windows::Forms::Button ^ btnChangePw;
-
-  private:
     System::Windows::Forms::Label ^ labelAccountNumber;
+    System::Windows::Forms::Label ^ labelFullName;
 
   private:
-  private:
-    System::Windows::Forms::Label ^ labelUserName;
+    System::Windows::Forms::Button ^ btnSetPin;
 
-  private:
-    System::Windows::Forms::Button ^ btnChangePin;
-
-  private:
     System::Windows::Forms::Button ^ btnDeleteAccount;
-
-  private:
     System::Windows::Forms::Panel ^ panelAvatar;
 
   private:
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
+    System::Windows::Forms::Label ^ labelBalance;
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
     void InitializeComponent(void) {
         System::ComponentModel::ComponentResourceManager ^ resources =
             (gcnew System::ComponentModel::ComponentResourceManager(
                 AccountForm::typeid));
         this->panel1 = (gcnew System::Windows::Forms::Panel());
+        this->labelBalance = (gcnew System::Windows::Forms::Label());
         this->panelAvatar = (gcnew System::Windows::Forms::Panel());
         this->labelAccountNumber = (gcnew System::Windows::Forms::Label());
-        this->labelUserName = (gcnew System::Windows::Forms::Label());
-        this->panel2 = (gcnew System::Windows::Forms::Panel());
+        this->labelFullName = (gcnew System::Windows::Forms::Label());
+        this->panelContent = (gcnew System::Windows::Forms::Panel());
         this->panel3 = (gcnew System::Windows::Forms::Panel());
-        this->btnChangePin = (gcnew System::Windows::Forms::Button());
+        this->btnSetPin = (gcnew System::Windows::Forms::Button());
         this->btnDeleteAccount = (gcnew System::Windows::Forms::Button());
         this->btnChangePw = (gcnew System::Windows::Forms::Button());
         this->panel1->SuspendLayout();
@@ -92,13 +67,26 @@ ref class AccountForm : public System::Windows::Forms::Form {
         // panel1
         //
         this->panel1->BackColor = System::Drawing::SystemColors::ActiveCaption;
+        this->panel1->Controls->Add(this->labelBalance);
         this->panel1->Controls->Add(this->panelAvatar);
         this->panel1->Controls->Add(this->labelAccountNumber);
-        this->panel1->Controls->Add(this->labelUserName);
-        this->panel1->Location = System::Drawing::Point(37, 24);
+        this->panel1->Controls->Add(this->labelFullName);
+        this->panel1->Location = System::Drawing::Point(23, 24);
         this->panel1->Name = L"panel1";
-        this->panel1->Size = System::Drawing::Size(500, 82);
+        this->panel1->Size = System::Drawing::Size(533, 82);
         this->panel1->TabIndex = 0;
+        //
+        // labelBalance
+        //
+        this->labelBalance->AutoSize = true;
+        this->labelBalance->Font = (gcnew System::Drawing::Font(
+            L"#9Slide03 SVN-Kelson Sans Bold", 14.25F,
+            System::Drawing::FontStyle::Bold));
+        this->labelBalance->Location = System::Drawing::Point(189, 10);
+        this->labelBalance->Name = L"labelBalance";
+        this->labelBalance->Size = System::Drawing::Size(65, 24);
+        this->labelBalance->TabIndex = 3;
+        this->labelBalance->Text = L"So du: ";
         //
         // panelAvatar
         //
@@ -113,7 +101,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
                 resources->GetObject(L"panelAvatar.BackgroundImage")));
         this->panelAvatar->Location = System::Drawing::Point(432, 10);
         this->panelAvatar->Name = L"panelAvatar";
-        this->panelAvatar->Size = System::Drawing::Size(56, 55);
+        this->panelAvatar->Size = System::Drawing::Size(89, 55);
         this->panelAvatar->TabIndex = 2;
         //
         // labelAccountNumber
@@ -126,61 +114,62 @@ ref class AccountForm : public System::Windows::Forms::Form {
                                          static_cast<System::Byte>(0)));
         this->labelAccountNumber->Location = System::Drawing::Point(21, 44);
         this->labelAccountNumber->Name = L"labelAccountNumber";
-        this->labelAccountNumber->Size = System::Drawing::Size(87, 21);
+        this->labelAccountNumber->Size = System::Drawing::Size(0, 21);
         this->labelAccountNumber->TabIndex = 1;
-        this->labelAccountNumber->Text = L"123456789";
         //
-        // labelUserName
+        // labelFullName
         //
-        this->labelUserName->AutoSize = true;
-        this->labelUserName->Font = (gcnew System::Drawing::Font(
+        this->labelFullName->AutoSize = true;
+        this->labelFullName->Font = (gcnew System::Drawing::Font(
             L"#9Slide03 SVN-Kelson Sans Bold", 14.25F,
             System::Drawing::FontStyle::Bold,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->labelUserName->Location = System::Drawing::Point(21, 10);
-        this->labelUserName->Name = L"labelUserName";
-        this->labelUserName->Size = System::Drawing::Size(96, 24);
-        this->labelUserName->TabIndex = 0;
-        this->labelUserName->Text = L"Le Si Toan";
+        this->labelFullName->Location = System::Drawing::Point(21, 10);
+        this->labelFullName->Name = L"labelFullName";
+        this->labelFullName->Size = System::Drawing::Size(0, 24);
+        this->labelFullName->TabIndex = 0;
         //
-        // panel2
+        // panelContent
         //
-        this->panel2->BackColor = System::Drawing::SystemColors::ActiveCaption;
-        this->panel2->Location = System::Drawing::Point(195, 125);
-        this->panel2->Name = L"panel2";
-        this->panel2->Size = System::Drawing::Size(342, 238);
-        this->panel2->TabIndex = 1;
+        this->panelContent->BackColor =
+            System::Drawing::SystemColors::ActiveCaption;
+        this->panelContent->Location = System::Drawing::Point(195, 125);
+        this->panelContent->Name = L"panelContent";
+        this->panelContent->Size = System::Drawing::Size(361, 286);
+        this->panelContent->TabIndex = 1;
         //
         // panel3
         //
         this->panel3->BackColor = System::Drawing::SystemColors::ActiveCaption;
-        this->panel3->Controls->Add(this->btnChangePin);
+        this->panel3->Controls->Add(this->btnSetPin);
         this->panel3->Controls->Add(this->btnDeleteAccount);
         this->panel3->Controls->Add(this->btnChangePw);
-        this->panel3->Location = System::Drawing::Point(37, 125);
+        this->panel3->Location = System::Drawing::Point(23, 125);
         this->panel3->Name = L"panel3";
-        this->panel3->Size = System::Drawing::Size(140, 238);
+        this->panel3->Size = System::Drawing::Size(154, 286);
         this->panel3->TabIndex = 2;
         //
-        // btnChangePin
+        // btnSetPin
         //
-        this->btnChangePin->BackColor =
+        this->btnSetPin->BackColor =
             System::Drawing::SystemColors::ActiveCaption;
-        this->btnChangePin->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnChangePin->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->btnChangePin->Font = (gcnew System::Drawing::Font(
+        this->btnSetPin->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnSetPin->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnSetPin->Font = (gcnew System::Drawing::Font(
             L"#9Slide03 SVN-Kelson Sans Bold", 9.749999F,
             System::Drawing::FontStyle::Bold,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->btnChangePin->ForeColor = System::Drawing::Color::Black;
-        this->btnChangePin->Location = System::Drawing::Point(16, 63);
-        this->btnChangePin->Name = L"btnChangePin";
-        this->btnChangePin->Size = System::Drawing::Size(109, 29);
-        this->btnChangePin->TabIndex = 5;
-        this->btnChangePin->Text = L"Doi PIN";
-        this->btnChangePin->UseVisualStyleBackColor = false;
+        this->btnSetPin->ForeColor = System::Drawing::Color::Black;
+        this->btnSetPin->Location = System::Drawing::Point(16, 63);
+        this->btnSetPin->Name = L"btnSetPin";
+        this->btnSetPin->Size = System::Drawing::Size(120, 29);
+        this->btnSetPin->TabIndex = 5;
+        this->btnSetPin->Text = L"Doi PIN";
+        this->btnSetPin->UseVisualStyleBackColor = false;
+        this->btnSetPin->Click +=
+            gcnew System::EventHandler(this, &AccountForm::btnSetPin_Click);
         //
         // btnDeleteAccount
         //
@@ -197,7 +186,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->btnDeleteAccount->ForeColor = System::Drawing::Color::Black;
         this->btnDeleteAccount->Location = System::Drawing::Point(16, 108);
         this->btnDeleteAccount->Name = L"btnDeleteAccount";
-        this->btnDeleteAccount->Size = System::Drawing::Size(109, 29);
+        this->btnDeleteAccount->Size = System::Drawing::Size(120, 29);
         this->btnDeleteAccount->TabIndex = 4;
         this->btnDeleteAccount->Text = L"Xoa tai khoan";
         this->btnDeleteAccount->UseVisualStyleBackColor = false;
@@ -216,28 +205,56 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->btnChangePw->ForeColor = System::Drawing::Color::Black;
         this->btnChangePw->Location = System::Drawing::Point(16, 18);
         this->btnChangePw->Name = L"btnChangePw";
-        this->btnChangePw->Size = System::Drawing::Size(109, 29);
+        this->btnChangePw->Size = System::Drawing::Size(120, 29);
         this->btnChangePw->TabIndex = 3;
         this->btnChangePw->Text = L"Doi mat khau";
         this->btnChangePw->UseVisualStyleBackColor = false;
+        this->btnChangePw->Click +=
+            gcnew System::EventHandler(this, &AccountForm::btnChangePw_Click);
         //
         // AccountForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->ClientSize = System::Drawing::Size(568, 393);
+        this->ClientSize = System::Drawing::Size(568, 423);
         this->Controls->Add(this->panel3);
-        this->Controls->Add(this->panel2);
+        this->Controls->Add(this->panelContent);
         this->Controls->Add(this->panel1);
         this->Name = L"AccountForm";
         this->StartPosition =
             System::Windows::Forms::FormStartPosition::CenterScreen;
         this->Text = L"AccountForm";
+        this->Load +=
+            gcnew System::EventHandler(this, &AccountForm::AccountForm_Load);
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
         this->panel3->ResumeLayout(false);
         this->ResumeLayout(false);
     }
+
 #pragma endregion
-};
-} // namespace BankingAppwinform
+  private:
+    System::Void AccountForm_Load(System::Object ^ sender, System::EventArgs ^ e) {
+        if (!GlobalData::GetCurrentUser()->getPin()) {
+            this->btnSetPin->Text = "Tao PIN";
+        }
+        this->labelFullName->Text += GlobalData::GetCurrentUser()->getFullName();
+        this->labelAccountNumber->Text +=
+            GlobalData::GetCurrentUser()->getAccountNumber();
+        this->labelBalance->Text +=
+            GlobalData::GetCurrentUser()->getBalance() + " VND";
+    }
+
+  private:
+    System::Void btnChangePw_Click(System::Object ^ sender,
+                                   System::EventArgs ^ e) {
+        LoadChildForm::LoadForm(this->panelContent, gcnew ChangePwForm());
+    }
+
+  private:
+    System::Void btnSetPin_Click(System::Object ^ sender,
+                                    System::EventArgs ^ e) {
+        LoadChildForm::LoadForm(this->panelContent, gcnew SetPinForm());
+    }
+  };
+  }
