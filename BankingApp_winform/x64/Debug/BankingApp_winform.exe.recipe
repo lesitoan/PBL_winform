@@ -6,6 +6,10 @@
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
-  <SatelliteDlls />
+  <SatelliteDlls>
+    <SatelliteDll>
+      <FullPath>E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\vi\BankingApp_winform.resources.dll</FullPath>
+    </SatelliteDll>
+  </SatelliteDlls>
   <NonRecipeFileRefs />
 </Project>

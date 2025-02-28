@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 namespace BankingAppwinform {
 
@@ -33,32 +33,59 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
     }
 
   private:
-    System::Windows::Forms::Label ^ label5;
+
 
   protected:
   private:
-    System::Windows::Forms::TextBox ^ textBox3;
+
 
   private:
-    System::Windows::Forms::Label ^ label4;
+
 
   private:
-    System::Windows::Forms::Label ^ label3;
+
 
   private:
-    System::Windows::Forms::TextBox ^ textBox2;
+
 
   private:
-    System::Windows::Forms::TextBox ^ textBox1;
+
 
   private:
-    System::Windows::Forms::Label ^ label2;
+
 
   private:
-    System::Windows::Forms::Label ^ label1;
+
 
   private:
-    System::Windows::Forms::Button ^ btnSubmit;
+
+
+  private:
+    System::Windows::Forms::Label ^ label6;
+
+  private:
+
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Label ^ labelAuth;
+
+  private:
+
+
+  private:
+    System::Windows::Forms::TextBox ^ phoneNumber;
+
+  private:
+    System::Windows::Forms::Button ^ button1;
+
+  private:
+    System::Windows::Forms::Label ^ label7;
+
+  private:
+    System::Windows::Forms::TextBox ^ textBox4;
 
   private:
     /// <summary>
@@ -72,151 +99,109 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
     /// the contents of this method with the code editor.
     /// </summary>
     void InitializeComponent(void) {
-        this->label5 = (gcnew System::Windows::Forms::Label());
-        this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-        this->label4 = (gcnew System::Windows::Forms::Label());
-        this->label3 = (gcnew System::Windows::Forms::Label());
-        this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-        this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-        this->label2 = (gcnew System::Windows::Forms::Label());
-        this->label1 = (gcnew System::Windows::Forms::Label());
-        this->btnSubmit = (gcnew System::Windows::Forms::Button());
+        this->label6 = (gcnew System::Windows::Forms::Label());
+        this->labelAuth = (gcnew System::Windows::Forms::Label());
+        this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
+        this->button1 = (gcnew System::Windows::Forms::Button());
+        this->label7 = (gcnew System::Windows::Forms::Label());
+        this->textBox4 = (gcnew System::Windows::Forms::TextBox());
         this->SuspendLayout();
         //
-        // label5
+        // label6
         //
-        this->label5->AutoSize = true;
-        this->label5->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label5->Location = System::Drawing::Point(19, 254);
-        this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(0, 21);
-        this->label5->TabIndex = 42;
+        this->label6->AutoSize = true;
+        this->label6->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 22, System::Drawing::FontStyle::Bold));
+        this->label6->ForeColor = System::Drawing::Color::White;
+        this->label6->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label6->Location = System::Drawing::Point(161, 101);
+        this->label6->Name = L"label6";
+        this->label6->Size = System::Drawing::Size(231, 40);
+        this->label6->TabIndex = 43;
+        this->label6->Text = L"QUÊN MÂT KHẨU";
+        this->label6->TextAlign =
+            System::Drawing::ContentAlignment::MiddleCenter;
         //
-        // textBox3
+        // labelAuth
         //
-        this->textBox3->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold));
-        this->textBox3->Location = System::Drawing::Point(19, 180);
-        this->textBox3->Name = L"textBox3";
-        this->textBox3->Size = System::Drawing::Size(289, 27);
-        this->textBox3->TabIndex = 41;
+        this->labelAuth->AutoSize = true;
+        this->labelAuth->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->labelAuth->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->labelAuth->ForeColor = System::Drawing::Color::Transparent;
+        this->labelAuth->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->labelAuth->Location = System::Drawing::Point(55, 241);
+        this->labelAuth->Name = L"labelAuth";
+        this->labelAuth->Size = System::Drawing::Size(141, 22);
+        this->labelAuth->TabIndex = 47;
+        this->labelAuth->Text = L"Nhập số điện thoại:";
         //
-        // label4
+        // phoneNumber
         //
-        this->label4->AutoSize = true;
-        this->label4->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label4->Location = System::Drawing::Point(15, 156);
-        this->label4->Name = L"label4";
-        this->label4->Size = System::Drawing::Size(108, 21);
-        this->label4->TabIndex = 40;
-        this->label4->Text = L"So dien thoai:";
+        this->phoneNumber->BorderStyle =
+            System::Windows::Forms::BorderStyle::None;
+        this->phoneNumber->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
+        this->phoneNumber->Location = System::Drawing::Point(56, 266);
+        this->phoneNumber->Multiline = true;
+        this->phoneNumber->Name = L"phoneNumber";
+        this->phoneNumber->Size = System::Drawing::Size(442, 37);
+        this->phoneNumber->TabIndex = 44;
         //
-        // label3
+        // button1
         //
-        this->label3->AutoSize = true;
-        this->label3->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 24,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label3->Location = System::Drawing::Point(15, 33);
-        this->label3->Name = L"label3";
-        this->label3->Size = System::Drawing::Size(236, 40);
-        this->label3->TabIndex = 39;
-        this->label3->Text = L"Quen mat khau";
+        this->button1->BackColor = System::Drawing::SystemColors::Info;
+        this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->button1->FlatAppearance->BorderSize = 0;
+        this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->button1->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->button1->ForeColor = System::Drawing::Color::Teal;
+        this->button1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->button1->Location = System::Drawing::Point(56, 342);
+        this->button1->Name = L"button1";
+        this->button1->Size = System::Drawing::Size(442, 42);
+        this->button1->TabIndex = 45;
+        this->button1->Text = L"LẤY LẠI MẬT KHẨU";
+        this->button1->UseVisualStyleBackColor = false;
         //
-        // textBox2
+        // label7
         //
-        this->textBox2->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold));
-        this->textBox2->Location = System::Drawing::Point(19, 242);
-        this->textBox2->Name = L"textBox2";
-        this->textBox2->PasswordChar = '*';
-        this->textBox2->Size = System::Drawing::Size(289, 27);
-        this->textBox2->TabIndex = 38;
+        this->label7->AutoSize = true;
+        this->label7->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->label7->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label7->ForeColor = System::Drawing::Color::Transparent;
+        this->label7->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label7->Location = System::Drawing::Point(55, 160);
+        this->label7->Name = L"label7";
+        this->label7->Size = System::Drawing::Size(132, 22);
+        this->label7->TabIndex = 51;
+        this->label7->Text = L"Nhập tên của bạn:";
         //
-        // textBox1
+        // textBox4
         //
-        this->textBox1->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold));
-        this->textBox1->Location = System::Drawing::Point(19, 123);
-        this->textBox1->Name = L"textBox1";
-        this->textBox1->Size = System::Drawing::Size(289, 27);
-        this->textBox1->TabIndex = 35;
-        //
-        // label2
-        //
-        this->label2->AutoSize = true;
-        this->label2->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label2->Location = System::Drawing::Point(18, 218);
-        this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(36, 21);
-        this->label2->TabIndex = 37;
-        this->label2->Text = L"Pin:";
-        //
-        // label1
-        //
-        this->label1->AutoSize = true;
-        this->label1->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label1->Location = System::Drawing::Point(15, 99);
-        this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(40, 21);
-        this->label1->TabIndex = 34;
-        this->label1->Text = L"Ten:";
-        //
-        // btnSubmit
-        //
-        this->btnSubmit->BackColor =
-            System::Drawing::SystemColors::ActiveCaption;
-        this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::System;
-        this->btnSubmit->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->btnSubmit->ForeColor = System::Drawing::Color::Black;
-        this->btnSubmit->Location = System::Drawing::Point(108, 299);
-        this->btnSubmit->Name = L"btnSubmit";
-        this->btnSubmit->Size = System::Drawing::Size(117, 29);
-        this->btnSubmit->TabIndex = 36;
-        this->btnSubmit->Text = L"Lay mat khau";
-        this->btnSubmit->UseVisualStyleBackColor = false;
+        this->textBox4->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->textBox4->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
+        this->textBox4->Location = System::Drawing::Point(56, 185);
+        this->textBox4->Multiline = true;
+        this->textBox4->Name = L"textBox4";
+        this->textBox4->Size = System::Drawing::Size(442, 37);
+        this->textBox4->TabIndex = 50;
         //
         // ForgotPwForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-        this->ClientSize = System::Drawing::Size(324, 377);
-        this->Controls->Add(this->label5);
-        this->Controls->Add(this->textBox3);
-        this->Controls->Add(this->label4);
-        this->Controls->Add(this->label3);
-        this->Controls->Add(this->textBox2);
-        this->Controls->Add(this->textBox1);
-        this->Controls->Add(this->label2);
-        this->Controls->Add(this->label1);
-        this->Controls->Add(this->btnSubmit);
+        this->BackColor = System::Drawing::Color::Teal;
+        this->ClientSize = System::Drawing::Size(547, 488);
+        this->Controls->Add(this->label7);
+        this->Controls->Add(this->textBox4);
+        this->Controls->Add(this->labelAuth);
+        this->Controls->Add(this->phoneNumber);
+        this->Controls->Add(this->button1);
+        this->Controls->Add(this->label6);
         this->Name = L"ForgotPwForm";
         this->Text = L"ForgotPwForm";
         this->ResumeLayout(false);

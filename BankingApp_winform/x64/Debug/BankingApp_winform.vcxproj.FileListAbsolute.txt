@@ -15,3 +15,4 @@ E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingApp
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingApp_winform.vcxproj.GenerateResource.cache
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.ChangePwForm.resources
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.SetPinForm.resources
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.LoginForm.vi.resources

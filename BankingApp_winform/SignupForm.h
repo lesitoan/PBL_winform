@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "HandleFile.h"
 #include "LoginForm.h"
 #include "User.h"
@@ -36,40 +36,83 @@ ref class SignupForm : public System::Windows::Forms::Form {
     }
 
   private:
-    System::Windows::Forms::Label ^ label3;
-
-  private:
-    System::Windows::Forms::TextBox ^ password;
+    System::Windows::Forms::CheckBox ^ btnShowPw;
 
   protected:
   private:
-  private:
-    System::Windows::Forms::TextBox ^ fullName;
+    System::Windows::Forms::Label ^ label6;
 
   private:
-  private:
-  private:
-    System::Windows::Forms::Label ^ label2;
+    System::Windows::Forms::Label ^ labelAuth;
 
   private:
-    System::Windows::Forms::Label ^ label1;
+    System::Windows::Forms::Label ^ label7;
 
   private:
-    System::Windows::Forms::Button ^ btnSubmit;
+
+
+  private:
+    System::Windows::Forms::TextBox ^ password;
 
   private:
     System::Windows::Forms::TextBox ^ phoneNumber;
 
   private:
+    System::Windows::Forms::Button ^ btnSubmit;
+
   private:
-    System::Windows::Forms::Label ^ label4;
+    System::Windows::Forms::Label ^ label9;
+
+  private:
+    System::Windows::Forms::TextBox ^ fullName;
+
+  private:
+    System::Windows::Forms::CheckBox ^ btnShowPwCf;
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Label ^ label1;
 
   private:
     System::Windows::Forms::TextBox ^ passwordConfirm;
 
   private:
+
+
   private:
-    System::Windows::Forms::Label ^ label5;
+
+
+  protected:
+  private:
+  private:
+
+
+  private:
+  private:
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+  private:
+
+
+  private:
+
+
+  private:
+  private:
+
 
   private:
     /// <summary>
@@ -83,166 +126,214 @@ ref class SignupForm : public System::Windows::Forms::Form {
     /// the contents of this method with the code editor.
     /// </summary>
     void InitializeComponent(void) {
-        this->label3 = (gcnew System::Windows::Forms::Label());
+        this->btnShowPw = (gcnew System::Windows::Forms::CheckBox());
+        this->label6 = (gcnew System::Windows::Forms::Label());
+        this->labelAuth = (gcnew System::Windows::Forms::Label());
+        this->label7 = (gcnew System::Windows::Forms::Label());
         this->password = (gcnew System::Windows::Forms::TextBox());
-        this->fullName = (gcnew System::Windows::Forms::TextBox());
-        this->label2 = (gcnew System::Windows::Forms::Label());
-        this->label1 = (gcnew System::Windows::Forms::Label());
-        this->btnSubmit = (gcnew System::Windows::Forms::Button());
         this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
-        this->label4 = (gcnew System::Windows::Forms::Label());
+        this->btnSubmit = (gcnew System::Windows::Forms::Button());
+        this->label9 = (gcnew System::Windows::Forms::Label());
+        this->fullName = (gcnew System::Windows::Forms::TextBox());
+        this->btnShowPwCf = (gcnew System::Windows::Forms::CheckBox());
+        this->label1 = (gcnew System::Windows::Forms::Label());
         this->passwordConfirm = (gcnew System::Windows::Forms::TextBox());
-        this->label5 = (gcnew System::Windows::Forms::Label());
         this->SuspendLayout();
         //
-        // label3
+        // btnShowPw
         //
-        this->label3->AutoSize = true;
-        this->label3->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 24,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label3->Location = System::Drawing::Point(12, 19);
-        this->label3->Name = L"label3";
-        this->label3->Size = System::Drawing::Size(126, 40);
-        this->label3->TabIndex = 29;
-        this->label3->Text = L"Dang ki";
+        this->btnShowPw->BackColor = System::Drawing::Color::MintCream;
+        this->btnShowPw->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnShowPw->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->btnShowPw->ForeColor =
+            System::Drawing::SystemColors::ActiveCaptionText;
+        this->btnShowPw->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->btnShowPw->Location = System::Drawing::Point(406, 228);
+        this->btnShowPw->Name = L"btnShowPw";
+        this->btnShowPw->Padding = System::Windows::Forms::Padding(5, 6, 5, 5);
+        this->btnShowPw->Size = System::Drawing::Size(93, 37);
+        this->btnShowPw->TabIndex = 41;
+        this->btnShowPw->Text = L"Show";
+        this->btnShowPw->UseVisualStyleBackColor = false;
+        this->btnShowPw->CheckedChanged += gcnew System::EventHandler(
+            this, &SignupForm::btnShowPw_CheckedChanged);
+        //
+        // label6
+        //
+        this->label6->AutoSize = true;
+        this->label6->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->label6->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label6->ForeColor = System::Drawing::Color::Transparent;
+        this->label6->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label6->Location = System::Drawing::Point(56, 203);
+        this->label6->Name = L"label6";
+        this->label6->Size = System::Drawing::Size(218, 22);
+        this->label6->TabIndex = 40;
+        this->label6->Text = L"Nhập mật khẩu (ít nhất 6 kí tự):";
+        //
+        // labelAuth
+        //
+        this->labelAuth->AutoSize = true;
+        this->labelAuth->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->labelAuth->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->labelAuth->ForeColor = System::Drawing::Color::Transparent;
+        this->labelAuth->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->labelAuth->Location = System::Drawing::Point(270, 117);
+        this->labelAuth->Name = L"labelAuth";
+        this->labelAuth->Size = System::Drawing::Size(141, 22);
+        this->labelAuth->TabIndex = 39;
+        this->labelAuth->Text = L"Nhập số điện thoại:";
+        //
+        // label7
+        //
+        this->label7->AutoSize = true;
+        this->label7->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 22, System::Drawing::FontStyle::Bold));
+        this->label7->ForeColor = System::Drawing::Color::White;
+        this->label7->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label7->Location = System::Drawing::Point(141, 49);
+        this->label7->Name = L"label7";
+        this->label7->Size = System::Drawing::Size(270, 40);
+        this->label7->TabIndex = 38;
+        this->label7->Text = L"ĐĂNG KÍ TÀI KHOẢN";
+        this->label7->TextAlign =
+            System::Drawing::ContentAlignment::MiddleCenter;
         //
         // password
         //
+        this->password->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->password->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold));
-        this->password->Location = System::Drawing::Point(16, 210);
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
+        this->password->Location = System::Drawing::Point(57, 228);
+        this->password->Multiline = true;
         this->password->Name = L"password";
         this->password->PasswordChar = '*';
-        this->password->Size = System::Drawing::Size(289, 27);
-        this->password->TabIndex = 28;
+        this->password->Size = System::Drawing::Size(354, 37);
+        this->password->TabIndex = 36;
         //
-        // fullName
+        // phoneNumber
         //
-        this->fullName->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold));
-        this->fullName->Location = System::Drawing::Point(16, 91);
-        this->fullName->Name = L"fullName";
-        this->fullName->Size = System::Drawing::Size(289, 27);
-        this->fullName->TabIndex = 25;
-        //
-        // label2
-        //
-        this->label2->AutoSize = true;
-        this->label2->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label2->Location = System::Drawing::Point(15, 186);
-        this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(79, 21);
-        this->label2->TabIndex = 27;
-        this->label2->Text = L"Mat khau:";
-        //
-        // label1
-        //
-        this->label1->AutoSize = true;
-        this->label1->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label1->Location = System::Drawing::Point(12, 67);
-        this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(40, 21);
-        this->label1->TabIndex = 24;
-        this->label1->Text = L"Ten:";
+        this->phoneNumber->BorderStyle =
+            System::Windows::Forms::BorderStyle::None;
+        this->phoneNumber->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
+        this->phoneNumber->Location = System::Drawing::Point(276, 142);
+        this->phoneNumber->Multiline = true;
+        this->phoneNumber->Name = L"phoneNumber";
+        this->phoneNumber->Size = System::Drawing::Size(226, 37);
+        this->phoneNumber->TabIndex = 34;
         //
         // btnSubmit
         //
-        this->btnSubmit->BackColor =
-            System::Drawing::SystemColors::ActiveCaption;
+        this->btnSubmit->BackColor = System::Drawing::SystemColors::Info;
         this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::System;
-        this->btnSubmit->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->btnSubmit->ForeColor = System::Drawing::Color::Black;
-        this->btnSubmit->Location = System::Drawing::Point(95, 323);
+        this->btnSubmit->FlatAppearance->BorderSize = 0;
+        this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnSubmit->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnSubmit->ForeColor = System::Drawing::Color::Teal;
+        this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->btnSubmit->Location = System::Drawing::Point(57, 391);
         this->btnSubmit->Name = L"btnSubmit";
-        this->btnSubmit->Size = System::Drawing::Size(117, 29);
-        this->btnSubmit->TabIndex = 26;
-        this->btnSubmit->Text = L"Dang ki";
+        this->btnSubmit->Size = System::Drawing::Size(442, 42);
+        this->btnSubmit->TabIndex = 35;
+        this->btnSubmit->Text = L"ĐĂNG KÍ TÀI KHOẢN";
         this->btnSubmit->UseVisualStyleBackColor = false;
         this->btnSubmit->Click +=
             gcnew System::EventHandler(this, &SignupForm::btnSubmit_Click);
         //
-        // phoneNumber
+        // label9
         //
-        this->phoneNumber->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold));
-        this->phoneNumber->Location = System::Drawing::Point(16, 148);
-        this->phoneNumber->Name = L"phoneNumber";
-        this->phoneNumber->Size = System::Drawing::Size(289, 27);
-        this->phoneNumber->TabIndex = 31;
+        this->label9->AutoSize = true;
+        this->label9->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->label9->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label9->ForeColor = System::Drawing::Color::Transparent;
+        this->label9->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label9->Location = System::Drawing::Point(56, 117);
+        this->label9->Name = L"label9";
+        this->label9->Size = System::Drawing::Size(164, 22);
+        this->label9->TabIndex = 43;
+        this->label9->Text = L"Nhập tên (không dấu):";
         //
-        // label4
+        // fullName
         //
-        this->label4->AutoSize = true;
-        this->label4->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label4->Location = System::Drawing::Point(12, 124);
-        this->label4->Name = L"label4";
-        this->label4->Size = System::Drawing::Size(108, 21);
-        this->label4->TabIndex = 30;
-        this->label4->Text = L"So dien thoai:";
+        this->fullName->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->fullName->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
+        this->fullName->Location = System::Drawing::Point(57, 142);
+        this->fullName->Multiline = true;
+        this->fullName->Name = L"fullName";
+        this->fullName->Size = System::Drawing::Size(213, 37);
+        this->fullName->TabIndex = 42;
+        //
+        // btnShowPwCf
+        //
+        this->btnShowPwCf->BackColor = System::Drawing::Color::MintCream;
+        this->btnShowPwCf->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnShowPwCf->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->btnShowPwCf->ForeColor =
+            System::Drawing::SystemColors::ActiveCaptionText;
+        this->btnShowPwCf->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->btnShowPwCf->Location = System::Drawing::Point(406, 314);
+        this->btnShowPwCf->Name = L"btnShowPwCf";
+        this->btnShowPwCf->Padding =
+            System::Windows::Forms::Padding(5, 6, 5, 5);
+        this->btnShowPwCf->Size = System::Drawing::Size(93, 37);
+        this->btnShowPwCf->TabIndex = 46;
+        this->btnShowPwCf->Text = L"Show";
+        this->btnShowPwCf->UseVisualStyleBackColor = false;
+        this->btnShowPwCf->CheckedChanged += gcnew System::EventHandler(
+            this, &SignupForm::btnShowPwCf_CheckedChanged);
+        //
+        // label1
+        //
+        this->label1->AutoSize = true;
+        this->label1->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->label1->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label1->ForeColor = System::Drawing::Color::Transparent;
+        this->label1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label1->Location = System::Drawing::Point(56, 289);
+        this->label1->Name = L"label1";
+        this->label1->Size = System::Drawing::Size(142, 22);
+        this->label1->TabIndex = 45;
+        this->label1->Text = L"Xác nhận mật khẩu:";
         //
         // passwordConfirm
         //
+        this->passwordConfirm->BorderStyle =
+            System::Windows::Forms::BorderStyle::None;
         this->passwordConfirm->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold));
-        this->passwordConfirm->Location = System::Drawing::Point(16, 275);
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
+        this->passwordConfirm->Location = System::Drawing::Point(57, 314);
+        this->passwordConfirm->Multiline = true;
         this->passwordConfirm->Name = L"passwordConfirm";
         this->passwordConfirm->PasswordChar = '*';
-        this->passwordConfirm->Size = System::Drawing::Size(289, 27);
-        this->passwordConfirm->TabIndex = 33;
-        //
-        // label5
-        //
-        this->label5->AutoSize = true;
-        this->label5->Font =
-            (gcnew System::Drawing::Font(L"#9Slide03 SVN-Kelson Sans Bold", 12,
-                                         System::Drawing::FontStyle::Bold,
-                                         System::Drawing::GraphicsUnit::Point,
-                                         static_cast<System::Byte>(0)));
-        this->label5->Location = System::Drawing::Point(15, 251);
-        this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(153, 21);
-        this->label5->TabIndex = 32;
-        this->label5->Text = L"Xac nhan mat khau:";
+        this->passwordConfirm->Size = System::Drawing::Size(354, 37);
+        this->passwordConfirm->TabIndex = 44;
         //
         // SignupForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-        this->ClientSize = System::Drawing::Size(324, 377);
-        this->Controls->Add(this->passwordConfirm);
-        this->Controls->Add(this->label5);
-        this->Controls->Add(this->phoneNumber);
-        this->Controls->Add(this->label4);
-        this->Controls->Add(this->label3);
-        this->Controls->Add(this->password);
-        this->Controls->Add(this->fullName);
-        this->Controls->Add(this->label2);
+        this->BackColor = System::Drawing::Color::Teal;
+        this->ClientSize = System::Drawing::Size(547, 488);
+        this->Controls->Add(this->btnShowPwCf);
         this->Controls->Add(this->label1);
+        this->Controls->Add(this->passwordConfirm);
+        this->Controls->Add(this->label9);
+        this->Controls->Add(this->fullName);
+        this->Controls->Add(this->btnShowPw);
+        this->Controls->Add(this->label6);
+        this->Controls->Add(this->labelAuth);
+        this->Controls->Add(this->label7);
+        this->Controls->Add(this->password);
+        this->Controls->Add(this->phoneNumber);
         this->Controls->Add(this->btnSubmit);
         this->Name = L"SignupForm";
         this->Text = L"SignupForm";
@@ -315,6 +406,30 @@ ref class SignupForm : public System::Windows::Forms::Form {
                              MessageBoxIcon::Information);
             // Chuyen sang trang dang nhap
             SignupSuccess(this, EventArgs::Empty);
+        }
+    }
+
+  private:
+    System::Void btnShowPwCf_CheckedChanged(System::Object ^ sender,
+                                            System::EventArgs ^ e) {
+        if (btnShowPwCf->Checked) {
+            passwordConfirm->PasswordChar = '\0';
+            btnShowPwCf->Text = "Hide";
+        } else {
+            passwordConfirm->PasswordChar = '*';
+            btnShowPwCf->Text = "Show";
+        }
+    }
+
+  private:
+    System::Void btnShowPw_CheckedChanged(System::Object ^ sender,
+                                          System::EventArgs ^ e) {
+        if (btnShowPw->Checked) {
+            password->PasswordChar = '\0';
+            btnShowPw->Text = "Hide";
+        } else {
+            password->PasswordChar = '*';
+            btnShowPw->Text = "Show";
         }
     }
 };
