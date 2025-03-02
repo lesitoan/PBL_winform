@@ -15,14 +15,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Data\Images">
-      <UniqueIdentifier>{25ba7e33-8e38-4199-8991-0948475d58b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Data\AppData">
-      <UniqueIdentifier>{82702df1-e03f-47ef-9b0f-01305f36494a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Form\Cpp">
       <UniqueIdentifier>{9b4560cc-d26e-4785-accf-7560eb312e05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\images">
+      <UniqueIdentifier>{2efb96b2-37db-417f-bf9b-1b08381091ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\files">
+      <UniqueIdentifier>{82702df1-e03f-47ef-9b0f-01305f36494a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -120,22 +120,51 @@
     <ClInclude Include="Transaction.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Form</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
     <None Include="users.dat">
-      <Filter>Data\AppData</Filter>
+      <Filter>Data\files</Filter>
     </None>
     <None Include="transactions.dat">
-      <Filter>Data\AppData</Filter>
+      <Filter>Data\files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="avatar.jpg">
-      <Filter>Data\Images</Filter>
+    <ResourceCompile Include="BankingApp_winform.rc">
+      <Filter>Models</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\account.png">
+      <Filter>Data\images</Filter>
     </Image>
-    <Image Include="—Pngtree—concept banking logo_4017929.png">
-      <Filter>Data\Images</Filter>
+    <Image Include="Images\banking-technology-concept-cropped.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\data-transfe1r.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\history1.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\logout1.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\MESSI.jpg">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\more1.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\—Pngtree—bank icon logo_15456350.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\withdraw1.png">
+      <Filter>Data\images</Filter>
     </Image>
   </ItemGroup>
 </Project>

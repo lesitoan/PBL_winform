@@ -21,6 +21,8 @@ ref class MainForm : public System::Windows::Forms::Form {
   public:
     MainForm() {
         InitializeComponent();
+        this->labelFullName->Text = GlobalData::GetCurrentUser()->getFullName();
+        this->labelBalance->Text ="**********";
     }
 
   protected:
@@ -45,16 +47,25 @@ ref class MainForm : public System::Windows::Forms::Form {
     System::Windows::Forms::PictureBox ^ pictureBox1;
 
   private:
+    System::Windows::Forms::CheckBox ^ btnShowBalance;
+
+  private:
 
 
   private:
-    System::Windows::Forms::CheckBox ^ checkBox1;
+
 
   private:
-    System::Windows::Forms::Label ^ label2;
+    System::Windows::Forms::Label ^ labelBalance;
 
   private:
-    System::Windows::Forms::Label ^ label1;
+    System::Windows::Forms::Label ^ labelFullName;
+
+  private:
+
+
+  private:
+
 
   private:
     System::Windows::Forms::Button ^ btnHistory;
@@ -75,45 +86,120 @@ ref class MainForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Button ^ btnLogout;
 
   private:
-    System::Windows::Forms::Panel ^ panel1;
+
 
   private:
-    System::Windows::Forms::Panel ^ panelContent;
+
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Panel ^ panel2;
+
+  private:
+    System::Windows::Forms::Button ^ btnMenu;
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Timer ^ timer1;
+
+  private:
+    System::Windows::Forms::Panel ^ panel1;
 
   private:
     System::Windows::Forms::Label ^ headerText;
 
   private:
+    System::Windows::Forms::Panel ^ panel3;
+
+  private:
+    System::Windows::Forms::Panel ^ panelx;
+
+  private:
+    System::Windows::Forms::Panel ^ panelContent;
+
+  private:
 
 
   private:
 
 
-    System::ComponentModel::Container ^ components;
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+    System::ComponentModel::IContainer ^ components;
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+
 
 #pragma region Windows Form Designer generated code
     void InitializeComponent(void) {
+        this->components = (gcnew System::ComponentModel::Container());
         System::ComponentModel::ComponentResourceManager ^ resources =
             (gcnew System::ComponentModel::ComponentResourceManager(
                 MainForm::typeid));
         this->panelNav = (gcnew System::Windows::Forms::Panel());
+        this->btnMenu = (gcnew System::Windows::Forms::Button());
+        this->panel2 = (gcnew System::Windows::Forms::Panel());
+        this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+        this->labelFullName = (gcnew System::Windows::Forms::Label());
+        this->btnShowBalance = (gcnew System::Windows::Forms::CheckBox());
+        this->labelBalance = (gcnew System::Windows::Forms::Label());
         this->btnLogout = (gcnew System::Windows::Forms::Button());
         this->btnHistory = (gcnew System::Windows::Forms::Button());
         this->btnWithdraw = (gcnew System::Windows::Forms::Button());
         this->btnTransfer = (gcnew System::Windows::Forms::Button());
-        this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
-        this->label2 = (gcnew System::Windows::Forms::Label());
-        this->label1 = (gcnew System::Windows::Forms::Label());
-        this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
         this->btnAccount = (gcnew System::Windows::Forms::Button());
+        this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->headerText = (gcnew System::Windows::Forms::Label());
+        this->panel3 = (gcnew System::Windows::Forms::Panel());
+        this->panelx = (gcnew System::Windows::Forms::Panel());
         this->panelContent = (gcnew System::Windows::Forms::Panel());
         this->panelNav->SuspendLayout();
+        this->panel2->SuspendLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->pictureBox1))
             ->BeginInit();
         this->panel1->SuspendLayout();
+        this->panel3->SuspendLayout();
+        this->panelx->SuspendLayout();
         this->SuspendLayout();
         //
         // panelNav
@@ -122,27 +208,130 @@ ref class MainForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->panelNav->Controls->Add(this->btnMenu);
+        this->panelNav->Controls->Add(this->panel2);
         this->panelNav->Controls->Add(this->btnLogout);
         this->panelNav->Controls->Add(this->btnHistory);
         this->panelNav->Controls->Add(this->btnWithdraw);
         this->panelNav->Controls->Add(this->btnTransfer);
-        this->panelNav->Controls->Add(this->checkBox1);
-        this->panelNav->Controls->Add(this->label2);
-        this->panelNav->Controls->Add(this->label1);
-        this->panelNav->Controls->Add(this->pictureBox1);
         this->panelNav->Controls->Add(this->btnAccount);
         this->panelNav->Cursor = System::Windows::Forms::Cursors::Default;
         this->panelNav->Dock = System::Windows::Forms::DockStyle::Left;
         this->panelNav->ForeColor =
             System::Drawing::SystemColors::InactiveCaptionText;
         this->panelNav->Location = System::Drawing::Point(0, 0);
+        this->panelNav->MinimumSize = System::Drawing::Size(62, 561);
         this->panelNav->Name = L"panelNav";
         this->panelNav->Size = System::Drawing::Size(207, 561);
         this->panelNav->TabIndex = 1;
         //
+        // btnMenu
+        //
+        this->btnMenu->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnMenu->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnMenu->FlatAppearance->BorderSize = 0;
+        this->btnMenu->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnMenu->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnMenu->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnMenu->ForeColor = System::Drawing::SystemColors::HighlightText;
+        this->btnMenu->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnMenu.Image")));
+        this->btnMenu->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnMenu->Location = System::Drawing::Point(0, 0);
+        this->btnMenu->Name = L"btnMenu";
+        this->btnMenu->Size = System::Drawing::Size(207, 42);
+        this->btnMenu->TabIndex = 13;
+        this->btnMenu->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnMenu->UseVisualStyleBackColor = false;
+        this->btnMenu->Click +=
+            gcnew System::EventHandler(this, &MainForm::btnMenu_Click);
+        //
+        // panel2
+        //
+        this->panel2->Controls->Add(this->pictureBox1);
+        this->panel2->Controls->Add(this->labelFullName);
+        this->panel2->Controls->Add(this->btnShowBalance);
+        this->panel2->Controls->Add(this->labelBalance);
+        this->panel2->Location = System::Drawing::Point(0, 42);
+        this->panel2->Name = L"panel2";
+        this->panel2->Size = System::Drawing::Size(207, 70);
+        this->panel2->TabIndex = 14;
+        //
+        // pictureBox1
+        //
+        this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"pictureBox1.Image")));
+        this->pictureBox1->Location = System::Drawing::Point(12, 12);
+        this->pictureBox1->Name = L"pictureBox1";
+        this->pictureBox1->Size = System::Drawing::Size(41, 41);
+        this->pictureBox1->SizeMode =
+            System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+        this->pictureBox1->TabIndex = 5;
+        this->pictureBox1->TabStop = false;
+        //
+        // labelFullName
+        //
+        this->labelFullName->AutoSize = true;
+        this->labelFullName->BackColor = System::Drawing::Color::Transparent;
+        this->labelFullName->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline Medium", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->labelFullName->ForeColor = System::Drawing::Color::White;
+        this->labelFullName->Location = System::Drawing::Point(67, 12);
+        this->labelFullName->Name = L"labelFullName";
+        this->labelFullName->Size = System::Drawing::Size(81, 22);
+        this->labelFullName->TabIndex = 6;
+        this->labelFullName->Text = L"LE SI TOAN";
+        this->labelFullName->TextAlign =
+            System::Drawing::ContentAlignment::MiddleCenter;
+        //
+        // btnShowBalance
+        //
+        this->btnShowBalance->AutoSize = true;
+        this->btnShowBalance->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnShowBalance->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 8));
+        this->btnShowBalance->ForeColor =
+            System::Drawing::SystemColors::ControlLightLight;
+        this->btnShowBalance->Location = System::Drawing::Point(173, 39);
+        this->btnShowBalance->Name = L"btnShowBalance";
+        this->btnShowBalance->Size = System::Drawing::Size(15, 14);
+        this->btnShowBalance->TabIndex = 8;
+        this->btnShowBalance->UseVisualStyleBackColor = true;
+        this->btnShowBalance->CheckedChanged += gcnew System::EventHandler(
+            this, &MainForm::btnShowBalance_CheckedChanged);
+        //
+        // labelBalance
+        //
+        this->labelBalance->AutoSize = true;
+        this->labelBalance->BackColor = System::Drawing::Color::Transparent;
+        this->labelBalance->Font = (gcnew System::Drawing::Font(
+            L"UTM Facebook K&T", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->labelBalance->ForeColor = System::Drawing::Color::White;
+        this->labelBalance->Location = System::Drawing::Point(67, 34);
+        this->labelBalance->Name = L"labelBalance";
+        this->labelBalance->Size = System::Drawing::Size(90, 19);
+        this->labelBalance->TabIndex = 7;
+        this->labelBalance->Text = L"120000VNĐ";
+        this->labelBalance->TextAlign =
+            System::Drawing::ContentAlignment::MiddleCenter;
+        //
         // btnLogout
         //
-        this->btnLogout->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
+        this->btnLogout->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (System::Windows::Forms::AnchorStyles::Bottom |
+                 System::Windows::Forms::AnchorStyles::Left));
         this->btnLogout->BackColor = System::Drawing::Color::Brown;
         this->btnLogout->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnLogout->FlatAppearance->BorderSize = 0;
@@ -150,17 +339,20 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Drawing::Color::Teal;
         this->btnLogout->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnLogout->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 13, System::Drawing::FontStyle::Bold));
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnLogout->ForeColor =
             System::Drawing::SystemColors::HighlightText;
+        this->btnLogout->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnLogout.Image")));
         this->btnLogout->ImageAlign =
-            System::Drawing::ContentAlignment::BottomCenter;
+            System::Drawing::ContentAlignment::MiddleLeft;
         this->btnLogout->Location = System::Drawing::Point(0, 503);
         this->btnLogout->Name = L"btnLogout";
-        this->btnLogout->Padding = System::Windows::Forms::Padding(15, 0, 0, 0);
         this->btnLogout->Size = System::Drawing::Size(207, 58);
         this->btnLogout->TabIndex = 12;
-        this->btnLogout->Text = L"ĐĂNG XUẤT";
+        this->btnLogout->Text = L"                  ĐĂNG XUẤT";
+        this->btnLogout->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
         this->btnLogout->UseVisualStyleBackColor = false;
         this->btnLogout->Click +=
             gcnew System::EventHandler(this, &MainForm::btnLogout_Click);
@@ -177,16 +369,18 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Drawing::Color::Teal;
         this->btnHistory->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnHistory->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 13, System::Drawing::FontStyle::Bold));
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnHistory->ForeColor =
             System::Drawing::SystemColors::HighlightText;
-        this->btnHistory->Location = System::Drawing::Point(-3, 291);
+        this->btnHistory->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnHistory.Image")));
+        this->btnHistory->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnHistory->Location = System::Drawing::Point(-3, 310);
         this->btnHistory->Name = L"btnHistory";
-        this->btnHistory->Padding =
-            System::Windows::Forms::Padding(15, 0, 0, 0);
         this->btnHistory->Size = System::Drawing::Size(207, 58);
         this->btnHistory->TabIndex = 11;
-        this->btnHistory->Text = L"LỊCH SỬ";
+        this->btnHistory->Text = L"                    LỊCH SỬ";
         this->btnHistory->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnHistory->UseVisualStyleBackColor = false;
@@ -205,16 +399,18 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Drawing::Color::Teal;
         this->btnWithdraw->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnWithdraw->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 13, System::Drawing::FontStyle::Bold));
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnWithdraw->ForeColor =
             System::Drawing::SystemColors::HighlightText;
-        this->btnWithdraw->Location = System::Drawing::Point(0, 227);
+        this->btnWithdraw->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnWithdraw.Image")));
+        this->btnWithdraw->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnWithdraw->Location = System::Drawing::Point(0, 246);
         this->btnWithdraw->Name = L"btnWithdraw";
-        this->btnWithdraw->Padding =
-            System::Windows::Forms::Padding(15, 0, 0, 0);
         this->btnWithdraw->Size = System::Drawing::Size(207, 58);
         this->btnWithdraw->TabIndex = 10;
-        this->btnWithdraw->Text = L"RÚT TIỀN";
+        this->btnWithdraw->Text = L"                   RÚT TIỀN";
         this->btnWithdraw->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnWithdraw->UseVisualStyleBackColor = false;
@@ -233,82 +429,23 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Drawing::Color::Teal;
         this->btnTransfer->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnTransfer->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 13, System::Drawing::FontStyle::Bold));
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnTransfer->ForeColor =
             System::Drawing::SystemColors::HighlightText;
-        this->btnTransfer->Location = System::Drawing::Point(0, 163);
+        this->btnTransfer->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnTransfer.Image")));
+        this->btnTransfer->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnTransfer->Location = System::Drawing::Point(0, 182);
         this->btnTransfer->Name = L"btnTransfer";
-        this->btnTransfer->Padding =
-            System::Windows::Forms::Padding(15, 0, 0, 0);
         this->btnTransfer->Size = System::Drawing::Size(207, 58);
         this->btnTransfer->TabIndex = 9;
-        this->btnTransfer->Text = L"CHUYỂN TIỀN";
+        this->btnTransfer->Text = L"                   CHUYỂN TIỀN";
         this->btnTransfer->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnTransfer->UseVisualStyleBackColor = false;
         this->btnTransfer->Click +=
             gcnew System::EventHandler(this, &MainForm::btnTransfer_Click);
-        //
-        // checkBox1
-        //
-        this->checkBox1->AutoSize = true;
-        this->checkBox1->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->checkBox1->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 8));
-        this->checkBox1->ForeColor =
-            System::Drawing::SystemColors::ControlLightLight;
-        this->checkBox1->Location = System::Drawing::Point(78, 55);
-        this->checkBox1->Name = L"checkBox1";
-        this->checkBox1->Size = System::Drawing::Size(52, 18);
-        this->checkBox1->TabIndex = 8;
-        this->checkBox1->Text = L"Show";
-        this->checkBox1->UseVisualStyleBackColor = true;
-        //
-        // label2
-        //
-        this->label2->AutoSize = true;
-        this->label2->BackColor = System::Drawing::Color::Transparent;
-        this->label2->Font = (gcnew System::Drawing::Font(
-            L"UTM Facebook K&T", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        this->label2->ForeColor = System::Drawing::Color::White;
-        this->label2->Location = System::Drawing::Point(74, 33);
-        this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(90, 19);
-        this->label2->TabIndex = 7;
-        this->label2->Text = L"120000VNĐ";
-        this->label2->TextAlign =
-            System::Drawing::ContentAlignment::MiddleCenter;
-        //
-        // label1
-        //
-        this->label1->AutoSize = true;
-        this->label1->BackColor = System::Drawing::Color::Transparent;
-        this->label1->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline Medium", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        this->label1->ForeColor = System::Drawing::Color::White;
-        this->label1->Location = System::Drawing::Point(74, 11);
-        this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(81, 22);
-        this->label1->TabIndex = 6;
-        this->label1->Text = L"LE SI TOAN";
-        this->label1->TextAlign =
-            System::Drawing::ContentAlignment::MiddleCenter;
-        //
-        // pictureBox1
-        //
-        this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"pictureBox1.Image")));
-        this->pictureBox1->Location = System::Drawing::Point(12, 12);
-        this->pictureBox1->Name = L"pictureBox1";
-        this->pictureBox1->Size = System::Drawing::Size(60, 57);
-        this->pictureBox1->SizeMode =
-            System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-        this->pictureBox1->TabIndex = 5;
-        this->pictureBox1->TabStop = false;
         //
         // btnAccount
         //
@@ -322,21 +459,29 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Drawing::Color::Teal;
         this->btnAccount->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnAccount->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 13, System::Drawing::FontStyle::Bold));
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnAccount->ForeColor =
             System::Drawing::SystemColors::HighlightText;
-        this->btnAccount->Location = System::Drawing::Point(0, 99);
+        this->btnAccount->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnAccount.Image")));
+        this->btnAccount->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnAccount->Location = System::Drawing::Point(0, 118);
         this->btnAccount->Name = L"btnAccount";
-        this->btnAccount->Padding =
-            System::Windows::Forms::Padding(15, 0, 0, 0);
         this->btnAccount->Size = System::Drawing::Size(207, 58);
         this->btnAccount->TabIndex = 0;
-        this->btnAccount->Text = L"TÀI KHOẢN";
+        this->btnAccount->Text = L"                   TÀI KHOẢN";
         this->btnAccount->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnAccount->UseVisualStyleBackColor = false;
         this->btnAccount->Click +=
             gcnew System::EventHandler(this, &MainForm::btnAccount_Click);
+        //
+        // timer1
+        //
+        this->timer1->Interval = 3;
+        this->timer1->Tick +=
+            gcnew System::EventHandler(this, &MainForm::timer1_Tick);
         //
         // panel1
         //
@@ -355,30 +500,68 @@ ref class MainForm : public System::Windows::Forms::Form {
         //
         this->headerText->Dock = System::Windows::Forms::DockStyle::Fill;
         this->headerText->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 13, System::Drawing::FontStyle::Bold));
-        this->headerText->ForeColor = System::Drawing::SystemColors::ButtonFace;
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->headerText->ForeColor = System::Drawing::Color::White;
         this->headerText->Location = System::Drawing::Point(0, 0);
         this->headerText->Name = L"headerText";
         this->headerText->Size = System::Drawing::Size(677, 42);
         this->headerText->TabIndex = 0;
+        this->headerText->Text = L"HEADER";
         this->headerText->TextAlign =
             System::Drawing::ContentAlignment::MiddleCenter;
         //
+        // panel3
+        //
+        this->panel3->BackColor =
+            System::Drawing::SystemColors::ControlLightLight;
+        this->panel3->Controls->Add(this->panelx);
+        this->panel3->Dock = System::Windows::Forms::DockStyle::Fill;
+        this->panel3->Location = System::Drawing::Point(207, 42);
+        this->panel3->Name = L"panel3";
+        this->panel3->Size = System::Drawing::Size(677, 519);
+        this->panel3->TabIndex = 3;
+        //
+        // panelx
+        //
+        this->panelx->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panelx->BackColor = System::Drawing::Color::White;
+        this->panelx->Controls->Add(this->panelContent);
+        this->panelx->Location = System::Drawing::Point(0, 0);
+        this->panelx->Margin = System::Windows::Forms::Padding(0);
+        this->panelx->Name = L"panelx";
+        this->panelx->Size = System::Drawing::Size(677, 519);
+        this->panelx->TabIndex = 0;
+        this->panelx->SizeChanged +=
+            gcnew System::EventHandler(this, &MainForm::resizeEven);
+        //
         // panelContent
         //
+        this->panelContent->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
         this->panelContent->BackColor = System::Drawing::Color::Teal;
-        this->panelContent->Dock = System::Windows::Forms::DockStyle::Fill;
-        this->panelContent->Location = System::Drawing::Point(207, 42);
+        this->panelContent->Location = System::Drawing::Point(10, 11);
+        this->panelContent->Margin = System::Windows::Forms::Padding(0);
+        this->panelContent->MaximumSize = System::Drawing::Size(800, 600);
+        this->panelContent->MinimumSize = System::Drawing::Size(655, 498);
         this->panelContent->Name = L"panelContent";
-        this->panelContent->Size = System::Drawing::Size(677, 519);
-        this->panelContent->TabIndex = 3;
+        this->panelContent->Size = System::Drawing::Size(658, 499);
+        this->panelContent->TabIndex = 0;
         //
         // MainForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->ClientSize = System::Drawing::Size(884, 561);
-        this->Controls->Add(this->panelContent);
+        this->Controls->Add(this->panel3);
         this->Controls->Add(this->panel1);
         this->Controls->Add(this->panelNav);
         this->MinimumSize = System::Drawing::Size(900, 600);
@@ -390,11 +573,14 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->Load +=
             gcnew System::EventHandler(this, &MainForm::MainForm_Load);
         this->panelNav->ResumeLayout(false);
-        this->panelNav->PerformLayout();
+        this->panel2->ResumeLayout(false);
+        this->panel2->PerformLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->pictureBox1))
             ->EndInit();
         this->panel1->ResumeLayout(false);
+        this->panel3->ResumeLayout(false);
+        this->panelx->ResumeLayout(false);
         this->ResumeLayout(false);
     }
 
@@ -457,5 +643,91 @@ ref class MainForm : public System::Windows::Forms::Form {
         }
     }
 
+private:
+    bool isOpenNav = true;
+  private:
+    System::Void timer1_Tick(System::Object ^ sender, System::EventArgs ^ e) {
+        if (isOpenNav) {
+            if (panelNav->Width <= 62) {
+                timer1->Stop();
+                isOpenNav = false;
+            } else {
+                panelNav->Width -= 20;
+            }
+        } else {
+            if (panelNav->Width >= 200) {
+                timer1->Stop();
+                isOpenNav = true;
+            } else {
+                panelNav->Width += 20;
+            }
+        }
+    }
+
+  private:
+    System::Void btnMenu_Click(System::Object ^ sender, System::EventArgs ^ e) {
+        timer1->Start();
+
+    }
+
+  private:
+    System::Void resizeEven(System::Object ^ sender,
+                                 System::EventArgs ^ e) {
+        // 📌 Lấy kích thước hiện tại của panelX (màu trắng)
+        int parentWidth = panelx->ClientSize.Width;
+        int parentHeight = panelx->ClientSize.Height;
+
+        // 📌 Kích thước tối thiểu của panelContent (màu xanh)
+        const int minWidth = 658;
+        const int minHeight = 499;
+        const float ratio =
+            (float)minWidth / minHeight; // Tỷ lệ cố định giữa width & height
+
+        // 📌 Kích thước tối đa của panelContent
+        const int maxWidth = (int)(minWidth * 2.5f);   // 987px
+        const int maxHeight = (int)(minHeight * 2.5f); // 748px
+
+        // 📌 Tính toán kích thước panelContent nhưng không vượt quá panelX
+        int availableWidth = Math::Min(maxWidth, parentWidth - 40);
+        int availableHeight = Math::Min(maxHeight, parentHeight - 40);
+
+        int newWidth = availableWidth;
+        int newHeight = (int)(newWidth / ratio);
+
+        // Nếu chiều cao vượt quá availableHeight, điều chỉnh lại
+        if (newHeight > availableHeight) {
+            newHeight = availableHeight;
+            newWidth = (int)(newHeight * ratio);
+        }
+
+        // 📌 Đảm bảo kích thước không nhỏ hơn minSize
+        newWidth = Math::Max(newWidth, minWidth);
+        newHeight = Math::Max(newHeight, minHeight);
+
+        // 📌 Đặt lại kích thước panelContent nếu nó chưa đạt maxSize
+        if (panelContent->Width != newWidth ||
+            panelContent->Height != newHeight) {
+            panelContent->Width = newWidth;
+            panelContent->Height = newHeight;
+        }
+
+        // 📌 Luôn căn giữa panelContent ngay cả khi đã đạt maxSize
+        panelContent->Left = (parentWidth - panelContent->Width) / 2;
+        panelContent->Top = (parentHeight - panelContent->Height) / 2;
+
+
+    }
+
+  private:
+    System::Void btnShowBalance_CheckedChanged(System::Object ^ sender,
+                                          System::EventArgs ^ e) {
+        if (btnShowBalance->Checked) {
+            this->labelBalance->Text =
+                GlobalData::GetCurrentUser()->getBalance() + " VND";
+        } else {
+            this->labelBalance->Text = "**********";
+        }
+        
+    }
 };
 }

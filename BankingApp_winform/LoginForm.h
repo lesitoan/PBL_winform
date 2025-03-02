@@ -183,10 +183,8 @@ ref class LoginForm : public System::Windows::Forms::Form {
                                           System::EventArgs ^ e) {
         if (btnShowPw->Checked) {
             password->PasswordChar = '\0';
-            btnShowPw->Text = "Hide";
         } else {
             password->PasswordChar = '*';
-            btnShowPw->Text = "Show";
         }
     }
 };

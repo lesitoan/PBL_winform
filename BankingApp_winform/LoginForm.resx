@@ -327,20 +327,31 @@
   <data name="btnShowPw.Font" type="System.Drawing.Font, System.Drawing">
     <value>UTM Daxline Medium, 12pt</value>
   </data>
+  <data name="btnShowPw.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAHTSURBVFhH7dVPKN9hAMfxn2GKgziRWg5iChdLoZXD4kAOTms5uEg5yJFw1VztsFJqp2kHykGk
+        tMtSysWmtEUxtR2Uf8n/8P5sPfX09HzXfr/fl1LPu14Hvn+ep+f7/T3fRCgUCoVCoUfbUzTjHT5jF8c4
+        wwF+YAGDqMSDlYkOrOL2P2nSU7jXiWagBrNwJ3COafShE8NYwSXs87TC4yhB7A3gAvaA8gnlcHuCBvyG
+        e80O6hBbo3AHkSXkwqT3sgBabVM1DuFee4JGpJVWYQTXcAeQFzC14xv2MI9SmN7Cd70mntZKtsF3Y/kJ
+        UxWOYB//DjNJHb+BfdzYhFY96V5BL7/vpvIBJq2Y7xytvilqgrKIpOuB72bGBExr8J2jR2v61wS3kVJD
+        8N1QvsLUCncCer9qoZ4haoKneI6UysZHRN28GEqbt/Y+bcj6v97PlzD1w71WrqB90/7VJ10O5uAbYBJZ
+        MJVBW0f+n7/+VoQt+K7vRSxphfSl8A2ilbMnaadf5zLca/RYuxFrWskuaFtwB1yHvjT1qEAL3uMX7PP0
+        qugT2IR7qxBjcPc9MwHf51A28BpRqx172oT1eL9gH+7XRnuoVnAGb5CHUCgUCoVCj6pE4g5hhe4Wefgj
+        MwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnShowPw.Location" type="System.Drawing.Point, System.Drawing">
-    <value>410, 251</value>
+    <value>411, 251</value>
   </data>
   <data name="btnShowPw.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 6, 5, 5</value>
   </data>
   <data name="btnShowPw.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 37</value>
+    <value>92, 37</value>
   </data>
   <data name="btnShowPw.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
-  </data>
-  <data name="btnShowPw.Text" xml:space="preserve">
-    <value>Show</value>
   </data>
   <data name="&gt;&gt;btnShowPw.Name" xml:space="preserve">
     <value>btnShowPw</value>
