@@ -16,77 +16,23 @@ using namespace System::Drawing;
 public
 ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
   public:
-    WithdrawMoneyForm(void) {
-        InitializeComponent();
-        this->labelBalance->Text =
-            L"Số dư hiện tại: " + GlobalData::GetCurrentUser()->getBalance() +
-            L" VNĐ";
-    }
+    WithdrawMoneyForm(void);
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
-    ~WithdrawMoneyForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~WithdrawMoneyForm();
 
   private:
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::Label ^ label4;
-
-  private:
     System::Windows::Forms::TextBox ^ pinInput;
-
-  private:
     System::Windows::Forms::Label ^ label5;
-
-  private:
     System::Windows::Forms::TextBox ^ amountInput;
-
-  private:
     System::Windows::Forms::Button ^ button1;
-
-  private:
     System::Windows::Forms::Label ^ labelBalance;
-
-  private:
-
-
-  protected:
-  private:
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
     void InitializeComponent(void) {
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->panel2 = (gcnew System::Windows::Forms::Panel());

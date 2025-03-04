@@ -15,41 +15,24 @@ using namespace System::Drawing;
 public
 ref class LoginForm : public System::Windows::Forms::Form {
   public:
-    LoginForm(void) {
-        InitializeComponent();
-    }
+    LoginForm(void);
     event EventHandler ^ LoginSuccess;
+    
 
   protected:
-    ~LoginForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~LoginForm();
 
   private:
-
     System::Windows::Forms::TextBox ^ password;
     System::Windows::Forms::TextBox ^ phoneNumber;
-
-
     System::Windows::Forms::Button ^ btnSubmit;
-
-  private:
     System::Windows::Forms::Label ^ label4;
-
-  private:
     System::Windows::Forms::Label ^ label3;
-
-  private:
     System::Windows::Forms::Label ^ labelAuth;
-
-  private:
     System::Windows::Forms::Label ^ label1;
-
-  private:
     System::Windows::Forms::CheckBox ^ btnShowPw;
     System::ComponentModel::Container ^ components;
+
 
 #pragma region Windows Form Designer generated code
 
@@ -144,8 +127,6 @@ ref class LoginForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->phoneNumber);
         this->Controls->Add(this->btnSubmit);
         this->Name = L"LoginForm";
-        this->Load +=
-            gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
         this->ResumeLayout(false);
         this->PerformLayout();
     }
@@ -153,39 +134,10 @@ ref class LoginForm : public System::Windows::Forms::Form {
 #pragma endregion
   private:
     System::Void btnSubmit_Click(System::Object ^ sender,
-                                 System::EventArgs ^ e) {
-        String ^ phone = phoneNumber->Text;
-        String ^ pass = password->Text;
-        if (phone == "" || pass == "") {
-            MessageBox::Show("Vui long nhap day du thong tin");
-            return;
-        } else {
-            array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-            for each (User ^ user in users) {
-                if (user->getPhoneNumber() == phone &&
-                    user->getPassword() == pass) {
-                    GlobalData::SetCurrentUser(user);
-                    MessageBox::Show("Dang nhap thanh cong");
-                    LoginSuccess(this, EventArgs::Empty);
-                    return;
-                }
-            }
-            MessageBox::Show("Dang nhap that bai");
-        }
-    }
-
-  private:
-    System::Void LoginForm_Load(System::Object ^ sender,
-                                System::EventArgs ^ e) {}
+                                 System::EventArgs ^ e);
 
   private:
     System::Void btnShowPw_CheckedChanged(System::Object ^ sender,
-                                          System::EventArgs ^ e) {
-        if (btnShowPw->Checked) {
-            password->PasswordChar = '\0';
-        } else {
-            password->PasswordChar = '*';
-        }
-    }
+                                          System::EventArgs ^ e);
 };
 }

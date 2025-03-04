@@ -8,96 +8,24 @@ using namespace System::Collections;
 using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
-
-/// <summary>
-/// Summary for ForgotPwForm
-/// </summary>
 public
 ref class ForgotPwForm : public System::Windows::Forms::Form {
   public:
-    ForgotPwForm(void) {
-        InitializeComponent();
-        //
-        // TODO: Add the constructor code here
-        //
-    }
+    ForgotPwForm(void);
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
-    ~ForgotPwForm() {
-        if (components) {
-            delete components;
-        }
-    }
-
-  private:
-
-
-  protected:
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
+    ~ForgotPwForm();
 
   private:
     System::Windows::Forms::Label ^ label6;
-
-  private:
-
-
-  private:
-
-
-  private:
     System::Windows::Forms::Label ^ labelAuth;
-
-  private:
-
-
-  private:
     System::Windows::Forms::TextBox ^ phoneNumber;
-
-  private:
     System::Windows::Forms::Button ^ button1;
-
-  private:
     System::Windows::Forms::Label ^ label7;
-
-  private:
     System::Windows::Forms::TextBox ^ textBox4;
-
-  private:
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
     void InitializeComponent(void) {
         this->label6 = (gcnew System::Windows::Forms::Label());
         this->labelAuth = (gcnew System::Windows::Forms::Label());

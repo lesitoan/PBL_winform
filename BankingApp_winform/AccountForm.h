@@ -1,9 +1,9 @@
 ﻿#pragma once
-#include "GlobalData.h"
-#include "User.h"
 #include "ChangePwForm.h"
+#include "GlobalData.h"
 #include "LoadChildForm.h"
 #include "SetPinForm.h"
+#include "User.h"
 
 namespace BankingAppwinform {
 
@@ -14,122 +14,32 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-public ref class AccountForm : public System::Windows::Forms::Form {
+public
+ref class AccountForm : public System::Windows::Forms::Form {
   public:
-    AccountForm(void) {
-        InitializeComponent();
-    }
+    AccountForm(void);
 
   protected:
-    ~AccountForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~AccountForm();
 
   private:
     System::Windows::Forms::Panel ^ panel1;
-
-
-
     System::Windows::Forms::Label ^ labelAccountNumber;
     System::Windows::Forms::Label ^ labelFullName;
-
-  private:
-
-
-
-
-
-  private:
     System::Windows::Forms::Label ^ labelBalance;
-
-  private:
     System::Windows::Forms::Panel ^ panelBtn1;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panelNav;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panelContent;
-
-  private:
     System::Windows::Forms::Panel ^ panelBtn3;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panelBtn2;
-
-  private:
     System::Windows::Forms::Panel ^ panelBtn4;
-
-  private:
     System::Windows::Forms::Button ^ buttonSetAvatar;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Button ^ btnChangePw;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Button ^ btnDeleteAccount;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Button ^ btnSetPin;
-
-  private:
     System::Windows::Forms::PictureBox ^ pictureBox1;
-
-  private:
-
-
-  private:
-
-
-  private:
     System::Windows::Forms::Label ^ label1;
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -454,7 +364,7 @@ public ref class AccountForm : public System::Windows::Forms::Form {
         this->ResumeLayout(false);
     }
 
-    private:
+  private:
     Button ^ selectedButton = nullptr;
     void ChangeButtonColor(Button ^ button) {
         if (selectedButton != nullptr) {
@@ -469,62 +379,27 @@ public ref class AccountForm : public System::Windows::Forms::Form {
 
 #pragma endregion
   private:
-    System::Void AccountForm_Load(System::Object ^ sender, System::EventArgs ^ e) {
-        if (!GlobalData::GetCurrentUser()->getPin()) {
-            this->btnSetPin->Text = "Tao PIN";
-        }
-        this->labelFullName->Text = GlobalData::GetCurrentUser()->getFullName();
-        this->labelAccountNumber->Text = GlobalData::GetCurrentUser()->getAccountNumber().ToString();
-        this->labelBalance->Text = GlobalData::GetCurrentUser()->getBalance() + " VND";
-    }
+    System::Void AccountForm_Load(System::Object ^ sender,
+                                  System::EventArgs ^ e);
 
   private:
     System::Void btnChangePw_Click(System::Object ^ sender,
-                                   System::EventArgs ^ e) {
-        LoadChildForm::LoadForm(this->panelContent, gcnew ChangePwForm());
-        ChangeButtonColor(btnChangePw);
-    }
+                                   System::EventArgs ^ e);
 
   private:
     System::Void btnSetPin_Click(System::Object ^ sender,
-                                    System::EventArgs ^ e) {
-        LoadChildForm::LoadForm(this->panelContent, gcnew SetPinForm());
-        ChangeButtonColor(btnSetPin);
-    }
+                                 System::EventArgs ^ e);
 
   private:
     System::Void buttonSetAvatar_Click(System::Object ^ sender,
-                                       System::EventArgs ^ e) {
-        ChangeButtonColor(buttonSetAvatar); 
-    }
+                                       System::EventArgs ^ e);
 
   private:
     System::Void btnDeleteAccount_Click(System::Object ^ sender,
-                                        System::EventArgs ^ e) {
-        ChangeButtonColor(btnDeleteAccount); 
-    }
-
-    
+                                        System::EventArgs ^ e);
 
   private:
     System::Void panelNav_SizeChanged(System::Object ^ sender,
-                                      System::EventArgs ^ e) {
-        int parentWidth =
-            panelNav->ClientSize.Width;   // Lấy chiều rộng của panel cha
-        int panelWidth = parentWidth / 4;  // Chia đều thành 3 phần
-
-        // Cập nhật kích thước và vị trí của 3 panel con
-        panelBtn1->Width = panelWidth;
-        panelBtn2->Width = panelWidth;
-        panelBtn3->Width = panelWidth; // Panel cuối cùng nhận phần dư
-        panelBtn4->Width = panelWidth; // Panel cuối cùng nhận phần dư
-
-        panelBtn1->Left = 0;
-        panelBtn2->Left = panelWidth;
-        panelBtn3->Left = panelWidth * 2;
-        panelBtn4->Left = panelWidth * 3;
-    }
-
-
-  };
-  }
+                                      System::EventArgs ^ e);
+};
+} // namespace BankingAppwinform

@@ -15,78 +15,30 @@ using namespace System::Drawing;
 public
 ref class ChangePwForm : public System::Windows::Forms::Form {
   public:
-    ChangePwForm(void) { InitializeComponent(); }
+    ChangePwForm(void);
 
   protected:
-    ~ChangePwForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~ChangePwForm();
 
   private:
     System::Windows::Forms::Panel ^ panel1;
-
-  protected:
-  private:
-  private:
     System::Windows::Forms::Label ^ label6;
 
-  private:
     System::Windows::Forms::TextBox ^ newPasswordConfirm;
-
-  private:
-  private:
-  private:
-  private:
-  private:
     System::Windows::Forms::Label ^ label5;
-
-  private:
     System::Windows::Forms::TextBox ^ newPassword;
-
-  private:
-  private:
-  private:
-  private:
-  private:
     System::Windows::Forms::Label ^ label4;
-
-  private:
     System::Windows::Forms::TextBox ^ oldPassword;
-
-  private:
     System::Windows::Forms::Button ^ btnSubmit;
-
-  private:
     System::Windows::Forms::Label ^ label3;
-
-  private:
     System::Windows::Forms::Label ^ label2;
-
-  private:
     System::Windows::Forms::Label ^ label1;
+    System::ComponentModel::Container ^ components;
 
   private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  protected:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-    System::ComponentModel::Container ^ components;
+    bool showOldPw = false;
+    bool showNewPw = false;
+    bool showNewPwConfirm = false;
 
 #pragma region Windows Form Designer generated code
     void InitializeComponent(void) {
@@ -323,8 +275,6 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->ForeColor = System::Drawing::SystemColors::ControlLight;
         this->Name = L"ChangePwForm";
         this->Text = L"ChangePwForm";
-        this->Load +=
-            gcnew System::EventHandler(this, &ChangePwForm::ChangePwForm_Load);
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
         this->ResumeLayout(false);
@@ -332,86 +282,19 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
 #pragma endregion
   private:
     System::Void btnSubmit_Click(System::Object ^ sender,
-                                 System::EventArgs ^ e) {
-        if (oldPassword->Text == "" || newPassword->Text == "" ||
-            newPasswordConfirm->Text == "") {
-            MessageBox::Show("Vui long nhap day du thong tin !", "Tiêu đề",
-                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
-        } else if (newPassword->Text != newPasswordConfirm->Text) {
-            MessageBox::Show("Mat khau moi khong trung khop !", "Tiêu đề",
-                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
-        } else if (oldPassword->Text !=
-                   GlobalData::GetCurrentUser()->getPassword()) {
-            MessageBox::Show("Mat khau khong dung !", "Tiêu đề",
-                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
-        } else {
-            // luu user vao file
-            array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-            if (users == nullptr) {
-                MessageBox::Show("Co loi xay ra !", "Tiêu đề",
-                                 MessageBoxButtons::OK, MessageBoxIcon::Error);
-                return;
-            } else {
-                for (int i = 0; i < users->Length; i++) {
-                    if (users[i]->getAccountNumber() ==
-                        GlobalData::GetCurrentUser()->getAccountNumber()) {
-                        users[i]->setPassword(newPassword->Text);
-                        GlobalData::SetCurrentUser(users[i]);
-                        break;
-                    }
-                }
-            }
-            bool isSaved = HandleFile::WriteUserArray(users, "users.dat");
-            if (isSaved) {
-                MessageBox::Show("Doi mat khau thanh cong !", "Tiêu đề",
-                                 MessageBoxButtons::OK,
-                                 MessageBoxIcon::Information);
-            } else {
-                MessageBox::Show("Co loi xay ra !", "Tiêu đề",
-                                 MessageBoxButtons::OK, MessageBoxIcon::Error);
-            }
-        }
-    }
-
-  private:
-    System::Void ChangePwForm_Load(System::Object ^ sender,
-                                   System::EventArgs ^ e) {}
+                                 System::EventArgs ^ e);
 
   private:
     bool handleClickShowBtn(bool status,
-                            System::Windows::Forms::TextBox ^ textbox) {
-        if (status) {
-            textbox->PasswordChar = '\0';
-        } else {
-            textbox->PasswordChar = '*';
-        }
-        return !status;
-    }
-
-    private:
-  bool showOldPw = false;
-   bool showNewPw = false;
-  bool showNewPwConfirm = false;
-  private:
-    System::Void label1_Click(System::Object ^ sender, System::EventArgs ^ e) {
-        if (showOldPw) {
-            oldPassword->PasswordChar = '\0';
-            showOldPw = false;
-        } else {
-            oldPassword->PasswordChar = '*';
-            showOldPw = true;
-        }
-    }
+                            System::Windows::Forms::TextBox ^ textbox);
 
   private:
-    System::Void label2_Click(System::Object ^ sender, System::EventArgs ^ e) {
-        showNewPw = handleClickShowBtn(showNewPw, newPassword);
-    }
+    System::Void label1_Click(System::Object ^ sender, System::EventArgs ^ e);
 
   private:
-    System::Void label3_Click(System::Object ^ sender, System::EventArgs ^ e) {
-        showNewPwConfirm = handleClickShowBtn(showNewPwConfirm,
-                                           newPasswordConfirm); 
-    }
+    System::Void label2_Click(System::Object ^ sender, System::EventArgs ^ e);
+
+  private:
+    System::Void label3_Click(System::Object ^ sender, System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

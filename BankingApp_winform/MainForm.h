@@ -1,11 +1,11 @@
 ﻿#pragma once
 #include "AccountForm.h"
+#include "GlobalData.h"
 #include "HistoryForm.h"
 #include "LoadChildForm.h"
 #include "TransferMoneyForm.h"
-#include "WithdrawMoneyForm.h"
 #include "User.h"
-#include "GlobalData.h"
+#include "WithdrawMoneyForm.h"
 
 namespace BankingAppwinform {
 
@@ -19,154 +19,31 @@ using namespace System::Drawing;
 public
 ref class MainForm : public System::Windows::Forms::Form {
   public:
-    MainForm() {
-        InitializeComponent();
-        this->labelFullName->Text = GlobalData::GetCurrentUser()->getFullName();
-        this->labelBalance->Text ="**********";
-    }
+    MainForm();
 
   protected:
-    ~MainForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~MainForm();
 
   private:
-
     System::Windows::Forms::Panel ^ panelNav;
-
-
     System::Windows::Forms::Button ^ btnAccount;
-
-
-
-
-
-  private:
     System::Windows::Forms::PictureBox ^ pictureBox1;
-
-  private:
     System::Windows::Forms::CheckBox ^ btnShowBalance;
-
-  private:
-
-
-  private:
-
-
-  private:
     System::Windows::Forms::Label ^ labelBalance;
-
-  private:
     System::Windows::Forms::Label ^ labelFullName;
-
-  private:
-
-
-  private:
-
-
-  private:
     System::Windows::Forms::Button ^ btnHistory;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Button ^ btnWithdraw;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Button ^ btnTransfer;
-
-  private:
     System::Windows::Forms::Button ^ btnLogout;
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::Button ^ btnMenu;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Timer ^ timer1;
-
-  private:
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
     System::Windows::Forms::Label ^ headerText;
-
-  private:
     System::Windows::Forms::Panel ^ panel3;
-
-  private:
     System::Windows::Forms::Panel ^ panelx;
-
-  private:
     System::Windows::Forms::Panel ^ panelContent;
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
     System::ComponentModel::IContainer ^ components;
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-
 
 #pragma region Windows Form Designer generated code
     void InitializeComponent(void) {
@@ -584,150 +461,37 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->ResumeLayout(false);
     }
 
-
 #pragma endregion
+
   private:
-    Button ^ selectedButton = nullptr;
-    void ChangeButtonColor(Button ^ button) {
-        if (selectedButton != nullptr) {
-            selectedButton->BackColor = System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(0)),
-                static_cast<System::Int32>(static_cast<System::Byte>(64)),
-                static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        }
-        selectedButton = button;
-        selectedButton->BackColor = System::Drawing::Color::Teal;
-    }
-  private:
-    System::Void MainForm_Load(System::Object ^ sender, System::EventArgs ^ e) {
-        User ^ user = GlobalData::GetCurrentUser();
-        LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm());
-        this->headerText->Text = L"DOASHBOARD";
-    }
-    System::Void btnAccount_Click(System::Object ^ sender,
-                                  System::EventArgs ^ e) {
-        LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm());
-        ChangeButtonColor(btnAccount);
-        this->headerText->Text = L"TÀI KHOẢN";
-    }
-    System::Void btnTransfer_Click(System::Object ^ sender,
-                                   System::EventArgs ^ e) {
-        LoadChildForm::LoadForm(this->panelContent, gcnew TransferMoneyForm());
-        ChangeButtonColor(btnTransfer);
-        this->headerText->Text = L"CHUYỂN KHOẢN";
-
-    }
-    System::Void btnWithdraw_Click(System::Object ^ sender,
-                                   System::EventArgs ^ e) {
-        LoadChildForm::LoadForm(this->panelContent, gcnew WithdrawMoneyForm());
-        ChangeButtonColor(btnWithdraw);
-        this->headerText->Text = L"RÚT TIỀN";
-
-    }
-    System::Void btnHistory_Click(System::Object ^ sender,
-                                  System::EventArgs ^ e) {
-        LoadChildForm::LoadForm(this->panelContent, gcnew HistoryForm());
-        ChangeButtonColor(btnHistory);
-        this->headerText->Text = L"LỊCH SỬ";
-
-    }
-    System::Void btnLogout_Click(System::Object ^ sender,
-                                 System::EventArgs ^ e) {
-        System::Windows::Forms::DialogResult result;
-        result = MessageBox::Show("Bạn có chắc chắn muốn đăng xuất?",
-                                  "Đăng xuất", MessageBoxButtons::YesNo,
-                                  MessageBoxIcon::Question);
-        if (result == System::Windows::Forms::DialogResult::Yes) {
-            GlobalData::SetCurrentUser(nullptr);
-            this->Close();
-        }
-    }
-
-private:
     bool isOpenNav = true;
-  private:
-    System::Void timer1_Tick(System::Object ^ sender, System::EventArgs ^ e) {
-        if (isOpenNav) {
-            if (panelNav->Width <= 62) {
-                timer1->Stop();
-                isOpenNav = false;
-            } else {
-                panelNav->Width -= 20;
-            }
-        } else {
-            if (panelNav->Width >= 200) {
-                timer1->Stop();
-                isOpenNav = true;
-            } else {
-                panelNav->Width += 20;
-            }
-        }
-    }
+    Button ^ selectedButton = nullptr;
+    void ChangeButtonColor(Button ^ button);
 
   private:
-    System::Void btnMenu_Click(System::Object ^ sender, System::EventArgs ^ e) {
-        timer1->Start();
-
-    }
+    System::Void MainForm_Load(System::Object ^ sender, System::EventArgs ^ e);
+    System::Void btnAccount_Click(System::Object ^ sender,
+                                  System::EventArgs ^ e);
+    System::Void btnTransfer_Click(System::Object ^ sender,
+                                   System::EventArgs ^ e);
+    System::Void btnWithdraw_Click(System::Object ^ sender,
+                                   System::EventArgs ^ e);
+    System::Void btnHistory_Click(System::Object ^ sender,
+                                  System::EventArgs ^ e);
+    System::Void btnLogout_Click(System::Object ^ sender,
+                                 System::EventArgs ^ e);
 
   private:
-    System::Void resizeEven(System::Object ^ sender,
-                                 System::EventArgs ^ e) {
-        // 📌 Lấy kích thước hiện tại của panelX (màu trắng)
-        int parentWidth = panelx->ClientSize.Width;
-        int parentHeight = panelx->ClientSize.Height;
+    System::Void timer1_Tick(System::Object ^ sender, System::EventArgs ^ e);
 
-        // 📌 Kích thước tối thiểu của panelContent (màu xanh)
-        const int minWidth = 658;
-        const int minHeight = 499;
-        const float ratio =
-            (float)minWidth / minHeight; // Tỷ lệ cố định giữa width & height
+  private:
+    System::Void btnMenu_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-        // 📌 Kích thước tối đa của panelContent
-        const int maxWidth = (int)(minWidth * 2.5f);   // 987px
-        const int maxHeight = (int)(minHeight * 2.5f); // 748px
-
-        // 📌 Tính toán kích thước panelContent nhưng không vượt quá panelX
-        int availableWidth = Math::Min(maxWidth, parentWidth - 40);
-        int availableHeight = Math::Min(maxHeight, parentHeight - 40);
-
-        int newWidth = availableWidth;
-        int newHeight = (int)(newWidth / ratio);
-
-        // Nếu chiều cao vượt quá availableHeight, điều chỉnh lại
-        if (newHeight > availableHeight) {
-            newHeight = availableHeight;
-            newWidth = (int)(newHeight * ratio);
-        }
-
-        // 📌 Đảm bảo kích thước không nhỏ hơn minSize
-        newWidth = Math::Max(newWidth, minWidth);
-        newHeight = Math::Max(newHeight, minHeight);
-
-        // 📌 Đặt lại kích thước panelContent nếu nó chưa đạt maxSize
-        if (panelContent->Width != newWidth ||
-            panelContent->Height != newHeight) {
-            panelContent->Width = newWidth;
-            panelContent->Height = newHeight;
-        }
-
-        // 📌 Luôn căn giữa panelContent ngay cả khi đã đạt maxSize
-        panelContent->Left = (parentWidth - panelContent->Width) / 2;
-        panelContent->Top = (parentHeight - panelContent->Height) / 2;
-
-
-    }
+  private:
+    System::Void resizeEven(System::Object ^ sender, System::EventArgs ^ e);
 
   private:
     System::Void btnShowBalance_CheckedChanged(System::Object ^ sender,
-                                          System::EventArgs ^ e) {
-        if (btnShowBalance->Checked) {
-            this->labelBalance->Text =
-                GlobalData::GetCurrentUser()->getBalance() + " VND";
-        } else {
-            this->labelBalance->Text = "**********";
-        }
-        
-    }
+                                               System::EventArgs ^ e);
 };
-}
+} // namespace BankingAppwinform

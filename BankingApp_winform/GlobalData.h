@@ -1,6 +1,5 @@
 #pragma once
 #include "User.h"
-#include "Transaction.h"
 using namespace System;
 
 public

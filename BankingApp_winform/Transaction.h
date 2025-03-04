@@ -22,9 +22,17 @@ ref class Transaction {
 
     Transaction() : Transaction(0, 0, 0, 0, "") {};
 
+    Transaction(const Transaction % other) {
+        transactionId = other.transactionId;
+        fromAccountNumber = other.fromAccountNumber;
+        toAccountNumber = other.toAccountNumber;
+        amount = other.amount;
+        createdAt = other.createdAt;
+    }
     int getTransactionId() { return transactionId; }
-    int  getFromAccount() { return fromAccountNumber; }
+    int getFromAccount() { return fromAccountNumber; }
     int getToAccount() { return toAccountNumber; }
-    String ^ getCreatedAt() { return createdAt; }
-    double getAmount() { return amount; }
+    String ^ getCreatedAt() { return createdAt; } double getAmount() {
+        return amount;
+    }
 };

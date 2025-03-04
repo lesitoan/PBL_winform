@@ -16,84 +16,19 @@ using namespace System::Drawing;
 public
 ref class SetPinForm : public System::Windows::Forms::Form {
   public:
-    SetPinForm(void) { InitializeComponent(); }
+    SetPinForm(void);
 
   protected:
-    ~SetPinForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~SetPinForm();
 
   private:
     System::Windows::Forms::Panel ^ panel1;
-
-  protected:
-  private:
-
-
-  private:
     System::Windows::Forms::Label ^ label1;
-
-  private:
     System::Windows::Forms::TextBox ^ password;
-
-  private:
     System::Windows::Forms::Label ^ labelAuth;
-
-  private:
     System::Windows::Forms::TextBox ^ pin;
-
-  private:
     System::Windows::Forms::Button ^ button1;
-
-  private:
     System::Windows::Forms::Label ^ btnShowPw;
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-
-
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -239,84 +174,22 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->panel1);
         this->Name = L"SetPinForm";
         this->Text = L"SetPinForm";
-        this->Load +=
-            gcnew System::EventHandler(this, &SetPinForm::SetPinForm_Load);
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
         this->ResumeLayout(false);
     }
 
 #pragma endregion
+
+  private:
+    bool isShowPw = false;
+
   private:
     System::Void btnSubmit_Click(System::Object ^ sender,
-                                 System::EventArgs ^ e) {
-        if (!Validate::isPin(this->pin->Text)) {
-            MessageBox::Show("Pin phai co 6 chu so !", "Canh bao",
-                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
-            return;
-        } else if (this->password->Text == "") {
-            MessageBox::Show("Mat khau khong chinh xac !", "Canh bao",
-                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
-            return;
-        } else {
-            User ^ user = GlobalData::GetCurrentUser();
-            if (user->getPassword() != this->password->Text) {
-                MessageBox::Show("Mat khau khong chinh xac !", "Canh bao",
-                                 MessageBoxButtons::OK,
-                                 MessageBoxIcon::Warning);
-            } else {
+                                 System::EventArgs ^ e);
 
-                // luu user vao file
-                array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-                if (users == nullptr) {
-                    MessageBox::Show("Co loi xay ra !", "Tiêu đề",
-                                     MessageBoxButtons::OK,
-                                     MessageBoxIcon::Error);
-                    return;
-                } else {
-                    for (int i = 0; i < users->Length; i++) {
-                        if (users[i]->getAccountNumber() ==
-                                GlobalData::GetCurrentUser()
-                                    ->getAccountNumber() &&
-                            this->password->Text == users[i]->getPassword()) {
-                            users[i]->setPin(Convert::ToInt32(this->pin->Text));
-                            GlobalData::SetCurrentUser(users[i]);
-                            break;
-                        }
-                    }
-                }
-                bool isSaved = HandleFile::WriteUserArray(users, "users.dat");
-                if (isSaved) {
-                    MessageBox::Show("Dat ma pin thanh cong !", "success",
-                                     MessageBoxButtons::OK,
-                                     MessageBoxIcon::Information);
-                } else {
-                    MessageBox::Show("Co loi xay ra !", "success",
-                                     MessageBoxButtons::OK,
-                                     MessageBoxIcon::Error);
-                }
-            }
-        }
-        this->pin->Text = "";
-        this->password->Text = "";
-    }
-
-  private:
-    System::Void SetPinForm_Load(System::Object ^ sender,
-                                 System::EventArgs ^ e) {}
-
-    private:
-    bool isShowPw = false;
   private:
     System::Void btnShowPw_Click(System::Object ^ sender,
-                                 System::EventArgs ^ e) {
-        if (isShowPw) {
-            password->PasswordChar = '\0';
-            isShowPw = false;
-        } else {
-            password->PasswordChar = '*';
-            isShowPw = true;
-        }
-    }
+                                 System::EventArgs ^ e);
 };
-}
+} // namespace BankingAppwinform
