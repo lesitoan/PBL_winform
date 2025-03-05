@@ -24,11 +24,29 @@ ref class SetPinForm : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::Panel ^ panel1;
     System::Windows::Forms::Label ^ label1;
-    System::Windows::Forms::TextBox ^ password;
+
     System::Windows::Forms::Label ^ labelAuth;
-    System::Windows::Forms::TextBox ^ pin;
+
     System::Windows::Forms::Button ^ button1;
     System::Windows::Forms::Label ^ btnShowPw;
+
+  private:
+    System::Windows::Forms::Panel ^ panel3;
+
+  private:
+    System::Windows::Forms::TextBox ^ pin;
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Panel ^ panel2;
+
+  private:
+    System::Windows::Forms::TextBox ^ password;
+
+  private:
+
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -39,11 +57,15 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->btnShowPw = (gcnew System::Windows::Forms::Label());
         this->label1 = (gcnew System::Windows::Forms::Label());
-        this->password = (gcnew System::Windows::Forms::TextBox());
         this->labelAuth = (gcnew System::Windows::Forms::Label());
-        this->pin = (gcnew System::Windows::Forms::TextBox());
         this->button1 = (gcnew System::Windows::Forms::Button());
+        this->panel2 = (gcnew System::Windows::Forms::Panel());
+        this->password = (gcnew System::Windows::Forms::TextBox());
+        this->panel3 = (gcnew System::Windows::Forms::Panel());
+        this->pin = (gcnew System::Windows::Forms::TextBox());
         this->panel1->SuspendLayout();
+        this->panel2->SuspendLayout();
+        this->panel3->SuspendLayout();
         this->SuspendLayout();
         //
         // panel1
@@ -53,11 +75,11 @@ ref class SetPinForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel1->BackColor = System::Drawing::Color::Transparent;
+        this->panel1->Controls->Add(this->panel3);
+        this->panel1->Controls->Add(this->panel2);
         this->panel1->Controls->Add(this->btnShowPw);
         this->panel1->Controls->Add(this->label1);
-        this->panel1->Controls->Add(this->password);
         this->panel1->Controls->Add(this->labelAuth);
-        this->panel1->Controls->Add(this->pin);
         this->panel1->Controls->Add(this->button1);
         this->panel1->Location = System::Drawing::Point(12, 30);
         this->panel1->Name = L"panel1";
@@ -98,22 +120,6 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->label1->TabIndex = 46;
         this->label1->Text = L"Nhập mật khẩu:";
         //
-        // password
-        //
-        this->password->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Left |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->password->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->password->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->password->Location = System::Drawing::Point(92, 106);
-        this->password->Multiline = true;
-        this->password->Name = L"password";
-        this->password->PasswordChar = '*';
-        this->password->Size = System::Drawing::Size(393, 37);
-        this->password->TabIndex = 45;
-        //
         // labelAuth
         //
         this->labelAuth->AutoSize = true;
@@ -127,20 +133,6 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->labelAuth->Size = System::Drawing::Size(174, 22);
         this->labelAuth->TabIndex = 44;
         this->labelAuth->Text = L"Nhập mã PIN ( 6 chữ số):";
-        //
-        // pin
-        //
-        this->pin->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
-            (System::Windows::Forms::AnchorStyles::Left |
-             System::Windows::Forms::AnchorStyles::Right));
-        this->pin->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->pin->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->pin->Location = System::Drawing::Point(92, 31);
-        this->pin->Multiline = true;
-        this->pin->Name = L"pin";
-        this->pin->Size = System::Drawing::Size(442, 37);
-        this->pin->TabIndex = 42;
         //
         // button1
         //
@@ -165,6 +157,68 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->button1->Click +=
             gcnew System::EventHandler(this, &SetPinForm::btnSubmit_Click);
         //
+        // panel2
+        //
+        this->panel2->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (System::Windows::Forms::AnchorStyles::Left |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel2->BackColor = System::Drawing::Color::White;
+        this->panel2->Controls->Add(this->password);
+        this->panel2->Location = System::Drawing::Point(92, 106);
+        this->panel2->Name = L"panel2";
+        this->panel2->Size = System::Drawing::Size(394, 37);
+        this->panel2->TabIndex = 56;
+        //
+        // password
+        //
+        this->password->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->password->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->password->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->password->Location = System::Drawing::Point(18, 6);
+        this->password->MaxLength = 15;
+        this->password->Multiline = true;
+        this->password->Name = L"password";
+        this->password->PasswordChar = '*';
+        this->password->Size = System::Drawing::Size(373, 28);
+        this->password->TabIndex = 29;
+        //
+        // panel3
+        //
+        this->panel3->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (System::Windows::Forms::AnchorStyles::Left |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel3->BackColor = System::Drawing::Color::White;
+        this->panel3->Controls->Add(this->pin);
+        this->panel3->Location = System::Drawing::Point(92, 31);
+        this->panel3->Name = L"panel3";
+        this->panel3->Size = System::Drawing::Size(442, 37);
+        this->panel3->TabIndex = 57;
+        //
+        // pin
+        //
+        this->pin->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
+            (((System::Windows::Forms::AnchorStyles::Top |
+               System::Windows::Forms::AnchorStyles::Bottom) |
+              System::Windows::Forms::AnchorStyles::Left) |
+             System::Windows::Forms::AnchorStyles::Right));
+        this->pin->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->pin->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->pin->Location = System::Drawing::Point(21, 6);
+        this->pin->MaxLength = 6;
+        this->pin->Multiline = true;
+        this->pin->Name = L"pin";
+        this->pin->Size = System::Drawing::Size(421, 28);
+        this->pin->TabIndex = 29;
+        //
         // SetPinForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -176,6 +230,10 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->Text = L"SetPinForm";
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
+        this->panel2->ResumeLayout(false);
+        this->panel2->PerformLayout();
+        this->panel3->ResumeLayout(false);
+        this->panel3->PerformLayout();
         this->ResumeLayout(false);
     }
 

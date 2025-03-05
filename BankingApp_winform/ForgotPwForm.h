@@ -19,20 +19,36 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::Label ^ label6;
     System::Windows::Forms::Label ^ labelAuth;
-    System::Windows::Forms::TextBox ^ phoneNumber;
+
     System::Windows::Forms::Button ^ button1;
     System::Windows::Forms::Label ^ label7;
-    System::Windows::Forms::TextBox ^ textBox4;
+
+  private:
+    System::Windows::Forms::Panel ^ panel1;
+
+  private:
+    System::Windows::Forms::TextBox ^ fullName;
+
+  private:
+    System::Windows::Forms::Panel ^ panel2;
+
+  private:
+    System::Windows::Forms::TextBox ^ textBox1;
+
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
     void InitializeComponent(void) {
         this->label6 = (gcnew System::Windows::Forms::Label());
         this->labelAuth = (gcnew System::Windows::Forms::Label());
-        this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
         this->button1 = (gcnew System::Windows::Forms::Button());
         this->label7 = (gcnew System::Windows::Forms::Label());
-        this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+        this->panel1 = (gcnew System::Windows::Forms::Panel());
+        this->fullName = (gcnew System::Windows::Forms::TextBox());
+        this->panel2 = (gcnew System::Windows::Forms::Panel());
+        this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+        this->panel1->SuspendLayout();
+        this->panel2->SuspendLayout();
         this->SuspendLayout();
         //
         // label6
@@ -63,18 +79,6 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->labelAuth->Size = System::Drawing::Size(141, 22);
         this->labelAuth->TabIndex = 47;
         this->labelAuth->Text = L"Nhập số điện thoại:";
-        //
-        // phoneNumber
-        //
-        this->phoneNumber->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->phoneNumber->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->phoneNumber->Location = System::Drawing::Point(56, 266);
-        this->phoneNumber->Multiline = true;
-        this->phoneNumber->Name = L"phoneNumber";
-        this->phoneNumber->Size = System::Drawing::Size(442, 37);
-        this->phoneNumber->TabIndex = 44;
         //
         // button1
         //
@@ -107,16 +111,59 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->label7->TabIndex = 51;
         this->label7->Text = L"Nhập tên của bạn:";
         //
-        // textBox4
+        // panel1
         //
-        this->textBox4->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->textBox4->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->textBox4->Location = System::Drawing::Point(56, 185);
-        this->textBox4->Multiline = true;
-        this->textBox4->Name = L"textBox4";
-        this->textBox4->Size = System::Drawing::Size(442, 37);
-        this->textBox4->TabIndex = 50;
+        this->panel1->BackColor = System::Drawing::Color::White;
+        this->panel1->Controls->Add(this->fullName);
+        this->panel1->Location = System::Drawing::Point(59, 185);
+        this->panel1->Name = L"panel1";
+        this->panel1->Size = System::Drawing::Size(439, 37);
+        this->panel1->TabIndex = 52;
+        //
+        // fullName
+        //
+        this->fullName->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->fullName->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->fullName->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->fullName->Location = System::Drawing::Point(18, 6);
+        this->fullName->MaxLength = 35;
+        this->fullName->Multiline = true;
+        this->fullName->Name = L"fullName";
+        this->fullName->Size = System::Drawing::Size(418, 28);
+        this->fullName->TabIndex = 29;
+        //
+        // panel2
+        //
+        this->panel2->BackColor = System::Drawing::Color::White;
+        this->panel2->Controls->Add(this->textBox1);
+        this->panel2->Location = System::Drawing::Point(59, 266);
+        this->panel2->Name = L"panel2";
+        this->panel2->Size = System::Drawing::Size(439, 37);
+        this->panel2->TabIndex = 53;
+        //
+        // textBox1
+        //
+        this->textBox1->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->textBox1->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->textBox1->Location = System::Drawing::Point(18, 6);
+        this->textBox1->MaxLength = 10;
+        this->textBox1->Multiline = true;
+        this->textBox1->Name = L"textBox1";
+        this->textBox1->Size = System::Drawing::Size(418, 28);
+        this->textBox1->TabIndex = 29;
         //
         // ForgotPwForm
         //
@@ -124,14 +171,18 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->BackColor = System::Drawing::Color::Teal;
         this->ClientSize = System::Drawing::Size(547, 488);
+        this->Controls->Add(this->panel2);
+        this->Controls->Add(this->panel1);
         this->Controls->Add(this->label7);
-        this->Controls->Add(this->textBox4);
         this->Controls->Add(this->labelAuth);
-        this->Controls->Add(this->phoneNumber);
         this->Controls->Add(this->button1);
         this->Controls->Add(this->label6);
         this->Name = L"ForgotPwForm";
         this->Text = L"ForgotPwForm";
+        this->panel1->ResumeLayout(false);
+        this->panel1->PerformLayout();
+        this->panel2->ResumeLayout(false);
+        this->panel2->PerformLayout();
         this->ResumeLayout(false);
         this->PerformLayout();
     }

@@ -1,4 +1,4 @@
-#include "LoginForm.h"
+﻿#include "LoginForm.h"
 
 namespace BankingAppwinform {
 LoginForm::LoginForm(void) { this->InitializeComponent(); }
@@ -13,7 +13,7 @@ System::Void LoginForm::btnSubmit_Click(System::Object ^ sender,
     String ^ phone = this->phoneNumber->Text;
     String ^ pass = this->password->Text;
     if (phone == "" || pass == "") {
-        MessageBox::Show("Vui long nhap day du thong tin");
+        MessageBox::Show(L"Vui lòng nhập đầy đủ thông tin");
         return;
     } else {
         array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
@@ -21,12 +21,12 @@ System::Void LoginForm::btnSubmit_Click(System::Object ^ sender,
             if (user->getPhoneNumber() == phone &&
                 user->getPassword() == pass) {
                 GlobalData::SetCurrentUser(user);
-                MessageBox::Show("Dang nhap thanh cong");
+                MessageBox::Show(L"Đăng nhập thành công");
                 LoginSuccess(this, EventArgs::Empty);
                 return;
             }
         }
-        MessageBox::Show("Dang nhap that bai");
+        MessageBox::Show(L"Đăng nhập thất bại");
     }
 }
 

@@ -1,4 +1,6 @@
-#pragma once
+﻿#ifndef USER_H
+#define USER_H
+
 using namespace System;
 
 public
@@ -13,20 +15,15 @@ ref class User {
     int pin;
     String ^ bankName;
 
-    int randomAccountNumber() {
-        Random ^ random = gcnew Random();
-        return random->Next(100000000, 999999999);
-    }
-
   public:
-    User(String ^ _fullName, String ^ _password, String ^ _phoneNumber) {
+    User(String ^ _fullName, String ^ _password, String ^ _phoneNumber, int accNum) {
         fullName = _fullName;
         password = _password;
         phoneNumber = _phoneNumber;
         balance = 1000000;
         isAdmin = false;
         pin = 0;
-        accountNumber = this->randomAccountNumber();
+        accountNumber = accNum;
         bankName = "BIDV";
     }
     User(String ^ _fullName, String ^ _password, String ^ _phoneNumber,
@@ -59,3 +56,5 @@ ref class User {
     void setPin(int _pin) { this->pin = _pin; }
     void setBalance(double _balance) { this->balance = _balance; }
 };
+
+#endif // USER_H

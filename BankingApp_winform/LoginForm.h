@@ -23,14 +23,53 @@ ref class LoginForm : public System::Windows::Forms::Form {
     ~LoginForm();
 
   private:
-    System::Windows::Forms::TextBox ^ password;
-    System::Windows::Forms::TextBox ^ phoneNumber;
+
+
     System::Windows::Forms::Button ^ btnSubmit;
     System::Windows::Forms::Label ^ label4;
     System::Windows::Forms::Label ^ label3;
     System::Windows::Forms::Label ^ labelAuth;
     System::Windows::Forms::Label ^ label1;
     System::Windows::Forms::CheckBox ^ btnShowPw;
+
+  private:
+    System::Windows::Forms::TextBox ^ phoneNumber;
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Panel ^ panel1;
+
+  private:
+    System::Windows::Forms::Panel ^ panel2;
+
+  private:
+    System::Windows::Forms::TextBox ^ password;
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
     System::ComponentModel::Container ^ components;
 
 
@@ -40,28 +79,19 @@ ref class LoginForm : public System::Windows::Forms::Form {
         System::ComponentModel::ComponentResourceManager ^ resources =
             (gcnew System::ComponentModel::ComponentResourceManager(
                 LoginForm::typeid));
-        this->password = (gcnew System::Windows::Forms::TextBox());
-        this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
         this->btnSubmit = (gcnew System::Windows::Forms::Button());
         this->label4 = (gcnew System::Windows::Forms::Label());
         this->label3 = (gcnew System::Windows::Forms::Label());
         this->labelAuth = (gcnew System::Windows::Forms::Label());
         this->label1 = (gcnew System::Windows::Forms::Label());
         this->btnShowPw = (gcnew System::Windows::Forms::CheckBox());
+        this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
+        this->panel1 = (gcnew System::Windows::Forms::Panel());
+        this->panel2 = (gcnew System::Windows::Forms::Panel());
+        this->password = (gcnew System::Windows::Forms::TextBox());
+        this->panel1->SuspendLayout();
+        this->panel2->SuspendLayout();
         this->SuspendLayout();
-        //
-        // password
-        //
-        this->password->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        resources->ApplyResources(this->password, L"password");
-        this->password->Name = L"password";
-        //
-        // phoneNumber
-        //
-        this->phoneNumber->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        resources->ApplyResources(this->phoneNumber, L"phoneNumber");
-        this->phoneNumber->Name = L"phoneNumber";
         //
         // btnSubmit
         //
@@ -113,20 +143,51 @@ ref class LoginForm : public System::Windows::Forms::Form {
         this->btnShowPw->CheckedChanged += gcnew System::EventHandler(
             this, &LoginForm::btnShowPw_CheckedChanged);
         //
+        // phoneNumber
+        //
+        resources->ApplyResources(this->phoneNumber, L"phoneNumber");
+        this->phoneNumber->BorderStyle =
+            System::Windows::Forms::BorderStyle::None;
+        this->phoneNumber->Name = L"phoneNumber";
+        //
+        // panel1
+        //
+        this->panel1->BackColor = System::Drawing::Color::White;
+        this->panel1->Controls->Add(this->phoneNumber);
+        resources->ApplyResources(this->panel1, L"panel1");
+        this->panel1->Name = L"panel1";
+        //
+        // panel2
+        //
+        this->panel2->BackColor = System::Drawing::Color::White;
+        this->panel2->Controls->Add(this->password);
+        resources->ApplyResources(this->panel2, L"panel2");
+        this->panel2->Name = L"panel2";
+        //
+        // password
+        //
+        resources->ApplyResources(this->password, L"password");
+        this->password->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->password->Name = L"password";
+        //
         // LoginForm
         //
         resources->ApplyResources(this, L"$this");
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->BackColor = System::Drawing::Color::Teal;
+        this->Controls->Add(this->panel2);
+        this->Controls->Add(this->panel1);
         this->Controls->Add(this->btnShowPw);
         this->Controls->Add(this->label1);
         this->Controls->Add(this->labelAuth);
         this->Controls->Add(this->label3);
         this->Controls->Add(this->label4);
-        this->Controls->Add(this->password);
-        this->Controls->Add(this->phoneNumber);
         this->Controls->Add(this->btnSubmit);
         this->Name = L"LoginForm";
+        this->panel1->ResumeLayout(false);
+        this->panel1->PerformLayout();
+        this->panel2->ResumeLayout(false);
+        this->panel2->PerformLayout();
         this->ResumeLayout(false);
         this->PerformLayout();
     }

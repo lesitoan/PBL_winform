@@ -1,4 +1,5 @@
 ﻿#include "MainForm.h"
+#include "AuthForm.h"
 
 namespace BankingAppwinform {
 
@@ -57,11 +58,16 @@ System::Void MainForm::btnLogout_Click(System::Object ^ sender,
                                        System::EventArgs ^ e) {
     System::Windows::Forms::DialogResult result;
     result =
-        MessageBox::Show("Bạn có chắc chắn muốn đăng xuất?", "Đăng xuất",
+        MessageBox::Show(L"Bạn có chắc chắn muốn đăng xuất?", L"Đăng xuất",
                          MessageBoxButtons::YesNo, MessageBoxIcon::Question);
     if (result == System::Windows::Forms::DialogResult::Yes) {
         GlobalData::SetCurrentUser(nullptr);
+
+        this->Hide();
+        AuthForm ^ authForm = gcnew AuthForm();
+        authForm->ShowDialog();
         this->Close();
+
     }
 }
 System::Void MainForm::timer1_Tick(System::Object ^ sender,

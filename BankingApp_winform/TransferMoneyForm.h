@@ -28,17 +28,47 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
     System::ComponentModel::Container ^ components;
     System::Windows::Forms::Button ^ btnFindAccount;
     System::Windows::Forms::Label ^ label1;
-    System::Windows::Forms::TextBox ^ accountNumber;
+
     System::Windows::Forms::Label ^ label5;
     System::Windows::Forms::Panel ^ panel2;
     System::Windows::Forms::Panel ^ panelTransfer;
     System::Windows::Forms::Label ^ labelReceiver;
     System::Windows::Forms::Label ^ label4;
-    System::Windows::Forms::TextBox ^ contentInput;
+
     System::Windows::Forms::Label ^ label3;
-    System::Windows::Forms::TextBox ^ pinInput;
+
     System::Windows::Forms::Label ^ label2;
+
+
+  private:
+    System::Windows::Forms::Panel ^ panel3;
+
+  private:
+    System::Windows::Forms::TextBox ^ accountNumber;
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Panel ^ panel4;
+
+  private:
+    System::Windows::Forms::Panel ^ panel7;
+
+  private:
+    System::Windows::Forms::TextBox ^ contentInput;
+
+  private:
+    System::Windows::Forms::Panel ^ panel6;
+
+  private:
     System::Windows::Forms::TextBox ^ amountInput;
+
+  private:
+    System::Windows::Forms::Panel ^ panel5;
+
+  private:
+    System::Windows::Forms::TextBox ^ pinInput;
     System::Windows::Forms::Button ^ btnSubmit;
 
 
@@ -48,32 +78,42 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->btnFindAccount = (gcnew System::Windows::Forms::Button());
         this->label1 = (gcnew System::Windows::Forms::Label());
-        this->accountNumber = (gcnew System::Windows::Forms::TextBox());
         this->label5 = (gcnew System::Windows::Forms::Label());
         this->selectBankBox = (gcnew System::Windows::Forms::ComboBox());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->panelTransfer = (gcnew System::Windows::Forms::Panel());
         this->labelReceiver = (gcnew System::Windows::Forms::Label());
         this->label4 = (gcnew System::Windows::Forms::Label());
-        this->contentInput = (gcnew System::Windows::Forms::TextBox());
         this->label3 = (gcnew System::Windows::Forms::Label());
-        this->pinInput = (gcnew System::Windows::Forms::TextBox());
         this->label2 = (gcnew System::Windows::Forms::Label());
-        this->amountInput = (gcnew System::Windows::Forms::TextBox());
         this->btnSubmit = (gcnew System::Windows::Forms::Button());
+        this->panel3 = (gcnew System::Windows::Forms::Panel());
+        this->accountNumber = (gcnew System::Windows::Forms::TextBox());
+        this->panel4 = (gcnew System::Windows::Forms::Panel());
+        this->panel5 = (gcnew System::Windows::Forms::Panel());
+        this->pinInput = (gcnew System::Windows::Forms::TextBox());
+        this->panel6 = (gcnew System::Windows::Forms::Panel());
+        this->amountInput = (gcnew System::Windows::Forms::TextBox());
+        this->panel7 = (gcnew System::Windows::Forms::Panel());
+        this->contentInput = (gcnew System::Windows::Forms::TextBox());
         this->panel1->SuspendLayout();
         this->panel2->SuspendLayout();
         this->panelTransfer->SuspendLayout();
+        this->panel3->SuspendLayout();
+        this->panel4->SuspendLayout();
+        this->panel5->SuspendLayout();
+        this->panel6->SuspendLayout();
+        this->panel7->SuspendLayout();
         this->SuspendLayout();
         //
         // panel1
         //
         this->panel1->BackColor = System::Drawing::Color::Teal;
+        this->panel1->Controls->Add(this->panel3);
         this->panel1->Controls->Add(this->btnFindAccount);
         this->panel1->Controls->Add(this->label1);
-        this->panel1->Controls->Add(this->accountNumber);
         this->panel1->Controls->Add(this->label5);
-        this->panel1->Controls->Add(this->selectBankBox);
+        this->panel1->Controls->Add(this->panel4);
         this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
         this->panel1->Location = System::Drawing::Point(0, 0);
         this->panel1->Name = L"panel1";
@@ -96,7 +136,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnFindAccount->ForeColor = System::Drawing::Color::Teal;
         this->btnFindAccount->ImeMode =
             System::Windows::Forms::ImeMode::NoControl;
-        this->btnFindAccount->Location = System::Drawing::Point(92, 90);
+        this->btnFindAccount->Location = System::Drawing::Point(92, 96);
         this->btnFindAccount->Name = L"btnFindAccount";
         this->btnFindAccount->Size = System::Drawing::Size(476, 38);
         this->btnFindAccount->TabIndex = 52;
@@ -117,28 +157,11 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
             (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
         this->label1->ForeColor = System::Drawing::Color::Transparent;
         this->label1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label1->Location = System::Drawing::Point(293, 20);
+        this->label1->Location = System::Drawing::Point(293, 15);
         this->label1->Name = L"label1";
         this->label1->Size = System::Drawing::Size(135, 22);
         this->label1->TabIndex = 53;
         this->label1->Text = L"Nhập số tài khoản:";
-        //
-        // accountNumber
-        //
-        this->accountNumber->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Left |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->accountNumber->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->accountNumber->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->accountNumber->Location = System::Drawing::Point(297, 45);
-        this->accountNumber->MaxLength = 9;
-        this->accountNumber->Multiline = true;
-        this->accountNumber->Name = L"accountNumber";
-        this->accountNumber->Size = System::Drawing::Size(271, 27);
-        this->accountNumber->TabIndex = 52;
         //
         // label5
         //
@@ -152,7 +175,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
             (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
         this->label5->ForeColor = System::Drawing::Color::Transparent;
         this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label5->Location = System::Drawing::Point(88, 20);
+        this->label5->Location = System::Drawing::Point(88, 15);
         this->label5->Name = L"label5";
         this->label5->Size = System::Drawing::Size(99, 22);
         this->label5->TabIndex = 51;
@@ -162,6 +185,8 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         //
         this->selectBankBox->Anchor =
             System::Windows::Forms::AnchorStyles::Left;
+        this->selectBankBox->FlatStyle =
+            System::Windows::Forms::FlatStyle::Popup;
         this->selectBankBox->Font =
             (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
         this->selectBankBox->ForeColor = System::Drawing::Color::Black;
@@ -169,7 +194,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->selectBankBox->Items->AddRange(gcnew cli::array<System::Object ^>(
             8){L"BIDV", L"Vietcombank", L"MB", L"VP Bank", L"Viettinbank",
                L"Sacombank", L"SHB", L"TP Bank"});
-        this->selectBankBox->Location = System::Drawing::Point(92, 45);
+        this->selectBankBox->Location = System::Drawing::Point(3, 0);
         this->selectBankBox->Name = L"selectBankBox";
         this->selectBankBox->Size = System::Drawing::Size(180, 27);
         this->selectBankBox->TabIndex = 3;
@@ -198,13 +223,13 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
         this->panelTransfer->BackColor = System::Drawing::Color::Transparent;
+        this->panelTransfer->Controls->Add(this->panel7);
+        this->panelTransfer->Controls->Add(this->panel6);
+        this->panelTransfer->Controls->Add(this->panel5);
         this->panelTransfer->Controls->Add(this->labelReceiver);
         this->panelTransfer->Controls->Add(this->label4);
-        this->panelTransfer->Controls->Add(this->contentInput);
         this->panelTransfer->Controls->Add(this->label3);
-        this->panelTransfer->Controls->Add(this->pinInput);
         this->panelTransfer->Controls->Add(this->label2);
-        this->panelTransfer->Controls->Add(this->amountInput);
         this->panelTransfer->Controls->Add(this->btnSubmit);
         this->panelTransfer->Location = System::Drawing::Point(0, 1);
         this->panelTransfer->Name = L"panelTransfer";
@@ -253,23 +278,6 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->label4->TabIndex = 51;
         this->label4->Text = L"Nhập nội dung:";
         //
-        // contentInput
-        //
-        this->contentInput->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Left |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->contentInput->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->contentInput->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->contentInput->Location = System::Drawing::Point(92, 162);
-        this->contentInput->MaxLength = 35;
-        this->contentInput->Multiline = true;
-        this->contentInput->Name = L"contentInput";
-        this->contentInput->Size = System::Drawing::Size(476, 43);
-        this->contentInput->TabIndex = 50;
-        //
         // label3
         //
         this->label3->Anchor =
@@ -288,22 +296,6 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->label3->TabIndex = 49;
         this->label3->Text = L"Nhập mã PIN:";
         //
-        // pinInput
-        //
-        this->pinInput->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Left |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->pinInput->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->pinInput->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->pinInput->Location = System::Drawing::Point(378, 88);
-        this->pinInput->MaxLength = 6;
-        this->pinInput->Multiline = true;
-        this->pinInput->Name = L"pinInput";
-        this->pinInput->Size = System::Drawing::Size(190, 37);
-        this->pinInput->TabIndex = 48;
-        //
         // label2
         //
         this->label2->Anchor =
@@ -321,20 +313,6 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->label2->Size = System::Drawing::Size(99, 22);
         this->label2->TabIndex = 47;
         this->label2->Text = L"Nhập số tiền:";
-        //
-        // amountInput
-        //
-        this->amountInput->Anchor = System::Windows::Forms::AnchorStyles::Left;
-        this->amountInput->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->amountInput->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->amountInput->Location = System::Drawing::Point(92, 88);
-        this->amountInput->MaxLength = 8;
-        this->amountInput->Multiline = true;
-        this->amountInput->Name = L"amountInput";
-        this->amountInput->Size = System::Drawing::Size(260, 37);
-        this->amountInput->TabIndex = 46;
         //
         // btnSubmit
         //
@@ -356,6 +334,142 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnSubmit->TabIndex = 45;
         this->btnSubmit->Text = L"CHUYỂN TIỀN";
         this->btnSubmit->UseVisualStyleBackColor = false;
+        this->btnSubmit->Click += gcnew System::EventHandler(
+            this, &TransferMoneyForm::btnSubmit_Click);
+        //
+        // panel3
+        //
+        this->panel3->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (System::Windows::Forms::AnchorStyles::Left |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel3->BackColor = System::Drawing::Color::White;
+        this->panel3->Controls->Add(this->accountNumber);
+        this->panel3->Location = System::Drawing::Point(291, 40);
+        this->panel3->Name = L"panel3";
+        this->panel3->Size = System::Drawing::Size(277, 37);
+        this->panel3->TabIndex = 58;
+        //
+        // accountNumber
+        //
+        this->accountNumber->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->accountNumber->BorderStyle =
+            System::Windows::Forms::BorderStyle::None;
+        this->accountNumber->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->accountNumber->Location = System::Drawing::Point(21, 6);
+        this->accountNumber->MaxLength = 9;
+        this->accountNumber->Multiline = true;
+        this->accountNumber->Name = L"accountNumber";
+        this->accountNumber->Size = System::Drawing::Size(256, 28);
+        this->accountNumber->TabIndex = 29;
+        //
+        // panel4
+        //
+        this->panel4->Anchor = System::Windows::Forms::AnchorStyles::Left;
+        this->panel4->BackColor = System::Drawing::Color::White;
+        this->panel4->Controls->Add(this->selectBankBox);
+        this->panel4->Location = System::Drawing::Point(92, 40);
+        this->panel4->Name = L"panel4";
+        this->panel4->Size = System::Drawing::Size(186, 37);
+        this->panel4->TabIndex = 59;
+        //
+        // panel5
+        //
+        this->panel5->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (System::Windows::Forms::AnchorStyles::Left |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel5->BackColor = System::Drawing::Color::White;
+        this->panel5->Controls->Add(this->pinInput);
+        this->panel5->Location = System::Drawing::Point(373, 88);
+        this->panel5->Name = L"panel5";
+        this->panel5->Size = System::Drawing::Size(195, 37);
+        this->panel5->TabIndex = 59;
+        //
+        // pinInput
+        //
+        this->pinInput->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->pinInput->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->pinInput->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->pinInput->Location = System::Drawing::Point(21, 6);
+        this->pinInput->MaxLength = 6;
+        this->pinInput->Multiline = true;
+        this->pinInput->Name = L"pinInput";
+        this->pinInput->Size = System::Drawing::Size(174, 28);
+        this->pinInput->TabIndex = 29;
+        //
+        // panel6
+        //
+        this->panel6->Anchor = System::Windows::Forms::AnchorStyles::Left;
+        this->panel6->BackColor = System::Drawing::Color::White;
+        this->panel6->Controls->Add(this->amountInput);
+        this->panel6->Location = System::Drawing::Point(92, 88);
+        this->panel6->Name = L"panel6";
+        this->panel6->Size = System::Drawing::Size(272, 37);
+        this->panel6->TabIndex = 60;
+        //
+        // amountInput
+        //
+        this->amountInput->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->amountInput->BorderStyle =
+            System::Windows::Forms::BorderStyle::None;
+        this->amountInput->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->amountInput->Location = System::Drawing::Point(21, 6);
+        this->amountInput->MaxLength = 9;
+        this->amountInput->Multiline = true;
+        this->amountInput->Name = L"amountInput";
+        this->amountInput->Size = System::Drawing::Size(251, 28);
+        this->amountInput->TabIndex = 29;
+        //
+        // panel7
+        //
+        this->panel7->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (System::Windows::Forms::AnchorStyles::Left |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel7->BackColor = System::Drawing::Color::White;
+        this->panel7->Controls->Add(this->contentInput);
+        this->panel7->Location = System::Drawing::Point(92, 162);
+        this->panel7->Name = L"panel7";
+        this->panel7->Size = System::Drawing::Size(476, 37);
+        this->panel7->TabIndex = 61;
+        //
+        // contentInput
+        //
+        this->contentInput->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->contentInput->BorderStyle =
+            System::Windows::Forms::BorderStyle::None;
+        this->contentInput->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->contentInput->Location = System::Drawing::Point(21, 6);
+        this->contentInput->MaxLength = 9;
+        this->contentInput->Multiline = true;
+        this->contentInput->Name = L"contentInput";
+        this->contentInput->Size = System::Drawing::Size(455, 28);
+        this->contentInput->TabIndex = 29;
         //
         // TransferMoneyForm
         //
@@ -373,6 +487,15 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->panel2->ResumeLayout(false);
         this->panelTransfer->ResumeLayout(false);
         this->panelTransfer->PerformLayout();
+        this->panel3->ResumeLayout(false);
+        this->panel3->PerformLayout();
+        this->panel4->ResumeLayout(false);
+        this->panel5->ResumeLayout(false);
+        this->panel5->PerformLayout();
+        this->panel6->ResumeLayout(false);
+        this->panel6->PerformLayout();
+        this->panel7->ResumeLayout(false);
+        this->panel7->PerformLayout();
         this->ResumeLayout(false);
     }
 #pragma endregion

@@ -2,6 +2,7 @@
 #include "HandleFile.h"
 #include "LoginForm.h"
 #include "User.h"
+#include "Validate.h"
 
 namespace BankingAppwinform {
 
@@ -24,14 +25,45 @@ ref class SignupForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Label ^ label6;
     System::Windows::Forms::Label ^ labelAuth;
     System::Windows::Forms::Label ^ label7;
-    System::Windows::Forms::TextBox ^ password;
-    System::Windows::Forms::TextBox ^ phoneNumber;
+
+
     System::Windows::Forms::Button ^ btnSubmit;
     System::Windows::Forms::Label ^ label9;
-    System::Windows::Forms::TextBox ^ fullName;
+
     System::Windows::Forms::CheckBox ^ btnShowPwCf;
     System::Windows::Forms::Label ^ label1;
+
+  private:
+    System::Windows::Forms::Panel ^ panel1;
+
+  protected:
+  private:
+    System::Windows::Forms::TextBox ^ fullName;
+
+  private:
+    System::Windows::Forms::Panel ^ panel2;
+
+  private:
+    System::Windows::Forms::TextBox ^ phoneNumber;
+
+  private:
+    System::Windows::Forms::Panel ^ panel3;
+
+  private:
+    System::Windows::Forms::TextBox ^ password;
+
+  private:
+    System::Windows::Forms::Panel ^ panel4;
+
+  private:
     System::Windows::Forms::TextBox ^ passwordConfirm;
+
+  private:
+
+
+  private:
+
+
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -40,14 +72,22 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->label6 = (gcnew System::Windows::Forms::Label());
         this->labelAuth = (gcnew System::Windows::Forms::Label());
         this->label7 = (gcnew System::Windows::Forms::Label());
-        this->password = (gcnew System::Windows::Forms::TextBox());
-        this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
         this->btnSubmit = (gcnew System::Windows::Forms::Button());
         this->label9 = (gcnew System::Windows::Forms::Label());
-        this->fullName = (gcnew System::Windows::Forms::TextBox());
         this->btnShowPwCf = (gcnew System::Windows::Forms::CheckBox());
         this->label1 = (gcnew System::Windows::Forms::Label());
+        this->panel1 = (gcnew System::Windows::Forms::Panel());
+        this->fullName = (gcnew System::Windows::Forms::TextBox());
+        this->panel2 = (gcnew System::Windows::Forms::Panel());
+        this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
+        this->panel3 = (gcnew System::Windows::Forms::Panel());
+        this->password = (gcnew System::Windows::Forms::TextBox());
+        this->panel4 = (gcnew System::Windows::Forms::Panel());
         this->passwordConfirm = (gcnew System::Windows::Forms::TextBox());
+        this->panel1->SuspendLayout();
+        this->panel2->SuspendLayout();
+        this->panel3->SuspendLayout();
+        this->panel4->SuspendLayout();
         this->SuspendLayout();
         //
         // btnShowPw
@@ -79,9 +119,9 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->label6->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label6->Location = System::Drawing::Point(56, 203);
         this->label6->Name = L"label6";
-        this->label6->Size = System::Drawing::Size(218, 22);
+        this->label6->Size = System::Drawing::Size(187, 22);
         this->label6->TabIndex = 40;
-        this->label6->Text = L"Nhập mật khẩu (ít nhất 6 kí tự):";
+        this->label6->Text = L"Nhập mật khẩu (6-9 kí tự):";
         //
         // labelAuth
         //
@@ -91,7 +131,7 @@ ref class SignupForm : public System::Windows::Forms::Form {
             (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
         this->labelAuth->ForeColor = System::Drawing::Color::Transparent;
         this->labelAuth->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->labelAuth->Location = System::Drawing::Point(270, 117);
+        this->labelAuth->Location = System::Drawing::Point(281, 117);
         this->labelAuth->Name = L"labelAuth";
         this->labelAuth->Size = System::Drawing::Size(141, 22);
         this->labelAuth->TabIndex = 39;
@@ -111,30 +151,6 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->label7->Text = L"ĐĂNG KÍ TÀI KHOẢN";
         this->label7->TextAlign =
             System::Drawing::ContentAlignment::MiddleCenter;
-        //
-        // password
-        //
-        this->password->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->password->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->password->Location = System::Drawing::Point(57, 228);
-        this->password->Multiline = true;
-        this->password->Name = L"password";
-        this->password->PasswordChar = '*';
-        this->password->Size = System::Drawing::Size(354, 37);
-        this->password->TabIndex = 36;
-        //
-        // phoneNumber
-        //
-        this->phoneNumber->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->phoneNumber->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->phoneNumber->Location = System::Drawing::Point(276, 142);
-        this->phoneNumber->Multiline = true;
-        this->phoneNumber->Name = L"phoneNumber";
-        this->phoneNumber->Size = System::Drawing::Size(226, 37);
-        this->phoneNumber->TabIndex = 34;
         //
         // btnSubmit
         //
@@ -165,20 +181,9 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->label9->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label9->Location = System::Drawing::Point(56, 117);
         this->label9->Name = L"label9";
-        this->label9->Size = System::Drawing::Size(164, 22);
+        this->label9->Size = System::Drawing::Size(213, 22);
         this->label9->TabIndex = 43;
-        this->label9->Text = L"Nhập tên (không dấu):";
-        //
-        // fullName
-        //
-        this->fullName->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->fullName->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->fullName->Location = System::Drawing::Point(57, 142);
-        this->fullName->Multiline = true;
-        this->fullName->Name = L"fullName";
-        this->fullName->Size = System::Drawing::Size(213, 37);
-        this->fullName->TabIndex = 42;
+        this->label9->Text = L"Nhập tên (không dấu, in hoa):";
         //
         // btnShowPwCf
         //
@@ -214,18 +219,117 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->label1->TabIndex = 45;
         this->label1->Text = L"Xác nhận mật khẩu:";
         //
+        // panel1
+        //
+        this->panel1->BackColor = System::Drawing::Color::White;
+        this->panel1->Controls->Add(this->fullName);
+        this->panel1->Location = System::Drawing::Point(57, 142);
+        this->panel1->Name = L"panel1";
+        this->panel1->Size = System::Drawing::Size(212, 37);
+        this->panel1->TabIndex = 47;
+        //
+        // fullName
+        //
+        this->fullName->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->fullName->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->fullName->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->fullName->Location = System::Drawing::Point(18, 6);
+        this->fullName->MaxLength = 35;
+        this->fullName->Multiline = true;
+        this->fullName->Name = L"fullName";
+        this->fullName->Size = System::Drawing::Size(191, 28);
+        this->fullName->TabIndex = 29;
+        //
+        // panel2
+        //
+        this->panel2->BackColor = System::Drawing::Color::White;
+        this->panel2->Controls->Add(this->phoneNumber);
+        this->panel2->Location = System::Drawing::Point(285, 142);
+        this->panel2->Name = L"panel2";
+        this->panel2->Size = System::Drawing::Size(214, 37);
+        this->panel2->TabIndex = 48;
+        //
+        // phoneNumber
+        //
+        this->phoneNumber->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->phoneNumber->BorderStyle =
+            System::Windows::Forms::BorderStyle::None;
+        this->phoneNumber->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->phoneNumber->Location = System::Drawing::Point(18, 6);
+        this->phoneNumber->MaxLength = 10;
+        this->phoneNumber->Multiline = true;
+        this->phoneNumber->Name = L"phoneNumber";
+        this->phoneNumber->Size = System::Drawing::Size(196, 28);
+        this->phoneNumber->TabIndex = 29;
+        //
+        // panel3
+        //
+        this->panel3->BackColor = System::Drawing::Color::White;
+        this->panel3->Controls->Add(this->password);
+        this->panel3->Location = System::Drawing::Point(57, 228);
+        this->panel3->Name = L"panel3";
+        this->panel3->Size = System::Drawing::Size(354, 37);
+        this->panel3->TabIndex = 49;
+        //
+        // password
+        //
+        this->password->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->password->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->password->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->password->Location = System::Drawing::Point(18, 6);
+        this->password->MaxLength = 9;
+        this->password->Multiline = true;
+        this->password->Name = L"password";
+        this->password->PasswordChar = '*';
+        this->password->Size = System::Drawing::Size(333, 28);
+        this->password->TabIndex = 29;
+        //
+        // panel4
+        //
+        this->panel4->BackColor = System::Drawing::Color::White;
+        this->panel4->Controls->Add(this->passwordConfirm);
+        this->panel4->Location = System::Drawing::Point(57, 314);
+        this->panel4->Name = L"panel4";
+        this->panel4->Size = System::Drawing::Size(351, 37);
+        this->panel4->TabIndex = 50;
+        //
         // passwordConfirm
         //
+        this->passwordConfirm->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
         this->passwordConfirm->BorderStyle =
             System::Windows::Forms::BorderStyle::None;
         this->passwordConfirm->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
-        this->passwordConfirm->Location = System::Drawing::Point(57, 314);
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->passwordConfirm->Location = System::Drawing::Point(18, 6);
+        this->passwordConfirm->MaxLength = 9;
         this->passwordConfirm->Multiline = true;
         this->passwordConfirm->Name = L"passwordConfirm";
         this->passwordConfirm->PasswordChar = '*';
-        this->passwordConfirm->Size = System::Drawing::Size(354, 37);
-        this->passwordConfirm->TabIndex = 44;
+        this->passwordConfirm->Size = System::Drawing::Size(330, 28);
+        this->passwordConfirm->TabIndex = 29;
         //
         // SignupForm
         //
@@ -233,20 +337,30 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->BackColor = System::Drawing::Color::Teal;
         this->ClientSize = System::Drawing::Size(547, 488);
+        this->Controls->Add(this->panel4);
+        this->Controls->Add(this->panel3);
+        this->Controls->Add(this->panel2);
+        this->Controls->Add(this->panel1);
         this->Controls->Add(this->btnShowPwCf);
         this->Controls->Add(this->label1);
-        this->Controls->Add(this->passwordConfirm);
         this->Controls->Add(this->label9);
-        this->Controls->Add(this->fullName);
         this->Controls->Add(this->btnShowPw);
         this->Controls->Add(this->label6);
         this->Controls->Add(this->labelAuth);
         this->Controls->Add(this->label7);
-        this->Controls->Add(this->password);
-        this->Controls->Add(this->phoneNumber);
         this->Controls->Add(this->btnSubmit);
         this->Name = L"SignupForm";
         this->Text = L"SignupForm";
+        this->Load +=
+            gcnew System::EventHandler(this, &SignupForm::SignupForm_Load);
+        this->panel1->ResumeLayout(false);
+        this->panel1->PerformLayout();
+        this->panel2->ResumeLayout(false);
+        this->panel2->PerformLayout();
+        this->panel3->ResumeLayout(false);
+        this->panel3->PerformLayout();
+        this->panel4->ResumeLayout(false);
+        this->panel4->PerformLayout();
         this->ResumeLayout(false);
         this->PerformLayout();
     }
@@ -266,5 +380,13 @@ ref class SignupForm : public System::Windows::Forms::Form {
   private:
     System::Void btnShowPw_CheckedChanged(System::Object ^ sender,
                                           System::EventArgs ^ e);
+
+  private:
+    System::Void SignupForm_Load(System::Object ^ sender,
+                                 System::EventArgs ^ e) {}
+
+  private:
+    bool isUsedPhoneNumber(String ^ phoneNumber);
+    int randomAccountNumber();
 };
 } // namespace BankingAppwinform

@@ -2,7 +2,10 @@
 
 namespace BankingAppwinform {
 
-HistoryForm::HistoryForm(void) { InitializeComponent(); }
+HistoryForm::HistoryForm(void) { 
+    InitializeComponent();
+    this->loadTransactionsHistory();
+}
 
 HistoryForm::~HistoryForm() {
     if (components) {
@@ -13,11 +16,26 @@ HistoryForm::~HistoryForm() {
 System::Void HistoryForm::HistoryForm_Load(System::Object ^ sender,
                                            System::EventArgs ^ e) {
 
+    
+}
+
+void HistoryForm::loadTransactionsHistory() {
     transactions = HandleFile::ReadTransactionArray("transactions.dat");
     int index = 0;
+    int accountNumber = GlobalData::GetCurrentUser()->getAccountNumber();
     for each (Transaction ^ transaction in transactions) {
-        AddTransactionPanel(leftContent, transaction, index);
-        index++;
+        // lich su rut tien
+        if (transaction->getFromAccount() == accountNumber &&
+            transaction->getToAccount() == 0) {
+            AddTransactionPanel(rightContent, transaction, index);
+            index++;
+
+          // lich su chuyen tien
+        } else if (transaction->getFromAccount() == accountNumber || 
+            transaction->getToAccount() == accountNumber) {
+            AddTransactionPanel(leftContent, transaction, index);
+            index++;
+        };
     }
     leftContent->PerformLayout();
     rightContent->PerformLayout();

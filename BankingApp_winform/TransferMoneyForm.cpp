@@ -140,10 +140,11 @@ System::Void TransferMoneyForm::btnSubmit_Click(System::Object ^ sender,
                             array<Transaction ^> ^ newTransactions =
                                 gcnew array<Transaction ^>(
                                     transactions->Length + 1);
-                            for (int i = 0; i < transactions->Length; i++) {
-                                newTransactions[i] = transactions[i];
+                            //ghi vào đầu file
+                            for (int i = 1; i <= transactions->Length; i++) {
+                                newTransactions[i] = transactions[i-1];
                             }
-                            newTransactions[transactions->Length] = transaction;
+                            newTransactions[0] = transaction;
                             transactions = newTransactions;
                         }
                         bool isSavedTransaction =

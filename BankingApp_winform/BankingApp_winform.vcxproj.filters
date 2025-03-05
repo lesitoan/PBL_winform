@@ -124,12 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
-    <None Include="users.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="transactions.dat">
-      <Filter>Data\files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="BankingApp_winform.rc">

@@ -117,69 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="password.Font" type="System.Drawing.Font, System.Drawing">
-    <value>UTM Facebook K&amp;T, 12pt</value>
-  </data>
-  <data name="password.Location" type="System.Drawing.Point, System.Drawing">
-    <value>61, 251</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="password.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="password.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
-    <value>*</value>
-  </data>
-  <data name="password.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 37</value>
-  </data>
-  <data name="password.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;password.Name" xml:space="preserve">
-    <value>password</value>
-  </data>
-  <data name="&gt;&gt;password.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;password.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;password.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="phoneNumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>UTM Facebook K&amp;T, 12pt</value>
-  </data>
-  <data name="phoneNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>61, 167</value>
-  </data>
-  <data name="phoneNumber.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="phoneNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>442, 37</value>
-  </data>
-  <data name="phoneNumber.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;phoneNumber.Name" xml:space="preserve">
-    <value>phoneNumber</value>
-  </data>
-  <data name="&gt;&gt;phoneNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;phoneNumber.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;phoneNumber.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnSubmit.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnSubmit.Font" type="System.Drawing.Font, System.Drawing">
     <value>UTM Daxline, 12pt, style=Bold</value>
   </data>
@@ -189,6 +131,7 @@
   <data name="btnSubmit.Size" type="System.Drawing.Size, System.Drawing">
     <value>442, 42</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnSubmit.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
@@ -226,7 +169,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -259,7 +202,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="labelAuth.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -289,7 +232,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelAuth.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -322,23 +265,22 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="btnShowPw.Font" type="System.Drawing.Font, System.Drawing">
     <value>UTM Daxline Medium, 12pt</value>
   </data>
   <data name="btnShowPw.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAHTSURBVFhH7dVPKN9hAMfxn2GKgziRWg5iChdLoZXD4kAOTms5uEg5yJFw1VztsFJqp2kHykGk
-        tMtSysWmtEUxtR2Uf8n/8P5sPfX09HzXfr/fl1LPu14Hvn+ep+f7/T3fRCgUCoVCoUfbUzTjHT5jF8c4
-        wwF+YAGDqMSDlYkOrOL2P2nSU7jXiWagBrNwJ3COafShE8NYwSXs87TC4yhB7A3gAvaA8gnlcHuCBvyG
-        e80O6hBbo3AHkSXkwqT3sgBabVM1DuFee4JGpJVWYQTXcAeQFzC14xv2MI9SmN7Cd70mntZKtsF3Y/kJ
-        UxWOYB//DjNJHb+BfdzYhFY96V5BL7/vpvIBJq2Y7xytvilqgrKIpOuB72bGBExr8J2jR2v61wS3kVJD
-        8N1QvsLUCncCer9qoZ4haoKneI6UysZHRN28GEqbt/Y+bcj6v97PlzD1w71WrqB90/7VJ10O5uAbYBJZ
-        MJVBW0f+n7/+VoQt+K7vRSxphfSl8A2ilbMnaadf5zLca/RYuxFrWskuaFtwB1yHvjT1qEAL3uMX7PP0
-        qugT2IR7qxBjcPc9MwHf51A28BpRqx172oT1eL9gH+7XRnuoVnAGb5CHUCgUCoVCj6pE4g5hhe4Wefgj
-        MwAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAdNJREFUWEft
+        1U8o32EAx/GfYYqDOJFaDmIKF0uhlcPiQA5Oazm4SDnIkXDVXO2wUmqnaQfKQaS0y1LKxaa0RTG1HZR/
+        yf/w/mw99fT0fNd+v9+XUs+7Xge+f56n5/v9Pd9EKBQKhUKhR9tTNOMdPmMXxzjDAX5gAYOoxIOViQ6s
+        4vY/adJTuNeJZqAGs3AncI5p9KETw1jBJezztMLjKEHsDeAC9oDyCeVwe4IG/IZ7zQ7qEFujcAeRJeTC
+        pPeyAFptUzUO4V57gkaklVZhBNdwB5AXMLXjG/Ywj1KY3sJ3vSae1kq2wXdj+QlTFY5gH/8OM0kdv4F9
+        3NiEVj3pXkEvv++m8gEmrZjvHK2+KWqCsoik64HvZsYETGvwnaNHa/rXBLeRUkPw3VC+wtQKdwJ6v2qh
+        niFqgqd4jpTKxkdE3bwYSpu39j5tyPq/3s+XMPXDvVauoH3T/tUnXQ7m4BtgElkwlUFbR/6fv/5WhC34
+        ru9FLGmF9KXwDaKVsydpp1/nMtxr9Fi7EWtayS5oW3AHXIe+NPWoQAve4xfs8/Sq6BPYhHurEGNw9z0z
+        Ad/nUDbwGlGrHXvahPV4v2Af7tdGe6hWcAZvkIdQKBQKhUKPqkTiDmGF7hZ5+CMzAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="btnShowPw.Location" type="System.Drawing.Point, System.Drawing">
@@ -363,6 +305,114 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnShowPw.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="phoneNumber.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="phoneNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>UTM Facebook K&amp;T, 14pt</value>
+  </data>
+  <data name="phoneNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 6</value>
+  </data>
+  <data name="phoneNumber.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="phoneNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>424, 28</value>
+  </data>
+  <data name="phoneNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;phoneNumber.Name" xml:space="preserve">
+    <value>phoneNumber</value>
+  </data>
+  <data name="&gt;&gt;phoneNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;phoneNumber.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;phoneNumber.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 167</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 37</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="password.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="password.Font" type="System.Drawing.Font, System.Drawing">
+    <value>UTM Facebook K&amp;T, 14pt</value>
+  </data>
+  <data name="password.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 5</value>
+  </data>
+  <data name="password.MaxLength" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="password.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="password.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="password.Size" type="System.Drawing.Size, System.Drawing">
+    <value>334, 28</value>
+  </data>
+  <data name="password.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;password.Name" xml:space="preserve">
+    <value>password</value>
+  </data>
+  <data name="&gt;&gt;password.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;password.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;password.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 251</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>352, 37</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

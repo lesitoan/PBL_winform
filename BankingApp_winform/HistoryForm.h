@@ -224,5 +224,6 @@ ref class HistoryForm : public System::Windows::Forms::Form {
   private:
     System::Void rightContent_SizeChanged(System::Object ^ sender,
                                           System::EventArgs ^ e);
+    void loadTransactionsHistory();
 };
 } // namespace BankingAppwinform
