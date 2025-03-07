@@ -1,6 +1,7 @@
 ﻿#include "AuthForm.h"
 
 
+
 namespace BankingAppwinform {
 AuthForm::AuthForm() {
     InitializeComponent();
@@ -75,7 +76,14 @@ System::Void AuthForm::loadForm() {
 
 System::Void AuthForm::OnLoginSuccess(System::Object ^ sender,
                                       System::EventArgs ^ e) {
+    User ^ currentUser = GlobalData::GetCurrentUser();
     this->Hide();
+    if (currentUser->getIsAdmin()) {
+        AdminForm ^ adminForm = gcnew AdminForm();
+        adminForm->ShowDialog();
+        this->Close();
+        return;
+    }
     MainForm ^ mainForm = gcnew MainForm();
     mainForm->ShowDialog();
     this->Close();

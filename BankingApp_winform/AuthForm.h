@@ -4,6 +4,8 @@
 #include "LoginForm.h"
 #include "MainForm.h"
 #include "SignupForm.h"
+#include "User.h"
+#include "AdminForm.h"
 
 namespace BankingAppwinform {
 using namespace System;

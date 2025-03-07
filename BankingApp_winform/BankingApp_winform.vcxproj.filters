@@ -69,6 +69,18 @@
     <ClCompile Include="Validate.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="AdminForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="AdminTransactionForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="AdminClientForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="AdminServiceForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -121,6 +133,18 @@
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="AdminForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminClientForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminTransactionForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminServiceForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />

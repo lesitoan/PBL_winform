@@ -121,6 +121,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccountForm.cpp" />
+    <ClCompile Include="AdminClientForm.cpp" />
+    <ClCompile Include="AdminForm.cpp" />
+    <ClCompile Include="AdminServiceForm.cpp" />
+    <ClCompile Include="AdminTransactionForm.cpp" />
     <ClCompile Include="AuthForm.cpp" />
     <ClCompile Include="ChangePwForm.cpp" />
     <ClCompile Include="ForgotPwForm.cpp" />
@@ -138,6 +142,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccountForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminClientForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminServiceForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminTransactionForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AuthForm.h">
@@ -181,6 +197,18 @@
   <ItemGroup>
     <EmbeddedResource Include="AccountForm.resx">
       <DependentUpon>AccountForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminClientForm.resx">
+      <DependentUpon>AdminClientForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForm.resx">
+      <DependentUpon>AdminForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminServiceForm.resx">
+      <DependentUpon>AdminServiceForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminTransactionForm.resx">
+      <DependentUpon>AdminTransactionForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AuthForm.resx">
       <DependentUpon>AuthForm.h</DependentUpon>
