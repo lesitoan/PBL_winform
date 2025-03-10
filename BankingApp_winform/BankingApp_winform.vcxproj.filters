@@ -84,13 +84,16 @@
     <ClCompile Include="EditUserForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
+    <ClCompile Include="CompanyForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="CompanyBillingForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
       <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="MainForm.h">
       <Filter>Form</Filter>
@@ -151,14 +154,30 @@
     <ClInclude Include="EditUserForm.h">
       <Filter>Form</Filter>
     </ClInclude>
+    <ClInclude Include="CompanyForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="Services.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Companies.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="CompanyBillingForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="PaymentCodes.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="RecurringPayments.h">
+      <Filter>Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="BankingApp_winform.rc">
-      <Filter>Models</Filter>
-    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\account.png">
@@ -188,5 +207,8 @@
     <Image Include="Images\withdraw1.png">
       <Filter>Data\images</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BankingApp_winform.rc" />
   </ItemGroup>
 </Project>

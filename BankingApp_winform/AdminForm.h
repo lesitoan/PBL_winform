@@ -75,7 +75,10 @@ ref class AdminForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel2;
 
   private:
-    System::Windows::Forms::Label ^ label1;
+    System::Windows::Forms::Label ^ labelHeader;
+
+  private:
+
 
   private:
   protected:
@@ -103,7 +106,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->btnClient = (gcnew System::Windows::Forms::Button());
         this->panelContent = (gcnew System::Windows::Forms::Panel());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
-        this->label1 = (gcnew System::Windows::Forms::Label());
+        this->labelHeader = (gcnew System::Windows::Forms::Label());
         this->panel1->SuspendLayout();
         this->panelNav->SuspendLayout();
         this->panel4->SuspendLayout();
@@ -338,29 +341,29 @@ ref class AdminForm : public System::Windows::Forms::Form {
         //
         // panel2
         //
-        this->panel2->Controls->Add(this->label1);
+        this->panel2->Controls->Add(this->labelHeader);
         this->panel2->Dock = System::Windows::Forms::DockStyle::Top;
         this->panel2->Location = System::Drawing::Point(207, 0);
         this->panel2->Name = L"panel2";
         this->panel2->Size = System::Drawing::Size(1077, 42);
         this->panel2->TabIndex = 3;
         //
-        // label1
+        // labelHeader
         //
-        this->label1->AutoSize = true;
-        this->label1->BackColor = System::Drawing::Color::FromArgb(
+        this->labelHeader->AutoSize = true;
+        this->labelHeader->BackColor = System::Drawing::Color::FromArgb(
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->label1->Font = (gcnew System::Drawing::Font(
+        this->labelHeader->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->label1->ForeColor = System::Drawing::Color::White;
-        this->label1->Location = System::Drawing::Point(22, 0);
-        this->label1->Name = L"label1";
-        this->label1->Padding = System::Windows::Forms::Padding(7);
-        this->label1->Size = System::Drawing::Size(196, 35);
-        this->label1->TabIndex = 4;
-        this->label1->Text = L"DANH SÁCH KHÁCH HÀNG";
+        this->labelHeader->ForeColor = System::Drawing::Color::White;
+        this->labelHeader->Location = System::Drawing::Point(22, 0);
+        this->labelHeader->Name = L"labelHeader";
+        this->labelHeader->Padding = System::Windows::Forms::Padding(7);
+        this->labelHeader->Size = System::Drawing::Size(196, 35);
+        this->labelHeader->TabIndex = 4;
+        this->labelHeader->Text = L"DANH SÁCH KHÁCH HÀNG";
         //
         // AdminForm
         //
@@ -385,8 +388,12 @@ ref class AdminForm : public System::Windows::Forms::Form {
     }
 #pragma endregion
 
+    private:
+        System::Collections::Generic::Stack<Form ^> ^ formHistory = gcnew System::Collections::Generic::Stack<Form ^>();
+
   public:
-    void LoadForm2(Form ^ childForm);
+    void LoadForm(Form ^ childForm);
+    void UndoLastForm();
 
   private:
     System::Void btnClient_Click(System::Object ^ sender,

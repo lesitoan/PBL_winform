@@ -44,7 +44,7 @@ System::Void TableUsersForm::btnModify_Click(System::Object ^ sender,
     EditUserForm ^ editUserForm = gcnew EditUserForm();
     AdminForm ^ adminForm = dynamic_cast<AdminForm ^>(this->ParentForm);
     if (adminForm != nullptr) {
-        adminForm->LoadForm2(editUserForm);
+        adminForm->LoadForm(editUserForm);
     }
 }
 }; // namespace BankingAppwinform

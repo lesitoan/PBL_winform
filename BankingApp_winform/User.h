@@ -1,4 +1,4 @@
-﻿#ifndef USER_H
+#ifndef USER_H
 #define USER_H
 
 using namespace System;
@@ -16,7 +16,8 @@ ref class User {
     String ^ bankName;
 
   public:
-    User(String ^ _fullName, String ^ _password, String ^ _phoneNumber, int accNum) {
+    User(String ^ _fullName, String ^ _password, String ^ _phoneNumber,
+         int accNum) {
         fullName = _fullName;
         password = _password;
         phoneNumber = _phoneNumber;
@@ -41,16 +42,17 @@ ref class User {
 
     User() : User("", "", "", 0, 0, false, 0, "BIDV") {};
 
-    String^ getFullName() { return fullName; }
-    String^ getPassword() { return password; } 
-    int getAccountNumber() { return accountNumber; }
-    double getBalance() { return balance;}
+    String ^ getFullName() { return fullName; } String ^
+        getPassword() { return password; } int getAccountNumber() {
+        return accountNumber;
+    }
+    double getBalance() { return balance; }
     bool getIsAdmin() { return isAdmin; }
     int getPin() { return pin; }
-    String ^ getPhoneNumber() { return phoneNumber; }
-    String ^ getBankName() { return bankName; }
+    String ^ getPhoneNumber() { return phoneNumber; } String ^
+        getBankName() { return bankName; }
 
-    void setPassword(String ^ _password) {
+        void setPassword(String ^ _password) {
         this->password = _password;
     }
     void setPin(int _pin) { this->pin = _pin; }

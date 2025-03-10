@@ -397,7 +397,7 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         TableUsersForm ^ tableUsersForm = gcnew TableUsersForm();
         AdminForm ^ adminForm = dynamic_cast<AdminForm ^>(this->ParentForm);
         if (adminForm != nullptr) {
-            adminForm->LoadForm2(tableUsersForm);
+            adminForm->LoadForm(tableUsersForm);
         }
     }
 };

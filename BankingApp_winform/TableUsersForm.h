@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "AdminForm.h"
+#include "LoadChildForm.h"
 
 ref class EditUserForm;
 

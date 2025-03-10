@@ -1,8 +1,9 @@
 ﻿#pragma once
-#include "Services.h"
-#include "CompanyForm.h"
+#include "Companies.h"
+#include "CompanyBillingForm.h"
 
 ref class AdminForm;
+
 namespace BankingAppwinform {
 
 using namespace System;
@@ -13,24 +14,22 @@ using namespace System::Data;
 using namespace System::Drawing;
 
 /// <summary>
-/// Summary for AdminServiceForm
+/// Summary for CompanysForm
 /// </summary>
 public
-ref class AdminServiceForm : public System::Windows::Forms::Form {
+ref class CompanyForm : public System::Windows::Forms::Form {
   public:
-    AdminServiceForm(void);
+    CompanyForm(int serviceId);
 
   protected:
     /// <summary>
     /// Clean up any resources being used.
     /// </summary>
-    ~AdminServiceForm();
+    ~CompanyForm();
 
   private:
     System::Windows::Forms::FlowLayoutPanel ^ flowLayoutPanelContainer;
 
-  protected:
-  private:
   protected:
   private:
   protected:
@@ -41,16 +40,16 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Label ^ label1;
 
   private:
-    System::Windows::Forms::PictureBox ^ pictureBox1;
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
 
   private:
     System::Windows::Forms::Label ^ label2;
 
   private:
-    System::Windows::Forms::PictureBox ^ pictureBox2;
+    System::Windows::Forms::Panel ^ panel3;
+
+  private:
+    System::Windows::Forms::Button ^ btnAccount;
 
   private:
     /// <summary>
@@ -66,39 +65,34 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
     void InitializeComponent(void) {
         System::ComponentModel::ComponentResourceManager ^ resources =
             (gcnew System::ComponentModel::ComponentResourceManager(
-                AdminServiceForm::typeid));
+                CompanyForm::typeid));
         this->flowLayoutPanelContainer =
             (gcnew System::Windows::Forms::FlowLayoutPanel());
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->label1 = (gcnew System::Windows::Forms::Label());
-        this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->label2 = (gcnew System::Windows::Forms::Label());
-        this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+        this->panel3 = (gcnew System::Windows::Forms::Panel());
+        this->btnAccount = (gcnew System::Windows::Forms::Button());
         this->flowLayoutPanelContainer->SuspendLayout();
         this->panel1->SuspendLayout();
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->pictureBox1))
-            ->BeginInit();
         this->panel2->SuspendLayout();
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->pictureBox2))
-            ->BeginInit();
+        this->panel3->SuspendLayout();
         this->SuspendLayout();
         //
         // flowLayoutPanelContainer
         //
-        this->flowLayoutPanelContainer->AutoScroll = true;
         this->flowLayoutPanelContainer->BackColor =
             System::Drawing::SystemColors::ButtonFace;
         this->flowLayoutPanelContainer->Controls->Add(this->panel1);
         this->flowLayoutPanelContainer->Controls->Add(this->panel2);
         this->flowLayoutPanelContainer->Dock =
             System::Windows::Forms::DockStyle::Fill;
-        this->flowLayoutPanelContainer->Location = System::Drawing::Point(0, 0);
+        this->flowLayoutPanelContainer->Location =
+            System::Drawing::Point(0, 42);
         this->flowLayoutPanelContainer->Name = L"flowLayoutPanelContainer";
-        this->flowLayoutPanelContainer->Size = System::Drawing::Size(1077, 711);
-        this->flowLayoutPanelContainer->TabIndex = 0;
+        this->flowLayoutPanelContainer->Size = System::Drawing::Size(1077, 669);
+        this->flowLayoutPanelContainer->TabIndex = 1;
         //
         // panel1
         //
@@ -107,7 +101,6 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(255)),
             static_cast<System::Int32>(static_cast<System::Byte>(255)));
         this->panel1->Controls->Add(this->label1);
-        this->panel1->Controls->Add(this->pictureBox1);
         this->panel1->Cursor = System::Windows::Forms::Cursors::Hand;
         this->panel1->Location = System::Drawing::Point(24, 12);
         this->panel1->Margin = System::Windows::Forms::Padding(24, 12, 0, 0);
@@ -115,8 +108,6 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
         this->panel1->Size = System::Drawing::Size(139, 147);
         this->panel1->TabIndex = 0;
         this->panel1->Visible = false;
-        this->panel1->Click +=
-            gcnew System::EventHandler(this, &AdminServiceForm::panel1_Click);
         //
         // label1
         //
@@ -128,24 +119,13 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->label1->Location = System::Drawing::Point(0, 98);
+        this->label1->Location = System::Drawing::Point(0, 0);
         this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(139, 49);
+        this->label1->Size = System::Drawing::Size(139, 147);
         this->label1->TabIndex = 1;
-        this->label1->Text = L"Thanh toán điện";
+        this->label1->Text = L"EVN";
         this->label1->TextAlign =
             System::Drawing::ContentAlignment::MiddleCenter;
-        //
-        // pictureBox1
-        //
-        this->pictureBox1->Dock = System::Windows::Forms::DockStyle::Top;
-        this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"pictureBox1.Image")));
-        this->pictureBox1->Location = System::Drawing::Point(0, 0);
-        this->pictureBox1->Name = L"pictureBox1";
-        this->pictureBox1->Size = System::Drawing::Size(139, 98);
-        this->pictureBox1->TabIndex = 0;
-        this->pictureBox1->TabStop = false;
         //
         // panel2
         //
@@ -154,7 +134,6 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(255)),
             static_cast<System::Int32>(static_cast<System::Byte>(255)));
         this->panel2->Controls->Add(this->label2);
-        this->panel2->Controls->Add(this->pictureBox2);
         this->panel2->Cursor = System::Windows::Forms::Cursors::Hand;
         this->panel2->Location = System::Drawing::Point(175, 12);
         this->panel2->Margin = System::Windows::Forms::Padding(12, 12, 0, 0);
@@ -173,57 +152,85 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->label2->Location = System::Drawing::Point(0, 98);
+        this->label2->Location = System::Drawing::Point(0, 0);
         this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(139, 49);
+        this->label2->Size = System::Drawing::Size(139, 147);
         this->label2->TabIndex = 3;
-        this->label2->Text = L"Thanh toán nước";
+        this->label2->Text = L"ABC";
         this->label2->TextAlign =
             System::Drawing::ContentAlignment::MiddleCenter;
         //
-        // pictureBox2
+        // panel3
         //
-        this->pictureBox2->Dock = System::Windows::Forms::DockStyle::Top;
-        this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"pictureBox2.Image")));
-        this->pictureBox2->Location = System::Drawing::Point(0, 0);
-        this->pictureBox2->Name = L"pictureBox2";
-        this->pictureBox2->Size = System::Drawing::Size(139, 98);
-        this->pictureBox2->TabIndex = 2;
-        this->pictureBox2->TabStop = false;
+        this->panel3->BackColor = System::Drawing::SystemColors::ButtonFace;
+        this->panel3->Controls->Add(this->btnAccount);
+        this->panel3->Dock = System::Windows::Forms::DockStyle::Top;
+        this->panel3->Location = System::Drawing::Point(0, 0);
+        this->panel3->Name = L"panel3";
+        this->panel3->Size = System::Drawing::Size(1077, 42);
+        this->panel3->TabIndex = 2;
         //
-        // AdminServiceForm
+        // btnAccount
+        //
+        this->btnAccount->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                ((System::Windows::Forms::AnchorStyles::Top |
+                  System::Windows::Forms::AnchorStyles::Bottom) |
+                 System::Windows::Forms::AnchorStyles::Left));
+        this->btnAccount->BackColor = System::Drawing::Color::Transparent;
+        this->btnAccount->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnAccount->FlatAppearance->BorderSize = 0;
+        this->btnAccount->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnAccount->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnAccount->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnAccount->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnAccount->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnAccount.Image")));
+        this->btnAccount->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnAccount->Location = System::Drawing::Point(0, 0);
+        this->btnAccount->Name = L"btnAccount";
+        this->btnAccount->Size = System::Drawing::Size(73, 42);
+        this->btnAccount->TabIndex = 2;
+        this->btnAccount->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnAccount->UseVisualStyleBackColor = false;
+        this->btnAccount->Click +=
+            gcnew System::EventHandler(this, &CompanyForm::btnAccount_Click);
+        //
+        // CompanyForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->BackColor = System::Drawing::SystemColors::ActiveCaption;
         this->ClientSize = System::Drawing::Size(1077, 711);
         this->Controls->Add(this->flowLayoutPanelContainer);
+        this->Controls->Add(this->panel3);
         this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-        this->Name = L"AdminServiceForm";
-        this->Text = L"AdminServiceForm";
+        this->Name = L"CompanyForm";
+        this->Text = L"CompanysForm";
         this->flowLayoutPanelContainer->ResumeLayout(false);
         this->panel1->ResumeLayout(false);
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->pictureBox1))
-            ->EndInit();
         this->panel2->ResumeLayout(false);
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->pictureBox2))
-            ->EndInit();
+        this->panel3->ResumeLayout(false);
         this->ResumeLayout(false);
     }
 #pragma endregion
 
-    void LoadServices();
-    void OnServiceClick(Object ^ sender, EventArgs ^ e);
+
+  private:
+    void LoadCompanies(int serviceId);
+    void OnCompanyClick(Object ^ sender, EventArgs ^ e);
+    void OnUndoClick(Object ^ sender, EventArgs ^ e);
 
 
 
-
-    array<Services ^> ^ GetFakeServices();
-
-private:
-    System::Void panel1_Click(System::Object ^ sender, System::EventArgs ^ e);
+    array<Companies ^> ^ GetFakeCompanies();
+    
+    private
+      : System::Void
+        btnAccount_Click(System::Object ^ sender, System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform
