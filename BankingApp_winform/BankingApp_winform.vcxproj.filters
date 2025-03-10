@@ -75,10 +75,13 @@
     <ClCompile Include="AdminTransactionForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
-    <ClCompile Include="AdminClientForm.cpp">
+    <ClCompile Include="TableUsersForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="AdminServiceForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="EditUserForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
   </ItemGroup>
@@ -136,13 +139,16 @@
     <ClInclude Include="AdminForm.h">
       <Filter>Form</Filter>
     </ClInclude>
-    <ClInclude Include="AdminClientForm.h">
+    <ClInclude Include="TableUsersForm.h">
       <Filter>Form</Filter>
     </ClInclude>
     <ClInclude Include="AdminTransactionForm.h">
       <Filter>Form</Filter>
     </ClInclude>
     <ClInclude Include="AdminServiceForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="EditUserForm.h">
       <Filter>Form</Filter>
     </ClInclude>
   </ItemGroup>

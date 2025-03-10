@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 namespace BankingAppwinform {
 
@@ -36,7 +36,29 @@ namespace BankingAppwinform {
 		}
 
               private:
+                System::Windows::Forms::FlowLayoutPanel ^ flowLayoutPanel1;
+
+              protected:
+              private:
+                System::Windows::Forms::Panel ^ panel1;
+
+              private:
                 System::Windows::Forms::Label ^ label1;
+
+              private:
+                System::Windows::Forms::PictureBox ^ pictureBox1;
+
+              private:
+                System::Windows::Forms::Panel ^ panel2;
+
+              private:
+                System::Windows::Forms::Label ^ label2;
+
+              private:
+                System::Windows::Forms::PictureBox ^ pictureBox2;
+
+              private:
+
 
               protected: 
 
@@ -53,22 +75,159 @@ namespace BankingAppwinform {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+                    System::ComponentModel::ComponentResourceManager ^
+                        resources =
+                        (gcnew System::ComponentModel::ComponentResourceManager(
+                            AdminServiceForm::typeid));
+                    this->flowLayoutPanel1 =
+                        (gcnew System::Windows::Forms::FlowLayoutPanel());
+                    this->panel1 = (gcnew System::Windows::Forms::Panel());
+                    this->pictureBox1 =
+                        (gcnew System::Windows::Forms::PictureBox());
                     this->label1 = (gcnew System::Windows::Forms::Label());
+                    this->panel2 = (gcnew System::Windows::Forms::Panel());
+                    this->label2 = (gcnew System::Windows::Forms::Label());
+                    this->pictureBox2 =
+                        (gcnew System::Windows::Forms::PictureBox());
+                    this->flowLayoutPanel1->SuspendLayout();
+                    this->panel1->SuspendLayout();
+                    (cli::safe_cast<
+                         System::ComponentModel::ISupportInitialize ^>(
+                         this->pictureBox1))
+                        ->BeginInit();
+                    this->panel2->SuspendLayout();
+                    (cli::safe_cast<
+                         System::ComponentModel::ISupportInitialize ^>(
+                         this->pictureBox2))
+                        ->BeginInit();
                     this->SuspendLayout();
+                    //
+                    // flowLayoutPanel1
+                    //
+                    this->flowLayoutPanel1->BackColor =
+                        System::Drawing::SystemColors::ButtonFace;
+                    this->flowLayoutPanel1->Controls->Add(this->panel1);
+                    this->flowLayoutPanel1->Controls->Add(this->panel2);
+                    this->flowLayoutPanel1->Dock =
+                        System::Windows::Forms::DockStyle::Fill;
+                    this->flowLayoutPanel1->Location =
+                        System::Drawing::Point(0, 0);
+                    this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
+                    this->flowLayoutPanel1->Size =
+                        System::Drawing::Size(1077, 711);
+                    this->flowLayoutPanel1->TabIndex = 0;
+                    //
+                    // panel1
+                    //
+                    this->panel1->BackColor = System::Drawing::Color::FromArgb(
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(128)),
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(255)),
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(255)));
+                    this->panel1->Controls->Add(this->label1);
+                    this->panel1->Controls->Add(this->pictureBox1);
+                    this->panel1->Cursor =
+                        System::Windows::Forms::Cursors::Hand;
+                    this->panel1->Location = System::Drawing::Point(24, 12);
+                    this->panel1->Margin =
+                        System::Windows::Forms::Padding(24, 12, 0, 0);
+                    this->panel1->Name = L"panel1";
+                    this->panel1->Size = System::Drawing::Size(139, 147);
+                    this->panel1->TabIndex = 0;
+                    //
+                    // pictureBox1
+                    //
+                    this->pictureBox1->Dock =
+                        System::Windows::Forms::DockStyle::Top;
+                    this->pictureBox1->Image =
+                        (cli::safe_cast<System::Drawing::Image ^>(
+                            resources->GetObject(L"pictureBox1.Image")));
+                    this->pictureBox1->Location = System::Drawing::Point(0, 0);
+                    this->pictureBox1->Name = L"pictureBox1";
+                    this->pictureBox1->Size = System::Drawing::Size(139, 98);
+                    this->pictureBox1->TabIndex = 0;
+                    this->pictureBox1->TabStop = false;
                     //
                     // label1
                     //
-                    this->label1->AutoSize = true;
+                    this->label1->BackColor =
+                        System::Drawing::Color::Transparent;
+                    this->label1->Dock =
+                        System::Windows::Forms::DockStyle::Fill;
                     this->label1->Font = (gcnew System::Drawing::Font(
-                        L"Microsoft Sans Serif", 20,
-                        System::Drawing::FontStyle::Regular,
-                        System::Drawing::GraphicsUnit::Point,
-                        static_cast<System::Byte>(0)));
-                    this->label1->Location = System::Drawing::Point(469, 291);
+                        L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+                    this->label1->ForeColor = System::Drawing::Color::FromArgb(
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(0)),
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(64)),
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(64)));
+                    this->label1->Location = System::Drawing::Point(0, 98);
                     this->label1->Name = L"label1";
-                    this->label1->Size = System::Drawing::Size(101, 31);
-                    this->label1->TabIndex = 0;
-                    this->label1->Text = L"service";
+                    this->label1->Size = System::Drawing::Size(139, 49);
+                    this->label1->TabIndex = 1;
+                    this->label1->Text = L"Thanh toán điện";
+                    this->label1->TextAlign =
+                        System::Drawing::ContentAlignment::MiddleCenter;
+                    //
+                    // panel2
+                    //
+                    this->panel2->BackColor = System::Drawing::Color::FromArgb(
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(128)),
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(255)),
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(255)));
+                    this->panel2->Controls->Add(this->label2);
+                    this->panel2->Controls->Add(this->pictureBox2);
+                    this->panel2->Cursor =
+                        System::Windows::Forms::Cursors::Hand;
+                    this->panel2->Location = System::Drawing::Point(175, 12);
+                    this->panel2->Margin =
+                        System::Windows::Forms::Padding(12, 12, 0, 0);
+                    this->panel2->Name = L"panel2";
+                    this->panel2->Size = System::Drawing::Size(139, 147);
+                    this->panel2->TabIndex = 1;
+                    //
+                    // label2
+                    //
+                    this->label2->BackColor =
+                        System::Drawing::Color::Transparent;
+                    this->label2->Dock =
+                        System::Windows::Forms::DockStyle::Fill;
+                    this->label2->Font = (gcnew System::Drawing::Font(
+                        L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+                    this->label2->ForeColor = System::Drawing::Color::FromArgb(
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(0)),
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(64)),
+                        static_cast<System::Int32>(
+                            static_cast<System::Byte>(64)));
+                    this->label2->Location = System::Drawing::Point(0, 98);
+                    this->label2->Name = L"label2";
+                    this->label2->Size = System::Drawing::Size(139, 49);
+                    this->label2->TabIndex = 3;
+                    this->label2->Text = L"Thanh toán nước";
+                    this->label2->TextAlign =
+                        System::Drawing::ContentAlignment::MiddleCenter;
+                    //
+                    // pictureBox2
+                    //
+                    this->pictureBox2->Dock =
+                        System::Windows::Forms::DockStyle::Top;
+                    this->pictureBox2->Image =
+                        (cli::safe_cast<System::Drawing::Image ^>(
+                            resources->GetObject(L"pictureBox2.Image")));
+                    this->pictureBox2->Location = System::Drawing::Point(0, 0);
+                    this->pictureBox2->Name = L"pictureBox2";
+                    this->pictureBox2->Size = System::Drawing::Size(139, 98);
+                    this->pictureBox2->TabIndex = 2;
+                    this->pictureBox2->TabStop = false;
                     //
                     // AdminServiceForm
                     //
@@ -78,13 +237,23 @@ namespace BankingAppwinform {
                     this->BackColor =
                         System::Drawing::SystemColors::ActiveCaption;
                     this->ClientSize = System::Drawing::Size(1077, 711);
-                    this->Controls->Add(this->label1);
+                    this->Controls->Add(this->flowLayoutPanel1);
                     this->FormBorderStyle =
                         System::Windows::Forms::FormBorderStyle::None;
                     this->Name = L"AdminServiceForm";
                     this->Text = L"AdminServiceForm";
+                    this->flowLayoutPanel1->ResumeLayout(false);
+                    this->panel1->ResumeLayout(false);
+                    (cli::safe_cast<
+                         System::ComponentModel::ISupportInitialize ^>(
+                         this->pictureBox1))
+                        ->EndInit();
+                    this->panel2->ResumeLayout(false);
+                    (cli::safe_cast<
+                         System::ComponentModel::ISupportInitialize ^>(
+                         this->pictureBox2))
+                        ->EndInit();
                     this->ResumeLayout(false);
-                    this->PerformLayout();
                 }
 #pragma endregion
 	};

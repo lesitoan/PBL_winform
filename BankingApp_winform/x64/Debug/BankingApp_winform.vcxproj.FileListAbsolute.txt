@@ -16,7 +16,8 @@ E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingApp
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.ChangePwForm.resources
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.SetPinForm.resources
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.LoginForm.vi.resources
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.AdminClientForm.resources
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.AdminServiceForm.resources
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.AdminTransactionForm.resources
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.AdminForm.resources
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.TableUsersForm.resources
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.EditUserForm.resources
