@@ -1,6 +1,5 @@
 ﻿#include "SignupForm.h"
 
-
 namespace BankingAppwinform {
 
 SignupForm::SignupForm(void) { InitializeComponent(); }

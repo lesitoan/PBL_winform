@@ -78,7 +78,7 @@ System::Void AuthForm::OnLoginSuccess(System::Object ^ sender,
                                       System::EventArgs ^ e) {
     User ^ currentUser = GlobalData::GetCurrentUser();
     this->Hide();
-    if (currentUser->getIsAdmin()) {
+    if (currentUser->getRole() == "admin") {
         AdminForm ^ adminForm = gcnew AdminForm();
         adminForm->ShowDialog();
         this->Close();

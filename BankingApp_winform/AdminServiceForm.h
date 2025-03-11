@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Services.h"
 #include "CompanyForm.h"
+#include "HandleFile.h"
 
 ref class AdminForm;
 namespace BankingAppwinform {
@@ -217,11 +218,6 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
 
     void LoadServices();
     void OnServiceClick(Object ^ sender, EventArgs ^ e);
-
-
-
-
-    array<Services ^> ^ GetFakeServices();
 
 private:
     System::Void panel1_Click(System::Object ^ sender, System::EventArgs ^ e);

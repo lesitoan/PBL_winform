@@ -19,8 +19,11 @@ AdminServiceForm::~AdminServiceForm() {
 }
 
 void AdminServiceForm::LoadServices() {
-    array<Services ^> ^ services = GetFakeServices();
 
+    array<Services ^> ^ services = HandleFile::ReadServicesArray("services.dat");
+    if (services == nullptr || services->Length == 0) {
+        return;
+    } 
     for (int i = 0; i < services->Length; i++) {
         Panel ^ panel = gcnew Panel();
         panel->Size = System::Drawing::Size(120, 120);
@@ -46,6 +49,8 @@ void AdminServiceForm::LoadServices() {
     }
 
     this->Controls->Add(flowLayoutPanelContainer);
+
+    
 }
 
 void AdminServiceForm::OnServiceClick(Object ^ sender, EventArgs ^ e) {
@@ -60,19 +65,6 @@ void AdminServiceForm::OnServiceClick(Object ^ sender, EventArgs ^ e) {
     if (adminForm != nullptr) {
         adminForm->LoadForm(companyForm);
     }
-}
-
-array<Services ^> ^ AdminServiceForm::GetFakeServices() {
-    return gcnew array<Services ^>{gcnew Services(1, L"TT điện"),
-                                   gcnew Services(2, L"TT nước"),
-                                   gcnew Services(3, L"TT internet"),
-                                   gcnew Services(4, L"TT  điện thoại"),
-                                   gcnew Services(5, L"TT truyền hình"),
-                                   gcnew Services(6, L"TT  học phí"),
-                                   gcnew Services(7, L"TT bảo hiểm"),
-                                   gcnew Services(8, L"TT vay tiêu dùng"),
-                                   gcnew Services(9, L"TT phí giao thông"),
-                                   gcnew Services(10, L"TT phí chung cư")};
 }
 
 System::Void AdminServiceForm::panel1_Click(System::Object ^ sender,

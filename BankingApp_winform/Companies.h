@@ -10,6 +10,9 @@ ref class Companies {
     String ^ name;
     int serviceId;
     int amount;
+    String ^ password;
+    String ^ phoneNumber;
+    String ^ role;
 
   public:
     Companies(int id, String ^ name, int serviceId, int amount) {
@@ -17,12 +20,26 @@ ref class Companies {
         this->name = name;
         this->serviceId = serviceId;
         this->amount = amount;
+        this->role = "company";
+    }
+    Companies(int id, String ^ name, int serviceId, int amount,
+              String ^ password, String ^ phoneNumber, String ^ role) {
+        this->id = id;
+        this->name = name;
+        this->serviceId = serviceId;
+        this->amount = amount;
+        this->password = password;
+        this->phoneNumber = phoneNumber;
+        this->role = role;
     }
     Companies() {
         id = 0;
-        name = "";
-        serviceId = 0;
+        name = "ENV";
+        serviceId = 1;
         amount = 0;
+        role = "company";
+        password = "123456";
+        phoneNumber = "19008118";
     }
 
     property int Id {
@@ -40,6 +57,13 @@ ref class Companies {
     property int Amount {
         int get() { return amount; }
         void set(int value) { amount = value; }
+    }
+    property String ^ Role { String ^ get() { return role; } }
+    property String ^ Password {
+        String ^ get() { return password; }
+    }
+    property String ^PhoneNumber {
+        String ^ get() { return phoneNumber; }
     }
 
 };

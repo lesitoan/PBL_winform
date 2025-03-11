@@ -5,8 +5,7 @@ namespace BankingAppwinform {
 
 MainForm::MainForm() {
     InitializeComponent();
-    this->labelFullName->Text = GlobalData::GetCurrentUser()->getFullName();
-    this->labelBalance->Text = "**********";
+    InitLoad();
 }
 MainForm::~MainForm() {
     if (components) {
@@ -24,11 +23,22 @@ void MainForm::ChangeButtonColor(Button ^ button) {
     selectedButton->BackColor = System::Drawing::Color::Teal;
 }
 
-System::Void MainForm::MainForm_Load(System::Object ^ sender,
-                                     System::EventArgs ^ e) {
-    User ^ user = GlobalData::GetCurrentUser();
+void MainForm::InitLoad() {
+
+    this->labelFullName->Text = GlobalData::GetCurrentUser()->getFullName();
+    this->labelBalance->Text = "**********";
     LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm());
     this->headerText->Text = L"DOASHBOARD";
+
+    if (GlobalData::GetCurrentUser()->getRole() == "company") {
+        this->btnCode->Visible = true;
+    }
+
+}
+
+System::Void MainForm::MainForm_Load(System::Object ^ sender,
+                                     System::EventArgs ^ e) {
+    
 }
 System::Void MainForm::btnAccount_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
@@ -54,6 +64,15 @@ System::Void MainForm::btnHistory_Click(System::Object ^ sender,
     ChangeButtonColor(btnHistory);
     this->headerText->Text = L"LỊCH SỬ";
 }
+
+System::Void MainForm::btnCode_Click(System::Object ^ sender,
+                                     System::EventArgs ^ e) {
+    LoadChildForm::LoadForm(this->panelContent, gcnew CodeForm());
+    ChangeButtonColor(btnCode);
+    this->headerText->Text = L"QUẢN LÍ CODE";
+}
+
+
 System::Void MainForm::btnLogout_Click(System::Object ^ sender,
                                        System::EventArgs ^ e) {
     System::Windows::Forms::DialogResult result;

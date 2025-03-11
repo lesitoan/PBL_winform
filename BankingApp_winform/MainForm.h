@@ -6,6 +6,7 @@
 #include "TransferMoneyForm.h"
 #include "User.h"
 #include "WithdrawMoneyForm.h"
+#include "CodeForm.h"
 
 namespace BankingAppwinform {
 
@@ -43,6 +44,12 @@ ref class MainForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel3;
     System::Windows::Forms::Panel ^ panelx;
     System::Windows::Forms::Panel ^ panelContent;
+
+  private:
+    System::Windows::Forms::Button ^ btnCode;
+
+  private:
+
     System::ComponentModel::IContainer ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -52,6 +59,7 @@ ref class MainForm : public System::Windows::Forms::Form {
             (gcnew System::ComponentModel::ComponentResourceManager(
                 MainForm::typeid));
         this->panelNav = (gcnew System::Windows::Forms::Panel());
+        this->btnCode = (gcnew System::Windows::Forms::Button());
         this->btnMenu = (gcnew System::Windows::Forms::Button());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
@@ -85,6 +93,7 @@ ref class MainForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->panelNav->Controls->Add(this->btnCode);
         this->panelNav->Controls->Add(this->btnMenu);
         this->panelNav->Controls->Add(this->panel2);
         this->panelNav->Controls->Add(this->btnLogout);
@@ -101,6 +110,34 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panelNav->Name = L"panelNav";
         this->panelNav->Size = System::Drawing::Size(207, 561);
         this->panelNav->TabIndex = 1;
+        //
+        // btnCode
+        //
+        this->btnCode->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnCode->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnCode->FlatAppearance->BorderSize = 0;
+        this->btnCode->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnCode->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnCode->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnCode->ForeColor = System::Drawing::SystemColors::HighlightText;
+        this->btnCode->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnCode->Location = System::Drawing::Point(0, 374);
+        this->btnCode->Name = L"btnCode";
+        this->btnCode->Size = System::Drawing::Size(207, 58);
+        this->btnCode->TabIndex = 15;
+        this->btnCode->Text = L"                QUẢN LÍ CODE";
+        this->btnCode->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnCode->UseVisualStyleBackColor = false;
+        this->btnCode->Visible = false;
+        this->btnCode->Click +=
+            gcnew System::EventHandler(this, &MainForm::btnCode_Click);
         //
         // btnMenu
         //
@@ -467,6 +504,7 @@ ref class MainForm : public System::Windows::Forms::Form {
     bool isOpenNav = true;
     Button ^ selectedButton = nullptr;
     void ChangeButtonColor(Button ^ button);
+    void InitLoad();
 
   private:
     System::Void MainForm_Load(System::Object ^ sender, System::EventArgs ^ e);
@@ -493,5 +531,8 @@ ref class MainForm : public System::Windows::Forms::Form {
   private:
     System::Void btnShowBalance_CheckedChanged(System::Object ^ sender,
                                                System::EventArgs ^ e);
+
+  private:
+    System::Void btnCode_Click(System::Object ^ sender, System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

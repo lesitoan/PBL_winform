@@ -90,6 +90,9 @@
     <ClCompile Include="CompanyBillingForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
+    <ClCompile Include="CodeForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -174,6 +177,9 @@
     </ClInclude>
     <ClInclude Include="RecurringPayments.h">
       <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="CodeForm.h">
+      <Filter>Form</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

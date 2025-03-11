@@ -1,7 +1,8 @@
 ﻿#pragma once
-#include "Companies.h"
-#include "CompanyBillingForm.h"
+#include "User.h"
 
+#include "CompanyBillingForm.h"
+#include "HandleFile.h"
 ref class AdminForm;
 
 namespace BankingAppwinform {
@@ -224,10 +225,6 @@ ref class CompanyForm : public System::Windows::Forms::Form {
     void LoadCompanies(int serviceId);
     void OnCompanyClick(Object ^ sender, EventArgs ^ e);
     void OnUndoClick(Object ^ sender, EventArgs ^ e);
-
-
-
-    array<Companies ^> ^ GetFakeCompanies();
     
     private
       : System::Void
