@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "PaymentCodes.h"
 #include "RecurringPayments.h"
+#include "HandleFile.h"
 
 ref class AdminForm;
 namespace BankingAppwinform {
@@ -18,7 +19,7 @@ using namespace System::Drawing;
 public
 ref class CompanyBillingForm : public System::Windows::Forms::Form {
   public:
-    CompanyBillingForm(int companyId);
+    CompanyBillingForm(int companyAccountNumber);
 
   protected:
     /// <summary>
@@ -563,40 +564,26 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
 #pragma endregion
 
 
-    void LoadPaymentCodes() {
-        dataGridViewCodes->Rows->Clear(); // Xóa dữ liệu cũ nếu có
+    void LoadPaymentCodes(int companyAccountNumber) {
+        dataGridViewCodes->Rows->Clear();
 
-        array<PaymentCodes ^> ^ paymentCodes = GetFakePaymentCodes();
+        array<PaymentCodes ^> ^ paymentCodes = HandleFile::ReadCodeArray("codes.dat");
+        if (paymentCodes == nullptr || paymentCodes->Length == 0)
+            return;
 
         for each (PaymentCodes ^ code in paymentCodes) {
+            if (code->CompanyAccountNumber != companyAccountNumber)
+                continue;
+
             dataGridViewCodes->Rows->Add(
-                code->Id, code->Code,
+                code->CompanyAccountNumber, code->Code,
                 code->Amount.ToString(
                     "N0"), // Hiển thị số có dấu phân cách (VD: 10,000)
-                code->Status == 0 ? "Chưa thanh toán" : "Đã thanh toán",
+                code->Status == 0 ? L"Chưa thanh toán" : L"Đã thanh toán",
                 code->CreatedDate.ToString("dd/MM/yyyy"),
                 code->ExpiredDate.ToString("dd/MM/yyyy"));
         }
     }
-
-  array<PaymentCodes ^> ^
-      GetFakePaymentCodes() {
-          array<PaymentCodes ^> ^ paymentCodes =
-              gcnew array<PaymentCodes ^>(10);
-
-          for (int i = 0; i < 10; i++) {
-              paymentCodes[i] = gcnew PaymentCodes(
-                  i + 1,                // id
-                  (i % 3) + 1,          // companyId (chia ngẫu nhiên 3 công ty)
-                  "PAY" + i.ToString(), // code (PAY0, PAY1, ...)
-                  (i + 1) * 10000,      // amount (10000, 20000, ..., 100000)
-                  (i % 2),              // status (0 hoặc 1)
-                  DateTime::Now,        // createdDate
-                  DateTime::Now.AddDays(30) // expiredDate (hết hạn sau 30 ngày)
-              );
-          }
-          return paymentCodes;
-      }
 
   array<RecurringPayments ^> ^
       GetFakeRecurringPayments() {

@@ -193,3 +193,68 @@ array<Services ^> ^ HandleFile::ReadServicesArray(String ^ filePath) {
         return nullptr;
     }
 }
+
+bool HandleFile::WriteCodeArray(array<PaymentCodes ^> ^ codes,
+                                String ^ filePath) {
+    try {
+        FileStream ^ fs = gcnew FileStream(filePath, FileMode::Create);
+        BinaryWriter ^ writer = gcnew BinaryWriter(fs);
+        writer->Write(codes->Length);
+        for each (PaymentCodes ^ code in codes) {
+            writer->Write(code->Id);
+            writer->Write(code->CompanyAccountNumber);
+            writer->Write(code->Code);
+            writer->Write(code->Amount);
+            writer->Write(code->Status);
+            writer->Write(code->CreatedDate.ToString());
+            writer->Write(code->ExpiredDate.ToString());
+        }
+        writer->Close();
+        fs->Close();
+        return true;
+    } catch (Exception ^) {
+        // MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
+        // MessageBoxIcon::Warning);
+        return false;
+    }
+}
+
+array<PaymentCodes ^> ^ HandleFile::ReadCodeArray(String ^ filePath) {
+    try {
+        if (!File::Exists(filePath)) {
+            return gcnew array<PaymentCodes ^>(0);
+        }
+
+        FileStream ^ fs = gcnew FileStream(filePath, FileMode::OpenOrCreate);
+        BinaryReader ^ reader = gcnew BinaryReader(fs);
+
+        if (fs->Length == 0) {
+            reader->Close();
+            fs->Close();
+            return gcnew array<PaymentCodes ^>(0);
+        }
+
+        int count = reader->ReadInt32();
+        array<PaymentCodes ^> ^ codes = gcnew array<PaymentCodes ^>(count);
+
+        for (int i = 0; i < count; i++) {
+            int _id = reader->ReadInt32();
+            int _companyAccountNumber = reader->ReadInt32();
+            String ^ _code = reader->ReadString();
+            int _amount = reader->ReadInt32();
+            int _status = reader->ReadInt32();
+            DateTime _createdDate = DateTime::Parse(reader->ReadString());
+            DateTime _expiredDate = DateTime::Parse(reader->ReadString());
+            codes[i] =
+                gcnew PaymentCodes(_id, _companyAccountNumber, _code, _amount,
+                                   _status, _createdDate, _expiredDate);
+        }
+        reader->Close();
+        fs->Close();
+        return codes;
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
+                         MessageBoxIcon::Warning);
+        return nullptr;
+    }
+}

@@ -7,6 +7,7 @@
 #include "User.h"
 #include "WithdrawMoneyForm.h"
 #include "CodeForm.h"
+#include "ServicePaymentForm.h"
 
 namespace BankingAppwinform {
 
@@ -49,6 +50,9 @@ ref class MainForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Button ^ btnCode;
 
   private:
+    System::Windows::Forms::Button ^ btnServicePayment;
+
+  private:
 
     System::ComponentModel::IContainer ^ components;
 
@@ -59,18 +63,19 @@ ref class MainForm : public System::Windows::Forms::Form {
             (gcnew System::ComponentModel::ComponentResourceManager(
                 MainForm::typeid));
         this->panelNav = (gcnew System::Windows::Forms::Panel());
+        this->btnHistory = (gcnew System::Windows::Forms::Button());
+        this->btnServicePayment = (gcnew System::Windows::Forms::Button());
         this->btnCode = (gcnew System::Windows::Forms::Button());
-        this->btnMenu = (gcnew System::Windows::Forms::Button());
+        this->btnWithdraw = (gcnew System::Windows::Forms::Button());
+        this->btnTransfer = (gcnew System::Windows::Forms::Button());
+        this->btnAccount = (gcnew System::Windows::Forms::Button());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
         this->labelFullName = (gcnew System::Windows::Forms::Label());
         this->btnShowBalance = (gcnew System::Windows::Forms::CheckBox());
         this->labelBalance = (gcnew System::Windows::Forms::Label());
+        this->btnMenu = (gcnew System::Windows::Forms::Button());
         this->btnLogout = (gcnew System::Windows::Forms::Button());
-        this->btnHistory = (gcnew System::Windows::Forms::Button());
-        this->btnWithdraw = (gcnew System::Windows::Forms::Button());
-        this->btnTransfer = (gcnew System::Windows::Forms::Button());
-        this->btnAccount = (gcnew System::Windows::Forms::Button());
         this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->headerText = (gcnew System::Windows::Forms::Label());
@@ -93,14 +98,15 @@ ref class MainForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->panelNav->Controls->Add(this->btnCode);
-        this->panelNav->Controls->Add(this->btnMenu);
-        this->panelNav->Controls->Add(this->panel2);
-        this->panelNav->Controls->Add(this->btnLogout);
         this->panelNav->Controls->Add(this->btnHistory);
+        this->panelNav->Controls->Add(this->btnServicePayment);
+        this->panelNav->Controls->Add(this->btnCode);
         this->panelNav->Controls->Add(this->btnWithdraw);
         this->panelNav->Controls->Add(this->btnTransfer);
         this->panelNav->Controls->Add(this->btnAccount);
+        this->panelNav->Controls->Add(this->panel2);
+        this->panelNav->Controls->Add(this->btnMenu);
+        this->panelNav->Controls->Add(this->btnLogout);
         this->panelNav->Cursor = System::Windows::Forms::Cursors::Default;
         this->panelNav->Dock = System::Windows::Forms::DockStyle::Left;
         this->panelNav->ForeColor =
@@ -111,6 +117,67 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panelNav->Size = System::Drawing::Size(207, 561);
         this->panelNav->TabIndex = 1;
         //
+        // btnHistory
+        //
+        this->btnHistory->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnHistory->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnHistory->Dock = System::Windows::Forms::DockStyle::Top;
+        this->btnHistory->FlatAppearance->BorderSize = 0;
+        this->btnHistory->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnHistory->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnHistory->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnHistory->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnHistory->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnHistory.Image")));
+        this->btnHistory->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnHistory->Location = System::Drawing::Point(0, 402);
+        this->btnHistory->Name = L"btnHistory";
+        this->btnHistory->Size = System::Drawing::Size(207, 58);
+        this->btnHistory->TabIndex = 11;
+        this->btnHistory->Text = L"                    LỊCH SỬ";
+        this->btnHistory->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnHistory->UseVisualStyleBackColor = false;
+        this->btnHistory->Click +=
+            gcnew System::EventHandler(this, &MainForm::btnHistory_Click);
+        //
+        // btnServicePayment
+        //
+        this->btnServicePayment->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnServicePayment->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnServicePayment->Dock = System::Windows::Forms::DockStyle::Top;
+        this->btnServicePayment->FlatAppearance->BorderSize = 0;
+        this->btnServicePayment->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnServicePayment->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
+        this->btnServicePayment->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnServicePayment->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnServicePayment->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnServicePayment->Location = System::Drawing::Point(0, 344);
+        this->btnServicePayment->Name = L"btnServicePayment";
+        this->btnServicePayment->Size = System::Drawing::Size(207, 58);
+        this->btnServicePayment->TabIndex = 16;
+        this->btnServicePayment->Text = L"                    TT DỊCH VỤ";
+        this->btnServicePayment->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnServicePayment->UseVisualStyleBackColor = false;
+        this->btnServicePayment->Click += gcnew System::EventHandler(
+            this, &MainForm::btnServicePayment_Click);
+        //
         // btnCode
         //
         this->btnCode->BackColor = System::Drawing::Color::FromArgb(
@@ -118,6 +185,7 @@ ref class MainForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->btnCode->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnCode->Dock = System::Windows::Forms::DockStyle::Top;
         this->btnCode->FlatAppearance->BorderSize = 0;
         this->btnCode->FlatAppearance->MouseDownBackColor =
             System::Drawing::Color::Teal;
@@ -127,7 +195,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnCode->ForeColor = System::Drawing::SystemColors::HighlightText;
         this->btnCode->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnCode->Location = System::Drawing::Point(0, 374);
+        this->btnCode->Location = System::Drawing::Point(0, 286);
         this->btnCode->Name = L"btnCode";
         this->btnCode->Size = System::Drawing::Size(207, 58);
         this->btnCode->TabIndex = 15;
@@ -139,33 +207,98 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnCode->Click +=
             gcnew System::EventHandler(this, &MainForm::btnCode_Click);
         //
-        // btnMenu
+        // btnWithdraw
         //
-        this->btnMenu->BackColor = System::Drawing::Color::FromArgb(
+        this->btnWithdraw->BackColor = System::Drawing::Color::FromArgb(
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->btnMenu->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnMenu->FlatAppearance->BorderSize = 0;
-        this->btnMenu->FlatAppearance->MouseDownBackColor =
+        this->btnWithdraw->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnWithdraw->Dock = System::Windows::Forms::DockStyle::Top;
+        this->btnWithdraw->FlatAppearance->BorderSize = 0;
+        this->btnWithdraw->FlatAppearance->MouseDownBackColor =
             System::Drawing::Color::Teal;
-        this->btnMenu->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->btnMenu->Font = (gcnew System::Drawing::Font(
+        this->btnWithdraw->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnWithdraw->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnMenu->ForeColor = System::Drawing::SystemColors::HighlightText;
-        this->btnMenu->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"btnMenu.Image")));
-        this->btnMenu->ImageAlign =
+        this->btnWithdraw->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnWithdraw->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnWithdraw.Image")));
+        this->btnWithdraw->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnMenu->Location = System::Drawing::Point(0, 0);
-        this->btnMenu->Name = L"btnMenu";
-        this->btnMenu->Size = System::Drawing::Size(207, 42);
-        this->btnMenu->TabIndex = 13;
-        this->btnMenu->TextAlign =
+        this->btnWithdraw->Location = System::Drawing::Point(0, 228);
+        this->btnWithdraw->Name = L"btnWithdraw";
+        this->btnWithdraw->Size = System::Drawing::Size(207, 58);
+        this->btnWithdraw->TabIndex = 10;
+        this->btnWithdraw->Text = L"                   RÚT TIỀN";
+        this->btnWithdraw->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnMenu->UseVisualStyleBackColor = false;
-        this->btnMenu->Click +=
-            gcnew System::EventHandler(this, &MainForm::btnMenu_Click);
+        this->btnWithdraw->UseVisualStyleBackColor = false;
+        this->btnWithdraw->Click +=
+            gcnew System::EventHandler(this, &MainForm::btnWithdraw_Click);
+        //
+        // btnTransfer
+        //
+        this->btnTransfer->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnTransfer->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnTransfer->Dock = System::Windows::Forms::DockStyle::Top;
+        this->btnTransfer->FlatAppearance->BorderSize = 0;
+        this->btnTransfer->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnTransfer->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnTransfer->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnTransfer->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnTransfer->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnTransfer.Image")));
+        this->btnTransfer->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnTransfer->Location = System::Drawing::Point(0, 170);
+        this->btnTransfer->Name = L"btnTransfer";
+        this->btnTransfer->Size = System::Drawing::Size(207, 58);
+        this->btnTransfer->TabIndex = 9;
+        this->btnTransfer->Text = L"                   CHUYỂN TIỀN";
+        this->btnTransfer->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnTransfer->UseVisualStyleBackColor = false;
+        this->btnTransfer->Click +=
+            gcnew System::EventHandler(this, &MainForm::btnTransfer_Click);
+        //
+        // btnAccount
+        //
+        this->btnAccount->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnAccount->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnAccount->Dock = System::Windows::Forms::DockStyle::Top;
+        this->btnAccount->FlatAppearance->BorderSize = 0;
+        this->btnAccount->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnAccount->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnAccount->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnAccount->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnAccount->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnAccount.Image")));
+        this->btnAccount->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnAccount->Location = System::Drawing::Point(0, 112);
+        this->btnAccount->Name = L"btnAccount";
+        this->btnAccount->Size = System::Drawing::Size(207, 58);
+        this->btnAccount->TabIndex = 0;
+        this->btnAccount->Text = L"                   TÀI KHOẢN";
+        this->btnAccount->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnAccount->UseVisualStyleBackColor = false;
+        this->btnAccount->Click +=
+            gcnew System::EventHandler(this, &MainForm::btnAccount_Click);
         //
         // panel2
         //
@@ -173,6 +306,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panel2->Controls->Add(this->labelFullName);
         this->panel2->Controls->Add(this->btnShowBalance);
         this->panel2->Controls->Add(this->labelBalance);
+        this->panel2->Dock = System::Windows::Forms::DockStyle::Top;
         this->panel2->Location = System::Drawing::Point(0, 42);
         this->panel2->Name = L"panel2";
         this->panel2->Size = System::Drawing::Size(207, 70);
@@ -240,6 +374,35 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->labelBalance->TextAlign =
             System::Drawing::ContentAlignment::MiddleCenter;
         //
+        // btnMenu
+        //
+        this->btnMenu->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnMenu->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnMenu->Dock = System::Windows::Forms::DockStyle::Top;
+        this->btnMenu->FlatAppearance->BorderSize = 0;
+        this->btnMenu->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnMenu->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnMenu->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnMenu->ForeColor = System::Drawing::SystemColors::HighlightText;
+        this->btnMenu->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnMenu.Image")));
+        this->btnMenu->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnMenu->Location = System::Drawing::Point(0, 0);
+        this->btnMenu->Name = L"btnMenu";
+        this->btnMenu->Size = System::Drawing::Size(207, 42);
+        this->btnMenu->TabIndex = 13;
+        this->btnMenu->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnMenu->UseVisualStyleBackColor = false;
+        this->btnMenu->Click +=
+            gcnew System::EventHandler(this, &MainForm::btnMenu_Click);
+        //
         // btnLogout
         //
         this->btnLogout->Anchor =
@@ -270,126 +433,6 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnLogout->UseVisualStyleBackColor = false;
         this->btnLogout->Click +=
             gcnew System::EventHandler(this, &MainForm::btnLogout_Click);
-        //
-        // btnHistory
-        //
-        this->btnHistory->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->btnHistory->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnHistory->FlatAppearance->BorderSize = 0;
-        this->btnHistory->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
-        this->btnHistory->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->btnHistory->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnHistory->ForeColor =
-            System::Drawing::SystemColors::HighlightText;
-        this->btnHistory->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"btnHistory.Image")));
-        this->btnHistory->ImageAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnHistory->Location = System::Drawing::Point(-3, 310);
-        this->btnHistory->Name = L"btnHistory";
-        this->btnHistory->Size = System::Drawing::Size(207, 58);
-        this->btnHistory->TabIndex = 11;
-        this->btnHistory->Text = L"                    LỊCH SỬ";
-        this->btnHistory->TextAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnHistory->UseVisualStyleBackColor = false;
-        this->btnHistory->Click +=
-            gcnew System::EventHandler(this, &MainForm::btnHistory_Click);
-        //
-        // btnWithdraw
-        //
-        this->btnWithdraw->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->btnWithdraw->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnWithdraw->FlatAppearance->BorderSize = 0;
-        this->btnWithdraw->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
-        this->btnWithdraw->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->btnWithdraw->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnWithdraw->ForeColor =
-            System::Drawing::SystemColors::HighlightText;
-        this->btnWithdraw->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"btnWithdraw.Image")));
-        this->btnWithdraw->ImageAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnWithdraw->Location = System::Drawing::Point(0, 246);
-        this->btnWithdraw->Name = L"btnWithdraw";
-        this->btnWithdraw->Size = System::Drawing::Size(207, 58);
-        this->btnWithdraw->TabIndex = 10;
-        this->btnWithdraw->Text = L"                   RÚT TIỀN";
-        this->btnWithdraw->TextAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnWithdraw->UseVisualStyleBackColor = false;
-        this->btnWithdraw->Click +=
-            gcnew System::EventHandler(this, &MainForm::btnWithdraw_Click);
-        //
-        // btnTransfer
-        //
-        this->btnTransfer->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->btnTransfer->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnTransfer->FlatAppearance->BorderSize = 0;
-        this->btnTransfer->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
-        this->btnTransfer->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->btnTransfer->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnTransfer->ForeColor =
-            System::Drawing::SystemColors::HighlightText;
-        this->btnTransfer->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"btnTransfer.Image")));
-        this->btnTransfer->ImageAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnTransfer->Location = System::Drawing::Point(0, 182);
-        this->btnTransfer->Name = L"btnTransfer";
-        this->btnTransfer->Size = System::Drawing::Size(207, 58);
-        this->btnTransfer->TabIndex = 9;
-        this->btnTransfer->Text = L"                   CHUYỂN TIỀN";
-        this->btnTransfer->TextAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnTransfer->UseVisualStyleBackColor = false;
-        this->btnTransfer->Click +=
-            gcnew System::EventHandler(this, &MainForm::btnTransfer_Click);
-        //
-        // btnAccount
-        //
-        this->btnAccount->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->btnAccount->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnAccount->FlatAppearance->BorderSize = 0;
-        this->btnAccount->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
-        this->btnAccount->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->btnAccount->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnAccount->ForeColor =
-            System::Drawing::SystemColors::HighlightText;
-        this->btnAccount->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"btnAccount.Image")));
-        this->btnAccount->ImageAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnAccount->Location = System::Drawing::Point(0, 118);
-        this->btnAccount->Name = L"btnAccount";
-        this->btnAccount->Size = System::Drawing::Size(207, 58);
-        this->btnAccount->TabIndex = 0;
-        this->btnAccount->Text = L"                   TÀI KHOẢN";
-        this->btnAccount->TextAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnAccount->UseVisualStyleBackColor = false;
-        this->btnAccount->Click +=
-            gcnew System::EventHandler(this, &MainForm::btnAccount_Click);
         //
         // timer1
         //
@@ -534,5 +577,9 @@ ref class MainForm : public System::Windows::Forms::Form {
 
   private:
     System::Void btnCode_Click(System::Object ^ sender, System::EventArgs ^ e);
+
+  private:
+    System::Void btnServicePayment_Click(System::Object ^ sender,
+                                         System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

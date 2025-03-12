@@ -7,7 +7,7 @@ public
 ref class PaymentCodes {
   private:
     int id;
-    int companyId;
+    int companyAccountNumber;
     String ^ code;
     int amount;
     int status;
@@ -15,21 +15,41 @@ ref class PaymentCodes {
     DateTime expiredDate;
 
   public:
-    PaymentCodes(int id, int companyId, String ^ code, int amount, int status,
+    PaymentCodes(int id, int companyAccountNumber, String ^ code, int amount,
+                 int status,
                  DateTime createdDate, DateTime expiredDate) {
         this->id = id;
-        this->companyId = companyId;
+        this->companyAccountNumber = companyAccountNumber;
         this->code = code;
         this->amount = amount;
         this->status = status;
         this->createdDate = createdDate;
         this->expiredDate = expiredDate;
     }
+    PaymentCodes(int companyAccountNumber, String ^ code, int amount, int day) {
+        this->id = 0;
+        this->companyAccountNumber = companyAccountNumber;
+        this->code = code;
+        this->amount = amount;
+        this->status = 0;
+        this->createdDate = DateTime::Now;
+        this->expiredDate = DateTime::Now.AddDays(day);
+    }
+    PaymentCodes() {
+        this->id = 0;
+        this->companyAccountNumber = 0;
+        this->code = "";
+        this->amount = 0;
+        this->status = 0;
+        this->createdDate = DateTime::Now;
+        this->expiredDate = DateTime::Now;
+    }
+
     property int Id {
         int get() { return id; }
     }
-    property int CompanyId {
-        int get() { return companyId; }
+    property int CompanyAccountNumber {
+        int get() { return companyAccountNumber; }
     }
     property String ^ Code {
         String ^ get() { return code; }

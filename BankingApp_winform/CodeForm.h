@@ -1,4 +1,7 @@
 ﻿#pragma once
+#include  "PaymentCodes.h"
+#include "GlobalData.h"
+#include "HandleFile.h"
 
 namespace BankingAppwinform {
 
@@ -8,6 +11,7 @@ namespace BankingAppwinform {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+    using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Summary for CodeForm
@@ -18,9 +22,7 @@ namespace BankingAppwinform {
 		CodeForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+            loadTableCodes();
 		}
 
 	protected:
@@ -46,13 +48,19 @@ namespace BankingAppwinform {
                 System::Windows::Forms::Panel ^ panel3;
 
               private:
-                System::Windows::Forms::TextBox ^ pin;
+                System::Windows::Forms::TextBox ^ codes;
+
+              private:
+
 
               private:
                 System::Windows::Forms::Panel ^ panel4;
 
               private:
-                System::Windows::Forms::TextBox ^ password;
+                System::Windows::Forms::TextBox ^ pin;
+
+              private:
+
 
               private:
 
@@ -61,7 +69,10 @@ namespace BankingAppwinform {
                 System::Windows::Forms::Label ^ label1;
 
               private:
-                System::Windows::Forms::Button ^ button1;
+                System::Windows::Forms::Button ^ btnAddCode;
+
+              private:
+
 
               protected:
                 System::Windows::Forms::Label ^ label7;
@@ -117,15 +128,15 @@ namespace BankingAppwinform {
                         dataGridViewCellStyle3 =
                         (gcnew System::Windows::Forms::DataGridViewCellStyle());
                     this->panel1 = (gcnew System::Windows::Forms::Panel());
-                    this->panel2 = (gcnew System::Windows::Forms::Panel());
-                    this->pin = (gcnew System::Windows::Forms::TextBox());
-                    this->panel3 = (gcnew System::Windows::Forms::Panel());
-                    this->password = (gcnew System::Windows::Forms::TextBox());
-                    this->panel4 = (gcnew System::Windows::Forms::Panel());
-                    this->label1 = (gcnew System::Windows::Forms::Label());
-                    this->button1 = (gcnew System::Windows::Forms::Button());
-                    this->label7 = (gcnew System::Windows::Forms::Label());
                     this->label2 = (gcnew System::Windows::Forms::Label());
+                    this->btnAddCode = (gcnew System::Windows::Forms::Button());
+                    this->panel4 = (gcnew System::Windows::Forms::Panel());
+                    this->pin = (gcnew System::Windows::Forms::TextBox());
+                    this->label1 = (gcnew System::Windows::Forms::Label());
+                    this->label7 = (gcnew System::Windows::Forms::Label());
+                    this->panel3 = (gcnew System::Windows::Forms::Panel());
+                    this->codes = (gcnew System::Windows::Forms::TextBox());
+                    this->panel2 = (gcnew System::Windows::Forms::Panel());
                     this->dataGridViewUsers =
                         (gcnew System::Windows::Forms::DataGridView());
                     this->Column1 = (gcnew System::Windows::Forms::
@@ -135,9 +146,9 @@ namespace BankingAppwinform {
                     this->Column3 = (gcnew System::Windows::Forms::
                                          DataGridViewTextBoxColumn());
                     this->panel1->SuspendLayout();
-                    this->panel2->SuspendLayout();
-                    this->panel3->SuspendLayout();
                     this->panel4->SuspendLayout();
+                    this->panel3->SuspendLayout();
+                    this->panel2->SuspendLayout();
                     (cli::safe_cast<
                          System::ComponentModel::ISupportInitialize ^>(
                          this->dataGridViewUsers))
@@ -148,7 +159,7 @@ namespace BankingAppwinform {
                     //
                     this->panel1->BackColor = System::Drawing::Color::Teal;
                     this->panel1->Controls->Add(this->label2);
-                    this->panel1->Controls->Add(this->button1);
+                    this->panel1->Controls->Add(this->btnAddCode);
                     this->panel1->Controls->Add(this->panel4);
                     this->panel1->Controls->Add(this->label1);
                     this->panel1->Controls->Add(this->label7);
@@ -160,22 +171,70 @@ namespace BankingAppwinform {
                     this->panel1->Size = System::Drawing::Size(296, 499);
                     this->panel1->TabIndex = 0;
                     //
-                    // panel2
+                    // label2
                     //
-                    this->panel2->Anchor =
+                    this->label2->Anchor =
                         static_cast<System::Windows::Forms::AnchorStyles>(
-                            (((System::Windows::Forms::AnchorStyles::Top |
-                               System::Windows::Forms::AnchorStyles::Bottom) |
+                            ((System::Windows::Forms::AnchorStyles::Top |
                               System::Windows::Forms::AnchorStyles::Left) |
                              System::Windows::Forms::AnchorStyles::Right));
-                    this->panel2->BackColor = System::Drawing::Color::Teal;
-                    this->panel2->Controls->Add(this->dataGridViewUsers);
-                    this->panel2->Location = System::Drawing::Point(299, 0);
-                    this->panel2->Margin =
-                        System::Windows::Forms::Padding(20, 3, 3, 3);
-                    this->panel2->Name = L"panel2";
-                    this->panel2->Size = System::Drawing::Size(359, 499);
-                    this->panel2->TabIndex = 1;
+                    this->label2->Cursor =
+                        System::Windows::Forms::Cursors::Hand;
+                    this->label2->Font =
+                        (gcnew System::Drawing::Font(L"UTM Daxline Medium", 8));
+                    this->label2->ForeColor =
+                        System::Drawing::Color::Transparent;
+                    this->label2->ImeMode =
+                        System::Windows::Forms::ImeMode::NoControl;
+                    this->label2->Location = System::Drawing::Point(21, 78);
+                    this->label2->Name = L"label2";
+                    this->label2->Size = System::Drawing::Size(249, 22);
+                    this->label2->TabIndex = 64;
+                    this->label2->Text =
+                        L"Nhập CODE (Mỗi code 1 dòng, vd: ABCDEF,120000,5)";
+                    //
+                    // btnAddCode
+                    //
+                    this->btnAddCode->Anchor =
+                        static_cast<System::Windows::Forms::AnchorStyles>(
+                            ((System::Windows::Forms::AnchorStyles::Bottom |
+                              System::Windows::Forms::AnchorStyles::Left) |
+                             System::Windows::Forms::AnchorStyles::Right));
+                    this->btnAddCode->BackColor =
+                        System::Drawing::SystemColors::Info;
+                    this->btnAddCode->Cursor =
+                        System::Windows::Forms::Cursors::Hand;
+                    this->btnAddCode->FlatAppearance->BorderSize = 0;
+                    this->btnAddCode->FlatStyle =
+                        System::Windows::Forms::FlatStyle::Flat;
+                    this->btnAddCode->Font = (gcnew System::Drawing::Font(
+                        L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+                    this->btnAddCode->ForeColor = System::Drawing::Color::Teal;
+                    this->btnAddCode->ImeMode =
+                        System::Windows::Forms::ImeMode::NoControl;
+                    this->btnAddCode->Location =
+                        System::Drawing::Point(21, 396);
+                    this->btnAddCode->Name = L"btnAddCode";
+                    this->btnAddCode->Size = System::Drawing::Size(252, 40);
+                    this->btnAddCode->TabIndex = 58;
+                    this->btnAddCode->Text = L"OK";
+                    this->btnAddCode->UseVisualStyleBackColor = false;
+                    this->btnAddCode->Click += gcnew System::EventHandler(
+                        this, &CodeForm::btnAddCode_Click);
+                    //
+                    // panel4
+                    //
+                    this->panel4->Anchor =
+                        static_cast<System::Windows::Forms::AnchorStyles>(
+                            ((System::Windows::Forms::AnchorStyles::Bottom |
+                              System::Windows::Forms::AnchorStyles::Left) |
+                             System::Windows::Forms::AnchorStyles::Right));
+                    this->panel4->BackColor = System::Drawing::Color::White;
+                    this->panel4->Controls->Add(this->pin);
+                    this->panel4->Location = System::Drawing::Point(21, 334);
+                    this->panel4->Name = L"panel4";
+                    this->panel4->Size = System::Drawing::Size(252, 37);
+                    this->panel4->TabIndex = 61;
                     //
                     // pin
                     //
@@ -189,60 +248,12 @@ namespace BankingAppwinform {
                         System::Windows::Forms::BorderStyle::None;
                     this->pin->Font =
                         (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-                    this->pin->Location = System::Drawing::Point(14, 12);
-                    this->pin->MaxLength = 300;
+                    this->pin->Location = System::Drawing::Point(18, 6);
+                    this->pin->MaxLength = 15;
                     this->pin->Multiline = true;
                     this->pin->Name = L"pin";
-                    this->pin->Size = System::Drawing::Size(226, 179);
+                    this->pin->Size = System::Drawing::Size(231, 28);
                     this->pin->TabIndex = 29;
-                    //
-                    // panel3
-                    //
-                    this->panel3->Anchor =
-                        static_cast<System::Windows::Forms::AnchorStyles>(
-                            (((System::Windows::Forms::AnchorStyles::Top |
-                               System::Windows::Forms::AnchorStyles::Bottom) |
-                              System::Windows::Forms::AnchorStyles::Left) |
-                             System::Windows::Forms::AnchorStyles::Right));
-                    this->panel3->BackColor = System::Drawing::Color::White;
-                    this->panel3->Controls->Add(this->pin);
-                    this->panel3->Location = System::Drawing::Point(21, 103);
-                    this->panel3->Name = L"panel3";
-                    this->panel3->Size = System::Drawing::Size(252, 203);
-                    this->panel3->TabIndex = 62;
-                    //
-                    // password
-                    //
-                    this->password->Anchor =
-                        static_cast<System::Windows::Forms::AnchorStyles>(
-                            (((System::Windows::Forms::AnchorStyles::Top |
-                               System::Windows::Forms::AnchorStyles::Bottom) |
-                              System::Windows::Forms::AnchorStyles::Left) |
-                             System::Windows::Forms::AnchorStyles::Right));
-                    this->password->BorderStyle =
-                        System::Windows::Forms::BorderStyle::None;
-                    this->password->Font =
-                        (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-                    this->password->Location = System::Drawing::Point(18, 6);
-                    this->password->MaxLength = 15;
-                    this->password->Multiline = true;
-                    this->password->Name = L"password";
-                    this->password->Size = System::Drawing::Size(231, 28);
-                    this->password->TabIndex = 29;
-                    //
-                    // panel4
-                    //
-                    this->panel4->Anchor =
-                        static_cast<System::Windows::Forms::AnchorStyles>(
-                            ((System::Windows::Forms::AnchorStyles::Bottom |
-                              System::Windows::Forms::AnchorStyles::Left) |
-                             System::Windows::Forms::AnchorStyles::Right));
-                    this->panel4->BackColor = System::Drawing::Color::White;
-                    this->panel4->Controls->Add(this->password);
-                    this->panel4->Location = System::Drawing::Point(21, 334);
-                    this->panel4->Name = L"panel4";
-                    this->panel4->Size = System::Drawing::Size(252, 37);
-                    this->panel4->TabIndex = 61;
                     //
                     // label1
                     //
@@ -266,32 +277,6 @@ namespace BankingAppwinform {
                     this->label1->TabIndex = 59;
                     this->label1->Text = L"Nhập PIN:";
                     //
-                    // button1
-                    //
-                    this->button1->Anchor =
-                        static_cast<System::Windows::Forms::AnchorStyles>(
-                            ((System::Windows::Forms::AnchorStyles::Bottom |
-                              System::Windows::Forms::AnchorStyles::Left) |
-                             System::Windows::Forms::AnchorStyles::Right));
-                    this->button1->BackColor =
-                        System::Drawing::SystemColors::Info;
-                    this->button1->Cursor =
-                        System::Windows::Forms::Cursors::Hand;
-                    this->button1->FlatAppearance->BorderSize = 0;
-                    this->button1->FlatStyle =
-                        System::Windows::Forms::FlatStyle::Flat;
-                    this->button1->Font = (gcnew System::Drawing::Font(
-                        L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-                    this->button1->ForeColor = System::Drawing::Color::Teal;
-                    this->button1->ImeMode =
-                        System::Windows::Forms::ImeMode::NoControl;
-                    this->button1->Location = System::Drawing::Point(24, 396);
-                    this->button1->Name = L"button1";
-                    this->button1->Size = System::Drawing::Size(252, 40);
-                    this->button1->TabIndex = 58;
-                    this->button1->Text = L"OK";
-                    this->button1->UseVisualStyleBackColor = false;
-                    //
                     // label7
                     //
                     this->label7->Anchor =
@@ -313,27 +298,56 @@ namespace BankingAppwinform {
                     this->label7->TextAlign =
                         System::Drawing::ContentAlignment::MiddleCenter;
                     //
-                    // label2
+                    // panel3
                     //
-                    this->label2->Anchor =
+                    this->panel3->Anchor =
                         static_cast<System::Windows::Forms::AnchorStyles>(
-                            ((System::Windows::Forms::AnchorStyles::Top |
+                            (((System::Windows::Forms::AnchorStyles::Top |
+                               System::Windows::Forms::AnchorStyles::Bottom) |
                               System::Windows::Forms::AnchorStyles::Left) |
                              System::Windows::Forms::AnchorStyles::Right));
-                    this->label2->Cursor =
-                        System::Windows::Forms::Cursors::Hand;
-                    this->label2->Font =
-                        (gcnew System::Drawing::Font(L"UTM Daxline Medium", 8));
-                    this->label2->ForeColor =
-                        System::Drawing::Color::Transparent;
-                    this->label2->ImeMode =
-                        System::Windows::Forms::ImeMode::NoControl;
-                    this->label2->Location = System::Drawing::Point(21, 78);
-                    this->label2->Name = L"label2";
-                    this->label2->Size = System::Drawing::Size(249, 22);
-                    this->label2->TabIndex = 64;
-                    this->label2->Text =
-                        L"Nhập CODE (Mỗi code 1 dòng, vd: ABCDEF,120000 )";
+                    this->panel3->BackColor = System::Drawing::Color::White;
+                    this->panel3->Controls->Add(this->codes);
+                    this->panel3->Location = System::Drawing::Point(21, 103);
+                    this->panel3->Name = L"panel3";
+                    this->panel3->Size = System::Drawing::Size(252, 203);
+                    this->panel3->TabIndex = 62;
+                    //
+                    // codes
+                    //
+                    this->codes->Anchor =
+                        static_cast<System::Windows::Forms::AnchorStyles>(
+                            (((System::Windows::Forms::AnchorStyles::Top |
+                               System::Windows::Forms::AnchorStyles::Bottom) |
+                              System::Windows::Forms::AnchorStyles::Left) |
+                             System::Windows::Forms::AnchorStyles::Right));
+                    this->codes->BorderStyle =
+                        System::Windows::Forms::BorderStyle::None;
+                    this->codes->Font =
+                        (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+                    this->codes->Location = System::Drawing::Point(14, 12);
+                    this->codes->MaxLength = 300;
+                    this->codes->Multiline = true;
+                    this->codes->Name = L"codes";
+                    this->codes->Size = System::Drawing::Size(226, 179);
+                    this->codes->TabIndex = 29;
+                    //
+                    // panel2
+                    //
+                    this->panel2->Anchor =
+                        static_cast<System::Windows::Forms::AnchorStyles>(
+                            (((System::Windows::Forms::AnchorStyles::Top |
+                               System::Windows::Forms::AnchorStyles::Bottom) |
+                              System::Windows::Forms::AnchorStyles::Left) |
+                             System::Windows::Forms::AnchorStyles::Right));
+                    this->panel2->BackColor = System::Drawing::Color::Teal;
+                    this->panel2->Controls->Add(this->dataGridViewUsers);
+                    this->panel2->Location = System::Drawing::Point(299, 0);
+                    this->panel2->Margin =
+                        System::Windows::Forms::Padding(20, 3, 3, 3);
+                    this->panel2->Name = L"panel2";
+                    this->panel2->Size = System::Drawing::Size(359, 499);
+                    this->panel2->TabIndex = 1;
                     //
                     // dataGridViewUsers
                     //
@@ -468,11 +482,11 @@ namespace BankingAppwinform {
                     this->Text = L"CodeForm";
                     this->panel1->ResumeLayout(false);
                     this->panel1->PerformLayout();
-                    this->panel2->ResumeLayout(false);
-                    this->panel3->ResumeLayout(false);
-                    this->panel3->PerformLayout();
                     this->panel4->ResumeLayout(false);
                     this->panel4->PerformLayout();
+                    this->panel3->ResumeLayout(false);
+                    this->panel3->PerformLayout();
+                    this->panel2->ResumeLayout(false);
                     (cli::safe_cast<
                          System::ComponentModel::ISupportInitialize ^>(
                          this->dataGridViewUsers))
@@ -480,5 +494,83 @@ namespace BankingAppwinform {
                     this->ResumeLayout(false);
                 }
 #pragma endregion
-	};
-}
+              private:
+                System::Void btnAddCode_Click(System::Object ^ sender,
+                                              System::EventArgs ^ e) {
+                    array<PaymentCodes ^> ^ codes = createListCode(this->codes);
+                    array<PaymentCodes ^> ^ oldCodes =
+                        HandleFile::ReadCodeArray("codes.dat");
+                    bool isSaveCode = false;
+                    if (oldCodes == nullptr || oldCodes->Length == 0) {
+                        isSaveCode = HandleFile::WriteCodeArray(codes,
+                                                             "codes.dat");
+                    } else {
+                        List<PaymentCodes ^> ^ newCodes =
+                            gcnew List<PaymentCodes ^>();
+                        for each (PaymentCodes ^ code in oldCodes) {
+                            newCodes->Add(code);
+                        }
+                        for each (PaymentCodes ^ code in codes) {
+                            newCodes->Add(code);
+                        }
+                        isSaveCode = HandleFile::WriteCodeArray(
+                            newCodes->ToArray(),
+                                                   "codes.dat");
+                    }
+                    if (isSaveCode) {
+                        MessageBox::Show("Thêm code thành công");
+                        loadTableCodes();
+                    } else {
+                        MessageBox::Show("Thêm code thất bại");
+                    }
+                }
+
+
+                array<PaymentCodes^> ^ createListCode(TextBox ^ textBox) {
+                    List<PaymentCodes ^> ^ items = gcnew List<PaymentCodes ^>();
+
+                    array<String ^> ^ lines = textBox->Text->Split(
+                        gcnew array<wchar_t>{'\n'},
+                        StringSplitOptions::RemoveEmptyEntries);
+
+                    for each (String ^ line in lines) {
+                        array<String ^> ^ parts =
+                            line->Split(gcnew array<wchar_t>{','},
+                                        StringSplitOptions::RemoveEmptyEntries);
+
+                        if (parts->Length != 3) {
+                            continue;
+                        }
+
+                        String ^ code = parts[0]->Trim();
+                        int price = Int32::Parse(parts[1]->Trim());
+                        int day = Int32::Parse(parts[2]->Trim());
+
+                        // validate code, price, day
+                        
+                        //
+
+                        int companyAccNumber = GlobalData::GetCurrentUser()->getAccountNumber();
+
+                        PaymentCodes^ item = gcnew PaymentCodes(companyAccNumber , code, price, day);
+                        items->Add(item);
+                    }
+
+                    return items->ToArray();
+                }
+
+                void loadTableCodes() {
+                    array<PaymentCodes ^> ^ codes =
+                        HandleFile::ReadCodeArray("codes.dat");
+                    if (codes == nullptr || codes->Length == 0) {
+                        return;
+                    }
+                    dataGridViewUsers->Rows->Clear();
+                    for each (PaymentCodes ^ code in codes) {
+                        String ^ status = code->Status ? L"Đã thanh toán" : L"Chưa thanh toán";
+                        dataGridViewUsers->Rows->Add(code->Code, code->Amount, status);
+                    }
+                }
+
+          };
+          }

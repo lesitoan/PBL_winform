@@ -2,6 +2,7 @@
 #include "User.h"
 #include "Transaction.h"
 #include "Services.h"
+#include "PaymentCodes.h"
 
 using namespace System;
 using namespace System::IO;
@@ -23,5 +24,9 @@ ref class HandleFile {
     static bool WriteServicesArray(array<Services ^> ^ services,
                                       String ^ filePath);
     static array<Services ^> ^ ReadServicesArray(String ^ filePath);
+
+    static bool WriteCodeArray(array<PaymentCodes ^> ^ codes,
+                                   String ^ filePath);
+    static array<PaymentCodes ^> ^ ReadCodeArray(String ^ filePath);
 
 };

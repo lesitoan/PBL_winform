@@ -125,6 +125,7 @@
     <ClCompile Include="CompanyBillingForm.cpp" />
     <ClCompile Include="CompanyForm.cpp" />
     <ClCompile Include="EditUserForm.cpp" />
+    <ClCompile Include="ServicePaymentForm.cpp" />
     <ClCompile Include="TableUsersForm.cpp" />
     <ClCompile Include="AdminForm.cpp" />
     <ClCompile Include="AdminServiceForm.cpp" />
@@ -151,7 +152,6 @@
     <ClInclude Include="CodeForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Companies.h" />
     <ClInclude Include="CompanyBillingForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -163,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="PaymentCodes.h" />
     <ClInclude Include="RecurringPayments.h" />
+    <ClInclude Include="ServicePaymentForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Services.h" />
     <ClInclude Include="TableUsersForm.h">
       <FileType>CppForm</FileType>
@@ -230,6 +233,9 @@
     <EmbeddedResource Include="EditUserForm.resx">
       <DependentUpon>EditUserForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ServicePaymentForm.resx">
+      <DependentUpon>ServicePaymentForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TableUsersForm.resx">
       <DependentUpon>TableUsersForm.h</DependentUpon>
     </EmbeddedResource>
@@ -279,6 +285,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
+    <None Include="codes.dat" />
+    <None Include="services.dat" />
+    <None Include="transactions.dat" />
+    <None Include="users.dat" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="BankingApp_winform.rc" />

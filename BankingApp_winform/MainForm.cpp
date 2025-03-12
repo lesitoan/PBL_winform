@@ -32,7 +32,8 @@ void MainForm::InitLoad() {
 
     if (GlobalData::GetCurrentUser()->getRole() == "company") {
         this->btnCode->Visible = true;
-    }
+        this->btnServicePayment->Visible = false;
+    } 
 
 }
 
@@ -70,6 +71,13 @@ System::Void MainForm::btnCode_Click(System::Object ^ sender,
     LoadChildForm::LoadForm(this->panelContent, gcnew CodeForm());
     ChangeButtonColor(btnCode);
     this->headerText->Text = L"QUẢN LÍ CODE";
+}
+
+System::Void MainForm::btnServicePayment_Click(System::Object ^ sender,
+                                               System::EventArgs ^ e) {
+    LoadChildForm::LoadForm(this->panelContent, gcnew ServicePaymentForm());
+    ChangeButtonColor(btnServicePayment);
+    this->headerText->Text = L"THANH TOÁN DỊCH VỤ";
 }
 
 

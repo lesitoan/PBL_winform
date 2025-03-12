@@ -11,7 +11,7 @@ ref class User {
     String ^ phoneNumber;
     int accountNumber;
     double balance;
-    String^ role; // user, admin, company
+    String ^ role; // user, admin, company
     int pin;
     String ^ bankName;
     int serviceId;
@@ -30,7 +30,7 @@ ref class User {
         serviceId = 0;
     }
     User(String ^ _fullName, String ^ _password, String ^ _phoneNumber,
-         int _accountNumber, double _balance, String^ _role, int _pin,
+         int _accountNumber, double _balance, String ^ _role, int _pin,
          String ^ _bankName, int _serviceId) {
         fullName = _fullName;
         password = _password;
@@ -50,20 +50,21 @@ ref class User {
         return accountNumber;
     }
     double getBalance() { return balance; }
-    String ^ getRole() { return role; }
-    int getPin() { return pin; }
+    String ^ getRole() { return role; } int getPin() { return pin; }
     String ^ getPhoneNumber() { return phoneNumber; } String ^
-        getBankName() { return bankName; }
-    int getServiceId() {
+        getBankName() { return bankName; } int getServiceId() {
         return serviceId;
     }
 
-        void setPassword(String ^ _password) {
-        this->password = _password;
-    }
+    void setPassword(String ^ _password) { this->password = _password; }
     void setPin(int _pin) { this->pin = _pin; }
     void setBalance(double _balance) { this->balance = _balance; }
 
+    property String ^ FullName { String ^ get() { return fullName; } }
+
+    property int AccountNumber {
+        int get() { return accountNumber; }
+    }
 };
 
 #endif // USER_H

@@ -3,9 +3,11 @@
 
 #include "AdminServiceForm.h"
 #include "AdminTransactionForm.h"
+#include "GlobalData.h"
 
 ref class TableUsersForm;
 ref class EditUserForm;
+ref class AuthForm;
 
 namespace BankingAppwinform {
 
@@ -243,6 +245,8 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->btnLogout->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnLogout->UseVisualStyleBackColor = false;
+        this->btnLogout->Click +=
+            gcnew System::EventHandler(this, &AdminForm::btnLogout_Click);
         //
         // btnService
         //
@@ -406,5 +410,9 @@ ref class AdminForm : public System::Windows::Forms::Form {
   private:
     System::Void btnService_Click(System::Object ^ sender,
                                   System::EventArgs ^ e);
+
+  private:
+    System::Void btnLogout_Click(System::Object ^ sender,
+                                 System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

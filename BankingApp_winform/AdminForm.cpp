@@ -6,6 +6,7 @@
 
 #include "AdminServiceForm.h"
 #include "AdminTransactionForm.h"
+#include "AuthForm.h"
 
 namespace BankingAppwinform {
 
@@ -71,4 +72,21 @@ System::Void AdminForm::btnService_Click(System::Object ^ sender,
     formHistory->Clear();
     this->labelHeader->Text = L"DỊCH VỤ";
 }
+
+System::Void AdminForm::btnLogout_Click(System::Object ^ sender,
+                                      System::EventArgs ^ e) {
+    System::Windows::Forms::DialogResult result;
+    result =
+        MessageBox::Show(L"Bạn có chắc chắn muốn đăng xuất?", L"Đăng xuất",
+                         MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+    if (result == System::Windows::Forms::DialogResult::Yes) {
+        GlobalData::SetCurrentUser(nullptr);
+
+        this->Hide();
+        AuthForm ^ authForm = gcnew AuthForm();
+        authForm->ShowDialog();
+        this->Close();
+    }
+}
+
 };

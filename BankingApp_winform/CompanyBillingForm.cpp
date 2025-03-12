@@ -3,9 +3,9 @@
 
 namespace BankingAppwinform {
 
-    CompanyBillingForm::CompanyBillingForm(int companyId) {
+    CompanyBillingForm::CompanyBillingForm(int companyAccountNumber) {
         InitializeComponent();
-        LoadPaymentCodes();
+        LoadPaymentCodes(companyAccountNumber);
         LoadRecurringPayments();
     }
 

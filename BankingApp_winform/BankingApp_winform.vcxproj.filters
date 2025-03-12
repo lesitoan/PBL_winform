@@ -91,8 +91,9 @@
       <Filter>Form\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="CodeForm.cpp">
-      <Filter>Form</Filter>
+      <Filter>Form\Cpp</Filter>
     </ClCompile>
+    <ClCompile Include="ServicePaymentForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -166,9 +167,6 @@
     <ClInclude Include="User.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="Companies.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="CompanyBillingForm.h">
       <Filter>Form</Filter>
     </ClInclude>
@@ -181,9 +179,24 @@
     <ClInclude Include="CodeForm.h">
       <Filter>Form</Filter>
     </ClInclude>
+    <ClInclude Include="ServicePaymentForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
+    <None Include="codes.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="services.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="users.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="transactions.dat">
+      <Filter>Data\files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\account.png">
