@@ -93,7 +93,12 @@
     <ClCompile Include="CodeForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
-    <ClCompile Include="ServicePaymentForm.cpp" />
+    <ClCompile Include="ServicePaymentForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -181,6 +186,9 @@
     </ClInclude>
     <ClInclude Include="ServicePaymentForm.h">
       <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

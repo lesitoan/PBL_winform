@@ -4,6 +4,8 @@
 #include "HandleFile.h"
 #include "Services.h"
 #include "User.h"
+#include "Utils.h"
+#include "Validate.h"
 
 namespace BankingAppwinform {
 
@@ -14,29 +16,13 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-/// <summary>
-/// Summary for ServicePaymentForm
-/// </summary>
 public
 ref class ServicePaymentForm : public System::Windows::Forms::Form {
   public:
-    ServicePaymentForm(void) {
-        InitializeComponent();
-        //
-        // TODO: Add the constructor code here
-        //
-        LoadServices();
-    }
+    ServicePaymentForm(void);
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
-    ~ServicePaymentForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~ServicePaymentForm();
 
   private:
     System::Windows::Forms::FlowLayoutPanel ^ flowLayoutPanelServices;
@@ -86,22 +72,6 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
     System::Windows::Forms::TextBox ^ pin;
 
   private:
-  protected:
-  private:
-  protected:
-  private:
-  protected:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -417,256 +387,17 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
 #pragma endregion
 
   private:
-    void LoadServices() {
-        array<Services ^> ^ services =
-            HandleFile::ReadServicesArray("services.dat");
-        if (services == nullptr || services->Length == 0) {
-            return;
-        }
-        for (int i = 0; i < services->Length; i++) {
-            Panel ^ panel = gcnew Panel();
-            panel->Size = System::Drawing::Size(120, 120);
-            panel->BackColor = Color::Aqua;
-            panel->Margin = System::Windows::Forms::Padding(10);
-
-            Label ^ label = gcnew Label();
-            label->Font =
-                gcnew System::Drawing::Font("UTM Daxline", 12, FontStyle::Bold);
-            label->Cursor = Cursors::Hand;
-
-            label->Text = services[i]->Name;
-            label->Dock = DockStyle::Fill;
-            label->TextAlign = ContentAlignment::MiddleCenter;
-
-            panel->Controls->Add(label);
-            this->flowLayoutPanelServices->Controls->Add(panel);
-
-            // Gán sự kiện click cho panel
-            label->Tag = services[i]->Id; // Lưu ID dịch vụ vào Tag
-            label->Click +=
-                gcnew EventHandler(this, &ServicePaymentForm::OnServiceClick);
-        }
-    }
-
-    void OnServiceClick(Object ^ sender, EventArgs ^ e) {
-        Label ^ clickedLabel = (Label ^) sender;
-        int serviceId = (int)clickedLabel->Tag;
-        loadFormTransfer(serviceId);
-    }
-
-    void loadFormTransfer(int serviceId) {
-
-        array<User ^> ^ data = HandleFile::ReadUserArray("users.dat");
-
-        if (data == nullptr || data->Length == 0) {
-            this->labelHeader->Text = L"Không có công ty nào";
-            return;
-        }
-
-        List<User ^> ^ companies = gcnew List<User ^>();
-        for each (User ^ user in data) {
-
-            if (user->getRole() == "company" &&
-                user->getServiceId() == serviceId) {
-                companies->Add(user);
-            }
-        }
-
-        if (companies->Capacity == 0) {
-            this->labelHeader->Visible = true;
-            this->panelContent->Visible = false;
-
-            this->labelHeader->Text = L"Không có công ty nào";
-            return;
-        } else {
-            this->labelHeader->Visible = false;
-            this->panelContent->Visible = true;
-        }
-
-        selectCompanyBox->DataSource = companies;
-        selectCompanyBox->DisplayMember = "FullName";
-        selectCompanyBox->ValueMember = "AccountNumber";
-    };
-
-  private:
     int currComapnyAccNumber = 0;
 
   private:
+    void LoadServices();
+
+    void OnServiceClick(Object ^ sender, EventArgs ^ e);
+
+    void loadFormTransfer(int serviceId);
     System::Void selectCompanyBox_SelectedIndexChanged(System::Object ^ sender,
-                                                       System::EventArgs ^ e) {
-        ComboBox ^ comboBox = dynamic_cast<ComboBox ^>(sender);
-        if (comboBox != nullptr && comboBox->SelectedItem != nullptr) {
-            User ^ selectedUser = dynamic_cast<User ^>(comboBox->SelectedItem);
-            if (selectedUser != nullptr) {
-                this->currComapnyAccNumber = selectedUser->AccountNumber;
-            } else {
-                MessageBox::Show("Lỗi: Không thể lấy dữ liệu công ty.");
-            }
-        }
-    }
-
-  private:
+                                                       System::EventArgs ^ e);
     System::Void btnTransfer_Click(System::Object ^ sender,
-                                   System::EventArgs ^ e) {
-        String ^ code = this->code->Text;
-        int companyAccountNumber = this->currComapnyAccNumber;
-        int pin = Convert::ToInt32(this->pin->Text);
-
-        array<PaymentCodes ^> ^ codes = HandleFile::ReadCodeArray("codes.dat");
-
-        if (codes == nullptr || codes->Length == 0) {
-            MessageBox::Show("Lỗi: Không có mã thanh toán nào.");
-            return;
-        }
-
-        PaymentCodes ^ paymentCode = nullptr;
-        for (int i = 0; i < codes->Length; i++) {
-            if (codes[i]->Code == code &&
-                codes[i]->CompanyAccountNumber == companyAccountNumber) {
-                paymentCode = codes[i];
-            }
-        }
-        if (paymentCode == nullptr) {
-            MessageBox::Show("Lỗi: Mã thanh toán không hợp lệ.");
-            return;
-        }
-
-        User ^ currUser = GlobalData::GetCurrentUser();
-        User ^ receiver = nullptr;
-
-        // xac thuc ma pin
-        array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-
-        for (int i = 0; i < users->Length; i++) {
-            if (users[i]->getAccountNumber() == currComapnyAccNumber) {
-                receiver = users[i];
-                break;
-            } else if (users[i]->getAccountNumber() ==
-                       currUser->getAccountNumber()) {
-                if (users[i]->getPin() == 0) {
-                    MessageBox::Show("Khách hàng chưa đăng kí mã pin !",
-                                     "Cảnh báo", MessageBoxButtons::OK,
-                                     MessageBoxIcon::Warning);
-                    return;
-                } else if (users[i]->getPin() != pin) {
-                    MessageBox::Show("Mã pin không đúng !", "Cảnh báo",
-                                     MessageBoxButtons::OK,
-                                     MessageBoxIcon::Warning);
-                    return;
-                }
-            }
-        }
-
-        if (receiver == nullptr) {
-            MessageBox::Show("Không tìm thấy công ty !", "Cảnh báo",
-                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
-            return;
-        } else {
-            if (paymentCode->Status == 1) {
-                MessageBox::Show("Mã thanh toán đã được sử dụng !", "Cảnh báo",
-                                 MessageBoxButtons::OK,
-                                 MessageBoxIcon::Warning);
-                return;
-            } else if (paymentCode->ExpiredDate < DateTime::Now) {
-                MessageBox::Show("Mã thanh toán đã hết hạn !", "Cảnh báo",
-                                 MessageBoxButtons::OK,
-                                 MessageBoxIcon::Warning);
-                return;
-            } else {
-                // thuc hien chuyen tien
-                double amount = paymentCode->Amount;
-                if (currUser->getBalance() < amount) {
-                    MessageBox::Show("Số dư không đủ để thực hiện giao dịch !",
-                                     "Cảnh báo", MessageBoxButtons::OK,
-                                     MessageBoxIcon::Warning);
-                    return;
-                } else {
-                    currUser->setBalance(currUser->getBalance() - amount);
-                    receiver->setBalance(receiver->getBalance() + amount);
-                    // luu lai 2 user vao file
-                    for (int i = 0; i < users->Length; i++) {
-                        if (users[i]->getAccountNumber() ==
-                            currUser->getAccountNumber()) {
-                            users[i] = currUser;
-                        } else if (users[i]->getAccountNumber() ==
-                                   receiver->getAccountNumber()) {
-                            users[i] = receiver;
-                        }
-                    }
-                    bool isSavedUser =
-                        HandleFile::WriteUserArray(users, "users.dat");
-                    if (!isSavedUser) {
-                        MessageBox::Show("Lỗi máy chủ, thử lại sau !",
-                                         "Cảnh báo", MessageBoxButtons::OK,
-                                         MessageBoxIcon::Warning);
-                        return;
-                    } else {
-                        // luu lich su giao dich
-                        Transaction ^ transaction =
-                            gcnew Transaction(123, currUser->getAccountNumber(),
-                                              receiver->getAccountNumber(),
-                                              amount, DateTime::Now.ToString());
-                        array<Transaction ^> ^ transactions =
-                            HandleFile::ReadTransactionArray(
-                                "transactions.dat");
-                        if (transactions == nullptr) {
-                            transactions = gcnew array<Transaction ^>(1);
-                            transactions[0] = transaction;
-                        } else {
-                            array<Transaction ^> ^ newTransactions =
-                                gcnew array<Transaction ^>(
-                                    transactions->Length + 1);
-                            transactions->CopyTo(newTransactions, 0);
-                            newTransactions[transactions->Length] = transaction;
-                            transactions = newTransactions;
-                        }
-                        bool isSavedTransaction =
-                            HandleFile::WriteTransactionArray(
-                                transactions, "transactions.dat");
-                        if (!isSavedTransaction) {
-                            MessageBox::Show("Lỗi máy chủ, thử lại sau !",
-                                             "Cảnh báo", MessageBoxButtons::OK,
-                                             MessageBoxIcon::Warning);
-                            return;
-                        } else {
-                            paymentCode->Status = 1;
-                            bool isSavedCode =
-                                HandleFile::WriteCodeArray(codes, "codes.dat");
-                            if (!isSavedCode) {
-                                MessageBox::Show("Lỗi máy chủ, thử lại sau !",
-                                                 "Cảnh báo",
-                                                 MessageBoxButtons::OK,
-                                                 MessageBoxIcon::Warning);
-                                return;
-                            } else {
-                                MessageBox::Show("Thanh toán thành công !",
-                                                 "Thông báo",
-                                                 MessageBoxButtons::OK,
-                                                 MessageBoxIcon::Information);
-
-                                // sửa lại file code
-                                for (int i = 0; i < codes->Length; i++) {
-                                    if (codes[i]->Code == code &&
-                                        codes[i]->CompanyAccountNumber ==
-                                            companyAccountNumber) {
-                                        codes[i]->Status = 1;
-                                    }
-                                }
-
-                                bool isSavedCode = HandleFile::WriteCodeArray(codes, "codes.dat");
-                                if (!isSavedCode) {
-                                    MessageBox::Show("Lỗi máy chủ, thử lại sau !", "Cảnh báo", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-                                    return;
-                                } else {
-                                    MessageBox::Show("Thanh toán thành công !", "Thông báo", MessageBoxButtons::OK, MessageBoxIcon::Information);
-                                }
-                                //
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+                                   System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

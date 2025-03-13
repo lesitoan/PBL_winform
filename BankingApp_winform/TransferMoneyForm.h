@@ -4,6 +4,7 @@
 #include "GlobalData.h"
 #include "User.h"
 #include "Transaction.h"
+#include "Utils.h"
 
 namespace BankingAppwinform {
 

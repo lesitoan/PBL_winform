@@ -142,6 +142,7 @@
     <ClCompile Include="SetPinForm.cpp" />
     <ClCompile Include="SignupForm.cpp" />
     <ClCompile Include="TransferMoneyForm.cpp" />
+    <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Validate.cpp" />
     <ClCompile Include="WithdrawMoneyForm.cpp" />
   </ItemGroup>
@@ -212,6 +213,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="User.h" />
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="Validate.h" />
     <ClInclude Include="WithdrawMoneyForm.h">
       <FileType>CppForm</FileType>

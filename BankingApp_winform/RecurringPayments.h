@@ -10,7 +10,7 @@ ref class RecurringPayments {
     int userAccountNumber;
     int companyId;
     int amount;
-    String ^ frequency; // "monthly", "quarterly", "yearly"
+    String ^ frequency;  // month: 1,2,3,4,5....12
     DateTime paymentDay; // 1-31
     int status;         // "complete", "pending"
 
