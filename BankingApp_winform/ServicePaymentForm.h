@@ -8,6 +8,7 @@
 #include "Validate.h"
 #include "RecurringPayments.h"
 
+
 namespace BankingAppwinform {
 
 using namespace System;
@@ -433,15 +434,15 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
     System::Void label5_Click(System::Object ^ sender, System::EventArgs ^ e) {}
 
     private:
-    void onSubmitCurrentPayment(int userAccountNumber, int companyId,
+    void onSubmitCurrentPayment(int userAccountNumber, int companyAccountNumber,
                                 int monthly) {
           bool checked = this->submitRecurringPayment->Checked;
         if (!checked)
             return;
 
         // Tạo recurringPayment
-        RecurringPayments ^ recurringPayment =
-            gcnew RecurringPayments(userAccountNumber, companyId, monthly);
+        RecurringPayments ^ recurringPayment = gcnew RecurringPayments(
+            userAccountNumber, companyAccountNumber, monthly);
 
         // Lấy thông tin thanh toán
         array<RecurringPayments ^> ^ recurringPayments =
@@ -455,7 +456,8 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
         // Kiểm tra xem đã có thanh toán định kì chưa
         for (int i = 0; i < recurringPayments->Length; i++) {
             if (recurringPayments[i]->UserAccountNumber == userAccountNumber &&
-                recurringPayments[i]->CompanyId == companyId) {
+                recurringPayments[i]->CompanyAccountNumber ==
+                    companyAccountNumber) {
                 return;
             }
         }

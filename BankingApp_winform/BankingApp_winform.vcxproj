@@ -167,6 +167,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PaymentCodes.h" />
+    <ClInclude Include="RecurringPaymentRequest.h" />
     <ClInclude Include="RecurringPayments.h" />
     <ClInclude Include="ServicePaymentForm.h">
       <FileType>CppForm</FileType>
@@ -295,6 +296,7 @@
   <ItemGroup>
     <None Include="..\.clang-format" />
     <None Include="codes.dat" />
+    <None Include="recurringPayments.dat" />
     <None Include="services.dat" />
     <None Include="transactions.dat" />
     <None Include="users.dat" />

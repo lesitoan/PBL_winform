@@ -268,7 +268,7 @@ bool HandleFile::WriteRecurringPaymentsArray(array<RecurringPayments ^> ^recurri
         for each (RecurringPayments ^ recurringPayment in recurringPayments) {
             writer->Write(recurringPayment->Id);
             writer->Write(recurringPayment->UserAccountNumber);
-            writer->Write(recurringPayment->CompanyId);
+            writer->Write(recurringPayment->CompanyAccountNumber);
             writer->Write(recurringPayment->Monthly);
             writer->Write(recurringPayment->PaymentDay.ToString());
             writer->Write(recurringPayment->Debt);
@@ -306,17 +306,86 @@ array<RecurringPayments ^> ^ HandleFile::ReadRecurringPaymentsArray(String ^ fil
         for (int i = 0; i < count; i++) {
             int _id = reader->ReadInt32();
             int _userAccountNumber = reader->ReadInt32();
-            int _companyId = reader->ReadInt32();
+            int _companyAccountNumber = reader->ReadInt32();
             int _monthly = reader->ReadInt32();
             DateTime _paymentDay = DateTime::Parse(reader->ReadString());
             double _debt = reader->ReadDouble();
-            recurringPayments[i] =
-                gcnew RecurringPayments(_id, _userAccountNumber, _companyId,
+            recurringPayments[i] = gcnew RecurringPayments(
+                _id, _userAccountNumber, _companyAccountNumber,
                                         _monthly, _paymentDay, _debt);
         }
         reader->Close();
         fs->Close();
         return recurringPayments;
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
+                         MessageBoxIcon::Warning);
+        return nullptr;
+    }
+}
+
+bool HandleFile::WriteRecurringPaymentRequestArray(
+    array<RecurringPaymentRequest^>^
+    recurringRequests, String^ filePath) {
+    try {
+        FileStream ^ fs = gcnew FileStream(filePath, FileMode::Create);
+        BinaryWriter ^ writer = gcnew BinaryWriter(fs);
+        writer->Write(recurringRequests->Length);
+        for each (RecurringPaymentRequest ^ request in recurringRequests) {
+            writer->Write(request->RequestId);
+            writer->Write(request->UserAccountNumber);
+            writer->Write(request->CompanyAccountNumber);
+            writer->Write(request->Amount);
+            writer->Write(request->RequestDate.ToString());
+            writer->Write(request->Status);
+        }
+        writer->Close();
+        fs->Close();
+        return true;
+    } catch (Exception ^) {
+        // MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
+        // MessageBoxIcon::Warning);
+        return false;
+    }
+
+}
+
+array<RecurringPaymentRequest ^> ^
+HandleFile::ReadRecurringPaymentRequestArray(String^ filePath) {
+    try {
+        if (!File::Exists(filePath)) {
+            return gcnew array<RecurringPaymentRequest ^>(0);
+        }
+
+        FileStream ^ fs = gcnew FileStream(filePath, FileMode::OpenOrCreate);
+        BinaryReader ^ reader = gcnew BinaryReader(fs);
+
+        if (fs->Length == 0) {
+            reader->Close();
+            fs->Close();
+            return gcnew array<RecurringPaymentRequest ^>(0);
+        }
+
+        int count = reader->ReadInt32();
+        array<RecurringPaymentRequest ^> ^ recurringRequests =
+            gcnew array<RecurringPaymentRequest ^>(count);
+
+        for (int i = 0; i < count; i++) {
+
+            int _id = reader->ReadInt32();
+            int _userAccountNumber = reader->ReadInt32();
+            int _companyAccountNumber = reader->ReadInt32();
+            double _amount = reader->ReadDouble();
+            DateTime _requestDate = DateTime::Parse(reader->ReadString());
+            String ^ _status = reader->ReadString();
+
+            recurringRequests[i] = gcnew RecurringPaymentRequest(
+                _id, _userAccountNumber, _companyAccountNumber, _amount,
+                _requestDate, _status);
+        }
+        reader->Close();
+        fs->Close();
+        return recurringRequests;
     } catch (Exception ^ ex) {
         MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
                          MessageBoxIcon::Warning);

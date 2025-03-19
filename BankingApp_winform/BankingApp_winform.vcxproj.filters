@@ -196,6 +196,9 @@
     <ClInclude Include="ClientRecurringPaymentForm.h">
       <Filter>Form</Filter>
     </ClInclude>
+    <ClInclude Include="RecurringPaymentRequest.h">
+      <Filter>Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
@@ -209,6 +212,9 @@
       <Filter>Data\files</Filter>
     </None>
     <None Include="transactions.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="recurringPayments.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>
