@@ -9,30 +9,31 @@ ref class RecurringPayments {
     int id;
     int userAccountNumber;
     int companyId;
-    int amount;
-    String ^ frequency;  // month: 1,2,3,4,5....12
+    int monthly;         //1,2,3,4,5....12
     DateTime paymentDay; // 1-31
-    int status;         // "complete", "pending"
+    double debt;            // "complete", "pending"
 
   public:
-    RecurringPayments(int id, int userAccountNumber, int companyId, int amount,
-                      String ^ frequency, DateTime paymentDay, int status) {
+    RecurringPayments(int id, int userAccountNumber, int companyId, int monthly,
+                      DateTime paymentDay, double debt) {
         this->id = id;
         this->userAccountNumber = userAccountNumber;
         this->companyId = companyId;
-        this->amount = amount;
-        this->frequency = frequency;
+        this->monthly = monthly;
         this->paymentDay = paymentDay;
-        this->status = status;
+        this->debt = debt;
     }
     RecurringPayments() {
         id = 0;
         userAccountNumber = 0;
         companyId = 0;
-        amount = 0;
-        frequency = "";
-        status = 0;
+        monthly = 1;
+        debt = 0;
     }
+
+    RecurringPayments(int userAccountNumber, int companyId, int monthly) : id(11), userAccountNumber(userAccountNumber), companyId(companyId), monthly(monthly), paymentDay(DateTime::Now), debt(0) {}
+
+
     property int Id {
         int get() { return id; }
     }
@@ -44,20 +45,16 @@ ref class RecurringPayments {
         int get() { return companyId; }
         void set(int value) { companyId = value; }
     }
-    property int Amount {
-        int get() { return amount; }
-        void set(int value) { amount = value; }
-    }
-    property String ^ Frequency {
-        String ^ get() { return frequency; } 
-        void set(String ^ value) { frequency = value; }
+    property int Monthly {
+        int get() { return monthly; } 
+        void set(int value) { monthly = value; }
     } property DateTime PaymentDay {
         DateTime get() { return paymentDay; }
         void set(DateTime value) { paymentDay = value; }
     }
-    property int Status {
-        int get() { return status; }
-        void set(int value) { status = value; }
+    property double Debt {
+        double get() { return debt; }
+        void set(double value) { debt = value; }
     }
 
 };

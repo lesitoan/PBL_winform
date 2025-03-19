@@ -258,3 +258,68 @@ array<PaymentCodes ^> ^ HandleFile::ReadCodeArray(String ^ filePath) {
         return nullptr;
     }
 }
+
+
+bool HandleFile::WriteRecurringPaymentsArray(array<RecurringPayments ^> ^recurringPayments, String^ filePath) {
+    try {
+        FileStream ^ fs = gcnew FileStream(filePath, FileMode::Create);
+        BinaryWriter ^ writer = gcnew BinaryWriter(fs);
+        writer->Write(recurringPayments->Length);
+        for each (RecurringPayments ^ recurringPayment in recurringPayments) {
+            writer->Write(recurringPayment->Id);
+            writer->Write(recurringPayment->UserAccountNumber);
+            writer->Write(recurringPayment->CompanyId);
+            writer->Write(recurringPayment->Monthly);
+            writer->Write(recurringPayment->PaymentDay.ToString());
+            writer->Write(recurringPayment->Debt);
+        }
+        writer->Close();
+        fs->Close();
+        return true;
+    } catch (Exception ^) {
+        // MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
+        // MessageBoxIcon::Warning);
+        return false;
+    }
+}
+
+
+array<RecurringPayments ^> ^ HandleFile::ReadRecurringPaymentsArray(String ^ filePath) {
+    try {
+        if (!File::Exists(filePath)) {
+            return gcnew array<RecurringPayments ^>(0);
+        }
+
+        FileStream ^ fs = gcnew FileStream(filePath, FileMode::OpenOrCreate);
+        BinaryReader ^ reader = gcnew BinaryReader(fs);
+
+        if (fs->Length == 0) {
+            reader->Close();
+            fs->Close();
+            return gcnew array<RecurringPayments ^>(0);
+        }
+
+        int count = reader->ReadInt32();
+        array<RecurringPayments ^> ^ recurringPayments =
+            gcnew array<RecurringPayments ^>(count);
+
+        for (int i = 0; i < count; i++) {
+            int _id = reader->ReadInt32();
+            int _userAccountNumber = reader->ReadInt32();
+            int _companyId = reader->ReadInt32();
+            int _monthly = reader->ReadInt32();
+            DateTime _paymentDay = DateTime::Parse(reader->ReadString());
+            double _debt = reader->ReadDouble();
+            recurringPayments[i] =
+                gcnew RecurringPayments(_id, _userAccountNumber, _companyId,
+                                        _monthly, _paymentDay, _debt);
+        }
+        reader->Close();
+        fs->Close();
+        return recurringPayments;
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
+                         MessageBoxIcon::Warning);
+        return nullptr;
+    }
+}

@@ -3,6 +3,7 @@
 #include "Transaction.h"
 #include "Services.h"
 #include "PaymentCodes.h"
+#include "RecurringPayments.h"
 
 using namespace System;
 using namespace System::IO;
@@ -28,5 +29,11 @@ ref class HandleFile {
     static bool WriteCodeArray(array<PaymentCodes ^> ^ codes,
                                    String ^ filePath);
     static array<PaymentCodes ^> ^ ReadCodeArray(String ^ filePath);
+
+    static bool WriteRecurringPaymentsArray(array<RecurringPayments ^> ^
+                                                recurringPayments,
+                               String ^ filePath);
+    static array<RecurringPayments ^> ^
+        ReadRecurringPaymentsArray(String ^ filePath);
 
 };

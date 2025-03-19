@@ -8,6 +8,7 @@
 #include "WithdrawMoneyForm.h"
 #include "CodeForm.h"
 #include "ServicePaymentForm.h"
+#include "ClientRecurringPaymentForm.h"
 
 namespace BankingAppwinform {
 
@@ -53,6 +54,12 @@ ref class MainForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Button ^ btnServicePayment;
 
   private:
+    System::Windows::Forms::Button ^ btnRecurringPayment;
+
+  private:
+
+
+  private:
 
     System::ComponentModel::IContainer ^ components;
 
@@ -82,6 +89,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panel3 = (gcnew System::Windows::Forms::Panel());
         this->panelx = (gcnew System::Windows::Forms::Panel());
         this->panelContent = (gcnew System::Windows::Forms::Panel());
+        this->btnRecurringPayment = (gcnew System::Windows::Forms::Button());
         this->panelNav->SuspendLayout();
         this->panel2->SuspendLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
@@ -100,6 +108,7 @@ ref class MainForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->panelNav->Controls->Add(this->btnHistory);
         this->panelNav->Controls->Add(this->btnServicePayment);
+        this->panelNav->Controls->Add(this->btnRecurringPayment);
         this->panelNav->Controls->Add(this->btnCode);
         this->panelNav->Controls->Add(this->btnWithdraw);
         this->panelNav->Controls->Add(this->btnTransfer);
@@ -137,7 +146,7 @@ ref class MainForm : public System::Windows::Forms::Form {
             resources->GetObject(L"btnHistory.Image")));
         this->btnHistory->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnHistory->Location = System::Drawing::Point(0, 402);
+        this->btnHistory->Location = System::Drawing::Point(0, 460);
         this->btnHistory->Name = L"btnHistory";
         this->btnHistory->Size = System::Drawing::Size(207, 58);
         this->btnHistory->TabIndex = 11;
@@ -167,7 +176,7 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Drawing::SystemColors::HighlightText;
         this->btnServicePayment->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnServicePayment->Location = System::Drawing::Point(0, 344);
+        this->btnServicePayment->Location = System::Drawing::Point(0, 402);
         this->btnServicePayment->Name = L"btnServicePayment";
         this->btnServicePayment->Size = System::Drawing::Size(207, 58);
         this->btnServicePayment->TabIndex = 16;
@@ -513,6 +522,39 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panelContent->Size = System::Drawing::Size(658, 499);
         this->panelContent->TabIndex = 0;
         //
+        // btnRecurringPayment
+        //
+        this->btnRecurringPayment->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnRecurringPayment->Cursor =
+            System::Windows::Forms::Cursors::Hand;
+        this->btnRecurringPayment->Dock =
+            System::Windows::Forms::DockStyle::Top;
+        this->btnRecurringPayment->FlatAppearance->BorderSize = 0;
+        this->btnRecurringPayment->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnRecurringPayment->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
+        this->btnRecurringPayment->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnRecurringPayment->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnRecurringPayment->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnRecurringPayment->Location = System::Drawing::Point(0, 344);
+        this->btnRecurringPayment->Name = L"btnRecurringPayment";
+        this->btnRecurringPayment->Size = System::Drawing::Size(207, 58);
+        this->btnRecurringPayment->TabIndex = 17;
+        this->btnRecurringPayment->Text = L"                YCTT ĐỊNH KÌ";
+        this->btnRecurringPayment->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnRecurringPayment->UseVisualStyleBackColor = false;
+        this->btnRecurringPayment->Visible = false;
+        this->btnRecurringPayment->Click += gcnew System::EventHandler(
+            this, &MainForm::btnRecurringPayment_Click);
+        //
         // MainForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -581,5 +623,9 @@ ref class MainForm : public System::Windows::Forms::Form {
   private:
     System::Void btnServicePayment_Click(System::Object ^ sender,
                                          System::EventArgs ^ e);
+
+  private:
+    System::Void btnRecurringPayment_Click(System::Object ^ sender,
+                                           System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

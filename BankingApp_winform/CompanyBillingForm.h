@@ -80,19 +80,10 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
     System::Windows::Forms::DataGridView ^ dataGridViewRecurring;
 
   private:
-
-
-  private:
-
-
-  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column7;
 
   private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column8;
-
-  private:
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column9;
 
   private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column10;
@@ -102,6 +93,45 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
 
   private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column12;
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
+
 
   private:
     System::ComponentModel::Container ^ components;
@@ -135,18 +165,6 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         this->panelContent = (gcnew System::Windows::Forms::Panel());
         this->dataGridViewRecurring =
             (gcnew System::Windows::Forms::DataGridView());
-        this->Column7 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column8 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column9 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column10 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column11 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column12 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->dataGridViewCodes =
             (gcnew System::Windows::Forms::DataGridView());
         this->Column1 =
@@ -160,6 +178,16 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         this->Column5 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->Column6 =
+            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column7 =
+            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column8 =
+            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column10 =
+            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column11 =
+            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column12 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->panel1->SuspendLayout();
         this->panel2->SuspendLayout();
@@ -327,9 +355,9 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
             dataGridViewCellStyle2;
         this->dataGridViewRecurring->ColumnHeadersHeight = 40;
         this->dataGridViewRecurring->Columns->AddRange(
-            gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(6){
-                this->Column7, this->Column8, this->Column9, this->Column10,
-                this->Column11, this->Column12});
+            gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(5){
+                this->Column7, this->Column8, this->Column10, this->Column11,
+                this->Column12});
         dataGridViewCellStyle3->Alignment =
             System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
         dataGridViewCellStyle3->BackColor = System::Drawing::Color::MintCream;
@@ -376,42 +404,6 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         this->dataGridViewRecurring->Size = System::Drawing::Size(1077, 617);
         this->dataGridViewRecurring->TabIndex = 4;
         this->dataGridViewRecurring->Visible = false;
-        //
-        // Column7
-        //
-        this->Column7->HeaderText = L"ID";
-        this->Column7->Name = L"Column7";
-        this->Column7->ReadOnly = true;
-        //
-        // Column8
-        //
-        this->Column8->HeaderText = L"STK KH";
-        this->Column8->Name = L"Column8";
-        this->Column8->ReadOnly = true;
-        //
-        // Column9
-        //
-        this->Column9->HeaderText = L"Số tiền";
-        this->Column9->Name = L"Column9";
-        this->Column9->ReadOnly = true;
-        //
-        // Column10
-        //
-        this->Column10->HeaderText = L"TTĐK theo";
-        this->Column10->Name = L"Column10";
-        this->Column10->ReadOnly = true;
-        //
-        // Column11
-        //
-        this->Column11->HeaderText = L"Ngày đến hạn";
-        this->Column11->Name = L"Column11";
-        this->Column11->ReadOnly = true;
-        //
-        // Column12
-        //
-        this->Column12->HeaderText = L"Trạng thái";
-        this->Column12->Name = L"Column12";
-        this->Column12->ReadOnly = true;
         //
         // dataGridViewCodes
         //
@@ -539,6 +531,36 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         this->Column6->Name = L"Column6";
         this->Column6->ReadOnly = true;
         //
+        // Column7
+        //
+        this->Column7->HeaderText = L"ID";
+        this->Column7->Name = L"Column7";
+        this->Column7->ReadOnly = true;
+        //
+        // Column8
+        //
+        this->Column8->HeaderText = L"STK KH";
+        this->Column8->Name = L"Column8";
+        this->Column8->ReadOnly = true;
+        //
+        // Column10
+        //
+        this->Column10->HeaderText = L"Số tháng TTĐK";
+        this->Column10->Name = L"Column10";
+        this->Column10->ReadOnly = true;
+        //
+        // Column11
+        //
+        this->Column11->HeaderText = L"Ngày đến hạn";
+        this->Column11->Name = L"Column11";
+        this->Column11->ReadOnly = true;
+        //
+        // Column12
+        //
+        this->Column12->HeaderText = L"Tiền nợ";
+        this->Column12->Name = L"Column12";
+        this->Column12->ReadOnly = true;
+        //
         // CompanyBillingForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -590,9 +612,6 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
           array<RecurringPayments ^> ^ recurringPayments =
               gcnew array<RecurringPayments ^>(20);
 
-          array<String ^> ^ frequencies = {"monthly", "quarterly", "yearly"};
-          array<int> ^ statuses = {0, 1}; // 0 = pending, 1 = complete
-
           Random ^ rand = gcnew Random();
 
           for (int i = 0; i < 20; i++) {
@@ -602,11 +621,9 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
                       100000,
                       999999), // userAccountNumber (tài khoản ngẫu nhiên)
                   (i % 5) + 1, // companyId (chia ngẫu nhiên 5 công ty)
-                  (rand->Next(1, 20) * 50000), // amount (50,000 - 1,000,000)
-                  frequencies[rand->Next(
-                      0, 3)], // frequency (monthly, quarterly, yearly)
+                  1, // 1 month
                   DateTime(2025, 3, rand->Next(1, 29)), // paymentDay (1-28)
-                  statuses[rand->Next(0, 2)] // status (pending hoặc complete)
+                  0 // tiền nợ
               );
           }
 
@@ -622,9 +639,8 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         for each (RecurringPayments ^ payment in recurringPayments) {
             dataGridViewRecurring->Rows->Add(
                 payment->Id, payment->UserAccountNumber,
-                payment->Amount.ToString("N0"), // Hiển thị số tiền có dấu phẩy
-                payment->Frequency, payment->PaymentDay.ToString("dd/MM/yyyy"),
-                payment->Status == 0 ? "Pending" : "Complete");
+                payment->Monthly, payment->PaymentDay.ToString("dd/MM/yyyy"),
+                payment->Debt);
         }
     }
 

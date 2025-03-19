@@ -138,7 +138,12 @@ namespace BankingAppwinform {
             }
         }
         if (paymentCode == nullptr) {
-            MessageBox::Show(L"Lỗi: Mã thanh toán không hợp lệ.");
+            MessageBox::Show(L"Mã thanh toán không hợp lệ", "Cảnh báo",
+                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
+            return;
+        } else if (paymentCode->Status == 1) {
+            MessageBox::Show(L"Mã thanh toán không hợp lệ", "Cảnh báo",
+                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
             return;
         }
 
@@ -178,6 +183,10 @@ namespace BankingAppwinform {
                                  MessageBoxIcon::Information);
             }
         }
+
+
+        // thanh toán định kì
+        this->onSubmitCurrentPayment(currUserAccNumber, companyAccountNumber,1);
 
  
     }

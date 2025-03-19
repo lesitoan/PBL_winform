@@ -17,6 +17,18 @@ E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AdminTransactionForm
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AdminTransactionForm.h(456,46): warning C4566: character represented by universal-character-name '\u1ECB' cannot be represented in the current code page (1252)
   (compiling source file 'AdminForm.cpp')
   
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
+  (compiling source file 'AdminForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EE7' cannot be represented in the current code page (1252)
+  (compiling source file 'AdminForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EED' cannot be represented in the current code page (1252)
+  (compiling source file 'AdminForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1252)
+  (compiling source file 'AdminForm.cpp')
+  
   AuthForm.cpp
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AdminTransactionForm.h(393,47): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1252)
   (compiling source file 'AuthForm.cpp')
@@ -36,6 +48,19 @@ E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AdminTransactionForm
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AdminTransactionForm.h(456,46): warning C4566: character represented by universal-character-name '\u1ECB' cannot be represented in the current code page (1252)
   (compiling source file 'AuthForm.cpp')
   
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
+  (compiling source file 'AuthForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EE7' cannot be represented in the current code page (1252)
+  (compiling source file 'AuthForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EED' cannot be represented in the current code page (1252)
+  (compiling source file 'AuthForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1252)
+  (compiling source file 'AuthForm.cpp')
+  
+  ClientRecurringPaymentForm.cpp
   Main.cpp
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AdminTransactionForm.h(393,47): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1252)
   (compiling source file 'Main.cpp')
@@ -55,7 +80,31 @@ E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AdminTransactionForm
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AdminTransactionForm.h(456,46): warning C4566: character represented by universal-character-name '\u1ECB' cannot be represented in the current code page (1252)
   (compiling source file 'Main.cpp')
   
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EE7' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EED' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
   MainForm.cpp
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
+  (compiling source file 'MainForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EE7' cannot be represented in the current code page (1252)
+  (compiling source file 'MainForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EED' cannot be represented in the current code page (1252)
+  (compiling source file 'MainForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.h(469,30): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1252)
+  (compiling source file 'MainForm.cpp')
+  
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AdminTransactionForm.h(393,47): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1252)
   (compiling source file 'MainForm.cpp')
   
@@ -74,15 +123,6 @@ E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AdminTransactionForm
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\AdminTransactionForm.h(456,46): warning C4566: character represented by universal-character-name '\u1ECB' cannot be represented in the current code page (1252)
   (compiling source file 'MainForm.cpp')
   
-  ServicePaymentForm.cpp
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.cpp(102,34): warning C4566: character represented by universal-character-name '\u1ED7' cannot be represented in the current code page (1252)
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.cpp(102,34): warning C4566: character represented by universal-character-name '\u1EC3' cannot be represented in the current code page (1252)
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.cpp(102,34): warning C4566: character represented by universal-character-name '\u1EA5' cannot be represented in the current code page (1252)
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.cpp(102,34): warning C4566: character represented by universal-character-name '\u1EEF' cannot be represented in the current code page (1252)
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.cpp(102,34): warning C4566: character represented by universal-character-name '\u1EC7' cannot be represented in the current code page (1252)
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.cpp(114,79): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.cpp(159,70): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\ServicePaymentForm.cpp(171,74): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
   Generating Code...
   AccountForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   BankingApp_winform.vcxproj -> E:\WORKSPACE\CODE\PBL\BankingApp_winform\x64\Debug\BankingApp_winform.exe

@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccountForm.cpp" />
+    <ClCompile Include="ClientRecurringPaymentForm.cpp" />
     <ClCompile Include="CodeForm.cpp" />
     <ClCompile Include="CompanyBillingForm.cpp" />
     <ClCompile Include="CompanyForm.cpp" />
@@ -148,6 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccountForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ClientRecurringPaymentForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CodeForm.h">
@@ -222,6 +226,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AccountForm.resx">
       <DependentUpon>AccountForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientRecurringPaymentForm.resx">
+      <DependentUpon>ClientRecurringPaymentForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CodeForm.resx">
       <DependentUpon>CodeForm.h</DependentUpon>

@@ -33,8 +33,12 @@ void MainForm::InitLoad() {
     if (GlobalData::GetCurrentUser()->getRole() == "company") {
         this->btnCode->Visible = true;
         this->btnServicePayment->Visible = false;
-    } 
-
+        this->btnRecurringPayment->Visible = true;
+    } else if (GlobalData::GetCurrentUser()->getRole() == "user") {
+        this->btnCode->Visible = false;
+        this->btnServicePayment->Visible = true;
+        this->btnRecurringPayment->Visible = false;
+    }
 }
 
 System::Void MainForm::MainForm_Load(System::Object ^ sender,
@@ -78,6 +82,13 @@ System::Void MainForm::btnServicePayment_Click(System::Object ^ sender,
     LoadChildForm::LoadForm(this->panelContent, gcnew ServicePaymentForm());
     ChangeButtonColor(btnServicePayment);
     this->headerText->Text = L"THANH TOÁN DỊCH VỤ";
+}
+
+System::Void MainForm::btnRecurringPayment_Click(System::Object ^ sender,
+    System::EventArgs^ e) {
+    LoadChildForm::LoadForm(this->panelContent, gcnew ClientRecurringPaymentForm());
+    ChangeButtonColor(btnServicePayment);
+    this->headerText->Text = L"YÊU CẦU THANH TOÁN ĐỊNH KÌ";
 }
 
 
