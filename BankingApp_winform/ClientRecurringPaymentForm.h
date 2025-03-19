@@ -4,6 +4,7 @@
 #include "RecurringPayments.h"
 #include "User.h"
 #include "Validate.h"
+#include "RecurringPaymentRequest.h"
 
 namespace BankingAppwinform {
 
@@ -434,6 +435,8 @@ ref class ClientRecurringPaymentForm : public System::Windows::Forms::Form {
 
   private:
     void loadRecurringPaymentData() {
+        dataGridViewRecurring->Rows->Clear();
+
         array<RecurringPayments ^> ^ recurringPayments =
             HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
         array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
@@ -469,6 +472,9 @@ ref class ClientRecurringPaymentForm : public System::Windows::Forms::Form {
     System::Void dataGridViewRecurring_CellClick(
         System::Object ^ sender,
         System::Windows::Forms::DataGridViewCellEventArgs ^ e) {
+
+        this->amountRecurringPayment->Text = "";
+        this->amountRecurringPayment->ReadOnly = false;
 
         if (e->RowIndex >= 0) { // Kiểm tra nếu không phải header
 
@@ -520,9 +526,67 @@ ref class ClientRecurringPaymentForm : public System::Windows::Forms::Form {
                              MessageBoxButtons::OK, MessageBoxIcon::Warning);
             return;
         }
-        MessageBox::Show(L"ok", "success",
-                         MessageBoxButtons::OK, MessageBoxIcon::Information);
-        return;
+        
+        // Tạo yêu cầu thanh toán định kỳ
+        RecurringPaymentRequest ^ request = gcnew RecurringPaymentRequest(
+            currClientAccountNumber,
+            GlobalData::GetCurrentUser()->AccountNumber,
+            Convert::ToDouble(amount));
+
+        // lưu vào file
+        array<RecurringPaymentRequest ^> ^ requests =
+            HandleFile::ReadRecurringPaymentRequestArray(
+                "recurringPaymentRequests.dat");
+        if (requests == nullptr) {
+            requests = gcnew array<RecurringPaymentRequest ^>(1);
+            requests[0] = request;
+        } else {
+            for (int i = 0; i < requests->Length; i++) {
+                if (requests[i]->UserAccountNumber ==
+                        request->UserAccountNumber &&
+                    requests[i]->CompanyAccountNumber ==
+                        request->CompanyAccountNumber) {
+                    MessageBox::Show(L"Yêu cầu thanh toán đã tồn tại",
+                                     "Cảnh báo", MessageBoxButtons::OK,
+                                     MessageBoxIcon::Warning);
+                    return;
+                }
+            }
+            Array::Resize(requests, requests->Length + 1);
+            requests[requests->Length - 1] = request;
+        }
+        bool isSaveRequest = HandleFile::WriteRecurringPaymentRequestArray(
+            requests, "recurringPaymentRequests.dat");
+        if (!isSaveRequest) {
+            
+            MessageBox::Show(L"Lỗi khi gửi yêu cầu", "Cảnh báo",
+                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
+            return;
+        }
+
+        // thay đổi số tiền nợ
+        array<RecurringPayments ^> ^ recurringPayments =
+            HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
+        for (int i = 0; i < recurringPayments->Length; i++) {
+            if (recurringPayments[i]->UserAccountNumber ==
+                currClientAccountNumber) {
+                recurringPayments[i]->Debt = Convert::ToDouble(amount);
+                break;
+            }
+        }
+        bool isChangedRecurring = HandleFile::WriteRecurringPaymentsArray(
+            recurringPayments,
+                                               "recurringPayments.dat");
+        if (isChangedRecurring) {
+            MessageBox::Show(L"Yêu cầu thanh toán đã được gửi", "Thông báo",
+                             MessageBoxButtons::OK,
+                             MessageBoxIcon::Information);
+            this->panelForm->Visible = false;
+            this->loadRecurringPaymentData();
+        } else {
+            MessageBox::Show(L"Lỗi khi cập nhật số tiền nợ", "Cảnh báo",
+                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
+        }
     }
 
 };

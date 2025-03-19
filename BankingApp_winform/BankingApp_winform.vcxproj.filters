@@ -214,9 +214,6 @@
     <None Include="transactions.dat">
       <Filter>Data\files</Filter>
     </None>
-    <None Include="recurringPayments.dat">
-      <Filter>Data\files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\account.png">

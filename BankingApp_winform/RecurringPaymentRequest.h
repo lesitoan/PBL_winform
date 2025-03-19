@@ -6,7 +6,7 @@ using namespace System;
 
 ref class RecurringPaymentRequest {
   private:
-    int requestId;         
+    int id;         
     int userAccountNumber;    
     int companyAccountNumber; 
     double amount;            
@@ -16,7 +16,7 @@ ref class RecurringPaymentRequest {
     public:
     RecurringPaymentRequest(int reqId, int userAcc, int companyAcc, double amt,
                             DateTime date, String ^ stat) {
-        requestId = reqId;
+        id = reqId;
         userAccountNumber = userAcc;
         companyAccountNumber = companyAcc;
         amount = amt;
@@ -25,7 +25,7 @@ ref class RecurringPaymentRequest {
     }
 
     RecurringPaymentRequest(int userAcc, int companyAcc, double amt) {
-        requestId = 0;
+        id = 0;
         userAccountNumber = userAcc;
         companyAccountNumber = companyAcc;
         amount = amt;
@@ -34,7 +34,7 @@ ref class RecurringPaymentRequest {
     }
 
     RecurringPaymentRequest() {
-        requestId = 0;
+        id = 0;
         userAccountNumber = 0;
         companyAccountNumber = 0;
         amount = 0;
@@ -42,8 +42,8 @@ ref class RecurringPaymentRequest {
         status = "pending";
     }
 
-    property int RequestId {
-        int get() { return requestId; }
+    property int Id {
+        int get() { return id; }
     }
     property int UserAccountNumber {
         int get() { return userAccountNumber; }

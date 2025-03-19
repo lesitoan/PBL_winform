@@ -2,6 +2,9 @@
 #include "PaymentCodes.h"
 #include "RecurringPayments.h"
 #include "HandleFile.h"
+#include "RecurringPaymentRequest.h"
+#include "GlobalData.h"
+#include "Utils.h"
 
 ref class AdminForm;
 namespace BankingAppwinform {
@@ -80,9 +83,6 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
     System::Windows::Forms::DataGridView ^ dataGridViewRecurring;
 
   private:
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column7;
-
-  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column8;
 
   private:
@@ -95,42 +95,7 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column12;
 
   private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
+    int companyAccountNumber;
 
 
   private:
@@ -178,8 +143,6 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         this->Column5 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->Column6 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column7 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->Column8 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -355,9 +318,8 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
             dataGridViewCellStyle2;
         this->dataGridViewRecurring->ColumnHeadersHeight = 40;
         this->dataGridViewRecurring->Columns->AddRange(
-            gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(5){
-                this->Column7, this->Column8, this->Column10, this->Column11,
-                this->Column12});
+            gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(4){
+                this->Column8, this->Column10, this->Column11, this->Column12});
         dataGridViewCellStyle3->Alignment =
             System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
         dataGridViewCellStyle3->BackColor = System::Drawing::Color::MintCream;
@@ -531,12 +493,6 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         this->Column6->Name = L"Column6";
         this->Column6->ReadOnly = true;
         //
-        // Column7
-        //
-        this->Column7->HeaderText = L"ID";
-        this->Column7->Name = L"Column7";
-        this->Column7->ReadOnly = true;
-        //
         // Column8
         //
         this->Column8->HeaderText = L"STK KH";
@@ -545,19 +501,19 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         //
         // Column10
         //
-        this->Column10->HeaderText = L"Số tháng TTĐK";
+        this->Column10->HeaderText = L"STK CT";
         this->Column10->Name = L"Column10";
         this->Column10->ReadOnly = true;
         //
         // Column11
         //
-        this->Column11->HeaderText = L"Ngày đến hạn";
+        this->Column11->HeaderText = L"Số tiền";
         this->Column11->Name = L"Column11";
         this->Column11->ReadOnly = true;
         //
         // Column12
         //
-        this->Column12->HeaderText = L"Tiền nợ";
+        this->Column12->HeaderText = L"Trạng thái";
         this->Column12->Name = L"Column12";
         this->Column12->ReadOnly = true;
         //
@@ -586,7 +542,7 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
 #pragma endregion
 
 
-    void LoadPaymentCodes(int companyAccountNumber) {
+    void LoadPaymentCodes() {
         dataGridViewCodes->Rows->Clear();
 
         array<PaymentCodes ^> ^ paymentCodes = HandleFile::ReadCodeArray("codes.dat");
@@ -594,7 +550,7 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
             return;
 
         for each (PaymentCodes ^ code in paymentCodes) {
-            if (code->CompanyAccountNumber != companyAccountNumber)
+            if (code->CompanyAccountNumber != this->companyAccountNumber)
                 continue;
 
             dataGridViewCodes->Rows->Add(
@@ -607,42 +563,122 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         }
     }
 
-  array<RecurringPayments ^> ^
-      GetFakeRecurringPayments() {
-          array<RecurringPayments ^> ^ recurringPayments =
-              gcnew array<RecurringPayments ^>(20);
 
-          Random ^ rand = gcnew Random();
-
-          for (int i = 0; i < 20; i++) {
-              recurringPayments[i] = gcnew RecurringPayments(
-                  i + 1, // id
-                  rand->Next(
-                      100000,
-                      999999), // userAccountNumber (tài khoản ngẫu nhiên)
-                  (i % 5) + 1, // companyId (chia ngẫu nhiên 5 công ty)
-                  1, // 1 month
-                  DateTime(2025, 3, rand->Next(1, 29)), // paymentDay (1-28)
-                  0 // tiền nợ
-              );
-          }
-
-          return recurringPayments;
-      }
-
-  void LoadRecurringPayments() {
+  void LoadRecurringPaymentRequest() {
         dataGridViewRecurring->Rows->Clear(); // Xóa dữ liệu cũ nếu có
 
-        array<RecurringPayments ^> ^ recurringPayments =
-            GetFakeRecurringPayments();
+        array<RecurringPaymentRequest ^> ^ recurringPaymentRequests =
+            HandleFile::ReadRecurringPaymentRequestArray("recurringPaymentRequests.dat");
+        if (recurringPaymentRequests == nullptr ||
+            recurringPaymentRequests->Length == 0)
+            return;
 
-        for each (RecurringPayments ^ payment in recurringPayments) {
+        if (dataGridViewRecurring->Columns["btnPay"] == nullptr) {
+            DataGridViewButtonColumn ^ btnColumn =
+                gcnew DataGridViewButtonColumn();
+            btnColumn->HeaderText = L"Hành động";
+            btnColumn->Text = L"Thanh toán";
+            btnColumn->UseColumnTextForButtonValue = true;
+            btnColumn->Name = "btnPay";
+            this->dataGridViewRecurring->Columns->Add(btnColumn);
+        }
+
+        for (int i = 0; i < recurringPaymentRequests->Length; i++) {
+            if (recurringPaymentRequests[i]->CompanyAccountNumber !=
+                this->companyAccountNumber)
+                continue;
+            String ^ status = recurringPaymentRequests[i]->Status == "pending"
+                                  ? L"Chưa thanh toán"
+                                  : L"Đã thanh toán";
             dataGridViewRecurring->Rows->Add(
-                payment->Id, payment->UserAccountNumber,
-                payment->Monthly, payment->PaymentDay.ToString("dd/MM/yyyy"),
-                payment->Debt);
+                recurringPaymentRequests[i]->UserAccountNumber,
+                recurringPaymentRequests[i]->CompanyAccountNumber,
+                recurringPaymentRequests[i]->Amount, status);
+
+            dataGridViewRecurring->Rows[i]->Tag = recurringPaymentRequests[i];
+
+            if (recurringPaymentRequests[i]->Status == "pending") {
+                dataGridViewRecurring->Rows[i]->Cells["btnPay"]->Value ="Thanh toán";
+            } else {
+                dataGridViewRecurring->Rows[i]->Cells["btnPay"]->Value ="";
+            }
+        }
+            this->dataGridViewRecurring->CellClick +=
+                gcnew DataGridViewCellEventHandler(
+                    this, &CompanyBillingForm::dataGridViewRecurring_CellClick);
+
+    }
+
+  private:
+    System::Void dataGridViewRecurring_CellClick(
+        System::Object ^ sender,
+        System::Windows::Forms::DataGridViewCellEventArgs ^ e) {
+
+        if (e->RowIndex >= 0 &&
+            dataGridViewRecurring->Columns[e->ColumnIndex]->Name == "btnPay") {
+            RecurringPaymentRequest ^ request =(RecurringPaymentRequest ^) dataGridViewRecurring->Rows[e->RowIndex]->Tag;
+
+            if (request->Status == "success") {
+                return;
+            }  
+
+             // update file users và transactions
+            array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+            int pin = 0;
+
+            for (int i = 0; i < users->Length; i++) {
+                if (users[i]->AccountNumber == request->UserAccountNumber) {
+                    pin = users[i]->getPin();
+                    break;
+                }
+            }
+            bool isTransfer = Utils::transferMoney(
+                request->UserAccountNumber,
+                request->CompanyAccountNumber, 
+                request->Amount, pin);
+            if (!isTransfer) {
+                return;
+            }
+
+            // update file recurringPaymentRequests
+            array<RecurringPaymentRequest^>^ recurringPaymentRequests = HandleFile::ReadRecurringPaymentRequestArray("recurringPaymentRequests.dat");
+            for (int i = 0; i < recurringPaymentRequests->Length; i++) {
+                if (recurringPaymentRequests[i]->UserAccountNumber == request->UserAccountNumber &&
+                    recurringPaymentRequests[i]->CompanyAccountNumber == request->CompanyAccountNumber) {
+                    for (int j = i; j < recurringPaymentRequests->Length - 1;
+                         j++) {
+                        recurringPaymentRequests[j] =
+                            recurringPaymentRequests[j + 1];
+                    }
+                    Array::Resize(recurringPaymentRequests,
+                                  recurringPaymentRequests->Length - 1);
+                    break;
+                }
+            }
+            HandleFile::WriteRecurringPaymentRequestArray(
+                recurringPaymentRequests, "recurringPaymentRequests.dat");
+
+            // update file recurringPayments
+            array<RecurringPayments ^> ^ recurringPayments =
+                HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
+            for (int i = 0; i < recurringPayments->Length; i++) {
+                if (recurringPayments[i]->UserAccountNumber == request->UserAccountNumber &&
+                    recurringPayments[i]->CompanyAccountNumber == request->CompanyAccountNumber) {
+                    recurringPayments[i]->Debt = 0;
+                    recurringPayments[i]->PaymentDay = recurringPayments[i]->PaymentDay.AddMonths(1);
+                    break;
+                }
+            }
+            HandleFile::WriteRecurringPaymentsArray(
+                recurringPayments, "recurringPayments.dat");
+
+            // update ui
+            MessageBox::Show(L"Thanh toán thành công cho tài khoản: " +
+                             request->UserAccountNumber);
+            LoadRecurringPaymentRequest();
         }
     }
+
 
 
 

@@ -37,7 +37,7 @@ ref class RecurringPayments {
                       int monthly)
         : id(11), userAccountNumber(userAccountNumber),
           companyAccountNumber(companyAccountNumber), monthly(monthly),
-          paymentDay(DateTime::Now.AddMonths(1)), debt(0) {}
+          paymentDay(DateTime::Now.AddMonths(-1)), debt(0) {}
 
 
     property int Id {

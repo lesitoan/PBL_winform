@@ -3,10 +3,12 @@
 
 namespace BankingAppwinform {
 
-    CompanyBillingForm::CompanyBillingForm(int companyAccountNumber) {
+    CompanyBillingForm::CompanyBillingForm(int companyAccNumber) {
         InitializeComponent();
-        LoadPaymentCodes(companyAccountNumber);
-        LoadRecurringPayments();
+        this->companyAccountNumber = companyAccNumber;  
+
+        LoadPaymentCodes();
+        LoadRecurringPaymentRequest();
     }
 
     CompanyBillingForm::~CompanyBillingForm() {

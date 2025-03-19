@@ -332,7 +332,7 @@ bool HandleFile::WriteRecurringPaymentRequestArray(
         BinaryWriter ^ writer = gcnew BinaryWriter(fs);
         writer->Write(recurringRequests->Length);
         for each (RecurringPaymentRequest ^ request in recurringRequests) {
-            writer->Write(request->RequestId);
+            writer->Write(request->Id);
             writer->Write(request->UserAccountNumber);
             writer->Write(request->CompanyAccountNumber);
             writer->Write(request->Amount);
