@@ -85,6 +85,10 @@ namespace BankingAppwinform {
         }
         dataGridViewUsers->Rows->Clear();
         for each (PaymentCodes ^ code in codes) {
+            if (code->CompanyAccountNumber !=
+                GlobalData::GetCurrentUser()->getAccountNumber()) {
+                continue;
+            }
             String ^ status =
                 code->Status ? L"Đã thanh toán" : L"Chưa thanh toán";
             dataGridViewUsers->Rows->Add(code->Code, code->Amount, status);

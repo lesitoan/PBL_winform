@@ -19,6 +19,7 @@ AdminServiceForm::~AdminServiceForm() {
 }
 
 void AdminServiceForm::LoadServices() {
+    flowLayoutPanelContainer->Controls->Clear();
 
     array<Services ^> ^ services = HandleFile::ReadServicesArray("services.dat");
     if (services == nullptr || services->Length == 0) {
@@ -47,10 +48,6 @@ void AdminServiceForm::LoadServices() {
         label->Click +=
             gcnew EventHandler(this, &AdminServiceForm::OnServiceClick);
     }
-
-    this->Controls->Add(flowLayoutPanelContainer);
-
-    
 }
 
 void AdminServiceForm::OnServiceClick(Object ^ sender, EventArgs ^ e) {

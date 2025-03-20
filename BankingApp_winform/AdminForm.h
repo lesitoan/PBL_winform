@@ -80,6 +80,9 @@ ref class AdminForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Label ^ labelHeader;
 
   private:
+    System::Windows::Forms::PictureBox ^ pictureBox2;
+
+  private:
 
 
   private:
@@ -107,6 +110,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->btnTransaction = (gcnew System::Windows::Forms::Button());
         this->btnClient = (gcnew System::Windows::Forms::Button());
         this->panelContent = (gcnew System::Windows::Forms::Panel());
+        this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->labelHeader = (gcnew System::Windows::Forms::Label());
         this->panel1->SuspendLayout();
@@ -114,6 +118,10 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->panel4->SuspendLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->pictureBox1))
+            ->BeginInit();
+        this->panelContent->SuspendLayout();
+        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
+             this->pictureBox2))
             ->BeginInit();
         this->panel2->SuspendLayout();
         this->SuspendLayout();
@@ -335,13 +343,26 @@ ref class AdminForm : public System::Windows::Forms::Form {
         //
         // panelContent
         //
-        this->panelContent->BackColor =
-            System::Drawing::SystemColors::ActiveCaption;
+        this->panelContent->BackColor = System::Drawing::Color::Teal;
+        this->panelContent->Controls->Add(this->pictureBox2);
         this->panelContent->Dock = System::Windows::Forms::DockStyle::Fill;
         this->panelContent->Location = System::Drawing::Point(207, 42);
         this->panelContent->Name = L"panelContent";
         this->panelContent->Size = System::Drawing::Size(1077, 719);
         this->panelContent->TabIndex = 2;
+        //
+        // pictureBox2
+        //
+        this->pictureBox2->Anchor = System::Windows::Forms::AnchorStyles::None;
+        this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"pictureBox2.Image")));
+        this->pictureBox2->Location = System::Drawing::Point(234, 85);
+        this->pictureBox2->Name = L"pictureBox2";
+        this->pictureBox2->Size = System::Drawing::Size(683, 500);
+        this->pictureBox2->SizeMode =
+            System::Windows::Forms::PictureBoxSizeMode::Zoom;
+        this->pictureBox2->TabIndex = 0;
+        this->pictureBox2->TabStop = false;
         //
         // panel2
         //
@@ -378,6 +399,8 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->panel2);
         this->Controls->Add(this->panel1);
         this->Name = L"AdminForm";
+        this->StartPosition =
+            System::Windows::Forms::FormStartPosition::CenterScreen;
         this->Text = L"AdminForm";
         this->panel1->ResumeLayout(false);
         this->panelNav->ResumeLayout(false);
@@ -385,6 +408,10 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->panel4->PerformLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->pictureBox1))
+            ->EndInit();
+        this->panelContent->ResumeLayout(false);
+        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
+             this->pictureBox2))
             ->EndInit();
         this->panel2->ResumeLayout(false);
         this->panel2->PerformLayout();

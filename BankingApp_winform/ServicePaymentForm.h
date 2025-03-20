@@ -186,6 +186,10 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
         //
         // submitRecurringPayment
         //
+        this->submitRecurringPayment->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (System::Windows::Forms::AnchorStyles::Left |
+                 System::Windows::Forms::AnchorStyles::Right));
         this->submitRecurringPayment->AutoSize = true;
         this->submitRecurringPayment->Font =
             (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));

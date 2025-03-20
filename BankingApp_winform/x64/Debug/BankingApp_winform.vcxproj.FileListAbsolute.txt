@@ -46,3 +46,6 @@ D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.SignupFo
 D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.TransferMoneyForm.resources
 D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.WithdrawMoneyForm.resources
 D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.LoginForm.vi.resources
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.ModifyServiceForm.resources
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.AddUserForm.resources
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.SelectReceiverForm.resources

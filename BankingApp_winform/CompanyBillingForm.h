@@ -580,6 +580,13 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
             btnColumn->Text = L"Thanh toán";
             btnColumn->UseColumnTextForButtonValue = true;
             btnColumn->Name = "btnPay";
+            // Thiết lập màu sắc cho nút
+            btnColumn->DefaultCellStyle->BackColor =
+                System::Drawing::Color::Green;
+            btnColumn->DefaultCellStyle->ForeColor =
+                System::Drawing::Color::White;
+                FlatStyle::Flat;
+
             this->dataGridViewRecurring->Columns->Add(btnColumn);
         }
 

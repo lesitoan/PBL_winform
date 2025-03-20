@@ -113,17 +113,17 @@ void HistoryForm::AddTransactionPanel(FlowLayoutPanel ^ flowLayoutPanel,
     Label ^ lblBalance = gcnew Label();
     /*lblBalance->Text =
         L"Số dư cuối: " + transaction->getBalance().ToString() + " VND";*/
-    lblBalance->Text = L"Số dư cuối: " + "999999" + " VND";
+    /*lblBalance->Text = L"Số dư cuối: " + "999999" + " VND";
     lblBalance->ForeColor = Color::Blue;
     lblBalance->Font = gcnew System::Drawing::Font("Arial", 9, FontStyle::Bold);
     lblBalance->Location = Point(10, yOffset);
     lblBalance->AutoSize = true;
     panel->Controls->Add(lblBalance);
-    yOffset += lineHeight;
+    yOffset += lineHeight;*/
 
     // Nội dung giao dịch
     Label ^ lblContent = gcnew Label();
-    lblContent->Text = L"Nội dung giao dịch: " + "ahihi";
+    lblContent->Text = L"Nội dung giao dịch: " + transaction->getMessage();
     lblContent->ForeColor = Color::Black;
     lblContent->Font = gcnew System::Drawing::Font("Arial", 9);
     lblContent->Location = Point(10, yOffset);

@@ -66,7 +66,11 @@ bool Utils::transferMoney(int currUserAccNumber, int receiverAccNumber, double a
     }
 
     // lưu lịch sử giao dịch
-    Transaction ^ transaction = gcnew Transaction(123, currUserAccNumber, receiverAccNumber, amount,
+    String ^ message = "Chuyen khoan toi tai khoan " + receiverAccNumber; // sửa lại sau
+
+    Transaction ^ transaction =
+        gcnew Transaction(123, currUserAccNumber, receiverAccNumber, amount,
+                          message,
                           DateTime::Now.ToString());
     array<Transaction ^> ^ transactions =
         HandleFile::ReadTransactionArray("transactions.dat");

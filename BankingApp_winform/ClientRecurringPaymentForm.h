@@ -568,8 +568,10 @@ ref class ClientRecurringPaymentForm : public System::Windows::Forms::Form {
         array<RecurringPayments ^> ^ recurringPayments =
             HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
         for (int i = 0; i < recurringPayments->Length; i++) {
-            if (recurringPayments[i]->UserAccountNumber ==
-                currClientAccountNumber) {
+            if (recurringPayments[i]->UserAccountNumber == currClientAccountNumber &&
+                recurringPayments[i]->CompanyAccountNumber ==
+                    GlobalData::GetCurrentUser()->AccountNumber
+                ) {
                 recurringPayments[i]->Debt = Convert::ToDouble(amount);
                 break;
             }

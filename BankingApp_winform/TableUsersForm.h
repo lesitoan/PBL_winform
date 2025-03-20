@@ -1,6 +1,10 @@
 ﻿#pragma once
 #include "AdminForm.h"
 #include "LoadChildForm.h"
+#include "User.h"
+#include "HandleFile.h"
+#include "AddUserForm.h"
+
 
 ref class EditUserForm;
 
@@ -12,6 +16,8 @@ using namespace System::Collections;
 using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
+
+using namespace System::Text::RegularExpressions;
 
 /// <summary>
 /// Summary for AdminClientForm
@@ -28,23 +34,23 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
     ~TableUsersForm();
 
   private:
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column6;
+
 
   protected:
   private:
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column5;
+
 
   private:
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column4;
+
 
   private:
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column3;
+
 
   private:
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column2;
+
 
   private:
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column1;
+
 
   private:
     System::Windows::Forms::DataGridView ^ dataGridViewUsers;
@@ -54,35 +60,54 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel1;
 
   private:
-    System::Windows::Forms::TextBox ^ phoneNumber;
+    System::Windows::Forms::TextBox ^ findText;
 
   private:
-    System::Windows::Forms::Button ^ btnSubmit;
+    System::Windows::Forms::Button ^ btnFind;
 
   private:
-    System::Windows::Forms::Button ^ button1;
+    System::Windows::Forms::Button ^ btnAddUser;
+
+  private:
+
+
+  private:
+
+
+  private:
+
 
   private:
     System::Windows::Forms::Button ^ btnModify;
 
   private:
-  private:
-    System::Windows::Forms::Button ^ button3;
+    System::Windows::Forms::Button ^ btnLock;
 
   private:
   private:
+
+
   private:
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column1;
+
   private:
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column2;
+
   private:
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column3;
+
   private:
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column4;
+
   private:
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column5;
+
   private:
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column6;
+
   private:
-  private:
-  private:
-  private:
-  private:
-  private:
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column7;
+
     /// <summary>
     /// Required designer variable.
     /// </summary>
@@ -100,67 +125,33 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
             (gcnew System::Windows::Forms::DataGridViewCellStyle());
         System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle3 =
             (gcnew System::Windows::Forms::DataGridViewCellStyle());
-        this->Column6 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column5 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column4 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column3 =
+        this->dataGridViewUsers =
+            (gcnew System::Windows::Forms::DataGridView());
+        this->Column1 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->Column2 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column1 =
+        this->Column3 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->dataGridViewUsers =
-            (gcnew System::Windows::Forms::DataGridView());
+        this->Column4 =
+            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column5 =
+            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column6 =
+            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column7 =
+            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->panel1 = (gcnew System::Windows::Forms::Panel());
-        this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
-        this->btnSubmit = (gcnew System::Windows::Forms::Button());
-        this->button1 = (gcnew System::Windows::Forms::Button());
+        this->findText = (gcnew System::Windows::Forms::TextBox());
+        this->btnFind = (gcnew System::Windows::Forms::Button());
+        this->btnAddUser = (gcnew System::Windows::Forms::Button());
         this->btnModify = (gcnew System::Windows::Forms::Button());
-        this->button3 = (gcnew System::Windows::Forms::Button());
+        this->btnLock = (gcnew System::Windows::Forms::Button());
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->dataGridViewUsers))
             ->BeginInit();
         this->panel1->SuspendLayout();
         this->SuspendLayout();
-        //
-        // Column6
-        //
-        this->Column6->HeaderText = L"Column6";
-        this->Column6->Name = L"Column6";
-        this->Column6->ReadOnly = true;
-        //
-        // Column5
-        //
-        this->Column5->HeaderText = L"Column5";
-        this->Column5->Name = L"Column5";
-        this->Column5->ReadOnly = true;
-        //
-        // Column4
-        //
-        this->Column4->HeaderText = L"Column4";
-        this->Column4->Name = L"Column4";
-        this->Column4->ReadOnly = true;
-        //
-        // Column3
-        //
-        this->Column3->HeaderText = L"Column3";
-        this->Column3->Name = L"Column3";
-        this->Column3->ReadOnly = true;
-        //
-        // Column2
-        //
-        this->Column2->HeaderText = L"Column2";
-        this->Column2->Name = L"Column2";
-        this->Column2->ReadOnly = true;
-        //
-        // Column1
-        //
-        this->Column1->HeaderText = L"Column1";
-        this->Column1->Name = L"Column1";
-        this->Column1->ReadOnly = true;
         //
         // dataGridViewUsers
         //
@@ -210,9 +201,9 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
             dataGridViewCellStyle2;
         this->dataGridViewUsers->ColumnHeadersHeight = 40;
         this->dataGridViewUsers->Columns->AddRange(
-            gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(6){
+            gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(7){
                 this->Column1, this->Column2, this->Column3, this->Column4,
-                this->Column5, this->Column6});
+                this->Column5, this->Column6, this->Column7});
         dataGridViewCellStyle3->Alignment =
             System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
         dataGridViewCellStyle3->BackColor = System::Drawing::Color::MintCream;
@@ -260,6 +251,48 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
             gcnew System::Windows::Forms::DataGridViewCellEventHandler(
                 this, &TableUsersForm::dataGridView1_CellContentClick);
         //
+        // Column1
+        //
+        this->Column1->HeaderText = L"Tên";
+        this->Column1->Name = L"Column1";
+        this->Column1->ReadOnly = true;
+        //
+        // Column2
+        //
+        this->Column2->HeaderText = L"SĐT";
+        this->Column2->Name = L"Column2";
+        this->Column2->ReadOnly = true;
+        //
+        // Column3
+        //
+        this->Column3->HeaderText = L"STK";
+        this->Column3->Name = L"Column3";
+        this->Column3->ReadOnly = true;
+        //
+        // Column4
+        //
+        this->Column4->HeaderText = L"Số dư";
+        this->Column4->Name = L"Column4";
+        this->Column4->ReadOnly = true;
+        //
+        // Column5
+        //
+        this->Column5->HeaderText = L"Vài trò";
+        this->Column5->Name = L"Column5";
+        this->Column5->ReadOnly = true;
+        //
+        // Column6
+        //
+        this->Column6->HeaderText = L"Tên NH";
+        this->Column6->Name = L"Column6";
+        this->Column6->ReadOnly = true;
+        //
+        // Column7
+        //
+        this->Column7->HeaderText = L"Trạng thái";
+        this->Column7->Name = L"Column7";
+        this->Column7->ReadOnly = true;
+        //
         // panel1
         //
         this->panel1->Anchor =
@@ -270,72 +303,75 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
         this->panel1->BackColor = System::Drawing::Color::White;
         this->panel1->BorderStyle =
             System::Windows::Forms::BorderStyle::FixedSingle;
-        this->panel1->Controls->Add(this->phoneNumber);
+        this->panel1->Controls->Add(this->findText);
         this->panel1->Location = System::Drawing::Point(26, 26);
         this->panel1->Name = L"panel1";
         this->panel1->Size = System::Drawing::Size(734, 37);
         this->panel1->TabIndex = 32;
         //
-        // phoneNumber
+        // findText
         //
-        this->phoneNumber->Anchor =
+        this->findText->Anchor =
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (((System::Windows::Forms::AnchorStyles::Top |
                    System::Windows::Forms::AnchorStyles::Bottom) |
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->phoneNumber->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->phoneNumber->Font =
+        this->findText->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->findText->Font =
             (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->phoneNumber->Location = System::Drawing::Point(18, 6);
-        this->phoneNumber->MaxLength = 40;
-        this->phoneNumber->Multiline = true;
-        this->phoneNumber->Name = L"phoneNumber";
-        this->phoneNumber->Size = System::Drawing::Size(714, 26);
-        this->phoneNumber->TabIndex = 29;
+        this->findText->Location = System::Drawing::Point(18, 6);
+        this->findText->MaxLength = 40;
+        this->findText->Multiline = true;
+        this->findText->Name = L"findText";
+        this->findText->Size = System::Drawing::Size(714, 26);
+        this->findText->TabIndex = 29;
         //
-        // btnSubmit
+        // btnFind
         //
-        this->btnSubmit->Anchor =
+        this->btnFind->Anchor =
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Top |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->btnSubmit->BackColor = System::Drawing::Color::DarkOrange;
-        this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnSubmit->FlatAppearance->BorderSize = 0;
-        this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->btnSubmit->Font = (gcnew System::Drawing::Font(
+        this->btnFind->BackColor = System::Drawing::Color::DarkOrange;
+        this->btnFind->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnFind->FlatAppearance->BorderSize = 0;
+        this->btnFind->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnFind->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnSubmit->ForeColor = System::Drawing::Color::Black;
-        this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->btnSubmit->Location = System::Drawing::Point(766, 26);
-        this->btnSubmit->Name = L"btnSubmit";
-        this->btnSubmit->Size = System::Drawing::Size(188, 37);
-        this->btnSubmit->TabIndex = 33;
-        this->btnSubmit->Text = L"SEARCH";
-        this->btnSubmit->UseVisualStyleBackColor = false;
+        this->btnFind->ForeColor = System::Drawing::Color::Black;
+        this->btnFind->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->btnFind->Location = System::Drawing::Point(766, 26);
+        this->btnFind->Name = L"btnFind";
+        this->btnFind->Size = System::Drawing::Size(188, 37);
+        this->btnFind->TabIndex = 33;
+        this->btnFind->Text = L"TÌM";
+        this->btnFind->UseVisualStyleBackColor = false;
+        this->btnFind->Click +=
+            gcnew System::EventHandler(this, &TableUsersForm::btnFind_Click);
         //
-        // button1
+        // btnAddUser
         //
-        this->button1->Anchor =
+        this->btnAddUser->Anchor =
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Top |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->button1->BackColor = System::Drawing::Color::Green;
-        this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->button1->FlatAppearance->BorderSize = 0;
-        this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->button1->Font = (gcnew System::Drawing::Font(
+        this->btnAddUser->BackColor = System::Drawing::Color::Green;
+        this->btnAddUser->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnAddUser->FlatAppearance->BorderSize = 0;
+        this->btnAddUser->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnAddUser->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->button1->ForeColor = System::Drawing::Color::Bisque;
-        this->button1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->button1->Location = System::Drawing::Point(961, 79);
-        this->button1->Name = L"button1";
-        this->button1->Size = System::Drawing::Size(90, 73);
-        this->button1->TabIndex = 34;
-        this->button1->Text = L"THÊM";
-        this->button1->UseVisualStyleBackColor = false;
+        this->btnAddUser->ForeColor = System::Drawing::Color::Bisque;
+        this->btnAddUser->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->btnAddUser->Location = System::Drawing::Point(961, 79);
+        this->btnAddUser->Name = L"btnAddUser";
+        this->btnAddUser->Size = System::Drawing::Size(90, 73);
+        this->btnAddUser->TabIndex = 34;
+        this->btnAddUser->Text = L"THÊM";
+        this->btnAddUser->UseVisualStyleBackColor = false;
+        this->btnAddUser->Click +=
+            gcnew System::EventHandler(this, &TableUsersForm::btnAddUser_Click);
         //
         // btnModify
         //
@@ -360,26 +396,28 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
         this->btnModify->Click +=
             gcnew System::EventHandler(this, &TableUsersForm::btnModify_Click);
         //
-        // button3
+        // btnLock
         //
-        this->button3->Anchor =
+        this->btnLock->Anchor =
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Top |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->button3->BackColor = System::Drawing::Color::Red;
-        this->button3->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->button3->FlatAppearance->BorderSize = 0;
-        this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->button3->Font = (gcnew System::Drawing::Font(
+        this->btnLock->BackColor = System::Drawing::Color::Red;
+        this->btnLock->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnLock->FlatAppearance->BorderSize = 0;
+        this->btnLock->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnLock->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->button3->ForeColor = System::Drawing::Color::Bisque;
-        this->button3->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->button3->Location = System::Drawing::Point(961, 237);
-        this->button3->Name = L"button3";
-        this->button3->Size = System::Drawing::Size(90, 73);
-        this->button3->TabIndex = 36;
-        this->button3->Text = L"XÓA";
-        this->button3->UseVisualStyleBackColor = false;
+        this->btnLock->ForeColor = System::Drawing::Color::Bisque;
+        this->btnLock->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->btnLock->Location = System::Drawing::Point(961, 237);
+        this->btnLock->Name = L"btnLock";
+        this->btnLock->Size = System::Drawing::Size(90, 73);
+        this->btnLock->TabIndex = 36;
+        this->btnLock->Text = L"KHÓA";
+        this->btnLock->UseVisualStyleBackColor = false;
+        this->btnLock->Click +=
+            gcnew System::EventHandler(this, &TableUsersForm::btnLock_Click);
         //
         // TableUsersForm
         //
@@ -387,10 +425,10 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->BackColor = System::Drawing::Color::White;
         this->ClientSize = System::Drawing::Size(1077, 711);
-        this->Controls->Add(this->button3);
+        this->Controls->Add(this->btnLock);
         this->Controls->Add(this->btnModify);
-        this->Controls->Add(this->button1);
-        this->Controls->Add(this->btnSubmit);
+        this->Controls->Add(this->btnAddUser);
+        this->Controls->Add(this->btnFind);
         this->Controls->Add(this->panel1);
         this->Controls->Add(this->dataGridViewUsers);
         this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -418,5 +456,135 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
   private:
     System::Void btnModify_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
+
+    private: 
+    array<User ^> ^ users = nullptr;
+
+ private:
+    void loadUsers(array<User ^> ^ usersArr) {
+      dataGridViewUsers->Rows->Clear();
+
+        
+
+        if (usersArr == nullptr) {
+            usersArr = HandleFile::ReadUserArray("users.dat");
+            this->users = usersArr;
+        }
+        if (usersArr == nullptr) {
+          return;
+        }
+        for (int i = 0; i < usersArr->Length; i++) {
+
+          if (usersArr[i]->getRole() == "admin") {
+              continue;
+          }
+          String ^ status = usersArr[i]->Status == 1 ? L"Hoạt động" : L"Khóa";
+          dataGridViewUsers->Rows->Add(
+              usersArr[i]->getFullName(), usersArr[i]->getPhoneNumber(),
+              usersArr[i]->getBalance(),
+                
+              usersArr[i]->getAccountNumber(), usersArr[i]->getRole(),
+              usersArr[i]->getBankName(),
+              status
+          );
+
+          int lastRow = dataGridViewUsers->Rows->Count - 1;
+          dataGridViewUsers->Rows[lastRow]->Tag = usersArr[i];
+      }
+      this->dataGridViewUsers->CellClick += gcnew DataGridViewCellEventHandler(
+            this, &TableUsersForm::handleUserRowClick);
+    }
+
+    private:
+    User ^ userSelected = nullptr;
+
+        
+    System::Void handleUserRowClick(
+        System::Object ^ sender,
+        System::Windows::Forms::DataGridViewCellEventArgs ^ e) {
+        if (e->RowIndex < 0) {
+            return;
+        }
+        DataGridViewRow ^ row = dataGridViewUsers->Rows[e->RowIndex];
+        this->userSelected = dynamic_cast<User ^>(row->Tag);
+
+        if (userSelected->Status) {
+            btnLock->Text = L"KHÓA";
+            btnLock->BackColor = System::Drawing::Color::Red;
+        } else {
+            btnLock->Text = L"MỞ KHÓA";
+            btnLock->BackColor = System::Drawing::Color::Green;
+        }
+    } 
+
+
+private:
+    System::Void btnLock_Click(System::Object ^ sender, System::EventArgs ^ e) {
+        System::Windows::Forms::DialogResult result;
+        if (userSelected == nullptr) {
+            MessageBox::Show(L"Vui lòng chọn một tài khoản", L"Thông báo",
+                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
+            return;
+        }
+        result = MessageBox::Show(
+            L"Bạn có chắc chắn muốn lưu lại thay đổi không ?", L"Lưu thay đổi",
+            MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+        if (result == System::Windows::Forms::DialogResult::No) {
+            return;
+        }
+
+        if (users == nullptr) {
+            return;
+        }
+        for (int i = 0; i < users->Length; i++) {
+            if (users[i]->getAccountNumber() == userSelected->getAccountNumber()) {
+                users[i]->Status = 1 - users[i]->Status;
+                break;
+            }
+        }
+        HandleFile::WriteUserArray(users, "users.dat");
+        MessageBox::Show(L"Thay đổi đã được lưu lại", L"Thành công",
+                         MessageBoxButtons::OK, MessageBoxIcon::Information);
+        loadUsers(nullptr);
+
+    }
+
+  private:
+    void btnFind_Click(System::Object ^ sender, System::EventArgs ^ e) {
+        String ^ find = this->findText->Text;
+        if (find == "")
+            users = HandleFile::ReadUserArray("users.dat");
+
+        List<User ^> ^ matchedUsers = gcnew List<User ^>();
+
+        for (int i = 0; i < users->Length; i++) {
+            // Chuyển input thành regex pattern
+            String ^ pattern = ".*" + Regex::Escape(find) + ".*";
+            // Kiểm tra tên có chứa input không (không phân biệt hoa thường)
+            bool isMatch = Regex::IsMatch(users[i]->getFullName(), pattern,
+                                          RegexOptions::IgnoreCase);
+            if (isMatch) { 
+                matchedUsers->Add(users[i]);
+            }
+        }
+        this->findText->Text = "";
+        loadUsers(matchedUsers->ToArray());
+    }
+
+  private:
+    System::Void btnAddUser_Click(System::Object ^ sender,
+                                  System::EventArgs ^ e) {
+        AddUserForm ^ addUserForm = gcnew AddUserForm();
+        addUserForm->createUserSuccess +=
+            gcnew EventHandler(this, &TableUsersForm::onCreateUserSuccess);
+        addUserForm->ShowDialog();
+    }
+
+    System::Void TableUsersForm::onCreateUserSuccess(System::Object ^ sender,
+                                           System::EventArgs ^ e) {
+        loadUsers(nullptr);
+    }
+
+
 };
 } // namespace BankingAppwinform

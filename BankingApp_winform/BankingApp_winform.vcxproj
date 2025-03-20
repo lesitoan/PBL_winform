@@ -121,11 +121,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccountForm.cpp" />
+    <ClCompile Include="AddUserForm.cpp" />
+    <ClCompile Include="ModifyServiceForm.cpp" />
     <ClCompile Include="ClientRecurringPaymentForm.cpp" />
     <ClCompile Include="CodeForm.cpp" />
     <ClCompile Include="CompanyBillingForm.cpp" />
     <ClCompile Include="CompanyForm.cpp" />
     <ClCompile Include="EditUserForm.cpp" />
+    <ClCompile Include="SelectReceiverForm.cpp" />
     <ClCompile Include="ServicePaymentForm.cpp" />
     <ClCompile Include="TableUsersForm.cpp" />
     <ClCompile Include="AdminForm.cpp" />
@@ -151,6 +154,12 @@
     <ClInclude Include="AccountForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="AddUserForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModifyServiceForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ClientRecurringPaymentForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -169,6 +178,9 @@
     <ClInclude Include="PaymentCodes.h" />
     <ClInclude Include="RecurringPaymentRequest.h" />
     <ClInclude Include="RecurringPayments.h" />
+    <ClInclude Include="SelectReceiverForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ServicePaymentForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -228,6 +240,12 @@
     <EmbeddedResource Include="AccountForm.resx">
       <DependentUpon>AccountForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddUserForm.resx">
+      <DependentUpon>AddUserForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyServiceForm.resx">
+      <DependentUpon>ModifyServiceForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientRecurringPaymentForm.resx">
       <DependentUpon>ClientRecurringPaymentForm.h</DependentUpon>
     </EmbeddedResource>
@@ -242,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditUserForm.resx">
       <DependentUpon>EditUserForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectReceiverForm.resx">
+      <DependentUpon>SelectReceiverForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServicePaymentForm.resx">
       <DependentUpon>ServicePaymentForm.h</DependentUpon>
@@ -296,6 +317,8 @@
   <ItemGroup>
     <None Include="..\.clang-format" />
     <None Include="codes.dat" />
+    <None Include="recurringPaymentRequests.dat" />
+    <None Include="recurringPayments.dat" />
     <None Include="services.dat" />
     <None Include="transactions.dat" />
     <None Include="users.dat" />

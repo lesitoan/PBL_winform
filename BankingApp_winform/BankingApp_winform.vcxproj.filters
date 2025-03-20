@@ -102,6 +102,15 @@
     <ClCompile Include="ClientRecurringPaymentForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
+    <ClCompile Include="ModifyServiceForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="AddUserForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectReceiverForm.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -199,19 +208,34 @@
     <ClInclude Include="RecurringPaymentRequest.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="ModifyServiceForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="AddUserForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectReceiverForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
-    <None Include="codes.dat">
-      <Filter>Data\files</Filter>
-    </None>
     <None Include="services.dat">
       <Filter>Data\files</Filter>
     </None>
-    <None Include="users.dat">
+    <None Include="recurringPaymentRequests.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="recurringPayments.dat">
       <Filter>Data\files</Filter>
     </None>
     <None Include="transactions.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="codes.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="users.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>

@@ -2,6 +2,7 @@
 #include "Services.h"
 #include "CompanyForm.h"
 #include "HandleFile.h"
+#include "ModifyServiceForm.h"
 
 ref class AdminForm;
 namespace BankingAppwinform {
@@ -54,6 +55,21 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
     System::Windows::Forms::PictureBox ^ pictureBox2;
 
   private:
+    System::Windows::Forms::Panel ^ panel3;
+
+  private:
+    System::Windows::Forms::Button ^ btnAddService;
+
+  private:
+    System::Windows::Forms::Button ^ btnDeleteService;
+
+  private:
+
+
+  private:
+
+
+  private:
     /// <summary>
     /// Required designer variable.
     /// </summary>
@@ -76,6 +92,9 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->label2 = (gcnew System::Windows::Forms::Label());
         this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+        this->panel3 = (gcnew System::Windows::Forms::Panel());
+        this->btnAddService = (gcnew System::Windows::Forms::Button());
+        this->btnDeleteService = (gcnew System::Windows::Forms::Button());
         this->flowLayoutPanelContainer->SuspendLayout();
         this->panel1->SuspendLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
@@ -85,20 +104,25 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->pictureBox2))
             ->BeginInit();
+        this->panel3->SuspendLayout();
         this->SuspendLayout();
         //
         // flowLayoutPanelContainer
         //
+        this->flowLayoutPanelContainer->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
         this->flowLayoutPanelContainer->AutoScroll = true;
         this->flowLayoutPanelContainer->BackColor =
             System::Drawing::SystemColors::ButtonFace;
         this->flowLayoutPanelContainer->Controls->Add(this->panel1);
         this->flowLayoutPanelContainer->Controls->Add(this->panel2);
-        this->flowLayoutPanelContainer->Dock =
-            System::Windows::Forms::DockStyle::Fill;
         this->flowLayoutPanelContainer->Location = System::Drawing::Point(0, 0);
         this->flowLayoutPanelContainer->Name = L"flowLayoutPanelContainer";
-        this->flowLayoutPanelContainer->Size = System::Drawing::Size(1077, 711);
+        this->flowLayoutPanelContainer->Size = System::Drawing::Size(1077, 649);
         this->flowLayoutPanelContainer->TabIndex = 0;
         //
         // panel1
@@ -193,6 +217,70 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
         this->pictureBox2->TabIndex = 2;
         this->pictureBox2->TabStop = false;
         //
+        // panel3
+        //
+        this->panel3->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(224)),
+            static_cast<System::Int32>(static_cast<System::Byte>(224)),
+            static_cast<System::Int32>(static_cast<System::Byte>(224)));
+        this->panel3->Controls->Add(this->btnAddService);
+        this->panel3->Controls->Add(this->btnDeleteService);
+        this->panel3->Dock = System::Windows::Forms::DockStyle::Bottom;
+        this->panel3->Location = System::Drawing::Point(0, 645);
+        this->panel3->Name = L"panel3";
+        this->panel3->Size = System::Drawing::Size(1077, 66);
+        this->panel3->TabIndex = 1;
+        //
+        // btnAddService
+        //
+        this->btnAddService->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (System::Windows::Forms::AnchorStyles::Top |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->btnAddService->BackColor = System::Drawing::Color::Green;
+        this->btnAddService->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnAddService->FlatAppearance->BorderSize = 0;
+        this->btnAddService->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
+        this->btnAddService->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnAddService->ForeColor = System::Drawing::Color::Transparent;
+        this->btnAddService->ImeMode =
+            System::Windows::Forms::ImeMode::NoControl;
+        this->btnAddService->Location = System::Drawing::Point(674, 17);
+        this->btnAddService->Name = L"btnAddService";
+        this->btnAddService->Size = System::Drawing::Size(188, 37);
+        this->btnAddService->TabIndex = 35;
+        this->btnAddService->Text = L"Thêm dịch vụ";
+        this->btnAddService->UseVisualStyleBackColor = false;
+        this->btnAddService->Click += gcnew System::EventHandler(
+            this, &AdminServiceForm::btnAddService_Click);
+        //
+        // btnDeleteService
+        //
+        this->btnDeleteService->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (System::Windows::Forms::AnchorStyles::Top |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->btnDeleteService->BackColor = System::Drawing::Color::Red;
+        this->btnDeleteService->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnDeleteService->FlatAppearance->BorderSize = 0;
+        this->btnDeleteService->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
+        this->btnDeleteService->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnDeleteService->ForeColor = System::Drawing::Color::Transparent;
+        this->btnDeleteService->ImeMode =
+            System::Windows::Forms::ImeMode::NoControl;
+        this->btnDeleteService->Location = System::Drawing::Point(877, 17);
+        this->btnDeleteService->Name = L"btnDeleteService";
+        this->btnDeleteService->Size = System::Drawing::Size(188, 37);
+        this->btnDeleteService->TabIndex = 34;
+        this->btnDeleteService->Text = L"Xóa dịch vụ";
+        this->btnDeleteService->UseVisualStyleBackColor = false;
+        this->btnDeleteService->Click += gcnew System::EventHandler(
+            this, &AdminServiceForm::btnDeleteService_Click);
+        //
         // AdminServiceForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -200,6 +288,7 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
         this->BackColor = System::Drawing::SystemColors::ActiveCaption;
         this->ClientSize = System::Drawing::Size(1077, 711);
         this->Controls->Add(this->flowLayoutPanelContainer);
+        this->Controls->Add(this->panel3);
         this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
         this->Name = L"AdminServiceForm";
         this->Text = L"AdminServiceForm";
@@ -212,6 +301,7 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->pictureBox2))
             ->EndInit();
+        this->panel3->ResumeLayout(false);
         this->ResumeLayout(false);
     }
 #pragma endregion
@@ -221,5 +311,33 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
 
 private:
     System::Void panel1_Click(System::Object ^ sender, System::EventArgs ^ e);
+
+private:
+  System::Void btnAddService_Click(System::Object ^ sender,
+                                   System::EventArgs ^ e) {
+      ModifyServiceForm ^ addServiceForm = gcnew ModifyServiceForm("insert");
+      addServiceForm->ModifyServiceSuccess +=
+          gcnew EventHandler(this, &AdminServiceForm::onModyfyService);
+      addServiceForm->ShowDialog();
+  }
+
+  
+System::Void AdminServiceForm::onModyfyService(System::Object ^ sender,
+                                        System::EventArgs ^ e) {
+      LoadServices();
+  }
+
+
+private:
+  System::Void btnDeleteService_Click(System::Object ^ sender,
+                                      System::EventArgs ^ e) {
+      ModifyServiceForm ^ deleteServiceForm = gcnew ModifyServiceForm("delete");
+      deleteServiceForm->ModifyServiceSuccess +=
+          gcnew EventHandler(this, &AdminServiceForm::onModyfyService);
+      deleteServiceForm->ShowDialog();
+  }
+
+
+
 };
 } // namespace BankingAppwinform

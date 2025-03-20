@@ -14,6 +14,7 @@ bool HandleFile::WriteUserArray(array<User^>^ users, String^ filePath) {
             writer->Write(user->getRole());
             writer->Write(user->getPin());
             writer->Write(user->getBankName());
+            writer->Write(user->Status);
             writer->Write(user->getServiceId());
 
         }
@@ -60,9 +61,10 @@ array<User^>^ HandleFile::ReadUserArray(String^ filePath)
             String ^ _role = reader->ReadString();
             int _pin = reader->ReadInt32();
             String ^ _bankName = reader->ReadString();
+            int _status = reader->ReadInt32();
             int _serviceId = reader->ReadInt32();
             users[i] = gcnew User(_fullName, _password, _phoneNumber, _accountNumber,
-                           _balance, _role, _pin, _bankName, _serviceId);
+                           _balance, _role, _pin, _bankName,_status, _serviceId);
         }
         reader->Close();
         fs->Close(); 
@@ -99,10 +101,11 @@ array<Transaction ^> ^ HandleFile::ReadTransactionArray(String ^ filePath) {
             int _fromAccountNumber = reader->ReadInt32();
             int _toAccountNumber = reader->ReadInt32();
             double _amount = reader->ReadDouble();
+            String ^ _message = reader->ReadString();
             String ^ _createdAt = reader->ReadString();
             transactions[i] =
                 gcnew Transaction(_transactionId, _fromAccountNumber,
-                                  _toAccountNumber, _amount, _createdAt);
+                                  _toAccountNumber, _amount,_message, _createdAt);
         }
         reader->Close();
         fs->Close(); 
@@ -126,6 +129,7 @@ bool HandleFile::WriteTransactionArray(array<Transaction ^> ^ transactions,
             writer->Write(transaction->getFromAccount());
             writer->Write(transaction->getToAccount());
             writer->Write(transaction->getAmount());
+            writer->Write(transaction->getMessage());
             writer->Write(transaction->getCreatedAt());
         }
         writer->Close();

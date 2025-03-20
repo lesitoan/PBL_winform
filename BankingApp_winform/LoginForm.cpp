@@ -22,6 +22,11 @@ System::Void LoginForm::btnSubmit_Click(System::Object ^ sender,
         for each (User ^ user in users) {
             if (user->getPhoneNumber() == phone &&
                 user->getPassword() == pass) {
+                if (user->Status == 0) {
+                    MessageBox::Show(L"Tài khoản của bạn đã bị khóa");
+                    return;
+                }
+
                 GlobalData::SetCurrentUser(user);
                 MessageBox::Show(L"Đăng nhập thành công");
                 LoginSuccess(this, EventArgs::Empty);

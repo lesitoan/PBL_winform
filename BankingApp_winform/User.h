@@ -14,6 +14,7 @@ ref class User {
     String ^ role; // user, admin, company
     int pin;
     String ^ bankName;
+    int status;
     int serviceId;
 
   public:
@@ -27,11 +28,12 @@ ref class User {
         pin = 0;
         accountNumber = accNum;
         bankName = "BIDV";
+        status = 1;
         serviceId = 0;
     }
     User(String ^ _fullName, String ^ _password, String ^ _phoneNumber,
          int _accountNumber, double _balance, String ^ _role, int _pin,
-         String ^ _bankName, int _serviceId) {
+         String ^ _bankName,int _status,  int _serviceId) {
         fullName = _fullName;
         password = _password;
         phoneNumber = _phoneNumber;
@@ -40,10 +42,11 @@ ref class User {
         pin = _pin;
         accountNumber = _accountNumber;
         bankName = _bankName;
+        status = _status;
         serviceId = _serviceId;
     }
 
-    User() : User("", "", "", 0, 0, "user", 0, "BIDV", 0) {};
+    User() : User("", "", "", 0, 0, "user", 0, "BIDV", 1, 0) {};
 
     String ^ getFullName() { return fullName; } String ^
         getPassword() { return password; } int getAccountNumber() {
@@ -64,6 +67,11 @@ ref class User {
 
     property int AccountNumber {
         int get() { return accountNumber; }
+    }
+
+    property int Status {
+        int get() { return status; }
+        void set(int value) { status = value; }
     }
 };
 

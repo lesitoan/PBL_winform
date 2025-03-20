@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include "AdminForm.h"
 #include "TableUsersForm.h"
+#include "User.h"
+#include "HandleFile.h" 
+#include "Validate.h"
 
 namespace BankingAppwinform {
 
@@ -14,7 +17,9 @@ using namespace System::Drawing;
 public
 ref class EditUserForm : public System::Windows::Forms::Form {
   public:
-    EditUserForm(void) { InitializeComponent(); }
+    EditUserForm(User^ userSelected) { InitializeComponent();
+        this->loadUserInfo(userSelected);
+    }
 
   protected:
     ~EditUserForm() {
@@ -26,48 +31,123 @@ ref class EditUserForm : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::Button ^ btnUndo;
 
-  protected:
-  private:
-  protected:
-  private:
-    System::Windows::Forms::Button ^ button1;
-
-  private:
-    System::Windows::Forms::TextBox ^ phoneNumber;
-
-  private:
   private:
     System::Windows::Forms::Button ^ btnSubmit;
+
+  protected:
+  private:
+  protected:
+  private:
+
+
+  private:
+    System::Windows::Forms::TextBox ^ name;
+
+  private:
+
+
+  private:
+  private:
+
 
   private:
     System::Windows::Forms::Panel ^ panel1;
 
   private:
-    System::Windows::Forms::Button ^ button3;
+
 
   private:
-    System::Windows::Forms::TextBox ^ textBox1;
+
 
   private:
-    System::Windows::Forms::Panel ^ panel2;
+
 
   private:
-    System::Windows::Forms::Button ^ button4;
+
 
   private:
-    System::Windows::Forms::Panel ^ panel3;
+
 
   private:
-    System::Windows::Forms::TextBox ^ textBox2;
+
 
   private:
-    System::Windows::Forms::Button ^ button5;
+
 
   private:
     System::Windows::Forms::Panel ^ panel4;
 
   private:
-    System::Windows::Forms::TextBox ^ textBox3;
+    System::Windows::Forms::TextBox ^ amount;
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Panel ^ panel5;
+
+  private:
+    System::Windows::Forms::TextBox ^ phone;
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Panel ^ panel6;
+
+  private:
+    System::Windows::Forms::TextBox ^ accNum;
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Panel ^ panel2;
+
+  private:
+    System::Windows::Forms::TextBox ^ acctype;
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Panel ^ panel3;
+
+  private:
+    System::Windows::Forms::TextBox ^ bankName;
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Panel ^ panel7;
+
+  private:
+    System::Windows::Forms::TextBox ^ status;
+
+  private:
+
+
+  private:
+    System::Windows::Forms::Label ^ labelAuth;
+
+  private:
+    System::Windows::Forms::Label ^ label1;
+
+  private:
+    System::Windows::Forms::Label ^ label2;
+
+  private:
+    System::Windows::Forms::Label ^ label3;
+
+  private:
+    System::Windows::Forms::Label ^ label4;
+
+  private:
+    System::Windows::Forms::Label ^ label5;
+
+  private:
+    System::Windows::Forms::Label ^ label6;
 
   private:
     System::ComponentModel::Container ^ components;
@@ -79,23 +159,35 @@ ref class EditUserForm : public System::Windows::Forms::Form {
     /// </summary>
     void InitializeComponent(void) {
         this->btnUndo = (gcnew System::Windows::Forms::Button());
-        this->button1 = (gcnew System::Windows::Forms::Button());
-        this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
         this->btnSubmit = (gcnew System::Windows::Forms::Button());
+        this->name = (gcnew System::Windows::Forms::TextBox());
         this->panel1 = (gcnew System::Windows::Forms::Panel());
-        this->button3 = (gcnew System::Windows::Forms::Button());
-        this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-        this->panel2 = (gcnew System::Windows::Forms::Panel());
-        this->button4 = (gcnew System::Windows::Forms::Button());
-        this->panel3 = (gcnew System::Windows::Forms::Panel());
-        this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-        this->button5 = (gcnew System::Windows::Forms::Button());
         this->panel4 = (gcnew System::Windows::Forms::Panel());
-        this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+        this->amount = (gcnew System::Windows::Forms::TextBox());
+        this->panel5 = (gcnew System::Windows::Forms::Panel());
+        this->phone = (gcnew System::Windows::Forms::TextBox());
+        this->panel6 = (gcnew System::Windows::Forms::Panel());
+        this->accNum = (gcnew System::Windows::Forms::TextBox());
+        this->panel2 = (gcnew System::Windows::Forms::Panel());
+        this->acctype = (gcnew System::Windows::Forms::TextBox());
+        this->panel3 = (gcnew System::Windows::Forms::Panel());
+        this->bankName = (gcnew System::Windows::Forms::TextBox());
+        this->panel7 = (gcnew System::Windows::Forms::Panel());
+        this->status = (gcnew System::Windows::Forms::TextBox());
+        this->labelAuth = (gcnew System::Windows::Forms::Label());
+        this->label1 = (gcnew System::Windows::Forms::Label());
+        this->label2 = (gcnew System::Windows::Forms::Label());
+        this->label3 = (gcnew System::Windows::Forms::Label());
+        this->label4 = (gcnew System::Windows::Forms::Label());
+        this->label5 = (gcnew System::Windows::Forms::Label());
+        this->label6 = (gcnew System::Windows::Forms::Label());
         this->panel1->SuspendLayout();
+        this->panel4->SuspendLayout();
+        this->panel5->SuspendLayout();
+        this->panel6->SuspendLayout();
         this->panel2->SuspendLayout();
         this->panel3->SuspendLayout();
-        this->panel4->SuspendLayout();
+        this->panel7->SuspendLayout();
         this->SuspendLayout();
         //
         // btnUndo
@@ -112,7 +204,7 @@ ref class EditUserForm : public System::Windows::Forms::Form {
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnUndo->ForeColor = System::Drawing::Color::Bisque;
         this->btnUndo->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->btnUndo->Location = System::Drawing::Point(329, 415);
+        this->btnUndo->Location = System::Drawing::Point(280, 403);
         this->btnUndo->Name = L"btnUndo";
         this->btnUndo->Size = System::Drawing::Size(212, 48);
         this->btnUndo->TabIndex = 40;
@@ -121,66 +213,47 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->btnUndo->Click +=
             gcnew System::EventHandler(this, &EditUserForm::btnUndo_Click);
         //
-        // button1
-        //
-        this->button1->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Top |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->button1->BackColor = System::Drawing::Color::Green;
-        this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->button1->FlatAppearance->BorderSize = 0;
-        this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->button1->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->button1->ForeColor = System::Drawing::Color::Bisque;
-        this->button1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->button1->Location = System::Drawing::Point(582, 415);
-        this->button1->Name = L"button1";
-        this->button1->Size = System::Drawing::Size(212, 48);
-        this->button1->TabIndex = 39;
-        this->button1->Text = L"OK";
-        this->button1->UseVisualStyleBackColor = false;
-        //
-        // phoneNumber
-        //
-        this->phoneNumber->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->phoneNumber->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->phoneNumber->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->phoneNumber->Location = System::Drawing::Point(18, 6);
-        this->phoneNumber->MaxLength = 40;
-        this->phoneNumber->Multiline = true;
-        this->phoneNumber->Name = L"phoneNumber";
-        this->phoneNumber->Size = System::Drawing::Size(714, 26);
-        this->phoneNumber->TabIndex = 29;
-        //
         // btnSubmit
         //
         this->btnSubmit->Anchor =
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Top |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->btnSubmit->BackColor = System::Drawing::Color::DarkOrange;
+        this->btnSubmit->BackColor = System::Drawing::Color::Green;
         this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnSubmit->FlatAppearance->BorderSize = 0;
         this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnSubmit->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnSubmit->ForeColor = System::Drawing::Color::Black;
+        this->btnSubmit->ForeColor = System::Drawing::Color::Bisque;
         this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->btnSubmit->Location = System::Drawing::Point(817, 157);
+        this->btnSubmit->Location = System::Drawing::Point(551, 403);
         this->btnSubmit->Name = L"btnSubmit";
-        this->btnSubmit->Size = System::Drawing::Size(188, 37);
-        this->btnSubmit->TabIndex = 38;
-        this->btnSubmit->Text = L"SEARCH";
+        this->btnSubmit->Size = System::Drawing::Size(212, 48);
+        this->btnSubmit->TabIndex = 39;
+        this->btnSubmit->Text = L"OK";
         this->btnSubmit->UseVisualStyleBackColor = false;
+        this->btnSubmit->Click +=
+            gcnew System::EventHandler(this, &EditUserForm::btnSubmit_Click);
+        //
+        // name
+        //
+        this->name->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
+            (((System::Windows::Forms::AnchorStyles::Top |
+               System::Windows::Forms::AnchorStyles::Bottom) |
+              System::Windows::Forms::AnchorStyles::Left) |
+             System::Windows::Forms::AnchorStyles::Right));
+        this->name->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->name->Cursor = System::Windows::Forms::Cursors::No;
+        this->name->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->name->Location = System::Drawing::Point(18, 6);
+        this->name->MaxLength = 40;
+        this->name->Multiline = true;
+        this->name->Name = L"name";
+        this->name->ReadOnly = true;
+        this->name->Size = System::Drawing::Size(246, 26);
+        this->name->TabIndex = 29;
         //
         // panel1
         //
@@ -192,142 +265,11 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->panel1->BackColor = System::Drawing::Color::White;
         this->panel1->BorderStyle =
             System::Windows::Forms::BorderStyle::FixedSingle;
-        this->panel1->Controls->Add(this->phoneNumber);
+        this->panel1->Controls->Add(this->name);
         this->panel1->Location = System::Drawing::Point(77, 157);
         this->panel1->Name = L"panel1";
-        this->panel1->Size = System::Drawing::Size(734, 37);
+        this->panel1->Size = System::Drawing::Size(266, 37);
         this->panel1->TabIndex = 37;
-        //
-        // button3
-        //
-        this->button3->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Top |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->button3->BackColor = System::Drawing::Color::DarkOrange;
-        this->button3->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->button3->FlatAppearance->BorderSize = 0;
-        this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->button3->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->button3->ForeColor = System::Drawing::Color::Black;
-        this->button3->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->button3->Location = System::Drawing::Point(816, 219);
-        this->button3->Name = L"button3";
-        this->button3->Size = System::Drawing::Size(188, 37);
-        this->button3->TabIndex = 40;
-        this->button3->Text = L"SEARCH";
-        this->button3->UseVisualStyleBackColor = false;
-        //
-        // textBox1
-        //
-        this->textBox1->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->textBox1->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->textBox1->Location = System::Drawing::Point(18, 6);
-        this->textBox1->MaxLength = 40;
-        this->textBox1->Multiline = true;
-        this->textBox1->Name = L"textBox1";
-        this->textBox1->Size = System::Drawing::Size(714, 26);
-        this->textBox1->TabIndex = 29;
-        //
-        // panel2
-        //
-        this->panel2->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                ((System::Windows::Forms::AnchorStyles::Top |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->panel2->BackColor = System::Drawing::Color::White;
-        this->panel2->BorderStyle =
-            System::Windows::Forms::BorderStyle::FixedSingle;
-        this->panel2->Controls->Add(this->textBox1);
-        this->panel2->Location = System::Drawing::Point(76, 219);
-        this->panel2->Name = L"panel2";
-        this->panel2->Size = System::Drawing::Size(734, 37);
-        this->panel2->TabIndex = 39;
-        //
-        // button4
-        //
-        this->button4->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Top |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->button4->BackColor = System::Drawing::Color::DarkOrange;
-        this->button4->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->button4->FlatAppearance->BorderSize = 0;
-        this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->button4->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->button4->ForeColor = System::Drawing::Color::Black;
-        this->button4->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->button4->Location = System::Drawing::Point(817, 283);
-        this->button4->Name = L"button4";
-        this->button4->Size = System::Drawing::Size(188, 37);
-        this->button4->TabIndex = 42;
-        this->button4->Text = L"SEARCH";
-        this->button4->UseVisualStyleBackColor = false;
-        //
-        // panel3
-        //
-        this->panel3->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                ((System::Windows::Forms::AnchorStyles::Top |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->panel3->BackColor = System::Drawing::Color::White;
-        this->panel3->BorderStyle =
-            System::Windows::Forms::BorderStyle::FixedSingle;
-        this->panel3->Controls->Add(this->textBox2);
-        this->panel3->Location = System::Drawing::Point(77, 283);
-        this->panel3->Name = L"panel3";
-        this->panel3->Size = System::Drawing::Size(734, 37);
-        this->panel3->TabIndex = 41;
-        //
-        // textBox2
-        //
-        this->textBox2->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->textBox2->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->textBox2->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->textBox2->Location = System::Drawing::Point(18, 6);
-        this->textBox2->MaxLength = 40;
-        this->textBox2->Multiline = true;
-        this->textBox2->Name = L"textBox2";
-        this->textBox2->Size = System::Drawing::Size(714, 26);
-        this->textBox2->TabIndex = 29;
-        //
-        // button5
-        //
-        this->button5->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Top |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->button5->BackColor = System::Drawing::Color::DarkOrange;
-        this->button5->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->button5->FlatAppearance->BorderSize = 0;
-        this->button5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->button5->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->button5->ForeColor = System::Drawing::Color::Black;
-        this->button5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->button5->Location = System::Drawing::Point(817, 344);
-        this->button5->Name = L"button5";
-        this->button5->Size = System::Drawing::Size(188, 37);
-        this->button5->TabIndex = 44;
-        this->button5->Text = L"SEARCH";
-        this->button5->UseVisualStyleBackColor = false;
         //
         // panel4
         //
@@ -339,43 +281,326 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->panel4->BackColor = System::Drawing::Color::White;
         this->panel4->BorderStyle =
             System::Windows::Forms::BorderStyle::FixedSingle;
-        this->panel4->Controls->Add(this->textBox3);
-        this->panel4->Location = System::Drawing::Point(77, 344);
+        this->panel4->Controls->Add(this->amount);
+        this->panel4->Location = System::Drawing::Point(77, 323);
         this->panel4->Name = L"panel4";
-        this->panel4->Size = System::Drawing::Size(734, 37);
+        this->panel4->Size = System::Drawing::Size(877, 37);
         this->panel4->TabIndex = 43;
         //
-        // textBox3
+        // amount
         //
-        this->textBox3->Anchor =
+        this->amount->Anchor =
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (((System::Windows::Forms::AnchorStyles::Top |
                    System::Windows::Forms::AnchorStyles::Bottom) |
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->textBox3->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->textBox3->Font =
+        this->amount->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->amount->Font =
             (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->textBox3->Location = System::Drawing::Point(18, 6);
-        this->textBox3->MaxLength = 40;
-        this->textBox3->Multiline = true;
-        this->textBox3->Name = L"textBox3";
-        this->textBox3->Size = System::Drawing::Size(714, 26);
-        this->textBox3->TabIndex = 29;
+        this->amount->Location = System::Drawing::Point(18, 6);
+        this->amount->MaxLength = 40;
+        this->amount->Multiline = true;
+        this->amount->Name = L"amount";
+        this->amount->Size = System::Drawing::Size(857, 26);
+        this->amount->TabIndex = 29;
+        //
+        // panel5
+        //
+        this->panel5->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                ((System::Windows::Forms::AnchorStyles::Top |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel5->BackColor = System::Drawing::Color::White;
+        this->panel5->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
+        this->panel5->Controls->Add(this->phone);
+        this->panel5->Location = System::Drawing::Point(384, 157);
+        this->panel5->Name = L"panel5";
+        this->panel5->Size = System::Drawing::Size(266, 37);
+        this->panel5->TabIndex = 44;
+        //
+        // phone
+        //
+        this->phone->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
+            (((System::Windows::Forms::AnchorStyles::Top |
+               System::Windows::Forms::AnchorStyles::Bottom) |
+              System::Windows::Forms::AnchorStyles::Left) |
+             System::Windows::Forms::AnchorStyles::Right));
+        this->phone->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->phone->Cursor = System::Windows::Forms::Cursors::No;
+        this->phone->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->phone->Location = System::Drawing::Point(18, 6);
+        this->phone->MaxLength = 40;
+        this->phone->Multiline = true;
+        this->phone->Name = L"phone";
+        this->phone->ReadOnly = true;
+        this->phone->Size = System::Drawing::Size(246, 26);
+        this->phone->TabIndex = 29;
+        //
+        // panel6
+        //
+        this->panel6->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                ((System::Windows::Forms::AnchorStyles::Top |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel6->BackColor = System::Drawing::Color::White;
+        this->panel6->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
+        this->panel6->Controls->Add(this->accNum);
+        this->panel6->Location = System::Drawing::Point(688, 157);
+        this->panel6->Name = L"panel6";
+        this->panel6->Size = System::Drawing::Size(266, 37);
+        this->panel6->TabIndex = 45;
+        //
+        // accNum
+        //
+        this->accNum->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->accNum->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->accNum->Cursor = System::Windows::Forms::Cursors::No;
+        this->accNum->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->accNum->Location = System::Drawing::Point(18, 6);
+        this->accNum->MaxLength = 40;
+        this->accNum->Multiline = true;
+        this->accNum->Name = L"accNum";
+        this->accNum->ReadOnly = true;
+        this->accNum->Size = System::Drawing::Size(246, 26);
+        this->accNum->TabIndex = 29;
+        //
+        // panel2
+        //
+        this->panel2->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                ((System::Windows::Forms::AnchorStyles::Top |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel2->BackColor = System::Drawing::Color::White;
+        this->panel2->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
+        this->panel2->Controls->Add(this->acctype);
+        this->panel2->Location = System::Drawing::Point(77, 243);
+        this->panel2->Name = L"panel2";
+        this->panel2->Size = System::Drawing::Size(266, 37);
+        this->panel2->TabIndex = 46;
+        //
+        // acctype
+        //
+        this->acctype->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->acctype->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->acctype->Cursor = System::Windows::Forms::Cursors::No;
+        this->acctype->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->acctype->Location = System::Drawing::Point(18, 6);
+        this->acctype->MaxLength = 40;
+        this->acctype->Multiline = true;
+        this->acctype->Name = L"acctype";
+        this->acctype->ReadOnly = true;
+        this->acctype->Size = System::Drawing::Size(246, 26);
+        this->acctype->TabIndex = 29;
+        //
+        // panel3
+        //
+        this->panel3->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                ((System::Windows::Forms::AnchorStyles::Top |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel3->BackColor = System::Drawing::Color::White;
+        this->panel3->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
+        this->panel3->Controls->Add(this->bankName);
+        this->panel3->Location = System::Drawing::Point(383, 243);
+        this->panel3->Name = L"panel3";
+        this->panel3->Size = System::Drawing::Size(266, 37);
+        this->panel3->TabIndex = 45;
+        //
+        // bankName
+        //
+        this->bankName->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->bankName->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->bankName->Cursor = System::Windows::Forms::Cursors::No;
+        this->bankName->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->bankName->Location = System::Drawing::Point(18, 6);
+        this->bankName->MaxLength = 40;
+        this->bankName->Multiline = true;
+        this->bankName->Name = L"bankName";
+        this->bankName->ReadOnly = true;
+        this->bankName->Size = System::Drawing::Size(246, 26);
+        this->bankName->TabIndex = 29;
+        //
+        // panel7
+        //
+        this->panel7->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                ((System::Windows::Forms::AnchorStyles::Top |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel7->BackColor = System::Drawing::Color::White;
+        this->panel7->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
+        this->panel7->Controls->Add(this->status);
+        this->panel7->Location = System::Drawing::Point(688, 243);
+        this->panel7->Name = L"panel7";
+        this->panel7->Size = System::Drawing::Size(266, 37);
+        this->panel7->TabIndex = 45;
+        //
+        // status
+        //
+        this->status->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->status->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->status->Cursor = System::Windows::Forms::Cursors::No;
+        this->status->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->status->Location = System::Drawing::Point(18, 6);
+        this->status->MaxLength = 40;
+        this->status->Multiline = true;
+        this->status->Name = L"status";
+        this->status->ReadOnly = true;
+        this->status->Size = System::Drawing::Size(246, 26);
+        this->status->TabIndex = 29;
+        //
+        // labelAuth
+        //
+        this->labelAuth->AutoSize = true;
+        this->labelAuth->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->labelAuth->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->labelAuth->ForeColor = System::Drawing::Color::Black;
+        this->labelAuth->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->labelAuth->Location = System::Drawing::Point(73, 132);
+        this->labelAuth->Name = L"labelAuth";
+        this->labelAuth->Size = System::Drawing::Size(36, 22);
+        this->labelAuth->TabIndex = 47;
+        this->labelAuth->Text = L"Tên";
+        //
+        // label1
+        //
+        this->label1->AutoSize = true;
+        this->label1->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->label1->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label1->ForeColor = System::Drawing::Color::Black;
+        this->label1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label1->Location = System::Drawing::Point(380, 132);
+        this->label1->Name = L"label1";
+        this->label1->Size = System::Drawing::Size(99, 22);
+        this->label1->TabIndex = 48;
+        this->label1->Text = L"Số điện thoại";
+        //
+        // label2
+        //
+        this->label2->AutoSize = true;
+        this->label2->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->label2->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label2->ForeColor = System::Drawing::Color::Black;
+        this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label2->Location = System::Drawing::Point(684, 132);
+        this->label2->Name = L"label2";
+        this->label2->Size = System::Drawing::Size(93, 22);
+        this->label2->TabIndex = 49;
+        this->label2->Text = L"Số tài khoản";
+        //
+        // label3
+        //
+        this->label3->AutoSize = true;
+        this->label3->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->label3->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label3->ForeColor = System::Drawing::Color::Black;
+        this->label3->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label3->Location = System::Drawing::Point(73, 218);
+        this->label3->Name = L"label3";
+        this->label3->Size = System::Drawing::Size(104, 22);
+        this->label3->TabIndex = 50;
+        this->label3->Text = L"Loại tài khoản";
+        //
+        // label4
+        //
+        this->label4->AutoSize = true;
+        this->label4->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->label4->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label4->ForeColor = System::Drawing::Color::Black;
+        this->label4->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label4->Location = System::Drawing::Point(380, 218);
+        this->label4->Name = L"label4";
+        this->label4->Size = System::Drawing::Size(112, 22);
+        this->label4->TabIndex = 51;
+        this->label4->Text = L"Tên ngân hàng";
+        //
+        // label5
+        //
+        this->label5->AutoSize = true;
+        this->label5->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->label5->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label5->ForeColor = System::Drawing::Color::Black;
+        this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label5->Location = System::Drawing::Point(684, 218);
+        this->label5->Name = L"label5";
+        this->label5->Size = System::Drawing::Size(79, 22);
+        this->label5->TabIndex = 52;
+        this->label5->Text = L"Trạng thái";
+        //
+        // label6
+        //
+        this->label6->AutoSize = true;
+        this->label6->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->label6->Font =
+            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label6->ForeColor = System::Drawing::Color::Black;
+        this->label6->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label6->Location = System::Drawing::Point(73, 298);
+        this->label6->Name = L"label6";
+        this->label6->Size = System::Drawing::Size(109, 22);
+        this->label6->TabIndex = 53;
+        this->label6->Text = L"Thay đổi số dư";
         //
         // EditUserForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->ClientSize = System::Drawing::Size(1077, 711);
-        this->Controls->Add(this->button5);
-        this->Controls->Add(this->button4);
-        this->Controls->Add(this->panel4);
-        this->Controls->Add(this->button3);
+        this->Controls->Add(this->label6);
+        this->Controls->Add(this->label5);
+        this->Controls->Add(this->label4);
+        this->Controls->Add(this->label3);
+        this->Controls->Add(this->label2);
+        this->Controls->Add(this->label1);
+        this->Controls->Add(this->labelAuth);
+        this->Controls->Add(this->panel7);
         this->Controls->Add(this->panel3);
-        this->Controls->Add(this->btnUndo);
         this->Controls->Add(this->panel2);
-        this->Controls->Add(this->button1);
+        this->Controls->Add(this->panel6);
+        this->Controls->Add(this->panel5);
+        this->Controls->Add(this->panel4);
+        this->Controls->Add(this->btnUndo);
         this->Controls->Add(this->btnSubmit);
         this->Controls->Add(this->panel1);
         this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -383,13 +608,20 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->Text = L"EditUserForm";
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
+        this->panel4->ResumeLayout(false);
+        this->panel4->PerformLayout();
+        this->panel5->ResumeLayout(false);
+        this->panel5->PerformLayout();
+        this->panel6->ResumeLayout(false);
+        this->panel6->PerformLayout();
         this->panel2->ResumeLayout(false);
         this->panel2->PerformLayout();
         this->panel3->ResumeLayout(false);
         this->panel3->PerformLayout();
-        this->panel4->ResumeLayout(false);
-        this->panel4->PerformLayout();
+        this->panel7->ResumeLayout(false);
+        this->panel7->PerformLayout();
         this->ResumeLayout(false);
+        this->PerformLayout();
     }
 #pragma endregion
   private:
@@ -400,5 +632,61 @@ ref class EditUserForm : public System::Windows::Forms::Form {
             adminForm->LoadForm(tableUsersForm);
         }
     }
+
+    private:
+        void loadUserInfo(User^ user) {
+            this->name->Text = user->getFullName();
+            this->phone->Text = user->getPhoneNumber();
+            this->accNum->Text = user->getAccountNumber().ToString();
+            this->acctype->Text = user->getRole();
+            this->bankName->Text = user->getBankName();
+            this->status->Text = user->Status == 1 ? L"Hoạt động" : L"Khóa";
+            this->amount->Text = user->getBalance().ToString();
+    }
+
+  private:
+    System::Void btnSubmit_Click(System::Object ^ sender,
+                                 System::EventArgs ^ e) {
+        System::Windows::Forms::DialogResult result;
+        result = MessageBox::Show(L"Bạn có chắc chắn muốn lưu lại thay đổi không ?",
+                                  L"Lưu thay đổi", MessageBoxButtons::YesNo,
+                                  MessageBoxIcon::Question);
+        if (result == System::Windows::Forms::DialogResult::No) {
+            return;
+        }
+
+        array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+        if (users == nullptr) {
+            return;
+        }
+        bool isModyfied = false;
+        for (int i = 0; i < users->Length; i++) {
+            if (users[i]->getAccountNumber() ==
+                Int32::Parse(this->accNum->Text)) {
+
+                if (this->amount->Text != "" &&
+                    Validate::isNumber(this->amount->Text)) {
+                    int _amount = Double::Parse(this->amount->Text);
+                    if (_amount == users[i]->getBalance()) {
+                        return;
+                    }
+                    users[i]->setBalance(_amount);
+                    isModyfied = true;
+                }
+                break;
+            }
+        }
+        if (isModyfied) {
+            HandleFile::WriteUserArray(users, "users.dat");
+            MessageBox::Show(L"Thay đổi đã được lưu lại", L"Thành công",
+                             MessageBoxButtons::OK,
+                             MessageBoxIcon::Information);
+        } else {
+            MessageBox::Show(L"Không thể thay đổi số dư", L"Lỗi",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+        }
+    }
+
+
 };
 } // namespace BankingAppwinform
