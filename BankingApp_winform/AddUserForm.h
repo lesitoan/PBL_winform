@@ -666,32 +666,30 @@ ref class AddUserForm : public System::Windows::Forms::Form {
                     break;
                 }
             }
-
-            User ^ user =
-                gcnew User(name, password, phone, accNumber, _balance, accType,
-                           _pin, _bankName, _status, serviceId);
-            array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-            if (users == nullptr) {
-                users = gcnew array<User ^>{user};
-            } else {
-                array<User ^> ^ newUsers =
-                    gcnew array<User ^>(users->Length + 1);
-                for (int i = 0; i < users->Length; i++) {
-                    newUsers[i] = users[i];
-                }
-                newUsers[users->Length] = user;
-                users = newUsers;
-            }
-            bool isSaved = HandleFile::WriteUserArray(users, "users.dat");
-            if (isSaved) {
-                MessageBox::Show(L"Tạo tài khoản thành công !", "Success",
-                                 MessageBoxButtons::OK,
-                                 MessageBoxIcon::Information);
-
-                createUserSuccess(this, EventArgs::Empty);
-                this->Close();
-            }
         }
+        User ^ user = gcnew User(name, password, phone, accNumber, _balance,
+                                 accType, _pin, _bankName, _status, serviceId);
+        array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+        if (users == nullptr) {
+            users = gcnew array<User ^>{user};
+        } else {
+            array<User ^> ^ newUsers = gcnew array<User ^>(users->Length + 1);
+            for (int i = 0; i < users->Length; i++) {
+                newUsers[i] = users[i];
+            }
+            newUsers[users->Length] = user;
+            users = newUsers;
+        }
+        bool isSaved = HandleFile::WriteUserArray(users, "users.dat");
+        if (isSaved) {
+            MessageBox::Show(L"Tạo tài khoản thành công !", "Success",
+                             MessageBoxButtons::OK,
+                             MessageBoxIcon::Information);
+
+            createUserSuccess(this, EventArgs::Empty);
+            this->Close();
+        }
+
     };
 
 
