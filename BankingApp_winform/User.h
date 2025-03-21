@@ -48,6 +48,21 @@ ref class User {
 
     User() : User("", "", "", 0, 0, "user", 0, "BIDV", 1, 0) {};
 
+    User(String^ _bankName, String^ _fullName, int _accNumber) {
+        bankName = _bankName;
+        fullName = _fullName;
+        accountNumber = _accNumber;
+
+        password = "";
+        phoneNumber = "";
+        balance = 0;
+        role = "user";
+        pin = 0;
+        status = 1;
+        serviceId = 0;
+
+    }
+
     String ^ getFullName() { return fullName; } String ^
         getPassword() { return password; } int getAccountNumber() {
         return accountNumber;

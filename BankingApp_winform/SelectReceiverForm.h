@@ -2,6 +2,7 @@
 #include "HandleFile.h"
 #include "Transaction.h"
 #include "User.h"
+#include "SelectReceiverEventArgs.h"
 
 namespace BankingAppwinform {
 
@@ -15,6 +16,8 @@ using namespace System::Drawing;
 /// <summary>
 /// Summary for SelectReceiverForm
 /// </summary>
+
+
 public
 ref class SelectReceiverForm : public System::Windows::Forms::Form {
   public:
@@ -116,8 +119,6 @@ ref class SelectReceiverForm : public System::Windows::Forms::Form {
             (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
         this->selectAccHistory->ForeColor = System::Drawing::Color::Black;
         this->selectAccHistory->FormattingEnabled = true;
-        this->selectAccHistory->Items->AddRange(
-            gcnew cli::array<System::Object ^>(2){L"user", L"company"});
         this->selectAccHistory->Location = System::Drawing::Point(1, 7);
         this->selectAccHistory->Name = L"selectAccHistory";
         this->selectAccHistory->Size = System::Drawing::Size(367, 27);
@@ -166,6 +167,8 @@ ref class SelectReceiverForm : public System::Windows::Forms::Form {
         this->btnSubmit->TabIndex = 103;
         this->btnSubmit->Text = L"OK";
         this->btnSubmit->UseVisualStyleBackColor = false;
+        this->btnSubmit->Click += gcnew System::EventHandler(
+            this, &SelectReceiverForm::btnSubmit_Click);
         //
         // SelectReceiverForm
         //
@@ -190,6 +193,9 @@ ref class SelectReceiverForm : public System::Windows::Forms::Form {
 #pragma endregion
 
     private:
+    List<String ^> ^ accHistory = nullptr;
+
+    private:
     void loadAccHistory(User ^ user) {
           array<Transaction ^> ^ transactions =
               HandleFile::ReadTransactionArray("transactions.dat");
@@ -197,42 +203,66 @@ ref class SelectReceiverForm : public System::Windows::Forms::Form {
 
           int accNumber = user->AccountNumber;
 
-          List<String ^> ^ accHistory = gcnew List<String ^>();
+          accHistory = gcnew List<String ^>();
 
           int count = 0;
+          int length = transactions->Length;
 
-          for (int i = 0; i < transactions->Length; i++) {
-              if (transactions[i]->getFromAccount() == accNumber &&
-                  transactions[i]->getToAccount() != 0) {
-
+          while (length > 0 && count < 5) {
+              if (transactions[length - 1]->getFromAccount() == accNumber &&
+                  transactions[length - 1]->getToAccount() != 0) {
                   for (int j = 0; j < users->Length; j++) {
-                      if (users[j]->AccountNumber == transactions[i]->getToAccount() &&
-                          users[i]->getRole() == "user") {
+                      if (users[j]->AccountNumber ==
+                              transactions[length - 1]->getToAccount() &&
+                          users[j]->getRole() == "user") {
                           String ^ toAcc =
+                              users[j]->getBankName() + " - " +
                               users[j]->getFullName() + " - " +
-                              transactions[i]->getToAccount().ToString() +
+                              transactions[length - 1]
+                                  ->getToAccount()
+                                  .ToString() +
                               " - " +
-                              transactions[i]->getAmount().ToString();
+                              transactions[length - 1]->getAmount().ToString();
                           accHistory->Add(toAcc);
                           break;
                       }
                   }
                   count++;
-                  if (count == 5) {
-                      break;
-                  }
               }
+              length--;
           }
-
           for (int i = 0; i < accHistory->Count; i++) {
               selectAccHistory->Items->Add(accHistory[i]);
           }
-
     }
+
+
+  public:
+    event EventHandler<SelectReceiverEventArgs ^> ^ SelectReceiverSuccess;
 
   private:
     System::Void btnSubmit_Click(System::Object ^ sender,
-                                 System::EventArgs ^ e) {}
+                                 System::EventArgs ^ e) {
+        if (selectAccHistory->Text == "") {
+            MessageBox::Show("Chọn tài khoản từ lịch sử gần đây");
+            return;
+        }
+
+       array<String ^> ^ parts = selectAccHistory->Text->Split(
+            gcnew array<String ^>{" - "},
+            StringSplitOptions::RemoveEmptyEntries);
+
+        String ^ bankName = parts[0];
+        String ^ accName = parts[1];
+        int accNumber = Convert::ToInt32(parts[2]);
+        double amount = Convert::ToDouble(parts[3]);
+        
+
+        SelectReceiverSuccess(
+            this, gcnew SelectReceiverEventArgs(bankName, accName, accNumber, amount));
+
+        this->Close();
+    }
 
   private:
     System::Void btnClose_Click_1(System::Object ^ sender,
@@ -245,3 +275,5 @@ ref class SelectReceiverForm : public System::Windows::Forms::Form {
 
 };
 } // namespace BankingAppwinform
+
+

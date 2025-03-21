@@ -178,6 +178,7 @@
     <ClInclude Include="PaymentCodes.h" />
     <ClInclude Include="RecurringPaymentRequest.h" />
     <ClInclude Include="RecurringPayments.h" />
+    <ClInclude Include="SelectReceiverEventArgs.h" />
     <ClInclude Include="SelectReceiverForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

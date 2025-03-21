@@ -109,7 +109,7 @@
       <Filter>Form\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="SelectReceiverForm.cpp">
-      <Filter>Form</Filter>
+      <Filter>Form\Cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -216,6 +216,9 @@
     </ClInclude>
     <ClInclude Include="SelectReceiverForm.h">
       <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectReceiverEventArgs.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

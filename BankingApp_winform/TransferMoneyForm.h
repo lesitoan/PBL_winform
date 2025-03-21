@@ -58,7 +58,10 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel7;
 
   private:
-    System::Windows::Forms::TextBox ^ contentInput;
+    System::Windows::Forms::TextBox ^ message;
+
+  private:
+
 
   private:
     System::Windows::Forms::Panel ^ panel6;
@@ -128,7 +131,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->panelTransfer = (gcnew System::Windows::Forms::Panel());
         this->panel7 = (gcnew System::Windows::Forms::Panel());
-        this->contentInput = (gcnew System::Windows::Forms::TextBox());
+        this->message = (gcnew System::Windows::Forms::TextBox());
         this->panel6 = (gcnew System::Windows::Forms::Panel());
         this->amountInput = (gcnew System::Windows::Forms::TextBox());
         this->panel5 = (gcnew System::Windows::Forms::Panel());
@@ -219,6 +222,8 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->accountNumber->Name = L"accountNumber";
         this->accountNumber->Size = System::Drawing::Size(256, 28);
         this->accountNumber->TabIndex = 29;
+        this->accountNumber->TextChanged += gcnew System::EventHandler(
+            this, &TransferMoneyForm::accountNumber_TextChanged);
         //
         // btnFindAccount
         //
@@ -310,6 +315,8 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->selectBankBox->Name = L"selectBankBox";
         this->selectBankBox->Size = System::Drawing::Size(180, 27);
         this->selectBankBox->TabIndex = 3;
+        this->selectBankBox->TextChanged += gcnew System::EventHandler(
+            this, &TransferMoneyForm::selectBankBox_TextChanged);
         //
         // panel2
         //
@@ -356,30 +363,29 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel7->BackColor = System::Drawing::Color::White;
-        this->panel7->Controls->Add(this->contentInput);
+        this->panel7->Controls->Add(this->message);
         this->panel7->Location = System::Drawing::Point(95, 155);
         this->panel7->Name = L"panel7";
         this->panel7->Size = System::Drawing::Size(476, 37);
         this->panel7->TabIndex = 69;
         //
-        // contentInput
+        // message
         //
-        this->contentInput->Anchor =
+        this->message->Anchor =
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (((System::Windows::Forms::AnchorStyles::Top |
                    System::Windows::Forms::AnchorStyles::Bottom) |
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->contentInput->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->contentInput->Font =
+        this->message->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->message->Font =
             (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->contentInput->Location = System::Drawing::Point(21, 6);
-        this->contentInput->MaxLength = 9;
-        this->contentInput->Multiline = true;
-        this->contentInput->Name = L"contentInput";
-        this->contentInput->Size = System::Drawing::Size(455, 28);
-        this->contentInput->TabIndex = 29;
+        this->message->Location = System::Drawing::Point(21, 6);
+        this->message->MaxLength = 9;
+        this->message->Multiline = true;
+        this->message->Name = L"message";
+        this->message->Size = System::Drawing::Size(455, 28);
+        this->message->TabIndex = 29;
         //
         // panel6
         //
@@ -538,6 +544,8 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnSubmit->TabIndex = 62;
         this->btnSubmit->Text = L"CHUYỂN TIỀN";
         this->btnSubmit->UseVisualStyleBackColor = false;
+        this->btnSubmit->Click += gcnew System::EventHandler(
+            this, &TransferMoneyForm::btnSubmit_Click);
         //
         // TransferMoneyForm
         //
@@ -584,6 +592,26 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
                                  System::EventArgs ^ e);
 
 
+  private:
+    System::Void onSelectReceiverSuccess(System::Object ^ sender,
+                                         SelectReceiverEventArgs ^ e) {
+        // Nhận dữ liệu từ sự kiện
+        String ^ selectedBankName = e->BankName;
+        String ^ selectedAccountName = e->AccountName;
+        int selectedAccountNumber = e->AccountNumber;
+        double selectedAmount = e->Amount;
+
+        selectBankBox->Text = selectedBankName;
+        accountNumber->Text = selectedAccountNumber.ToString();
+
+        panelTransfer->Visible = true;
+        labelReceiver->Text = L"Người nhận: " + selectedAccountName;
+
+        amountInput->Text = selectedAmount.ToString();
+
+        this->receiver = gcnew User(selectedBankName , selectedAccountName,
+                              selectedAccountNumber);
+    }
 
 
 
@@ -591,7 +619,29 @@ private:
     System::Void btnSelectAccHistory_Click(System::Object ^ sender,
                                            System::EventArgs ^ e) {
       SelectReceiverForm ^ selectReceiverForm = gcnew SelectReceiverForm(GlobalData::GetCurrentUser());
+        selectReceiverForm->SelectReceiverSuccess +=
+            gcnew EventHandler<SelectReceiverEventArgs ^>(
+                this, &TransferMoneyForm::onSelectReceiverSuccess);
+
         selectReceiverForm->ShowDialog();
+    }
+
+  private:
+    System::Void accountNumber_TextChanged(System::Object ^ sender,
+                                           System::EventArgs ^ e) {
+        panelTransfer->Visible = false;
+        labelReceiver->Text = "";
+        amountInput->Text = "";
+        pinInput->Text = "";
+    }
+
+  private:
+    System::Void selectBankBox_TextChanged(System::Object ^ sender,
+                                           System::EventArgs ^ e) {
+        panelTransfer->Visible = false;
+        labelReceiver->Text = "";
+        amountInput->Text = "";
+        pinInput->Text = "";
     }
 };
 }

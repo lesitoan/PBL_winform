@@ -102,6 +102,12 @@ System::Void TransferMoneyForm::btnSubmit_Click(System::Object ^ sender,
     if (isTransferSuccess) {
         MessageBox::Show(L"Chuyển tiền thành công", "Thong bao",
                          MessageBoxButtons::OK, MessageBoxIcon::Information);
+        this->accountNumber->Text = "";
+        this->pinInput->Text = "";
+        this->amountInput->Text = "";
+        this->message->Text = "";
+        this->panelTransfer->Visible = false;
+
     } else {
         MessageBox::Show(L"Chuyển tiền thất bại", "Canh bao",
                          MessageBoxButtons::OK, MessageBoxIcon::Error);
