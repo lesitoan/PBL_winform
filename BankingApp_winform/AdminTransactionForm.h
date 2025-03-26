@@ -12,99 +12,25 @@ using namespace System::Data;
 using namespace System::Drawing;
 using namespace System::Text::RegularExpressions;
 
-/// <summary>
-/// Summary for AdminTransactionForm
-/// </summary>
 public
 ref class AdminTransactionForm : public System::Windows::Forms::Form {
   public:
-    AdminTransactionForm(void) {
-        InitializeComponent();
-        loadTransactions(nullptr);
-    }
+    AdminTransactionForm(void);
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
-    ~AdminTransactionForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~AdminTransactionForm();
 
   private:
     System::Windows::Forms::Button ^ btnFind;
-
-  protected: 
-
-  private:
-
-
-  protected:
-  private:
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
     System::Windows::Forms::TextBox ^ findText;
-
-  private:
-
-
-  private:
     System::Windows::Forms::DataGridView ^ dataGridViewTransactions;
-
-  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column1;
-
-  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column2;
-
-  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column3;
-
-  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column4;
-
-  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column5;
-
-  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column6;
-
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  protected:
-  private:
-  private:
-  private:
-  private:
-  private:
-  protected:
-  private:
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -354,68 +280,13 @@ ref class AdminTransactionForm : public System::Windows::Forms::Form {
         this->ResumeLayout(false);
     }
 #pragma endregion
+
   private:
     System::Void AdminTransactionForm_Load(System::Object ^ sender,
-                                           System::EventArgs ^ e) {
-    }
+                                           System::EventArgs ^ e);
 
-    private:
-    void loadTransactions(array<Transaction ^> ^ transactions) {
-          dataGridViewTransactions->Rows->Clear();
+    void loadTransactions(array<Transaction ^> ^ transactions);
 
-          if (transactions == nullptr || transactions->Length == 0) {
-              transactions = HandleFile::ReadTransactionArray("transactions.dat");
-          }
-            
-          if (transactions == nullptr) {
-                return;
-          }
-          for (int i = 0; i < transactions->Length; i++) {
-              Transaction ^ transaction = transactions[i];
-              String ^ type =
-                  transaction->getFromAccount() == 0 ? L"Rút tiền" : L"Chuyển tiền";
-              dataGridViewTransactions->Rows->Add(
-                  type,
-                  transaction->getFromAccount(), transaction->getToAccount(),
-                  transaction->getAmount(), transaction->getMessage(),
-                  transaction->getCreatedAt());
-          }
-
-    }
-
-        void btnFind_Click(System::Object ^ sender, System::EventArgs ^ e) {
-
-            array<Transaction ^> ^ transactions =
-                HandleFile::ReadTransactionArray("transactions.dat");
-
-        String ^ find = this->findText->Text;
-            if (find == "") {
-            loadTransactions(transactions);
-                this->findText->Text = "";
-                return;
-            }
-
-        List<Transaction ^> ^ matchedTransactions = gcnew List<Transaction ^>();
-
-        for (int i = 0; i < transactions->Length; i++) {
-            // Chuyển input thành regex pattern
-            String ^ pattern = ".*" + Regex::Escape(find) + ".*";
-            // Kiểm tra tên có chứa input không (không phân biệt hoa thường)
-            bool isMatch1 =
-                Regex::IsMatch(transactions[i]->getFromAccount().ToString(),
-                               pattern, RegexOptions::IgnoreCase);
-            bool isMatch2 =
-                Regex::IsMatch(transactions[i]->getToAccount().ToString(),
-                               pattern, RegexOptions::IgnoreCase);
-
-            if (isMatch1 || isMatch2) {
-                matchedTransactions->Add(transactions[i]);
-            }
-        }
-        this->findText->Text = "";
-        loadTransactions(matchedTransactions->ToArray());
-    }
-
-
+    void btnFind_Click(System::Object ^ sender, System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

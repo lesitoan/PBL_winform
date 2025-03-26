@@ -1,20 +1,14 @@
 ﻿#include "AdminForm.h"
 
 #include "EditUserForm.h"
-#include "LoadChildForm.h"
 #include "TableUsersForm.h"
-
-#include "AdminServiceForm.h"
-#include "AdminTransactionForm.h"
 #include "AuthForm.h"
 
 namespace BankingAppwinform {
 
 AdminForm::AdminForm(void) {
     InitializeComponent();
-    //
-    // TODO: Add the constructor code here
-    //
+    this->labelFullName->Text = GlobalData::GetCurrentUser()->FullName;
 }
 
 AdminForm::~AdminForm() {
@@ -24,6 +18,8 @@ AdminForm::~AdminForm() {
 }
 
 void AdminForm::LoadForm(Form ^ newForm) {
+    
+
     // Nếu panelContent đang chứa Form nào thì lưu vào Stack trước khi thay thế
     if (panelContent->Controls->Count > 0) {
         Form ^ currentForm = dynamic_cast<Form ^>(panelContent->Controls[0]);

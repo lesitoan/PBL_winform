@@ -2,6 +2,7 @@
 #include "HandleFile.h"
 #include "User.h"
 #include "GlobalData.h"
+#include "Services.h"
 
 namespace BankingAppwinform {
 
@@ -23,53 +24,16 @@ ref class LoginForm : public System::Windows::Forms::Form {
     ~LoginForm();
 
   private:
-
-
     System::Windows::Forms::Button ^ btnSubmit;
     System::Windows::Forms::Label ^ label4;
     System::Windows::Forms::Label ^ label3;
     System::Windows::Forms::Label ^ labelAuth;
     System::Windows::Forms::Label ^ label1;
     System::Windows::Forms::CheckBox ^ btnShowPw;
-
-  private:
     System::Windows::Forms::TextBox ^ phoneNumber;
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::TextBox ^ password;
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
     System::ComponentModel::Container ^ components;
 
 

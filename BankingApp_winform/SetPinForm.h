@@ -24,29 +24,13 @@ ref class SetPinForm : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::Panel ^ panel1;
     System::Windows::Forms::Label ^ label1;
-
     System::Windows::Forms::Label ^ labelAuth;
-
     System::Windows::Forms::Button ^ button1;
     System::Windows::Forms::Label ^ btnShowPw;
-
-  private:
     System::Windows::Forms::Panel ^ panel3;
-
-  private:
     System::Windows::Forms::TextBox ^ pin;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::TextBox ^ password;
-
-  private:
-
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code

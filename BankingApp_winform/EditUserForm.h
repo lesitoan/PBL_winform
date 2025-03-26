@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include "AdminForm.h"
+#include "HandleFile.h"
 #include "TableUsersForm.h"
 #include "User.h"
-#include "HandleFile.h" 
 #include "Validate.h"
 
 namespace BankingAppwinform {
@@ -17,7 +17,8 @@ using namespace System::Drawing;
 public
 ref class EditUserForm : public System::Windows::Forms::Form {
   public:
-    EditUserForm(User^ userSelected) { InitializeComponent();
+    EditUserForm(User ^ userSelected) {
+        InitializeComponent();
         this->loadUserInfo(userSelected);
     }
 
@@ -30,126 +31,28 @@ ref class EditUserForm : public System::Windows::Forms::Form {
 
   private:
     System::Windows::Forms::Button ^ btnUndo;
-
-  private:
     System::Windows::Forms::Button ^ btnSubmit;
-
-  protected:
-  private:
-  protected:
-  private:
-
-
-  private:
     System::Windows::Forms::TextBox ^ name;
-
-  private:
-
-
-  private:
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panel4;
-
-  private:
     System::Windows::Forms::TextBox ^ amount;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panel5;
-
-  private:
     System::Windows::Forms::TextBox ^ phone;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panel6;
-
-  private:
     System::Windows::Forms::TextBox ^ accNum;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::TextBox ^ acctype;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panel3;
-
-  private:
     System::Windows::Forms::TextBox ^ bankName;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Panel ^ panel7;
-
-  private:
     System::Windows::Forms::TextBox ^ status;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Label ^ labelAuth;
-
-  private:
     System::Windows::Forms::Label ^ label1;
-
-  private:
     System::Windows::Forms::Label ^ label2;
-
-  private:
     System::Windows::Forms::Label ^ label3;
-
-  private:
     System::Windows::Forms::Label ^ label4;
-
-  private:
     System::Windows::Forms::Label ^ label5;
-
-  private:
     System::Windows::Forms::Label ^ label6;
-
-  private:
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -625,68 +528,11 @@ ref class EditUserForm : public System::Windows::Forms::Form {
     }
 #pragma endregion
   private:
-    System::Void btnUndo_Click(System::Object ^ sender, System::EventArgs ^ e) {
-        TableUsersForm ^ tableUsersForm = gcnew TableUsersForm();
-        AdminForm ^ adminForm = dynamic_cast<AdminForm ^>(this->ParentForm);
-        if (adminForm != nullptr) {
-            adminForm->LoadForm(tableUsersForm);
-        }
-    }
+    System::Void btnUndo_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-    private:
-        void loadUserInfo(User^ user) {
-            this->name->Text = user->getFullName();
-            this->phone->Text = user->getPhoneNumber();
-            this->accNum->Text = user->getAccountNumber().ToString();
-            this->acctype->Text = user->getRole();
-            this->bankName->Text = user->getBankName();
-            this->status->Text = user->Status == 1 ? L"Hoạt động" : L"Khóa";
-            this->amount->Text = user->getBalance().ToString();
-    }
+    void loadUserInfo(User ^ user);
 
-  private:
     System::Void btnSubmit_Click(System::Object ^ sender,
-                                 System::EventArgs ^ e) {
-        System::Windows::Forms::DialogResult result;
-        result = MessageBox::Show(L"Bạn có chắc chắn muốn lưu lại thay đổi không ?",
-                                  L"Lưu thay đổi", MessageBoxButtons::YesNo,
-                                  MessageBoxIcon::Question);
-        if (result == System::Windows::Forms::DialogResult::No) {
-            return;
-        }
-
-        array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-        if (users == nullptr) {
-            return;
-        }
-        bool isModyfied = false;
-        for (int i = 0; i < users->Length; i++) {
-            if (users[i]->getAccountNumber() ==
-                Int32::Parse(this->accNum->Text)) {
-
-                if (this->amount->Text != "" &&
-                    Validate::isNumber(this->amount->Text)) {
-                    int _amount = Double::Parse(this->amount->Text);
-                    if (_amount == users[i]->getBalance()) {
-                        return;
-                    }
-                    users[i]->setBalance(_amount);
-                    isModyfied = true;
-                }
-                break;
-            }
-        }
-        if (isModyfied) {
-            HandleFile::WriteUserArray(users, "users.dat");
-            MessageBox::Show(L"Thay đổi đã được lưu lại", L"Thành công",
-                             MessageBoxButtons::OK,
-                             MessageBoxIcon::Information);
-        } else {
-            MessageBox::Show(L"Không thể thay đổi số dư", L"Lỗi",
-                             MessageBoxButtons::OK, MessageBoxIcon::Error);
-        }
-    }
-
-
+                                 System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

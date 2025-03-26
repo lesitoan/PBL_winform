@@ -1,8 +1,9 @@
 ﻿#pragma once
-#include "Services.h"
+#include "AdminForm.h"
 #include "CompanyForm.h"
 #include "HandleFile.h"
 #include "ModifyServiceForm.h"
+#include "Services.h"
 
 ref class AdminForm;
 namespace BankingAppwinform {
@@ -14,72 +15,28 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-/// <summary>
-/// Summary for AdminServiceForm
-/// </summary>
 public
 ref class AdminServiceForm : public System::Windows::Forms::Form {
   public:
     AdminServiceForm(void);
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
     ~AdminServiceForm();
 
   private:
     System::Windows::Forms::FlowLayoutPanel ^ flowLayoutPanelContainer;
-
-  protected:
-  private:
-  protected:
-  private:
-  protected:
-  private:
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
     System::Windows::Forms::Label ^ label1;
-
-  private:
     System::Windows::Forms::PictureBox ^ pictureBox1;
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::Label ^ label2;
-
-  private:
     System::Windows::Forms::PictureBox ^ pictureBox2;
-
-  private:
     System::Windows::Forms::Panel ^ panel3;
-
-  private:
     System::Windows::Forms::Button ^ btnAddService;
-
-  private:
     System::Windows::Forms::Button ^ btnDeleteService;
-
-  private:
-
-
-  private:
-
-
-  private:
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
     void InitializeComponent(void) {
         System::ComponentModel::ComponentResourceManager ^ resources =
             (gcnew System::ComponentModel::ComponentResourceManager(
@@ -245,13 +202,19 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
         this->btnAddService->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnAddService->ForeColor = System::Drawing::Color::Transparent;
+        this->btnAddService->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnAddService.Image")));
+        this->btnAddService->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
         this->btnAddService->ImeMode =
             System::Windows::Forms::ImeMode::NoControl;
-        this->btnAddService->Location = System::Drawing::Point(674, 17);
+        this->btnAddService->Location = System::Drawing::Point(675, 17);
         this->btnAddService->Name = L"btnAddService";
+        this->btnAddService->Padding =
+            System::Windows::Forms::Padding(8, 0, 0, 0);
         this->btnAddService->Size = System::Drawing::Size(188, 37);
         this->btnAddService->TabIndex = 35;
-        this->btnAddService->Text = L"Thêm dịch vụ";
+        this->btnAddService->Text = L"  Thêm dịch vụ";
         this->btnAddService->UseVisualStyleBackColor = false;
         this->btnAddService->Click += gcnew System::EventHandler(
             this, &AdminServiceForm::btnAddService_Click);
@@ -270,13 +233,20 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
         this->btnDeleteService->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnDeleteService->ForeColor = System::Drawing::Color::Transparent;
+        this->btnDeleteService->Image =
+            (cli::safe_cast<System::Drawing::Image ^>(
+                resources->GetObject(L"btnDeleteService.Image")));
+        this->btnDeleteService->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
         this->btnDeleteService->ImeMode =
             System::Windows::Forms::ImeMode::NoControl;
-        this->btnDeleteService->Location = System::Drawing::Point(877, 17);
+        this->btnDeleteService->Location = System::Drawing::Point(880, 17);
         this->btnDeleteService->Name = L"btnDeleteService";
-        this->btnDeleteService->Size = System::Drawing::Size(188, 37);
+        this->btnDeleteService->Padding =
+            System::Windows::Forms::Padding(14, 0, 0, 0);
+        this->btnDeleteService->Size = System::Drawing::Size(185, 37);
         this->btnDeleteService->TabIndex = 34;
-        this->btnDeleteService->Text = L"Xóa dịch vụ";
+        this->btnDeleteService->Text = L"     Xóa dịch vụ";
         this->btnDeleteService->UseVisualStyleBackColor = false;
         this->btnDeleteService->Click += gcnew System::EventHandler(
             this, &AdminServiceForm::btnDeleteService_Click);
@@ -306,38 +276,19 @@ ref class AdminServiceForm : public System::Windows::Forms::Form {
     }
 #pragma endregion
 
+  private:
     void LoadServices();
     void OnServiceClick(Object ^ sender, EventArgs ^ e);
 
-private:
     System::Void panel1_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-private:
-  System::Void btnAddService_Click(System::Object ^ sender,
-                                   System::EventArgs ^ e) {
-      ModifyServiceForm ^ addServiceForm = gcnew ModifyServiceForm("insert");
-      addServiceForm->ModifyServiceSuccess +=
-          gcnew EventHandler(this, &AdminServiceForm::onModyfyService);
-      addServiceForm->ShowDialog();
-  }
+    System::Void btnAddService_Click(System::Object ^ sender,
+                                     System::EventArgs ^ e);
 
-  
-System::Void AdminServiceForm::onModyfyService(System::Object ^ sender,
-                                        System::EventArgs ^ e) {
-      LoadServices();
-  }
+    System::Void AdminServiceForm::onModyfyService(System::Object ^ sender,
+                                                   System::EventArgs ^ e);
 
-
-private:
-  System::Void btnDeleteService_Click(System::Object ^ sender,
-                                      System::EventArgs ^ e) {
-      ModifyServiceForm ^ deleteServiceForm = gcnew ModifyServiceForm("delete");
-      deleteServiceForm->ModifyServiceSuccess +=
-          gcnew EventHandler(this, &AdminServiceForm::onModyfyService);
-      deleteServiceForm->ShowDialog();
-  }
-
-
-
+    System::Void btnDeleteService_Click(System::Object ^ sender,
+                                        System::EventArgs ^ e);
 };
-} // namespace BankingAppwinform
+}

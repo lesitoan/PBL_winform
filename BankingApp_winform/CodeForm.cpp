@@ -1,8 +1,5 @@
 ﻿#include "CodeForm.h"
-#pragma once
-#include "GlobalData.h"
-#include "HandleFile.h"
-#include "PaymentCodes.h"
+
 
 namespace BankingAppwinform {
 

@@ -23,52 +23,19 @@ ref class CodeForm : public System::Windows::Forms::Form {
 
   private:
     System::Windows::Forms::Panel ^ panel1;
-
-  protected:
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::Panel ^ panel3;
-
-  private:
     System::Windows::Forms::TextBox ^ codes;
-
-  private:
-  private:
     System::Windows::Forms::Panel ^ panel4;
-
-  private:
     System::Windows::Forms::TextBox ^ pin;
-
-  private:
-  private:
-  private:
     System::Windows::Forms::Label ^ label1;
-
-  private:
     System::Windows::Forms::Button ^ btnAddCode;
-
-  private:
-  protected:
     System::Windows::Forms::Label ^ label7;
-
-  private:
     System::Windows::Forms::Label ^ label2;
-
-  private:
     System::Windows::Forms::DataGridView ^ dataGridViewUsers;
-
-  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column1;
-
-  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column2;
-
-  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column3;
-
-  private:
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code

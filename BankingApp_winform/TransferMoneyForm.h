@@ -1,11 +1,11 @@
 ﻿#pragma once
-#include "Validate.h"
-#include "HandleFile.h"
 #include "GlobalData.h"
-#include "User.h"
-#include "Transaction.h"
-#include "Utils.h"
+#include "HandleFile.h"
 #include "SelectReceiverForm.h"
+#include "Transaction.h"
+#include "User.h"
+#include "Utils.h"
+#include "Validate.h"
 
 namespace BankingAppwinform {
 
@@ -35,13 +35,6 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel2;
     System::Windows::Forms::Panel ^ panelTransfer;
 
-
-
-
-
-
-
-
   private:
     System::Windows::Forms::Panel ^ panel3;
 
@@ -52,8 +45,6 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Label ^ btnSelectAccHistory;
 
   private:
-
-
   private:
     System::Windows::Forms::Panel ^ panel7;
 
@@ -61,8 +52,6 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
     System::Windows::Forms::TextBox ^ message;
 
   private:
-
-
   private:
     System::Windows::Forms::Panel ^ panel6;
 
@@ -91,32 +80,15 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Button ^ btnSubmit;
 
   private:
-
-
   private:
     System::Windows::Forms::Panel ^ panel4;
 
   private:
-
-
   private:
-
-
   private:
-
-
   private:
-
-
   private:
-
-
   private:
-
-
-
-
-
 #pragma region Windows Form Designer generated code
     void InitializeComponent(void) {
         this->panel1 = (gcnew System::Windows::Forms::Panel());
@@ -580,68 +552,26 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
     User ^ receiver = nullptr;
     int receiverIndex = -1;
 
-    public:
+  public:
     void setReceiver(User ^ receiver) { this->receiver = receiver; }
 
-    private:
+  private:
     System::Void btnFindAccount_Click(System::Object ^ sender,
                                       System::EventArgs ^ e);
 
-  private: // so tien ck toi thieu 10k, toi da 2.000.000 ?
     System::Void btnSubmit_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
 
-
-  private:
     System::Void onSelectReceiverSuccess(System::Object ^ sender,
-                                         SelectReceiverEventArgs ^ e) {
-        // Nhận dữ liệu từ sự kiện
-        String ^ selectedBankName = e->BankName;
-        String ^ selectedAccountName = e->AccountName;
-        int selectedAccountNumber = e->AccountNumber;
-        double selectedAmount = e->Amount;
+                                         SelectReceiverEventArgs ^ e);
 
-        selectBankBox->Text = selectedBankName;
-        accountNumber->Text = selectedAccountNumber.ToString();
-
-        panelTransfer->Visible = true;
-        labelReceiver->Text = L"Người nhận: " + selectedAccountName;
-
-        amountInput->Text = selectedAmount.ToString();
-
-        this->receiver = gcnew User(selectedBankName , selectedAccountName,
-                              selectedAccountNumber);
-    }
-
-
-
-private:
     System::Void btnSelectAccHistory_Click(System::Object ^ sender,
-                                           System::EventArgs ^ e) {
-      SelectReceiverForm ^ selectReceiverForm = gcnew SelectReceiverForm(GlobalData::GetCurrentUser());
-        selectReceiverForm->SelectReceiverSuccess +=
-            gcnew EventHandler<SelectReceiverEventArgs ^>(
-                this, &TransferMoneyForm::onSelectReceiverSuccess);
+                                           System::EventArgs ^ e);
 
-        selectReceiverForm->ShowDialog();
-    }
-
-  private:
     System::Void accountNumber_TextChanged(System::Object ^ sender,
-                                           System::EventArgs ^ e) {
-        panelTransfer->Visible = false;
-        labelReceiver->Text = "";
-        amountInput->Text = "";
-        pinInput->Text = "";
-    }
+                                           System::EventArgs ^ e);
 
-  private:
     System::Void selectBankBox_TextChanged(System::Object ^ sender,
-                                           System::EventArgs ^ e) {
-        panelTransfer->Visible = false;
-        labelReceiver->Text = "";
-        amountInput->Text = "";
-        pinInput->Text = "";
-    }
+                                           System::EventArgs ^ e);
 };
-}
+} // namespace BankingAppwinform

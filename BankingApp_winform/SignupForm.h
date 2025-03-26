@@ -19,51 +19,25 @@ ref class SignupForm : public System::Windows::Forms::Form {
     SignupForm(void);
 
   protected:
-
     ~SignupForm();
+
+  private:
     System::Windows::Forms::CheckBox ^ btnShowPw;
     System::Windows::Forms::Label ^ label6;
     System::Windows::Forms::Label ^ labelAuth;
     System::Windows::Forms::Label ^ label7;
-
-
     System::Windows::Forms::Button ^ btnSubmit;
     System::Windows::Forms::Label ^ label9;
-
     System::Windows::Forms::CheckBox ^ btnShowPwCf;
     System::Windows::Forms::Label ^ label1;
-
-  private:
     System::Windows::Forms::Panel ^ panel1;
-
-  protected:
-  private:
     System::Windows::Forms::TextBox ^ fullName;
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::TextBox ^ phoneNumber;
-
-  private:
     System::Windows::Forms::Panel ^ panel3;
-
-  private:
     System::Windows::Forms::TextBox ^ password;
-
-  private:
     System::Windows::Forms::Panel ^ panel4;
-
-  private:
     System::Windows::Forms::TextBox ^ passwordConfirm;
-
-  private:
-
-
-  private:
-
-
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -373,19 +347,15 @@ ref class SignupForm : public System::Windows::Forms::Form {
     System::Void btnSubmit_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
 
-  private:
     System::Void btnShowPwCf_CheckedChanged(System::Object ^ sender,
                                             System::EventArgs ^ e);
 
-  private:
     System::Void btnShowPw_CheckedChanged(System::Object ^ sender,
                                           System::EventArgs ^ e);
 
-  private:
     System::Void SignupForm_Load(System::Object ^ sender,
                                  System::EventArgs ^ e) {}
 
-  private:
     bool isUsedPhoneNumber(String ^ phoneNumber);
     int randomAccountNumber();
 };

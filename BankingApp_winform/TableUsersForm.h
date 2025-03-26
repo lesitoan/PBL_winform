@@ -1,10 +1,9 @@
 ﻿#pragma once
+#include "AddUserForm.h"
 #include "AdminForm.h"
+#include "HandleFile.h"
 #include "LoadChildForm.h"
 #include "User.h"
-#include "HandleFile.h"
-#include "AddUserForm.h"
-
 
 ref class EditUserForm;
 
@@ -19,73 +18,22 @@ using namespace System::Drawing;
 
 using namespace System::Text::RegularExpressions;
 
-/// <summary>
-/// Summary for AdminClientForm
-/// </summary>
 public
 ref class TableUsersForm : public System::Windows::Forms::Form {
   public:
     TableUsersForm(void);
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
     ~TableUsersForm();
 
   private:
-
-
-  protected:
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
     System::Windows::Forms::DataGridView ^ dataGridViewUsers;
-
-  private:
-  private:
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
     System::Windows::Forms::TextBox ^ findText;
-
-  private:
     System::Windows::Forms::Button ^ btnFind;
-
-  private:
     System::Windows::Forms::Button ^ btnAddUser;
-
-  private:
-
-
-  private:
-
-
-  private:
-
-
-  private:
     System::Windows::Forms::Button ^ btnModify;
-
-  private:
     System::Windows::Forms::Button ^ btnLock;
-
-  private:
-  private:
-
 
   private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column1;
@@ -94,10 +42,10 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column2;
 
   private:
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column3;
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column4;
 
   private:
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column4;
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column3;
 
   private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column5;
@@ -108,16 +56,9 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column7;
 
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
     void InitializeComponent(void) {
         System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle1 =
             (gcnew System::Windows::Forms::DataGridViewCellStyle());
@@ -127,13 +68,19 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
             (gcnew System::Windows::Forms::DataGridViewCellStyle());
         this->dataGridViewUsers =
             (gcnew System::Windows::Forms::DataGridView());
+        this->panel1 = (gcnew System::Windows::Forms::Panel());
+        this->findText = (gcnew System::Windows::Forms::TextBox());
+        this->btnFind = (gcnew System::Windows::Forms::Button());
+        this->btnAddUser = (gcnew System::Windows::Forms::Button());
+        this->btnModify = (gcnew System::Windows::Forms::Button());
+        this->btnLock = (gcnew System::Windows::Forms::Button());
         this->Column1 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->Column2 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column3 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->Column4 =
+            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column3 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->Column5 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -141,12 +88,6 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->Column7 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->panel1 = (gcnew System::Windows::Forms::Panel());
-        this->findText = (gcnew System::Windows::Forms::TextBox());
-        this->btnFind = (gcnew System::Windows::Forms::Button());
-        this->btnAddUser = (gcnew System::Windows::Forms::Button());
-        this->btnModify = (gcnew System::Windows::Forms::Button());
-        this->btnLock = (gcnew System::Windows::Forms::Button());
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->dataGridViewUsers))
             ->BeginInit();
@@ -202,7 +143,7 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
         this->dataGridViewUsers->ColumnHeadersHeight = 40;
         this->dataGridViewUsers->Columns->AddRange(
             gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(7){
-                this->Column1, this->Column2, this->Column3, this->Column4,
+                this->Column1, this->Column2, this->Column4, this->Column3,
                 this->Column5, this->Column6, this->Column7});
         dataGridViewCellStyle3->Alignment =
             System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
@@ -250,48 +191,6 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
         this->dataGridViewUsers->CellContentClick +=
             gcnew System::Windows::Forms::DataGridViewCellEventHandler(
                 this, &TableUsersForm::dataGridView1_CellContentClick);
-        //
-        // Column1
-        //
-        this->Column1->HeaderText = L"Tên";
-        this->Column1->Name = L"Column1";
-        this->Column1->ReadOnly = true;
-        //
-        // Column2
-        //
-        this->Column2->HeaderText = L"SĐT";
-        this->Column2->Name = L"Column2";
-        this->Column2->ReadOnly = true;
-        //
-        // Column3
-        //
-        this->Column3->HeaderText = L"STK";
-        this->Column3->Name = L"Column3";
-        this->Column3->ReadOnly = true;
-        //
-        // Column4
-        //
-        this->Column4->HeaderText = L"Số dư";
-        this->Column4->Name = L"Column4";
-        this->Column4->ReadOnly = true;
-        //
-        // Column5
-        //
-        this->Column5->HeaderText = L"Vài trò";
-        this->Column5->Name = L"Column5";
-        this->Column5->ReadOnly = true;
-        //
-        // Column6
-        //
-        this->Column6->HeaderText = L"Tên NH";
-        this->Column6->Name = L"Column6";
-        this->Column6->ReadOnly = true;
-        //
-        // Column7
-        //
-        this->Column7->HeaderText = L"Trạng thái";
-        this->Column7->Name = L"Column7";
-        this->Column7->ReadOnly = true;
         //
         // panel1
         //
@@ -419,6 +318,48 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
         this->btnLock->Click +=
             gcnew System::EventHandler(this, &TableUsersForm::btnLock_Click);
         //
+        // Column1
+        //
+        this->Column1->HeaderText = L"Tên";
+        this->Column1->Name = L"Column1";
+        this->Column1->ReadOnly = true;
+        //
+        // Column2
+        //
+        this->Column2->HeaderText = L"SĐT";
+        this->Column2->Name = L"Column2";
+        this->Column2->ReadOnly = true;
+        //
+        // Column4
+        //
+        this->Column4->HeaderText = L"Số dư";
+        this->Column4->Name = L"Column4";
+        this->Column4->ReadOnly = true;
+        //
+        // Column3
+        //
+        this->Column3->HeaderText = L"STK";
+        this->Column3->Name = L"Column3";
+        this->Column3->ReadOnly = true;
+        //
+        // Column5
+        //
+        this->Column5->HeaderText = L"Vài trò";
+        this->Column5->Name = L"Column5";
+        this->Column5->ReadOnly = true;
+        //
+        // Column6
+        //
+        this->Column6->HeaderText = L"Tên NH";
+        this->Column6->Name = L"Column6";
+        this->Column6->ReadOnly = true;
+        //
+        // Column7
+        //
+        this->Column7->HeaderText = L"Trạng thái";
+        this->Column7->Name = L"Column7";
+        this->Column7->ReadOnly = true;
+        //
         // TableUsersForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -445,146 +386,32 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
     }
 #pragma endregion
   private:
+    array<User ^> ^ users = nullptr;
+    User ^ userSelected = nullptr;
+
+  private:
     System::Void dataGridView1_CellContentClick(
         System::Object ^ sender,
         System::Windows::Forms::DataGridViewCellEventArgs ^ e);
 
-  private:
     System::Void AdminClientForm_Load(System::Object ^ sender,
                                       System::EventArgs ^ e);
-
-  private:
     System::Void btnModify_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
+    System::Void btnLock_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-    private: 
-    array<User ^> ^ users = nullptr;
+    void loadUsers(array<User ^> ^ usersArr);
 
- private:
-    void loadUsers(array<User ^> ^ usersArr) {
-      dataGridViewUsers->Rows->Clear();
-
-        
-
-        if (usersArr == nullptr) {
-            usersArr = HandleFile::ReadUserArray("users.dat");
-            this->users = usersArr;
-        }
-        if (usersArr == nullptr) {
-          return;
-        }
-        for (int i = 0; i < usersArr->Length; i++) {
-
-          if (usersArr[i]->getRole() == "admin") {
-              continue;
-          }
-          String ^ status = usersArr[i]->Status == 1 ? L"Hoạt động" : L"Khóa";
-          dataGridViewUsers->Rows->Add(
-              usersArr[i]->getFullName(), usersArr[i]->getPhoneNumber(),
-              usersArr[i]->getBalance(),
-                
-              usersArr[i]->getAccountNumber(), usersArr[i]->getRole(),
-              usersArr[i]->getBankName(),
-              status
-          );
-
-          int lastRow = dataGridViewUsers->Rows->Count - 1;
-          dataGridViewUsers->Rows[lastRow]->Tag = usersArr[i];
-      }
-      this->dataGridViewUsers->CellClick += gcnew DataGridViewCellEventHandler(
-            this, &TableUsersForm::handleUserRowClick);
-    }
-
-    private:
-    User ^ userSelected = nullptr;
-
-        
     System::Void handleUserRowClick(
         System::Object ^ sender,
-        System::Windows::Forms::DataGridViewCellEventArgs ^ e) {
-        if (e->RowIndex < 0) {
-            return;
-        }
-        DataGridViewRow ^ row = dataGridViewUsers->Rows[e->RowIndex];
-        this->userSelected = dynamic_cast<User ^>(row->Tag);
+        System::Windows::Forms::DataGridViewCellEventArgs ^ e);
 
-        if (userSelected->Status) {
-            btnLock->Text = L"KHÓA";
-            btnLock->BackColor = System::Drawing::Color::Red;
-        } else {
-            btnLock->Text = L"MỞ KHÓA";
-            btnLock->BackColor = System::Drawing::Color::Green;
-        }
-    } 
+    void btnFind_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-
-private:
-    System::Void btnLock_Click(System::Object ^ sender, System::EventArgs ^ e) {
-        System::Windows::Forms::DialogResult result;
-        if (userSelected == nullptr) {
-            MessageBox::Show(L"Vui lòng chọn một tài khoản", L"Thông báo",
-                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
-            return;
-        }
-        result = MessageBox::Show(
-            L"Bạn có chắc chắn muốn lưu lại thay đổi không ?", L"Lưu thay đổi",
-            MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-        if (result == System::Windows::Forms::DialogResult::No) {
-            return;
-        }
-
-        if (users == nullptr) {
-            return;
-        }
-        for (int i = 0; i < users->Length; i++) {
-            if (users[i]->getAccountNumber() == userSelected->getAccountNumber()) {
-                users[i]->Status = 1 - users[i]->Status;
-                break;
-            }
-        }
-        HandleFile::WriteUserArray(users, "users.dat");
-        MessageBox::Show(L"Thay đổi đã được lưu lại", L"Thành công",
-                         MessageBoxButtons::OK, MessageBoxIcon::Information);
-        loadUsers(nullptr);
-
-    }
-
-  private:
-    void btnFind_Click(System::Object ^ sender, System::EventArgs ^ e) {
-        String ^ find = this->findText->Text;
-        if (find == "")
-            users = HandleFile::ReadUserArray("users.dat");
-
-        List<User ^> ^ matchedUsers = gcnew List<User ^>();
-
-        for (int i = 0; i < users->Length; i++) {
-            // Chuyển input thành regex pattern
-            String ^ pattern = ".*" + Regex::Escape(find) + ".*";
-            // Kiểm tra tên có chứa input không (không phân biệt hoa thường)
-            bool isMatch = Regex::IsMatch(users[i]->getFullName(), pattern,
-                                          RegexOptions::IgnoreCase);
-            if (isMatch) { 
-                matchedUsers->Add(users[i]);
-            }
-        }
-        this->findText->Text = "";
-        loadUsers(matchedUsers->ToArray());
-    }
-
-  private:
     System::Void btnAddUser_Click(System::Object ^ sender,
-                                  System::EventArgs ^ e) {
-        AddUserForm ^ addUserForm = gcnew AddUserForm();
-        addUserForm->createUserSuccess +=
-            gcnew EventHandler(this, &TableUsersForm::onCreateUserSuccess);
-        addUserForm->ShowDialog();
-    }
+                                  System::EventArgs ^ e);
 
     System::Void TableUsersForm::onCreateUserSuccess(System::Object ^ sender,
-                                           System::EventArgs ^ e) {
-        loadUsers(nullptr);
-    }
-
-
+                                                     System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

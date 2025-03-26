@@ -97,8 +97,9 @@ System::Void TransferMoneyForm::btnSubmit_Click(System::Object ^ sender,
         return;
     }
 
-    bool isTransferSuccess = Utils::transferMoney(GlobalData::GetCurrentUser()->getAccountNumber(),
-                         receiver->getAccountNumber(), amount, pin);
+    bool isTransferSuccess =
+        Utils::transferMoney(GlobalData::GetCurrentUser()->getAccountNumber(),
+                             receiver->getAccountNumber(), amount, pin);
     if (isTransferSuccess) {
         MessageBox::Show(L"Chuyển tiền thành công", "Thong bao",
                          MessageBoxButtons::OK, MessageBoxIcon::Information);
@@ -112,6 +113,57 @@ System::Void TransferMoneyForm::btnSubmit_Click(System::Object ^ sender,
         MessageBox::Show(L"Chuyển tiền thất bại", "Canh bao",
                          MessageBoxButtons::OK, MessageBoxIcon::Error);
     }
-
 }
-};
+
+System::Void
+TransferMoneyForm::onSelectReceiverSuccess(System::Object ^ sender,
+                                           SelectReceiverEventArgs ^ e) {
+    // Nhận dữ liệu từ sự kiện
+    String ^ selectedBankName = e->BankName;
+    String ^ selectedAccountName = e->AccountName;
+    int selectedAccountNumber = e->AccountNumber;
+    double selectedAmount = e->Amount;
+
+    selectBankBox->Text = selectedBankName;
+    accountNumber->Text = selectedAccountNumber.ToString();
+
+    panelTransfer->Visible = true;
+    labelReceiver->Text = L"Người nhận: " + selectedAccountName;
+
+    amountInput->Text = selectedAmount.ToString();
+
+    this->receiver = gcnew User(selectedBankName, selectedAccountName,
+                                selectedAccountNumber);
+}
+
+System::Void
+TransferMoneyForm::btnSelectAccHistory_Click(System::Object ^ sender,
+                                             System::EventArgs ^ e) {
+    SelectReceiverForm ^ selectReceiverForm =
+        gcnew SelectReceiverForm(GlobalData::GetCurrentUser());
+    selectReceiverForm->SelectReceiverSuccess +=
+        gcnew EventHandler<SelectReceiverEventArgs ^>(
+            this, &TransferMoneyForm::onSelectReceiverSuccess);
+
+    selectReceiverForm->ShowDialog();
+}
+
+System::Void
+TransferMoneyForm::accountNumber_TextChanged(System::Object ^ sender,
+                                             System::EventArgs ^ e) {
+    panelTransfer->Visible = false;
+    labelReceiver->Text = "";
+    amountInput->Text = "";
+    pinInput->Text = "";
+}
+
+System::Void
+TransferMoneyForm::selectBankBox_TextChanged(System::Object ^ sender,
+                                             System::EventArgs ^ e) {
+    panelTransfer->Visible = false;
+    labelReceiver->Text = "";
+    amountInput->Text = "";
+    pinInput->Text = "";
+}
+
+}; // namespace BankingAppwinform

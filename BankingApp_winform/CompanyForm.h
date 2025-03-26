@@ -3,6 +3,7 @@
 
 #include "CompanyBillingForm.h"
 #include "HandleFile.h"
+
 ref class AdminForm;
 
 namespace BankingAppwinform {
@@ -14,48 +15,22 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-/// <summary>
-/// Summary for CompanysForm
-/// </summary>
 public
 ref class CompanyForm : public System::Windows::Forms::Form {
   public:
     CompanyForm(int serviceId);
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
     ~CompanyForm();
 
   private:
     System::Windows::Forms::FlowLayoutPanel ^ flowLayoutPanelContainer;
-
-  protected:
-  private:
-  protected:
-  private:
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
     System::Windows::Forms::Label ^ label1;
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::Label ^ label2;
-
-  private:
     System::Windows::Forms::Panel ^ panel3;
-
-  private:
     System::Windows::Forms::Button ^ btnAccount;
-
-  private:
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -187,15 +162,16 @@ ref class CompanyForm : public System::Windows::Forms::Form {
         this->btnAccount->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnAccount->ForeColor =
-            System::Drawing::SystemColors::HighlightText;
+            System::Drawing::SystemColors::ControlText;
         this->btnAccount->Image = (cli::safe_cast<System::Drawing::Image ^>(
             resources->GetObject(L"btnAccount.Image")));
         this->btnAccount->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnAccount->Location = System::Drawing::Point(0, 0);
         this->btnAccount->Name = L"btnAccount";
-        this->btnAccount->Size = System::Drawing::Size(73, 42);
+        this->btnAccount->Size = System::Drawing::Size(142, 42);
         this->btnAccount->TabIndex = 2;
+        this->btnAccount->Text = L"              Quay lại";
         this->btnAccount->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnAccount->UseVisualStyleBackColor = false;
@@ -220,14 +196,14 @@ ref class CompanyForm : public System::Windows::Forms::Form {
     }
 #pragma endregion
 
-
   private:
     void LoadCompanies(int serviceId);
+
     void OnCompanyClick(Object ^ sender, EventArgs ^ e);
+
     void OnUndoClick(Object ^ sender, EventArgs ^ e);
-    
-    private
-      : System::Void
-        btnAccount_Click(System::Object ^ sender, System::EventArgs ^ e);
+
+    System::Void btnAccount_Click(System::Object ^ sender,
+                                  System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

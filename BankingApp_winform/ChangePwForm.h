@@ -353,8 +353,6 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->ForeColor = System::Drawing::SystemColors::ControlLight;
         this->Name = L"ChangePwForm";
         this->Text = L"ChangePwForm";
-        this->Load +=
-            gcnew System::EventHandler(this, &ChangePwForm::ChangePwForm_Load);
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
         this->panel4->ResumeLayout(false);
@@ -370,21 +368,14 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
     System::Void btnSubmit_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
 
-  private:
     bool handleClickShowBtn(bool status,
                             System::Windows::Forms::TextBox ^ textbox);
 
-  private:
     System::Void label1_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-  private:
     System::Void label2_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-  private:
     System::Void label3_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-  private:
-    System::Void ChangePwForm_Load(System::Object ^ sender,
-                                   System::EventArgs ^ e) {}
 };
 } // namespace BankingAppwinform

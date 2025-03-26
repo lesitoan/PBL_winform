@@ -25,22 +25,12 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel1;
     System::Windows::Forms::Panel ^ panel2;
     System::Windows::Forms::Label ^ label4;
-
     System::Windows::Forms::Label ^ label5;
-
     System::Windows::Forms::Button ^ button1;
     System::Windows::Forms::Label ^ labelBalance;
-
-  private:
     System::Windows::Forms::Panel ^ panel3;
-
-  private:
     System::Windows::Forms::TextBox ^ textBox1;
-
-  private:
     System::Windows::Forms::Panel ^ panel6;
-
-  private:
     System::Windows::Forms::TextBox ^ amountInput;
     System::ComponentModel::Container ^ components;
 

@@ -8,7 +8,6 @@
 #include "Validate.h"
 #include "RecurringPayments.h"
 
-
 namespace BankingAppwinform {
 
 using namespace System;
@@ -28,61 +27,21 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
 
   private:
     System::Windows::Forms::FlowLayoutPanel ^ flowLayoutPanelServices;
-
-  private:
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
     System::Windows::Forms::Panel ^ panelContent;
-
-  private:
     System::Windows::Forms::Panel ^ panel4;
-
-  private:
     System::Windows::Forms::ComboBox ^ selectCompanyBox;
-
-  private:
-  private:
     System::Windows::Forms::Label ^ label5;
-
-  private:
     System::Windows::Forms::Panel ^ panel3;
-
-  private:
     System::Windows::Forms::TextBox ^ code;
-
-  private:
-  private:
     System::Windows::Forms::Label ^ label1;
-
-  private:
     System::Windows::Forms::Button ^ btnTransfer;
-
-  private:
     System::Windows::Forms::Label ^ labelReceiver;
-
-  private:
     System::Windows::Forms::Label ^ labelHeader;
-
-  private:
     System::Windows::Forms::Label ^ label2;
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::TextBox ^ pin;
-
-  private:
     System::Windows::Forms::CheckBox ^ submitRecurringPayment;
-
-  private:
-
-
-  private:
-
-
-  private:
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -434,48 +393,11 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
     System::Void btnTransfer_Click(System::Object ^ sender,
                                    System::EventArgs ^ e);
 
-  private:
     System::Void label5_Click(System::Object ^ sender, System::EventArgs ^ e) {}
 
-    private:
+
     void onSubmitCurrentPayment(int userAccountNumber, int companyAccountNumber,
-                                int monthly) {
-          bool checked = this->submitRecurringPayment->Checked;
-        if (!checked)
-            return;
-
-        // Tạo recurringPayment
-        RecurringPayments ^ recurringPayment = gcnew RecurringPayments(
-            userAccountNumber, companyAccountNumber, monthly);
-
-        // Lấy thông tin thanh toán
-        array<RecurringPayments ^> ^ recurringPayments =
-            HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
-        if (recurringPayments == nullptr) {
-            recurringPayments = gcnew array<RecurringPayments ^>(1);
-            recurringPayments[0] = recurringPayment;
-            return;
-        }
-
-        // Kiểm tra xem đã có thanh toán định kì chưa
-        for (int i = 0; i < recurringPayments->Length; i++) {
-            if (recurringPayments[i]->UserAccountNumber == userAccountNumber &&
-                recurringPayments[i]->CompanyAccountNumber ==
-                    companyAccountNumber) {
-                return;
-            }
-        }
-
-        // Nếu chưa thì thêm vào file
-        Array::Resize(recurringPayments, recurringPayments->Length + 1);
-        recurringPayments[recurringPayments->Length - 1] = recurringPayment;
-        bool isSave = HandleFile::WriteRecurringPaymentsArray(recurringPayments,
-                                                "recurringPayments.dat");
-        if (!isSave) {
-            MessageBox::Show("Lỗi máy chủ, thử lại sau !");
-            return;
-        }
-    };
+                                int monthly);
 
 };
 } // namespace BankingAppwinform

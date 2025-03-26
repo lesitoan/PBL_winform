@@ -1,8 +1,4 @@
 ﻿#include "AdminServiceForm.h"
-#pragma once
-#include "AdminForm.h"
-#include "CompanyForm.h"
-#include "Services.h"
 
 namespace BankingAppwinform {
 
@@ -21,10 +17,11 @@ AdminServiceForm::~AdminServiceForm() {
 void AdminServiceForm::LoadServices() {
     flowLayoutPanelContainer->Controls->Clear();
 
-    array<Services ^> ^ services = HandleFile::ReadServicesArray("services.dat");
+    array<Services ^> ^ services =
+        HandleFile::ReadServicesArray("services.dat");
     if (services == nullptr || services->Length == 0) {
         return;
-    } 
+    }
     for (int i = 0; i < services->Length; i++) {
         Panel ^ panel = gcnew Panel();
         panel->Size = System::Drawing::Size(120, 120);
@@ -66,4 +63,26 @@ void AdminServiceForm::OnServiceClick(Object ^ sender, EventArgs ^ e) {
 
 System::Void AdminServiceForm::panel1_Click(System::Object ^ sender,
                                             System::EventArgs ^ e) {}
+
+System::Void AdminServiceForm::btnAddService_Click(System::Object ^ sender,
+                                                   System::EventArgs ^ e) {
+    ModifyServiceForm ^ addServiceForm = gcnew ModifyServiceForm("insert");
+    addServiceForm->ModifyServiceSuccess +=
+        gcnew EventHandler(this, &AdminServiceForm::onModyfyService);
+    addServiceForm->ShowDialog();
+}
+
+System::Void AdminServiceForm::onModyfyService(System::Object ^ sender,
+                                               System::EventArgs ^ e) {
+    LoadServices();
+}
+
+System::Void AdminServiceForm::btnDeleteService_Click(System::Object ^ sender,
+                                                      System::EventArgs ^ e) {
+    ModifyServiceForm ^ deleteServiceForm = gcnew ModifyServiceForm("delete");
+    deleteServiceForm->ModifyServiceSuccess +=
+        gcnew EventHandler(this, &AdminServiceForm::onModyfyService);
+    deleteServiceForm->ShowDialog();
+}
+
 }; // namespace BankingAppwinform

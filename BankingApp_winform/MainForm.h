@@ -72,6 +72,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panelNav = (gcnew System::Windows::Forms::Panel());
         this->btnHistory = (gcnew System::Windows::Forms::Button());
         this->btnServicePayment = (gcnew System::Windows::Forms::Button());
+        this->btnRecurringPayment = (gcnew System::Windows::Forms::Button());
         this->btnCode = (gcnew System::Windows::Forms::Button());
         this->btnWithdraw = (gcnew System::Windows::Forms::Button());
         this->btnTransfer = (gcnew System::Windows::Forms::Button());
@@ -89,7 +90,6 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panel3 = (gcnew System::Windows::Forms::Panel());
         this->panelx = (gcnew System::Windows::Forms::Panel());
         this->panelContent = (gcnew System::Windows::Forms::Panel());
-        this->btnRecurringPayment = (gcnew System::Windows::Forms::Button());
         this->panelNav->SuspendLayout();
         this->panel2->SuspendLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
@@ -150,7 +150,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnHistory->Name = L"btnHistory";
         this->btnHistory->Size = System::Drawing::Size(207, 58);
         this->btnHistory->TabIndex = 11;
-        this->btnHistory->Text = L"                    LỊCH SỬ";
+        this->btnHistory->Text = L"                 LỊCH SỬ";
         this->btnHistory->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnHistory->UseVisualStyleBackColor = false;
@@ -174,18 +174,57 @@ ref class MainForm : public System::Windows::Forms::Form {
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnServicePayment->ForeColor =
             System::Drawing::SystemColors::HighlightText;
+        this->btnServicePayment->Image =
+            (cli::safe_cast<System::Drawing::Image ^>(
+                resources->GetObject(L"btnServicePayment.Image")));
         this->btnServicePayment->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnServicePayment->Location = System::Drawing::Point(0, 402);
         this->btnServicePayment->Name = L"btnServicePayment";
         this->btnServicePayment->Size = System::Drawing::Size(207, 58);
         this->btnServicePayment->TabIndex = 16;
-        this->btnServicePayment->Text = L"                    TT DỊCH VỤ";
+        this->btnServicePayment->Text = L"                TT DỊCH VỤ";
         this->btnServicePayment->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnServicePayment->UseVisualStyleBackColor = false;
         this->btnServicePayment->Click += gcnew System::EventHandler(
             this, &MainForm::btnServicePayment_Click);
+        //
+        // btnRecurringPayment
+        //
+        this->btnRecurringPayment->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnRecurringPayment->Cursor =
+            System::Windows::Forms::Cursors::Hand;
+        this->btnRecurringPayment->Dock =
+            System::Windows::Forms::DockStyle::Top;
+        this->btnRecurringPayment->FlatAppearance->BorderSize = 0;
+        this->btnRecurringPayment->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnRecurringPayment->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
+        this->btnRecurringPayment->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnRecurringPayment->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnRecurringPayment->Image =
+            (cli::safe_cast<System::Drawing::Image ^>(
+                resources->GetObject(L"btnRecurringPayment.Image")));
+        this->btnRecurringPayment->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnRecurringPayment->Location = System::Drawing::Point(0, 344);
+        this->btnRecurringPayment->Name = L"btnRecurringPayment";
+        this->btnRecurringPayment->Size = System::Drawing::Size(207, 58);
+        this->btnRecurringPayment->TabIndex = 17;
+        this->btnRecurringPayment->Text = L"                YCTT ĐỊNH KÌ";
+        this->btnRecurringPayment->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnRecurringPayment->UseVisualStyleBackColor = false;
+        this->btnRecurringPayment->Visible = false;
+        this->btnRecurringPayment->Click += gcnew System::EventHandler(
+            this, &MainForm::btnRecurringPayment_Click);
         //
         // btnCode
         //
@@ -202,6 +241,8 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnCode->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnCode->ForeColor = System::Drawing::SystemColors::HighlightText;
+        this->btnCode->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnCode.Image")));
         this->btnCode->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnCode->Location = System::Drawing::Point(0, 286);
@@ -240,7 +281,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnWithdraw->Name = L"btnWithdraw";
         this->btnWithdraw->Size = System::Drawing::Size(207, 58);
         this->btnWithdraw->TabIndex = 10;
-        this->btnWithdraw->Text = L"                   RÚT TIỀN";
+        this->btnWithdraw->Text = L"                RÚT TIỀN";
         this->btnWithdraw->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnWithdraw->UseVisualStyleBackColor = false;
@@ -271,7 +312,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnTransfer->Name = L"btnTransfer";
         this->btnTransfer->Size = System::Drawing::Size(207, 58);
         this->btnTransfer->TabIndex = 9;
-        this->btnTransfer->Text = L"                   CHUYỂN TIỀN";
+        this->btnTransfer->Text = L"                CHUYỂN TIỀN";
         this->btnTransfer->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnTransfer->UseVisualStyleBackColor = false;
@@ -302,7 +343,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnAccount->Name = L"btnAccount";
         this->btnAccount->Size = System::Drawing::Size(207, 58);
         this->btnAccount->TabIndex = 0;
-        this->btnAccount->Text = L"                   TÀI KHOẢN";
+        this->btnAccount->Text = L"                TÀI KHOẢN";
         this->btnAccount->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnAccount->UseVisualStyleBackColor = false;
@@ -522,39 +563,6 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panelContent->Size = System::Drawing::Size(658, 499);
         this->panelContent->TabIndex = 0;
         //
-        // btnRecurringPayment
-        //
-        this->btnRecurringPayment->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->btnRecurringPayment->Cursor =
-            System::Windows::Forms::Cursors::Hand;
-        this->btnRecurringPayment->Dock =
-            System::Windows::Forms::DockStyle::Top;
-        this->btnRecurringPayment->FlatAppearance->BorderSize = 0;
-        this->btnRecurringPayment->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
-        this->btnRecurringPayment->FlatStyle =
-            System::Windows::Forms::FlatStyle::Flat;
-        this->btnRecurringPayment->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnRecurringPayment->ForeColor =
-            System::Drawing::SystemColors::HighlightText;
-        this->btnRecurringPayment->ImageAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnRecurringPayment->Location = System::Drawing::Point(0, 344);
-        this->btnRecurringPayment->Name = L"btnRecurringPayment";
-        this->btnRecurringPayment->Size = System::Drawing::Size(207, 58);
-        this->btnRecurringPayment->TabIndex = 17;
-        this->btnRecurringPayment->Text = L"                YCTT ĐỊNH KÌ";
-        this->btnRecurringPayment->TextAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnRecurringPayment->UseVisualStyleBackColor = false;
-        this->btnRecurringPayment->Visible = false;
-        this->btnRecurringPayment->Click += gcnew System::EventHandler(
-            this, &MainForm::btnRecurringPayment_Click);
-        //
         // MainForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -604,27 +612,25 @@ ref class MainForm : public System::Windows::Forms::Form {
     System::Void btnLogout_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
 
-  private:
     System::Void timer1_Tick(System::Object ^ sender, System::EventArgs ^ e);
 
-  private:
+
     System::Void btnMenu_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-  private:
+
     System::Void resizeEven(System::Object ^ sender, System::EventArgs ^ e);
 
-  private:
+
     System::Void btnShowBalance_CheckedChanged(System::Object ^ sender,
                                                System::EventArgs ^ e);
 
-  private:
+
     System::Void btnCode_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-  private:
+
     System::Void btnServicePayment_Click(System::Object ^ sender,
                                          System::EventArgs ^ e);
 
-  private:
     System::Void btnRecurringPayment_Click(System::Object ^ sender,
                                            System::EventArgs ^ e);
 };

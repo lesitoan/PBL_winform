@@ -5,6 +5,7 @@
 #include "AdminTransactionForm.h"
 #include "GlobalData.h"
 
+
 ref class TableUsersForm;
 ref class EditUserForm;
 ref class AuthForm;
@@ -18,90 +19,38 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-/// <summary>
-/// Summary for AdminForm
-/// </summary>
 public
 ref class AdminForm : public System::Windows::Forms::Form {
   public:
     AdminForm(void);
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
     ~AdminForm();
 
-  private:
+
     System::Windows::Forms::Panel ^ panel1;
-
-  private:
-  private:
-  private:
     System::Windows::Forms::Panel ^ panelContent;
-
-  private:
-  private:
     System::Windows::Forms::Panel ^ panelNav;
 
-  private:
-    System::Windows::Forms::Button ^ btnMenu;
-
-  private:
     System::Windows::Forms::Panel ^ panel4;
-
-  private:
     System::Windows::Forms::PictureBox ^ pictureBox1;
-
-  private:
     System::Windows::Forms::Label ^ labelFullName;
-
-  private:
-  private:
-  private:
     System::Windows::Forms::Button ^ btnLogout;
-
-  private:
     System::Windows::Forms::Button ^ btnService;
-
-  private:
-  private:
-  private:
     System::Windows::Forms::Button ^ btnTransaction;
-
-  private:
-  private:
     System::Windows::Forms::Button ^ btnClient;
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::Label ^ labelHeader;
-
-  private:
     System::Windows::Forms::PictureBox ^ pictureBox2;
-
-  private:
-
-
-  private:
-  protected:
-  private:
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
     void InitializeComponent(void) {
         System::ComponentModel::ComponentResourceManager ^ resources =
             (gcnew System::ComponentModel::ComponentResourceManager(
                 AdminForm::typeid));
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->panelNav = (gcnew System::Windows::Forms::Panel());
-        this->btnMenu = (gcnew System::Windows::Forms::Button());
         this->panel4 = (gcnew System::Windows::Forms::Panel());
         this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
         this->labelFullName = (gcnew System::Windows::Forms::Label());
@@ -145,7 +94,6 @@ ref class AdminForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->panelNav->Controls->Add(this->btnMenu);
         this->panelNav->Controls->Add(this->panel4);
         this->panelNav->Controls->Add(this->btnLogout);
         this->panelNav->Controls->Add(this->btnService);
@@ -161,37 +109,11 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->panelNav->Size = System::Drawing::Size(207, 761);
         this->panelNav->TabIndex = 2;
         //
-        // btnMenu
-        //
-        this->btnMenu->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->btnMenu->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnMenu->FlatAppearance->BorderSize = 0;
-        this->btnMenu->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
-        this->btnMenu->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->btnMenu->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnMenu->ForeColor = System::Drawing::SystemColors::HighlightText;
-        this->btnMenu->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"btnMenu.Image")));
-        this->btnMenu->ImageAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnMenu->Location = System::Drawing::Point(0, 0);
-        this->btnMenu->Name = L"btnMenu";
-        this->btnMenu->Size = System::Drawing::Size(207, 42);
-        this->btnMenu->TabIndex = 13;
-        this->btnMenu->TextAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnMenu->UseVisualStyleBackColor = false;
-        //
         // panel4
         //
         this->panel4->Controls->Add(this->pictureBox1);
         this->panel4->Controls->Add(this->labelFullName);
-        this->panel4->Location = System::Drawing::Point(0, 42);
+        this->panel4->Location = System::Drawing::Point(0, 3);
         this->panel4->Name = L"panel4";
         this->panel4->Size = System::Drawing::Size(207, 70);
         this->panel4->TabIndex = 14;
@@ -249,7 +171,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->btnLogout->Name = L"btnLogout";
         this->btnLogout->Size = System::Drawing::Size(207, 58);
         this->btnLogout->TabIndex = 12;
-        this->btnLogout->Text = L"                  ĐĂNG XUẤT";
+        this->btnLogout->Text = L"                ĐĂNG XUẤT";
         this->btnLogout->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnLogout->UseVisualStyleBackColor = false;
@@ -271,13 +193,15 @@ ref class AdminForm : public System::Windows::Forms::Form {
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnService->ForeColor =
             System::Drawing::SystemColors::HighlightText;
+        this->btnService->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnService.Image")));
         this->btnService->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnService->Location = System::Drawing::Point(0, 246);
+        this->btnService->Location = System::Drawing::Point(0, 207);
         this->btnService->Name = L"btnService";
         this->btnService->Size = System::Drawing::Size(207, 58);
         this->btnService->TabIndex = 10;
-        this->btnService->Text = L"                   DỊCH VỤ";
+        this->btnService->Text = L"                 DỊCH VỤ";
         this->btnService->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnService->UseVisualStyleBackColor = false;
@@ -300,13 +224,15 @@ ref class AdminForm : public System::Windows::Forms::Form {
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnTransaction->ForeColor =
             System::Drawing::SystemColors::HighlightText;
+        this->btnTransaction->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnTransaction.Image")));
         this->btnTransaction->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnTransaction->Location = System::Drawing::Point(0, 182);
+        this->btnTransaction->Location = System::Drawing::Point(-3, 143);
         this->btnTransaction->Name = L"btnTransaction";
         this->btnTransaction->Size = System::Drawing::Size(207, 58);
         this->btnTransaction->TabIndex = 9;
-        this->btnTransaction->Text = L"                   GIAO DỊCH";
+        this->btnTransaction->Text = L"                 GIAO DỊCH";
         this->btnTransaction->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnTransaction->UseVisualStyleBackColor = false;
@@ -328,13 +254,15 @@ ref class AdminForm : public System::Windows::Forms::Form {
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnClient->ForeColor =
             System::Drawing::SystemColors::HighlightText;
+        this->btnClient->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnClient.Image")));
         this->btnClient->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnClient->Location = System::Drawing::Point(0, 118);
+        this->btnClient->Location = System::Drawing::Point(0, 79);
         this->btnClient->Name = L"btnClient";
         this->btnClient->Size = System::Drawing::Size(207, 58);
         this->btnClient->TabIndex = 0;
-        this->btnClient->Text = L"                   KHÁCH HÀNG";
+        this->btnClient->Text = L"                 KHÁCH HÀNG";
         this->btnClient->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnClient->UseVisualStyleBackColor = false;
@@ -421,25 +349,17 @@ ref class AdminForm : public System::Windows::Forms::Form {
 
     private:
         System::Collections::Generic::Stack<Form ^> ^ formHistory = gcnew System::Collections::Generic::Stack<Form ^>();
-
-  public:
-    void LoadForm(Form ^ childForm);
-    void UndoLastForm();
-
-  private:
     System::Void btnClient_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
-
-  private:
     System::Void btnTransaction_Click(System::Object ^ sender,
                                       System::EventArgs ^ e);
-
-  private:
     System::Void btnService_Click(System::Object ^ sender,
                                   System::EventArgs ^ e);
-
-  private:
     System::Void btnLogout_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
+
+    public:
+    void LoadForm(Form ^ childForm);
+    void UndoLastForm();
 };
 } // namespace BankingAppwinform

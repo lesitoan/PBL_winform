@@ -12,99 +12,29 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-
 public
 ref class ModifyServiceForm : public System::Windows::Forms::Form {
   public:
-    ModifyServiceForm(String^ type) {
-        InitializeComponent();
-        this->type = type;
-        if (type == "") {
-            this->Close();
-        }else if (type == "insert") {
-            this->panelAdd->Visible = true;
-            header->Text = L"THÊM DỊCH VỤ";
-            btnSubmit->Text = "THÊM";
-        } else if (type == "delete") {
-            this->panelDelete->Visible = true;
-            loadServiceBox();
-            header->Text = L"XÓA DỊCH VỤ";
-            btnSubmit->Text = "XÓA";
-        }
-    }
+    ModifyServiceForm(String ^ type);
 
   protected:
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
-    ~ModifyServiceForm() {
-        if (components) {
-            delete components;
-        }
-    }
-
-  private:
-    String ^ type;
-
-
-  private:
-
-
-  protected:
-  private:
-  private:
-
+    ~ModifyServiceForm();
 
   private:
     System::Windows::Forms::Label ^ header;
-
-  private:
-
-
-  private:
     System::Windows::Forms::Button ^ btnSubmit;
-
-  private:
     System::Windows::Forms::Button ^ btnClose;
-
-  private:
     System::Windows::Forms::Panel ^ panelAdd;
-
-  private:
     System::Windows::Forms::Panel ^ panel2;
-
-  private:
     System::Windows::Forms::TextBox ^ serviceName;
-
-  private:
     System::Windows::Forms::Label ^ labelAuth;
-
-  private:
     System::Windows::Forms::Panel ^ panelDelete;
-
-  private:
     System::Windows::Forms::Label ^ label5;
-
-  private:
     System::Windows::Forms::Panel ^ panel4;
-
-  private:
     System::Windows::Forms::ComboBox ^ selectServiceBox;
-
-  private:
-
-
-  private:
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
     void InitializeComponent(void) {
         this->header = (gcnew System::Windows::Forms::Label());
         this->btnSubmit = (gcnew System::Windows::Forms::Button());
@@ -311,108 +241,18 @@ ref class ModifyServiceForm : public System::Windows::Forms::Form {
         this->PerformLayout();
     }
 #pragma endregion
-  private:
+  public:
+    event EventHandler ^ ModifyServiceSuccess;
 
   private:
-    System::Void btnClose_Click(System::Object ^ sender,
-                                System::EventArgs ^ e) {
-        this->Close();
-    }
-
-    void loadServiceBox() {
-        array<Services ^> ^ services =
-            HandleFile::ReadServicesArray("services.dat");
-        if (services == nullptr) {
-            return;
-        }
-        for (int i = 0; i < services->Length; i++) {
-            selectServiceBox->Items->Add(services[i]->Name);
-        }
-    }
-
-
-    public:
-        event EventHandler ^ ModifyServiceSuccess;
+    String ^ type;
 
   private:
-        System::Void btnSubmit_Click(System::Object ^ sender,
-                                     System::EventArgs ^ e) {
+    System::Void btnClose_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-            array<Services ^> ^ services =
-                HandleFile::ReadServicesArray("services.dat");
+    void loadServiceBox();
 
-            // handle insert
-            if (this->type == "insert") {
-                String ^ name = serviceName->Text;
-                if (name->Length == 0) {
-                    MessageBox::Show(L"Tên dịch vụ không được để trống");
-                    return;
-                }
-
-                // tạo id (fix lại sau)
-                Random ^ rand = gcnew Random();
-                int id = rand->Next(1, 701);
-                //
-
-                if (services == nullptr) {
-                    services = gcnew array<Services ^>(1);
-                    services[0] = gcnew Services(id, name);
-                } else {
-                    // check dịch vụ đã tồn tại chưa
-                    for (int i = 0; i < services->Length; i++) {
-                        if (services[i]->Name == name) {
-                            MessageBox::Show(L"Dịch vụ đã tồn tại");
-                            return;
-                        }
-                    }
-                    array<Services ^> ^ newServices =
-                        gcnew array<Services ^>(services->Length + 1);
-                    for (int i = 0; i < services->Length; i++) {
-                        newServices[i] = services[i];
-                    }
-                    newServices[services->Length] = gcnew Services(id, name);
-                    services = newServices;
-                }
-                HandleFile::WriteServicesArray(services, "services.dat");
-                MessageBox::Show(L"Thêm dịch vụ thành công");
-            }
-
-            // handle delete
-            if (type == "delete") {
-                System::Windows::Forms::DialogResult result;
-                result = MessageBox::Show(
-                    L"Bạn có chắc chắn muốn xóa dịch vụ này?", L"Xóa",
-                    MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-                if (result == System::Windows::Forms::DialogResult::Yes) {
-                    for (int i = 0; i < services->Length; i++) {
-                        if (services[i]->Name == selectServiceBox->Text) {
-                            // check dịch vụ có tồn tại công ty không, nếu có thì không được xóa
-                            array<User ^> ^ users =
-                                HandleFile::ReadUserArray("users.dat");
-                            for (int j = 0; j < users->Length; j++) {
-                                if (users[j]->getServiceId() ==
-                                    services[i]->Id) {
-                                    MessageBox::Show(L"Dịch vụ này đang được "
-                                                     L"sử dụng, không thể xóa");
-                                    return;
-                                }
-                            }
-
-                            services[i] = services[services->Length - 1];
-                            Array::Resize(services, services->Length - 1);
-                            HandleFile::WriteServicesArray(services,
-                                                           "services.dat");
-                            MessageBox::Show(L"Xóa dịch vụ thành công");
-                            break;
-                        }
-                    }
-                } else {
-                    return;
-                }
-            }
-        
-        ModifyServiceSuccess(this, EventArgs::Empty);
-        this->Close();
-    }
+    System::Void btnSubmit_Click(System::Object ^ sender,
+                                 System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform
