@@ -42,9 +42,7 @@ void MainForm::InitLoad() {
 }
 
 System::Void MainForm::MainForm_Load(System::Object ^ sender,
-                                     System::EventArgs ^ e) {
-    
-}
+                                     System::EventArgs ^ e) {}
 System::Void MainForm::btnAccount_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm());
@@ -85,12 +83,12 @@ System::Void MainForm::btnServicePayment_Click(System::Object ^ sender,
 }
 
 System::Void MainForm::btnRecurringPayment_Click(System::Object ^ sender,
-    System::EventArgs^ e) {
-    LoadChildForm::LoadForm(this->panelContent, gcnew ClientRecurringPaymentForm());
+                                                 System::EventArgs ^ e) {
+    LoadChildForm::LoadForm(this->panelContent,
+                            gcnew ClientRecurringPaymentForm());
     ChangeButtonColor(btnServicePayment);
     this->headerText->Text = L"YÊU CẦU THANH TOÁN ĐỊNH KÌ";
 }
-
 
 System::Void MainForm::btnLogout_Click(System::Object ^ sender,
                                        System::EventArgs ^ e) {
@@ -105,7 +103,6 @@ System::Void MainForm::btnLogout_Click(System::Object ^ sender,
         AuthForm ^ authForm = gcnew AuthForm();
         authForm->ShowDialog();
         this->Close();
-
     }
 }
 System::Void MainForm::timer1_Tick(System::Object ^ sender,
@@ -184,4 +181,28 @@ System::Void MainForm::btnShowBalance_CheckedChanged(System::Object ^ sender,
         this->labelBalance->Text = "**********";
     }
 }
+
+System::Void MainForm::btnNotification_Click(System::Object^ sender,
+    System::EventArgs^ e) {
+
+    Form^ notificationForm = gcnew NotificationForm();
+
+    int mainFormX = this->Location.X;
+    int mainFormY = this->Location.Y;
+    int mainFormWidth = this->Width;
+    int headerHeight = panelHeader->Height; // Chiều cao của header
+
+    // Đặt vị trí của NotificationForm
+    int notificationX =
+        mainFormX + mainFormWidth - notificationForm->Width; // Căn sát lề phải
+    int notificationY = mainFormY + headerHeight + 30; // Canh ngay dưới thanh header
+
+    notificationForm->StartPosition = FormStartPosition::Manual;
+    notificationForm->Location =
+        System::Drawing::Point(notificationX, notificationY);
+
+
+    notificationForm->ShowDialog();
+}
+
 }; // namespace BankingAppwinform

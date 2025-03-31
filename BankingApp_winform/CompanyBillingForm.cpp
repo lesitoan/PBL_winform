@@ -1,5 +1,6 @@
-﻿#include "CompanyBillingForm.h"
+﻿#include <cstdlib>
 
+#include "CompanyBillingForm.h"
 #include "AdminForm.h"
 
 namespace BankingAppwinform {
@@ -112,16 +113,55 @@ System::Void CompanyBillingForm::dataGridViewRecurring_CellClick(
             return;
         }
 
+        User ^ user = nullptr;
+        User ^ company = nullptr;
+
         // update file users và transactions
         array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
         int pin = 0;
 
         for (int i = 0; i < users->Length; i++) {
-            if (users[i]->AccountNumber == request->UserAccountNumber) {
-                pin = users[i]->getPin();
+            if (company != nullptr && user != nullptr) {
                 break;
             }
+
+            if (users[i]->AccountNumber == request->CompanyAccountNumber) {
+                company = users[i];
+            }else if (users[i]->AccountNumber == request->UserAccountNumber) {
+                pin = users[i]->getPin();
+                user = users[i];
+            }
         }
+        
+        // nếu số dư client không đủ thì gửi thông báo
+        if (user->getBalance() < request->Amount) {
+            int id = rand() + 9999;
+            Notifications ^ notification = gcnew Notifications(
+                id, request->UserAccountNumber,
+                L"Thanh toán định kì tại công ty " + company->FullName + " (" +
+                    request->Amount + ") " +
+                    L" chưa hoàn thành, " +
+                L"hãy nộp thêm tiền vào tài khoản để tiến hành giao dịch",
+                DateTime::Now.ToString("HH:mm:ss dd/MM/yyyy"), 0);
+
+            array<Notifications ^> ^ notifications =
+                HandleFile::ReadNotificationsArray("notifications.dat");
+            if (notifications == nullptr) {
+                notifications = gcnew array<Notifications ^>(0);
+            } else {
+                Array::Resize(notifications, notifications->Length + 1);
+            }
+            for (int i = notifications->Length - 1; i > 0; i--) {
+                notifications[i] = notifications[i - 1];
+            }
+            notifications[0] = notification;
+            HandleFile::WriteNotificationsArray(notifications,
+                                                "notifications.dat");
+            MessageBox::Show(L"Số dư không đủ để thanh toán");
+            return;
+        }
+
+ 
         bool isTransfer = Utils::transferMoney(request->UserAccountNumber,
                                                request->CompanyAccountNumber,
                                                request->Amount, pin);
@@ -189,3 +229,10 @@ System::Void CompanyBillingForm::btnLoadRecurring_Click(System::Object ^ sender,
     dataGridViewCodes->Visible = false;
 }
 }; // namespace BankingAppwinform
+#include <cstdlib>
+#include <ctime>
+
+int getRandomNumber(int min, int max) {
+    std::srand(std::time(nullptr)); // use current time as seed for random generator
+    return min + std::rand() % ((max + 1) - min);
+}

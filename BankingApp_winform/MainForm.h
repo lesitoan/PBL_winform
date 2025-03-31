@@ -9,6 +9,7 @@
 #include "CodeForm.h"
 #include "ServicePaymentForm.h"
 #include "ClientRecurringPaymentForm.h"
+#include "NotificationForm.h"
 
 namespace BankingAppwinform {
 
@@ -41,7 +42,10 @@ ref class MainForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel2;
     System::Windows::Forms::Button ^ btnMenu;
     System::Windows::Forms::Timer ^ timer1;
-    System::Windows::Forms::Panel ^ panel1;
+
+  private:
+    System::Windows::Forms::Panel ^ panelHeader;
+
     System::Windows::Forms::Label ^ headerText;
     System::Windows::Forms::Panel ^ panel3;
     System::Windows::Forms::Panel ^ panelx;
@@ -55,6 +59,12 @@ ref class MainForm : public System::Windows::Forms::Form {
 
   private:
     System::Windows::Forms::Button ^ btnRecurringPayment;
+
+  private:
+    System::Windows::Forms::Button ^ btnNotification;
+
+  private:
+
 
   private:
 
@@ -85,7 +95,8 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnMenu = (gcnew System::Windows::Forms::Button());
         this->btnLogout = (gcnew System::Windows::Forms::Button());
         this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
-        this->panel1 = (gcnew System::Windows::Forms::Panel());
+        this->panelHeader = (gcnew System::Windows::Forms::Panel());
+        this->btnNotification = (gcnew System::Windows::Forms::Button());
         this->headerText = (gcnew System::Windows::Forms::Label());
         this->panel3 = (gcnew System::Windows::Forms::Panel());
         this->panelx = (gcnew System::Windows::Forms::Panel());
@@ -95,7 +106,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->pictureBox1))
             ->BeginInit();
-        this->panel1->SuspendLayout();
+        this->panelHeader->SuspendLayout();
         this->panel3->SuspendLayout();
         this->panelx->SuspendLayout();
         this->SuspendLayout();
@@ -490,18 +501,52 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->timer1->Tick +=
             gcnew System::EventHandler(this, &MainForm::timer1_Tick);
         //
-        // panel1
+        // panelHeader
         //
-        this->panel1->BackColor = System::Drawing::Color::FromArgb(
+        this->panelHeader->BackColor = System::Drawing::Color::FromArgb(
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->panel1->Controls->Add(this->headerText);
-        this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
-        this->panel1->Location = System::Drawing::Point(207, 0);
-        this->panel1->Name = L"panel1";
-        this->panel1->Size = System::Drawing::Size(677, 42);
-        this->panel1->TabIndex = 2;
+        this->panelHeader->Controls->Add(this->btnNotification);
+        this->panelHeader->Controls->Add(this->headerText);
+        this->panelHeader->Dock = System::Windows::Forms::DockStyle::Top;
+        this->panelHeader->Location = System::Drawing::Point(207, 0);
+        this->panelHeader->Name = L"panelHeader";
+        this->panelHeader->Size = System::Drawing::Size(677, 42);
+        this->panelHeader->TabIndex = 2;
+        //
+        // btnNotification
+        //
+        this->btnNotification->Anchor =
+            System::Windows::Forms::AnchorStyles::Right;
+        this->btnNotification->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnNotification->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnNotification->FlatAppearance->BorderSize = 0;
+        this->btnNotification->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnNotification->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
+        this->btnNotification->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnNotification->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnNotification->Image =
+            (cli::safe_cast<System::Drawing::Image ^>(
+                resources->GetObject(L"btnNotification.Image")));
+        this->btnNotification->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnNotification->Location = System::Drawing::Point(611, 0);
+        this->btnNotification->Name = L"btnNotification";
+        this->btnNotification->Size = System::Drawing::Size(66, 42);
+        this->btnNotification->TabIndex = 12;
+        this->btnNotification->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnNotification->UseVisualStyleBackColor = false;
+        this->btnNotification->Click +=
+            gcnew System::EventHandler(this, &MainForm::btnNotification_Click);
         //
         // headerText
         //
@@ -569,7 +614,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->ClientSize = System::Drawing::Size(884, 561);
         this->Controls->Add(this->panel3);
-        this->Controls->Add(this->panel1);
+        this->Controls->Add(this->panelHeader);
         this->Controls->Add(this->panelNav);
         this->MinimumSize = System::Drawing::Size(900, 600);
         this->Name = L"MainForm";
@@ -585,7 +630,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->pictureBox1))
             ->EndInit();
-        this->panel1->ResumeLayout(false);
+        this->panelHeader->ResumeLayout(false);
         this->panel3->ResumeLayout(false);
         this->panelx->ResumeLayout(false);
         this->ResumeLayout(false);
@@ -596,6 +641,7 @@ ref class MainForm : public System::Windows::Forms::Form {
   private:
     bool isOpenNav = true;
     Button ^ selectedButton = nullptr;
+
     void ChangeButtonColor(Button ^ button);
     void InitLoad();
 
@@ -633,5 +679,8 @@ ref class MainForm : public System::Windows::Forms::Form {
 
     System::Void btnRecurringPayment_Click(System::Object ^ sender,
                                            System::EventArgs ^ e);
+
+    System::Void btnNotification_Click(System::Object ^ sender,
+                                       System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

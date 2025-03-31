@@ -128,6 +128,7 @@
     <ClCompile Include="CompanyBillingForm.cpp" />
     <ClCompile Include="CompanyForm.cpp" />
     <ClCompile Include="EditUserForm.cpp" />
+    <ClCompile Include="NotificationForm.cpp" />
     <ClCompile Include="SelectReceiverForm.cpp" />
     <ClCompile Include="ServicePaymentForm.cpp" />
     <ClCompile Include="TableUsersForm.cpp" />
@@ -175,6 +176,10 @@
     <ClInclude Include="EditUserForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="NotificationForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Notifications.h" />
     <ClInclude Include="PaymentCodes.h" />
     <ClInclude Include="RecurringPaymentRequest.h" />
     <ClInclude Include="RecurringPayments.h" />
@@ -261,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditUserForm.resx">
       <DependentUpon>EditUserForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotificationForm.resx">
+      <DependentUpon>NotificationForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectReceiverForm.resx">
       <DependentUpon>SelectReceiverForm.h</DependentUpon>

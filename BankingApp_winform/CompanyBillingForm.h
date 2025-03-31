@@ -6,6 +6,7 @@
 #include "RecurringPaymentRequest.h"
 #include "RecurringPayments.h"
 #include "Utils.h"
+#include "Notifications.h"
 
 ref class AdminForm;
 namespace BankingAppwinform {

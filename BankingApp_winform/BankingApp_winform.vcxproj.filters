@@ -111,6 +111,9 @@
     <ClCompile Include="SelectReceiverForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
+    <ClCompile Include="NotificationForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -219,6 +222,12 @@
     </ClInclude>
     <ClInclude Include="SelectReceiverEventArgs.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="NotificationForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="Notifications.h">
+      <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

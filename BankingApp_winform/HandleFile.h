@@ -5,6 +5,7 @@
 #include "Services.h"
 #include "Transaction.h"
 #include "User.h"
+#include "Notifications.h" // Ensure this header file exists and is correctly included
 
 using namespace System;
 using namespace System::IO;
@@ -31,12 +32,15 @@ ref class HandleFile {
     static bool WriteRecurringPaymentsArray(array<RecurringPayments ^> ^
                                                 recurringPayments,
                                             String ^ filePath);
-    static array<RecurringPayments ^> ^
-        ReadRecurringPaymentsArray(String ^ filePath);
+    static array<RecurringPayments ^> ^ ReadRecurringPaymentsArray(String ^ filePath);
 
     static bool WriteRecurringPaymentRequestArray(
         array<RecurringPaymentRequest ^> ^ recurringRequest, String ^ filePath);
 
-    static array<RecurringPaymentRequest ^> ^
-        ReadRecurringPaymentRequestArray(String ^ filePath);
+    static array<RecurringPaymentRequest ^> ^ ReadRecurringPaymentRequestArray(String ^ filePath);
+
+    static bool WriteNotificationsArray(array<Notifications ^> ^ notifications,
+                                        String ^ filePath);
+
+    static array<Notifications ^> ^ ReadNotificationsArray(String ^ filePath);
 };

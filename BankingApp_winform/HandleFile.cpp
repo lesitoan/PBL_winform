@@ -396,3 +396,68 @@ HandleFile::ReadRecurringPaymentRequestArray(String^ filePath) {
         return nullptr;
     }
 }
+
+
+bool HandleFile::WriteNotificationsArray(array<Notifications ^> ^ notifications,
+                                         String ^ filePath) {
+    try {
+        FileStream ^ fs = gcnew FileStream(filePath, FileMode::Create);
+        BinaryWriter ^ writer = gcnew BinaryWriter(fs);
+        writer->Write(notifications->Length);
+        for each (Notifications ^ notification in notifications) {
+
+            writer->Write(notification->NotificationId);
+            writer->Write(notification->UserAccNumber);
+            writer->Write(notification->Content);
+            writer->Write(notification->CreatedAt);
+            writer->Write(notification->Status);
+        }
+        writer->Close();
+        fs->Close();
+        return true;
+    } catch (Exception ^) {
+        // MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
+        // MessageBoxIcon::Warning);
+        return false;
+    }
+}
+
+array<Notifications ^> ^ HandleFile::ReadNotificationsArray(String ^ filePath) {
+    try {
+        if (!File::Exists(filePath)) {
+            return gcnew array<Notifications ^>(0);
+        }
+
+        FileStream ^ fs = gcnew FileStream(filePath, FileMode::OpenOrCreate);
+        BinaryReader ^ reader = gcnew BinaryReader(fs);
+
+        if (fs->Length == 0) {
+            reader->Close();
+            fs->Close();
+            return gcnew array<Notifications ^>(0);
+        }
+
+        int count = reader->ReadInt32();
+        array<Notifications ^> ^ notifications =
+            gcnew array<Notifications ^>(count);
+
+        for (int i = 0; i < count; i++) {
+
+            int _id = reader->ReadInt32();
+            int _userAccountNumber = reader->ReadInt32();
+            String ^ _content = reader->ReadString();
+            String ^ _createAt = reader->ReadString();
+            int _status = reader->ReadInt32();
+            
+            notifications[i] = gcnew Notifications(
+                _id, _userAccountNumber, _content, _createAt, _status);
+        }
+        reader->Close();
+        fs->Close();
+        return notifications;
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
+                         MessageBoxIcon::Warning);
+        return nullptr;
+    }
+}

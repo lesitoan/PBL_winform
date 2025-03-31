@@ -1,9 +1,8 @@
 ﻿  AdminForm.cpp
-  EditUserForm.cpp
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\EditUserForm.cpp(44,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  TableUsersForm.cpp
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\TableUsersForm.cpp(30,76): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\TableUsersForm.cpp(30,76): warning C4566: character represented by universal-character-name '\u1EC1' cannot be represented in the current code page (1252)
+  AuthForm.cpp
+  Main.cpp
+  MainForm.cpp
+  NotificationForm.cpp
   Generating Code...
   AccountForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   BankingApp_winform.vcxproj -> E:\WORKSPACE\CODE\PBL\BankingApp_winform\x64\Debug\BankingApp_winform.exe
