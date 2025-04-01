@@ -3,7 +3,11 @@
 #include "GlobalData.h"
 #include "LoadChildForm.h"
 #include "SetPinForm.h"
+#include "SetAvatarForm.h"
+
 #include "User.h"
+#include "AuthForm.h"
+
 
 namespace BankingAppwinform {
 
@@ -17,7 +21,7 @@ using namespace System::Drawing;
 public
 ref class AccountForm : public System::Windows::Forms::Form {
   public:
-    AccountForm(void);
+    AccountForm(Form ^ parentForm);
 
   protected:
     ~AccountForm();
@@ -35,9 +39,15 @@ ref class AccountForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panelBtn4;
     System::Windows::Forms::Button ^ buttonSetAvatar;
     System::Windows::Forms::Button ^ btnChangePw;
-    System::Windows::Forms::Button ^ btnDeleteAccount;
+
+  private:
+    System::Windows::Forms::Button ^ btnLockAccount;
+
     System::Windows::Forms::Button ^ btnSetPin;
-    System::Windows::Forms::PictureBox ^ pictureBox1;
+
+  private:
+    System::Windows::Forms::PictureBox ^ pictureBoxAvatar;
+
     System::Windows::Forms::Label ^ label1;
     System::Windows::Forms::Panel ^ panel2;
     System::ComponentModel::Container ^ components;
@@ -48,32 +58,32 @@ ref class AccountForm : public System::Windows::Forms::Form {
             (gcnew System::ComponentModel::ComponentResourceManager(
                 AccountForm::typeid));
         this->panel1 = (gcnew System::Windows::Forms::Panel());
-        this->label1 = (gcnew System::Windows::Forms::Label());
-        this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-        this->labelBalance = (gcnew System::Windows::Forms::Label());
-        this->labelAccountNumber = (gcnew System::Windows::Forms::Label());
+        this->panel2 = (gcnew System::Windows::Forms::Panel());
+        this->pictureBoxAvatar = (gcnew System::Windows::Forms::PictureBox());
         this->labelFullName = (gcnew System::Windows::Forms::Label());
+        this->labelAccountNumber = (gcnew System::Windows::Forms::Label());
+        this->label1 = (gcnew System::Windows::Forms::Label());
+        this->labelBalance = (gcnew System::Windows::Forms::Label());
         this->panelBtn1 = (gcnew System::Windows::Forms::Panel());
         this->btnSetPin = (gcnew System::Windows::Forms::Button());
         this->panelNav = (gcnew System::Windows::Forms::Panel());
         this->panelBtn4 = (gcnew System::Windows::Forms::Panel());
-        this->btnDeleteAccount = (gcnew System::Windows::Forms::Button());
+        this->btnLockAccount = (gcnew System::Windows::Forms::Button());
         this->panelBtn3 = (gcnew System::Windows::Forms::Panel());
         this->buttonSetAvatar = (gcnew System::Windows::Forms::Button());
         this->panelBtn2 = (gcnew System::Windows::Forms::Panel());
         this->btnChangePw = (gcnew System::Windows::Forms::Button());
         this->panelContent = (gcnew System::Windows::Forms::Panel());
-        this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->panel1->SuspendLayout();
+        this->panel2->SuspendLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->pictureBox1))
+             this->pictureBoxAvatar))
             ->BeginInit();
         this->panelBtn1->SuspendLayout();
         this->panelNav->SuspendLayout();
         this->panelBtn4->SuspendLayout();
         this->panelBtn3->SuspendLayout();
         this->panelBtn2->SuspendLayout();
-        this->panel2->SuspendLayout();
         this->SuspendLayout();
         //
         // panel1
@@ -91,41 +101,43 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panel1->Size = System::Drawing::Size(642, 86);
         this->panel1->TabIndex = 0;
         //
-        // label1
+        // panel2
         //
-        this->label1->AutoSize = true;
-        this->label1->Font = (gcnew System::Drawing::Font(
+        this->panel2->Controls->Add(this->pictureBoxAvatar);
+        this->panel2->Controls->Add(this->labelFullName);
+        this->panel2->Controls->Add(this->labelAccountNumber);
+        this->panel2->Dock = System::Windows::Forms::DockStyle::Right;
+        this->panel2->Location = System::Drawing::Point(298, 0);
+        this->panel2->Name = L"panel2";
+        this->panel2->Size = System::Drawing::Size(344, 86);
+        this->panel2->TabIndex = 6;
+        //
+        // pictureBoxAvatar
+        //
+        this->pictureBoxAvatar->Image =
+            (cli::safe_cast<System::Drawing::Image ^>(
+                resources->GetObject(L"pictureBoxAvatar.Image")));
+        this->pictureBoxAvatar->Location = System::Drawing::Point(267, 12);
+        this->pictureBoxAvatar->Name = L"pictureBoxAvatar";
+        this->pictureBoxAvatar->Size = System::Drawing::Size(65, 55);
+        this->pictureBoxAvatar->SizeMode =
+            System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+        this->pictureBoxAvatar->TabIndex = 4;
+        this->pictureBoxAvatar->TabStop = false;
+        //
+        // labelFullName
+        //
+        this->labelFullName->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->label1->ForeColor = System::Drawing::SystemColors::ButtonFace;
-        this->label1->Location = System::Drawing::Point(12, 12);
-        this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(53, 21);
-        this->label1->TabIndex = 5;
-        this->label1->Text = L"Số dư:";
-        //
-        // pictureBox1
-        //
-        this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"pictureBox1.Image")));
-        this->pictureBox1->Location = System::Drawing::Point(250, 12);
-        this->pictureBox1->Name = L"pictureBox1";
-        this->pictureBox1->Size = System::Drawing::Size(91, 55);
-        this->pictureBox1->SizeMode =
-            System::Windows::Forms::PictureBoxSizeMode::Zoom;
-        this->pictureBox1->TabIndex = 4;
-        this->pictureBox1->TabStop = false;
-        //
-        // labelBalance
-        //
-        this->labelBalance->AutoSize = true;
-        this->labelBalance->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->labelBalance->ForeColor = System::Drawing::Color::Lime;
-        this->labelBalance->Location = System::Drawing::Point(62, 12);
-        this->labelBalance->Name = L"labelBalance";
-        this->labelBalance->Size = System::Drawing::Size(93, 21);
-        this->labelBalance->TabIndex = 3;
-        this->labelBalance->Text = L"123000 VNĐ";
+        this->labelFullName->ForeColor =
+            System::Drawing::SystemColors::ButtonFace;
+        this->labelFullName->Location = System::Drawing::Point(62, 12);
+        this->labelFullName->Name = L"labelFullName";
+        this->labelFullName->Size = System::Drawing::Size(182, 18);
+        this->labelFullName->TabIndex = 0;
+        this->labelFullName->Text = L"LE SI TOAN";
+        this->labelFullName->TextAlign =
+            System::Drawing::ContentAlignment::MiddleRight;
         //
         // labelAccountNumber
         //
@@ -141,19 +153,29 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->labelAccountNumber->TextAlign =
             System::Drawing::ContentAlignment::MiddleRight;
         //
-        // labelFullName
+        // label1
         //
-        this->labelFullName->Font = (gcnew System::Drawing::Font(
+        this->label1->AutoSize = true;
+        this->label1->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->labelFullName->ForeColor =
-            System::Drawing::SystemColors::ButtonFace;
-        this->labelFullName->Location = System::Drawing::Point(62, 12);
-        this->labelFullName->Name = L"labelFullName";
-        this->labelFullName->Size = System::Drawing::Size(182, 18);
-        this->labelFullName->TabIndex = 0;
-        this->labelFullName->Text = L"LE SI TOAN";
-        this->labelFullName->TextAlign =
-            System::Drawing::ContentAlignment::MiddleRight;
+        this->label1->ForeColor = System::Drawing::SystemColors::ButtonFace;
+        this->label1->Location = System::Drawing::Point(12, 12);
+        this->label1->Name = L"label1";
+        this->label1->Size = System::Drawing::Size(53, 21);
+        this->label1->TabIndex = 5;
+        this->label1->Text = L"Số dư:";
+        //
+        // labelBalance
+        //
+        this->labelBalance->AutoSize = true;
+        this->labelBalance->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->labelBalance->ForeColor = System::Drawing::Color::Lime;
+        this->labelBalance->Location = System::Drawing::Point(62, 12);
+        this->labelBalance->Name = L"labelBalance";
+        this->labelBalance->Size = System::Drawing::Size(93, 21);
+        this->labelBalance->TabIndex = 3;
+        this->labelBalance->Text = L"123000 VNĐ";
         //
         // panelBtn1
         //
@@ -211,36 +233,36 @@ ref class AccountForm : public System::Windows::Forms::Form {
         //
         // panelBtn4
         //
-        this->panelBtn4->Controls->Add(this->btnDeleteAccount);
+        this->panelBtn4->Controls->Add(this->btnLockAccount);
         this->panelBtn4->Location = System::Drawing::Point(470, 0);
         this->panelBtn4->Name = L"panelBtn4";
         this->panelBtn4->Size = System::Drawing::Size(172, 40);
         this->panelBtn4->TabIndex = 3;
         //
-        // btnDeleteAccount
+        // btnLockAccount
         //
-        this->btnDeleteAccount->BackColor = System::Drawing::Color::Transparent;
-        this->btnDeleteAccount->Cursor = System::Windows::Forms::Cursors::No;
-        this->btnDeleteAccount->Dock = System::Windows::Forms::DockStyle::Fill;
-        this->btnDeleteAccount->FlatAppearance->BorderSize = 0;
-        this->btnDeleteAccount->FlatAppearance->MouseDownBackColor =
+        this->btnLockAccount->BackColor = System::Drawing::Color::Transparent;
+        this->btnLockAccount->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnLockAccount->Dock = System::Windows::Forms::DockStyle::Fill;
+        this->btnLockAccount->FlatAppearance->BorderSize = 0;
+        this->btnLockAccount->FlatAppearance->MouseDownBackColor =
             System::Drawing::Color::Teal;
-        this->btnDeleteAccount->FlatStyle =
+        this->btnLockAccount->FlatStyle =
             System::Windows::Forms::FlatStyle::Flat;
-        this->btnDeleteAccount->Font = (gcnew System::Drawing::Font(
+        this->btnLockAccount->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 10, System::Drawing::FontStyle::Bold));
-        this->btnDeleteAccount->ForeColor =
+        this->btnLockAccount->ForeColor =
             System::Drawing::SystemColors::HighlightText;
-        this->btnDeleteAccount->ImageAlign =
+        this->btnLockAccount->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnDeleteAccount->Location = System::Drawing::Point(0, 0);
-        this->btnDeleteAccount->Name = L"btnDeleteAccount";
-        this->btnDeleteAccount->Size = System::Drawing::Size(172, 40);
-        this->btnDeleteAccount->TabIndex = 7;
-        this->btnDeleteAccount->Text = L"XÓA TÀI KHOẢN";
-        this->btnDeleteAccount->UseVisualStyleBackColor = false;
-        this->btnDeleteAccount->Click += gcnew System::EventHandler(
-            this, &AccountForm::btnDeleteAccount_Click);
+        this->btnLockAccount->Location = System::Drawing::Point(0, 0);
+        this->btnLockAccount->Name = L"btnLockAccount";
+        this->btnLockAccount->Size = System::Drawing::Size(172, 40);
+        this->btnLockAccount->TabIndex = 7;
+        this->btnLockAccount->Text = L"KHÓA TÀI KHOẢN";
+        this->btnLockAccount->UseVisualStyleBackColor = false;
+        this->btnLockAccount->Click += gcnew System::EventHandler(
+            this, &AccountForm::btnLockAccount_Click);
         //
         // panelBtn3
         //
@@ -254,7 +276,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         // buttonSetAvatar
         //
         this->buttonSetAvatar->BackColor = System::Drawing::Color::Transparent;
-        this->buttonSetAvatar->Cursor = System::Windows::Forms::Cursors::No;
+        this->buttonSetAvatar->Cursor = System::Windows::Forms::Cursors::Hand;
         this->buttonSetAvatar->Dock = System::Windows::Forms::DockStyle::Top;
         this->buttonSetAvatar->FlatAppearance->BorderSize = 0;
         this->buttonSetAvatar->FlatAppearance->MouseDownBackColor =
@@ -323,17 +345,6 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panelContent->Size = System::Drawing::Size(642, 331);
         this->panelContent->TabIndex = 3;
         //
-        // panel2
-        //
-        this->panel2->Controls->Add(this->pictureBox1);
-        this->panel2->Controls->Add(this->labelFullName);
-        this->panel2->Controls->Add(this->labelAccountNumber);
-        this->panel2->Dock = System::Windows::Forms::DockStyle::Right;
-        this->panel2->Location = System::Drawing::Point(298, 0);
-        this->panel2->Name = L"panel2";
-        this->panel2->Size = System::Drawing::Size(344, 86);
-        this->panel2->TabIndex = 6;
-        //
         // AccountForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -352,15 +363,15 @@ ref class AccountForm : public System::Windows::Forms::Form {
             gcnew System::EventHandler(this, &AccountForm::AccountForm_Load);
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
+        this->panel2->ResumeLayout(false);
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->pictureBox1))
+             this->pictureBoxAvatar))
             ->EndInit();
         this->panelBtn1->ResumeLayout(false);
         this->panelNav->ResumeLayout(false);
         this->panelBtn4->ResumeLayout(false);
         this->panelBtn3->ResumeLayout(false);
         this->panelBtn2->ResumeLayout(false);
-        this->panel2->ResumeLayout(false);
         this->ResumeLayout(false);
     }
 
@@ -379,6 +390,9 @@ ref class AccountForm : public System::Windows::Forms::Form {
 
 #pragma endregion
   private:
+    Form ^ parentForm;
+
+  private:
     System::Void AccountForm_Load(System::Object ^ sender,
                                   System::EventArgs ^ e);
 
@@ -395,11 +409,13 @@ ref class AccountForm : public System::Windows::Forms::Form {
                                        System::EventArgs ^ e);
 
   private:
-    System::Void btnDeleteAccount_Click(System::Object ^ sender,
-                                        System::EventArgs ^ e);
+    System::Void panelNav_SizeChanged(System::Object ^ sender,
+                                      System::EventArgs ^ e);
+
+    void loadAvatar();
 
   private:
-    System::Void panelNav_SizeChanged(System::Object ^ sender,
+    System::Void btnLockAccount_Click(System::Object ^ sender,
                                       System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

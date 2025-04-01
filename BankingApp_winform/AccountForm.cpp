@@ -1,7 +1,11 @@
 ﻿#include "AccountForm.h"
 
 namespace BankingAppwinform {
-AccountForm::AccountForm(void) { InitializeComponent(); }
+AccountForm::AccountForm(Form ^ parentForm) { 
+    InitializeComponent();
+    loadAvatar();
+    this->parentForm = parentForm;
+}
 
 AccountForm::~AccountForm() {
     if (components) {
@@ -35,12 +39,41 @@ System::Void AccountForm::btnSetPin_Click(System::Object ^ sender,
 
 System::Void AccountForm::buttonSetAvatar_Click(System::Object ^ sender,
                                                 System::EventArgs ^ e) {
+    LoadChildForm::LoadForm(this->panelContent, gcnew SetAvatarForm());
     ChangeButtonColor(buttonSetAvatar);
 }
 
-System::Void AccountForm::btnDeleteAccount_Click(System::Object ^ sender,
+System::Void AccountForm::btnLockAccount_Click(System::Object ^ sender,
                                                  System::EventArgs ^ e) {
-    ChangeButtonColor(btnDeleteAccount);
+    //ChangeButtonColor(btnLockAccount);
+    System::Windows::Forms::DialogResult result;
+    result = MessageBox::Show(L"Bạn có chắc chắn muốn khóa tài khoản, sau khi khóa chỉ có thể đến NH để mở khóa !",
+                              L"Lưu thay đổi", MessageBoxButtons::YesNo,
+                              MessageBoxIcon::Question);
+    if (result == System::Windows::Forms::DialogResult::No) {
+        return;
+    }
+
+    array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+    User ^ userSelected = GlobalData::GetCurrentUser();
+
+    if (users == nullptr) {
+        return;
+    }
+    for (int i = 0; i < users->Length; i++) {
+        if (users[i]->getAccountNumber() == userSelected->getAccountNumber()) {
+            users[i]->Status = 1 - users[i]->Status;
+            break;
+        }
+    }
+    HandleFile::WriteUserArray(users, "users.dat");
+    MessageBox::Show(L"Tài khoản của bạn đã bị khóa !", L"Cảnh báo",
+                     MessageBoxButtons::OK, MessageBoxIcon::Warning);
+    GlobalData::SetCurrentUser(nullptr);
+    parentForm->Hide();
+    AuthForm ^ authForm = gcnew AuthForm();
+    authForm->ShowDialog();
+    parentForm->Close();
 }
 
 System::Void AccountForm::panelNav_SizeChanged(System::Object ^ sender,
@@ -60,4 +93,20 @@ System::Void AccountForm::panelNav_SizeChanged(System::Object ^ sender,
     panelBtn3->Left = panelWidth * 2;
     panelBtn4->Left = panelWidth * 3;
 }
+
+void AccountForm::loadAvatar() {
+    String ^ filePath = GlobalData::GetCurrentUser()->UrlAvatar;
+
+    String ^ projectPath =
+        System::IO::Directory::GetParent(Application::StartupPath)
+            ->Parent->FullName;
+    String ^ correctPath = System::IO::Path::Combine(projectPath, filePath);
+    if (!System::IO::File::Exists(correctPath)) {
+        return;
+    }
+
+    this->pictureBoxAvatar->Image = Image::FromFile(correctPath);
+}
+
+
 }; // namespace BankingAppwinform

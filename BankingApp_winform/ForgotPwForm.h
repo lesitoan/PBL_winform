@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include "Validate.h"
+#include "HandleFile.h"
 
 namespace BankingAppwinform {
 
@@ -20,7 +22,10 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Label ^ label6;
     System::Windows::Forms::Label ^ labelAuth;
 
-    System::Windows::Forms::Button ^ button1;
+  private:
+    System::Windows::Forms::Button ^ btnSubmit;
+
+
     System::Windows::Forms::Label ^ label7;
 
   private:
@@ -33,7 +38,10 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel2;
 
   private:
-    System::Windows::Forms::TextBox ^ textBox1;
+    System::Windows::Forms::TextBox ^ phoneNumber;
+
+  private:
+
 
     System::ComponentModel::Container ^ components;
 
@@ -41,12 +49,12 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
     void InitializeComponent(void) {
         this->label6 = (gcnew System::Windows::Forms::Label());
         this->labelAuth = (gcnew System::Windows::Forms::Label());
-        this->button1 = (gcnew System::Windows::Forms::Button());
+        this->btnSubmit = (gcnew System::Windows::Forms::Button());
         this->label7 = (gcnew System::Windows::Forms::Label());
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->fullName = (gcnew System::Windows::Forms::TextBox());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
-        this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+        this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
         this->panel1->SuspendLayout();
         this->panel2->SuspendLayout();
         this->SuspendLayout();
@@ -80,22 +88,24 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->labelAuth->TabIndex = 47;
         this->labelAuth->Text = L"Nhập số điện thoại:";
         //
-        // button1
+        // btnSubmit
         //
-        this->button1->BackColor = System::Drawing::SystemColors::Info;
-        this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->button1->FlatAppearance->BorderSize = 0;
-        this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->button1->Font = (gcnew System::Drawing::Font(
+        this->btnSubmit->BackColor = System::Drawing::SystemColors::Info;
+        this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnSubmit->FlatAppearance->BorderSize = 0;
+        this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnSubmit->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->button1->ForeColor = System::Drawing::Color::Teal;
-        this->button1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->button1->Location = System::Drawing::Point(56, 342);
-        this->button1->Name = L"button1";
-        this->button1->Size = System::Drawing::Size(442, 42);
-        this->button1->TabIndex = 45;
-        this->button1->Text = L"LẤY LẠI MẬT KHẨU";
-        this->button1->UseVisualStyleBackColor = false;
+        this->btnSubmit->ForeColor = System::Drawing::Color::Teal;
+        this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->btnSubmit->Location = System::Drawing::Point(56, 342);
+        this->btnSubmit->Name = L"btnSubmit";
+        this->btnSubmit->Size = System::Drawing::Size(442, 42);
+        this->btnSubmit->TabIndex = 45;
+        this->btnSubmit->Text = L"LẤY LẠI MẬT KHẨU";
+        this->btnSubmit->UseVisualStyleBackColor = false;
+        this->btnSubmit->Click +=
+            gcnew System::EventHandler(this, &ForgotPwForm::btnSubmit_Click);
         //
         // label7
         //
@@ -141,29 +151,30 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         // panel2
         //
         this->panel2->BackColor = System::Drawing::Color::White;
-        this->panel2->Controls->Add(this->textBox1);
+        this->panel2->Controls->Add(this->phoneNumber);
         this->panel2->Location = System::Drawing::Point(59, 266);
         this->panel2->Name = L"panel2";
         this->panel2->Size = System::Drawing::Size(439, 37);
         this->panel2->TabIndex = 53;
         //
-        // textBox1
+        // phoneNumber
         //
-        this->textBox1->Anchor =
+        this->phoneNumber->Anchor =
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (((System::Windows::Forms::AnchorStyles::Top |
                    System::Windows::Forms::AnchorStyles::Bottom) |
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->textBox1->Font =
+        this->phoneNumber->BorderStyle =
+            System::Windows::Forms::BorderStyle::None;
+        this->phoneNumber->Font =
             (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->textBox1->Location = System::Drawing::Point(18, 6);
-        this->textBox1->MaxLength = 10;
-        this->textBox1->Multiline = true;
-        this->textBox1->Name = L"textBox1";
-        this->textBox1->Size = System::Drawing::Size(418, 28);
-        this->textBox1->TabIndex = 29;
+        this->phoneNumber->Location = System::Drawing::Point(18, 6);
+        this->phoneNumber->MaxLength = 20;
+        this->phoneNumber->Multiline = true;
+        this->phoneNumber->Name = L"phoneNumber";
+        this->phoneNumber->Size = System::Drawing::Size(418, 28);
+        this->phoneNumber->TabIndex = 29;
         //
         // ForgotPwForm
         //
@@ -175,7 +186,7 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->panel1);
         this->Controls->Add(this->label7);
         this->Controls->Add(this->labelAuth);
-        this->Controls->Add(this->button1);
+        this->Controls->Add(this->btnSubmit);
         this->Controls->Add(this->label6);
         this->Name = L"ForgotPwForm";
         this->Text = L"ForgotPwForm";
@@ -187,5 +198,49 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->PerformLayout();
     }
 #pragma endregion
+  private:
+    System::Void btnSubmit_Click(System::Object ^ sender,
+                                 System::EventArgs ^ e) {
+        // 📌 Lấy thông tin từ form
+        String ^ fullName = this->fullName->Text;
+        String ^ phoneNumber = this->phoneNumber->Text;
+        if (fullName->Length == 0 ||
+            phoneNumber->Length == 0) {
+            MessageBox::Show(L"Lấy lại mật khẩu thất bại!", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        } else if (!Validate::isValidVietnamPhoneNumber(phoneNumber)) {
+            MessageBox::Show(L"Lấy lại mật khẩu thất bại!", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        } else if (!Validate::isValidCustomerName(fullName)) {
+            MessageBox::Show(L"Lấy lại mật khẩu thất bại!", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        }
+        // 📌 Kiểm tra thông tin nhập vào có trùng với thông tin trong file
+        // không
+        array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+        DateTime now = DateTime::Now;
+        String ^ newPassword = "TML" + now.ToString("HHmmss");
+        for each (User ^ user in users) {
+            if (user->getFullName() == fullName &&
+                user->getPhoneNumber() == phoneNumber) {
+                user->setPassword(newPassword);
+                bool isSaved = HandleFile::WriteUserArray(users, "users.dat");
+                if (isSaved) {
+                    MessageBox::Show(L"Mật khẩu mới của bạn là: " + newPassword,
+                                     "Success", MessageBoxButtons::OK,
+                                     MessageBoxIcon::Information);
+                    return;
+                } else {
+                    MessageBox::Show(L"Lấy lại mật khẩu thất bại!", "Error",
+                                     MessageBoxButtons::OK,
+                                     MessageBoxIcon::Error);
+                    return;
+                }
+            }
+        }
+    }
 };
 } // namespace BankingAppwinform

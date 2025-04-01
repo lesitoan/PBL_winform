@@ -114,6 +114,7 @@
     <ClCompile Include="NotificationForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
+    <ClCompile Include="SetAvatarForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -229,12 +230,12 @@
     <ClInclude Include="Notifications.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="SetAvatarForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
-    <None Include="services.dat">
-      <Filter>Data\files</Filter>
-    </None>
     <None Include="recurringPaymentRequests.dat">
       <Filter>Data\files</Filter>
     </None>
@@ -245,6 +246,9 @@
       <Filter>Data\files</Filter>
     </None>
     <None Include="codes.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="services.dat">
       <Filter>Data\files</Filter>
     </None>
     <None Include="users.dat">

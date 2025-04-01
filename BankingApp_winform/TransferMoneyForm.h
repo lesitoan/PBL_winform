@@ -189,7 +189,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->accountNumber->Font =
             (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
         this->accountNumber->Location = System::Drawing::Point(21, 6);
-        this->accountNumber->MaxLength = 9;
+        this->accountNumber->MaxLength = 10;
         this->accountNumber->Multiline = true;
         this->accountNumber->Name = L"accountNumber";
         this->accountNumber->Size = System::Drawing::Size(256, 28);

@@ -713,5 +713,8 @@ ref class MainForm : public System::Windows::Forms::Form {
 
     System::Void btnNotification_Click(System::Object ^ sender,
                                        System::EventArgs ^ e);
+
+    void loadAvatar();
+
 };
 } // namespace BankingAppwinform

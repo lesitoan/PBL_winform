@@ -5,7 +5,7 @@ bool Validate::isPin(String ^ str) {
 }
 
 bool Validate::isAccountNumber(String ^ str) {
-	return Regex::IsMatch(str, "^[0-9]{9}$");
+	return Regex::IsMatch(str, "^[0-9]{10}$");
 }
 bool Validate::isNumber(String ^ input) {
     String ^ pattern = "^[+-]?\\d*\\.?\\d+$";

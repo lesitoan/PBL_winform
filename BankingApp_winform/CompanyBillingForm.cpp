@@ -157,7 +157,7 @@ System::Void CompanyBillingForm::dataGridViewRecurring_CellClick(
             notifications[0] = notification;
             HandleFile::WriteNotificationsArray(notifications,
                                                 "notifications.dat");
-            MessageBox::Show(L"Số dư không đủ để thanh toán");
+            MessageBox::Show(L"Số dư không đủ để thanh toán, đã gửi thông báo cho khách hàng");
             return;
         }
 

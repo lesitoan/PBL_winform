@@ -171,7 +171,7 @@ ref class AddUserForm : public System::Windows::Forms::Form {
         this->accNum->Font =
             (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
         this->accNum->Location = System::Drawing::Point(18, 6);
-        this->accNum->MaxLength = 9;
+        this->accNum->MaxLength = 10;
         this->accNum->Multiline = true;
         this->accNum->Name = L"accNum";
         this->accNum->Size = System::Drawing::Size(246, 26);

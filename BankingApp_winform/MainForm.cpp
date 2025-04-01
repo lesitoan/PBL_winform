@@ -6,17 +6,7 @@ namespace BankingAppwinform {
 MainForm::MainForm() {
     InitializeComponent();
     InitLoad();
-
-
-    String ^ projectPath =
-        System::IO::Directory::GetParent(Application::StartupPath)->Parent->FullName;
-    String ^ correctPath = System::IO::Path::Combine(
-        projectPath, "BankingApp_winform\\images\\avatar.png");
-
-    MessageBox::Show(correctPath, "Correct Path");
-
-
-    this->pictureBoxAvatar->Image = Image::FromFile("E:\\avatar1.jpeg");
+    loadAvatar();
 }
 MainForm::~MainForm() {
     if (components) {
@@ -38,7 +28,7 @@ void MainForm::InitLoad() {
 
     this->labelFullName->Text = GlobalData::GetCurrentUser()->getFullName();
     this->labelBalance->Text = "**********";
-    LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm());
+    LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm(this));
     this->headerText->Text = L"DOASHBOARD";
 
     if (GlobalData::GetCurrentUser()->getRole() == "company") {
@@ -56,7 +46,7 @@ System::Void MainForm::MainForm_Load(System::Object ^ sender,
                                      System::EventArgs ^ e) {}
 System::Void MainForm::btnAccount_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
-    LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm());
+    LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm(this));
     ChangeButtonColor(btnAccount);
     this->headerText->Text = L"TÀI KHOẢN";
 }
@@ -214,6 +204,19 @@ System::Void MainForm::btnNotification_Click(System::Object^ sender,
 
 
     notificationForm->ShowDialog();
+}
+
+void MainForm::loadAvatar() {
+    String ^ filePath = GlobalData::GetCurrentUser()->UrlAvatar;
+
+    String ^ projectPath =
+        System::IO::Directory::GetParent(Application::StartupPath)
+            ->Parent->FullName;
+    String ^ correctPath = System::IO::Path::Combine(projectPath, filePath);
+    if (!System::IO::File::Exists(correctPath)) {
+        return;
+    }
+    this->pictureBoxAvatar->Image = Image::FromFile(correctPath);
 }
 
 }; // namespace BankingAppwinform
