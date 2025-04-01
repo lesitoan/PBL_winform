@@ -375,7 +375,7 @@ ref class ClientRecurringPaymentForm : public System::Windows::Forms::Form {
 #pragma endregion
 
   private:
-    int currClientAccountNumber = 0;
+    String ^ currClientAccountNumber = "";
     DateTime currClientPaymentDay;
 
     void loadRecurringPaymentData();

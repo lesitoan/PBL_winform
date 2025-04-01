@@ -18,7 +18,7 @@ using namespace System::Drawing;
 public
 ref class CompanyForm : public System::Windows::Forms::Form {
   public:
-    CompanyForm(int serviceId);
+    CompanyForm(String^ serviceId);
 
   protected:
     ~CompanyForm();
@@ -197,7 +197,7 @@ ref class CompanyForm : public System::Windows::Forms::Form {
 #pragma endregion
 
   private:
-    void LoadCompanies(int serviceId);
+    void LoadCompanies(String^ serviceId);
 
     void OnCompanyClick(Object ^ sender, EventArgs ^ e);
 

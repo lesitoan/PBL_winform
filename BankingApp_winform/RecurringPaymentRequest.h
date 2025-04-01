@@ -6,15 +6,17 @@ using namespace System;
 
 ref class RecurringPaymentRequest {
   private:
-    int id;         
-    int userAccountNumber;    
-    int companyAccountNumber; 
+    String ^ id;         
+    String ^ userAccountNumber;    
+    String ^ companyAccountNumber; 
     double amount;            
     DateTime requestDate;     
     String ^ status;       // pending, success  
 
     public:
-    RecurringPaymentRequest(int reqId, int userAcc, int companyAcc, double amt,
+    RecurringPaymentRequest(String ^ reqId, String ^ userAcc,
+                            String ^ companyAcc,
+                            double amt,
                             DateTime date, String ^ stat) {
         id = reqId;
         userAccountNumber = userAcc;
@@ -24,8 +26,8 @@ ref class RecurringPaymentRequest {
         status = stat;
     }
 
-    RecurringPaymentRequest(int userAcc, int companyAcc, double amt) {
-        id = 0;
+    RecurringPaymentRequest(String ^ userAcc, String ^ companyAcc, double amt) {
+        id = "";
         userAccountNumber = userAcc;
         companyAccountNumber = companyAcc;
         amount = amt;
@@ -34,22 +36,21 @@ ref class RecurringPaymentRequest {
     }
 
     RecurringPaymentRequest() {
-        id = 0;
-        userAccountNumber = 0;
-        companyAccountNumber = 0;
+        id = "";
+        userAccountNumber = "";
+        companyAccountNumber = "";
         amount = 0;
         requestDate = DateTime::Now;
         status = "pending";
     }
 
-    property int Id {
-        int get() { return id; }
-    }
-    property int UserAccountNumber {
-        int get() { return userAccountNumber; }
-    }
-    property int CompanyAccountNumber {
-        int get() { return companyAccountNumber; }
+    property String ^ Id { String ^ get() { return id; }
+    } property String ^
+        UserAccountNumber {
+            String ^ get() { return userAccountNumber; }
+    } property String ^
+        CompanyAccountNumber {
+            String ^ get() { return companyAccountNumber; }
     }
     property double Amount {
         double get() { return amount; }

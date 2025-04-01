@@ -22,11 +22,11 @@ System::Void HistoryForm::HistoryForm_Load(System::Object ^ sender,
 void HistoryForm::loadTransactionsHistory() {
     transactions = HandleFile::ReadTransactionArray("transactions.dat");
     int index = 0;
-    int accountNumber = GlobalData::GetCurrentUser()->getAccountNumber();
+    String^ accountNumber = GlobalData::GetCurrentUser()->getAccountNumber();
     for each (Transaction ^ transaction in transactions) {
         // lich su rut tien
         if (transaction->getFromAccount() == accountNumber &&
-            transaction->getToAccount() == 0) {
+            transaction->getToAccount() == "") {
             AddTransactionPanel(rightContent, transaction, index);
             index++;
 

@@ -16,7 +16,7 @@ bool HandleFile::WriteUserArray(array<User^>^ users, String^ filePath) {
             writer->Write(user->getBankName());
             writer->Write(user->Status);
             writer->Write(user->getServiceId());
-
+            writer->Write(user->UrlAvatar);
         }
         writer->Close();
         fs->Close(); 
@@ -56,15 +56,18 @@ array<User^>^ HandleFile::ReadUserArray(String^ filePath)
             String^ _fullName = reader->ReadString();
             String ^ _password = reader->ReadString();
             String ^ _phoneNumber = reader->ReadString();
-            int _accountNumber = reader->ReadInt32();
+            String ^ _accountNumber = reader->ReadString();
             double _balance = reader->ReadDouble();
             String ^ _role = reader->ReadString();
             int _pin = reader->ReadInt32();
             String ^ _bankName = reader->ReadString();
             int _status = reader->ReadInt32();
-            int _serviceId = reader->ReadInt32();
-            users[i] = gcnew User(_fullName, _password, _phoneNumber, _accountNumber,
-                           _balance, _role, _pin, _bankName,_status, _serviceId);
+            String ^ _serviceId = reader->ReadString();
+            String ^ _urlAvatar = reader->ReadString();
+
+
+            users[i] = gcnew User(_fullName, _password, _phoneNumber, _accountNumber, _balance, _role, _pin,
+                                  _bankName, _status, _serviceId, _urlAvatar);
         }
         reader->Close();
         fs->Close(); 
@@ -97,9 +100,9 @@ array<Transaction ^> ^ HandleFile::ReadTransactionArray(String ^ filePath) {
         }
 
         for (int i = 0; i < count; i++) {
-            int _transactionId = reader->ReadInt32();
-            int _fromAccountNumber = reader->ReadInt32();
-            int _toAccountNumber = reader->ReadInt32();
+            String ^ _transactionId = reader->ReadString();
+            String ^ _fromAccountNumber = reader->ReadString();
+            String ^ _toAccountNumber = reader->ReadString();
             double _amount = reader->ReadDouble();
             String ^ _message = reader->ReadString();
             String ^ _createdAt = reader->ReadString();
@@ -182,7 +185,7 @@ array<Services ^> ^ HandleFile::ReadServicesArray(String ^ filePath) {
         array<Services ^> ^ services = gcnew array<Services ^>(count);
 
         for (int i = 0; i < count; i++) {
-            int _id = reader->ReadInt32();
+            String ^ _id = reader->ReadString();
             String ^ _name = reader->ReadString();
 
             services[i] = gcnew Services(_id, _name);
@@ -242,8 +245,8 @@ array<PaymentCodes ^> ^ HandleFile::ReadCodeArray(String ^ filePath) {
         array<PaymentCodes ^> ^ codes = gcnew array<PaymentCodes ^>(count);
 
         for (int i = 0; i < count; i++) {
-            int _id = reader->ReadInt32();
-            int _companyAccountNumber = reader->ReadInt32();
+            String ^ _id = reader->ReadString();
+            String ^ _companyAccountNumber = reader->ReadString();
             String ^ _code = reader->ReadString();
             int _amount = reader->ReadInt32();
             int _status = reader->ReadInt32();
@@ -308,9 +311,9 @@ array<RecurringPayments ^> ^ HandleFile::ReadRecurringPaymentsArray(String ^ fil
             gcnew array<RecurringPayments ^>(count);
 
         for (int i = 0; i < count; i++) {
-            int _id = reader->ReadInt32();
-            int _userAccountNumber = reader->ReadInt32();
-            int _companyAccountNumber = reader->ReadInt32();
+            String ^ _id = reader->ReadString();
+            String ^ _userAccountNumber = reader->ReadString();
+            String ^ _companyAccountNumber = reader->ReadString();
             int _monthly = reader->ReadInt32();
             DateTime _paymentDay = DateTime::Parse(reader->ReadString());
             double _debt = reader->ReadDouble();
@@ -376,9 +379,9 @@ HandleFile::ReadRecurringPaymentRequestArray(String^ filePath) {
 
         for (int i = 0; i < count; i++) {
 
-            int _id = reader->ReadInt32();
-            int _userAccountNumber = reader->ReadInt32();
-            int _companyAccountNumber = reader->ReadInt32();
+            String ^ _id = reader->ReadString();
+            String ^ _userAccountNumber = reader->ReadString();
+            String ^ _companyAccountNumber = reader->ReadString();
             double _amount = reader->ReadDouble();
             DateTime _requestDate = DateTime::Parse(reader->ReadString());
             String ^ _status = reader->ReadString();
@@ -443,8 +446,8 @@ array<Notifications ^> ^ HandleFile::ReadNotificationsArray(String ^ filePath) {
 
         for (int i = 0; i < count; i++) {
 
-            int _id = reader->ReadInt32();
-            int _userAccountNumber = reader->ReadInt32();
+            String ^ _id = reader->ReadString();
+            String ^ _userAccountNumber = reader->ReadString();
             String ^ _content = reader->ReadString();
             String ^ _createAt = reader->ReadString();
             int _status = reader->ReadInt32();

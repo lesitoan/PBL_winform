@@ -56,7 +56,7 @@ System::Void ModifyServiceForm::btnSubmit_Click(System::Object ^ sender,
 
         // tạo id (fix lại sau)
         Random ^ rand = gcnew Random();
-        int id = rand->Next(1, 701);
+        String ^ id = Utils::createUniqueID("SER");
         //
 
         if (services == nullptr) {

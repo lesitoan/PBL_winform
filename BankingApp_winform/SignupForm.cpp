@@ -41,7 +41,7 @@ System::Void SignupForm::btnSubmit_Click(System::Object ^ sender,
     }
 
 
-    int accNum = randomAccountNumber();
+    String ^ accNum = Utils::createUniqueID("");
     // luu user vao file
     User ^ user =
         gcnew User(fullName->Text, password->Text, phoneNumber->Text, accNum);
@@ -97,7 +97,7 @@ bool SignupForm::isUsedPhoneNumber(String ^ phoneNumber) {
 }
 
 int SignupForm::randomAccountNumber() {
-    Random ^ random = gcnew Random();
+    /*Random ^ random = gcnew Random();
     array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
     if (users == nullptr) {
         return random->Next(100000000, 1000000000);
@@ -117,7 +117,8 @@ int SignupForm::randomAccountNumber() {
         if (users->Length >= 900000000) {
             throw gcnew Exception(L"Không thể tạo số tài khoản mới");
         }
-    }
+    }*/
+    return 0;
 }
 
 }; // namespace BankingAppwinform

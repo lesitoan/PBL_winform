@@ -2,6 +2,7 @@
 #include "HandleFile.h"
 #include "Services.h"
 #include "User.h"
+#include "Utils.h"
 
 namespace BankingAppwinform {
 

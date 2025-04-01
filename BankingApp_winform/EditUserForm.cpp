@@ -14,7 +14,7 @@ System::Void EditUserForm::btnUndo_Click(System::Object ^ sender,
 void EditUserForm::loadUserInfo(User ^ user) {
     this->name->Text = user->getFullName();
     this->phone->Text = user->getPhoneNumber();
-    this->accNum->Text = user->getAccountNumber().ToString();
+    this->accNum->Text = user->getAccountNumber();
     this->acctype->Text = user->getRole();
     this->bankName->Text = user->getBankName();
     this->status->Text = user->Status == 1 ? L"Hoạt động" : L"Khóa";
@@ -37,7 +37,7 @@ System::Void EditUserForm::btnSubmit_Click(System::Object ^ sender,
     }
     bool isModyfied = false;
     for (int i = 0; i < users->Length; i++) {
-        if (users[i]->getAccountNumber() == Int32::Parse(this->accNum->Text)) {
+        if (users[i]->getAccountNumber() == this->accNum->Text) {
 
             if (this->amount->Text != "" &&
                 Validate::isNumber(this->amount->Text)) {

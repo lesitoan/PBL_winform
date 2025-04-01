@@ -35,8 +35,7 @@ System::Void TransferMoneyForm::btnFindAccount_Click(System::Object ^ sender,
         } else {
 
             for (int i = 0; i < users->Length; i++) {
-                if (users[i]->getAccountNumber() ==
-                        Convert::ToInt32(accNumber) &&
+                if (users[i]->getAccountNumber() == accNumber &&
                     users[i]->getBankName() == bank &&
                     GlobalData::GetCurrentUser()->getAccountNumber() ==
                         users[i]->getAccountNumber()) {
@@ -45,8 +44,7 @@ System::Void TransferMoneyForm::btnFindAccount_Click(System::Object ^ sender,
                                      MessageBoxIcon::Warning);
                     panelTransfer->Visible = false;
                     return;
-                } else if (users[i]->getAccountNumber() ==
-                               Convert::ToInt32(accNumber) &&
+                } else if (users[i]->getAccountNumber() == accNumber &&
                            users[i]->getBankName() == bank) {
                     this->receiver = users[i];
                     receiverIndex = i;
@@ -121,11 +119,11 @@ TransferMoneyForm::onSelectReceiverSuccess(System::Object ^ sender,
     // Nhận dữ liệu từ sự kiện
     String ^ selectedBankName = e->BankName;
     String ^ selectedAccountName = e->AccountName;
-    int selectedAccountNumber = e->AccountNumber;
+    String ^ selectedAccountNumber = e->AccountNumber;
     double selectedAmount = e->Amount;
 
     selectBankBox->Text = selectedBankName;
-    accountNumber->Text = selectedAccountNumber.ToString();
+    accountNumber->Text = selectedAccountNumber;
 
     panelTransfer->Visible = true;
     labelReceiver->Text = L"Người nhận: " + selectedAccountName;

@@ -1,12 +1,12 @@
 ﻿#include "Utils.h"
 
-bool Utils::transferMoney(int currUserAccNumber, int receiverAccNumber, double amount,int pin) {
+bool Utils::transferMoney(String^ currUserAccNumber, String^ receiverAccNumber, double amount,int pin) {
     //validate
     if (pin == 0) {
         MessageBox::Show(L"Khach hang chua dang ki ma pin !", "Canh bao",
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
         return 0;
-    } else if (currUserAccNumber == 0 || receiverAccNumber == 0) {
+    } else if (currUserAccNumber == "" || receiverAccNumber == "") {
         MessageBox::Show(L"Chuyển khoản thất bại", "Canh bao",
                          MessageBoxButtons::OK, MessageBoxIcon::Error);
         return 0;
@@ -68,8 +68,10 @@ bool Utils::transferMoney(int currUserAccNumber, int receiverAccNumber, double a
     // lưu lịch sử giao dịch
     String ^ message = "Chuyen khoan toi tai khoan " + receiverAccNumber; // sửa lại sau
 
+    String ^ transactionId = Utils::createUniqueID("T");
     Transaction ^ transaction =
-        gcnew Transaction(123, currUserAccNumber, receiverAccNumber, amount,
+        gcnew Transaction(transactionId, currUserAccNumber, receiverAccNumber,
+                          amount,
                           message,
                           DateTime::Now.ToString());
     array<Transaction ^> ^ transactions =
@@ -96,4 +98,14 @@ bool Utils::transferMoney(int currUserAccNumber, int receiverAccNumber, double a
                          MessageBoxButtons::OK, MessageBoxIcon::Error);
         return 0;
     }
+}
+
+
+String ^ Utils::createUniqueID(String ^ subID) {
+    DateTime now = DateTime::Now;
+    String ^ uniqueID = now.ToString("MdHHmmssff");
+    if (subID != "") {
+        uniqueID = subID + "_" + uniqueID;
+    }
+    return uniqueID;
 }

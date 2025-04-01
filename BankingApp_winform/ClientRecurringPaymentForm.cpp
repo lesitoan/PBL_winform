@@ -57,8 +57,9 @@ System::Void ClientRecurringPaymentForm::dataGridViewRecurring_CellClick(
         String ^ clientFullName = dataGridViewRecurring->Rows[e->RowIndex]
                                       ->Cells[0]
                                       ->Value->ToString();
-        int clientAccountNumber = Convert::ToInt32(
-            dataGridViewRecurring->Rows[e->RowIndex]->Cells[1]->Value);
+        String ^ clientAccountNumber = dataGridViewRecurring->Rows[e->RowIndex]
+                                      ->Cells[1]
+                                      ->Value->ToString();
         // int clientMonthly = Convert::ToInt32(
         //     dataGridViewRecurring->Rows[e->RowIndex]->Cells[2]->Value);
         DateTime clientPaymentDay =
@@ -91,7 +92,7 @@ ClientRecurringPaymentForm::btnSubmit_Click(System::Object ^ sender,
         MessageBox::Show(L"Số tiền không hợp lệ", "Cảnh báo",
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
         return;
-    } else if (currClientAccountNumber == 0 ||
+    } else if (currClientAccountNumber == "" ||
                currClientPaymentDay == DateTime()) {
         MessageBox::Show(L"Cố lỗi xảy ra", "Cảnh báo", MessageBoxButtons::OK,
                          MessageBoxIcon::Warning);

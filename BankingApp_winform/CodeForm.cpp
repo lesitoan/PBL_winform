@@ -64,7 +64,7 @@ namespace BankingAppwinform {
 
                 //
 
-                int companyAccNumber =
+                String^ companyAccNumber =
                     GlobalData::GetCurrentUser()->getAccountNumber();
 
                 PaymentCodes ^ item =

@@ -16,7 +16,7 @@ System::Void AccountForm::AccountForm_Load(System::Object ^ sender,
     }
     this->labelFullName->Text = GlobalData::GetCurrentUser()->getFullName();
     this->labelAccountNumber->Text =
-        GlobalData::GetCurrentUser()->getAccountNumber().ToString();
+        GlobalData::GetCurrentUser()->getAccountNumber();
     this->labelBalance->Text =
         GlobalData::GetCurrentUser()->getBalance() + " VND";
 }

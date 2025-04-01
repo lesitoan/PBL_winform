@@ -9,17 +9,18 @@ ref class User {
     String ^ fullName;
     String ^ password;
     String ^ phoneNumber;
-    int accountNumber;
+    String^ accountNumber;
     double balance;
     String ^ role; // user, admin, company
     int pin;
     String ^ bankName;
     int status;
-    int serviceId;
+    String^ serviceId;
+    String ^ urlAvatar;
 
   public:
     User(String ^ _fullName, String ^ _password, String ^ _phoneNumber,
-         int accNum) {
+         String ^ accNum) {
         fullName = _fullName;
         password = _password;
         phoneNumber = _phoneNumber;
@@ -29,11 +30,12 @@ ref class User {
         accountNumber = accNum;
         bankName = "BIDV";
         status = 1;
-        serviceId = 0;
+        serviceId = "";
+        urlAvatar = "BankingApp_winform\\images\\avatars\\default_avatar.png";
     }
     User(String ^ _fullName, String ^ _password, String ^ _phoneNumber,
-         int _accountNumber, double _balance, String ^ _role, int _pin,
-         String ^ _bankName,int _status,  int _serviceId) {
+         String ^ _accountNumber, double _balance, String ^ _role, int _pin,
+         String ^ _bankName,int _status,  String^ _serviceId, String^ _avatar) {
         fullName = _fullName;
         password = _password;
         phoneNumber = _phoneNumber;
@@ -44,11 +46,14 @@ ref class User {
         bankName = _bankName;
         status = _status;
         serviceId = _serviceId;
+        urlAvatar = _avatar;
     }
 
-    User() : User("", "", "", 0, 0, "user", 0, "BIDV", 1, 0) {};
+    User()
+        : User("", "", "", "", 0, "user", 0, "BIDV", 1, "",
+               "BankingApp_winform\\images\\avatars\\default_avatar.png") {};
 
-    User(String^ _bankName, String^ _fullName, int _accNumber) {
+    User(String ^ _bankName, String ^ _fullName, String ^ _accNumber) {
         bankName = _bankName;
         fullName = _fullName;
         accountNumber = _accNumber;
@@ -59,18 +64,20 @@ ref class User {
         role = "user";
         pin = 0;
         status = 1;
-        serviceId = 0;
-
+        serviceId = "";
+        urlAvatar = "BankingApp_winform\\images\\avatars\\default_avatar.png";
     }
 
     String ^ getFullName() { return fullName; } String ^
-        getPassword() { return password; } int getAccountNumber() {
+        getPassword() { return password; }
+    String ^ getAccountNumber() {
         return accountNumber;
     }
     double getBalance() { return balance; }
     String ^ getRole() { return role; } int getPin() { return pin; }
     String ^ getPhoneNumber() { return phoneNumber; } String ^
-        getBankName() { return bankName; } int getServiceId() {
+        getBankName() { return bankName; } String ^
+        getServiceId() {
         return serviceId;
     }
 
@@ -80,13 +87,19 @@ ref class User {
 
     property String ^ FullName { String ^ get() { return fullName; } }
 
-    property int AccountNumber {
-        int get() { return accountNumber; }
+    property String ^
+        AccountNumber { String ^ get() { return accountNumber; }
     }
 
     property int Status {
         int get() { return status; }
         void set(int value) { status = value; }
+    }
+    property String ^ UrlAvatar {
+        String ^ get() { return urlAvatar; }
+        void set(String ^ value) {
+            urlAvatar = value;
+        }
     }
 };
 

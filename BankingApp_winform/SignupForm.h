@@ -3,6 +3,7 @@
 #include "LoginForm.h"
 #include "User.h"
 #include "Validate.h"
+#include "Utils.h"
 
 namespace BankingAppwinform {
 

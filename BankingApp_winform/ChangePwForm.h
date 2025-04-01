@@ -105,9 +105,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->panel1->Controls->Add(this->label5);
         this->panel1->Controls->Add(this->label4);
         this->panel1->Controls->Add(this->btnSubmit);
-        this->panel1->Location = System::Drawing::Point(12, 13);
+        this->panel1->Location = System::Drawing::Point(16, 16);
+        this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->panel1->Name = L"panel1";
-        this->panel1->Size = System::Drawing::Size(602, 358);
+        this->panel1->Size = System::Drawing::Size(803, 441);
         this->panel1->TabIndex = 0;
         //
         // panel4
@@ -118,9 +119,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel4->BackColor = System::Drawing::Color::White;
         this->panel4->Controls->Add(this->newPasswordConfirm);
-        this->panel4->Location = System::Drawing::Point(92, 206);
+        this->panel4->Location = System::Drawing::Point(123, 254);
+        this->panel4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->panel4->Name = L"panel4";
-        this->panel4->Size = System::Drawing::Size(398, 37);
+        this->panel4->Size = System::Drawing::Size(531, 46);
         this->panel4->TabIndex = 56;
         //
         // newPasswordConfirm
@@ -134,13 +136,15 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->newPasswordConfirm->BorderStyle =
             System::Windows::Forms::BorderStyle::None;
         this->newPasswordConfirm->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->newPasswordConfirm->Location = System::Drawing::Point(18, 6);
+            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->newPasswordConfirm->Location = System::Drawing::Point(24, 7);
+        this->newPasswordConfirm->Margin =
+            System::Windows::Forms::Padding(4, 4, 4, 4);
         this->newPasswordConfirm->MaxLength = 15;
         this->newPasswordConfirm->Multiline = true;
         this->newPasswordConfirm->Name = L"newPasswordConfirm";
         this->newPasswordConfirm->PasswordChar = '*';
-        this->newPasswordConfirm->Size = System::Drawing::Size(377, 28);
+        this->newPasswordConfirm->Size = System::Drawing::Size(503, 34);
         this->newPasswordConfirm->TabIndex = 29;
         //
         // panel2
@@ -151,9 +155,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel2->BackColor = System::Drawing::Color::White;
         this->panel2->Controls->Add(this->newPassword);
-        this->panel2->Location = System::Drawing::Point(92, 119);
+        this->panel2->Location = System::Drawing::Point(123, 146);
+        this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->panel2->Name = L"panel2";
-        this->panel2->Size = System::Drawing::Size(398, 37);
+        this->panel2->Size = System::Drawing::Size(531, 46);
         this->panel2->TabIndex = 55;
         //
         // newPassword
@@ -167,13 +172,14 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->newPassword->BorderStyle =
             System::Windows::Forms::BorderStyle::None;
         this->newPassword->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->newPassword->Location = System::Drawing::Point(18, 6);
+            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->newPassword->Location = System::Drawing::Point(24, 7);
+        this->newPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->newPassword->MaxLength = 9;
         this->newPassword->Multiline = true;
         this->newPassword->Name = L"newPassword";
         this->newPassword->PasswordChar = '*';
-        this->newPassword->Size = System::Drawing::Size(377, 28);
+        this->newPassword->Size = System::Drawing::Size(503, 34);
         this->newPassword->TabIndex = 29;
         //
         // panel3
@@ -184,9 +190,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel3->BackColor = System::Drawing::Color::White;
         this->panel3->Controls->Add(this->oldPassword);
-        this->panel3->Location = System::Drawing::Point(92, 37);
+        this->panel3->Location = System::Drawing::Point(123, 46);
+        this->panel3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->panel3->Name = L"panel3";
-        this->panel3->Size = System::Drawing::Size(398, 37);
+        this->panel3->Size = System::Drawing::Size(531, 46);
         this->panel3->TabIndex = 54;
         //
         // oldPassword
@@ -200,13 +207,14 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->oldPassword->BorderStyle =
             System::Windows::Forms::BorderStyle::None;
         this->oldPassword->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->oldPassword->Location = System::Drawing::Point(18, 6);
+            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->oldPassword->Location = System::Drawing::Point(24, 7);
+        this->oldPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->oldPassword->MaxLength = 15;
         this->oldPassword->Multiline = true;
         this->oldPassword->Name = L"oldPassword";
         this->oldPassword->PasswordChar = '*';
-        this->oldPassword->Size = System::Drawing::Size(377, 28);
+        this->oldPassword->Size = System::Drawing::Size(503, 34);
         this->oldPassword->TabIndex = 29;
         //
         // label3
@@ -220,9 +228,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->label3->Image = (cli::safe_cast<System::Drawing::Image ^>(
             resources->GetObject(L"label3.Image")));
         this->label3->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label3->Location = System::Drawing::Point(480, 206);
+        this->label3->Location = System::Drawing::Point(640, 254);
+        this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label3->Name = L"label3";
-        this->label3->Size = System::Drawing::Size(54, 37);
+        this->label3->Size = System::Drawing::Size(72, 46);
         this->label3->TabIndex = 53;
         this->label3->TextAlign =
             System::Drawing::ContentAlignment::MiddleCenter;
@@ -240,9 +249,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->label2->Image = (cli::safe_cast<System::Drawing::Image ^>(
             resources->GetObject(L"label2.Image")));
         this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label2->Location = System::Drawing::Point(480, 119);
+        this->label2->Location = System::Drawing::Point(640, 146);
+        this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(54, 37);
+        this->label2->Size = System::Drawing::Size(72, 46);
         this->label2->TabIndex = 52;
         this->label2->TextAlign =
             System::Drawing::ContentAlignment::MiddleCenter;
@@ -261,9 +271,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
             resources->GetObject(L"label1.Image")));
         this->label1->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
         this->label1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label1->Location = System::Drawing::Point(480, 37);
+        this->label1->Location = System::Drawing::Point(640, 46);
+        this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(54, 37);
+        this->label1->Size = System::Drawing::Size(72, 46);
         this->label1->TabIndex = 51;
         this->label1->TextAlign =
             System::Drawing::ContentAlignment::MiddleCenter;
@@ -282,9 +293,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
             (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
         this->label6->ForeColor = System::Drawing::Color::Transparent;
         this->label6->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label6->Location = System::Drawing::Point(88, 181);
+        this->label6->Location = System::Drawing::Point(117, 223);
+        this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label6->Name = L"label6";
-        this->label6->Size = System::Drawing::Size(171, 22);
+        this->label6->Size = System::Drawing::Size(216, 27);
         this->label6->TabIndex = 50;
         this->label6->Text = L"Xác nhận mật khẩu mới:";
         //
@@ -296,9 +308,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
             (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
         this->label5->ForeColor = System::Drawing::Color::Transparent;
         this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label5->Location = System::Drawing::Point(88, 94);
+        this->label5->Location = System::Drawing::Point(117, 116);
+        this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(247, 22);
+        this->label5->Size = System::Drawing::Size(313, 27);
         this->label5->TabIndex = 47;
         this->label5->Text = L"Nhập mật khẩu mới (ít nhất 6 kí tự):";
         //
@@ -314,9 +327,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
             (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
         this->label4->ForeColor = System::Drawing::Color::Transparent;
         this->label4->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label4->Location = System::Drawing::Point(88, 12);
+        this->label4->Location = System::Drawing::Point(117, 15);
+        this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label4->Name = L"label4";
-        this->label4->Size = System::Drawing::Size(116, 22);
+        this->label4->Size = System::Drawing::Size(147, 27);
         this->label4->TabIndex = 44;
         this->label4->Text = L"Nhập mật khẩu:";
         //
@@ -334,9 +348,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnSubmit->ForeColor = System::Drawing::Color::Teal;
         this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->btnSubmit->Location = System::Drawing::Point(92, 280);
+        this->btnSubmit->Location = System::Drawing::Point(123, 345);
+        this->btnSubmit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->btnSubmit->Name = L"btnSubmit";
-        this->btnSubmit->Size = System::Drawing::Size(445, 42);
+        this->btnSubmit->Size = System::Drawing::Size(593, 52);
         this->btnSubmit->TabIndex = 42;
         this->btnSubmit->Text = L"THAY ĐỔI";
         this->btnSubmit->UseVisualStyleBackColor = false;
@@ -345,12 +360,13 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         //
         // ChangePwForm
         //
-        this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+        this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->BackColor = System::Drawing::Color::Teal;
-        this->ClientSize = System::Drawing::Size(626, 383);
+        this->ClientSize = System::Drawing::Size(835, 471);
         this->Controls->Add(this->panel1);
         this->ForeColor = System::Drawing::SystemColors::ControlLight;
+        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->Name = L"ChangePwForm";
         this->Text = L"ChangePwForm";
         this->panel1->ResumeLayout(false);

@@ -21,7 +21,7 @@ using namespace System::Drawing;
 public
 ref class CompanyBillingForm : public System::Windows::Forms::Form {
   public:
-    CompanyBillingForm(int companyAccountNumber);
+    CompanyBillingForm(String^ companyAccountNumber);
 
   protected:
     ~CompanyBillingForm();
@@ -485,7 +485,7 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
 #pragma endregion
 
   private:
-    int companyAccountNumber;
+    String^ companyAccountNumber;
 
     void LoadPaymentCodes();
 

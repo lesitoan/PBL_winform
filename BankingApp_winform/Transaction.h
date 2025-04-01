@@ -4,16 +4,16 @@ using namespace System;
 public
 ref class Transaction {
   private:
-    int transactionId;
-    int fromAccountNumber;
-    int toAccountNumber;
+    String ^ transactionId;
+    String ^ fromAccountNumber;
+    String ^ toAccountNumber;
     double amount;
     String ^ message;
     String ^ createdAt;
 
   public:
-    Transaction(int _transactionId, int _fromAccountNumber,
-                int _toAccountNumber, double _amount, String ^ _message,
+    Transaction(String ^ _transactionId, String ^ _fromAccountNumber,
+                String ^ _toAccountNumber, double _amount, String ^ _message,
                 String ^ _createdAt) {
         transactionId = _transactionId;
         fromAccountNumber = _fromAccountNumber;
@@ -23,7 +23,7 @@ ref class Transaction {
         createdAt = _createdAt;
     }
 
-    Transaction() : Transaction(0, 0, 0, 0, "", "") {};
+    Transaction() : Transaction("", "", "", 0, "", "") {};
 
     Transaction(const Transaction % other) {
         transactionId = other.transactionId;
@@ -33,9 +33,11 @@ ref class Transaction {
         message = other.message;
         createdAt = other.createdAt;
     }
-    int getTransactionId() { return transactionId; }
-    int getFromAccount() { return fromAccountNumber; }
-    int getToAccount() { return toAccountNumber; }
+    String ^ getTransactionId() { return transactionId; }
+    String ^
+        getFromAccount() { return fromAccountNumber; }
+    String ^
+        getToAccount() { return toAccountNumber; }
     String ^ getMessage() { return message; }
     String ^ getCreatedAt() { return createdAt; } double getAmount() {
         return amount;

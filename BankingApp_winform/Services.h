@@ -6,16 +6,16 @@ using namespace System;
 public
 ref class Services {
   private:
-    int id;
+    String ^ id;
     String ^ name;
 
     public:
-    Services(int id, String ^ name) {
+    Services(String ^ id, String ^ name) {
         this->id = id;
         this->name = name;
     }
-    property int Id {
-        int get() { return id; }
+    property String ^ Id {
+        String ^ get() { return id; }
     }
     property String ^ Name {
         String ^ get() { return name; }

@@ -1,7 +1,5 @@
 ﻿#include "LoginForm.h"
 
-
-
 namespace BankingAppwinform {
 LoginForm::LoginForm(void) { this->InitializeComponent(); }
 
@@ -12,6 +10,7 @@ LoginForm::~LoginForm() {
 }
 System::Void LoginForm::btnSubmit_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
+
     String ^ phone = this->phoneNumber->Text;
     String ^ pass = this->password->Text;
     if (phone == "" || pass == "") {

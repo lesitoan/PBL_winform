@@ -6,8 +6,8 @@ using namespace System;
 public
 ref class PaymentCodes {
   private:
-    int id;
-    int companyAccountNumber;
+    String ^ id;
+    String ^ companyAccountNumber;
     String ^ code;
     int amount;
     int status;
@@ -15,7 +15,8 @@ ref class PaymentCodes {
     DateTime expiredDate;
 
   public:
-    PaymentCodes(int id, int companyAccountNumber, String ^ code, int amount,
+    PaymentCodes(String ^ id, String ^ companyAccountNumber, String ^ code,
+                 int amount,
                  int status,
                  DateTime createdDate, DateTime expiredDate) {
         this->id = id;
@@ -26,8 +27,9 @@ ref class PaymentCodes {
         this->createdDate = createdDate;
         this->expiredDate = expiredDate;
     }
-    PaymentCodes(int companyAccountNumber, String ^ code, int amount, int day) {
-        this->id = 0;
+    PaymentCodes(String ^ companyAccountNumber, String ^ code, int amount,
+                 int day) {
+        this->id = "";
         this->companyAccountNumber = companyAccountNumber;
         this->code = code;
         this->amount = amount;
@@ -36,8 +38,8 @@ ref class PaymentCodes {
         this->expiredDate = DateTime::Now.AddDays(day);
     }
     PaymentCodes() {
-        this->id = 0;
-        this->companyAccountNumber = 0;
+        this->id = "";
+        this->companyAccountNumber = "";
         this->code = "";
         this->amount = 0;
         this->status = 0;
@@ -45,11 +47,10 @@ ref class PaymentCodes {
         this->expiredDate = DateTime::Now;
     }
 
-    property int Id {
-        int get() { return id; }
-    }
-    property int CompanyAccountNumber {
-        int get() { return companyAccountNumber; }
+    property String ^ Id { String ^ get() { return id; }
+    } property String ^
+        CompanyAccountNumber {
+            String ^ get() { return companyAccountNumber; }
     }
     property String ^ Code {
         String ^ get() { return code; }

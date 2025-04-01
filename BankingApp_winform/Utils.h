@@ -6,6 +6,8 @@
 
 ref class Utils {
   public:
-    static bool transferMoney(int currUserAccNumber, int receiverAccNumber,
+    static bool transferMoney(String ^ currUserAccNumber,
+                              String ^ receiverAccNumber,
                               double amount, int pin);
+    static String ^ createUniqueID(String ^ subID);
 };

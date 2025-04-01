@@ -31,7 +31,7 @@ void AdminTransactionForm::loadTransactions(array<Transaction ^> ^
     for (int i = 0; i < transactions->Length; i++) {
         Transaction ^ transaction = transactions[i];
         String ^ type =
-            transaction->getFromAccount() == 0 ? L"Rút tiền" : L"Chuyển tiền";
+            transaction->getFromAccount() == "" ? L"Rút tiền" : L"Chuyển tiền";
         dataGridViewTransactions->Rows->Add(
             type, transaction->getFromAccount(), transaction->getToAccount(),
             transaction->getAmount(), transaction->getMessage(),
@@ -59,10 +59,10 @@ void AdminTransactionForm::btnFind_Click(System::Object ^ sender,
         String ^ pattern = ".*" + Regex::Escape(find) + ".*";
         // Kiểm tra tên có chứa input không (không phân biệt hoa thường)
         bool isMatch1 =
-            Regex::IsMatch(transactions[i]->getFromAccount().ToString(),
+            Regex::IsMatch(transactions[i]->getFromAccount(),
                            pattern, RegexOptions::IgnoreCase);
         bool isMatch2 =
-            Regex::IsMatch(transactions[i]->getToAccount().ToString(), pattern,
+            Regex::IsMatch(transactions[i]->getToAccount(), pattern,
                            RegexOptions::IgnoreCase);
 
         if (isMatch1 || isMatch2) {

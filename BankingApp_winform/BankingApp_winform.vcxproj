@@ -131,6 +131,7 @@
     <ClCompile Include="NotificationForm.cpp" />
     <ClCompile Include="SelectReceiverForm.cpp" />
     <ClCompile Include="ServicePaymentForm.cpp" />
+    <ClCompile Include="SetAvatarForm.cpp" />
     <ClCompile Include="TableUsersForm.cpp" />
     <ClCompile Include="AdminForm.cpp" />
     <ClCompile Include="AdminServiceForm.cpp" />
@@ -191,6 +192,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Services.h" />
+    <ClInclude Include="SetAvatarForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="TableUsersForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -275,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ServicePaymentForm.resx">
       <DependentUpon>ServicePaymentForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetAvatarForm.resx">
+      <DependentUpon>SetAvatarForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TableUsersForm.resx">
       <DependentUpon>TableUsersForm.h</DependentUpon>

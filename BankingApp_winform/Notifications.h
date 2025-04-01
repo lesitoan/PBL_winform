@@ -6,14 +6,15 @@ using namespace System;
 public
 ref class Notifications {
     private:
-    int notificationId;
-    int userAccNumber;
+    String ^ notificationId;
+    String^ userAccNumber;
     String ^ content;
     String ^ createdAt;
     int status; // 0: unread, 1: read
 
   public:
-    Notifications(int _notificationId, int _userAccNumber, String ^ _content,
+    Notifications(String ^ _notificationId, String ^ _userAccNumber,
+                  String ^ _content,
                   String ^ _createdAt, int _status) {
         notificationId = _notificationId;
         userAccNumber = _userAccNumber;
@@ -21,7 +22,7 @@ ref class Notifications {
         createdAt = _createdAt;
         status = _status;
     }
-    Notifications() : Notifications(0, 0, "", "", 0) {};
+    Notifications() : Notifications("", "", "", "", 0) {};
     Notifications(const Notifications % other) {
         notificationId = other.notificationId;
         userAccNumber = other.userAccNumber;
@@ -29,11 +30,11 @@ ref class Notifications {
         createdAt = other.createdAt;
         status = other.status;
     }
-    property int NotificationId {
-        int get() { return notificationId; }
-    }
-    property int UserAccNumber {
-        int get() { return userAccNumber; }
+    property String ^ NotificationId {
+        String ^ get() { return notificationId; }
+    } property String ^
+        UserAccNumber {
+            String ^ get() { return userAccNumber; }
     }
     property String ^ Content {
         String ^ get() { return content; } void set(String ^ value) {

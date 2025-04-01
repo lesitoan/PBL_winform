@@ -7,7 +7,7 @@
 
 namespace BankingAppwinform {
 
-    CompanyForm::CompanyForm(int serviceId) {
+    CompanyForm::CompanyForm(String^ serviceId) {
         InitializeComponent();
 
         LoadCompanies(serviceId);
@@ -18,7 +18,7 @@ namespace BankingAppwinform {
         }
     }
 
-    void CompanyForm::LoadCompanies(int serviceId) {
+    void CompanyForm::LoadCompanies(String^ serviceId) {
         array<User ^> ^ companies = HandleFile::ReadUserArray("users.dat");
 
         if (companies == nullptr || companies->Length == 0) {
@@ -61,7 +61,7 @@ namespace BankingAppwinform {
 
     void CompanyForm::OnCompanyClick(Object ^ sender, EventArgs ^ e) {
         Label ^ clickedLabel = (Label ^) sender;
-        int companyId = (int)clickedLabel->Tag;
+        String^ companyId = (String^)clickedLabel->Tag;
 
         
         CompanyBillingForm ^ companyBillingForm =

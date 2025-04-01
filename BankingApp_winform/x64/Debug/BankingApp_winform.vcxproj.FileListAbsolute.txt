@@ -50,3 +50,8 @@ E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingApp
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.AddUserForm.resources
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.SelectReceiverForm.resources
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.NotificationForm.resources
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.AddUserForm.resources
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.ModifyServiceForm.resources
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.NotificationForm.resources
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.SelectReceiverForm.resources
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.SetAvatarForm.resources

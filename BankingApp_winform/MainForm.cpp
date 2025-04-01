@@ -6,6 +6,17 @@ namespace BankingAppwinform {
 MainForm::MainForm() {
     InitializeComponent();
     InitLoad();
+
+
+    String ^ projectPath =
+        System::IO::Directory::GetParent(Application::StartupPath)->Parent->FullName;
+    String ^ correctPath = System::IO::Path::Combine(
+        projectPath, "BankingApp_winform\\images\\avatar.png");
+
+    MessageBox::Show(correctPath, "Correct Path");
+
+
+    this->pictureBoxAvatar->Image = Image::FromFile("E:\\avatar1.jpeg");
 }
 MainForm::~MainForm() {
     if (components) {

@@ -6,15 +6,16 @@ using namespace System;
 public
 ref class RecurringPayments {
   private:
-    int id;
-    int userAccountNumber;
-    int companyAccountNumber;
+    String^ id;
+    String ^ userAccountNumber;
+    String ^ companyAccountNumber;
     int monthly;         //1,2,3,4,5....12
     DateTime paymentDay; // 1-31
     double debt;            // "complete", "pending"
 
   public:
-    RecurringPayments(int id, int userAccountNumber, int companyAccountNumber,
+    RecurringPayments(String ^ id, String ^ userAccountNumber,
+                      String ^ companyAccountNumber,
                       int monthly,
                       DateTime paymentDay, double debt) {
         this->id = id;
@@ -26,30 +27,32 @@ ref class RecurringPayments {
 
     }
     RecurringPayments() {
-        id = 0;
-        userAccountNumber = 0;
-        companyAccountNumber = 0;
+        id = "";
+        userAccountNumber = "";
+        companyAccountNumber = "";
         monthly = 1;
         debt = 0;
     }
 
-    RecurringPayments(int userAccountNumber, int companyAccountNumber,
-                      int monthly)
-        : id(11), userAccountNumber(userAccountNumber),
+    RecurringPayments(String ^ id, String ^ userAccountNumber,
+                      String ^ companyAccountNumber, int monthly)
+        : id(id), userAccountNumber(userAccountNumber),
           companyAccountNumber(companyAccountNumber), monthly(monthly),
           paymentDay(DateTime::Now.AddMonths(-1)), debt(0) {}
 
 
-    property int Id {
-        int get() { return id; }
-    }
-    property int UserAccountNumber {
-        int get() { return userAccountNumber; }
-        void set(int value) { userAccountNumber = value; }
-    }
-    property int CompanyAccountNumber {
-        int get() { return companyAccountNumber; }
-        void set(int value) { companyAccountNumber = value; }
+    property String ^ Id { String ^ get() { return id; }
+    } property String ^
+        UserAccountNumber {
+            String ^ get() { return userAccountNumber; } void set(String ^ value) {
+                userAccountNumber = value;
+            }
+    } property String ^
+        CompanyAccountNumber {
+            String ^
+                get() { return companyAccountNumber; } void set(String ^ value) {
+                companyAccountNumber = value;
+            }
     }
     property int Monthly {
         int get() { return monthly; } 

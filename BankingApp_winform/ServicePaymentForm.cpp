@@ -46,11 +46,11 @@ void ServicePaymentForm::LoadServices() {
 
 void ServicePaymentForm::OnServiceClick(Object ^ sender, EventArgs ^ e) {
     Label ^ clickedLabel = (Label ^) sender;
-    int serviceId = (int)clickedLabel->Tag;
+    String^ serviceId = (String^)clickedLabel->Tag;
     loadFormTransfer(serviceId);
 }
 
-void ServicePaymentForm::loadFormTransfer(int serviceId) {
+void ServicePaymentForm::loadFormTransfer(String^ serviceId) {
 
     array<User ^> ^ data = HandleFile::ReadUserArray("users.dat");
 
@@ -111,8 +111,8 @@ System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
         return;
     }
-    int companyAccountNumber = this->currComapnyAccNumber;
-    int currUserAccNumber = GlobalData::GetCurrentUser()->AccountNumber;
+    String^ companyAccountNumber = this->currComapnyAccNumber;
+    String^ currUserAccNumber = GlobalData::GetCurrentUser()->AccountNumber;
     int pin = Convert::ToInt32(pinInput);
 
     // check code có tồn tại
@@ -178,15 +178,17 @@ System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
     this->onSubmitCurrentPayment(currUserAccNumber, companyAccountNumber, 1);
 }
 
-void ServicePaymentForm::onSubmitCurrentPayment(int userAccountNumber,
-                                                int companyAccountNumber,
+void ServicePaymentForm::onSubmitCurrentPayment(String^ userAccountNumber,
+                                                String^ companyAccountNumber,
                                                 int monthly) {
     bool checked = this->submitRecurringPayment->Checked;
     if (!checked)
         return;
 
     // Tạo recurringPayment
+    String ^ id = Utils::createUniqueID("RP");
     RecurringPayments ^ recurringPayment = gcnew RecurringPayments(
+        id,
         userAccountNumber, companyAccountNumber, monthly);
 
     // Lấy thông tin thanh toán

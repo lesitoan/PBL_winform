@@ -73,8 +73,7 @@ System::Void AddUserForm::btnSubmit_Click(System::Object ^ sender,
         return;
     }
 
-    int accNumber = Convert::ToInt32(accNum);
-    int serviceId = 0;
+    String ^ serviceId = "";
     double _balance = 0;
     int _pin = 0;
     String ^ _bankName = "BIDV";
@@ -93,8 +92,9 @@ System::Void AddUserForm::btnSubmit_Click(System::Object ^ sender,
             }
         }
     }
-    User ^ user = gcnew User(name, password, phone, accNumber, _balance,
-                             accType, _pin, _bankName, _status, serviceId);
+    User ^ user =
+        gcnew User(name, password, phone, accNum, _balance,
+                             accType, _pin, _bankName, _status, serviceId, "BankingApp_winform\\images\\avatars\\default_avatar.png");
     array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
     if (users == nullptr) {
         users = gcnew array<User ^>{user};

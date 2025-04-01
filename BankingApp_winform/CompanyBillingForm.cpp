@@ -5,7 +5,7 @@
 
 namespace BankingAppwinform {
 
-CompanyBillingForm::CompanyBillingForm(int companyAccNumber) {
+CompanyBillingForm::CompanyBillingForm(String^ companyAccNumber) {
     InitializeComponent();
     this->companyAccountNumber = companyAccNumber;
 
@@ -135,7 +135,7 @@ System::Void CompanyBillingForm::dataGridViewRecurring_CellClick(
         
         // nếu số dư client không đủ thì gửi thông báo
         if (user->getBalance() < request->Amount) {
-            int id = rand() + 9999;
+            String ^ id = Utils::createUniqueID("CB");
             Notifications ^ notification = gcnew Notifications(
                 id, request->UserAccountNumber,
                 L"Thanh toán định kì tại công ty " + company->FullName + " (" +

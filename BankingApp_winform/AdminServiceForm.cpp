@@ -49,7 +49,7 @@ void AdminServiceForm::LoadServices() {
 
 void AdminServiceForm::OnServiceClick(Object ^ sender, EventArgs ^ e) {
     Label ^ clickedLabel = (Label ^) sender;
-    int serviceId = (int)clickedLabel->Tag;
+    String^ serviceId = (String^)clickedLabel->Tag;
 
     // Tạo form mới và truyền serviceId
     CompanyForm ^ companyForm = gcnew CompanyForm(serviceId);

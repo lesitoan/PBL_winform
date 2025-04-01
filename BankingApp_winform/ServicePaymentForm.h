@@ -380,14 +380,14 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
 #pragma endregion
 
   private:
-    int currComapnyAccNumber = 0;
+    String ^ currComapnyAccNumber = "";
 
   private:
     void LoadServices();
 
     void OnServiceClick(Object ^ sender, EventArgs ^ e);
 
-    void loadFormTransfer(int serviceId);
+    void loadFormTransfer(String^ serviceId);
     System::Void selectCompanyBox_SelectedIndexChanged(System::Object ^ sender,
                                                        System::EventArgs ^ e);
     System::Void btnTransfer_Click(System::Object ^ sender,
@@ -396,7 +396,7 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
     System::Void label5_Click(System::Object ^ sender, System::EventArgs ^ e) {}
 
 
-    void onSubmitCurrentPayment(int userAccountNumber, int companyAccountNumber,
+    void onSubmitCurrentPayment(String^ userAccountNumber, String^ companyAccountNumber,
                                 int monthly);
 
 };

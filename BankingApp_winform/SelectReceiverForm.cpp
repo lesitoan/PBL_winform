@@ -16,7 +16,7 @@ void SelectReceiverForm::loadAccHistory(User ^ user) {
         HandleFile::ReadTransactionArray("transactions.dat");
     array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
 
-    int accNumber = user->AccountNumber;
+    String^ accNumber = user->AccountNumber;
 
     accHistory = gcnew List<String ^>();
 
@@ -25,7 +25,7 @@ void SelectReceiverForm::loadAccHistory(User ^ user) {
 
     while (length > 0 && count < 5) {
         if (transactions[length - 1]->getFromAccount() == accNumber &&
-            transactions[length - 1]->getToAccount() != 0) {
+            transactions[length - 1]->getToAccount() != "") {
             for (int j = 0; j < users->Length; j++) {
                 if (users[j]->AccountNumber ==
                         transactions[length - 1]->getToAccount() &&
@@ -33,7 +33,7 @@ void SelectReceiverForm::loadAccHistory(User ^ user) {
                     String ^ toAcc =
                         users[j]->getBankName() + " - " +
                         users[j]->getFullName() + " - " +
-                        transactions[length - 1]->getToAccount().ToString() +
+                        transactions[length - 1]->getToAccount() +
                         " - " +
                         transactions[length - 1]->getAmount().ToString();
                     accHistory->Add(toAcc);
@@ -60,7 +60,7 @@ System::Void SelectReceiverForm::btnSubmit_Click(System::Object ^ sender,
 
     String ^ bankName = parts[0];
     String ^ accName = parts[1];
-    int accNumber = Convert::ToInt32(parts[2]);
+    String ^ accNumber = parts[2];
     double amount = Convert::ToDouble(parts[3]);
 
     SelectReceiverSuccess(this, gcnew SelectReceiverEventArgs(
