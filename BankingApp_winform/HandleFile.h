@@ -5,7 +5,8 @@
 #include "Services.h"
 #include "Transaction.h"
 #include "User.h"
-#include "Notifications.h" // Ensure this header file exists and is correctly included
+#include "Notifications.h"
+#include "SavingCustomers.h"
 
 using namespace System;
 using namespace System::IO;
@@ -43,4 +44,11 @@ ref class HandleFile {
                                         String ^ filePath);
 
     static array<Notifications ^> ^ ReadNotificationsArray(String ^ filePath);
+
+    static bool WriteSavingCustomersArray(array<SavingCustomers ^> ^ savingCustomers,
+                                        String ^ filePath);
+
+    static array<SavingCustomers ^> ^
+        ReadSavingCustomersArray(String ^ filePath);
+
 };

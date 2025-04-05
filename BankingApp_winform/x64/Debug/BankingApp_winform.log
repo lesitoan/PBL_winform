@@ -1,24 +1,237 @@
 ﻿  AccountForm.cpp
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(45,28): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(50,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(52,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(54,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u00EC' cannot be represented in the current code page (1258)
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1258)
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u00E3' cannot be represented in the current code page (1258)
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EBF' cannot be represented in the current code page (1258)
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EC7' cannot be represented in the current code page (1258)
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EE7' cannot be represented in the current code page (1258)
+  (compiling source file 'AccountForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
   (compiling source file 'AccountForm.cpp')
   
   AdminForm.cpp
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(45,28): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(50,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(52,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(54,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u00EC' cannot be represented in the current code page (1258)
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1258)
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u00E3' cannot be represented in the current code page (1258)
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EBF' cannot be represented in the current code page (1258)
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EC7' cannot be represented in the current code page (1258)
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EE7' cannot be represented in the current code page (1258)
+  (compiling source file 'AdminForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
   (compiling source file 'AdminForm.cpp')
   
   AuthForm.cpp
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(45,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AuthForm.cpp')
   
-  ForgotPwForm.cpp
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AuthForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(50,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AuthForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(52,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AuthForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(54,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'AuthForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u00EC' cannot be represented in the current code page (1258)
+  (compiling source file 'AuthForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
+  (compiling source file 'AuthForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1258)
+  (compiling source file 'AuthForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u00E3' cannot be represented in the current code page (1258)
+  (compiling source file 'AuthForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EBF' cannot be represented in the current code page (1258)
+  (compiling source file 'AuthForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EC7' cannot be represented in the current code page (1258)
+  (compiling source file 'AuthForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EE7' cannot be represented in the current code page (1258)
+  (compiling source file 'AuthForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
+  (compiling source file 'AuthForm.cpp')
+  
+  ClientSavingMoneyForm.cpp
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(45,28): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(50,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(52,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(54,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1258)
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u00E3' cannot be represented in the current code page (1258)
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EBF' cannot be represented in the current code page (1258)
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EC7' cannot be represented in the current code page (1258)
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EE7' cannot be represented in the current code page (1258)
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
   Main.cpp
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(45,28): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(50,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(52,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(54,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u00EC' cannot be represented in the current code page (1258)
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1258)
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u00E3' cannot be represented in the current code page (1258)
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EBF' cannot be represented in the current code page (1258)
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EC7' cannot be represented in the current code page (1258)
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EE7' cannot be represented in the current code page (1258)
+  (compiling source file 'Main.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
   (compiling source file 'Main.cpp')
   
   MainForm.cpp
-E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(45,28): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(50,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(52,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(54,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u00EC' cannot be represented in the current code page (1258)
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1258)
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u00E3' cannot be represented in the current code page (1258)
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EBF' cannot be represented in the current code page (1258)
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EC7' cannot be represented in the current code page (1258)
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EE7' cannot be represented in the current code page (1258)
+  (compiling source file 'MainForm.cpp')
+  
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\ClientSavingMoneyForm.h(617,25): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
   (compiling source file 'MainForm.cpp')
   
   Generating Code...
   AccountForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  BankingApp_winform.vcxproj -> E:\WORKSPACE\CODE\PBL\BankingApp_winform\x64\Debug\BankingApp_winform.exe
+  BankingApp_winform.vcxproj -> D:\CODE\PBL1\PBL_winform\x64\Debug\BankingApp_winform.exe

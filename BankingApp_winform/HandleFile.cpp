@@ -464,3 +464,79 @@ array<Notifications ^> ^ HandleFile::ReadNotificationsArray(String ^ filePath) {
         return nullptr;
     }
 }
+
+
+bool HandleFile::WriteSavingCustomersArray(array<SavingCustomers^>^
+    savingCustomers,
+    String^ filePath) {
+    try {
+        FileStream ^ fs = gcnew FileStream(filePath, FileMode::Create);
+        BinaryWriter ^ writer = gcnew BinaryWriter(fs);
+        writer->Write(savingCustomers->Length);
+        for each (SavingCustomers ^ savingCustomer in savingCustomers) {
+
+            writer->Write(savingCustomer->Id);
+            writer->Write(savingCustomer->UserAccountNumber);
+            writer->Write(savingCustomer->Amount);
+            writer->Write(savingCustomer->Type);
+            writer->Write(savingCustomer->Term);
+            writer->Write(savingCustomer->InterestRate);
+            writer->Write(savingCustomer->DepositDate.ToString());
+            writer->Write(savingCustomer->PaymentDate);
+            writer->Write(savingCustomer->Status);
+
+        }
+        writer->Close();
+        fs->Close();
+        return true;
+    } catch (Exception ^) {
+        // MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
+        // MessageBoxIcon::Warning);
+        return false;
+    }
+}
+
+array<SavingCustomers ^> ^
+HandleFile::ReadSavingCustomersArray(String^ filePath) {
+    try {
+        if (!File::Exists(filePath)) {
+            return gcnew array<SavingCustomers ^>(0);
+        }
+
+        FileStream ^ fs = gcnew FileStream(filePath, FileMode::OpenOrCreate);
+        BinaryReader ^ reader = gcnew BinaryReader(fs);
+
+        if (fs->Length == 0) {
+            reader->Close();
+            fs->Close();
+            return gcnew array<SavingCustomers ^>(0);
+        }
+
+        int count = reader->ReadInt32();
+        array<SavingCustomers ^> ^ savingCustomers =
+            gcnew array<SavingCustomers ^>(count);
+
+        for (int i = 0; i < count; i++) {
+
+            String ^ _id = reader->ReadString();
+            String ^ _userAccountNumber = reader->ReadString();
+            double _amount = reader->ReadDouble();
+            String ^ _type = reader->ReadString();
+            int _term = reader->ReadInt32();
+            float _rate = reader->ReadSingle();
+            DateTime _depositDate = DateTime::Parse(reader->ReadString());
+            String ^ _paymentDate = reader->ReadString();
+            int _status = reader->ReadInt32();
+            savingCustomers[i] = gcnew SavingCustomers(
+                _id, _userAccountNumber, _amount, _type, _term, _rate,
+                                      _depositDate, _paymentDate, _status);
+        }
+        reader->Close();
+        fs->Close();
+        return savingCustomers;
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
+                         MessageBoxIcon::Warning);
+        return nullptr;
+    }
+}

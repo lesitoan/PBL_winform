@@ -39,6 +39,7 @@ void MainForm::InitLoad() {
         this->btnCode->Visible = false;
         this->btnServicePayment->Visible = true;
         this->btnRecurringPayment->Visible = false;
+        this->btnSaveMoney->Visible = true;
     }
 }
 
@@ -90,6 +91,15 @@ System::Void MainForm::btnRecurringPayment_Click(System::Object ^ sender,
     ChangeButtonColor(btnServicePayment);
     this->headerText->Text = L"YÊU CẦU THANH TOÁN ĐỊNH KÌ";
 }
+
+System::Void MainForm::btnSaveMoney_Click(System::Object ^ sender,
+                                System::EventArgs ^ e) {
+    LoadChildForm::LoadForm(this->panelContent,
+                            gcnew ClientSavingMoneyForm());
+    ChangeButtonColor(btnSaveMoney);
+    this->headerText->Text = L"GỬI TIẾT KIỆM";
+}
+
 
 System::Void MainForm::btnLogout_Click(System::Object ^ sender,
                                        System::EventArgs ^ e) {

@@ -114,7 +114,15 @@
     <ClCompile Include="NotificationForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
-    <ClCompile Include="SetAvatarForm.cpp" />
+    <ClCompile Include="SetAvatarForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="RegisterSavingForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSavingMoneyForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -233,6 +241,15 @@
     <ClInclude Include="SetAvatarForm.h">
       <Filter>Form</Filter>
     </ClInclude>
+    <ClInclude Include="ClientSavingMoneyForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="RegisterSavingForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="SavingCustomers.h">
+      <Filter>Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
@@ -252,6 +269,12 @@
       <Filter>Data\files</Filter>
     </None>
     <None Include="users.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="notifications.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="savingCustomers.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>

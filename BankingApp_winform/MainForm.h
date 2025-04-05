@@ -10,6 +10,7 @@
 #include "ServicePaymentForm.h"
 #include "ClientRecurringPaymentForm.h"
 #include "NotificationForm.h"
+#include "ClientSavingMoneyForm.h"
 
 namespace BankingAppwinform {
 
@@ -67,6 +68,9 @@ ref class MainForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Button ^ btnNotification;
 
   private:
+    System::Windows::Forms::Button ^ btnSaveMoney;
+
+  private:
 
 
   private:
@@ -83,6 +87,7 @@ ref class MainForm : public System::Windows::Forms::Form {
             (gcnew System::ComponentModel::ComponentResourceManager(
                 MainForm::typeid));
         this->panelNav = (gcnew System::Windows::Forms::Panel());
+        this->btnSaveMoney = (gcnew System::Windows::Forms::Button());
         this->btnHistory = (gcnew System::Windows::Forms::Button());
         this->btnServicePayment = (gcnew System::Windows::Forms::Button());
         this->btnRecurringPayment = (gcnew System::Windows::Forms::Button());
@@ -120,6 +125,7 @@ ref class MainForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->panelNav->Controls->Add(this->btnSaveMoney);
         this->panelNav->Controls->Add(this->btnHistory);
         this->panelNav->Controls->Add(this->btnServicePayment);
         this->panelNav->Controls->Add(this->btnRecurringPayment);
@@ -135,11 +141,44 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panelNav->ForeColor =
             System::Drawing::SystemColors::InactiveCaptionText;
         this->panelNav->Location = System::Drawing::Point(0, 0);
-        this->panelNav->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelNav->Margin = System::Windows::Forms::Padding(4);
         this->panelNav->MinimumSize = System::Drawing::Size(83, 690);
         this->panelNav->Name = L"panelNav";
         this->panelNav->Size = System::Drawing::Size(276, 690);
         this->panelNav->TabIndex = 1;
+        //
+        // btnSaveMoney
+        //
+        this->btnSaveMoney->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnSaveMoney->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnSaveMoney->Dock = System::Windows::Forms::DockStyle::Top;
+        this->btnSaveMoney->FlatAppearance->BorderSize = 0;
+        this->btnSaveMoney->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnSaveMoney->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnSaveMoney->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnSaveMoney->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnSaveMoney->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnSaveMoney.Image")));
+        this->btnSaveMoney->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnSaveMoney->Location = System::Drawing::Point(0, 635);
+        this->btnSaveMoney->Margin = System::Windows::Forms::Padding(4);
+        this->btnSaveMoney->Name = L"btnSaveMoney";
+        this->btnSaveMoney->Size = System::Drawing::Size(276, 71);
+        this->btnSaveMoney->TabIndex = 18;
+        this->btnSaveMoney->Text = L"                 GỬI TIẾT KIỆM";
+        this->btnSaveMoney->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnSaveMoney->UseVisualStyleBackColor = false;
+        this->btnSaveMoney->Visible = false;
+        this->btnSaveMoney->Click +=
+            gcnew System::EventHandler(this, &MainForm::btnSaveMoney_Click);
         //
         // btnHistory
         //
@@ -162,7 +201,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnHistory->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnHistory->Location = System::Drawing::Point(0, 564);
-        this->btnHistory->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnHistory->Margin = System::Windows::Forms::Padding(4);
         this->btnHistory->Name = L"btnHistory";
         this->btnHistory->Size = System::Drawing::Size(276, 71);
         this->btnHistory->TabIndex = 11;
@@ -196,8 +235,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnServicePayment->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnServicePayment->Location = System::Drawing::Point(0, 493);
-        this->btnServicePayment->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnServicePayment->Margin = System::Windows::Forms::Padding(4);
         this->btnServicePayment->Name = L"btnServicePayment";
         this->btnServicePayment->Size = System::Drawing::Size(276, 71);
         this->btnServicePayment->TabIndex = 16;
@@ -233,8 +271,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnRecurringPayment->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnRecurringPayment->Location = System::Drawing::Point(0, 422);
-        this->btnRecurringPayment->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnRecurringPayment->Margin = System::Windows::Forms::Padding(4);
         this->btnRecurringPayment->Name = L"btnRecurringPayment";
         this->btnRecurringPayment->Size = System::Drawing::Size(276, 71);
         this->btnRecurringPayment->TabIndex = 17;
@@ -266,7 +303,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnCode->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnCode->Location = System::Drawing::Point(0, 351);
-        this->btnCode->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnCode->Margin = System::Windows::Forms::Padding(4);
         this->btnCode->Name = L"btnCode";
         this->btnCode->Size = System::Drawing::Size(276, 71);
         this->btnCode->TabIndex = 15;
@@ -299,7 +336,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnWithdraw->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnWithdraw->Location = System::Drawing::Point(0, 280);
-        this->btnWithdraw->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnWithdraw->Margin = System::Windows::Forms::Padding(4);
         this->btnWithdraw->Name = L"btnWithdraw";
         this->btnWithdraw->Size = System::Drawing::Size(276, 71);
         this->btnWithdraw->TabIndex = 10;
@@ -331,7 +368,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnTransfer->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnTransfer->Location = System::Drawing::Point(0, 209);
-        this->btnTransfer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnTransfer->Margin = System::Windows::Forms::Padding(4);
         this->btnTransfer->Name = L"btnTransfer";
         this->btnTransfer->Size = System::Drawing::Size(276, 71);
         this->btnTransfer->TabIndex = 9;
@@ -363,7 +400,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnAccount->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnAccount->Location = System::Drawing::Point(0, 138);
-        this->btnAccount->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnAccount->Margin = System::Windows::Forms::Padding(4);
         this->btnAccount->Name = L"btnAccount";
         this->btnAccount->Size = System::Drawing::Size(276, 71);
         this->btnAccount->TabIndex = 0;
@@ -382,7 +419,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panel2->Controls->Add(this->labelBalance);
         this->panel2->Dock = System::Windows::Forms::DockStyle::Top;
         this->panel2->Location = System::Drawing::Point(0, 52);
-        this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel2->Margin = System::Windows::Forms::Padding(4);
         this->panel2->Name = L"panel2";
         this->panel2->Size = System::Drawing::Size(276, 86);
         this->panel2->TabIndex = 14;
@@ -393,8 +430,7 @@ ref class MainForm : public System::Windows::Forms::Form {
             (cli::safe_cast<System::Drawing::Image ^>(
                 resources->GetObject(L"pictureBoxAvatar.Image")));
         this->pictureBoxAvatar->Location = System::Drawing::Point(16, 15);
-        this->pictureBoxAvatar->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->pictureBoxAvatar->Margin = System::Windows::Forms::Padding(4);
         this->pictureBoxAvatar->Name = L"pictureBoxAvatar";
         this->pictureBoxAvatar->Size = System::Drawing::Size(55, 50);
         this->pictureBoxAvatar->SizeMode =
@@ -430,8 +466,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnShowBalance->ForeColor =
             System::Drawing::SystemColors::ControlLightLight;
         this->btnShowBalance->Location = System::Drawing::Point(231, 48);
-        this->btnShowBalance->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnShowBalance->Margin = System::Windows::Forms::Padding(4);
         this->btnShowBalance->Name = L"btnShowBalance";
         this->btnShowBalance->Size = System::Drawing::Size(18, 17);
         this->btnShowBalance->TabIndex = 8;
@@ -478,7 +513,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnMenu->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnMenu->Location = System::Drawing::Point(0, 0);
-        this->btnMenu->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnMenu->Margin = System::Windows::Forms::Padding(4);
         this->btnMenu->Name = L"btnMenu";
         this->btnMenu->Size = System::Drawing::Size(276, 52);
         this->btnMenu->TabIndex = 13;
@@ -509,7 +544,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnLogout->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnLogout->Location = System::Drawing::Point(0, 619);
-        this->btnLogout->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnLogout->Margin = System::Windows::Forms::Padding(4);
         this->btnLogout->Name = L"btnLogout";
         this->btnLogout->Size = System::Drawing::Size(276, 71);
         this->btnLogout->TabIndex = 12;
@@ -536,7 +571,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panelHeader->Controls->Add(this->headerText);
         this->panelHeader->Dock = System::Windows::Forms::DockStyle::Top;
         this->panelHeader->Location = System::Drawing::Point(276, 0);
-        this->panelHeader->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelHeader->Margin = System::Windows::Forms::Padding(4);
         this->panelHeader->Name = L"panelHeader";
         this->panelHeader->Size = System::Drawing::Size(903, 52);
         this->panelHeader->TabIndex = 2;
@@ -565,8 +600,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnNotification->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnNotification->Location = System::Drawing::Point(815, 0);
-        this->btnNotification->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnNotification->Margin = System::Windows::Forms::Padding(4);
         this->btnNotification->Name = L"btnNotification";
         this->btnNotification->Size = System::Drawing::Size(88, 52);
         this->btnNotification->TabIndex = 12;
@@ -598,7 +632,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panel3->Controls->Add(this->panelx);
         this->panel3->Dock = System::Windows::Forms::DockStyle::Fill;
         this->panel3->Location = System::Drawing::Point(276, 52);
-        this->panel3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel3->Margin = System::Windows::Forms::Padding(4);
         this->panel3->Name = L"panel3";
         this->panel3->Size = System::Drawing::Size(903, 638);
         this->panel3->TabIndex = 3;
@@ -646,7 +680,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->panel3);
         this->Controls->Add(this->panelHeader);
         this->Controls->Add(this->panelNav);
-        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->Margin = System::Windows::Forms::Padding(4);
         this->MinimumSize = System::Drawing::Size(1194, 728);
         this->Name = L"MainForm";
         this->ShowInTaskbar = false;
@@ -716,5 +750,8 @@ ref class MainForm : public System::Windows::Forms::Form {
 
     void loadAvatar();
 
+private:
+    System::Void btnSaveMoney_Click(System::Object ^ sender,
+                                    System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

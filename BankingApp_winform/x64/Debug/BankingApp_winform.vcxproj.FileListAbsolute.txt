@@ -56,3 +56,5 @@ D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.Notifica
 D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.SelectReceiverForm.resources
 D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.SetAvatarForm.resources
 E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.SetAvatarForm.resources
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.ClientSavingMoneyForm.resources
+D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.RegisterSavingForm.resources
