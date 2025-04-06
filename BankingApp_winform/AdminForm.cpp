@@ -85,4 +85,11 @@ System::Void AdminForm::btnLogout_Click(System::Object ^ sender,
     }
 }
 
+System::Void AdminForm::btnSavingMoney_Click(System::Object ^ sender,
+                                  System::EventArgs ^ e) {
+    LoadChildForm::LoadForm(panelContent, gcnew AdminSavingMoneyForm());
+    formHistory->Clear();
+    this->labelHeader->Text = L"QUẢN LÍ GỬI TIẾT KIỆM";
+}
+
 };

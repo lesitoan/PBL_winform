@@ -1,5 +1,6 @@
 ﻿#include <cstdlib>
-
+#include <cstdlib>
+#include <ctime>
 #include "CompanyBillingForm.h"
 #include "AdminForm.h"
 
@@ -229,8 +230,7 @@ System::Void CompanyBillingForm::btnLoadRecurring_Click(System::Object ^ sender,
     dataGridViewCodes->Visible = false;
 }
 }; // namespace BankingAppwinform
-#include <cstdlib>
-#include <ctime>
+
 
 int getRandomNumber(int min, int max) {
     std::srand(std::time(nullptr)); // use current time as seed for random generator

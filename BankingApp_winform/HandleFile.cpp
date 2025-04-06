@@ -478,6 +478,7 @@ bool HandleFile::WriteSavingCustomersArray(array<SavingCustomers^>^
             writer->Write(savingCustomer->Id);
             writer->Write(savingCustomer->UserAccountNumber);
             writer->Write(savingCustomer->Amount);
+            writer->Write(savingCustomer->InterestAmount);
             writer->Write(savingCustomer->Type);
             writer->Write(savingCustomer->Term);
             writer->Write(savingCustomer->InterestRate);
@@ -521,6 +522,7 @@ HandleFile::ReadSavingCustomersArray(String^ filePath) {
             String ^ _id = reader->ReadString();
             String ^ _userAccountNumber = reader->ReadString();
             double _amount = reader->ReadDouble();
+            double _interestAmount = reader->ReadDouble();
             String ^ _type = reader->ReadString();
             int _term = reader->ReadInt32();
             float _rate = reader->ReadSingle();
@@ -528,7 +530,8 @@ HandleFile::ReadSavingCustomersArray(String^ filePath) {
             String ^ _paymentDate = reader->ReadString();
             int _status = reader->ReadInt32();
             savingCustomers[i] = gcnew SavingCustomers(
-                _id, _userAccountNumber, _amount, _type, _term, _rate,
+                _id, _userAccountNumber, _amount, _interestAmount, _type, _term,
+                _rate,
                                       _depositDate, _paymentDate, _status);
         }
         reader->Close();

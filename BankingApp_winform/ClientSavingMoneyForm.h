@@ -524,7 +524,9 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         }
 
         for each (SavingCustomers ^ saving in savingItems) {
-            AddSavingItemToFlow(saving);
+            if (saving->UserAccountNumber == GlobalData::GetCurrentUser()->AccountNumber) {
+                AddSavingItemToFlow(saving);
+            }
         }
     }
 
@@ -536,7 +538,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         itemPanel->BackColor = Color::FromArgb(0, 64, 64);
         itemPanel->Width = flowLayoutSavingMoney->ClientSize.Width - 25;
 
-        itemPanel->Height = 150; // đặt chiều cao cố định vừa đủ, có thể chỉnh
+        itemPanel->Height = 170; // đặt chiều cao cố định vừa đủ, có thể chỉnh
         itemPanel->Margin =
             System::Windows::Forms::Padding(0, 0, 0, 10); // cách giữa các item
         itemPanel->Dock =
@@ -552,31 +554,53 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         label->Padding =
             System::Windows::Forms::Padding(5); // padding bên trong
         label->Dock = DockStyle::Top;
-        label->Height = 120; // cố định chiều cao
+        label->Height = 140; // cố định chiều cao
 
         // Tính số tiền thực nhận
-        TimeSpan duration = DateTime::Now - saving->DepositDate;
-        double receivedAmount =
-            saving->Amount + (saving->Amount * saving->InterestRate *
-                              duration.Days / 365.0 / 100.0);
+        
+
+        String ^ endPriceMesage = "";
+        if (saving->Status == 1) { // đã thanh toán
+            endPriceMesage = L"Số tiền đã nhận: " + saving->InterestAmount;
+        } else  {
+            TimeSpan duration = DateTime::Now - saving->DepositDate;
+            double receivedAmount =
+                saving->Amount + (saving->Amount * saving->InterestRate *
+                                  duration.Days / 365.0);
+
+            endPriceMesage =
+                L"Số tiền thực nhận đến hiện tại: " + receivedAmount;
+        }
+        
 
         // Chuẩn bị nội dung
+        String ^ statusMessage ="";
+        if (saving->Status == 0) {
+            statusMessage = L"Chưa thanh toán";
+        } else if (saving->Status == 1) {
+            statusMessage = L"Đã thanh toán";
+        } else if (saving->Status == 2) {
+            statusMessage = L"Đang yêu cầu";
+        }
+
         String ^ content = String::Format(
             L"Loại tiết kiệm: {0}, {1}\n"
             L"Số tiền gửi: {2:N0}VNĐ\n"
             L"Ngày gửi: {3:dd/MM/yyyy}\n"
             L"Lãi suất hàng năm: {4}\n"
-            L"Số tiền thực nhận đến hiện tại: {5:N0}VNĐ",
+            L"{5:N0}VNĐ\n"
+            L"Trạng thái: {6}",
             saving->Type == "nonTermDeposit" ? L"Không kì hạn" : L"Có kì hạn",
             saving->Term == 0 ? L"" : saving->Term + L" tháng",
-            saving->Amount, saving->DepositDate, saving->InterestRate,
-            receivedAmount);
+            saving->Amount, saving->DepositDate, saving->InterestRate, endPriceMesage,
+            statusMessage);
 
         label->Text = content;
 
         // Label kết thúc tiết kiệm
         Label ^ endLabel = gcnew Label();
-        endLabel->Text = L"Ấn vào đây để kết thúc tiết kiệm";
+        endLabel->Text =
+            saving->Status == 0 ? L"Ấn vào đây để kết thúc tiết kiệm" : L"";
         endLabel->ForeColor = Color::LightYellow;
         endLabel->Font =
             gcnew System::Drawing::Font("Segoe UI", 9, FontStyle::Italic);
@@ -606,20 +630,38 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         Label ^ clickedLabel = dynamic_cast<Label ^>(sender);
         if (clickedLabel != nullptr) {
             Panel ^ parentPanel = dynamic_cast<Panel ^>(clickedLabel->Parent);
-            if (parentPanel != nullptr) {
-                // Bạn có thể thêm Tag cho panel để chứa SavingCustomers
-                SavingCustomers ^ saving =
-                    dynamic_cast<SavingCustomers ^>(parentPanel->Tag);
+            if (parentPanel == nullptr)
+                return;
+            SavingCustomers ^ saving =
+                dynamic_cast<SavingCustomers ^>(parentPanel->Tag);
 
-                if (saving != nullptr) {
-                    // Xử lý logic kết thúc tiết kiệm ở đây
-                    MessageBox::Show(
-                        "Bạn đã kết thúc tiết kiệm của tài khoản: " +
-                            saving->Id,
-                        "Thông báo", MessageBoxButtons::OK,
-                        MessageBoxIcon::Information);
+            if (saving == nullptr)
+                return;
+            // Kiểm tra trạng thái tiết kiệm
+            if (saving->Status != 0) {
+                return;
+            }
+
+            // Xử lý kết thúc tiết kiệm -> sửa status từ 0 thành 2;
+            // 0: chưa thanh toán, 1: đã thanh toán, 2: đang yêu cầu
+            saving->Status = 2;
+            // Cập nhật lại file
+            array<SavingCustomers ^> ^ savingItems =
+                HandleFile::ReadSavingCustomersArray("savingCustomers.dat");
+            for (int i = 0; i < savingItems->Length; i++) {
+                if (savingItems[i]->UserAccountNumber ==
+                        saving->UserAccountNumber &&
+                    savingItems[i]->Id == saving->Id) {
+                    savingItems[i]->Status = 2;
+                    break;
                 }
             }
+            HandleFile::WriteSavingCustomersArray(savingItems,
+                                                  "savingCustomers.dat");
+            MessageBox::Show(L"Đã gửi yêu cầu kết thúc tiết kiệm thành công, vui lòng chờ hoàn tất",
+                             L"Thông báo", MessageBoxButtons::OK,
+                             MessageBoxIcon::Information);
+            loadSavingCustomers();
         }
     }
 

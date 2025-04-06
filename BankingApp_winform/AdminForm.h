@@ -4,6 +4,7 @@
 #include "AdminServiceForm.h"
 #include "AdminTransactionForm.h"
 #include "GlobalData.h"
+#include "AdminSavingMoneyForm.h"
 
 
 ref class TableUsersForm;
@@ -42,6 +43,12 @@ ref class AdminForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel2;
     System::Windows::Forms::Label ^ labelHeader;
     System::Windows::Forms::PictureBox ^ pictureBox2;
+
+  protected:
+    System::Windows::Forms::Button ^ btnSavingMoney;
+
+  protected:
+
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -62,6 +69,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->labelHeader = (gcnew System::Windows::Forms::Label());
+        this->btnSavingMoney = (gcnew System::Windows::Forms::Button());
         this->panel1->SuspendLayout();
         this->panelNav->SuspendLayout();
         this->panel4->SuspendLayout();
@@ -84,8 +92,9 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->panel1->Controls->Add(this->panelNav);
         this->panel1->Dock = System::Windows::Forms::DockStyle::Left;
         this->panel1->Location = System::Drawing::Point(0, 0);
+        this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->panel1->Name = L"panel1";
-        this->panel1->Size = System::Drawing::Size(207, 761);
+        this->panel1->Size = System::Drawing::Size(276, 937);
         this->panel1->TabIndex = 0;
         //
         // panelNav
@@ -94,6 +103,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->panelNav->Controls->Add(this->btnSavingMoney);
         this->panelNav->Controls->Add(this->panel4);
         this->panelNav->Controls->Add(this->btnLogout);
         this->panelNav->Controls->Add(this->btnService);
@@ -104,27 +114,30 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->panelNav->ForeColor =
             System::Drawing::SystemColors::InactiveCaptionText;
         this->panelNav->Location = System::Drawing::Point(0, 0);
-        this->panelNav->MinimumSize = System::Drawing::Size(62, 561);
+        this->panelNav->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelNav->MinimumSize = System::Drawing::Size(83, 690);
         this->panelNav->Name = L"panelNav";
-        this->panelNav->Size = System::Drawing::Size(207, 761);
+        this->panelNav->Size = System::Drawing::Size(276, 937);
         this->panelNav->TabIndex = 2;
         //
         // panel4
         //
         this->panel4->Controls->Add(this->pictureBox1);
         this->panel4->Controls->Add(this->labelFullName);
-        this->panel4->Location = System::Drawing::Point(0, 3);
+        this->panel4->Location = System::Drawing::Point(0, 4);
+        this->panel4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->panel4->Name = L"panel4";
-        this->panel4->Size = System::Drawing::Size(207, 70);
+        this->panel4->Size = System::Drawing::Size(276, 86);
         this->panel4->TabIndex = 14;
         //
         // pictureBox1
         //
         this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image ^>(
             resources->GetObject(L"pictureBox1.Image")));
-        this->pictureBox1->Location = System::Drawing::Point(12, 12);
+        this->pictureBox1->Location = System::Drawing::Point(16, 15);
+        this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->pictureBox1->Name = L"pictureBox1";
-        this->pictureBox1->Size = System::Drawing::Size(41, 41);
+        this->pictureBox1->Size = System::Drawing::Size(55, 50);
         this->pictureBox1->SizeMode =
             System::Windows::Forms::PictureBoxSizeMode::StretchImage;
         this->pictureBox1->TabIndex = 5;
@@ -139,9 +152,11 @@ ref class AdminForm : public System::Windows::Forms::Form {
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->labelFullName->ForeColor = System::Drawing::Color::White;
-        this->labelFullName->Location = System::Drawing::Point(70, 22);
+        this->labelFullName->Location = System::Drawing::Point(93, 27);
+        this->labelFullName->Margin =
+            System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelFullName->Name = L"labelFullName";
-        this->labelFullName->Size = System::Drawing::Size(81, 22);
+        this->labelFullName->Size = System::Drawing::Size(103, 27);
         this->labelFullName->TabIndex = 6;
         this->labelFullName->Text = L"LE SI TOAN";
         this->labelFullName->TextAlign =
@@ -167,9 +182,10 @@ ref class AdminForm : public System::Windows::Forms::Form {
             resources->GetObject(L"btnLogout.Image")));
         this->btnLogout->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnLogout->Location = System::Drawing::Point(0, 703);
+        this->btnLogout->Location = System::Drawing::Point(0, 865);
+        this->btnLogout->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->btnLogout->Name = L"btnLogout";
-        this->btnLogout->Size = System::Drawing::Size(207, 58);
+        this->btnLogout->Size = System::Drawing::Size(276, 71);
         this->btnLogout->TabIndex = 12;
         this->btnLogout->Text = L"                ĐĂNG XUẤT";
         this->btnLogout->TextAlign =
@@ -197,9 +213,10 @@ ref class AdminForm : public System::Windows::Forms::Form {
             resources->GetObject(L"btnService.Image")));
         this->btnService->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnService->Location = System::Drawing::Point(0, 207);
+        this->btnService->Location = System::Drawing::Point(0, 255);
+        this->btnService->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->btnService->Name = L"btnService";
-        this->btnService->Size = System::Drawing::Size(207, 58);
+        this->btnService->Size = System::Drawing::Size(276, 71);
         this->btnService->TabIndex = 10;
         this->btnService->Text = L"                 DỊCH VỤ";
         this->btnService->TextAlign =
@@ -228,9 +245,11 @@ ref class AdminForm : public System::Windows::Forms::Form {
             resources->GetObject(L"btnTransaction.Image")));
         this->btnTransaction->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnTransaction->Location = System::Drawing::Point(-3, 143);
+        this->btnTransaction->Location = System::Drawing::Point(-4, 176);
+        this->btnTransaction->Margin =
+            System::Windows::Forms::Padding(4, 4, 4, 4);
         this->btnTransaction->Name = L"btnTransaction";
-        this->btnTransaction->Size = System::Drawing::Size(207, 58);
+        this->btnTransaction->Size = System::Drawing::Size(276, 71);
         this->btnTransaction->TabIndex = 9;
         this->btnTransaction->Text = L"                 GIAO DỊCH";
         this->btnTransaction->TextAlign =
@@ -258,9 +277,10 @@ ref class AdminForm : public System::Windows::Forms::Form {
             resources->GetObject(L"btnClient.Image")));
         this->btnClient->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnClient->Location = System::Drawing::Point(0, 79);
+        this->btnClient->Location = System::Drawing::Point(0, 97);
+        this->btnClient->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->btnClient->Name = L"btnClient";
-        this->btnClient->Size = System::Drawing::Size(207, 58);
+        this->btnClient->Size = System::Drawing::Size(276, 71);
         this->btnClient->TabIndex = 0;
         this->btnClient->Text = L"                 KHÁCH HÀNG";
         this->btnClient->TextAlign =
@@ -274,9 +294,11 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->panelContent->BackColor = System::Drawing::Color::Teal;
         this->panelContent->Controls->Add(this->pictureBox2);
         this->panelContent->Dock = System::Windows::Forms::DockStyle::Fill;
-        this->panelContent->Location = System::Drawing::Point(207, 42);
+        this->panelContent->Location = System::Drawing::Point(276, 52);
+        this->panelContent->Margin =
+            System::Windows::Forms::Padding(4, 4, 4, 4);
         this->panelContent->Name = L"panelContent";
-        this->panelContent->Size = System::Drawing::Size(1077, 719);
+        this->panelContent->Size = System::Drawing::Size(1436, 885);
         this->panelContent->TabIndex = 2;
         //
         // pictureBox2
@@ -284,9 +306,10 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->pictureBox2->Anchor = System::Windows::Forms::AnchorStyles::None;
         this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image ^>(
             resources->GetObject(L"pictureBox2.Image")));
-        this->pictureBox2->Location = System::Drawing::Point(234, 85);
+        this->pictureBox2->Location = System::Drawing::Point(312, 105);
+        this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->pictureBox2->Name = L"pictureBox2";
-        this->pictureBox2->Size = System::Drawing::Size(683, 500);
+        this->pictureBox2->Size = System::Drawing::Size(911, 615);
         this->pictureBox2->SizeMode =
             System::Windows::Forms::PictureBoxSizeMode::Zoom;
         this->pictureBox2->TabIndex = 0;
@@ -296,9 +319,10 @@ ref class AdminForm : public System::Windows::Forms::Form {
         //
         this->panel2->Controls->Add(this->labelHeader);
         this->panel2->Dock = System::Windows::Forms::DockStyle::Top;
-        this->panel2->Location = System::Drawing::Point(207, 0);
+        this->panel2->Location = System::Drawing::Point(276, 0);
+        this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->panel2->Name = L"panel2";
-        this->panel2->Size = System::Drawing::Size(1077, 42);
+        this->panel2->Size = System::Drawing::Size(1436, 52);
         this->panel2->TabIndex = 3;
         //
         // labelHeader
@@ -311,21 +335,56 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->labelHeader->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->labelHeader->ForeColor = System::Drawing::Color::White;
-        this->labelHeader->Location = System::Drawing::Point(22, 0);
+        this->labelHeader->Location = System::Drawing::Point(29, 0);
+        this->labelHeader->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelHeader->Name = L"labelHeader";
-        this->labelHeader->Padding = System::Windows::Forms::Padding(7);
-        this->labelHeader->Size = System::Drawing::Size(196, 35);
+        this->labelHeader->Padding =
+            System::Windows::Forms::Padding(9, 9, 9, 9);
+        this->labelHeader->Size = System::Drawing::Size(246, 45);
         this->labelHeader->TabIndex = 4;
         this->labelHeader->Text = L"DANH SÁCH KHÁCH HÀNG";
         //
+        // btnSavingMoney
+        //
+        this->btnSavingMoney->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnSavingMoney->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnSavingMoney->FlatAppearance->BorderSize = 0;
+        this->btnSavingMoney->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Teal;
+        this->btnSavingMoney->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
+        this->btnSavingMoney->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnSavingMoney->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnSavingMoney->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnSavingMoney.Image")));
+        this->btnSavingMoney->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnSavingMoney->Location = System::Drawing::Point(4, 334);
+        this->btnSavingMoney->Margin = System::Windows::Forms::Padding(4);
+        this->btnSavingMoney->Name = L"btnSavingMoney";
+        this->btnSavingMoney->Size = System::Drawing::Size(276, 71);
+        this->btnSavingMoney->TabIndex = 15;
+        this->btnSavingMoney->Text = L"                 QL TIẾT KIỆM";
+        this->btnSavingMoney->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnSavingMoney->UseVisualStyleBackColor = false;
+        this->btnSavingMoney->Click +=
+            gcnew System::EventHandler(this, &AdminForm::btnSavingMoney_Click);
+        //
         // AdminForm
         //
-        this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+        this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->ClientSize = System::Drawing::Size(1284, 761);
+        this->ClientSize = System::Drawing::Size(1712, 937);
         this->Controls->Add(this->panelContent);
         this->Controls->Add(this->panel2);
         this->Controls->Add(this->panel1);
+        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->Name = L"AdminForm";
         this->StartPosition =
             System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -361,5 +420,9 @@ ref class AdminForm : public System::Windows::Forms::Form {
     public:
     void LoadForm(Form ^ childForm);
     void UndoLastForm();
+
+  private:
+    System::Void btnSavingMoney_Click(System::Object ^ sender,
+                                      System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

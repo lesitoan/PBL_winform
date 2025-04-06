@@ -123,6 +123,7 @@
     <ClCompile Include="ClientSavingMoneyForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
+    <ClCompile Include="AdminSavingMoneyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -250,6 +251,9 @@
     <ClInclude Include="SavingCustomers.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="AdminSavingMoneyForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
@@ -272,9 +276,6 @@
       <Filter>Data\files</Filter>
     </None>
     <None Include="notifications.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="savingCustomers.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>
