@@ -1,212 +1,230 @@
 ﻿  AccountForm.cpp
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AccountForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AccountForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AccountForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AccountForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AccountForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u00EC' cannot be represented in the current code page (1258)
-  (compiling source file 'AccountForm.cpp')
-  
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
   (compiling source file 'AccountForm.cpp')
   
   AdminForm.cpp
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u00EC' cannot be represented in the current code page (1258)
-  (compiling source file 'AdminForm.cpp')
-  
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
   (compiling source file 'AdminForm.cpp')
   
   AdminSavingMoneyForm.cpp
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminSavingMoneyForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminSavingMoneyForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminSavingMoneyForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminSavingMoneyForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminSavingMoneyForm.cpp')
   
   AdminServiceForm.cpp
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminServiceForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminServiceForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminServiceForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminServiceForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AdminServiceForm.cpp')
   
   AuthForm.cpp
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AuthForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AuthForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AuthForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AuthForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AuthForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u00EC' cannot be represented in the current code page (1258)
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
   (compiling source file 'AuthForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
-  (compiling source file 'AuthForm.cpp')
+  ClientSavingMoneyForm.cpp
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'ClientSavingMoneyForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'ClientSavingMoneyForm.cpp')
   
   CompanyBillingForm.cpp
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'CompanyBillingForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'CompanyBillingForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'CompanyBillingForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'CompanyBillingForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'CompanyBillingForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\CompanyBillingForm.cpp(236,25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\CompanyBillingForm.cpp(236,25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   CompanyForm.cpp
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'CompanyForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'CompanyForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'CompanyForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'CompanyForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'CompanyForm.cpp')
   
   EditUserForm.cpp
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'EditUserForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'EditUserForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'EditUserForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'EditUserForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'EditUserForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\EditUserForm.cpp(44,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\EditUserForm.cpp(44,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   Main.cpp
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'Main.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'Main.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'Main.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'Main.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'Main.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u00EC' cannot be represented in the current code page (1258)
-  (compiling source file 'Main.cpp')
-  
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
   (compiling source file 'Main.cpp')
   
   MainForm.cpp
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'MainForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'MainForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'MainForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'MainForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'MainForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u00EC' cannot be represented in the current code page (1258)
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
   (compiling source file 'MainForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SetAvatarForm.h(148,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1258)
-  (compiling source file 'MainForm.cpp')
+  RegisterSavingForm.cpp
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'RegisterSavingForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'RegisterSavingForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'RegisterSavingForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'RegisterSavingForm.cpp')
+  
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file 'RegisterSavingForm.cpp')
   
   TableUsersForm.cpp
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'TableUsersForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'TableUsersForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'TableUsersForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'TableUsersForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'TableUsersForm.cpp')
   
-D:\CODE\PBL1\PBL_winform\BankingApp_winform\TableUsersForm.cpp(30,76): warning C4566: character represented by universal-character-name '\u1EC1' cannot be represented in the current code page (1258)
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\TableUsersForm.cpp(30,76): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\TableUsersForm.cpp(30,76): warning C4566: character represented by universal-character-name '\u1EC1' cannot be represented in the current code page (1252)
   Generating Code...
   AccountForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  BankingApp_winform.vcxproj -> D:\CODE\PBL1\PBL_winform\x64\Debug\BankingApp_winform.exe
+  BankingApp_winform.vcxproj -> E:\WORKSPACE\CODE\PBL\BankingApp_winform\x64\Debug\BankingApp_winform.exe

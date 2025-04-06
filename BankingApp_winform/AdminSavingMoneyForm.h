@@ -17,40 +17,17 @@ using namespace System::Drawing;
 public
 ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
   public:
-    AdminSavingMoneyForm(void) {
-        InitializeComponent();
-        loadSavingCustomers();
-        loadRequest();
-    }
+    AdminSavingMoneyForm(void);
 
   protected:
     /// <summary>
     /// Clean up any resources being used.
     /// </summary>
-    ~AdminSavingMoneyForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~AdminSavingMoneyForm();
 
   private:
     System::Windows::Forms::DataGridView ^ dataGridViewSavingMoney;
 
-  protected:
-  private:
-  protected:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
     System::Windows::Forms::Panel ^ panelContent;
 
   private:
@@ -113,24 +90,6 @@ ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^
         dataGridViewTextBoxColumn5;
-
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-  private:
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -265,8 +224,6 @@ ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
         this->dataGridViewSavingMoney->GridColor =
             System::Drawing::SystemColors::ActiveCaptionText;
         this->dataGridViewSavingMoney->Location = System::Drawing::Point(0, 0);
-        this->dataGridViewSavingMoney->Margin =
-            System::Windows::Forms::Padding(4);
         this->dataGridViewSavingMoney->Name = L"dataGridViewSavingMoney";
         this->dataGridViewSavingMoney->ReadOnly = true;
         this->dataGridViewSavingMoney->RowHeadersBorderStyle =
@@ -289,7 +246,7 @@ ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
             System::Windows::Forms::DataGridViewTriState::False;
         this->dataGridViewSavingMoney->SelectionMode =
             System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-        this->dataGridViewSavingMoney->Size = System::Drawing::Size(1436, 813);
+        this->dataGridViewSavingMoney->Size = System::Drawing::Size(1077, 661);
         this->dataGridViewSavingMoney->TabIndex = 3;
         //
         // Column1
@@ -353,10 +310,9 @@ ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
         this->panelContent->Controls->Add(this->dataGridViewRequests);
         this->panelContent->Controls->Add(this->dataGridViewSavingMoney);
         this->panelContent->Dock = System::Windows::Forms::DockStyle::Fill;
-        this->panelContent->Location = System::Drawing::Point(0, 62);
-        this->panelContent->Margin = System::Windows::Forms::Padding(4);
+        this->panelContent->Location = System::Drawing::Point(0, 50);
         this->panelContent->Name = L"panelContent";
-        this->panelContent->Size = System::Drawing::Size(1436, 813);
+        this->panelContent->Size = System::Drawing::Size(1077, 661);
         this->panelContent->TabIndex = 5;
         //
         // dataGridViewRequests
@@ -429,7 +385,6 @@ ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
         this->dataGridViewRequests->GridColor =
             System::Drawing::SystemColors::ActiveCaptionText;
         this->dataGridViewRequests->Location = System::Drawing::Point(0, 0);
-        this->dataGridViewRequests->Margin = System::Windows::Forms::Padding(4);
         this->dataGridViewRequests->Name = L"dataGridViewRequests";
         this->dataGridViewRequests->ReadOnly = true;
         this->dataGridViewRequests->RowHeadersBorderStyle =
@@ -452,7 +407,7 @@ ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
             System::Windows::Forms::DataGridViewTriState::False;
         this->dataGridViewRequests->SelectionMode =
             System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-        this->dataGridViewRequests->Size = System::Drawing::Size(1436, 813);
+        this->dataGridViewRequests->Size = System::Drawing::Size(1077, 661);
         this->dataGridViewRequests->TabIndex = 4;
         this->dataGridViewRequests->Visible = false;
         //
@@ -516,10 +471,9 @@ ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
             System::Drawing::SystemColors::HighlightText;
         this->btnShowRequest->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnShowRequest->Location = System::Drawing::Point(252, 4);
-        this->btnShowRequest->Margin = System::Windows::Forms::Padding(4);
+        this->btnShowRequest->Location = System::Drawing::Point(255, 3);
         this->btnShowRequest->Name = L"btnShowRequest";
-        this->btnShowRequest->Size = System::Drawing::Size(272, 50);
+        this->btnShowRequest->Size = System::Drawing::Size(244, 41);
         this->btnShowRequest->TabIndex = 11;
         this->btnShowRequest->Text = L"YÊU CẦU RÚT TIẾT KIỆM";
         this->btnShowRequest->UseVisualStyleBackColor = false;
@@ -544,10 +498,9 @@ ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
             System::Drawing::SystemColors::HighlightText;
         this->btnShowCustomer->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnShowCustomer->Location = System::Drawing::Point(0, 4);
-        this->btnShowCustomer->Margin = System::Windows::Forms::Padding(4);
+        this->btnShowCustomer->Location = System::Drawing::Point(0, 3);
         this->btnShowCustomer->Name = L"btnShowCustomer";
-        this->btnShowCustomer->Size = System::Drawing::Size(244, 50);
+        this->btnShowCustomer->Size = System::Drawing::Size(249, 41);
         this->btnShowCustomer->TabIndex = 10;
         this->btnShowCustomer->Text = L"DANH SÁCH KHÁCH HÀNG";
         this->btnShowCustomer->UseVisualStyleBackColor = false;
@@ -560,19 +513,19 @@ ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
         this->panel2->Controls->Add(this->btnShowCustomer);
         this->panel2->Dock = System::Windows::Forms::DockStyle::Top;
         this->panel2->Location = System::Drawing::Point(0, 0);
-        this->panel2->Margin = System::Windows::Forms::Padding(4);
         this->panel2->Name = L"panel2";
-        this->panel2->Size = System::Drawing::Size(1436, 62);
+        this->panel2->Size = System::Drawing::Size(1077, 50);
         this->panel2->TabIndex = 4;
         //
         // AdminSavingMoneyForm
         //
-        this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+        this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->ClientSize = System::Drawing::Size(1436, 875);
+        this->ClientSize = System::Drawing::Size(1077, 711);
         this->Controls->Add(this->panelContent);
         this->Controls->Add(this->panel2);
         this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+        this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
         this->Name = L"AdminSavingMoneyForm";
         this->Text = L"AdminSavingMoneyForm";
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
@@ -587,179 +540,23 @@ ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
     }
 #pragma endregion
 
-    private:
+  private:
     bool isCellClickEventAttached = false;
-
 
   private:
     System::Void btnShowCustomer_Click(System::Object ^ sender,
-                                       System::EventArgs ^ e) {
-        if (this->dataGridViewSavingMoney->Visible == true)
-            return;
-        this->dataGridViewSavingMoney->Visible = true;
-        this->dataGridViewRequests->Visible = false;
-    }
+                                       System::EventArgs ^ e);
 
   private:
     System::Void btnShowRequest_Click(System::Object ^ sender,
-                                      System::EventArgs ^ e) {
+                                      System::EventArgs ^ e);
 
-        if (this->dataGridViewRequests->Visible == true)
-            return;
-        this->dataGridViewSavingMoney->Visible = false;
-        this->dataGridViewRequests->Visible = true;
-    }
+    void loadSavingCustomers();
 
-    void loadSavingCustomers() {
-        this->dataGridViewSavingMoney->Rows->Clear();
-        
-        array<SavingCustomers ^> ^ savingItems =
-            HandleFile::ReadSavingCustomersArray("savingCustomers.dat");
-        if (savingItems == nullptr || savingItems->Length == 0) {
-            return;
-        }
-        for (int i = 0; i < savingItems->Length; i++) {
-            double currentAmount =
-                savingItems[i]->Amount +
-                (savingItems[i]->Amount * savingItems[i]->InterestRate) / 100;
-
-            String ^ statusMessage ="";
-            if (savingItems[i]->Status == 0) {
-                statusMessage = L"Đang hoạt động";
-            } else if (savingItems[i]->Status == 1) {
-                statusMessage = L"Đã tất toán";
-            } else if (savingItems[i]->Status == 2) {
-                statusMessage = L"Yêu cầu tất toán";
-            } else {
-                statusMessage = L"Không xác định";
-            }
-
-            this->dataGridViewSavingMoney->Rows->Add(
-                savingItems[i]->UserAccountNumber,
-                savingItems[i]->Type == "nonTermDeposit" ? L"Không kì hạn" : L"Có kì hạn",
-                savingItems[i]->InterestRate, savingItems[i]->Amount,
-                savingItems[i]->DepositDate.ToString("dd/MM/yyyy"),
-                currentAmount, statusMessage,
-                savingItems[i]->Status == 1 ? savingItems[i]->PaymentDate : L"Chưa có");
-        }
-    }
-
-    void AdminSavingMoneyForm::loadRequest() {
-        // Xóa các dòng hiện tại trong bảng
-        this->dataGridViewRequests->Rows->Clear();
-
-        // Đọc danh sách khách hàng tiết kiệm
-        array<SavingCustomers ^> ^ savingItems =
-            HandleFile::ReadSavingCustomersArray("savingCustomers.dat");
-        if (savingItems == nullptr || savingItems->Length == 0) {
-            return;
-        }
-
-        // Thêm cột nút nếu chưa có
-        if (dataGridViewRequests->Columns["btnSubmit"] == nullptr) {
-            DataGridViewButtonColumn ^ btnColumn =
-                gcnew DataGridViewButtonColumn();
-            btnColumn->HeaderText = L"Hành động";
-            btnColumn->Text = L"Thanh toán";
-            btnColumn->UseColumnTextForButtonValue = true;
-            btnColumn->Name = "btnSubmit";
-            btnColumn->DefaultCellStyle->BackColor =
-                System::Drawing::Color::Green;
-            btnColumn->DefaultCellStyle->ForeColor =
-                System::Drawing::Color::White;
-            this->dataGridViewRequests->Columns->Add(btnColumn);
-        }
-
-        // Đếm dòng được thêm để tránh lỗi index
-        int rowIndex = 0;
-
-        for (int i = 0; i < savingItems->Length; i++) {
-            if (savingItems[i]->Status == 2) {
-                double currentAmount =
-                    savingItems[i]->Amount +
-                    (savingItems[i]->Amount * savingItems[i]->InterestRate) /
-                        100;
-
-                this->dataGridViewRequests->Rows->Add(
-                    savingItems[i]->UserAccountNumber,
-                    savingItems[i]->Type == "nonTermDeposit" ? L"Không kì hạn"
-                                                             : L"Có kì hạn",
-                    savingItems[i]->InterestRate.ToString(),
-                    savingItems[i]->Amount.ToString(),
-                    savingItems[i]->DepositDate.ToString("dd/MM/yyyy"),
-                    currentAmount);
-
-                // Gán dữ liệu vào Tag để xử lý khi click
-                this->dataGridViewRequests->Rows[rowIndex]->Tag =
-                    savingItems[i];
-
-                // Cập nhật nút hành động
-                this->dataGridViewRequests->Rows[rowIndex]
-                    ->Cells["btnSubmit"]
-                    ->Value = "Thanh toán";
-
-                rowIndex++;
-            }
-        }
-
-        // Chỉ gán CellClick một lần (kiểm tra nếu chưa gán)
-        if (!this->isCellClickEventAttached) {
-            this->dataGridViewRequests->CellClick +=
-                gcnew DataGridViewCellEventHandler(
-                    this,
-                    &AdminSavingMoneyForm::dataGridViewRequests_CellClick);
-            this->isCellClickEventAttached = true;
-        }
-    }
-
+    void AdminSavingMoneyForm::loadRequest();
 
     System::Void dataGridViewRequests_CellClick(
         System::Object ^ sender,
-        System::Windows::Forms::DataGridViewCellEventArgs ^ e) {
-        if (e->RowIndex < 0 || e->ColumnIndex < 0) {
-            return;
-        }
-        if (dataGridViewRequests->Columns[e->ColumnIndex]->Name ==
-            "btnSubmit") {
-            SavingCustomers ^ savingItem = dynamic_cast<SavingCustomers ^>(
-                dataGridViewRequests->Rows[e->RowIndex]->Tag);
-            if (savingItem == nullptr)
-                return;
-            
-
-            // Cập nhật lại thông tin trong file
-            array<SavingCustomers ^> ^ savingItems =
-                HandleFile::ReadSavingCustomersArray("savingCustomers.dat");
-            for (int i = 0; i < savingItems->Length; i++) {
-                if (savingItems[i]->Id == savingItem->Id) {
-                    savingItems[i]->Status = 1;
-                    savingItems[i]->PaymentDate =
-                        DateTime::Now.ToString("dd/MM/yyyy");
-
-                    TimeSpan duration =
-                        DateTime::Now - savingItems[i]->DepositDate;
-
-                    savingItems[i]->InterestAmount =
-                        savingItems[i]->Amount +
-                        (savingItems[i]->Amount * savingItems[i]->InterestRate *
-                         duration.Days /
-                         365.0);
-
-                    break;
-                }
-            }
-            HandleFile::WriteSavingCustomersArray(savingItems,"savingCustomers.dat");
-
-            MessageBox::Show(L"Đã thanh toán yêu cầu rút tiết kiệm thành công",
-                             L"Thông báo", MessageBoxButtons::OK,
-                             MessageBoxIcon::Information);
-
-            // Cập nhật lại giao dịch trong file
-            loadRequest();
-            loadSavingCustomers();
-        }
-    }
-
-
+        System::Windows::Forms::DataGridViewCellEventArgs ^ e);
 };
 } // namespace BankingAppwinform

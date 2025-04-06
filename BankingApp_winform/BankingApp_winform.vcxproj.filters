@@ -123,7 +123,9 @@
     <ClCompile Include="ClientSavingMoneyForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
-    <ClCompile Include="AdminSavingMoneyForm.cpp" />
+    <ClCompile Include="AdminSavingMoneyForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">

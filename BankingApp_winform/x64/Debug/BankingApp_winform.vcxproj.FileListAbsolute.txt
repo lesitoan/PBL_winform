@@ -59,3 +59,6 @@ E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingApp
 D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.ClientSavingMoneyForm.resources
 D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.RegisterSavingForm.resources
 D:\CODE\PBL1\PBL_winform\BankingApp_winform\x64\Debug\BankingAppwinform.AdminSavingMoneyForm.resources
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.AdminSavingMoneyForm.resources
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.ClientSavingMoneyForm.resources
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\x64\Debug\BankingAppwinform.RegisterSavingForm.resources
