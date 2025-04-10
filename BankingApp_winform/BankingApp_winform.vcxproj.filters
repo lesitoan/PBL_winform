@@ -259,25 +259,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
-    <None Include="recurringPaymentRequests.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="recurringPayments.dat">
-      <Filter>Data\files</Filter>
-    </None>
     <None Include="transactions.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="codes.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="services.dat">
       <Filter>Data\files</Filter>
     </None>
     <None Include="users.dat">
       <Filter>Data\files</Filter>
     </None>
     <None Include="notifications.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="services.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="recurringPayments.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="codes.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>

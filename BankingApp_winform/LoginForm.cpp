@@ -35,12 +35,10 @@ System::Void LoginForm::btnSubmit_Click(System::Object ^ sender,
         MessageBox::Show(L"Đăng nhập thất bại");
     }
 }
-System::Void LoginForm::btnShowPw_CheckedChanged(System::Object ^ sender,
-                                                 System::EventArgs ^ e) {
-    if (this->btnShowPw->Checked) {
-        this->password->PasswordChar = '\0';
-    } else {
+System::Void LoginForm::btnShowPw_Click(System::Object ^ sender, System::EventArgs ^ e) {
+    if (this->password->PasswordChar == '\0')
         this->password->PasswordChar = '*';
-    }
+    else
+        this->password->PasswordChar = '\0';
 }
 }; // namespace BankingAppwinform

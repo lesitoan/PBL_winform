@@ -22,6 +22,15 @@ System::Void AuthForm::AuthForm_Load(System::Object ^ sender,
         gcnew EventHandler(this, &AuthForm::OnLoginSuccess);
     LoadChildForm::LoadForm(this->panelContent, loginForm);
     this->labelAuth->Text = L"Đăng kí";
+
+
+    this->axWindowsMediaPlayer1->uiMode =
+        "none"; // Ẩn các nút play, progress bar, etc.
+    this->axWindowsMediaPlayer1->URL = "C:\\Users\\ADMIN\\Downloads\\TPP.mp4";
+    this->axWindowsMediaPlayer1->settings->setMode("loop", true);
+    this->axWindowsMediaPlayer1->Ctlcontrols->play();
+    this->VisibleChanged +=
+        gcnew System::EventHandler(this, &AuthForm::AuthForm_VisibleChanged);
 }
 
 System::Void AuthForm::labelForgotPw_Click(System::Object ^ sender,
@@ -81,6 +90,7 @@ System::Void AuthForm::OnLoginSuccess(System::Object ^ sender,
     if (currentUser->getRole() == "admin") {
         AdminForm ^ adminForm = gcnew AdminForm();
         adminForm->ShowDialog();
+        this->axWindowsMediaPlayer1->Ctlcontrols->pause();
         this->Close();
         return;
     }

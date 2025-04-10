@@ -97,11 +97,12 @@ ClientRecurringPaymentForm::btnSubmit_Click(System::Object ^ sender,
         MessageBox::Show(L"Cố lỗi xảy ra", "Cảnh báo", MessageBoxButtons::OK,
                          MessageBoxIcon::Warning);
         return;
-    } else if (DateTime::Now.Date < DateTime(currClientPaymentDay).Date) {
+    } 
+    /*else if (DateTime::Now.Date < DateTime(currClientPaymentDay).Date) {
         MessageBox::Show(L"Chưa đến ngày thanh toán định kì", "Cảnh báo",
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
         return;
-    }
+    }*/
 
     // Tạo yêu cầu thanh toán định kỳ
     RecurringPaymentRequest ^ request = gcnew RecurringPaymentRequest(
