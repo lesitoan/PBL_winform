@@ -8,17 +8,19 @@ ref class PaymentCodes {
   private:
     String ^ id;
     String ^ companyAccountNumber;
+
     String ^ code;
     int amount;
     int status;
     DateTime createdDate;
     DateTime expiredDate;
+    String ^ paymentDate;
 
   public:
     PaymentCodes(String ^ id, String ^ companyAccountNumber, String ^ code,
                  int amount,
                  int status,
-                 DateTime createdDate, DateTime expiredDate) {
+                 DateTime createdDate, DateTime expiredDate, String^ paymentDate) {
         this->id = id;
         this->companyAccountNumber = companyAccountNumber;
         this->code = code;
@@ -26,6 +28,7 @@ ref class PaymentCodes {
         this->status = status;
         this->createdDate = createdDate;
         this->expiredDate = expiredDate;
+        this->paymentDate = paymentDate;
     }
     PaymentCodes(String ^ companyAccountNumber, String ^ code, int amount,
                  int day) {
@@ -36,6 +39,7 @@ ref class PaymentCodes {
         this->status = 0;
         this->createdDate = DateTime::Now;
         this->expiredDate = DateTime::Now.AddDays(day);
+        this->paymentDate = "";
     }
     PaymentCodes() {
         this->id = "";
@@ -45,6 +49,7 @@ ref class PaymentCodes {
         this->status = 0;
         this->createdDate = DateTime::Now;
         this->expiredDate = DateTime::Now;
+        this->paymentDate = "";
     }
 
     property String ^ Id { String ^ get() { return id; }
@@ -71,6 +76,11 @@ ref class PaymentCodes {
     property DateTime ExpiredDate {
         DateTime get() { return expiredDate; }
         void set(DateTime value) { expiredDate = value; }
+    }
+    property String ^ PaymentDate {
+        String ^ get() { return paymentDate; } void set(String ^ value) {
+            paymentDate = value;
+        }
     }
 };
 

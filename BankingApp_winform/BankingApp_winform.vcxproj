@@ -124,6 +124,7 @@
     <ClCompile Include="AddUserForm.cpp" />
     <ClCompile Include="AdminSavingMoneyForm.cpp" />
     <ClCompile Include="ClientSavingMoneyForm.cpp" />
+    <ClCompile Include="CodeInfoForm.cpp" />
     <ClCompile Include="ModifyServiceForm.cpp" />
     <ClCompile Include="ClientRecurringPaymentForm.cpp" />
     <ClCompile Include="CodeForm.cpp" />
@@ -166,6 +167,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ClientSavingMoneyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CodeInfoForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ModifyServiceForm.h">
@@ -272,6 +276,9 @@
     <EmbeddedResource Include="ClientSavingMoneyForm.resx">
       <DependentUpon>ClientSavingMoneyForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CodeInfoForm.resx">
+      <DependentUpon>CodeInfoForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModifyServiceForm.resx">
       <DependentUpon>ModifyServiceForm.h</DependentUpon>
     </EmbeddedResource>
@@ -354,7 +361,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
-    <None Include="codes.dat" />
     <None Include="notifications.dat" />
     <None Include="recurringPaymentRequests.dat" />
     <None Include="recurringPayments.dat" />

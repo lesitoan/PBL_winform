@@ -215,6 +215,7 @@ bool HandleFile::WriteCodeArray(array<PaymentCodes ^> ^ codes,
             writer->Write(code->Status);
             writer->Write(code->CreatedDate.ToString());
             writer->Write(code->ExpiredDate.ToString());
+            writer->Write(code->PaymentDate);
         }
         writer->Close();
         fs->Close();
@@ -252,9 +253,10 @@ array<PaymentCodes ^> ^ HandleFile::ReadCodeArray(String ^ filePath) {
             int _status = reader->ReadInt32();
             DateTime _createdDate = DateTime::Parse(reader->ReadString());
             DateTime _expiredDate = DateTime::Parse(reader->ReadString());
+            String ^ _paymentDate = reader->ReadString();
             codes[i] =
-                gcnew PaymentCodes(_id, _companyAccountNumber, _code, _amount,
-                                   _status, _createdDate, _expiredDate);
+                gcnew PaymentCodes(_id, _companyAccountNumber, _code, _amount, _status, _createdDate,
+                                          _expiredDate, _paymentDate);
         }
         reader->Close();
         fs->Close();

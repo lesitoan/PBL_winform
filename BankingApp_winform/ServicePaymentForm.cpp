@@ -136,6 +136,10 @@ System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
         MessageBox::Show(L"Mã thanh toán không hợp lệ", "Cảnh báo",
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
         return;
+    } else if (paymentCode->ExpiredDate < DateTime::Now) {
+        MessageBox::Show(L"Mã thanh toán đã hết hạn", "Cảnh báo",
+                         MessageBoxButtons::OK, MessageBoxIcon::Warning);
+        return;
     }
 
     // chuyển tiền
@@ -160,6 +164,7 @@ System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
             if (codes[i]->Code == code &&
                 codes[i]->CompanyAccountNumber == companyAccountNumber) {
                 codes[i]->Status = 1;
+                codes[i]->PaymentDate = DateTime::Now.ToString("dd/MM/yyyy");
             }
         }
         bool isSavedCode = HandleFile::WriteCodeArray(codes, "codes.dat");
