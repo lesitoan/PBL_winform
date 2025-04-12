@@ -18,7 +18,6 @@ ref class LoginForm : public System::Windows::Forms::Form {
   public:
     LoginForm(void);
     event EventHandler ^ LoginSuccess;
-    
 
   protected:
     ~LoginForm();
@@ -31,23 +30,28 @@ ref class LoginForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Label ^ label1;
 
   private:
-
-
     System::Windows::Forms::TextBox ^ phoneNumber;
     System::Windows::Forms::Panel ^ panel1;
     System::Windows::Forms::Panel ^ panel2;
     System::Windows::Forms::TextBox ^ password;
 
   private:
+    System::Windows::Forms::Label ^ btnShowPassword;
+
+  private:
+
+
+  private:
+
+
+  private:
+
+
+  private:
     System::Windows::Forms::Label ^ label2;
 
   private:
-    System::Windows::Forms::Button ^ btnShowPw;
-
-  private:
-
     System::ComponentModel::Container ^ components;
-
 
 #pragma region Windows Form Designer generated code
 
@@ -62,9 +66,9 @@ ref class LoginForm : public System::Windows::Forms::Form {
         this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
+        this->btnShowPassword = (gcnew System::Windows::Forms::Label());
         this->password = (gcnew System::Windows::Forms::TextBox());
         this->label2 = (gcnew System::Windows::Forms::Label());
-        this->btnShowPw = (gcnew System::Windows::Forms::Button());
         this->panel1->SuspendLayout();
         this->panel2->SuspendLayout();
         this->SuspendLayout();
@@ -121,9 +125,18 @@ ref class LoginForm : public System::Windows::Forms::Form {
         // panel2
         //
         this->panel2->BackColor = System::Drawing::Color::White;
+        this->panel2->Controls->Add(this->btnShowPassword);
         this->panel2->Controls->Add(this->password);
         resources->ApplyResources(this->panel2, L"panel2");
         this->panel2->Name = L"panel2";
+        //
+        // btnShowPassword
+        //
+        this->btnShowPassword->BackColor = System::Drawing::Color::Transparent;
+        resources->ApplyResources(this->btnShowPassword, L"btnShowPassword");
+        this->btnShowPassword->Name = L"btnShowPassword";
+        this->btnShowPassword->Click +=
+            gcnew System::EventHandler(this, &LoginForm::btnShowPassword_Click);
         //
         // password
         //
@@ -135,29 +148,21 @@ ref class LoginForm : public System::Windows::Forms::Form {
         //
         resources->ApplyResources(this->label2, L"label2");
         this->label2->BackColor = System::Drawing::Color::Transparent;
-        this->label2->ForeColor = System::Drawing::Color::LightGray;
+        this->label2->ForeColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(224)),
+            static_cast<System::Int32>(static_cast<System::Byte>(224)),
+            static_cast<System::Int32>(static_cast<System::Byte>(224)));
         this->label2->Name = L"label2";
-        this->label2->Click +=
-            gcnew System::EventHandler(this, &LoginForm::label2_Click);
-        //
-        // btnShowPw
-        //
-        this->btnShowPw->BackColor = System::Drawing::Color::White;
-        resources->ApplyResources(this->btnShowPw, L"btnShowPw");
-        this->btnShowPw->Name = L"btnShowPw";
-        this->btnShowPw->UseVisualStyleBackColor = false;
-        this->btnShowPw->Click +=
-            gcnew System::EventHandler(this, &LoginForm::btnShowPw_Click);
         //
         // LoginForm
         //
+        this->AcceptButton = this->btnSubmit;
         resources->ApplyResources(this, L"$this");
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->BackColor = System::Drawing::Color::FromArgb(
             static_cast<System::Int32>(static_cast<System::Byte>(255)),
             static_cast<System::Int32>(static_cast<System::Byte>(128)),
             static_cast<System::Int32>(static_cast<System::Byte>(255)));
-        this->Controls->Add(this->btnShowPw);
         this->Controls->Add(this->label2);
         this->Controls->Add(this->panel2);
         this->Controls->Add(this->panel1);
@@ -181,10 +186,6 @@ ref class LoginForm : public System::Windows::Forms::Form {
                                  System::EventArgs ^ e);
 
   private:
-    System::Void btnShowPw_Click(System::Object ^ sender,
-                                 System::EventArgs ^ e);
-
-  private:
-    System::Void label2_Click(System::Object ^ sender, System::EventArgs ^ e) {}
+    System::Void btnShowPassword_Click(System::Object ^ sender, System::EventArgs ^ e);
 };
 }

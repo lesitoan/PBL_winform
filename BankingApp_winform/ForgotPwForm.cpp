@@ -6,6 +6,7 @@ namespace BankingAppwinform {
 
     ForgotPwForm::ForgotPwForm(void) {
         InitializeComponent();
+
     }
 
     ForgotPwForm::~ForgotPwForm() {
@@ -15,3 +16,5 @@ namespace BankingAppwinform {
     }
 
 };
+
+

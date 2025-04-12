@@ -18,7 +18,7 @@ public
 ref class AuthForm : public System::Windows::Forms::Form {
   public:
     AuthForm();
-
+ 
   protected:
     ~AuthForm();
 
@@ -108,7 +108,7 @@ ref class AuthForm : public System::Windows::Forms::Form {
         //
         // pictureBox2
         //
-        this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image ^>(
+   /*     this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image ^>(
             resources->GetObject(L"pictureBox2.Image")));
         this->pictureBox2->Location = System::Drawing::Point(351, 15);
         this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
@@ -119,7 +119,7 @@ ref class AuthForm : public System::Windows::Forms::Form {
         this->pictureBox2->TabIndex = 7;
         this->pictureBox2->TabStop = false;
         this->pictureBox2->Click +=
-            gcnew System::EventHandler(this, &AuthForm::btnDarkMode_Click);
+            gcnew System::EventHandler(this, &AuthForm::btnDarkMode_Click);*/
         //
         // label3
         //
@@ -182,7 +182,11 @@ ref class AuthForm : public System::Windows::Forms::Form {
         //
         this->panelContent->Anchor = System::Windows::Forms::AnchorStyles::None;
         this->panelContent->AutoScroll = true;
-        this->panelContent->BackColor = System::Drawing::Color::Teal;
+        this->panelContent->BackgroundImage =
+            (cli::safe_cast<System::Drawing::Image ^>(
+                resources->GetObject(L"panelContent.BackgroundImage")));
+        this->panelContent->BackgroundImageLayout =
+            System::Windows::Forms::ImageLayout::Stretch;
         this->panelContent->Location = System::Drawing::Point(0, 0);
         this->panelContent->Margin = System::Windows::Forms::Padding(4);
         this->panelContent->Name = L"panelContent";
@@ -271,12 +275,14 @@ ref class AuthForm : public System::Windows::Forms::Form {
         this->ClientSize = System::Drawing::Size(1179, 690);
         this->Controls->Add(this->panelRightContent);
         this->Controls->Add(this->panel1);
+        this->Icon = (cli::safe_cast<System::Drawing::Icon ^>(
+            resources->GetObject(L"$this.Icon")));
         this->Margin = System::Windows::Forms::Padding(4);
         this->MinimumSize = System::Drawing::Size(1194, 728);
         this->Name = L"AuthForm";
         this->StartPosition =
             System::Windows::Forms::FormStartPosition::CenterScreen;
-        this->Text = L"Banking App";
+        this->Text = L"TP Bank";
         this->Load +=
             gcnew System::EventHandler(this, &AuthForm::AuthForm_Load);
         this->panel1->ResumeLayout(false);
@@ -315,9 +321,9 @@ ref class AuthForm : public System::Windows::Forms::Form {
     System::Void labelAuth_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
 
-  private:
-    System::Void btnDarkMode_Click(System::Object ^ sender,
-                                   System::EventArgs ^ e);
+  //private:
+  //  System::Void btnDarkMode_Click(System::Object ^ sender,
+  //                                 System::EventArgs ^ e);
 
   private:
     System::Void AuthForm_VisibleChanged(System::Object ^ sender,

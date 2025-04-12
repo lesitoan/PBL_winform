@@ -65,27 +65,6 @@ System::Void SignupForm::btnSubmit_Click(System::Object ^ sender,
     }
 }
 
-System::Void SignupForm::btnShowPwCf_CheckedChanged(System::Object ^ sender,
-                                                    System::EventArgs ^ e) {
-    if (btnShowPwCf->Checked) {
-        passwordConfirm->PasswordChar = '\0';
-        btnShowPwCf->Text = "Hide";
-    } else {
-        passwordConfirm->PasswordChar = '*';
-        btnShowPwCf->Text = "Show";
-    }
-}
-
-Void SignupForm::btnShowPw_CheckedChanged(System::Object ^ sender,
-                                          System::EventArgs ^ e) {
-    if (btnShowPw->Checked) {
-        password->PasswordChar = '\0';
-        btnShowPw->Text = "Hide";
-    } else {
-        password->PasswordChar = '*';
-        btnShowPw->Text = "Show";
-    }
-}
 bool SignupForm::isUsedPhoneNumber(String ^ phoneNumber) {
     array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
     for each (User ^ user in users) {
@@ -119,6 +98,24 @@ int SignupForm::randomAccountNumber() {
         }
     }*/
     return 0;
+}
+
+System::Void SignupForm::label4_Click(System::Object^ sender,
+    System::EventArgs^ e) {
+    if (passwordConfirm->PasswordChar == '\0') {
+        passwordConfirm->PasswordChar = '\*';
+    } else {
+        passwordConfirm->PasswordChar = '\0';
+    }
+}
+
+System::Void SignupForm::label2_Click(System::Object^ sender,
+    System::EventArgs^ e) {
+    if (password->PasswordChar == '\0') {
+        password->PasswordChar = '\*';
+    } else {
+        password->PasswordChar = '\0';
+    }
 }
 
 }; // namespace BankingAppwinform

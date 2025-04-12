@@ -1,7 +1,12 @@
 ﻿#include "SetPinForm.h"
 
 namespace BankingAppwinform {
-SetPinForm::SetPinForm(void) { InitializeComponent(); }
+SetPinForm::SetPinForm(void) { 
+    InitializeComponent(); 
+    GradientColorHelper::ApplyGradient(this);
+    GradientColorHelper::ApplyGradient(this->panel1);
+    GradientColorHelper::ApplyRoundedCorners(this->panel1,20);
+}
 
 SetPinForm::~SetPinForm() {
     if (components) {
@@ -23,7 +28,8 @@ System::Void SetPinForm::btnSubmit_Click(System::Object ^ sender,
         if (user->getPassword() != this->password->Text) {
             MessageBox::Show("Mat khau khong chinh xac !", "Canh bao",
                              MessageBoxButtons::OK, MessageBoxIcon::Warning);
-        } else {
+        } else
+        {
 
             // luu user vao file
             array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
@@ -66,5 +72,15 @@ System::Void SetPinForm::btnShowPw_Click(System::Object ^ sender,
         password->PasswordChar = '*';
         isShowPw = true;
     }
+}
+
+    System::Void SetPinForm::btnShowConfirm_Click(System::Object ^ sender,
+        System::EventArgs ^ e){
+        if (txtConfirm->PasswordChar == '\0') {
+            txtConfirm->PasswordChar = '\*';
+        } else {
+            txtConfirm->PasswordChar = '\0';
+        }
+    }
 };
-} // namespace BankingAppwinform
+ // namespace BankingAppwinform

@@ -4,6 +4,8 @@
 #include "User.h"
 #include "Validate.h"
 #include "Utils.h"
+using namespace System::Drawing;
+using namespace System::Drawing::Drawing2D;
 
 namespace BankingAppwinform {
 
@@ -23,13 +25,13 @@ ref class SignupForm : public System::Windows::Forms::Form {
     ~SignupForm();
 
   private:
-    System::Windows::Forms::CheckBox ^ btnShowPw;
+
     System::Windows::Forms::Label ^ label6;
     System::Windows::Forms::Label ^ labelAuth;
     System::Windows::Forms::Label ^ label7;
     System::Windows::Forms::Button ^ btnSubmit;
     System::Windows::Forms::Label ^ label9;
-    System::Windows::Forms::CheckBox ^ btnShowPwCf;
+
     System::Windows::Forms::Label ^ label1;
     System::Windows::Forms::Panel ^ panel1;
     System::Windows::Forms::TextBox ^ fullName;
@@ -39,6 +41,12 @@ ref class SignupForm : public System::Windows::Forms::Form {
     System::Windows::Forms::TextBox ^ password;
     System::Windows::Forms::Panel ^ panel4;
     System::Windows::Forms::TextBox ^ passwordConfirm;
+
+  private:
+    System::Windows::Forms::Label ^ label4;
+
+  private:
+    System::Windows::Forms::Label ^ label2;
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -46,47 +54,27 @@ ref class SignupForm : public System::Windows::Forms::Form {
         System::ComponentModel::ComponentResourceManager ^ resources =
             (gcnew System::ComponentModel::ComponentResourceManager(
                 SignupForm::typeid));
-        this->btnShowPw = (gcnew System::Windows::Forms::CheckBox());
         this->label6 = (gcnew System::Windows::Forms::Label());
         this->labelAuth = (gcnew System::Windows::Forms::Label());
         this->label7 = (gcnew System::Windows::Forms::Label());
         this->btnSubmit = (gcnew System::Windows::Forms::Button());
         this->label9 = (gcnew System::Windows::Forms::Label());
-        this->btnShowPwCf = (gcnew System::Windows::Forms::CheckBox());
         this->label1 = (gcnew System::Windows::Forms::Label());
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->fullName = (gcnew System::Windows::Forms::TextBox());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
         this->panel3 = (gcnew System::Windows::Forms::Panel());
+        this->label2 = (gcnew System::Windows::Forms::Label());
         this->password = (gcnew System::Windows::Forms::TextBox());
         this->panel4 = (gcnew System::Windows::Forms::Panel());
+        this->label4 = (gcnew System::Windows::Forms::Label());
         this->passwordConfirm = (gcnew System::Windows::Forms::TextBox());
         this->panel1->SuspendLayout();
         this->panel2->SuspendLayout();
         this->panel3->SuspendLayout();
         this->panel4->SuspendLayout();
         this->SuspendLayout();
-        //
-        // btnShowPw
-        //
-        this->btnShowPw->BackColor = System::Drawing::Color::MintCream;
-        this->btnShowPw->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnShowPw->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->btnShowPw->ForeColor =
-            System::Drawing::SystemColors::ActiveCaptionText;
-        this->btnShowPw->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->btnShowPw->Location = System::Drawing::Point(541, 281);
-        this->btnShowPw->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-        this->btnShowPw->Name = L"btnShowPw";
-        this->btnShowPw->Padding = System::Windows::Forms::Padding(7, 7, 7, 6);
-        this->btnShowPw->Size = System::Drawing::Size(124, 46);
-        this->btnShowPw->TabIndex = 41;
-        this->btnShowPw->Text = L"Show";
-        this->btnShowPw->UseVisualStyleBackColor = false;
-        this->btnShowPw->CheckedChanged += gcnew System::EventHandler(
-            this, &SignupForm::btnShowPw_CheckedChanged);
         //
         // label6
         //
@@ -151,10 +139,10 @@ ref class SignupForm : public System::Windows::Forms::Form {
             static_cast<System::Byte>(0)));
         this->btnSubmit->ForeColor = System::Drawing::Color::White;
         this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->btnSubmit->Location = System::Drawing::Point(76, 481);
-        this->btnSubmit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnSubmit->Location = System::Drawing::Point(73, 461);
+        this->btnSubmit->Margin = System::Windows::Forms::Padding(4);
         this->btnSubmit->Name = L"btnSubmit";
-        this->btnSubmit->Size = System::Drawing::Size(589, 52);
+        this->btnSubmit->Size = System::Drawing::Size(592, 52);
         this->btnSubmit->TabIndex = 35;
         this->btnSubmit->Text = L"Sign Up";
         this->btnSubmit->UseVisualStyleBackColor = false;
@@ -177,27 +165,6 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->label9->TabIndex = 43;
         this->label9->Text = L"Name";
         //
-        // btnShowPwCf
-        //
-        this->btnShowPwCf->BackColor = System::Drawing::Color::MintCream;
-        this->btnShowPwCf->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnShowPwCf->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->btnShowPwCf->ForeColor =
-            System::Drawing::SystemColors::ActiveCaptionText;
-        this->btnShowPwCf->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->btnShowPwCf->Location = System::Drawing::Point(541, 386);
-        this->btnShowPwCf->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-        this->btnShowPwCf->Name = L"btnShowPwCf";
-        this->btnShowPwCf->Padding =
-            System::Windows::Forms::Padding(7, 7, 7, 6);
-        this->btnShowPwCf->Size = System::Drawing::Size(124, 46);
-        this->btnShowPwCf->TabIndex = 46;
-        this->btnShowPwCf->Text = L"Show";
-        this->btnShowPwCf->UseVisualStyleBackColor = false;
-        this->btnShowPwCf->CheckedChanged += gcnew System::EventHandler(
-            this, &SignupForm::btnShowPwCf_CheckedChanged);
-        //
         // label1
         //
         this->label1->AutoSize = true;
@@ -219,7 +186,7 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->panel1->BackColor = System::Drawing::Color::White;
         this->panel1->Controls->Add(this->fullName);
         this->panel1->Location = System::Drawing::Point(76, 175);
-        this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel1->Margin = System::Windows::Forms::Padding(4);
         this->panel1->Name = L"panel1";
         this->panel1->Size = System::Drawing::Size(283, 46);
         this->panel1->TabIndex = 47;
@@ -236,7 +203,7 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->fullName->Font =
             (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->fullName->Location = System::Drawing::Point(24, 7);
-        this->fullName->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->fullName->Margin = System::Windows::Forms::Padding(4);
         this->fullName->MaxLength = 35;
         this->fullName->Multiline = true;
         this->fullName->Name = L"fullName";
@@ -248,7 +215,7 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->panel2->BackColor = System::Drawing::Color::White;
         this->panel2->Controls->Add(this->phoneNumber);
         this->panel2->Location = System::Drawing::Point(380, 175);
-        this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel2->Margin = System::Windows::Forms::Padding(4);
         this->panel2->Name = L"panel2";
         this->panel2->Size = System::Drawing::Size(285, 46);
         this->panel2->TabIndex = 48;
@@ -266,7 +233,7 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->phoneNumber->Font =
             (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->phoneNumber->Location = System::Drawing::Point(24, 7);
-        this->phoneNumber->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->phoneNumber->Margin = System::Windows::Forms::Padding(4);
         this->phoneNumber->MaxLength = 10;
         this->phoneNumber->Multiline = true;
         this->phoneNumber->Name = L"phoneNumber";
@@ -276,12 +243,27 @@ ref class SignupForm : public System::Windows::Forms::Form {
         // panel3
         //
         this->panel3->BackColor = System::Drawing::Color::White;
+        this->panel3->Controls->Add(this->label2);
         this->panel3->Controls->Add(this->password);
         this->panel3->Location = System::Drawing::Point(76, 281);
-        this->panel3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel3->Margin = System::Windows::Forms::Padding(4);
         this->panel3->Name = L"panel3";
-        this->panel3->Size = System::Drawing::Size(472, 46);
+        this->panel3->Size = System::Drawing::Size(589, 46);
         this->panel3->TabIndex = 49;
+        //
+        // label2
+        //
+        this->label2->BackColor = System::Drawing::Color::Transparent;
+        this->label2->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"label2.Image")));
+        this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label2->Location = System::Drawing::Point(520, 7);
+        this->label2->Name = L"label2";
+        this->label2->Size = System::Drawing::Size(66, 34);
+        this->label2->TabIndex = 52;
+        this->label2->Text = L"            ";
+        this->label2->Click +=
+            gcnew System::EventHandler(this, &SignupForm::label2_Click);
         //
         // password
         //
@@ -295,23 +277,38 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->password->Font =
             (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->password->Location = System::Drawing::Point(24, 7);
-        this->password->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->password->Margin = System::Windows::Forms::Padding(4);
         this->password->MaxLength = 9;
         this->password->Multiline = true;
         this->password->Name = L"password";
         this->password->PasswordChar = '*';
-        this->password->Size = System::Drawing::Size(444, 34);
+        this->password->Size = System::Drawing::Size(561, 34);
         this->password->TabIndex = 29;
         //
         // panel4
         //
         this->panel4->BackColor = System::Drawing::Color::White;
+        this->panel4->Controls->Add(this->label4);
         this->panel4->Controls->Add(this->passwordConfirm);
         this->panel4->Location = System::Drawing::Point(76, 386);
-        this->panel4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel4->Margin = System::Windows::Forms::Padding(4);
         this->panel4->Name = L"panel4";
-        this->panel4->Size = System::Drawing::Size(468, 46);
+        this->panel4->Size = System::Drawing::Size(592, 46);
         this->panel4->TabIndex = 50;
+        //
+        // label4
+        //
+        this->label4->BackColor = System::Drawing::Color::Transparent;
+        this->label4->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"label4.Image")));
+        this->label4->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label4->Location = System::Drawing::Point(522, 7);
+        this->label4->Name = L"label4";
+        this->label4->Size = System::Drawing::Size(66, 34);
+        this->label4->TabIndex = 51;
+        this->label4->Text = L"            ";
+        this->label4->Click +=
+            gcnew System::EventHandler(this, &SignupForm::label4_Click);
         //
         // passwordConfirm
         //
@@ -326,22 +323,20 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->passwordConfirm->Font =
             (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->passwordConfirm->Location = System::Drawing::Point(24, 7);
-        this->passwordConfirm->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->passwordConfirm->Margin = System::Windows::Forms::Padding(4);
         this->passwordConfirm->MaxLength = 9;
         this->passwordConfirm->Multiline = true;
         this->passwordConfirm->Name = L"passwordConfirm";
         this->passwordConfirm->PasswordChar = '*';
-        this->passwordConfirm->Size = System::Drawing::Size(440, 34);
+        this->passwordConfirm->Size = System::Drawing::Size(564, 34);
         this->passwordConfirm->TabIndex = 29;
         //
         // SignupForm
         //
+        this->AcceptButton = this->btnSubmit;
         this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->BackColor = System::Drawing::Color::Tomato;
-        this->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"$this.BackgroundImage")));
+        this->BackColor = System::Drawing::Color::HotPink;
         this->BackgroundImageLayout =
             System::Windows::Forms::ImageLayout::Stretch;
         this->ClientSize = System::Drawing::Size(729, 601);
@@ -349,19 +344,19 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->panel3);
         this->Controls->Add(this->panel2);
         this->Controls->Add(this->panel1);
-        this->Controls->Add(this->btnShowPwCf);
         this->Controls->Add(this->label1);
         this->Controls->Add(this->label9);
-        this->Controls->Add(this->btnShowPw);
         this->Controls->Add(this->label6);
         this->Controls->Add(this->labelAuth);
         this->Controls->Add(this->label7);
         this->Controls->Add(this->btnSubmit);
-        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->Margin = System::Windows::Forms::Padding(4);
         this->Name = L"SignupForm";
         this->Text = L"SignupForm";
         this->Load +=
             gcnew System::EventHandler(this, &SignupForm::SignupForm_Load);
+        this->Paint += gcnew System::Windows::Forms::PaintEventHandler(
+            this, &SignupForm::SignupForm_Paint);
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
         this->panel2->ResumeLayout(false);
@@ -375,6 +370,22 @@ ref class SignupForm : public System::Windows::Forms::Form {
     }
 #pragma endregion
 
+    System::Void SignupForm_Paint(System::Object ^ sender,
+                                    System::Windows::Forms::PaintEventArgs ^
+                                        e) {
+        Graphics ^ g = e->Graphics;
+        Rectangle rect = this->ClientRectangle;
+
+        // Gradient từ hồng đậm sang hồng nhạt
+        LinearGradientBrush ^ pinkGradient = gcnew LinearGradientBrush(
+            rect, Color::FromArgb(138, 43, 226),
+            Color::FromArgb(255, 105, 180),     // 💖 Hot Pink
+            LinearGradientMode::ForwardDiagonal // Hướng chéo
+        );
+
+        g->FillRectangle(pinkGradient, rect);
+    }
+
   public:
     event EventHandler ^ SignupSuccess;
 
@@ -382,16 +393,19 @@ ref class SignupForm : public System::Windows::Forms::Form {
     System::Void btnSubmit_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
 
-    System::Void btnShowPwCf_CheckedChanged(System::Object ^ sender,
-                                            System::EventArgs ^ e);
-
-    System::Void btnShowPw_CheckedChanged(System::Object ^ sender,
-                                          System::EventArgs ^ e);
-
     System::Void SignupForm_Load(System::Object ^ sender,
                                  System::EventArgs ^ e) {}
 
     bool isUsedPhoneNumber(String ^ phoneNumber);
     int randomAccountNumber();
+
+  private:
+    System::Void label4_Click(System::Object ^ sender, System::EventArgs ^ e);
+
+
+  private:
+    System::Void label2_Click(System::Object ^ sender, System::EventArgs ^ e);
+
+
 };
 } // namespace BankingAppwinform

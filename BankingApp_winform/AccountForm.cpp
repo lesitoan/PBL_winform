@@ -5,6 +5,10 @@ AccountForm::AccountForm(Form ^ parentForm) {
     InitializeComponent();
     loadAvatar();
     this->parentForm = parentForm;
+    axWindowsMediaPlayer2->uiMode = "none";
+    axWindowsMediaPlayer2->settings->setMode("loop", true);
+    axWindowsMediaPlayer2->URL = "C:\\Users\\ADMIN\\Downloads\\TP.mp4";
+    axWindowsMediaPlayer2->Ctlcontrols->play();
 }
 
 AccountForm::~AccountForm() {
@@ -28,24 +32,28 @@ System::Void AccountForm::AccountForm_Load(System::Object ^ sender,
 System::Void AccountForm::btnChangePw_Click(System::Object ^ sender,
                                             System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew ChangePwForm());
-    ChangeButtonColor(btnChangePw);
+    /*ChangeButtonColor(btnChangePw);*/
+    axWindowsMediaPlayer2->Ctlcontrols->pause();
 }
 
 System::Void AccountForm::btnSetPin_Click(System::Object ^ sender,
                                           System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew SetPinForm());
-    ChangeButtonColor(btnSetPin);
+    /*ChangeButtonColor(btnSetPin);*/
+    axWindowsMediaPlayer2->Ctlcontrols->pause();
 }
 
 System::Void AccountForm::buttonSetAvatar_Click(System::Object ^ sender,
                                                 System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew SetAvatarForm());
-    ChangeButtonColor(buttonSetAvatar);
+    /*ChangeButtonColor(buttonSetAvatar);*/
+    axWindowsMediaPlayer2->Ctlcontrols->pause();
 }
 
 System::Void AccountForm::btnLockAccount_Click(System::Object ^ sender,
                                                  System::EventArgs ^ e) {
     //ChangeButtonColor(btnLockAccount);
+    axWindowsMediaPlayer2->Ctlcontrols->pause();
     System::Windows::Forms::DialogResult result;
     result = MessageBox::Show(L"Bạn có chắc chắn muốn khóa tài khoản, sau khi khóa chỉ có thể đến NH để mở khóa !",
                               L"Lưu thay đổi", MessageBoxButtons::YesNo,

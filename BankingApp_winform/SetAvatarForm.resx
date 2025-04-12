@@ -121,15 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnInsertAvatar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADoAAAA6CAYAAADhu0ooAAAABGdBTUEAALGPC/xhBQAAALpJREFUaEPt
-        1T2qAjEUQOEptLKx9AfsLAW1sBfsFHEl7tSVPFegyHgCEwkvQevo+eA0uQZyi8FGkiRJkiRJkvRW27al
-        enSleXL2qkqlRahPwZqyeZVKi1BcdEXZvEqlRejnFl1SNq8SD9/QkQ5JJwrOtKd4Hn637a7WhYdfKLj9
-        K7hTevagv+5qXXj4gKY0TppRsKMRxfMJDburdeHhpb7yGy3l30uoSqVFKC66oGwuSZIkSZIkSfqgaZ77
-        0fBVl+FWiQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="pictureBoxAvatar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAACO
