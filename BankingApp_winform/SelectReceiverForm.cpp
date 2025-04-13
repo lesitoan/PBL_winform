@@ -1,9 +1,11 @@
 ﻿#include "SelectReceiverForm.h"
+#include"GradientHelper.h"
 
 namespace BankingAppwinform {
 SelectReceiverForm::SelectReceiverForm(User ^ user) {
     InitializeComponent();
     loadAccHistory(user);
+    GradientColorHelper::ApplyGradient(this);
 }
 
 SelectReceiverForm::~SelectReceiverForm() {

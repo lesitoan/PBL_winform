@@ -95,6 +95,7 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
+        this->panel1->BackColor = System::Drawing::Color::Transparent;
         this->panel1->BackgroundImageLayout =
             System::Windows::Forms::ImageLayout::Stretch;
         this->panel1->Controls->Add(this->panel4);
@@ -352,8 +353,14 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
                  System::Windows::Forms::AnchorStyles::Right));
         this->btnSubmit->BackColor = System::Drawing::Color::Transparent;
         this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnSubmit->FlatAppearance->BorderSize = 0;
-        this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+        this->btnSubmit->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::White;
+        this->btnSubmit->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnSubmit->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,

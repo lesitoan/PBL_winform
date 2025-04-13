@@ -24,10 +24,10 @@ ref class SetAvatarForm : public System::Windows::Forms::Form {
         InitializeComponent();
         loadAvatar();
         GradientColorHelper::ApplyGradient(this);
-        GradientColorHelper::ApplyGradient(this->panel1);
+       /* GradientColorHelper::ApplyGradient(this->panel1);
         GradientColorHelper::ApplyRoundedCorners(this->panel1, 20);
         GradientColorHelper::ApplyRoundedCorners(this->btnInsertAvatar, 10);
-        GradientColorHelper::ApplyRoundedCorners(this->button1, 10);
+        GradientColorHelper::ApplyRoundedCorners(this->button1, 10);*/
     }
 
   protected:

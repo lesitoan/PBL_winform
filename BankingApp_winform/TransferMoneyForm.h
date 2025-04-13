@@ -148,8 +148,12 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnSelectAccHistory->AutoSize = true;
         this->btnSelectAccHistory->BackColor =
             System::Drawing::Color::Transparent;
+        this->btnSelectAccHistory->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
         this->btnSelectAccHistory->Cursor =
             System::Windows::Forms::Cursors::Hand;
+        this->btnSelectAccHistory->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
         this->btnSelectAccHistory->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
@@ -162,7 +166,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnSelectAccHistory->Margin =
             System::Windows::Forms::Padding(4, 0, 4, 0);
         this->btnSelectAccHistory->Name = L"btnSelectAccHistory";
-        this->btnSelectAccHistory->Size = System::Drawing::Size(253, 26);
+        this->btnSelectAccHistory->Size = System::Drawing::Size(255, 28);
         this->btnSelectAccHistory->TabIndex = 60;
         this->btnSelectAccHistory->Text = L"Select from traded accounts";
         this->btnSelectAccHistory->Click += gcnew System::EventHandler(
@@ -212,7 +216,20 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
                  System::Windows::Forms::AnchorStyles::Right));
         this->btnFindAccount->BackColor = System::Drawing::Color::Transparent;
         this->btnFindAccount->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnFindAccount->FlatAppearance->BorderSize = 0;
+        this->btnFindAccount->FlatAppearance->BorderColor =
+            System::Drawing::Color::White;
+        this->btnFindAccount->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnFindAccount->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::White;
+        this->btnFindAccount->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnFindAccount->FlatStyle =
             System::Windows::Forms::FlatStyle::Flat;
         this->btnFindAccount->Font = (gcnew System::Drawing::Font(
@@ -455,21 +472,22 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->labelReceiver->AutoSize = true;
+        this->labelReceiver->BackColor = System::Drawing::Color::Transparent;
         this->labelReceiver->Cursor = System::Windows::Forms::Cursors::Hand;
         this->labelReceiver->FlatStyle =
             System::Windows::Forms::FlatStyle::Flat;
         this->labelReceiver->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            L"UTM Daxline", 13.8F, System::Drawing::FontStyle::Bold,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->labelReceiver->ForeColor = System::Drawing::Color::SpringGreen;
+        this->labelReceiver->ForeColor = System::Drawing::Color::Coral;
         this->labelReceiver->ImeMode =
             System::Windows::Forms::ImeMode::NoControl;
         this->labelReceiver->Location = System::Drawing::Point(120, 16);
         this->labelReceiver->Margin =
             System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelReceiver->Name = L"labelReceiver";
-        this->labelReceiver->Size = System::Drawing::Size(189, 26);
+        this->labelReceiver->Size = System::Drawing::Size(212, 30);
         this->labelReceiver->TabIndex = 66;
         this->labelReceiver->Text = L"Receiver: LE SI TOAN";
         //
@@ -480,6 +498,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->label4->AutoSize = true;
+        this->label4->BackColor = System::Drawing::Color::Transparent;
         this->label4->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label4->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
@@ -501,6 +520,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->label3->AutoSize = true;
+        this->label3->BackColor = System::Drawing::Color::Transparent;
         this->label3->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label3->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
@@ -522,6 +542,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->label2->AutoSize = true;
+        this->label2->BackColor = System::Drawing::Color::Transparent;
         this->label2->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label2->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
@@ -542,15 +563,28 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->btnSubmit->BackColor = System::Drawing::SystemColors::Info;
+        this->btnSubmit->BackColor = System::Drawing::Color::Transparent;
         this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnSubmit->FlatAppearance->BorderSize = 0;
+        this->btnSubmit->FlatAppearance->BorderColor =
+            System::Drawing::Color::White;
+        this->btnSubmit->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnSubmit->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::White;
+        this->btnSubmit->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnSubmit->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->btnSubmit->ForeColor = System::Drawing::Color::Teal;
+        this->btnSubmit->ForeColor = System::Drawing::Color::White;
         this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->btnSubmit->Location = System::Drawing::Point(127, 283);
         this->btnSubmit->Margin = System::Windows::Forms::Padding(4);

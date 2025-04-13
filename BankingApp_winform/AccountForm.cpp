@@ -1,4 +1,5 @@
 ﻿#include "AccountForm.h"
+#include"GradientHelper.h"
 
 namespace BankingAppwinform {
 AccountForm::AccountForm(Form ^ parentForm) { 
@@ -9,11 +10,14 @@ AccountForm::AccountForm(Form ^ parentForm) {
     axWindowsMediaPlayer2->settings->setMode("loop", true);
     axWindowsMediaPlayer2->URL = "C:\\Users\\ADMIN\\Downloads\\TP.mp4";
     axWindowsMediaPlayer2->Ctlcontrols->play();
+    GradientColorHelper::ApplyGradient(this->panel1);
+    GradientColorHelper::ApplyGradient(this->panel2);
 }
 
 AccountForm::~AccountForm() {
     if (components) {
         delete components;
+        axWindowsMediaPlayer2->Ctlcontrols->pause();
     }
 }
 

@@ -302,8 +302,12 @@ ref class SetPinForm : public System::Windows::Forms::Form {
                  System::Windows::Forms::AnchorStyles::Right));
         this->button1->BackColor = System::Drawing::Color::Transparent;
         this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->button1->FlatAppearance->BorderSize = 0;
-        this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+        this->button1->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->button1->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 16.2F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,

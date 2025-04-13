@@ -155,9 +155,18 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Windows::Forms::ImageLayout::Stretch;
         this->btnSaveMoney->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnSaveMoney->Dock = System::Windows::Forms::DockStyle::Top;
-        this->btnSaveMoney->FlatAppearance->BorderSize = 0;
+        this->btnSaveMoney->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::MistyRose;
         this->btnSaveMoney->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnSaveMoney->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnSaveMoney->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnSaveMoney->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
@@ -188,9 +197,18 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Windows::Forms::ImageLayout::Stretch;
         this->btnHistory->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnHistory->Dock = System::Windows::Forms::DockStyle::Top;
-        this->btnHistory->FlatAppearance->BorderSize = 0;
+        this->btnHistory->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::MistyRose;
         this->btnHistory->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnHistory->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnHistory->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnHistory->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
@@ -220,9 +238,18 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Windows::Forms::ImageLayout::Stretch;
         this->btnServicePayment->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnServicePayment->Dock = System::Windows::Forms::DockStyle::Top;
-        this->btnServicePayment->FlatAppearance->BorderSize = 0;
+        this->btnServicePayment->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::MistyRose;
         this->btnServicePayment->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnServicePayment->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnServicePayment->FlatStyle =
             System::Windows::Forms::FlatStyle::Flat;
         this->btnServicePayment->Font = (gcnew System::Drawing::Font(
@@ -256,9 +283,18 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Windows::Forms::Cursors::Hand;
         this->btnRecurringPayment->Dock =
             System::Windows::Forms::DockStyle::Top;
-        this->btnRecurringPayment->FlatAppearance->BorderSize = 0;
+        this->btnRecurringPayment->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::MistyRose;
         this->btnRecurringPayment->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnRecurringPayment->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnRecurringPayment->FlatStyle =
             System::Windows::Forms::FlatStyle::Flat;
         this->btnRecurringPayment->Font = (gcnew System::Drawing::Font(
@@ -291,9 +327,18 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Windows::Forms::ImageLayout::Stretch;
         this->btnCode->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnCode->Dock = System::Windows::Forms::DockStyle::Top;
-        this->btnCode->FlatAppearance->BorderSize = 0;
+        this->btnCode->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::MistyRose;
         this->btnCode->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnCode->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnCode->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnCode->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
@@ -323,9 +368,18 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Windows::Forms::ImageLayout::Stretch;
         this->btnWithdraw->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnWithdraw->Dock = System::Windows::Forms::DockStyle::Top;
-        this->btnWithdraw->FlatAppearance->BorderSize = 0;
+        this->btnWithdraw->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::MistyRose;
         this->btnWithdraw->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnWithdraw->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnWithdraw->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnWithdraw->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
@@ -355,9 +409,18 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Windows::Forms::ImageLayout::Stretch;
         this->btnTransfer->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnTransfer->Dock = System::Windows::Forms::DockStyle::Top;
-        this->btnTransfer->FlatAppearance->BorderSize = 0;
+        this->btnTransfer->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::MistyRose;
         this->btnTransfer->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnTransfer->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnTransfer->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnTransfer->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
@@ -387,9 +450,18 @@ ref class MainForm : public System::Windows::Forms::Form {
             System::Windows::Forms::ImageLayout::Stretch;
         this->btnAccount->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnAccount->Dock = System::Windows::Forms::DockStyle::Top;
-        this->btnAccount->FlatAppearance->BorderSize = 0;
+        this->btnAccount->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::MistyRose;
         this->btnAccount->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnAccount->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnAccount->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnAccount->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
@@ -675,13 +747,15 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->panel3);
         this->Controls->Add(this->panelHeader);
         this->Controls->Add(this->panelNav);
+        this->Icon = (cli::safe_cast<System::Drawing::Icon ^>(
+            resources->GetObject(L"$this.Icon")));
         this->Margin = System::Windows::Forms::Padding(4);
         this->MinimumSize = System::Drawing::Size(1194, 728);
         this->Name = L"MainForm";
         this->ShowInTaskbar = false;
         this->StartPosition =
             System::Windows::Forms::FormStartPosition::CenterScreen;
-        this->Text = L"MainForm";
+        this->Text = L"TP Bank";
         this->Load +=
             gcnew System::EventHandler(this, &MainForm::MainForm_Load);
         this->panelNav->ResumeLayout(false);
@@ -751,5 +825,6 @@ private:
 private:
     System::Void labelBalance_Click(System::Object ^ sender,
                                     System::EventArgs ^ e);
+
 };
 } // namespace BankingAppwinform

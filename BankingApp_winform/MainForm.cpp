@@ -15,10 +15,10 @@ MainForm::~MainForm() {
     }
 }
 void MainForm::ChangeButtonColor(Button ^ button) {
-    /*if (selectedButton != nullptr) {
-        selectedButton->BackColor = System::Drawing::Color::FromArgb(147, 112, 219);
+    if (selectedButton != nullptr) {
+        selectedButton->BackColor = System::Drawing::Color::FromArgb(255, 100, 100);
     }
-    selectedButton = button;*/
+    selectedButton = button;
     AccountForm::axWindowsMediaPlayer2->Ctlcontrols->pause();
 }
 

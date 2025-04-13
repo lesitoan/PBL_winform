@@ -22,33 +22,22 @@ public
 ref class AccountForm : public System::Windows::Forms::Form {
   public:
     AccountForm(Form ^ parentForm);
+  
+  private:
+    static AccountForm ^ instance = nullptr;
+
+  public:
+    static AxWMPLib::AxWindowsMediaPlayer ^ axWindowsMediaPlayer2;
 
   protected:
     ~AccountForm();
 
   private:
-    System::Windows::Forms::Panel ^ panel1;
-    System::Windows::Forms::Label ^ labelAccountNumber;
-    System::Windows::Forms::Label ^ labelFullName;
-    System::Windows::Forms::Label ^ labelBalance;
-
 
     System::Windows::Forms::Panel ^ panelContent;
 
   private:
-    System::Windows::Forms::PictureBox ^ pictureBoxAvatar;
-
-    System::Windows::Forms::Label ^ label1;
-    System::Windows::Forms::Panel ^ panel2;
-
-  public:
-    static AxWMPLib::AxWindowsMediaPlayer ^ axWindowsMediaPlayer2;
-
-  private:
     System::Windows::Forms::Panel ^ panelBtn1;
-
-  private:
-    System::Windows::Forms::Button ^ btnSetPin;
 
   private:
     System::Windows::Forms::Panel ^ panelBtn3;
@@ -63,13 +52,43 @@ ref class AccountForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panelBtn2;
 
   private:
-    System::Windows::Forms::Button ^ buttonSetAvatar;
-
-  private:
     System::Windows::Forms::Button ^ btnLockAccount;
 
   private:
+    System::Windows::Forms::Button ^ buttonSetAvatar;
+
+  private:
     System::Windows::Forms::Button ^ btnChangePw;
+
+  private:
+    System::Windows::Forms::Button ^ btnSetPin;
+
+  private:
+    System::Windows::Forms::Label ^ labelBalance;
+
+  private:
+    System::Windows::Forms::Label ^ label1;
+
+  private:
+    System::Windows::Forms::Panel ^ panel2;
+
+  private:
+    System::Windows::Forms::PictureBox ^ pictureBoxAvatar;
+
+  private:
+    System::Windows::Forms::Label ^ labelFullName;
+
+  private:
+    System::Windows::Forms::Label ^ labelAccountNumber;
+
+  private:
+    System::Windows::Forms::Panel ^ panel1;
+
+  private:
+    System::Windows::Forms::Label ^ label2;
+
+  private:
+    System::Windows::Forms::Label ^ label3;
 
   private:
     System::ComponentModel::Container ^ components;
@@ -79,13 +98,6 @@ ref class AccountForm : public System::Windows::Forms::Form {
         System::ComponentModel::ComponentResourceManager ^ resources =
             (gcnew System::ComponentModel::ComponentResourceManager(
                 AccountForm::typeid));
-        this->panel1 = (gcnew System::Windows::Forms::Panel());
-        this->panel2 = (gcnew System::Windows::Forms::Panel());
-        this->pictureBoxAvatar = (gcnew System::Windows::Forms::PictureBox());
-        this->labelFullName = (gcnew System::Windows::Forms::Label());
-        this->labelAccountNumber = (gcnew System::Windows::Forms::Label());
-        this->label1 = (gcnew System::Windows::Forms::Label());
-        this->labelBalance = (gcnew System::Windows::Forms::Label());
         this->panelContent = (gcnew System::Windows::Forms::Panel());
         this->axWindowsMediaPlayer2 = (gcnew AxWMPLib::AxWindowsMediaPlayer());
         this->panelBtn1 = (gcnew System::Windows::Forms::Panel());
@@ -97,11 +109,15 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panelNav = (gcnew System::Windows::Forms::Panel());
         this->panelBtn2 = (gcnew System::Windows::Forms::Panel());
         this->btnChangePw = (gcnew System::Windows::Forms::Button());
-        this->panel1->SuspendLayout();
-        this->panel2->SuspendLayout();
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->pictureBoxAvatar))
-            ->BeginInit();
+        this->labelBalance = (gcnew System::Windows::Forms::Label());
+        this->label1 = (gcnew System::Windows::Forms::Label());
+        this->panel2 = (gcnew System::Windows::Forms::Panel());
+        this->label3 = (gcnew System::Windows::Forms::Label());
+        this->label2 = (gcnew System::Windows::Forms::Label());
+        this->pictureBoxAvatar = (gcnew System::Windows::Forms::PictureBox());
+        this->labelFullName = (gcnew System::Windows::Forms::Label());
+        this->labelAccountNumber = (gcnew System::Windows::Forms::Label());
+        this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->panelContent->SuspendLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->axWindowsMediaPlayer2))
@@ -111,130 +127,12 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panelBtn4->SuspendLayout();
         this->panelNav->SuspendLayout();
         this->panelBtn2->SuspendLayout();
+        this->panel2->SuspendLayout();
+        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
+             this->pictureBoxAvatar))
+            ->BeginInit();
+        this->panel1->SuspendLayout();
         this->SuspendLayout();
-        //
-        // panel1
-        //
-        this->panel1->BackColor = System::Drawing::Color::LightPink;
-        this->panel1->BackgroundImage =
-            (cli::safe_cast<System::Drawing::Image ^>(
-                resources->GetObject(L"panel1.BackgroundImage")));
-        this->panel1->BackgroundImageLayout =
-            System::Windows::Forms::ImageLayout::Stretch;
-        this->panel1->Controls->Add(this->panel2);
-        this->panel1->Controls->Add(this->label1);
-        this->panel1->Controls->Add(this->labelBalance);
-        this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
-        this->panel1->Location = System::Drawing::Point(0, 0);
-        this->panel1->Margin = System::Windows::Forms::Padding(4);
-        this->panel1->Name = L"panel1";
-        this->panel1->Size = System::Drawing::Size(853, 106);
-        this->panel1->TabIndex = 0;
-        //
-        // panel2
-        //
-        this->panel2->BackgroundImage =
-            (cli::safe_cast<System::Drawing::Image ^>(
-                resources->GetObject(L"panel2.BackgroundImage")));
-        this->panel2->BackgroundImageLayout =
-            System::Windows::Forms::ImageLayout::Stretch;
-        this->panel2->Controls->Add(this->pictureBoxAvatar);
-        this->panel2->Controls->Add(this->labelFullName);
-        this->panel2->Controls->Add(this->labelAccountNumber);
-        this->panel2->Dock = System::Windows::Forms::DockStyle::Right;
-        this->panel2->Location = System::Drawing::Point(394, 0);
-        this->panel2->Margin = System::Windows::Forms::Padding(4);
-        this->panel2->Name = L"panel2";
-        this->panel2->Size = System::Drawing::Size(459, 106);
-        this->panel2->TabIndex = 6;
-        //
-        // pictureBoxAvatar
-        //
-        this->pictureBoxAvatar->BackColor = System::Drawing::Color::Transparent;
-        this->pictureBoxAvatar->Image =
-            (cli::safe_cast<System::Drawing::Image ^>(
-                resources->GetObject(L"pictureBoxAvatar.Image")));
-        this->pictureBoxAvatar->Location = System::Drawing::Point(356, 15);
-        this->pictureBoxAvatar->Margin = System::Windows::Forms::Padding(4);
-        this->pictureBoxAvatar->Name = L"pictureBoxAvatar";
-        this->pictureBoxAvatar->Size = System::Drawing::Size(70, 68);
-        this->pictureBoxAvatar->SizeMode =
-            System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-        this->pictureBoxAvatar->TabIndex = 4;
-        this->pictureBoxAvatar->TabStop = false;
-        //
-        // labelFullName
-        //
-        this->labelFullName->BackColor = System::Drawing::Color::Transparent;
-        this->labelFullName->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        this->labelFullName->ForeColor =
-            System::Drawing::SystemColors::ButtonFace;
-        this->labelFullName->Location = System::Drawing::Point(213, 15);
-        this->labelFullName->Margin =
-            System::Windows::Forms::Padding(4, 0, 4, 0);
-        this->labelFullName->Name = L"labelFullName";
-        this->labelFullName->Size = System::Drawing::Size(113, 22);
-        this->labelFullName->TabIndex = 0;
-        this->labelFullName->Text = L"LE SI TOAN";
-        this->labelFullName->TextAlign =
-            System::Drawing::ContentAlignment::MiddleRight;
-        //
-        // labelAccountNumber
-        //
-        this->labelAccountNumber->BackColor =
-            System::Drawing::Color::Transparent;
-        this->labelAccountNumber->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        this->labelAccountNumber->ForeColor =
-            System::Drawing::SystemColors::ButtonFace;
-        this->labelAccountNumber->Location = System::Drawing::Point(208, 37);
-        this->labelAccountNumber->Margin =
-            System::Windows::Forms::Padding(4, 0, 4, 0);
-        this->labelAccountNumber->Name = L"labelAccountNumber";
-        this->labelAccountNumber->Size = System::Drawing::Size(118, 46);
-        this->labelAccountNumber->TabIndex = 1;
-        this->labelAccountNumber->Text = L"1223232323";
-        this->labelAccountNumber->TextAlign =
-            System::Drawing::ContentAlignment::MiddleRight;
-        //
-        // label1
-        //
-        this->label1->AutoSize = true;
-        this->label1->BackColor = System::Drawing::Color::Transparent;
-        this->label1->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        this->label1->ForeColor = System::Drawing::SystemColors::ButtonFace;
-        this->label1->Location = System::Drawing::Point(16, 15);
-        this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-        this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(85, 26);
-        this->label1->TabIndex = 5;
-        this->label1->Text = L"Balance:";
-        //
-        // labelBalance
-        //
-        this->labelBalance->AutoSize = true;
-        this->labelBalance->BackColor = System::Drawing::Color::Transparent;
-        this->labelBalance->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        this->labelBalance->ForeColor =
-            System::Drawing::SystemColors::ButtonHighlight;
-        this->labelBalance->Location = System::Drawing::Point(109, 15);
-        this->labelBalance->Margin =
-            System::Windows::Forms::Padding(4, 0, 4, 0);
-        this->labelBalance->Name = L"labelBalance";
-        this->labelBalance->Size = System::Drawing::Size(115, 26);
-        this->labelBalance->TabIndex = 3;
-        this->labelBalance->Text = L"123000 VNĐ";
         //
         // panelContent
         //
@@ -268,7 +166,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
                    System::Windows::Forms::AnchorStyles::Bottom) |
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->panelBtn1->BackColor = System::Drawing::Color::Transparent;
+        this->panelBtn1->BackColor = System::Drawing::Color::White;
         this->panelBtn1->Controls->Add(this->btnSetPin);
         this->panelBtn1->Location = System::Drawing::Point(0, 0);
         this->panelBtn1->Margin = System::Windows::Forms::Padding(4);
@@ -283,9 +181,22 @@ ref class AccountForm : public System::Windows::Forms::Form {
             System::Windows::Forms::ImageLayout::Stretch;
         this->btnSetPin->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnSetPin->Dock = System::Windows::Forms::DockStyle::Fill;
-        this->btnSetPin->FlatAppearance->BorderSize = 0;
+        this->btnSetPin->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnSetPin->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnSetPin->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnSetPin->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnSetPin->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
@@ -305,7 +216,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         //
         // panelBtn3
         //
-        this->panelBtn3->BackColor = System::Drawing::Color::Transparent;
+        this->panelBtn3->BackColor = System::Drawing::Color::White;
         this->panelBtn3->Controls->Add(this->buttonSetAvatar);
         this->panelBtn3->Location = System::Drawing::Point(397, 0);
         this->panelBtn3->Margin = System::Windows::Forms::Padding(4);
@@ -315,14 +226,29 @@ ref class AccountForm : public System::Windows::Forms::Form {
         //
         // buttonSetAvatar
         //
+        this->buttonSetAvatar->AutoSize = true;
         this->buttonSetAvatar->BackColor = System::Drawing::Color::SeaShell;
         this->buttonSetAvatar->BackgroundImageLayout =
             System::Windows::Forms::ImageLayout::Stretch;
         this->buttonSetAvatar->Cursor = System::Windows::Forms::Cursors::Hand;
         this->buttonSetAvatar->Dock = System::Windows::Forms::DockStyle::Top;
-        this->buttonSetAvatar->FlatAppearance->BorderSize = 0;
+        this->buttonSetAvatar->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->buttonSetAvatar->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->buttonSetAvatar->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->buttonSetAvatar->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
         this->buttonSetAvatar->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
@@ -342,6 +268,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         //
         // panelBtn4
         //
+        this->panelBtn4->BackColor = System::Drawing::Color::White;
         this->panelBtn4->Controls->Add(this->btnLockAccount);
         this->panelBtn4->Location = System::Drawing::Point(627, 0);
         this->panelBtn4->Margin = System::Windows::Forms::Padding(4);
@@ -357,9 +284,23 @@ ref class AccountForm : public System::Windows::Forms::Form {
             System::Windows::Forms::ImageLayout::Stretch;
         this->btnLockAccount->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnLockAccount->Dock = System::Windows::Forms::DockStyle::Fill;
-        this->btnLockAccount->FlatAppearance->BorderSize = 0;
+        this->btnLockAccount->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnLockAccount->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnLockAccount->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnLockAccount->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
         this->btnLockAccount->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
@@ -395,10 +336,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         //
         // panelBtn2
         //
-        this->panelBtn2->BackColor = System::Drawing::Color::Transparent;
-        this->panelBtn2->BackgroundImage =
-            (cli::safe_cast<System::Drawing::Image ^>(
-                resources->GetObject(L"panelBtn2.BackgroundImage")));
+        this->panelBtn2->BackColor = System::Drawing::Color::White;
         this->panelBtn2->Controls->Add(this->btnChangePw);
         this->panelBtn2->Location = System::Drawing::Point(177, 0);
         this->panelBtn2->Margin = System::Windows::Forms::Padding(4);
@@ -412,9 +350,22 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->btnChangePw->BackgroundImageLayout =
             System::Windows::Forms::ImageLayout::Stretch;
         this->btnChangePw->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnChangePw->FlatAppearance->BorderSize = 0;
+        this->btnChangePw->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnChangePw->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnChangePw->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnChangePw->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnChangePw->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
@@ -432,11 +383,154 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->btnChangePw->Click +=
             gcnew System::EventHandler(this, &AccountForm::btnChangePw_Click);
         //
+        // labelBalance
+        //
+        this->labelBalance->AutoSize = true;
+        this->labelBalance->BackColor = System::Drawing::Color::Transparent;
+        this->labelBalance->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->labelBalance->ForeColor =
+            System::Drawing::SystemColors::ButtonHighlight;
+        this->labelBalance->Location = System::Drawing::Point(109, 15);
+        this->labelBalance->Margin =
+            System::Windows::Forms::Padding(4, 0, 4, 0);
+        this->labelBalance->Name = L"labelBalance";
+        this->labelBalance->Size = System::Drawing::Size(115, 26);
+        this->labelBalance->TabIndex = 3;
+        this->labelBalance->Text = L"123000 VNĐ";
+        //
+        // label1
+        //
+        this->label1->AutoSize = true;
+        this->label1->BackColor = System::Drawing::Color::Transparent;
+        this->label1->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->label1->ForeColor = System::Drawing::SystemColors::ButtonFace;
+        this->label1->Location = System::Drawing::Point(16, 15);
+        this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+        this->label1->Name = L"label1";
+        this->label1->Size = System::Drawing::Size(85, 26);
+        this->label1->TabIndex = 5;
+        this->label1->Text = L"Balance:";
+        //
+        // panel2
+        //
+        this->panel2->BackgroundImageLayout =
+            System::Windows::Forms::ImageLayout::Stretch;
+        this->panel2->Controls->Add(this->label3);
+        this->panel2->Controls->Add(this->label2);
+        this->panel2->Controls->Add(this->pictureBoxAvatar);
+        this->panel2->Controls->Add(this->labelFullName);
+        this->panel2->Controls->Add(this->labelAccountNumber);
+        this->panel2->Dock = System::Windows::Forms::DockStyle::Right;
+        this->panel2->Location = System::Drawing::Point(-185, 0);
+        this->panel2->Margin = System::Windows::Forms::Padding(4);
+        this->panel2->Name = L"panel2";
+        this->panel2->Size = System::Drawing::Size(1038, 106);
+        this->panel2->TabIndex = 6;
+        //
+        // label3
+        //
+        this->label3->AutoSize = true;
+        this->label3->BackColor = System::Drawing::Color::Transparent;
+        this->label3->ForeColor = System::Drawing::Color::White;
+        this->label3->Location = System::Drawing::Point(214, 53);
+        this->label3->Name = L"label3";
+        this->label3->Size = System::Drawing::Size(109, 16);
+        this->label3->TabIndex = 6;
+        this->label3->Text = L"Account Number:";
+        //
+        // label2
+        //
+        this->label2->AutoSize = true;
+        this->label2->BackColor = System::Drawing::Color::Transparent;
+        this->label2->ForeColor = System::Drawing::Color::White;
+        this->label2->Location = System::Drawing::Point(197, 9);
+        this->label2->Name = L"label2";
+        this->label2->Size = System::Drawing::Size(126, 16);
+        this->label2->TabIndex = 5;
+        this->label2->Text = L"Account Information:";
+        //
+        // pictureBoxAvatar
+        //
+        this->pictureBoxAvatar->BackColor = System::Drawing::Color::Transparent;
+        this->pictureBoxAvatar->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
+        this->pictureBoxAvatar->Image =
+            (cli::safe_cast<System::Drawing::Image ^>(
+                resources->GetObject(L"pictureBoxAvatar.Image")));
+        this->pictureBoxAvatar->Location = System::Drawing::Point(340, 17);
+        this->pictureBoxAvatar->Margin = System::Windows::Forms::Padding(4);
+        this->pictureBoxAvatar->Name = L"pictureBoxAvatar";
+        this->pictureBoxAvatar->Size = System::Drawing::Size(70, 68);
+        this->pictureBoxAvatar->SizeMode =
+            System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+        this->pictureBoxAvatar->TabIndex = 4;
+        this->pictureBoxAvatar->TabStop = false;
+        //
+        // labelFullName
+        //
+        this->labelFullName->BackColor = System::Drawing::Color::Transparent;
+        this->labelFullName->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->labelFullName->ForeColor =
+            System::Drawing::SystemColors::ButtonFace;
+        this->labelFullName->Location = System::Drawing::Point(217, 25);
+        this->labelFullName->Margin =
+            System::Windows::Forms::Padding(4, 0, 4, 0);
+        this->labelFullName->Name = L"labelFullName";
+        this->labelFullName->Size = System::Drawing::Size(113, 22);
+        this->labelFullName->TabIndex = 0;
+        this->labelFullName->Text = L"LE SI TOAN";
+        this->labelFullName->TextAlign =
+            System::Drawing::ContentAlignment::MiddleRight;
+        //
+        // labelAccountNumber
+        //
+        this->labelAccountNumber->BackColor =
+            System::Drawing::Color::Transparent;
+        this->labelAccountNumber->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->labelAccountNumber->ForeColor =
+            System::Drawing::SystemColors::ButtonFace;
+        this->labelAccountNumber->Location = System::Drawing::Point(212, 68);
+        this->labelAccountNumber->Margin =
+            System::Windows::Forms::Padding(4, 0, 4, 0);
+        this->labelAccountNumber->Name = L"labelAccountNumber";
+        this->labelAccountNumber->Size = System::Drawing::Size(118, 29);
+        this->labelAccountNumber->TabIndex = 1;
+        this->labelAccountNumber->Text = L"1223232323";
+        this->labelAccountNumber->TextAlign =
+            System::Drawing::ContentAlignment::MiddleRight;
+        //
+        // panel1
+        //
+        this->panel1->BackColor = System::Drawing::Color::LightPink;
+        this->panel1->BackgroundImageLayout =
+            System::Windows::Forms::ImageLayout::Stretch;
+        this->panel1->Controls->Add(this->panel2);
+        this->panel1->Controls->Add(this->label1);
+        this->panel1->Controls->Add(this->labelBalance);
+        this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
+        this->panel1->Location = System::Drawing::Point(0, 0);
+        this->panel1->Margin = System::Windows::Forms::Padding(4);
+        this->panel1->Name = L"panel1";
+        this->panel1->Size = System::Drawing::Size(853, 106);
+        this->panel1->TabIndex = 0;
+        //
         // AccountForm
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->BackColor = System::Drawing::Color::Teal;
+        this->BackColor = System::Drawing::Color::White;
         this->ClientSize = System::Drawing::Size(853, 566);
         this->Controls->Add(this->panelContent);
         this->Controls->Add(this->panelNav);
@@ -449,22 +543,24 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->Text = L"AccountForm";
         this->Load +=
             gcnew System::EventHandler(this, &AccountForm::AccountForm_Load);
-        this->panel1->ResumeLayout(false);
-        this->panel1->PerformLayout();
-        this->panel2->ResumeLayout(false);
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->pictureBoxAvatar))
-            ->EndInit();
         this->panelContent->ResumeLayout(false);
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->axWindowsMediaPlayer2))
             ->EndInit();
         this->panelBtn1->ResumeLayout(false);
         this->panelBtn3->ResumeLayout(false);
+        this->panelBtn3->PerformLayout();
         this->panelBtn4->ResumeLayout(false);
         this->panelBtn4->PerformLayout();
         this->panelNav->ResumeLayout(false);
         this->panelBtn2->ResumeLayout(false);
+        this->panel2->ResumeLayout(false);
+        this->panel2->PerformLayout();
+        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
+             this->pictureBoxAvatar))
+            ->EndInit();
+        this->panel1->ResumeLayout(false);
+        this->panel1->PerformLayout();
         this->ResumeLayout(false);
     }
 
