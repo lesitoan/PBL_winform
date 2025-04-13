@@ -15,10 +15,21 @@ MainForm::~MainForm() {
     }
 }
 void MainForm::ChangeButtonColor(Button ^ button) {
+
+    for each (Control ^ ctrl in this->panelNav->Controls) {
+        Button ^ btn = dynamic_cast<Button ^>(ctrl);
+        if (btn != nullptr && btn != btnLogout) {
+            btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            btn->BackColor = System::Drawing::Color::Transparent;
+            btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(255, 100, 100);
+            btn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(255, 100, 100);
+        }
+    }
+
+    selectedButton = button;
     if (selectedButton != nullptr) {
         selectedButton->BackColor = System::Drawing::Color::FromArgb(255, 100, 100);
     }
-    selectedButton = button;
     AccountForm::axWindowsMediaPlayer2->Ctlcontrols->pause();
 }
 

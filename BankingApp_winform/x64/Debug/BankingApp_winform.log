@@ -1,99 +1,22 @@
 ﻿  COM Reference 'WMPLib.1.0' is the interop assembly for ActiveX control 'AxWMPLib.1.0' but was marked to be linked by the compiler with the /link flag. This COM reference will be treated as a reference and will not be linked.
   AccountForm.cpp
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AccountForm.cpp')
   
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AccountForm.cpp')
   
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AccountForm.cpp')
   
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AccountForm.cpp')
   
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
   (compiling source file 'AccountForm.cpp')
   
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SetAvatarForm.h(191,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
+E:\WORKSPACE\CODE\PBL\BankingApp_winform\BankingApp_winform\SetAvatarForm.h(191,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
   (compiling source file 'AccountForm.cpp')
   
-  AdminForm.cpp
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'AdminForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'AdminForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'AdminForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'AdminForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'AdminForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SetAvatarForm.h(191,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
-  (compiling source file 'AdminForm.cpp')
-  
-  AuthForm.cpp
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'AuthForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'AuthForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'AuthForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'AuthForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'AuthForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SetAvatarForm.h(191,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
-  (compiling source file 'AuthForm.cpp')
-  
-  Main.cpp
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'Main.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'Main.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'Main.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'Main.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'Main.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SetAvatarForm.h(191,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
-  (compiling source file 'Main.cpp')
-  
-  MainForm.cpp
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(48,28): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'MainForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(51,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'MainForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(53,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'MainForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(55,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'MainForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SavingCustomers.h(57,32): warning C4305: '=': truncation from 'double' to 'float'
-  (compiling source file 'MainForm.cpp')
-  
-C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\BankingApp_winform\SetAvatarForm.h(191,13): warning C4566: character represented by universal-character-name '\u1EA3' cannot be represented in the current code page (1252)
-  (compiling source file 'MainForm.cpp')
-  
-  Generating Code...
   AccountForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  BankingApp_winform.vcxproj -> C:\Users\ADMIN\Documents\GitHub\Clone6\PBL_winform\x64\Debug\BankingApp_winform.exe
+  BankingApp_winform.vcxproj -> E:\WORKSPACE\CODE\PBL\BankingApp_winform\x64\Debug\BankingApp_winform.exe

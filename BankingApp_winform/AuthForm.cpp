@@ -20,10 +20,16 @@ System::Void AuthForm::AuthForm_Load(System::Object ^ sender,
     LoadChildForm::LoadForm(this->panelContent, loginForm);
     this->labelAuth->Text = L"Don't have un account?";
 
+    //
+    String ^ projectPath =
+        System::IO::Directory::GetParent(Application::StartupPath)
+            ->Parent->FullName;
+    String ^ correctPath = System::IO::Path::Combine(
+        projectPath, "BankingApp_winform\\images\\VideoAuthForm.mp4");
 
-    this->axWindowsMediaPlayer1->uiMode =
-        "none"; // Ẩn các nút play, progress bar, etc.
-    this->axWindowsMediaPlayer1->URL = "C:\\Users\\ADMIN\\Downloads\\TPP.mp4";
+
+    this->axWindowsMediaPlayer1->uiMode ="none";
+    this->axWindowsMediaPlayer1->URL = correctPath;
     this->axWindowsMediaPlayer1->settings->setMode("loop", true);
     this->axWindowsMediaPlayer1->Ctlcontrols->play();
     this->VisibleChanged +=

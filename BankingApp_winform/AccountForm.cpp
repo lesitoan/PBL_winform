@@ -6,12 +6,6 @@ AccountForm::AccountForm(Form ^ parentForm) {
     InitializeComponent();
     loadAvatar();
     this->parentForm = parentForm;
-    axWindowsMediaPlayer2->uiMode = "none";
-    axWindowsMediaPlayer2->settings->setMode("loop", true);
-    axWindowsMediaPlayer2->URL = "C:\\Users\\ADMIN\\Downloads\\TP.mp4";
-    axWindowsMediaPlayer2->Ctlcontrols->play();
-    GradientColorHelper::ApplyGradient(this->panel1);
-    GradientColorHelper::ApplyGradient(this->panel2);
 }
 
 AccountForm::~AccountForm() {
@@ -31,6 +25,24 @@ System::Void AccountForm::AccountForm_Load(System::Object ^ sender,
         GlobalData::GetCurrentUser()->getAccountNumber();
     this->labelBalance->Text =
         GlobalData::GetCurrentUser()->getBalance() + " VND";
+
+
+    //load video
+    axWindowsMediaPlayer2->uiMode = "none";
+    axWindowsMediaPlayer2->settings->setMode("loop", true);
+    String ^ projectPath =
+        System::IO::Directory::GetParent(Application::StartupPath)
+            ->Parent->FullName;
+    String ^ correctPath = System::IO::Path::Combine(
+        projectPath, "BankingApp_winform\\images\\TP.mp4");
+    if (!System::IO::File::Exists(correctPath)) {
+        return;
+    }
+    axWindowsMediaPlayer2->URL = correctPath;
+    axWindowsMediaPlayer2->Ctlcontrols->play();
+    GradientColorHelper::ApplyGradient(this->panel1);
+    GradientColorHelper::ApplyGradient(this->panel2);
+    //
 }
 
 System::Void AccountForm::btnChangePw_Click(System::Object ^ sender,
