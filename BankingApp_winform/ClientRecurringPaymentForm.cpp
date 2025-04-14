@@ -13,7 +13,7 @@ ClientRecurringPaymentForm::~ClientRecurringPaymentForm() {
     }
 }
 void ClientRecurringPaymentForm::loadRecurringPaymentData() {
-    dataGridViewRecurring->Rows->Clear();
+    /*dataGridViewRecurring->Rows->Clear();
 
     array<RecurringPayments ^> ^ recurringPayments =
         HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
@@ -42,51 +42,51 @@ void ClientRecurringPaymentForm::loadRecurringPaymentData() {
 
     this->dataGridViewRecurring->CellClick +=
         gcnew DataGridViewCellEventHandler(
-            this, &ClientRecurringPaymentForm::dataGridViewRecurring_CellClick);
+            this, &ClientRecurringPaymentForm::dataGridViewRecurring_CellClick);*/
 }
 
 System::Void ClientRecurringPaymentForm::dataGridViewRecurring_CellClick(
     System::Object ^ sender,
     System::Windows::Forms::DataGridViewCellEventArgs ^ e) {
 
-    this->amountRecurringPayment->Text = "";
-    this->amountRecurringPayment->ReadOnly = false;
+    //this->amountRecurringPayment->Text = "";
+    //this->amountRecurringPayment->ReadOnly = false;
 
-    if (e->RowIndex >= 0) { // Kiểm tra nếu không phải header
+    //if (e->RowIndex >= 0) { // Kiểm tra nếu không phải header
 
-        String ^ clientFullName = dataGridViewRecurring->Rows[e->RowIndex]
-                                      ->Cells[0]
-                                      ->Value->ToString();
-        String ^ clientAccountNumber = dataGridViewRecurring->Rows[e->RowIndex]
-                                      ->Cells[1]
-                                      ->Value->ToString();
-        // int clientMonthly = Convert::ToInt32(
-        //     dataGridViewRecurring->Rows[e->RowIndex]->Cells[2]->Value);
-        DateTime clientPaymentDay =
-            DateTime::Parse(dataGridViewRecurring->Rows[e->RowIndex]
-                                ->Cells[3]
-                                ->Value->ToString());
-        double clientDebt = Convert::ToDouble(
-            dataGridViewRecurring->Rows[e->RowIndex]->Cells[4]->Value);
+    //    String ^ clientFullName = dataGridViewRecurring->Rows[e->RowIndex]
+    //                                  ->Cells[0]
+    //                                  ->Value->ToString();
+    //    String ^ clientAccountNumber = dataGridViewRecurring->Rows[e->RowIndex]
+    //                                  ->Cells[1]
+    //                                  ->Value->ToString();
+    //    // int clientMonthly = Convert::ToInt32(
+    //    //     dataGridViewRecurring->Rows[e->RowIndex]->Cells[2]->Value);
+    //    DateTime clientPaymentDay =
+    //        DateTime::Parse(dataGridViewRecurring->Rows[e->RowIndex]
+    //                            ->Cells[3]
+    //                            ->Value->ToString());
+    //    double clientDebt = Convert::ToDouble(
+    //        dataGridViewRecurring->Rows[e->RowIndex]->Cells[4]->Value);
 
-        // show thông tin và tự động điền vào form chuyển tiền
-        this->panelForm->Visible = true;
-        this->labelClientName->Text = L"Bạn đã chọn khách hàng: " +
-                                      clientFullName +
-                                      " | STK: " + clientAccountNumber;
-        if (clientDebt > 0) {
-            this->amountRecurringPayment->Text = clientDebt.ToString();
-            this->amountRecurringPayment->ReadOnly = true;
-        }
-        this->currClientAccountNumber = clientAccountNumber;
-        this->currClientPaymentDay = clientPaymentDay;
-    }
+    //    // show thông tin và tự động điền vào form chuyển tiền
+    //    this->panelForm->Visible = true;
+    //    this->labelClientName->Text = L"Bạn đã chọn khách hàng: " +
+    //                                  clientFullName +
+    //                                  " | STK: " + clientAccountNumber;
+    //    if (clientDebt > 0) {
+    //        this->amountRecurringPayment->Text = clientDebt.ToString();
+    //        this->amountRecurringPayment->ReadOnly = true;
+    //    }
+    //    this->currClientAccountNumber = clientAccountNumber;
+    //    this->currClientPaymentDay = clientPaymentDay;
+    //}
 }
 
 System::Void
 ClientRecurringPaymentForm::btnSubmit_Click(System::Object ^ sender,
                                             System::EventArgs ^ e) {
-
+    /*
     String ^ amount = this->amountRecurringPayment->Text;
     if (!Validate::isNumber(amount)) {
         MessageBox::Show(L"Số tiền không hợp lệ", "Cảnh báo",
@@ -160,7 +160,7 @@ ClientRecurringPaymentForm::btnSubmit_Click(System::Object ^ sender,
     } else {
         MessageBox::Show(L"Lỗi khi cập nhật số tiền nợ", "Cảnh báo",
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
-    }
+    } */
 }
 
 } // namespace BankingAppwinform

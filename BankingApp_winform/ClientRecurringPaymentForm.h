@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "GlobalData.h"
 #include "HandleFile.h"
-#include "RecurringPaymentRequest.h"
 #include "RecurringPayments.h"
 #include "User.h"
 #include "Validate.h"

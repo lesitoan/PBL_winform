@@ -15,6 +15,7 @@ CodeForm::~CodeForm() {
 
 System::Void CodeForm::btnAddCode_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
+    
     //check pin
     if (this->pin->Text == "") {
         MessageBox::Show(L"Vui lòng nhập mã pin", "Cảnh báo",
@@ -43,26 +44,26 @@ System::Void CodeForm::btnAddCode_Click(System::Object ^ sender,
         }
     }
 
-    array<PaymentCodes ^> ^ codes = createListCode(this->codes);
+    array<CustomerCodes ^> ^ codes = createListCode(this->customerCodes);
     if (codes == nullptr) {
         return;
     }
-    array<PaymentCodes ^> ^ oldCodes = HandleFile::ReadCodeArray("codes.dat");
+    array<CustomerCodes ^> ^ oldCodes = HandleFile::ReadCustomerCodesArray("customerCodes.dat");
     bool isSaveCode = false;
     if (oldCodes == nullptr || oldCodes->Length == 0) {
-        isSaveCode = HandleFile::WriteCodeArray(codes, "codes.dat");
+        isSaveCode = HandleFile::WriteCustomerCodesArray(codes, "customerCodes.dat");
     } else {
-        List<PaymentCodes ^> ^ newCodes = gcnew List<PaymentCodes ^>();
+        List<CustomerCodes ^> ^ newCodes = gcnew List<CustomerCodes ^>();
         // Thêm tất cả mã cũ vào danh sách mới
-        for each (PaymentCodes ^ code in oldCodes) {
+        for each (CustomerCodes ^ code in oldCodes) {
             newCodes->Add(code);
         }
 
         // Thêm mã mới nếu chưa tồn tại
-        for each (PaymentCodes ^ newCode in codes) {
+        for each (CustomerCodes ^ newCode in codes) {
             bool isExist = false;
 
-            for each (PaymentCodes ^ oldCode in oldCodes) {
+            for each (CustomerCodes ^ oldCode in oldCodes) {
                 if (newCode->CompanyAccountNumber ==
                         oldCode->CompanyAccountNumber &&
                     newCode->Code == oldCode->Code) {
@@ -75,8 +76,8 @@ System::Void CodeForm::btnAddCode_Click(System::Object ^ sender,
                 newCodes->Add(newCode);
             }
         }
-        isSaveCode =
-            HandleFile::WriteCodeArray(newCodes->ToArray(), "codes.dat");
+        isSaveCode = HandleFile::WriteCustomerCodesArray(newCodes->ToArray(),
+                                                         "customerCodes.dat");
     }
     if (isSaveCode) {
         MessageBox::Show("Thêm code thành công");
@@ -86,8 +87,9 @@ System::Void CodeForm::btnAddCode_Click(System::Object ^ sender,
     }
 }
 
-array<PaymentCodes ^> ^ CodeForm::createListCode(TextBox ^ textBox) {
-    List<PaymentCodes ^> ^ items = gcnew List<PaymentCodes ^>();
+array<CustomerCodes ^> ^ CodeForm::createListCode(TextBox ^ textBox) {
+
+    List<CustomerCodes ^> ^ items = gcnew List<CustomerCodes ^>();
 
     array<String ^> ^ lines = textBox->Text->Split(
         gcnew array<wchar_t>{'\n'}, StringSplitOptions::RemoveEmptyEntries);
@@ -97,40 +99,20 @@ array<PaymentCodes ^> ^ CodeForm::createListCode(TextBox ^ textBox) {
         return nullptr;
     }
 
-    for each (String ^ line in lines) {
-        array<String ^> ^ parts = line->Split(
-            gcnew array<wchar_t>{','}, StringSplitOptions::RemoveEmptyEntries);
-
-        if (parts->Length != 3) {
-            MessageBox::Show(L"Vui lòng nhập đúng định dạng: CODE,PRICE,DAY",
-                             L"Cảnh báo", MessageBoxButtons::OK,
-                             MessageBoxIcon::Warning);
+    for each (String ^ code in lines) {
+        // validate code, price, day
+        if (code->Length < 5 || code->Length > 10) {
+            MessageBox::Show(L"Mã khách hàng: " + code + L" phải lớn hơn 5 kí tự và nhỏ hơn 10 kí tự");
             continue;
         }
-
-        String ^ code = parts[0]->Trim();
-        int price = Int32::Parse(parts[1]->Trim());
-        int day = Int32::Parse(parts[2]->Trim());
-
-
-        // validate code, price, day
-        if (code->Length < 5 || price <= 0 || day <= 0) {
-            MessageBox::Show(L"Mã code: " + code + L" phải lớn hơn 5 kí tự");
-            continue;
-        } else if (code->Length > 10) {
-            MessageBox::Show(L"Mã code: " + code + L" không được quá 10 ký tự");
-            continue;
-        } else if (price > 100000000) { // 1 tram triệu
-            MessageBox::Show(L"Mã code: " + code + L"Số tiền không được lớn hơn 100 triệu");
-            continue;
-        } 
         //
 
         String ^ companyAccNumber =
             GlobalData::GetCurrentUser()->getAccountNumber();
 
-        PaymentCodes ^ item =
-            gcnew PaymentCodes(companyAccNumber, code, price, day);
+        String ^ id = Utils::createUniqueID("CC");
+        CustomerCodes ^ item =
+            gcnew CustomerCodes(id, companyAccNumber, code);
         items->Add(item);
     }
 
@@ -142,7 +124,9 @@ array<PaymentCodes ^> ^ CodeForm::createListCode(TextBox ^ textBox) {
 }
 
 void CodeForm::loadTableCodes() {
-    array<PaymentCodes ^> ^ codes = HandleFile::ReadCodeArray("codes.dat");
+
+    array<CustomerCodes ^> ^ codes =
+        HandleFile::ReadCustomerCodesArray("customerCodes.dat");
     if (codes == nullptr || codes->Length == 0) {
         return;
     }
@@ -155,9 +139,10 @@ void CodeForm::loadTableCodes() {
             continue;
         }
         String ^ status =
-            codes[i]->Status ? L"Đã thanh toán" : L"Chưa thanh toán";
-        dataGridViewCodes->Rows->Add(codes[i]->Code, codes[i]->Amount, status);
-
+            codes[i]->Status ? L"Hoạt động" : L"Khóa";
+        dataGridViewCodes->Rows->Add(
+            codes[i]->Code, codes[i]->CreatedDate.ToString("dd/MM/yyyy"),
+            status);
         int lastRow = dataGridViewCodes->Rows->Count - 1;
         dataGridViewCodes->Rows[lastRow]->Tag = codes[i];
     }
@@ -172,12 +157,12 @@ void CodeForm::dataGridViewCodes_CellDoubleClick(Object ^ sender,
                                                      e) {
     if (e->RowIndex >= 0) {
         DataGridViewRow ^ row = dataGridViewCodes->Rows[e->RowIndex];
-        PaymentCodes ^ selectedCode = dynamic_cast<PaymentCodes ^>(row->Tag);
+        CustomerCodes ^ selectedCode = dynamic_cast<CustomerCodes ^>(row->Tag);
 
         if (selectedCode == nullptr) {
-            MessageBox::Show(L"Lỗi: Không thể lấy dữ liệu mã thanh toán.");
+            MessageBox::Show(L"Lỗi: Không thể lấy dữ liệu mã khách hàng");
         }
-        Form ^ codeInfoForm = gcnew CodeInfoForm(selectedCode);
+        Form ^ codeInfoForm = gcnew CodeDetailForm(selectedCode);
         codeInfoForm->ShowDialog();
     }
 }
@@ -190,18 +175,43 @@ System::Void CodeForm::btnDeleteCode_Click(System::Object ^ sender,
         return;
     }
 
-    PaymentCodes ^ selectedCode = nullptr;
+    CustomerCodes ^ selectedCode = nullptr;
     for (int i = 0; i < this->dataGridViewCodes->SelectedRows->Count; i++) {
         DataGridViewRow ^ row = this->dataGridViewCodes->SelectedRows[i];
-        selectedCode = dynamic_cast<PaymentCodes ^>(row->Tag);
+        selectedCode = dynamic_cast<CustomerCodes ^>(row->Tag);
         break;
     }
-    if (selectedCode->Status == 1) {
-        MessageBox::Show(L"Mã thanh toán đã được thanh toán, không thể xóa",
-                         L"Cảnh báo", MessageBoxButtons::OK,
-                         MessageBoxIcon::Warning);
-        return;
+    //chỉ xóa khi chưa có hóa đơn và chưa ai đk thanh toán định kì
+    array<RecurringPayments ^> ^ recurringPayments =
+        HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
+    if (recurringPayments != nullptr) {
+        for (int i = 0; i < recurringPayments->Length; i++) {
+            if (recurringPayments[i]->CustomerCodeId == selectedCode->Code) {
+                MessageBox::Show(
+                    L"Không thể xóa mã thanh toán này vì đã"
+                    L"có người đăng ký thanh toán định kỳ",
+                    L"Cảnh báo", MessageBoxButtons::OK,
+                    MessageBoxIcon::Warning);
+                return;
+            }
+        }
     }
+
+    array<CustomerCodeDetails ^> ^ codeDetails =
+        HandleFile::ReadCustomerCodeDetailsArray("customerCodeDetails.dat");
+    if (codeDetails != nullptr) {
+        for (int i = 0; i < codeDetails->Length; i++) {
+            if (codeDetails[i]->CustomerCodeId == selectedCode->Id) {
+                MessageBox::Show(L"Không thể xóa mã thanh toán này vì đã"
+                                 L"có hóa đơn liên quan",
+                                 L"Cảnh báo", MessageBoxButtons::OK,
+                                 MessageBoxIcon::Warning);
+                return;
+            }
+        }
+    }
+
+
 
     System::Windows::Forms::DialogResult choise = MessageBox::Show(
         L"Bạn có chắc chắn muốn xóa mã thanh toán này?", L"Cảnh báo",
@@ -210,7 +220,8 @@ System::Void CodeForm::btnDeleteCode_Click(System::Object ^ sender,
     if (choise == System::Windows::Forms::DialogResult::No) {
         return;
     }
-    array<PaymentCodes ^> ^ codes = HandleFile::ReadCodeArray("codes.dat");
+    array<CustomerCodes ^> ^ codes =
+        HandleFile::ReadCustomerCodesArray("customerCodes.dat");
     if (codes == nullptr || codes->Length == 0) {
         MessageBox::Show(L"Lỗi máy chủ, thử lại sau !", "Canh bao",
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
@@ -228,8 +239,8 @@ System::Void CodeForm::btnDeleteCode_Click(System::Object ^ sender,
         }
     }
     // Tạo mảng mới với kích thước giảm đi 1
-    array<PaymentCodes ^> ^ newCodes =
-        gcnew array<PaymentCodes ^>(codes->Length - 1);
+    array<CustomerCodes ^> ^ newCodes =
+        gcnew array<CustomerCodes ^>(codes->Length - 1);
     // Sao chép các phần tử từ mảng cũ sang mảng mới
     for (int i = 0; i < newCodes->Length; i++) {
         newCodes[i] = codes[i];
@@ -237,12 +248,14 @@ System::Void CodeForm::btnDeleteCode_Click(System::Object ^ sender,
 
     // Ghi lại mã đã xóa vào file
     bool isSaveCode =
-        HandleFile::WriteCodeArray(newCodes, "codes.dat");
+        HandleFile::WriteCustomerCodesArray(newCodes, "customerCodes.dat");
     if (isSaveCode) {
-        MessageBox::Show("Xóa mã thanh toán thành công");
+        MessageBox::Show("Xóa mã khách hàng thành công");
         loadTableCodes();
     } else {
-        MessageBox::Show("Xóa mã thanh toán thất bại");
+        MessageBox::Show("Xóa mã  khách hàng thất bại");
     }
 }
+
+
 }

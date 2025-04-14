@@ -8,37 +8,33 @@ ref class RecurringPayments {
   private:
     String^ id;
     String ^ userAccountNumber;
-    String ^ companyAccountNumber;
+    String ^ customerCodeId;
     int monthly;         //1,2,3,4,5....12
-    DateTime paymentDay; // 1-31
-    double debt;            // "complete", "pending"
+    int paymentDay; // 1-31
 
   public:
     RecurringPayments(String ^ id, String ^ userAccountNumber,
-                      String ^ companyAccountNumber,
-                      int monthly,
-                      DateTime paymentDay, double debt) {
+                      String ^ customerCodeId,
+                      int monthly, int paymentDay) {
         this->id = id;
         this->userAccountNumber = userAccountNumber;
-        this->companyAccountNumber = companyAccountNumber;
+        this->customerCodeId = customerCodeId;
         this->monthly = monthly;
         this->paymentDay = paymentDay;
-        this->debt = debt;
-
     }
     RecurringPayments() {
         id = "";
         userAccountNumber = "";
-        companyAccountNumber = "";
+        customerCodeId = "";
         monthly = 1;
-        debt = 0;
+        paymentDay = 1;
     }
 
     RecurringPayments(String ^ id, String ^ userAccountNumber,
-                      String ^ companyAccountNumber, int monthly)
+                      String ^ customerCodeId, int monthly)
         : id(id), userAccountNumber(userAccountNumber),
-          companyAccountNumber(companyAccountNumber), monthly(monthly),
-          paymentDay(DateTime::Now.AddMonths(-1)), debt(0) {}
+          customerCodeId(customerCodeId), monthly(monthly),
+          paymentDay(1){}
 
 
     property String ^ Id { String ^ get() { return id; }
@@ -48,22 +44,18 @@ ref class RecurringPayments {
                 userAccountNumber = value;
             }
     } property String ^
-        CompanyAccountNumber {
-            String ^
-                get() { return companyAccountNumber; } void set(String ^ value) {
-                companyAccountNumber = value;
+        CustomerCodeId {
+            String ^ get() { return customerCodeId; } void set(String ^ value) {
+                customerCodeId = value;
             }
     }
     property int Monthly {
         int get() { return monthly; } 
         void set(int value) { monthly = value; }
-    } property DateTime PaymentDay {
-        DateTime get() { return paymentDay; }
-        void set(DateTime value) { paymentDay = value; }
     }
-    property double Debt {
-        double get() { return debt; }
-        void set(double value) { debt = value; }
+    property int PaymentDay {
+        int get() { return paymentDay; }
+        void set(int value) { paymentDay = value; }
     }
 
 };

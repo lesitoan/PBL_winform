@@ -124,7 +124,7 @@
     <ClCompile Include="AddUserForm.cpp" />
     <ClCompile Include="AdminSavingMoneyForm.cpp" />
     <ClCompile Include="ClientSavingMoneyForm.cpp" />
-    <ClCompile Include="CodeInfoForm.cpp" />
+    <ClCompile Include="CodeDetailForm.cpp" />
     <ClCompile Include="ModifyServiceForm.cpp" />
     <ClCompile Include="ClientRecurringPaymentForm.cpp" />
     <ClCompile Include="CodeForm.cpp" />
@@ -169,7 +169,7 @@
     <ClInclude Include="ClientSavingMoneyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="CodeInfoForm.h">
+    <ClInclude Include="CodeDetailForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ModifyServiceForm.h">
@@ -194,8 +194,8 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Notifications.h" />
-    <ClInclude Include="PaymentCodes.h" />
-    <ClInclude Include="RecurringPaymentRequest.h" />
+    <ClInclude Include="CustomerCodes.h" />
+    <ClInclude Include="CustomerCodeDetails.h" />
     <ClInclude Include="RecurringPayments.h" />
     <ClInclude Include="RegisterSavingForm.h">
       <FileType>CppForm</FileType>
@@ -276,8 +276,8 @@
     <EmbeddedResource Include="ClientSavingMoneyForm.resx">
       <DependentUpon>ClientSavingMoneyForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CodeInfoForm.resx">
-      <DependentUpon>CodeInfoForm.h</DependentUpon>
+    <EmbeddedResource Include="CodeDetailForm.resx">
+      <DependentUpon>CodeDetailForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModifyServiceForm.resx">
       <DependentUpon>ModifyServiceForm.h</DependentUpon>
@@ -361,9 +361,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
+    <None Include="customerCodes.dat" />
     <None Include="notifications.dat" />
-    <None Include="recurringPaymentRequests.dat" />
-    <None Include="recurringPayments.dat" />
+    <None Include="savingCustomers.dat" />
     <None Include="services.dat" />
     <None Include="transactions.dat" />
     <None Include="users.dat" />

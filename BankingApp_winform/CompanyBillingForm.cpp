@@ -29,6 +29,7 @@ System::Void CompanyBillingForm::btnAccount_Click(System::Object ^ sender,
 }
 
 void CompanyBillingForm::LoadPaymentCodes() {
+    /*
     dataGridViewCodes->Rows->Clear();
 
     array<PaymentCodes ^> ^ paymentCodes =
@@ -48,9 +49,12 @@ void CompanyBillingForm::LoadPaymentCodes() {
             code->CreatedDate.ToString("dd/MM/yyyy"),
             code->ExpiredDate.ToString("dd/MM/yyyy"));
     }
+    */
 }
 
 void CompanyBillingForm::LoadRecurringPaymentRequest() {
+
+    /*
     dataGridViewRecurring->Rows->Clear(); // Xóa dữ liệu cũ nếu có
 
     array<RecurringPaymentRequest ^> ^ recurringPaymentRequests =
@@ -98,11 +102,15 @@ void CompanyBillingForm::LoadRecurringPaymentRequest() {
     this->dataGridViewRecurring->CellClick +=
         gcnew DataGridViewCellEventHandler(
             this, &CompanyBillingForm::dataGridViewRecurring_CellClick);
+
+            */
 }
 
 System::Void CompanyBillingForm::dataGridViewRecurring_CellClick(
     System::Object ^ sender,
     System::Windows::Forms::DataGridViewCellEventArgs ^ e) {
+
+    /*
 
     if (e->RowIndex >= 0 &&
         dataGridViewRecurring->Columns[e->ColumnIndex]->Name == "btnPay") {
@@ -213,22 +221,30 @@ System::Void CompanyBillingForm::dataGridViewRecurring_CellClick(
                          request->UserAccountNumber);
         LoadRecurringPaymentRequest();
     }
+    */
+
 }
 
 System::Void CompanyBillingForm::btnShowCode_Click(System::Object ^ sender,
                                                    System::EventArgs ^ e) {
+
+    /*
     if (dataGridViewCodes->Visible)
         return;
     dataGridViewCodes->Visible = true;
     dataGridViewRecurring->Visible = false;
+    */
 }
 System::Void CompanyBillingForm::btnLoadRecurring_Click(System::Object ^ sender,
                                                         System::EventArgs ^ e) {
+    /*
     if (dataGridViewRecurring->Visible)
         return;
     dataGridViewRecurring->Visible = true;
     dataGridViewCodes->Visible = false;
+*/
 }
+
 }; // namespace BankingAppwinform
 
 

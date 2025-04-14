@@ -1,9 +1,12 @@
 ﻿#pragma once
 #include "GlobalData.h"
 #include "HandleFile.h"
-#include "PaymentCodes.h"
+#include "CustomerCodes.h"
 #include "Validate.h"
-#include "CodeInfoForm.h"
+#include "Utils.h"
+#include "CustomerCodeDetails.h"
+#include "RecurringPayments.h"
+#include "CodeDetailForm.h"
 
 namespace BankingAppwinform {
 
@@ -27,7 +30,10 @@ ref class CodeForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel1;
     System::Windows::Forms::Panel ^ panel2;
     System::Windows::Forms::Panel ^ panel3;
-    System::Windows::Forms::TextBox ^ codes;
+
+  private:
+    System::Windows::Forms::TextBox ^ customerCodes;
+
     System::Windows::Forms::Panel ^ panel4;
     System::Windows::Forms::TextBox ^ pin;
     System::Windows::Forms::Label ^ label1;
@@ -38,15 +44,24 @@ ref class CodeForm : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::DataGridView ^ dataGridViewCodes;
 
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column1;
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column2;
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column3;
+
+
+
 
   private:
     System::Windows::Forms::Panel ^ panel5;
 
   private:
     System::Windows::Forms::Button ^ btnDeleteCode;
+
+  private:
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column1;
+
+  private:
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column2;
+
+  private:
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column3;
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -72,7 +87,7 @@ ref class CodeForm : public System::Windows::Forms::Form {
         this->label1 = (gcnew System::Windows::Forms::Label());
         this->label7 = (gcnew System::Windows::Forms::Label());
         this->panel3 = (gcnew System::Windows::Forms::Panel());
-        this->codes = (gcnew System::Windows::Forms::TextBox());
+        this->customerCodes = (gcnew System::Windows::Forms::TextBox());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->panel5 = (gcnew System::Windows::Forms::Panel());
         this->btnDeleteCode = (gcnew System::Windows::Forms::Button());
@@ -125,8 +140,7 @@ ref class CodeForm : public System::Windows::Forms::Form {
         this->label2->Name = L"label2";
         this->label2->Size = System::Drawing::Size(249, 22);
         this->label2->TabIndex = 64;
-        this->label2->Text =
-            L"Nhập CODE (Mỗi code 1 dòng, vd: ABCDEF,120000,5)";
+        this->label2->Text = L"Nhập MÃ KH (Mỗi mã 1 dòng, vd: ABCDEF)";
         //
         // btnAddCode
         //
@@ -214,11 +228,11 @@ ref class CodeForm : public System::Windows::Forms::Form {
             L"UTM Daxline", 17, System::Drawing::FontStyle::Bold));
         this->label7->ForeColor = System::Drawing::Color::White;
         this->label7->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label7->Location = System::Drawing::Point(77, 30);
+        this->label7->Location = System::Drawing::Point(30, 33);
         this->label7->Name = L"label7";
-        this->label7->Size = System::Drawing::Size(123, 30);
+        this->label7->Size = System::Drawing::Size(240, 30);
         this->label7->TabIndex = 63;
-        this->label7->Text = L"THÊM CODE";
+        this->label7->Text = L"THÊM MÃ KHÁCH HÀNG";
         this->label7->TextAlign =
             System::Drawing::ContentAlignment::MiddleCenter;
         //
@@ -231,28 +245,30 @@ ref class CodeForm : public System::Windows::Forms::Form {
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel3->BackColor = System::Drawing::Color::White;
-        this->panel3->Controls->Add(this->codes);
+        this->panel3->Controls->Add(this->customerCodes);
         this->panel3->Location = System::Drawing::Point(21, 103);
         this->panel3->Name = L"panel3";
         this->panel3->Size = System::Drawing::Size(252, 203);
         this->panel3->TabIndex = 62;
         //
-        // codes
+        // customerCodes
         //
-        this->codes->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
-            (((System::Windows::Forms::AnchorStyles::Top |
-               System::Windows::Forms::AnchorStyles::Bottom) |
-              System::Windows::Forms::AnchorStyles::Left) |
-             System::Windows::Forms::AnchorStyles::Right));
-        this->codes->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->codes->Font =
+        this->customerCodes->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->customerCodes->BorderStyle =
+            System::Windows::Forms::BorderStyle::None;
+        this->customerCodes->Font =
             (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->codes->Location = System::Drawing::Point(14, 12);
-        this->codes->MaxLength = 300;
-        this->codes->Multiline = true;
-        this->codes->Name = L"codes";
-        this->codes->Size = System::Drawing::Size(226, 179);
-        this->codes->TabIndex = 29;
+        this->customerCodes->Location = System::Drawing::Point(14, 12);
+        this->customerCodes->MaxLength = 300;
+        this->customerCodes->Multiline = true;
+        this->customerCodes->Name = L"customerCodes";
+        this->customerCodes->Size = System::Drawing::Size(226, 179);
+        this->customerCodes->TabIndex = 29;
         //
         // panel2
         //
@@ -410,19 +426,19 @@ ref class CodeForm : public System::Windows::Forms::Form {
         //
         // Column1
         //
-        this->Column1->HeaderText = L"CODE";
+        this->Column1->HeaderText = L"Mã KH";
         this->Column1->Name = L"Column1";
         this->Column1->ReadOnly = true;
         //
         // Column2
         //
-        this->Column2->HeaderText = L"SỐ TIỀN";
+        this->Column2->HeaderText = L"Ngày tạo";
         this->Column2->Name = L"Column2";
         this->Column2->ReadOnly = true;
         //
         // Column3
         //
-        this->Column3->HeaderText = L"TRẠNG THÁI";
+        this->Column3->HeaderText = L"Trạng thái";
         this->Column3->Name = L"Column3";
         this->Column3->ReadOnly = true;
         //
@@ -452,13 +468,13 @@ ref class CodeForm : public System::Windows::Forms::Form {
 #pragma endregion
 
     private:
-    PaymentCodes ^ selectedPaymentCode;
+    //PaymentCodes ^ selectedPaymentCode;
 
   private:
     System::Void btnAddCode_Click(System::Object ^ sender,
                                   System::EventArgs ^ e);
 
-    array<PaymentCodes ^> ^ createListCode(TextBox ^ textBox);
+    array<CustomerCodes ^> ^ createListCode(TextBox ^ textBox);
 
     void loadTableCodes();
     void CodeForm::dataGridViewCodes_CellDoubleClick(Object ^ sender,

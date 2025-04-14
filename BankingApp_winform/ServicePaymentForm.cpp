@@ -98,6 +98,7 @@ System::Void ServicePaymentForm::selectCompanyBox_SelectedIndexChanged(
 
 System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
                                                    System::EventArgs ^ e) {
+    /*
 
     //
     String ^ code = this->code->Text;
@@ -181,11 +182,15 @@ System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
 
     // thanh toán định kì
     this->onSubmitCurrentPayment(currUserAccNumber, companyAccountNumber, 1);
+
+
+    */
 }
 
 void ServicePaymentForm::onSubmitCurrentPayment(String^ userAccountNumber,
                                                 String^ companyAccountNumber,
                                                 int monthly) {
+    /*
     bool checked = this->submitRecurringPayment->Checked;
     if (!checked)
         return;
@@ -223,5 +228,6 @@ void ServicePaymentForm::onSubmitCurrentPayment(String^ userAccountNumber,
         MessageBox::Show("Lỗi máy chủ, thử lại sau !");
         return;
     }
+    */
 };
 }; // namespace BankingAppwinform
