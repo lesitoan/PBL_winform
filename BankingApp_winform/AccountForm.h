@@ -437,10 +437,14 @@ ref class AccountForm : public System::Windows::Forms::Form {
         //
         this->label3->AutoSize = true;
         this->label3->BackColor = System::Drawing::Color::Transparent;
+        this->label3->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 7.8F, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
         this->label3->ForeColor = System::Drawing::Color::White;
         this->label3->Location = System::Drawing::Point(214, 53);
         this->label3->Name = L"label3";
-        this->label3->Size = System::Drawing::Size(109, 16);
+        this->label3->Size = System::Drawing::Size(103, 16);
         this->label3->TabIndex = 6;
         this->label3->Text = L"Account Number:";
         //
@@ -448,10 +452,14 @@ ref class AccountForm : public System::Windows::Forms::Form {
         //
         this->label2->AutoSize = true;
         this->label2->BackColor = System::Drawing::Color::Transparent;
+        this->label2->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 7.8F, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
         this->label2->ForeColor = System::Drawing::Color::White;
         this->label2->Location = System::Drawing::Point(197, 9);
         this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(126, 16);
+        this->label2->Size = System::Drawing::Size(122, 16);
         this->label2->TabIndex = 5;
         this->label2->Text = L"Account Information:";
         //

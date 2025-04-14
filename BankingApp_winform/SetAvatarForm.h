@@ -101,11 +101,25 @@ ref class SetAvatarForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Top |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->button1->BackColor = System::Drawing::Color::PaleVioletRed;
+        this->button1->BackColor = System::Drawing::Color::Green;
         this->button1->BackgroundImageLayout =
             System::Windows::Forms::ImageLayout::Stretch;
         this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->button1->FlatAppearance->BorderSize = 0;
+        this->button1->FlatAppearance->BorderColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->button1->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->button1->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->button1->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
@@ -125,12 +139,25 @@ ref class SetAvatarForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Top |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->btnInsertAvatar->BackColor =
-            System::Drawing::Color::PaleVioletRed;
+        this->btnInsertAvatar->BackColor = System::Drawing::Color::Green;
         this->btnInsertAvatar->BackgroundImageLayout =
             System::Windows::Forms::ImageLayout::Stretch;
         this->btnInsertAvatar->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnInsertAvatar->FlatAppearance->BorderSize = 0;
+        this->btnInsertAvatar->FlatAppearance->BorderColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnInsertAvatar->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnInsertAvatar->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnInsertAvatar->FlatStyle =
             System::Windows::Forms::FlatStyle::Flat;
         this->btnInsertAvatar->Font = (gcnew System::Drawing::Font(

@@ -78,12 +78,18 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
         // flowLayoutPanelServices
         //
         this->flowLayoutPanelServices->AutoScroll = true;
-        this->flowLayoutPanelServices->BackColor = System::Drawing::Color::Teal;
+        this->flowLayoutPanelServices->BackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(224)),
+                static_cast<System::Int32>(static_cast<System::Byte>(192)));
         this->flowLayoutPanelServices->Dock =
             System::Windows::Forms::DockStyle::Left;
         this->flowLayoutPanelServices->Location = System::Drawing::Point(0, 0);
+        this->flowLayoutPanelServices->Margin =
+            System::Windows::Forms::Padding(4);
         this->flowLayoutPanelServices->Name = L"flowLayoutPanelServices";
-        this->flowLayoutPanelServices->Size = System::Drawing::Size(310, 499);
+        this->flowLayoutPanelServices->Size = System::Drawing::Size(413, 614);
         this->flowLayoutPanelServices->TabIndex = 0;
         //
         // panel1
@@ -94,16 +100,18 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                    System::Windows::Forms::AnchorStyles::Bottom) |
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->panel1->BackColor = System::Drawing::Color::Teal;
+        this->panel1->BackColor = System::Drawing::Color::White;
         this->panel1->Controls->Add(this->labelHeader);
         this->panel1->Controls->Add(this->panelContent);
-        this->panel1->Location = System::Drawing::Point(316, 0);
+        this->panel1->Location = System::Drawing::Point(421, 0);
+        this->panel1->Margin = System::Windows::Forms::Padding(4);
         this->panel1->Name = L"panel1";
-        this->panel1->Size = System::Drawing::Size(343, 499);
+        this->panel1->Size = System::Drawing::Size(457, 614);
         this->panel1->TabIndex = 1;
         //
         // labelHeader
         //
+        this->labelHeader->BackColor = System::Drawing::Color::Transparent;
         this->labelHeader->Cursor = System::Windows::Forms::Cursors::Hand;
         this->labelHeader->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->labelHeader->Font = (gcnew System::Drawing::Font(
@@ -112,9 +120,10 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
             static_cast<System::Byte>(0)));
         this->labelHeader->ForeColor = System::Drawing::Color::White;
         this->labelHeader->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->labelHeader->Location = System::Drawing::Point(20, 20);
+        this->labelHeader->Location = System::Drawing::Point(33, 25);
+        this->labelHeader->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelHeader->Name = L"labelHeader";
-        this->labelHeader->Size = System::Drawing::Size(292, 47);
+        this->labelHeader->Size = System::Drawing::Size(389, 58);
         this->labelHeader->TabIndex = 66;
         this->labelHeader->TextAlign =
             System::Drawing::ContentAlignment::MiddleCenter;
@@ -128,6 +137,7 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                    System::Windows::Forms::AnchorStyles::Bottom) |
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
+        this->panelContent->BackColor = System::Drawing::Color::White;
         this->panelContent->Controls->Add(this->submitRecurringPayment);
         this->panelContent->Controls->Add(this->label2);
         this->panelContent->Controls->Add(this->panel2);
@@ -137,9 +147,10 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
         this->panelContent->Controls->Add(this->label1);
         this->panelContent->Controls->Add(this->panel4);
         this->panelContent->Controls->Add(this->label5);
-        this->panelContent->Location = System::Drawing::Point(20, 81);
+        this->panelContent->Location = System::Drawing::Point(16, 43);
+        this->panelContent->Margin = System::Windows::Forms::Padding(4);
         this->panelContent->Name = L"panelContent";
-        this->panelContent->Size = System::Drawing::Size(292, 384);
+        this->panelContent->Size = System::Drawing::Size(427, 518);
         this->panelContent->TabIndex = 0;
         this->panelContent->Visible = false;
         //
@@ -150,16 +161,26 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->submitRecurringPayment->AutoSize = true;
-        this->submitRecurringPayment->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->submitRecurringPayment->BackColor =
+            System::Drawing::Color::Transparent;
+        this->submitRecurringPayment->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
         this->submitRecurringPayment->ForeColor =
-            System::Drawing::SystemColors::ButtonFace;
-        this->submitRecurringPayment->Location = System::Drawing::Point(3, 282);
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->submitRecurringPayment->Location =
+            System::Drawing::Point(17, 381);
+        this->submitRecurringPayment->Margin =
+            System::Windows::Forms::Padding(4);
         this->submitRecurringPayment->Name = L"submitRecurringPayment";
-        this->submitRecurringPayment->Size = System::Drawing::Size(206, 26);
+        this->submitRecurringPayment->Size = System::Drawing::Size(255, 30);
         this->submitRecurringPayment->TabIndex = 67;
         this->submitRecurringPayment->Text = L"Đăng kí thanh toán định kì";
-        this->submitRecurringPayment->UseVisualStyleBackColor = true;
+        this->submitRecurringPayment->UseVisualStyleBackColor = false;
         //
         // label2
         //
@@ -168,14 +189,21 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->label2->AutoSize = true;
+        this->label2->BackColor = System::Drawing::Color::Transparent;
         this->label2->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label2->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->label2->ForeColor = System::Drawing::Color::Transparent;
+        this->label2->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->label2->ForeColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label2->Location = System::Drawing::Point(3, 214);
+        this->label2->Location = System::Drawing::Point(12, 287);
+        this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(99, 22);
+        this->label2->Size = System::Drawing::Size(124, 26);
         this->label2->TabIndex = 66;
         this->label2->Text = L"Nhập mã pin:";
         //
@@ -187,9 +215,10 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel2->BackColor = System::Drawing::Color::White;
         this->panel2->Controls->Add(this->pin);
-        this->panel2->Location = System::Drawing::Point(3, 239);
+        this->panel2->Location = System::Drawing::Point(13, 317);
+        this->panel2->Margin = System::Windows::Forms::Padding(4);
         this->panel2->Name = L"panel2";
-        this->panel2->Size = System::Drawing::Size(286, 37);
+        this->panel2->Size = System::Drawing::Size(390, 47);
         this->panel2->TabIndex = 64;
         //
         // pin
@@ -199,15 +228,19 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                System::Windows::Forms::AnchorStyles::Bottom) |
               System::Windows::Forms::AnchorStyles::Left) |
              System::Windows::Forms::AnchorStyles::Right));
-        this->pin->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->pin->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
         this->pin->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->pin->Location = System::Drawing::Point(21, 6);
+            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->pin->Location = System::Drawing::Point(0, 0);
+        this->pin->Margin = System::Windows::Forms::Padding(4);
         this->pin->MaxLength = 10;
         this->pin->Multiline = true;
         this->pin->Name = L"pin";
-        this->pin->Size = System::Drawing::Size(265, 28);
+        this->pin->Size = System::Drawing::Size(386, 44);
         this->pin->TabIndex = 29;
+        this->pin->TextChanged += gcnew System::EventHandler(
+            this, &ServicePaymentForm::pin_TextChanged);
         //
         // labelReceiver
         //
@@ -216,21 +249,27 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->labelReceiver->AutoSize = true;
+        this->labelReceiver->BackColor = System::Drawing::Color::Transparent;
         this->labelReceiver->Cursor = System::Windows::Forms::Cursors::Hand;
         this->labelReceiver->FlatStyle =
             System::Windows::Forms::FlatStyle::Flat;
         this->labelReceiver->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 15.75F, System::Drawing::FontStyle::Bold,
+            L"UTM Daxline", 13.8F, System::Drawing::FontStyle::Bold,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->labelReceiver->ForeColor = System::Drawing::Color::White;
+        this->labelReceiver->ForeColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->labelReceiver->ImeMode =
             System::Windows::Forms::ImeMode::NoControl;
-        this->labelReceiver->Location = System::Drawing::Point(37, 23);
+        this->labelReceiver->Location = System::Drawing::Point(49, 51);
+        this->labelReceiver->Margin =
+            System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelReceiver->Name = L"labelReceiver";
-        this->labelReceiver->Size = System::Drawing::Size(216, 28);
+        this->labelReceiver->Size = System::Drawing::Size(259, 30);
         this->labelReceiver->TabIndex = 65;
-        this->labelReceiver->Text = L"THANH TOÁN HÓA ĐƠN";
+        this->labelReceiver->Text = L"      THANH TOÁN HÓA ĐƠN";
         //
         // btnTransfer
         //
@@ -238,17 +277,28 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->btnTransfer->BackColor = System::Drawing::SystemColors::Info;
+        this->btnTransfer->BackColor = System::Drawing::Color::Green;
         this->btnTransfer->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnTransfer->FlatAppearance->BorderSize = 0;
+        this->btnTransfer->FlatAppearance->BorderColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnTransfer->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::Green;
+        this->btnTransfer->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::Green;
         this->btnTransfer->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnTransfer->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnTransfer->ForeColor = System::Drawing::Color::Teal;
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->btnTransfer->ForeColor = System::Drawing::Color::White;
         this->btnTransfer->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->btnTransfer->Location = System::Drawing::Point(3, 326);
+        this->btnTransfer->Location = System::Drawing::Point(17, 424);
+        this->btnTransfer->Margin = System::Windows::Forms::Padding(4);
         this->btnTransfer->Name = L"btnTransfer";
-        this->btnTransfer->Size = System::Drawing::Size(286, 38);
+        this->btnTransfer->Size = System::Drawing::Size(389, 47);
         this->btnTransfer->TabIndex = 64;
         this->btnTransfer->Text = L"THANH TOÁN";
         this->btnTransfer->UseVisualStyleBackColor = false;
@@ -262,10 +312,13 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel3->BackColor = System::Drawing::Color::White;
+        this->panel3->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
         this->panel3->Controls->Add(this->code);
-        this->panel3->Location = System::Drawing::Point(3, 164);
+        this->panel3->Location = System::Drawing::Point(13, 225);
+        this->panel3->Margin = System::Windows::Forms::Padding(4);
         this->panel3->Name = L"panel3";
-        this->panel3->Size = System::Drawing::Size(286, 37);
+        this->panel3->Size = System::Drawing::Size(391, 46);
         this->panel3->TabIndex = 63;
         //
         // code
@@ -277,12 +330,13 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
              System::Windows::Forms::AnchorStyles::Right));
         this->code->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->code->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->code->Location = System::Drawing::Point(21, 6);
+            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->code->Location = System::Drawing::Point(8, -1);
+        this->code->Margin = System::Windows::Forms::Padding(4);
         this->code->MaxLength = 10;
         this->code->Multiline = true;
         this->code->Name = L"code";
-        this->code->Size = System::Drawing::Size(265, 28);
+        this->code->Size = System::Drawing::Size(381, 46);
         this->code->TabIndex = 29;
         //
         // label1
@@ -292,14 +346,21 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->label1->AutoSize = true;
+        this->label1->BackColor = System::Drawing::Color::Transparent;
         this->label1->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label1->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->label1->ForeColor = System::Drawing::Color::Transparent;
+        this->label1->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->label1->ForeColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->label1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label1->Location = System::Drawing::Point(1, 139);
+        this->label1->Location = System::Drawing::Point(8, 195);
+        this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(151, 22);
+        this->label1->Size = System::Drawing::Size(190, 26);
         this->label1->TabIndex = 62;
         this->label1->Text = L"Nhập mã thanh toán:";
         //
@@ -310,10 +371,13 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel4->BackColor = System::Drawing::Color::White;
+        this->panel4->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
         this->panel4->Controls->Add(this->selectCompanyBox);
-        this->panel4->Location = System::Drawing::Point(3, 88);
+        this->panel4->Location = System::Drawing::Point(13, 131);
+        this->panel4->Margin = System::Windows::Forms::Padding(4);
         this->panel4->Name = L"panel4";
-        this->panel4->Size = System::Drawing::Size(286, 37);
+        this->panel4->Size = System::Drawing::Size(393, 46);
         this->panel4->TabIndex = 61;
         //
         // selectCompanyBox
@@ -325,12 +389,13 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
         this->selectCompanyBox->FlatStyle =
             System::Windows::Forms::FlatStyle::Popup;
         this->selectCompanyBox->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 12));
+            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
         this->selectCompanyBox->ForeColor = System::Drawing::Color::Black;
         this->selectCompanyBox->FormattingEnabled = true;
-        this->selectCompanyBox->Location = System::Drawing::Point(6, 7);
+        this->selectCompanyBox->Location = System::Drawing::Point(8, 8);
+        this->selectCompanyBox->Margin = System::Windows::Forms::Padding(4);
         this->selectCompanyBox->Name = L"selectCompanyBox";
-        this->selectCompanyBox->Size = System::Drawing::Size(280, 27);
+        this->selectCompanyBox->Size = System::Drawing::Size(382, 33);
         this->selectCompanyBox->TabIndex = 3;
         this->selectCompanyBox->SelectedIndexChanged +=
             gcnew System::EventHandler(
@@ -344,14 +409,21 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->label5->AutoSize = true;
+        this->label5->BackColor = System::Drawing::Color::Transparent;
         this->label5->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label5->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->label5->ForeColor = System::Drawing::Color::Transparent;
+        this->label5->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->label5->ForeColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)),
+            static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label5->Location = System::Drawing::Point(1, 63);
+        this->label5->Location = System::Drawing::Point(8, 101);
+        this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(103, 22);
+        this->label5->Size = System::Drawing::Size(128, 26);
         this->label5->TabIndex = 60;
         this->label5->Text = L"Chọn công ty:";
         this->label5->Click +=
@@ -359,12 +431,13 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
         //
         // ServicePaymentForm
         //
-        this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+        this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->ClientSize = System::Drawing::Size(658, 499);
+        this->ClientSize = System::Drawing::Size(877, 614);
         this->Controls->Add(this->panel1);
         this->Controls->Add(this->flowLayoutPanelServices);
         this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+        this->Margin = System::Windows::Forms::Padding(4);
         this->Name = L"ServicePaymentForm";
         this->Text = L"ServicePaymentForm";
         this->panel1->ResumeLayout(false);
@@ -399,5 +472,8 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
     void onSubmitCurrentPayment(String^ userAccountNumber, String^ companyAccountNumber,
                                 int monthly);
 
+private:
+    System::Void pin_TextChanged(System::Object ^ sender,
+                                 System::EventArgs ^ e) {}
 };
 } // namespace BankingAppwinform

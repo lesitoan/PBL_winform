@@ -351,8 +351,13 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->btnSubmit->BackColor = System::Drawing::Color::Transparent;
+        this->btnSubmit->BackColor = System::Drawing::Color::Green;
         this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnSubmit->FlatAppearance->BorderColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->btnSubmit->FlatAppearance->MouseDownBackColor =
             System::Drawing::Color::White;
         this->btnSubmit->FlatAppearance->MouseOverBackColor =
@@ -362,7 +367,7 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnSubmit->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            L"UTM Daxline", 13.8F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->btnSubmit->ForeColor = System::Drawing::Color::White;

@@ -300,8 +300,13 @@ ref class SetPinForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->button1->BackColor = System::Drawing::Color::Transparent;
+        this->button1->BackColor = System::Drawing::Color::Green;
         this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->button1->FlatAppearance->BorderColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->button1->FlatAppearance->MouseOverBackColor =
             System::Drawing::Color::FromArgb(
                 static_cast<System::Int32>(static_cast<System::Byte>(255)),

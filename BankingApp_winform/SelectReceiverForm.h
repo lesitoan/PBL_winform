@@ -104,7 +104,7 @@ ref class SelectReceiverForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Top |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->btnClose->BackColor = System::Drawing::Color::Transparent;
+        this->btnClose->BackColor = System::Drawing::Color::Firebrick;
         this->btnClose->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnClose->FlatAppearance->BorderColor =
             System::Drawing::Color::FromArgb(
@@ -146,7 +146,7 @@ ref class SelectReceiverForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Top |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->btnSubmit->BackColor = System::Drawing::Color::Transparent;
+        this->btnSubmit->BackColor = System::Drawing::Color::Green;
         this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnSubmit->FlatAppearance->BorderColor =
             System::Drawing::Color::FromArgb(

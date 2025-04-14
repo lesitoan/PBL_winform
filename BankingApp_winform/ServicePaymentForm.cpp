@@ -1,10 +1,12 @@
 ﻿#include "ServicePaymentForm.h"
+#include "GradientHelper.h"
 
 namespace BankingAppwinform {
 
 ServicePaymentForm::ServicePaymentForm(void) {
     InitializeComponent();
     LoadServices();
+    GradientColorHelper::ApplyGradient(this->flowLayoutPanelServices);
 }
 
 ServicePaymentForm::~ServicePaymentForm() {
@@ -22,18 +24,19 @@ void ServicePaymentForm::LoadServices() {
     for (int i = 0; i < services->Length; i++) {
         Panel ^ panel = gcnew Panel();
         panel->Size = System::Drawing::Size(120, 120);
-        panel->BackColor = Color::Aqua;
+        /*panel->BackColor = Color::White;*/
         panel->Margin = System::Windows::Forms::Padding(10);
+        
 
         Label ^ label = gcnew Label();
         label->Font =
-            gcnew System::Drawing::Font("UTM Daxline", 12, FontStyle::Bold);
+            gcnew System::Drawing::Font("UTM Daxline", 12, FontStyle::Regular);
         label->Cursor = Cursors::Hand;
 
         label->Text = services[i]->Name;
         label->Dock = DockStyle::Fill;
         label->TextAlign = ContentAlignment::MiddleCenter;
-
+        label->BackColor = Color::White;
         panel->Controls->Add(label);
         this->flowLayoutPanelServices->Controls->Add(panel);
 
@@ -41,6 +44,9 @@ void ServicePaymentForm::LoadServices() {
         label->Tag = services[i]->Id; // Lưu ID dịch vụ vào Tag
         label->Click +=
             gcnew EventHandler(this, &ServicePaymentForm::OnServiceClick);
+        GradientColorHelper::ApplyRoundedCorners(label,10);
+        GradientColorHelper::ApplyRoundedCorners(panel,10);
+        GradientColorHelper::ApplyGradient(panel1);
     }
 }
 

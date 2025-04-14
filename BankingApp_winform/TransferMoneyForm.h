@@ -149,7 +149,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnSelectAccHistory->BackColor =
             System::Drawing::Color::Transparent;
         this->btnSelectAccHistory->BorderStyle =
-            System::Windows::Forms::BorderStyle::FixedSingle;
+            System::Windows::Forms::BorderStyle::Fixed3D;
         this->btnSelectAccHistory->Cursor =
             System::Windows::Forms::Cursors::Hand;
         this->btnSelectAccHistory->FlatStyle =
@@ -214,10 +214,13 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->btnFindAccount->BackColor = System::Drawing::Color::Transparent;
+        this->btnFindAccount->BackColor = System::Drawing::Color::Green;
         this->btnFindAccount->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnFindAccount->FlatAppearance->BorderColor =
-            System::Drawing::Color::White;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->btnFindAccount->FlatAppearance->CheckedBackColor =
             System::Drawing::Color::FromArgb(
                 static_cast<System::Int32>(static_cast<System::Byte>(255)),
@@ -233,7 +236,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnFindAccount->FlatStyle =
             System::Windows::Forms::FlatStyle::Flat;
         this->btnFindAccount->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            L"UTM Daxline", 13.8F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->btnFindAccount->ForeColor = System::Drawing::Color::White;
@@ -563,10 +566,13 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->btnSubmit->BackColor = System::Drawing::Color::Transparent;
+        this->btnSubmit->BackColor = System::Drawing::Color::Green;
         this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnSubmit->FlatAppearance->BorderColor =
-            System::Drawing::Color::White;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->btnSubmit->FlatAppearance->CheckedBackColor =
             System::Drawing::Color::FromArgb(
                 static_cast<System::Int32>(static_cast<System::Byte>(255)),
@@ -581,7 +587,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnSubmit->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            L"UTM Daxline", 13.8F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->btnSubmit->ForeColor = System::Drawing::Color::White;

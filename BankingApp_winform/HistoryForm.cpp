@@ -1,10 +1,13 @@
 ﻿#include "HistoryForm.h"
+#include"GradientHelper.h"
 
 namespace BankingAppwinform {
 
 HistoryForm::HistoryForm(void) { 
     InitializeComponent();
     this->loadTransactionsHistory();
+    GradientColorHelper::ApplyGradient(this->label1);
+    GradientColorHelper::ApplyGradient(this->label2);
 }
 
 HistoryForm::~HistoryForm() {
@@ -44,7 +47,8 @@ void HistoryForm::loadTransactionsHistory() {
 void HistoryForm::AddTransactionPanel(FlowLayoutPanel ^ flowLayoutPanel,
                                       Transaction ^ transaction, int index) {
     Panel ^ panel = gcnew Panel();
-    panel->BackColor = Color::FromArgb(128, 255, 255);
+    panel->BackColor = Color::White;
+    panel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
     panel->Padding = System::Windows::Forms::Padding(10);
     panel->Margin = System::Windows::Forms::Padding(7, 5, 0, 5);
     panel->Width = flowLayoutPanel->ClientSize.Width - 15;
