@@ -1,8 +1,14 @@
 ﻿#include "ChangePwForm.h"
+#include"GradientHelper.h"
 
 namespace BankingAppwinform {
 
-ChangePwForm::ChangePwForm(void) { InitializeComponent(); }
+ChangePwForm::ChangePwForm(void) { 
+    InitializeComponent(); 
+    GradientColorHelper::ApplyGradient(this);
+    //GradientColorHelper::ApplyGradient(this->panel1);
+    //GradientColorHelper::ApplyRoundedCorners(this->panel1, 20);
+}
 
 ChangePwForm::~ChangePwForm() {
     if (components) {

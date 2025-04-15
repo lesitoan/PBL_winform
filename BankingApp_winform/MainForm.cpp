@@ -1,5 +1,6 @@
 ﻿#include "MainForm.h"
 #include "AuthForm.h"
+#include "AccountForm.h"
 
 namespace BankingAppwinform {
 
@@ -14,14 +15,22 @@ MainForm::~MainForm() {
     }
 }
 void MainForm::ChangeButtonColor(Button ^ button) {
-    if (selectedButton != nullptr) {
-        selectedButton->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+
+    for each (Control ^ ctrl in this->panelNav->Controls) {
+        Button ^ btn = dynamic_cast<Button ^>(ctrl);
+        if (btn != nullptr && btn != btnLogout) {
+            btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            btn->BackColor = System::Drawing::Color::Transparent;
+            btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(255, 100, 100);
+            btn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(255, 100, 100);
+        }
     }
+
     selectedButton = button;
-    selectedButton->BackColor = System::Drawing::Color::Teal;
+    if (selectedButton != nullptr) {
+        selectedButton->BackColor = System::Drawing::Color::FromArgb(255, 100, 100);
+    }
+    AccountForm::axWindowsMediaPlayer2->Ctlcontrols->pause();
 }
 
 void MainForm::InitLoad() {
@@ -47,8 +56,8 @@ System::Void MainForm::MainForm_Load(System::Object ^ sender,
                                      System::EventArgs ^ e) {}
 System::Void MainForm::btnAccount_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
-    LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm(this));
     ChangeButtonColor(btnAccount);
+    LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm(this));
     this->headerText->Text = L"TÀI KHOẢN";
 }
 System::Void MainForm::btnTransfer_Click(System::Object ^ sender,
@@ -183,16 +192,6 @@ System::Void MainForm::resizeEven(System::Object ^ sender,
     panelContent->Top = (parentHeight - panelContent->Height) / 2;
 }
 
-System::Void MainForm::btnShowBalance_CheckedChanged(System::Object ^ sender,
-                                                     System::EventArgs ^ e) {
-    if (btnShowBalance->Checked) {
-        this->labelBalance->Text =
-            GlobalData::GetCurrentUser()->getBalance() + " VND";
-    } else {
-        this->labelBalance->Text = "**********";
-    }
-}
-
 System::Void MainForm::btnNotification_Click(System::Object^ sender,
     System::EventArgs^ e) {
 
@@ -228,5 +227,15 @@ void MainForm::loadAvatar() {
     }
     this->pictureBoxAvatar->Image = Image::FromFile(correctPath);
 }
+
+    System::Void MainForm::labelBalance_Click(System::Object ^ sender,
+        System::EventArgs ^ e) {
+        if (this->labelBalance->Text != "**********") {
+            this->labelBalance->Text = "**********";
+        } else {
+            this->labelBalance->Text =
+                GlobalData::GetCurrentUser()->getBalance() + " VND";
+        }
+    }
 
 }; // namespace BankingAppwinform

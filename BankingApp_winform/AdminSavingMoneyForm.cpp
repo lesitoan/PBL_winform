@@ -156,6 +156,9 @@ System::Void AdminSavingMoneyForm::dataGridViewRequests_CellClick(
         // Cập nhật lại thông tin trong file
         array<SavingCustomers ^> ^ savingItems =
             HandleFile::ReadSavingCustomersArray("savingCustomers.dat");
+
+        SavingCustomers ^ savingx = nullptr;
+
         for (int i = 0; i < savingItems->Length; i++) {
             if (savingItems[i]->Id == savingItem->Id) {
                 savingItems[i]->Status = 1;
@@ -169,11 +172,36 @@ System::Void AdminSavingMoneyForm::dataGridViewRequests_CellClick(
                     (savingItems[i]->Amount * savingItems[i]->InterestRate *
                      duration.Days / 365.0);
 
+                savingx = savingItems[i];
+
                 break;
             }
         }
         HandleFile::WriteSavingCustomersArray(savingItems,
                                               "savingCustomers.dat");
+
+
+        // + tien cho user
+        array<User^>^ usersArr = HandleFile::ReadUserArray("users.dat");
+        if (usersArr == nullptr) {
+            return;
+        }
+        for (int i = 0; i < usersArr->Length; i++) {
+            if (usersArr[i]->getAccountNumber() == savingx->UserAccountNumber) {
+                TimeSpan duration = DateTime::Now - savingItems[i]->DepositDate;
+                double currentAmount =
+                    savingItems[i]->Amount +
+                    (savingItems[i]->Amount * savingItems[i]->InterestRate *
+                     duration.Days) /
+                        365.0;
+                usersArr[i]->setBalance(usersArr[i]->getBalance() +
+                                        currentAmount);
+                break;
+            }
+        }
+        HandleFile::WriteUserArray(usersArr, "users.dat");
+
+
 
         MessageBox::Show(L"Đã thanh toán yêu cầu rút tiết kiệm thành công",
                          L"Thông báo", MessageBoxButtons::OK,

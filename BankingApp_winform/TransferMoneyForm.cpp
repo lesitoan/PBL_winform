@@ -1,7 +1,13 @@
 ﻿#include "TransferMoneyForm.h"
+#include "GradientHelper.h"
 
 namespace BankingAppwinform {
-TransferMoneyForm::TransferMoneyForm(void) { InitializeComponent(); }
+TransferMoneyForm::TransferMoneyForm(void) { 
+    InitializeComponent(); 
+    GradientColorHelper::ApplyGradient(this->panelTransfer);
+    GradientColorHelper::ApplyGradient(this->panel1);
+    GradientColorHelper::ApplyGradient(this->panel2);
+}
 
 TransferMoneyForm::~TransferMoneyForm() {
     if (components) {

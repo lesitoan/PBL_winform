@@ -95,6 +95,9 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
+        this->panel1->BackColor = System::Drawing::Color::Transparent;
+        this->panel1->BackgroundImageLayout =
+            System::Windows::Forms::ImageLayout::Stretch;
         this->panel1->Controls->Add(this->panel4);
         this->panel1->Controls->Add(this->panel2);
         this->panel1->Controls->Add(this->panel3);
@@ -105,10 +108,10 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->panel1->Controls->Add(this->label5);
         this->panel1->Controls->Add(this->label4);
         this->panel1->Controls->Add(this->btnSubmit);
-        this->panel1->Location = System::Drawing::Point(16, 16);
-        this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel1->Location = System::Drawing::Point(41, 27);
+        this->panel1->Margin = System::Windows::Forms::Padding(4);
         this->panel1->Name = L"panel1";
-        this->panel1->Size = System::Drawing::Size(803, 441);
+        this->panel1->Size = System::Drawing::Size(745, 441);
         this->panel1->TabIndex = 0;
         //
         // panel4
@@ -120,9 +123,9 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->panel4->BackColor = System::Drawing::Color::White;
         this->panel4->Controls->Add(this->newPasswordConfirm);
         this->panel4->Location = System::Drawing::Point(123, 254);
-        this->panel4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel4->Margin = System::Windows::Forms::Padding(4);
         this->panel4->Name = L"panel4";
-        this->panel4->Size = System::Drawing::Size(531, 46);
+        this->panel4->Size = System::Drawing::Size(473, 46);
         this->panel4->TabIndex = 56;
         //
         // newPasswordConfirm
@@ -138,13 +141,12 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->newPasswordConfirm->Font =
             (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->newPasswordConfirm->Location = System::Drawing::Point(24, 7);
-        this->newPasswordConfirm->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->newPasswordConfirm->Margin = System::Windows::Forms::Padding(4);
         this->newPasswordConfirm->MaxLength = 15;
         this->newPasswordConfirm->Multiline = true;
         this->newPasswordConfirm->Name = L"newPasswordConfirm";
         this->newPasswordConfirm->PasswordChar = '*';
-        this->newPasswordConfirm->Size = System::Drawing::Size(503, 34);
+        this->newPasswordConfirm->Size = System::Drawing::Size(445, 34);
         this->newPasswordConfirm->TabIndex = 29;
         //
         // panel2
@@ -156,9 +158,9 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->panel2->BackColor = System::Drawing::Color::White;
         this->panel2->Controls->Add(this->newPassword);
         this->panel2->Location = System::Drawing::Point(123, 146);
-        this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel2->Margin = System::Windows::Forms::Padding(4);
         this->panel2->Name = L"panel2";
-        this->panel2->Size = System::Drawing::Size(531, 46);
+        this->panel2->Size = System::Drawing::Size(473, 46);
         this->panel2->TabIndex = 55;
         //
         // newPassword
@@ -174,12 +176,12 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->newPassword->Font =
             (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->newPassword->Location = System::Drawing::Point(24, 7);
-        this->newPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->newPassword->Margin = System::Windows::Forms::Padding(4);
         this->newPassword->MaxLength = 9;
         this->newPassword->Multiline = true;
         this->newPassword->Name = L"newPassword";
         this->newPassword->PasswordChar = '*';
-        this->newPassword->Size = System::Drawing::Size(503, 34);
+        this->newPassword->Size = System::Drawing::Size(445, 34);
         this->newPassword->TabIndex = 29;
         //
         // panel3
@@ -191,9 +193,9 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->panel3->BackColor = System::Drawing::Color::White;
         this->panel3->Controls->Add(this->oldPassword);
         this->panel3->Location = System::Drawing::Point(123, 46);
-        this->panel3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel3->Margin = System::Windows::Forms::Padding(4);
         this->panel3->Name = L"panel3";
-        this->panel3->Size = System::Drawing::Size(531, 46);
+        this->panel3->Size = System::Drawing::Size(473, 46);
         this->panel3->TabIndex = 54;
         //
         // oldPassword
@@ -209,12 +211,12 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->oldPassword->Font =
             (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->oldPassword->Location = System::Drawing::Point(24, 7);
-        this->oldPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->oldPassword->Margin = System::Windows::Forms::Padding(4);
         this->oldPassword->MaxLength = 15;
         this->oldPassword->Multiline = true;
         this->oldPassword->Name = L"oldPassword";
         this->oldPassword->PasswordChar = '*';
-        this->oldPassword->Size = System::Drawing::Size(503, 34);
+        this->oldPassword->Size = System::Drawing::Size(445, 34);
         this->oldPassword->TabIndex = 29;
         //
         // label3
@@ -228,7 +230,7 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->label3->Image = (cli::safe_cast<System::Drawing::Image ^>(
             resources->GetObject(L"label3.Image")));
         this->label3->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label3->Location = System::Drawing::Point(640, 254);
+        this->label3->Location = System::Drawing::Point(582, 254);
         this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label3->Name = L"label3";
         this->label3->Size = System::Drawing::Size(72, 46);
@@ -249,7 +251,7 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->label2->Image = (cli::safe_cast<System::Drawing::Image ^>(
             resources->GetObject(L"label2.Image")));
         this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label2->Location = System::Drawing::Point(640, 146);
+        this->label2->Location = System::Drawing::Point(582, 146);
         this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label2->Name = L"label2";
         this->label2->Size = System::Drawing::Size(72, 46);
@@ -271,7 +273,7 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
             resources->GetObject(L"label1.Image")));
         this->label1->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
         this->label1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label1->Location = System::Drawing::Point(640, 46);
+        this->label1->Location = System::Drawing::Point(582, 46);
         this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label1->Name = L"label1";
         this->label1->Size = System::Drawing::Size(72, 46);
@@ -288,32 +290,38 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->label6->AutoSize = true;
+        this->label6->BackColor = System::Drawing::Color::Transparent;
         this->label6->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label6->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->label6->ForeColor = System::Drawing::Color::Transparent;
+        this->label6->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->label6->ForeColor = System::Drawing::Color::White;
         this->label6->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label6->Location = System::Drawing::Point(117, 223);
         this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label6->Name = L"label6";
-        this->label6->Size = System::Drawing::Size(216, 27);
+        this->label6->Size = System::Drawing::Size(217, 26);
         this->label6->TabIndex = 50;
-        this->label6->Text = L"Xác nhận mật khẩu mới:";
+        this->label6->Text = L"Confirm New Password:";
         //
         // label5
         //
         this->label5->AutoSize = true;
+        this->label5->BackColor = System::Drawing::Color::Transparent;
         this->label5->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label5->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->label5->ForeColor = System::Drawing::Color::Transparent;
+        this->label5->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->label5->ForeColor = System::Drawing::Color::White;
         this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label5->Location = System::Drawing::Point(117, 116);
         this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(313, 27);
+        this->label5->Size = System::Drawing::Size(290, 26);
         this->label5->TabIndex = 47;
-        this->label5->Text = L"Nhập mật khẩu mới (ít nhất 6 kí tự):";
+        this->label5->Text = L"New Password(At least 6 chars):";
         //
         // label4
         //
@@ -322,17 +330,20 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->label4->AutoSize = true;
+        this->label4->BackColor = System::Drawing::Color::Transparent;
         this->label4->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label4->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->label4->ForeColor = System::Drawing::Color::Transparent;
+        this->label4->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->label4->ForeColor = System::Drawing::Color::White;
         this->label4->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label4->Location = System::Drawing::Point(117, 15);
         this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label4->Name = L"label4";
-        this->label4->Size = System::Drawing::Size(147, 27);
+        this->label4->Size = System::Drawing::Size(134, 26);
         this->label4->TabIndex = 44;
-        this->label4->Text = L"Nhập mật khẩu:";
+        this->label4->Text = L"Old Password:";
         //
         // btnSubmit
         //
@@ -340,20 +351,33 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->btnSubmit->BackColor = System::Drawing::SystemColors::Info;
+        this->btnSubmit->BackColor = System::Drawing::Color::Green;
         this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnSubmit->FlatAppearance->BorderSize = 0;
+        this->btnSubmit->FlatAppearance->BorderColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnSubmit->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::White;
+        this->btnSubmit->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnSubmit->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnSubmit->ForeColor = System::Drawing::Color::Teal;
+            L"UTM Daxline", 13.8F, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->btnSubmit->ForeColor = System::Drawing::Color::White;
         this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->btnSubmit->Location = System::Drawing::Point(123, 345);
-        this->btnSubmit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnSubmit->Margin = System::Windows::Forms::Padding(4);
         this->btnSubmit->Name = L"btnSubmit";
-        this->btnSubmit->Size = System::Drawing::Size(593, 52);
+        this->btnSubmit->Size = System::Drawing::Size(535, 52);
         this->btnSubmit->TabIndex = 42;
-        this->btnSubmit->Text = L"THAY ĐỔI";
+        this->btnSubmit->Text = L"Change Account Password";
         this->btnSubmit->UseVisualStyleBackColor = false;
         this->btnSubmit->Click +=
             gcnew System::EventHandler(this, &ChangePwForm::btnSubmit_Click);
@@ -362,11 +386,13 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->BackColor = System::Drawing::Color::Teal;
+        this->BackColor = System::Drawing::SystemColors::ActiveCaption;
+        this->BackgroundImageLayout =
+            System::Windows::Forms::ImageLayout::Stretch;
         this->ClientSize = System::Drawing::Size(835, 471);
         this->Controls->Add(this->panel1);
         this->ForeColor = System::Drawing::SystemColors::ControlLight;
-        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->Margin = System::Windows::Forms::Padding(4);
         this->Name = L"ChangePwForm";
         this->Text = L"ChangePwForm";
         this->panel1->ResumeLayout(false);
