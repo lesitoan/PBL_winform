@@ -40,6 +40,8 @@ System::Void AccountForm::AccountForm_Load(System::Object ^ sender,
     }
     axWindowsMediaPlayer2->URL = correctPath;
     axWindowsMediaPlayer2->Ctlcontrols->play();
+
+
     GradientColorHelper::ApplyGradient(this->panel1);
     GradientColorHelper::ApplyGradient(this->panel2);
     //

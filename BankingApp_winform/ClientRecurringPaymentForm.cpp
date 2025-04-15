@@ -28,19 +28,19 @@ void ClientRecurringPaymentForm::loadRecurringPaymentData() {
         return;
     }
 
-    // lấy ta các mã khách hàng của người dùng hiện tại
-    List<String ^> ^ customerCodesList = gcnew List<String ^>();
+    // lấy các mã khách hàng của công ty
+    List<CustomerCodes ^> ^ customerCodesList = gcnew List<CustomerCodes ^>();
     for each (CustomerCodes ^ code in customerCodes) {
         if (code->CompanyAccountNumber ==
             GlobalData::GetCurrentUser()->getAccountNumber()) {
-            customerCodesList->Add(code->Code);
+            customerCodesList->Add(code);
         }
     }
 
     for each (RecurringPayments ^ payment in recurringPayments) {
 
-        for each (String ^ currCustomerCode in customerCodesList) {
-            if (payment->CustomerCodeId == currCustomerCode) {
+        for each (CustomerCodes ^ currCustomerCode in customerCodesList) {
+            if (payment->CustomerCodeId == currCustomerCode->Id) {
 
                 // tìm người dùng có mã tài khoản là mã khách hàng để lấy tên và stk
                 User ^ user = nullptr;
@@ -56,7 +56,7 @@ void ClientRecurringPaymentForm::loadRecurringPaymentData() {
                 }
 
                 dataGridViewRecurring->Rows->Add(
-                    currCustomerCode, user->FullName, user->AccountNumber,
+                    currCustomerCode->Code, user->FullName, user->AccountNumber,
                     payment->PaymentDay);
                 int lastRow = dataGridViewRecurring->Rows->Count - 1;
                 dataGridViewRecurring->Rows[lastRow]->Tag = payment;

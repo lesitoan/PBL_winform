@@ -61,7 +61,9 @@ ref class CustomerCodeDetails {
             String ^ get() { return customerCodeId; }
     } property String ^
         PaymentUserAccountNumber {
-            String ^ get() { return paymentUserAccountNumber; }
+            String ^ get() { return paymentUserAccountNumber; } void set(String ^ value) {
+                paymentUserAccountNumber = value;
+            }
     }
     property double Amount {
         double get() { return amount; }

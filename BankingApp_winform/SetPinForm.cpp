@@ -74,13 +74,5 @@ System::Void SetPinForm::btnShowPw_Click(System::Object ^ sender,
     }
 }
 
-    System::Void SetPinForm::btnShowConfirm_Click(System::Object ^ sender,
-        System::EventArgs ^ e){
-        if (txtConfirm->PasswordChar == '\0') {
-            txtConfirm->PasswordChar = '\*';
-        } else {
-            txtConfirm->PasswordChar = '\0';
-        }
-    }
 };
  // namespace BankingAppwinform

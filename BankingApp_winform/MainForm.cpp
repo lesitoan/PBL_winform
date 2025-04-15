@@ -30,7 +30,7 @@ void MainForm::ChangeButtonColor(Button ^ button) {
     if (selectedButton != nullptr) {
         selectedButton->BackColor = System::Drawing::Color::FromArgb(255, 100, 100);
     }
-    AccountForm::axWindowsMediaPlayer2->Ctlcontrols->pause();
+    //AccountForm::axWindowsMediaPlayer2->Ctlcontrols->pause();
 }
 
 void MainForm::InitLoad() {

@@ -166,6 +166,12 @@ System::Void CodeDetailForm::btnSubmit_Click(System::Object ^ sender,
                                  L"Cảnh báo", MessageBoxButtons::OK,
                                  MessageBoxIcon::Warning);
                 return;
+            } else if (codeDetails[i]->CustomerCodeId ==
+                           this->customerCode->Id &&
+                       codeDetails[i]->Status == 0) {
+                MessageBox::Show(L"Mã khách hàng đã có hóa đơn chưa thanh toán",
+                                 L"Cảnh báo", MessageBoxButtons::OK,
+                                 MessageBoxIcon::Warning);
             }
         }
     }

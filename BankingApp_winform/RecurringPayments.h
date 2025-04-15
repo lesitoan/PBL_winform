@@ -30,11 +30,11 @@ ref class RecurringPayments {
         paymentDay = 1;
     }
 
-    RecurringPayments(String ^ id, String ^ userAccountNumber,
-                      String ^ customerCodeId, int monthly)
-        : id(id), userAccountNumber(userAccountNumber),
-          customerCodeId(customerCodeId), monthly(monthly),
-          paymentDay(1){}
+    RecurringPayments(String ^ _id, String ^ _userAccountNumber,
+                      String ^ _customerCodeId, int _paymentDay)
+        : id(_id), userAccountNumber(_userAccountNumber),
+          customerCodeId(_customerCodeId), monthly(1), paymentDay(_paymentDay) {
+    }
 
 
     property String ^ Id { String ^ get() { return id; }
