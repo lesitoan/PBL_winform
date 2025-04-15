@@ -81,6 +81,8 @@ System::Void CodeForm::btnAddCode_Click(System::Object ^ sender,
     }
     if (isSaveCode) {
         MessageBox::Show("Thêm code thành công");
+        this->customerCodes->Text = "";
+        this->pin->Text = "";
         loadTableCodes();
     } else {
         MessageBox::Show("Thêm code thất bại");
@@ -99,10 +101,11 @@ array<CustomerCodes ^> ^ CodeForm::createListCode(TextBox ^ textBox) {
         return nullptr;
     }
 
-    for each (String ^ code in lines) {
+    for (int i = 0; i < lines->Length; i++) {
         // validate code, price, day
-        if (code->Length < 5 || code->Length > 10) {
-            MessageBox::Show(L"Mã khách hàng: " + code + L" phải lớn hơn 5 kí tự và nhỏ hơn 10 kí tự");
+        if (lines[i]->Length < 5 || lines[i]->Length > 10) {
+            MessageBox::Show(L"Mã khách hàng: " + lines[i] +
+                             L" phải lớn hơn 5 kí tự và nhỏ hơn 10 kí tự");
             continue;
         }
         //
@@ -110,9 +113,11 @@ array<CustomerCodes ^> ^ CodeForm::createListCode(TextBox ^ textBox) {
         String ^ companyAccNumber =
             GlobalData::GetCurrentUser()->getAccountNumber();
 
-        String ^ id = Utils::createUniqueID("CC");
+        System::Random ^ rand = gcnew System::Random();
+        String ^ id = Utils::createUniqueID("CC") + i;
+
         CustomerCodes ^ item =
-            gcnew CustomerCodes(id, companyAccNumber, code);
+            gcnew CustomerCodes(id, companyAccNumber, lines[i]);
         items->Add(item);
     }
 

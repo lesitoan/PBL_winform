@@ -115,19 +115,19 @@ ref class CodeDetailForm : public System::Windows::Forms::Form {
         this->label2 = (gcnew System::Windows::Forms::Label());
         this->label1 = (gcnew System::Windows::Forms::Label());
         this->panel1 = (gcnew System::Windows::Forms::Panel());
-        this->labelAuth = (gcnew System::Windows::Forms::Label());
+        this->label10 = (gcnew System::Windows::Forms::Label());
         this->btnSubmit = (gcnew System::Windows::Forms::Button());
-        this->panel3 = (gcnew System::Windows::Forms::Panel());
-        this->amount = (gcnew System::Windows::Forms::TextBox());
         this->label9 = (gcnew System::Windows::Forms::Label());
         this->panel4 = (gcnew System::Windows::Forms::Panel());
         this->days = (gcnew System::Windows::Forms::TextBox());
-        this->label10 = (gcnew System::Windows::Forms::Label());
+        this->labelAuth = (gcnew System::Windows::Forms::Label());
+        this->panel3 = (gcnew System::Windows::Forms::Panel());
+        this->amount = (gcnew System::Windows::Forms::TextBox());
         this->leftContent->SuspendLayout();
         this->panel2->SuspendLayout();
         this->panel1->SuspendLayout();
-        this->panel3->SuspendLayout();
         this->panel4->SuspendLayout();
+        this->panel3->SuspendLayout();
         this->SuspendLayout();
         //
         // leftContent
@@ -295,19 +295,19 @@ ref class CodeDetailForm : public System::Windows::Forms::Form {
         this->panel1->Size = System::Drawing::Size(214, 344);
         this->panel1->TabIndex = 2;
         //
-        // labelAuth
+        // label10
         //
-        this->labelAuth->AutoSize = true;
-        this->labelAuth->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->labelAuth->Font =
+        this->label10->AutoSize = true;
+        this->label10->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->label10->Font =
             (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->labelAuth->ForeColor = System::Drawing::Color::Transparent;
-        this->labelAuth->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->labelAuth->Location = System::Drawing::Point(12, 82);
-        this->labelAuth->Name = L"labelAuth";
-        this->labelAuth->Size = System::Drawing::Size(61, 22);
-        this->labelAuth->TabIndex = 94;
-        this->labelAuth->Text = L"Số tiền:";
+        this->label10->ForeColor = System::Drawing::Color::Transparent;
+        this->label10->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->label10->Location = System::Drawing::Point(48, 41);
+        this->label10->Name = L"label10";
+        this->label10->Size = System::Drawing::Size(115, 22);
+        this->label10->TabIndex = 97;
+        this->label10->Text = L"THÊM HÓA ĐƠN";
         //
         // btnSubmit
         //
@@ -331,41 +331,6 @@ ref class CodeDetailForm : public System::Windows::Forms::Form {
         this->btnSubmit->UseVisualStyleBackColor = false;
         this->btnSubmit->Click +=
             gcnew System::EventHandler(this, &CodeDetailForm::btnSubmit_Click);
-        //
-        // panel3
-        //
-        this->panel3->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                ((System::Windows::Forms::AnchorStyles::Top |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->panel3->BackColor = System::Drawing::Color::White;
-        this->panel3->BorderStyle =
-            System::Windows::Forms::BorderStyle::FixedSingle;
-        this->panel3->Controls->Add(this->amount);
-        this->panel3->Location = System::Drawing::Point(16, 107);
-        this->panel3->Name = L"panel3";
-        this->panel3->Size = System::Drawing::Size(184, 37);
-        this->panel3->TabIndex = 91;
-        //
-        // amount
-        //
-        this->amount->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->amount->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->amount->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->amount->Font =
-            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->amount->Location = System::Drawing::Point(18, 6);
-        this->amount->MaxLength = 40;
-        this->amount->Multiline = true;
-        this->amount->Name = L"amount";
-        this->amount->Size = System::Drawing::Size(164, 26);
-        this->amount->TabIndex = 29;
         //
         // label9
         //
@@ -405,7 +370,7 @@ ref class CodeDetailForm : public System::Windows::Forms::Form {
               System::Windows::Forms::AnchorStyles::Left) |
              System::Windows::Forms::AnchorStyles::Right));
         this->days->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->days->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->days->Cursor = System::Windows::Forms::Cursors::No;
         this->days->Font =
             (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
         this->days->Location = System::Drawing::Point(18, 6);
@@ -414,20 +379,56 @@ ref class CodeDetailForm : public System::Windows::Forms::Form {
         this->days->Name = L"days";
         this->days->Size = System::Drawing::Size(164, 26);
         this->days->TabIndex = 29;
+        this->days->Text = L"30";
         //
-        // label10
+        // labelAuth
         //
-        this->label10->AutoSize = true;
-        this->label10->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label10->Font =
+        this->labelAuth->AutoSize = true;
+        this->labelAuth->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->labelAuth->Font =
             (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->label10->ForeColor = System::Drawing::Color::Transparent;
-        this->label10->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label10->Location = System::Drawing::Point(48, 41);
-        this->label10->Name = L"label10";
-        this->label10->Size = System::Drawing::Size(115, 22);
-        this->label10->TabIndex = 97;
-        this->label10->Text = L"THÊM HÓA ĐƠN";
+        this->labelAuth->ForeColor = System::Drawing::Color::Transparent;
+        this->labelAuth->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->labelAuth->Location = System::Drawing::Point(12, 82);
+        this->labelAuth->Name = L"labelAuth";
+        this->labelAuth->Size = System::Drawing::Size(61, 22);
+        this->labelAuth->TabIndex = 94;
+        this->labelAuth->Text = L"Số tiền:";
+        //
+        // panel3
+        //
+        this->panel3->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                ((System::Windows::Forms::AnchorStyles::Top |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel3->BackColor = System::Drawing::Color::White;
+        this->panel3->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
+        this->panel3->Controls->Add(this->amount);
+        this->panel3->Location = System::Drawing::Point(16, 107);
+        this->panel3->Name = L"panel3";
+        this->panel3->Size = System::Drawing::Size(184, 37);
+        this->panel3->TabIndex = 91;
+        //
+        // amount
+        //
+        this->amount->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->amount->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->amount->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->amount->Font =
+            (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
+        this->amount->Location = System::Drawing::Point(18, 6);
+        this->amount->MaxLength = 40;
+        this->amount->Multiline = true;
+        this->amount->Name = L"amount";
+        this->amount->Size = System::Drawing::Size(164, 26);
+        this->amount->TabIndex = 29;
         //
         // CodeDetailForm
         //
@@ -450,10 +451,10 @@ ref class CodeDetailForm : public System::Windows::Forms::Form {
         this->panel2->PerformLayout();
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
-        this->panel3->ResumeLayout(false);
-        this->panel3->PerformLayout();
         this->panel4->ResumeLayout(false);
         this->panel4->PerformLayout();
+        this->panel3->ResumeLayout(false);
+        this->panel3->PerformLayout();
         this->ResumeLayout(false);
     }
 #pragma endregion
@@ -466,5 +467,9 @@ ref class CodeDetailForm : public System::Windows::Forms::Form {
   private:
     System::Void btnSubmit_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
+    Panel ^ CodeDetailForm::createCodeDetailPanel(CustomerCodeDetails ^ detail);
+    void CodeDetailForm::addLabelToPanel(Panel ^ panel, int % yOffset,
+                                         String ^ text);
+    void CodeDetailForm::deleteCodeDetail_Click(Object ^ sender, EventArgs ^ e);
 };
 } // namespace BankingAppwinform

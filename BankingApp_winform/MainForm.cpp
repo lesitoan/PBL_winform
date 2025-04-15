@@ -74,7 +74,7 @@ System::Void MainForm::btnCode_Click(System::Object ^ sender,
                                      System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew CodeForm());
     ChangeButtonColor(btnCode);
-    this->headerText->Text = L"QUẢN LÍ CODE";
+    this->headerText->Text = L"QUẢN LÍ MÃ KHÁCH HÀNG";
 }
 
 System::Void MainForm::btnServicePayment_Click(System::Object ^ sender,
@@ -89,7 +89,7 @@ System::Void MainForm::btnRecurringPayment_Click(System::Object ^ sender,
     LoadChildForm::LoadForm(this->panelContent,
                             gcnew ClientRecurringPaymentForm());
     ChangeButtonColor(btnServicePayment);
-    this->headerText->Text = L"YÊU CẦU THANH TOÁN ĐỊNH KÌ";
+    this->headerText->Text = L"DANH SÁCH ĐANG ĐĂNG KÍ TTĐK";
 }
 
 System::Void MainForm::btnSaveMoney_Click(System::Object ^ sender,
