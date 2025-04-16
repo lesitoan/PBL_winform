@@ -100,7 +100,7 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
                    System::Windows::Forms::AnchorStyles::Bottom) |
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
-        this->panel1->BackColor = System::Drawing::Color::White;
+        this->panel1->BackColor = System::Drawing::Color::Transparent;
         this->panel1->Controls->Add(this->labelHeader);
         this->panel1->Controls->Add(this->panelContent);
         this->panel1->Location = System::Drawing::Point(421, 0);
@@ -468,11 +468,10 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
 
     System::Void label5_Click(System::Object ^ sender, System::EventArgs ^ e) {}
 
-
     void onSubmitCurrentPayment(String^ userAccountNumber, String^ companyAccountNumber,
                                 int monthly);
 
-private:
+  private:
     System::Void pin_TextChanged(System::Object ^ sender,
                                  System::EventArgs ^ e) {}
 };

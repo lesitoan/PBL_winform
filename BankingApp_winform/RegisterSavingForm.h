@@ -74,6 +74,9 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Label ^ labelBalance;
 
   private:
+    System::Windows::Forms::Panel ^ panel1;
+
+  private:
     /// <summary>
     /// Required designer variable.
     /// </summary>
@@ -85,6 +88,9 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
     /// the contents of this method with the code editor.
     /// </summary>
     void InitializeComponent(void) {
+        System::ComponentModel::ComponentResourceManager ^ resources =
+            (gcnew System::ComponentModel::ComponentResourceManager(
+                RegisterSavingForm::typeid));
         this->panel5 = (gcnew System::Windows::Forms::Panel());
         this->pinInput = (gcnew System::Windows::Forms::TextBox());
         this->label3 = (gcnew System::Windows::Forms::Label());
@@ -99,9 +105,11 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
         this->label2 = (gcnew System::Windows::Forms::Label());
         this->header = (gcnew System::Windows::Forms::Label());
         this->labelBalance = (gcnew System::Windows::Forms::Label());
+        this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->panel5->SuspendLayout();
         this->panel4->SuspendLayout();
         this->panel6->SuspendLayout();
+        this->panel1->SuspendLayout();
         this->SuspendLayout();
         //
         // panel5
@@ -111,11 +119,13 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel5->BackColor = System::Drawing::Color::White;
+        this->panel5->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
         this->panel5->Controls->Add(this->pinInput);
-        this->panel5->Location = System::Drawing::Point(543, 297);
+        this->panel5->Location = System::Drawing::Point(503, 258);
         this->panel5->Margin = System::Windows::Forms::Padding(4);
         this->panel5->Name = L"panel5";
-        this->panel5->Size = System::Drawing::Size(255, 46);
+        this->panel5->Size = System::Drawing::Size(228, 46);
         this->panel5->TabIndex = 86;
         //
         // pinInput
@@ -129,12 +139,12 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
         this->pinInput->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->pinInput->Font =
             (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->pinInput->Location = System::Drawing::Point(28, 7);
+        this->pinInput->Location = System::Drawing::Point(4, 7);
         this->pinInput->Margin = System::Windows::Forms::Padding(4);
         this->pinInput->MaxLength = 6;
         this->pinInput->Multiline = true;
         this->pinInput->Name = L"pinInput";
-        this->pinInput->Size = System::Drawing::Size(227, 34);
+        this->pinInput->Size = System::Drawing::Size(218, 32);
         this->pinInput->TabIndex = 29;
         //
         // label3
@@ -144,15 +154,19 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->label3->AutoSize = true;
+        this->label3->BackColor = System::Drawing::Color::Transparent;
         this->label3->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label3->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->label3->ForeColor = System::Drawing::Color::Transparent;
+        this->label3->Font = (gcnew System::Drawing::Font(
+            L"Times New Roman", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->label3->ForeColor =
+            System::Drawing::SystemColors::ActiveCaptionText;
         this->label3->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label3->Location = System::Drawing::Point(488, 307);
+        this->label3->Location = System::Drawing::Point(453, 268);
         this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label3->Name = L"label3";
-        this->label3->Size = System::Drawing::Size(47, 27);
+        this->label3->Size = System::Drawing::Size(47, 22);
         this->label3->TabIndex = 85;
         this->label3->Text = L"PIN:";
         //
@@ -163,15 +177,19 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->label5->AutoSize = true;
+        this->label5->BackColor = System::Drawing::Color::Transparent;
         this->label5->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label5->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->label5->ForeColor = System::Drawing::Color::Transparent;
+        this->label5->Font = (gcnew System::Drawing::Font(
+            L"Times New Roman", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->label5->ForeColor =
+            System::Drawing::SystemColors::ActiveCaptionText;
         this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label5->Location = System::Drawing::Point(43, 307);
+        this->label5->Location = System::Drawing::Point(106, 268);
         this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(116, 27);
+        this->label5->Size = System::Drawing::Size(109, 22);
         this->label5->TabIndex = 83;
         this->label5->Text = L"Chọn kì hạn:";
         //
@@ -179,11 +197,13 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
         //
         this->panel4->Anchor = System::Windows::Forms::AnchorStyles::Left;
         this->panel4->BackColor = System::Drawing::Color::White;
+        this->panel4->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
         this->panel4->Controls->Add(this->selectTermBox);
-        this->panel4->Location = System::Drawing::Point(210, 297);
+        this->panel4->Location = System::Drawing::Point(223, 258);
         this->panel4->Margin = System::Windows::Forms::Padding(4);
         this->panel4->Name = L"panel4";
-        this->panel4->Size = System::Drawing::Size(248, 46);
+        this->panel4->Size = System::Drawing::Size(195, 46);
         this->panel4->TabIndex = 84;
         //
         // selectTermBox
@@ -200,15 +220,18 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
         this->selectTermBox->FormattingEnabled = true;
         this->selectTermBox->Items->AddRange(
             gcnew cli::array<System::Object ^>(4){L"3", L"6", L"9", L"12"});
-        this->selectTermBox->Location = System::Drawing::Point(4, 7);
+        this->selectTermBox->Location = System::Drawing::Point(5, 6);
         this->selectTermBox->Margin = System::Windows::Forms::Padding(4);
         this->selectTermBox->Name = L"selectTermBox";
-        this->selectTermBox->Size = System::Drawing::Size(239, 33);
+        this->selectTermBox->Size = System::Drawing::Size(186, 33);
         this->selectTermBox->TabIndex = 3;
         //
         // btnClose
         //
-        this->btnClose->BackColor = System::Drawing::SystemColors::HotTrack;
+        this->btnClose->BackColor = System::Drawing::Color::FromArgb(
+            static_cast<System::Int32>(static_cast<System::Byte>(192)),
+            static_cast<System::Int32>(static_cast<System::Byte>(0)),
+            static_cast<System::Int32>(static_cast<System::Byte>(0)));
         this->btnClose->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnClose->FlatAppearance->BorderSize = 0;
         this->btnClose->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -216,7 +239,7 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->btnClose->ForeColor = System::Drawing::Color::White;
         this->btnClose->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->btnClose->Location = System::Drawing::Point(126, 398);
+        this->btnClose->Location = System::Drawing::Point(86, 355);
         this->btnClose->Margin = System::Windows::Forms::Padding(4);
         this->btnClose->Name = L"btnClose";
         this->btnClose->Size = System::Drawing::Size(275, 52);
@@ -228,15 +251,15 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
         //
         // btnSubmit
         //
-        this->btnSubmit->BackColor = System::Drawing::SystemColors::Info;
+        this->btnSubmit->BackColor = System::Drawing::Color::Green;
         this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnSubmit->FlatAppearance->BorderSize = 0;
         this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnSubmit->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnSubmit->ForeColor = System::Drawing::Color::Teal;
+        this->btnSubmit->ForeColor = System::Drawing::Color::White;
         this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->btnSubmit->Location = System::Drawing::Point(434, 398);
+        this->btnSubmit->Location = System::Drawing::Point(394, 355);
         this->btnSubmit->Margin = System::Windows::Forms::Padding(4);
         this->btnSubmit->Name = L"btnSubmit";
         this->btnSubmit->Size = System::Drawing::Size(285, 52);
@@ -252,15 +275,18 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
             static_cast<System::Windows::Forms::AnchorStyles>(
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
+        this->labelInfo->BackColor = System::Drawing::Color::White;
         this->labelInfo->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->labelInfo->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->labelInfo->ForeColor = System::Drawing::Color::Transparent;
+        this->labelInfo->Font = (gcnew System::Drawing::Font(
+            L"Times New Roman", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->labelInfo->ForeColor = System::Drawing::Color::Black;
         this->labelInfo->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->labelInfo->Location = System::Drawing::Point(0, 98);
+        this->labelInfo->Location = System::Drawing::Point(47, 98);
         this->labelInfo->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelInfo->Name = L"labelInfo";
-        this->labelInfo->Size = System::Drawing::Size(849, 27);
+        this->labelInfo->Size = System::Drawing::Size(760, 27);
         this->labelInfo->TabIndex = 82;
         this->labelInfo->Text = L"Gửi tiết kiệm không kì hạn với lãi xuất 4% / "
                                 L"năm, bạn có thể rút tiền bất cứ khi "
@@ -272,11 +298,13 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
         //
         this->panel6->Anchor = System::Windows::Forms::AnchorStyles::Left;
         this->panel6->BackColor = System::Drawing::Color::White;
+        this->panel6->BorderStyle =
+            System::Windows::Forms::BorderStyle::FixedSingle;
         this->panel6->Controls->Add(this->amountInput);
-        this->panel6->Location = System::Drawing::Point(210, 208);
+        this->panel6->Location = System::Drawing::Point(223, 169);
         this->panel6->Margin = System::Windows::Forms::Padding(4);
         this->panel6->Name = L"panel6";
-        this->panel6->Size = System::Drawing::Size(588, 46);
+        this->panel6->Size = System::Drawing::Size(508, 46);
         this->panel6->TabIndex = 81;
         //
         // amountInput
@@ -291,12 +319,12 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
             System::Windows::Forms::BorderStyle::None;
         this->amountInput->Font =
             (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->amountInput->Location = System::Drawing::Point(28, 7);
+        this->amountInput->Location = System::Drawing::Point(5, 7);
         this->amountInput->Margin = System::Windows::Forms::Padding(4);
         this->amountInput->MaxLength = 9;
         this->amountInput->Multiline = true;
         this->amountInput->Name = L"amountInput";
-        this->amountInput->Size = System::Drawing::Size(560, 34);
+        this->amountInput->Size = System::Drawing::Size(497, 32);
         this->amountInput->TabIndex = 29;
         //
         // label2
@@ -306,28 +334,35 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->label2->AutoSize = true;
+        this->label2->BackColor = System::Drawing::Color::Transparent;
         this->label2->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label2->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
-        this->label2->ForeColor = System::Drawing::Color::Transparent;
+        this->label2->Font = (gcnew System::Drawing::Font(
+            L"Times New Roman", 12, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->label2->ForeColor =
+            System::Drawing::SystemColors::ActiveCaptionText;
         this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label2->Location = System::Drawing::Point(42, 216);
+        this->label2->Location = System::Drawing::Point(69, 177);
         this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(156, 27);
+        this->label2->Size = System::Drawing::Size(146, 22);
         this->label2->TabIndex = 80;
         this->label2->Text = L"Nhập số tiền gửi:";
         //
         // header
         //
+        this->header->BackColor = System::Drawing::Color::White;
         this->header->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 22, System::Drawing::FontStyle::Bold));
-        this->header->ForeColor = System::Drawing::Color::White;
+            L"UTM HelvetIns", 22.2F, System::Drawing::FontStyle::Regular,
+            System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->header->ForeColor = System::Drawing::Color::Black;
         this->header->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->header->Location = System::Drawing::Point(-2, 41);
+        this->header->Location = System::Drawing::Point(5, 0);
         this->header->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->header->Name = L"header";
-        this->header->Size = System::Drawing::Size(851, 48);
+        this->header->Size = System::Drawing::Size(762, 57);
         this->header->TabIndex = 79;
         this->header->Text = L"GỬI TIẾT KIỆM KHÔNG KÌ HẠN";
         this->header->TextAlign =
@@ -340,22 +375,41 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
                 (System::Windows::Forms::AnchorStyles::Left |
                  System::Windows::Forms::AnchorStyles::Right));
         this->labelBalance->AutoSize = true;
+        this->labelBalance->BackColor = System::Drawing::Color::Transparent;
         this->labelBalance->Cursor = System::Windows::Forms::Cursors::Hand;
         this->labelBalance->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->labelBalance->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 13.8F, System::Drawing::FontStyle::Bold,
+            L"Times New Roman", 13.8F, System::Drawing::FontStyle::Bold,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->labelBalance->ForeColor = System::Drawing::Color::SpringGreen;
         this->labelBalance->ImeMode =
             System::Windows::Forms::ImeMode::NoControl;
-        this->labelBalance->Location = System::Drawing::Point(41, 157);
+        this->labelBalance->Location = System::Drawing::Point(11, 124);
         this->labelBalance->Margin =
             System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelBalance->Name = L"labelBalance";
-        this->labelBalance->Size = System::Drawing::Size(394, 30);
+        this->labelBalance->Size = System::Drawing::Size(400, 25);
         this->labelBalance->TabIndex = 78;
         this->labelBalance->Text = L"Số dư hiện tại của bạn: 80.000.000 vnđ";
+        //
+        // panel1
+        //
+        this->panel1->BackColor = System::Drawing::Color::White;
+        this->panel1->Controls->Add(this->panel5);
+        this->panel1->Controls->Add(this->header);
+        this->panel1->Controls->Add(this->label3);
+        this->panel1->Controls->Add(this->label5);
+        this->panel1->Controls->Add(this->panel4);
+        this->panel1->Controls->Add(this->btnClose);
+        this->panel1->Controls->Add(this->btnSubmit);
+        this->panel1->Controls->Add(this->panel6);
+        this->panel1->Controls->Add(this->label2);
+        this->panel1->Controls->Add(this->labelBalance);
+        this->panel1->Location = System::Drawing::Point(40, 36);
+        this->panel1->Name = L"panel1";
+        this->panel1->Size = System::Drawing::Size(771, 436);
+        this->panel1->TabIndex = 87;
         //
         // RegisterSavingForm
         //
@@ -363,32 +417,27 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->BackColor = System::Drawing::Color::Teal;
         this->ClientSize = System::Drawing::Size(848, 513);
-        this->Controls->Add(this->panel5);
-        this->Controls->Add(this->label3);
-        this->Controls->Add(this->label5);
-        this->Controls->Add(this->panel4);
-        this->Controls->Add(this->btnClose);
-        this->Controls->Add(this->btnSubmit);
         this->Controls->Add(this->labelInfo);
-        this->Controls->Add(this->panel6);
-        this->Controls->Add(this->label2);
-        this->Controls->Add(this->header);
-        this->Controls->Add(this->labelBalance);
+        this->Controls->Add(this->panel1);
+        this->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
         this->FormBorderStyle =
             System::Windows::Forms::FormBorderStyle::FixedToolWindow;
+        this->Icon = (cli::safe_cast<System::Drawing::Icon ^>(
+            resources->GetObject(L"$this.Icon")));
         this->MaximumSize = System::Drawing::Size(866, 560);
         this->MinimumSize = System::Drawing::Size(866, 560);
         this->Name = L"RegisterSavingForm";
         this->StartPosition =
             System::Windows::Forms::FormStartPosition::CenterParent;
-        this->Text = L"RegisterSavingForm";
+        this->Text = L"Register Saving Form";
         this->panel5->ResumeLayout(false);
         this->panel5->PerformLayout();
         this->panel4->ResumeLayout(false);
         this->panel6->ResumeLayout(false);
         this->panel6->PerformLayout();
+        this->panel1->ResumeLayout(false);
+        this->panel1->PerformLayout();
         this->ResumeLayout(false);
-        this->PerformLayout();
     }
 #pragma endregion
   private:

@@ -1,9 +1,18 @@
 ﻿#include "ClientSavingMoneyForm.h"
+#include"GradientHelper.h"
 
 namespace BankingAppwinform {
 ClientSavingMoneyForm::ClientSavingMoneyForm(void) {
     InitializeComponent();
     loadSavingCustomers();
+    GradientColorHelper::ApplyGradient(this);
+    GradientColorHelper::ApplyGradient(this->flowLayoutSavingMoney);
+    GradientColorHelper::ApplyRoundedCorners(this->btnTermDeposit, 8);
+    GradientColorHelper::ApplyRoundedCorners(this->btnNonTermDeposit, 8);   
+    GradientColorHelper::AttachHoverEffect(this->btnTermDeposit,
+                                           Color::FromArgb(255,128,128));
+    GradientColorHelper::AttachHoverEffect(this->btnNonTermDeposit,
+                                           Color::FromArgb(255,128,128));
 }
 
 ClientSavingMoneyForm::~ClientSavingMoneyForm() {
@@ -39,7 +48,8 @@ void ClientSavingMoneyForm::loadSavingCustomers() {
         Label ^ noSavingLabel = gcnew Label();
         noSavingLabel->Text = L"Chưa có tiết kiệm nào";
         noSavingLabel->ForeColor = Color::White;
-        noSavingLabel->Font = gcnew System::Drawing::Font("Segoe UI", 10);
+        noSavingLabel->Font = gcnew System::Drawing::Font(
+            "Times New Roman", 12, FontStyle::Regular);
         noSavingLabel->AutoSize = true;
         flowLayoutSavingMoney->Controls->Add(noSavingLabel);
         return;
@@ -57,7 +67,7 @@ void ClientSavingMoneyForm::AddSavingItemToFlow(SavingCustomers ^ saving) {
     // Panel đại diện cho 1 saving item
     Panel ^ itemPanel = gcnew Panel();
     itemPanel->BorderStyle = BorderStyle::FixedSingle;
-    itemPanel->BackColor = Color::FromArgb(0, 64, 64);
+    itemPanel->BackColor = Color::White;
     itemPanel->Width = flowLayoutSavingMoney->ClientSize.Width - 25;
 
     itemPanel->Height = 170; // đặt chiều cao cố định vừa đủ, có thể chỉnh
@@ -70,8 +80,9 @@ void ClientSavingMoneyForm::AddSavingItemToFlow(SavingCustomers ^ saving) {
     // Label nội dung
     Label ^ label = gcnew Label();
     label->AutoSize = false;
-    label->ForeColor = Color::White;
-    label->Font = gcnew System::Drawing::Font("Segoe UI", 10);
+    label->ForeColor = Color::Black;
+    label->Font = gcnew System::Drawing::Font("Times New Roman", 12,
+                                              FontStyle::Regular);
     label->TextAlign = ContentAlignment::TopLeft;
     label->Padding = System::Windows::Forms::Padding(5); // padding bên trong
     label->Dock = DockStyle::Top;
@@ -120,8 +131,8 @@ void ClientSavingMoneyForm::AddSavingItemToFlow(SavingCustomers ^ saving) {
     endLabel->Text =
         saving->Status == 0 ? L"Ấn vào đây để kết thúc tiết kiệm" : L"";
     endLabel->ForeColor = Color::LightYellow;
-    endLabel->Font =
-        gcnew System::Drawing::Font("Segoe UI", 9, FontStyle::Italic);
+    endLabel->Font = gcnew System::Drawing::Font("Times New Roman", 12,
+                                                 FontStyle::Regular);
     endLabel->AutoSize = false;
     endLabel->Dock = DockStyle::Bottom;
     endLabel->TextAlign = ContentAlignment::MiddleRight;

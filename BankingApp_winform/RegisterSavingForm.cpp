@@ -1,5 +1,5 @@
 ﻿#include "RegisterSavingForm.h"
-
+#include"GradientHelper.h"
 namespace BankingAppwinform {
 RegisterSavingForm::RegisterSavingForm(String ^ type) {
 
@@ -25,6 +25,8 @@ RegisterSavingForm::RegisterSavingForm(String ^ type) {
         selectTermBox->SelectedIndex = 0;
         selectTermBox->Enabled = false;
     }
+    GradientColorHelper::ApplyGradient(this);
+    GradientColorHelper::ApplyRoundedCorners(this->panel1,8);
 }
 
 RegisterSavingForm::~RegisterSavingForm() {

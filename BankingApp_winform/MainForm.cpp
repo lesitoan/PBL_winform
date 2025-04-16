@@ -58,39 +58,39 @@ System::Void MainForm::btnAccount_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
     ChangeButtonColor(btnAccount);
     LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm(this));
-    this->headerText->Text = L"TÀI KHOẢN";
+    this->headerText->Text = L"ACCOUNT";
 }
 System::Void MainForm::btnTransfer_Click(System::Object ^ sender,
                                          System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew TransferMoneyForm());
     ChangeButtonColor(btnTransfer);
-    this->headerText->Text = L"CHUYỂN KHOẢN";
+    this->headerText->Text = L"TRANSFER MONEY";
 }
 System::Void MainForm::btnWithdraw_Click(System::Object ^ sender,
                                          System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew WithdrawMoneyForm());
     ChangeButtonColor(btnWithdraw);
-    this->headerText->Text = L"RÚT TIỀN";
+    this->headerText->Text = L"WITHDRAW MONEY";
 }
 System::Void MainForm::btnHistory_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew HistoryForm());
     ChangeButtonColor(btnHistory);
-    this->headerText->Text = L"LỊCH SỬ";
+    this->headerText->Text = L"HISTORY";
 }
 
 System::Void MainForm::btnCode_Click(System::Object ^ sender,
                                      System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew CodeForm());
     ChangeButtonColor(btnCode);
-    this->headerText->Text = L"QUẢN LÍ CODE";
+    this->headerText->Text = L"CODE MANEGEMENT";
 }
 
 System::Void MainForm::btnServicePayment_Click(System::Object ^ sender,
                                                System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew ServicePaymentForm());
     ChangeButtonColor(btnServicePayment);
-    this->headerText->Text = L"THANH TOÁN DỊCH VỤ";
+    this->headerText->Text = L"SERVICE PAYMENT";
 }
 
 System::Void MainForm::btnRecurringPayment_Click(System::Object ^ sender,
@@ -98,7 +98,7 @@ System::Void MainForm::btnRecurringPayment_Click(System::Object ^ sender,
     LoadChildForm::LoadForm(this->panelContent,
                             gcnew ClientRecurringPaymentForm());
     ChangeButtonColor(btnServicePayment);
-    this->headerText->Text = L"YÊU CẦU THANH TOÁN ĐỊNH KÌ";
+    this->headerText->Text = L"RECURRING PAYMENT";
 }
 
 System::Void MainForm::btnSaveMoney_Click(System::Object ^ sender,
@@ -106,7 +106,7 @@ System::Void MainForm::btnSaveMoney_Click(System::Object ^ sender,
     LoadChildForm::LoadForm(this->panelContent,
                             gcnew ClientSavingMoneyForm());
     ChangeButtonColor(btnSaveMoney);
-    this->headerText->Text = L"GỬI TIẾT KIỆM";
+    this->headerText->Text = L"MONEY SAVINGS";
 }
 
 
@@ -114,7 +114,7 @@ System::Void MainForm::btnLogout_Click(System::Object ^ sender,
                                        System::EventArgs ^ e) {
     System::Windows::Forms::DialogResult result;
     result =
-        MessageBox::Show(L"Bạn có chắc chắn muốn đăng xuất?", L"Đăng xuất",
+        MessageBox::Show(L"Are you sure you want to log out?", L"Log Out",
                          MessageBoxButtons::YesNo, MessageBoxIcon::Question);
     if (result == System::Windows::Forms::DialogResult::Yes) {
         GlobalData::SetCurrentUser(nullptr);

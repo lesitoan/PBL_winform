@@ -29,6 +29,11 @@ ref class AccountForm : public System::Windows::Forms::Form {
   public:
     static AxWMPLib::AxWindowsMediaPlayer ^ axWindowsMediaPlayer2;
 
+  private: 
+
+  public:
+
+
   protected:
     ~AccountForm();
 
@@ -187,15 +192,9 @@ ref class AccountForm : public System::Windows::Forms::Form {
                 static_cast<System::Int32>(static_cast<System::Byte>(128)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnSetPin->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(255)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            System::Drawing::Color::Green;
         this->btnSetPin->FlatAppearance->MouseOverBackColor =
-            System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(255)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            System::Drawing::Color::Green;
         this->btnSetPin->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnSetPin->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
@@ -238,15 +237,9 @@ ref class AccountForm : public System::Windows::Forms::Form {
                 static_cast<System::Int32>(static_cast<System::Byte>(128)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->buttonSetAvatar->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(255)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            System::Drawing::Color::Green;
         this->buttonSetAvatar->FlatAppearance->MouseOverBackColor =
-            System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(255)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            System::Drawing::Color::Green;
         this->buttonSetAvatar->FlatStyle =
             System::Windows::Forms::FlatStyle::Flat;
         this->buttonSetAvatar->Font = (gcnew System::Drawing::Font(
@@ -290,15 +283,9 @@ ref class AccountForm : public System::Windows::Forms::Form {
                 static_cast<System::Int32>(static_cast<System::Byte>(128)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnLockAccount->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(255)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            System::Drawing::Color::Green;
         this->btnLockAccount->FlatAppearance->MouseOverBackColor =
-            System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(255)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            System::Drawing::Color::Green;
         this->btnLockAccount->FlatStyle =
             System::Windows::Forms::FlatStyle::Flat;
         this->btnLockAccount->Font = (gcnew System::Drawing::Font(
@@ -356,15 +343,9 @@ ref class AccountForm : public System::Windows::Forms::Form {
                 static_cast<System::Int32>(static_cast<System::Byte>(128)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnChangePw->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(255)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            System::Drawing::Color::Green;
         this->btnChangePw->FlatAppearance->MouseOverBackColor =
-            System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(255)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+            System::Drawing::Color::Green;
         this->btnChangePw->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnChangePw->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,

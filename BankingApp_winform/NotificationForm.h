@@ -2,6 +2,7 @@
 #include "Notifications.h"
 #include "HandleFile.h"
 #include "GlobalData.h"
+#include"GradientHelper.h"
 
 namespace BankingAppwinform {
 
@@ -21,6 +22,7 @@ ref class NotificationForm : public System::Windows::Forms::Form {
     NotificationForm(void) {
         InitializeComponent();
         loadNotifications();
+        GradientColorHelper::ApplyGradient(this->flowLayoutContainer);
     }
 
   protected:
@@ -132,14 +134,18 @@ ref class NotificationForm : public System::Windows::Forms::Form {
         // flowLayoutContainer
         //
         this->flowLayoutContainer->AutoScroll = true;
+        this->flowLayoutContainer->BackColor =
+            System::Drawing::Color::Transparent;
         this->flowLayoutContainer->Controls->Add(this->panel3);
         this->flowLayoutContainer->Controls->Add(this->panel2);
         this->flowLayoutContainer->Controls->Add(this->panel1);
         this->flowLayoutContainer->Dock =
             System::Windows::Forms::DockStyle::Fill;
         this->flowLayoutContainer->Location = System::Drawing::Point(0, 0);
+        this->flowLayoutContainer->Margin =
+            System::Windows::Forms::Padding(4, 4, 4, 4);
         this->flowLayoutContainer->Name = L"flowLayoutContainer";
-        this->flowLayoutContainer->Size = System::Drawing::Size(400, 401);
+        this->flowLayoutContainer->Size = System::Drawing::Size(533, 494);
         this->flowLayoutContainer->TabIndex = 0;
         //
         // panel3
@@ -150,11 +156,11 @@ ref class NotificationForm : public System::Windows::Forms::Form {
         this->panel3->Controls->Add(this->label10);
         this->panel3->Controls->Add(this->label11);
         this->panel3->Controls->Add(this->label12);
-        this->panel3->Location = System::Drawing::Point(8, 8);
-        this->panel3->Margin = System::Windows::Forms::Padding(8);
+        this->panel3->Location = System::Drawing::Point(11, 10);
+        this->panel3->Margin = System::Windows::Forms::Padding(11, 10, 11, 10);
         this->panel3->Name = L"panel3";
-        this->panel3->Padding = System::Windows::Forms::Padding(0, 0, 8, 0);
-        this->panel3->Size = System::Drawing::Size(367, 89);
+        this->panel3->Padding = System::Windows::Forms::Padding(0, 0, 11, 0);
+        this->panel3->Size = System::Drawing::Size(489, 110);
         this->panel3->TabIndex = 5;
         this->panel3->Visible = false;
         //
@@ -165,9 +171,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Italic,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label13->Location = System::Drawing::Point(90, 10);
+        this->label13->Location = System::Drawing::Point(120, 12);
+        this->label13->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label13->Name = L"label13";
-        this->label13->Size = System::Drawing::Size(110, 13);
+        this->label13->Size = System::Drawing::Size(140, 17);
         this->label13->TabIndex = 4;
         this->label13->Text = L"12:00:00 03/02/2025";
         //
@@ -178,9 +185,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Italic,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label9->Location = System::Drawing::Point(263, 64);
+        this->label9->Location = System::Drawing::Point(351, 79);
+        this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label9->Name = L"label9";
-        this->label9->Size = System::Drawing::Size(92, 13);
+        this->label9->Size = System::Drawing::Size(117, 17);
         this->label9->TabIndex = 3;
         this->label9->Text = L"Đánh dấu đã đọc";
         //
@@ -191,9 +199,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label10->Location = System::Drawing::Point(4, 39);
+        this->label10->Location = System::Drawing::Point(5, 48);
+        this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label10->Name = L"label10";
-        this->label10->Size = System::Drawing::Size(327, 16);
+        this->label10->Size = System::Drawing::Size(412, 20);
         this->label10->TabIndex = 2;
         this->label10->Text =
             L"hãy nộp thêm tiền vào tài khoản để tiến hành giao dịch";
@@ -205,9 +214,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label11->Location = System::Drawing::Point(3, 23);
+        this->label11->Location = System::Drawing::Point(4, 28);
+        this->label11->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label11->Name = L"label11";
-        this->label11->Size = System::Drawing::Size(310, 16);
+        this->label11->Size = System::Drawing::Size(394, 20);
         this->label11->TabIndex = 1;
         this->label11->Text =
             L"Thanh toán định kì của quý khách chưa haofn thành,";
@@ -219,9 +229,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label12->Location = System::Drawing::Point(4, 10);
+        this->label12->Location = System::Drawing::Point(5, 12);
+        this->label12->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label12->Name = L"label12";
-        this->label12->Size = System::Drawing::Size(80, 13);
+        this->label12->Size = System::Drawing::Size(101, 17);
         this->label12->TabIndex = 0;
         this->label12->Text = L"THÔNG BÁO";
         //
@@ -233,11 +244,11 @@ ref class NotificationForm : public System::Windows::Forms::Form {
         this->panel2->Controls->Add(this->label6);
         this->panel2->Controls->Add(this->label7);
         this->panel2->Controls->Add(this->label8);
-        this->panel2->Location = System::Drawing::Point(8, 113);
-        this->panel2->Margin = System::Windows::Forms::Padding(8);
+        this->panel2->Location = System::Drawing::Point(11, 140);
+        this->panel2->Margin = System::Windows::Forms::Padding(11, 10, 11, 10);
         this->panel2->Name = L"panel2";
-        this->panel2->Padding = System::Windows::Forms::Padding(0, 0, 8, 0);
-        this->panel2->Size = System::Drawing::Size(367, 89);
+        this->panel2->Padding = System::Windows::Forms::Padding(0, 0, 11, 0);
+        this->panel2->Size = System::Drawing::Size(489, 110);
         this->panel2->TabIndex = 4;
         this->panel2->Visible = false;
         //
@@ -248,9 +259,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Italic,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label14->Location = System::Drawing::Point(90, 10);
+        this->label14->Location = System::Drawing::Point(120, 12);
+        this->label14->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label14->Name = L"label14";
-        this->label14->Size = System::Drawing::Size(110, 13);
+        this->label14->Size = System::Drawing::Size(140, 17);
         this->label14->TabIndex = 5;
         this->label14->Text = L"12:00:00 03/02/2025";
         //
@@ -261,9 +273,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Italic,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label5->Location = System::Drawing::Point(263, 64);
+        this->label5->Location = System::Drawing::Point(351, 79);
+        this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(92, 13);
+        this->label5->Size = System::Drawing::Size(117, 17);
         this->label5->TabIndex = 3;
         this->label5->Text = L"Đánh dấu đã đọc";
         //
@@ -274,9 +287,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label6->Location = System::Drawing::Point(4, 39);
+        this->label6->Location = System::Drawing::Point(5, 48);
+        this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label6->Name = L"label6";
-        this->label6->Size = System::Drawing::Size(327, 16);
+        this->label6->Size = System::Drawing::Size(412, 20);
         this->label6->TabIndex = 2;
         this->label6->Text =
             L"hãy nộp thêm tiền vào tài khoản để tiến hành giao dịch";
@@ -288,9 +302,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label7->Location = System::Drawing::Point(3, 23);
+        this->label7->Location = System::Drawing::Point(4, 28);
+        this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label7->Name = L"label7";
-        this->label7->Size = System::Drawing::Size(310, 16);
+        this->label7->Size = System::Drawing::Size(394, 20);
         this->label7->TabIndex = 1;
         this->label7->Text =
             L"Thanh toán định kì của quý khách chưa haofn thành,";
@@ -302,9 +317,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label8->Location = System::Drawing::Point(4, 10);
+        this->label8->Location = System::Drawing::Point(5, 12);
+        this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label8->Name = L"label8";
-        this->label8->Size = System::Drawing::Size(80, 13);
+        this->label8->Size = System::Drawing::Size(101, 17);
         this->label8->TabIndex = 0;
         this->label8->Text = L"THÔNG BÁO";
         //
@@ -316,11 +332,11 @@ ref class NotificationForm : public System::Windows::Forms::Form {
         this->panel1->Controls->Add(this->label3);
         this->panel1->Controls->Add(this->label2);
         this->panel1->Controls->Add(this->label1);
-        this->panel1->Location = System::Drawing::Point(8, 218);
-        this->panel1->Margin = System::Windows::Forms::Padding(8);
+        this->panel1->Location = System::Drawing::Point(11, 270);
+        this->panel1->Margin = System::Windows::Forms::Padding(11, 10, 11, 10);
         this->panel1->Name = L"panel1";
-        this->panel1->Padding = System::Windows::Forms::Padding(0, 0, 8, 0);
-        this->panel1->Size = System::Drawing::Size(367, 89);
+        this->panel1->Padding = System::Windows::Forms::Padding(0, 0, 11, 0);
+        this->panel1->Size = System::Drawing::Size(489, 110);
         this->panel1->TabIndex = 0;
         this->panel1->Visible = false;
         //
@@ -331,9 +347,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Italic,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label15->Location = System::Drawing::Point(90, 10);
+        this->label15->Location = System::Drawing::Point(120, 12);
+        this->label15->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label15->Name = L"label15";
-        this->label15->Size = System::Drawing::Size(110, 13);
+        this->label15->Size = System::Drawing::Size(140, 17);
         this->label15->TabIndex = 6;
         this->label15->Text = L"12:00:00 03/02/2025";
         //
@@ -344,9 +361,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Italic,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label4->Location = System::Drawing::Point(263, 64);
+        this->label4->Location = System::Drawing::Point(351, 79);
+        this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label4->Name = L"label4";
-        this->label4->Size = System::Drawing::Size(92, 13);
+        this->label4->Size = System::Drawing::Size(117, 17);
         this->label4->TabIndex = 3;
         this->label4->Text = L"Đánh dấu đã đọc";
         //
@@ -357,9 +375,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label3->Location = System::Drawing::Point(4, 39);
+        this->label3->Location = System::Drawing::Point(5, 48);
+        this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label3->Name = L"label3";
-        this->label3->Size = System::Drawing::Size(327, 16);
+        this->label3->Size = System::Drawing::Size(412, 20);
         this->label3->TabIndex = 2;
         this->label3->Text =
             L"hãy nộp thêm tiền vào tài khoản để tiến hành giao dịch";
@@ -371,9 +390,10 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label2->Location = System::Drawing::Point(3, 23);
+        this->label2->Location = System::Drawing::Point(4, 28);
+        this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(310, 16);
+        this->label2->Size = System::Drawing::Size(394, 20);
         this->label2->TabIndex = 1;
         this->label2->Text =
             L"Thanh toán định kì của quý khách chưa haofn thành,";
@@ -385,20 +405,22 @@ ref class NotificationForm : public System::Windows::Forms::Form {
             L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->label1->Location = System::Drawing::Point(4, 10);
+        this->label1->Location = System::Drawing::Point(5, 12);
+        this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(80, 13);
+        this->label1->Size = System::Drawing::Size(101, 17);
         this->label1->TabIndex = 0;
         this->label1->Text = L"THÔNG BÁO";
         //
         // NotificationForm
         //
-        this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+        this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->ClientSize = System::Drawing::Size(400, 401);
+        this->ClientSize = System::Drawing::Size(533, 494);
         this->Controls->Add(this->flowLayoutContainer);
         this->FormBorderStyle =
             System::Windows::Forms::FormBorderStyle::FixedToolWindow;
+        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->Name = L"NotificationForm";
         this->StartPosition = System::Windows::Forms::FormStartPosition::Manual;
         this->Text = L"NotificationForm";
@@ -440,7 +462,7 @@ ref class NotificationForm : public System::Windows::Forms::Form {
         panel->BorderStyle = BorderStyle::FixedSingle;
 
         if (notification->Status == 1) {
-            panel->BackColor = System::Drawing::Color::LightGray;
+            panel->BackColor = System::Drawing::Color::White;
         }
 
         // Tạo nhãn tiêu đề thông báo
