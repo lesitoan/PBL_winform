@@ -281,16 +281,7 @@
     <None Include="services.dat">
       <Filter>Data\files</Filter>
     </None>
-    <None Include="customerCodes.dat">
-      <Filter>Data\files</Filter>
-    </None>
     <None Include="savingCustomers.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="customerCodeDetails.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="recurringPayments.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>
