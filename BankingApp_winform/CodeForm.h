@@ -1,7 +1,12 @@
 ﻿#pragma once
 #include "GlobalData.h"
 #include "HandleFile.h"
-#include "PaymentCodes.h"
+#include "CustomerCodes.h"
+#include "Validate.h"
+#include "Utils.h"
+#include "CustomerCodeDetails.h"
+#include "RecurringPayments.h"
+#include "CodeDetailForm.h"
 
 namespace BankingAppwinform {
 
@@ -25,16 +30,37 @@ ref class CodeForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel1;
     System::Windows::Forms::Panel ^ panel2;
     System::Windows::Forms::Panel ^ panel3;
-    System::Windows::Forms::TextBox ^ codes;
+
+  private:
+    System::Windows::Forms::TextBox ^ customerCodes;
+
     System::Windows::Forms::Panel ^ panel4;
     System::Windows::Forms::TextBox ^ pin;
     System::Windows::Forms::Label ^ label1;
     System::Windows::Forms::Button ^ btnAddCode;
     System::Windows::Forms::Label ^ label7;
     System::Windows::Forms::Label ^ label2;
-    System::Windows::Forms::DataGridView ^ dataGridViewUsers;
+
+  private:
+    System::Windows::Forms::DataGridView ^ dataGridViewCodes;
+
+
+
+
+
+  private:
+    System::Windows::Forms::Panel ^ panel5;
+
+  private:
+    System::Windows::Forms::Button ^ btnDeleteCode;
+
+  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column1;
+
+  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column2;
+
+  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column3;
     System::ComponentModel::Container ^ components;
 
@@ -44,6 +70,9 @@ ref class CodeForm : public System::Windows::Forms::Form {
     /// the contents of this method with the code editor.
     /// </summary>
     void InitializeComponent(void) {
+        System::ComponentModel::ComponentResourceManager ^ resources =
+            (gcnew System::ComponentModel::ComponentResourceManager(
+                CodeForm::typeid));
         System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle1 =
             (gcnew System::Windows::Forms::DataGridViewCellStyle());
         System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle2 =
@@ -58,9 +87,11 @@ ref class CodeForm : public System::Windows::Forms::Form {
         this->label1 = (gcnew System::Windows::Forms::Label());
         this->label7 = (gcnew System::Windows::Forms::Label());
         this->panel3 = (gcnew System::Windows::Forms::Panel());
-        this->codes = (gcnew System::Windows::Forms::TextBox());
+        this->customerCodes = (gcnew System::Windows::Forms::TextBox());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
-        this->dataGridViewUsers =
+        this->panel5 = (gcnew System::Windows::Forms::Panel());
+        this->btnDeleteCode = (gcnew System::Windows::Forms::Button());
+        this->dataGridViewCodes =
             (gcnew System::Windows::Forms::DataGridView());
         this->Column1 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -72,8 +103,9 @@ ref class CodeForm : public System::Windows::Forms::Form {
         this->panel4->SuspendLayout();
         this->panel3->SuspendLayout();
         this->panel2->SuspendLayout();
+        this->panel5->SuspendLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->dataGridViewUsers))
+             this->dataGridViewCodes))
             ->BeginInit();
         this->SuspendLayout();
         //
@@ -108,8 +140,7 @@ ref class CodeForm : public System::Windows::Forms::Form {
         this->label2->Name = L"label2";
         this->label2->Size = System::Drawing::Size(249, 22);
         this->label2->TabIndex = 64;
-        this->label2->Text =
-            L"Nhập CODE (Mỗi code 1 dòng, vd: ABCDEF,120000,5)";
+        this->label2->Text = L"Nhập MÃ KH (Mỗi mã 1 dòng, vd: ABCDEF)";
         //
         // btnAddCode
         //
@@ -197,11 +228,11 @@ ref class CodeForm : public System::Windows::Forms::Form {
             L"UTM Daxline", 17, System::Drawing::FontStyle::Bold));
         this->label7->ForeColor = System::Drawing::Color::White;
         this->label7->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->label7->Location = System::Drawing::Point(77, 30);
+        this->label7->Location = System::Drawing::Point(30, 33);
         this->label7->Name = L"label7";
-        this->label7->Size = System::Drawing::Size(123, 30);
+        this->label7->Size = System::Drawing::Size(240, 30);
         this->label7->TabIndex = 63;
-        this->label7->Text = L"THÊM CODE";
+        this->label7->Text = L"THÊM MÃ KHÁCH HÀNG";
         this->label7->TextAlign =
             System::Drawing::ContentAlignment::MiddleCenter;
         //
@@ -214,28 +245,30 @@ ref class CodeForm : public System::Windows::Forms::Form {
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel3->BackColor = System::Drawing::Color::White;
-        this->panel3->Controls->Add(this->codes);
+        this->panel3->Controls->Add(this->customerCodes);
         this->panel3->Location = System::Drawing::Point(21, 103);
         this->panel3->Name = L"panel3";
         this->panel3->Size = System::Drawing::Size(252, 203);
         this->panel3->TabIndex = 62;
         //
-        // codes
+        // customerCodes
         //
-        this->codes->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
-            (((System::Windows::Forms::AnchorStyles::Top |
-               System::Windows::Forms::AnchorStyles::Bottom) |
-              System::Windows::Forms::AnchorStyles::Left) |
-             System::Windows::Forms::AnchorStyles::Right));
-        this->codes->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->codes->Font =
+        this->customerCodes->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->customerCodes->BorderStyle =
+            System::Windows::Forms::BorderStyle::None;
+        this->customerCodes->Font =
             (gcnew System::Drawing::Font(L"UTM Facebook K&T", 14));
-        this->codes->Location = System::Drawing::Point(14, 12);
-        this->codes->MaxLength = 300;
-        this->codes->Multiline = true;
-        this->codes->Name = L"codes";
-        this->codes->Size = System::Drawing::Size(226, 179);
-        this->codes->TabIndex = 29;
+        this->customerCodes->Location = System::Drawing::Point(14, 12);
+        this->customerCodes->MaxLength = 300;
+        this->customerCodes->Multiline = true;
+        this->customerCodes->Name = L"customerCodes";
+        this->customerCodes->Size = System::Drawing::Size(226, 179);
+        this->customerCodes->TabIndex = 29;
         //
         // panel2
         //
@@ -246,17 +279,61 @@ ref class CodeForm : public System::Windows::Forms::Form {
                   System::Windows::Forms::AnchorStyles::Left) |
                  System::Windows::Forms::AnchorStyles::Right));
         this->panel2->BackColor = System::Drawing::Color::Teal;
-        this->panel2->Controls->Add(this->dataGridViewUsers);
+        this->panel2->Controls->Add(this->panel5);
+        this->panel2->Controls->Add(this->dataGridViewCodes);
         this->panel2->Location = System::Drawing::Point(299, 0);
         this->panel2->Margin = System::Windows::Forms::Padding(20, 3, 3, 3);
         this->panel2->Name = L"panel2";
         this->panel2->Size = System::Drawing::Size(359, 499);
         this->panel2->TabIndex = 1;
         //
-        // dataGridViewUsers
+        // panel5
         //
-        this->dataGridViewUsers->AllowUserToAddRows = false;
-        this->dataGridViewUsers->AllowUserToDeleteRows = false;
+        this->panel5->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                ((System::Windows::Forms::AnchorStyles::Bottom |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel5->BackColor = System::Drawing::Color::White;
+        this->panel5->Controls->Add(this->btnDeleteCode);
+        this->panel5->Location = System::Drawing::Point(0, 456);
+        this->panel5->Name = L"panel5";
+        this->panel5->Size = System::Drawing::Size(359, 43);
+        this->panel5->TabIndex = 4;
+        //
+        // btnDeleteCode
+        //
+        this->btnDeleteCode->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (System::Windows::Forms::AnchorStyles::Top |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->btnDeleteCode->BackColor = System::Drawing::Color::Red;
+        this->btnDeleteCode->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnDeleteCode->FlatAppearance->BorderSize = 0;
+        this->btnDeleteCode->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
+        this->btnDeleteCode->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnDeleteCode->ForeColor = System::Drawing::Color::Transparent;
+        this->btnDeleteCode->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnDeleteCode.Image")));
+        this->btnDeleteCode->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnDeleteCode->ImeMode =
+            System::Windows::Forms::ImeMode::NoControl;
+        this->btnDeleteCode->Location = System::Drawing::Point(291, 4);
+        this->btnDeleteCode->Margin = System::Windows::Forms::Padding(1);
+        this->btnDeleteCode->Name = L"btnDeleteCode";
+        this->btnDeleteCode->Size = System::Drawing::Size(67, 34);
+        this->btnDeleteCode->TabIndex = 35;
+        this->btnDeleteCode->UseVisualStyleBackColor = false;
+        this->btnDeleteCode->Click +=
+            gcnew System::EventHandler(this, &CodeForm::btnDeleteCode_Click);
+        //
+        // dataGridViewCodes
+        //
+        this->dataGridViewCodes->AllowUserToAddRows = false;
+        this->dataGridViewCodes->AllowUserToDeleteRows = false;
         dataGridViewCellStyle1->Alignment =
             System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
         dataGridViewCellStyle1->BackColor = System::Drawing::Color::Transparent;
@@ -267,15 +344,21 @@ ref class CodeForm : public System::Windows::Forms::Form {
             System::Drawing::Color::Transparent;
         dataGridViewCellStyle1->SelectionForeColor =
             System::Drawing::Color::Transparent;
-        this->dataGridViewUsers->AlternatingRowsDefaultCellStyle =
+        this->dataGridViewCodes->AlternatingRowsDefaultCellStyle =
             dataGridViewCellStyle1;
-        this->dataGridViewUsers->AutoSizeColumnsMode =
+        this->dataGridViewCodes->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                (((System::Windows::Forms::AnchorStyles::Top |
+                   System::Windows::Forms::AnchorStyles::Bottom) |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
+        this->dataGridViewCodes->AutoSizeColumnsMode =
             System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-        this->dataGridViewUsers->BackgroundColor =
+        this->dataGridViewCodes->BackgroundColor =
             System::Drawing::SystemColors::ButtonFace;
-        this->dataGridViewUsers->CellBorderStyle = System::Windows::Forms::
+        this->dataGridViewCodes->CellBorderStyle = System::Windows::Forms::
             DataGridViewCellBorderStyle::SingleHorizontal;
-        this->dataGridViewUsers->ColumnHeadersBorderStyle =
+        this->dataGridViewCodes->ColumnHeadersBorderStyle =
             System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
         dataGridViewCellStyle2->Alignment =
             System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
@@ -291,10 +374,10 @@ ref class CodeForm : public System::Windows::Forms::Form {
             System::Drawing::Color::White;
         dataGridViewCellStyle2->WrapMode =
             System::Windows::Forms::DataGridViewTriState::True;
-        this->dataGridViewUsers->ColumnHeadersDefaultCellStyle =
+        this->dataGridViewCodes->ColumnHeadersDefaultCellStyle =
             dataGridViewCellStyle2;
-        this->dataGridViewUsers->ColumnHeadersHeight = 40;
-        this->dataGridViewUsers->Columns->AddRange(
+        this->dataGridViewCodes->ColumnHeadersHeight = 40;
+        this->dataGridViewCodes->Columns->AddRange(
             gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(3){
                 this->Column1, this->Column2, this->Column3});
         dataGridViewCellStyle3->Alignment =
@@ -312,51 +395,50 @@ ref class CodeForm : public System::Windows::Forms::Form {
             System::Drawing::SystemColors::ControlText;
         dataGridViewCellStyle3->WrapMode =
             System::Windows::Forms::DataGridViewTriState::False;
-        this->dataGridViewUsers->DefaultCellStyle = dataGridViewCellStyle3;
-        this->dataGridViewUsers->Dock = System::Windows::Forms::DockStyle::Fill;
-        this->dataGridViewUsers->EnableHeadersVisualStyles = false;
-        this->dataGridViewUsers->GridColor =
+        this->dataGridViewCodes->DefaultCellStyle = dataGridViewCellStyle3;
+        this->dataGridViewCodes->EnableHeadersVisualStyles = false;
+        this->dataGridViewCodes->GridColor =
             System::Drawing::SystemColors::ActiveCaptionText;
-        this->dataGridViewUsers->Location = System::Drawing::Point(0, 0);
-        this->dataGridViewUsers->Name = L"dataGridViewUsers";
-        this->dataGridViewUsers->ReadOnly = true;
-        this->dataGridViewUsers->RowHeadersBorderStyle =
+        this->dataGridViewCodes->Location = System::Drawing::Point(0, 0);
+        this->dataGridViewCodes->Name = L"dataGridViewCodes";
+        this->dataGridViewCodes->ReadOnly = true;
+        this->dataGridViewCodes->RowHeadersBorderStyle =
             System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-        this->dataGridViewUsers->RowHeadersVisible = false;
-        this->dataGridViewUsers->RowTemplate->DefaultCellStyle->BackColor =
+        this->dataGridViewCodes->RowHeadersVisible = false;
+        this->dataGridViewCodes->RowTemplate->DefaultCellStyle->BackColor =
             System::Drawing::Color::White;
-        this->dataGridViewUsers->RowTemplate->DefaultCellStyle->Font =
+        this->dataGridViewCodes->RowTemplate->DefaultCellStyle->Font =
             (gcnew System::Drawing::Font(L"UTM Daxline", 12));
-        this->dataGridViewUsers->RowTemplate->DefaultCellStyle->ForeColor =
+        this->dataGridViewCodes->RowTemplate->DefaultCellStyle->ForeColor =
             System::Drawing::Color::Black;
-        this->dataGridViewUsers->RowTemplate->DefaultCellStyle
+        this->dataGridViewCodes->RowTemplate->DefaultCellStyle
             ->SelectionBackColor = System::Drawing::Color::Cyan;
-        this->dataGridViewUsers->RowTemplate->DefaultCellStyle
+        this->dataGridViewCodes->RowTemplate->DefaultCellStyle
             ->SelectionForeColor = System::Drawing::Color::Black;
-        this->dataGridViewUsers->RowTemplate->Height = 40;
-        this->dataGridViewUsers->RowTemplate->ReadOnly = true;
-        this->dataGridViewUsers->RowTemplate->Resizable =
+        this->dataGridViewCodes->RowTemplate->Height = 40;
+        this->dataGridViewCodes->RowTemplate->ReadOnly = true;
+        this->dataGridViewCodes->RowTemplate->Resizable =
             System::Windows::Forms::DataGridViewTriState::False;
-        this->dataGridViewUsers->SelectionMode =
+        this->dataGridViewCodes->SelectionMode =
             System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-        this->dataGridViewUsers->Size = System::Drawing::Size(359, 499);
-        this->dataGridViewUsers->TabIndex = 3;
+        this->dataGridViewCodes->Size = System::Drawing::Size(359, 456);
+        this->dataGridViewCodes->TabIndex = 3;
         //
         // Column1
         //
-        this->Column1->HeaderText = L"CODE";
+        this->Column1->HeaderText = L"Mã KH";
         this->Column1->Name = L"Column1";
         this->Column1->ReadOnly = true;
         //
         // Column2
         //
-        this->Column2->HeaderText = L"SỐ TIỀN";
+        this->Column2->HeaderText = L"Ngày tạo";
         this->Column2->Name = L"Column2";
         this->Column2->ReadOnly = true;
         //
         // Column3
         //
-        this->Column3->HeaderText = L"TRẠNG THÁI";
+        this->Column3->HeaderText = L"Trạng thái";
         this->Column3->Name = L"Column3";
         this->Column3->ReadOnly = true;
         //
@@ -377,19 +459,30 @@ ref class CodeForm : public System::Windows::Forms::Form {
         this->panel3->ResumeLayout(false);
         this->panel3->PerformLayout();
         this->panel2->ResumeLayout(false);
+        this->panel5->ResumeLayout(false);
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->dataGridViewUsers))
+             this->dataGridViewCodes))
             ->EndInit();
         this->ResumeLayout(false);
     }
 #pragma endregion
 
+    private:
+    //PaymentCodes ^ selectedPaymentCode;
+
   private:
     System::Void btnAddCode_Click(System::Object ^ sender,
                                   System::EventArgs ^ e);
 
-    array<PaymentCodes ^> ^ createListCode(TextBox ^ textBox);
+    array<CustomerCodes ^> ^ createListCode(TextBox ^ textBox);
 
     void loadTableCodes();
+    void CodeForm::dataGridViewCodes_CellDoubleClick(Object ^ sender,
+                                                     DataGridViewCellEventArgs ^
+                                                         e);
+
+private:
+    System::Void btnDeleteCode_Click(System::Object ^ sender,
+                                     System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

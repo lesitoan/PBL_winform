@@ -26,6 +26,10 @@ void ServicePaymentForm::LoadServices() {
         panel->Size = System::Drawing::Size(120, 120);
         panel->BackColor = Color::White;
         panel->Margin = System::Windows::Forms::Padding(10);
+//<<<<<<< HEAD
+//=======
+
+//>>>>>>> f522501fd0973f0b25f1a55b5e6b8c2e0f5933aa
         Label ^ label = gcnew Label();
         label->Font =
             gcnew System::Drawing::Font("UTM Daxline", 12, FontStyle::Regular);
@@ -54,11 +58,11 @@ void ServicePaymentForm::LoadServices() {
 
 void ServicePaymentForm::OnServiceClick(Object ^ sender, EventArgs ^ e) {
     Label ^ clickedLabel = (Label ^) sender;
-    String^ serviceId = (String^)clickedLabel->Tag;
+    String ^ serviceId = (String ^) clickedLabel->Tag;
     loadFormTransfer(serviceId);
 }
 
-void ServicePaymentForm::loadFormTransfer(String^ serviceId) {
+void ServicePaymentForm::loadFormTransfer(String ^ serviceId) {
 
     array<User ^> ^ data = HandleFile::ReadUserArray("users.dat");
 
@@ -101,6 +105,8 @@ System::Void ServicePaymentForm::selectCompanyBox_SelectedIndexChanged(
         } else {
             MessageBox::Show("Lỗi: Không thể lấy dữ liệu công ty.");
         }
+
+        // check xem khách hàng đã đăng kí định kì ở đây chưa
     }
 }
 
@@ -119,112 +125,142 @@ System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
         return;
     }
-    String^ companyAccountNumber = this->currComapnyAccNumber;
-    String^ currUserAccNumber = GlobalData::GetCurrentUser()->AccountNumber;
+    String ^ companyAccountNumber = this->currComapnyAccNumber;
+    String ^ currUserAccNumber = GlobalData::GetCurrentUser()->AccountNumber;
     int pin = Convert::ToInt32(pinInput);
 
     // check code có tồn tại
-    array<PaymentCodes ^> ^ codes = HandleFile::ReadCodeArray("codes.dat");
+    array<CustomerCodes ^> ^ codes =
+        HandleFile::ReadCustomerCodesArray("customerCodes.dat");
     if (codes == nullptr || codes->Length == 0) {
-        MessageBox::Show(L"Lỗi: Không có mã thanh toán nào.");
+        MessageBox::Show(L"Lỗi: Không tồn tại mã khách hàng");
         return;
     }
-    PaymentCodes ^ paymentCode = nullptr;
+    CustomerCodes ^ customerCode = nullptr;
     for (int i = 0; i < codes->Length; i++) {
         if (codes[i]->Code == code &&
             codes[i]->CompanyAccountNumber == companyAccountNumber) {
-            paymentCode = codes[i];
+            customerCode = codes[i];
+            break;
         }
     }
-    if (paymentCode == nullptr) {
-        MessageBox::Show(L"Mã thanh toán không hợp lệ", "Cảnh báo",
+    if (customerCode == nullptr) {
+        MessageBox::Show(L"Mã khách hàng không hợp lệ", "Cảnh báo",
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
         return;
-    } else if (paymentCode->Status == 1) {
-        MessageBox::Show(L"Mã thanh toán không hợp lệ", "Cảnh báo",
+    } else if (customerCode->Status == 0) {
+        MessageBox::Show(L"Mã tkhách hàng đã hết hạn", "Cảnh báo",
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
+        return;
+    }
+
+    /*lấy hóa đơn tương ứng với mã khách hàng*/
+    array<CustomerCodeDetails ^> ^ codeDetails =
+        HandleFile::ReadCustomerCodeDetailsArray("customerCodeDetails.dat");
+    if (codeDetails == nullptr || codeDetails->Length == 0) {
+        MessageBox::Show(L"Khách hàng chưa có hóa đơn cần thanh toán");
+        return;
+    }
+    CustomerCodeDetails ^ currentCodeDetail = nullptr;
+    for (int i = 0; i < codeDetails->Length; i++) {
+        if (codeDetails[i]->CustomerCodeId == customerCode->Id &&
+            codeDetails[i]->Status == 0 &&
+            codeDetails[i]->ExpiredDate > DateTime::Now) {
+            currentCodeDetail = codeDetails[i];
+            MessageBox::Show(codeDetails[i]->Amount + " - ");
+            break;
+        }
+    }
+    if (currentCodeDetail == nullptr) {
+        MessageBox::Show(L"Khách hàng chưa có hóa đơn cần thanh toán");
         return;
     }
 
     // chuyển tiền
-    bool isTransferSuccess = Utils::transferMoney(
-        currUserAccNumber, companyAccountNumber, paymentCode->Amount, pin);
+    bool isTransferSuccess =
+        Utils::transferMoney(currUserAccNumber, companyAccountNumber,
+                             currentCodeDetail->Amount, pin);
 
     if (!isTransferSuccess) {
         MessageBox::Show(L"Chuyển tiền thất bại", "Canh bao",
                          MessageBoxButtons::OK, MessageBoxIcon::Error);
         return;
     }
-
     // sửa file code
-    paymentCode->Status = 1;
-    bool isSavedCode = HandleFile::WriteCodeArray(codes, "codes.dat");
-    if (!isSavedCode) {
-        MessageBox::Show(L"Lỗi máy chủ, thử lại sau !", "Cảnh báo",
-                         MessageBoxButtons::OK, MessageBoxIcon::Warning);
-        return;
-    } else {
-        for (int i = 0; i < codes->Length; i++) {
-            if (codes[i]->Code == code &&
-                codes[i]->CompanyAccountNumber == companyAccountNumber) {
-                codes[i]->Status = 1;
-            }
-        }
-        bool isSavedCode = HandleFile::WriteCodeArray(codes, "codes.dat");
-        if (!isSavedCode) {
-            MessageBox::Show(L"Lỗi máy chủ, thử lại sau !", "Cảnh báo",
-                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
-            return;
-        } else {
-            MessageBox::Show(L"Thanh toán thành công !", "Thông báo",
-                             MessageBoxButtons::OK,
-                             MessageBoxIcon::Information);
+    currentCodeDetail->Status = 1;
+    currentCodeDetail->PaymentDate = DateTime::Now.ToString("dd/MM/yyyy");
+    currentCodeDetail->PaymentUserAccountNumber = currUserAccNumber;
+    for (int i = 0; i < codeDetails->Length; i++) {
+        if (codeDetails[i]->Id == currentCodeDetail->Id) {
+            codeDetails[i] = currentCodeDetail;
+            break;
         }
     }
-
-    // thanh toán định kì
-    this->onSubmitCurrentPayment(currUserAccNumber, companyAccountNumber, 1);
+    bool isSave = HandleFile::WriteCustomerCodeDetailsArray(
+        codeDetails, "customerCodeDetails.dat");
+    if (!isSave) {
+        MessageBox::Show("Lỗi máy chủ, thử lại sau !");
+        return;
+    } else {
+        MessageBox::Show("Thanh toán thành công !");
+        onSubmitCurrentPayment(customerCode->Id,
+                               currUserAccNumber); // đăng kí định kì
+    }
 }
 
-void ServicePaymentForm::onSubmitCurrentPayment(String^ userAccountNumber,
-                                                String^ companyAccountNumber,
+void ServicePaymentForm::onSubmitCurrentPayment(String ^ userAccountNumber,
+                                                String ^ companyAccountNumber,
                                                 int monthly) {
+    throw gcnew System::NotImplementedException();
+}
+
+void ServicePaymentForm::onSubmitCurrentPayment(String ^ customerCodeId,
+                                                String ^ userAccountNumber) {
     bool checked = this->submitRecurringPayment->Checked;
     if (!checked)
         return;
 
-    // Tạo recurringPayment
-    String ^ id = Utils::createUniqueID("RP");
-    RecurringPayments ^ recurringPayment = gcnew RecurringPayments(
-        id,
-        userAccountNumber, companyAccountNumber, monthly);
-
-    // Lấy thông tin thanh toán
+    // kiểm tra có user nào đã đk với mã kh đó chưa
     array<RecurringPayments ^> ^ recurringPayments =
         HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
-    if (recurringPayments == nullptr) {
-        recurringPayments = gcnew array<RecurringPayments ^>(1);
-        recurringPayments[0] = recurringPayment;
-        return;
-    }
-
-    // Kiểm tra xem đã có thanh toán định kì chưa
-    for (int i = 0; i < recurringPayments->Length; i++) {
-        if (recurringPayments[i]->UserAccountNumber == userAccountNumber &&
-            recurringPayments[i]->CompanyAccountNumber ==
-                companyAccountNumber) {
-            return;
+    if (recurringPayments == nullptr || recurringPayments->Length == 0) {
+        recurringPayments = gcnew array<RecurringPayments ^>(0);
+    } else {
+        for (int i = 0; i < recurringPayments->Length; i++) {
+            if (recurringPayments[i]->CustomerCodeId == customerCodeId &&
+                recurringPayments[i]->UserAccountNumber == userAccountNumber) {
+                MessageBox::Show(
+                    "Mã khách hàng đã được đăng kí thanh toán định kì");
+                return;
+            }
         }
     }
-
-    // Nếu chưa thì thêm vào file
-    Array::Resize(recurringPayments, recurringPayments->Length + 1);
-    recurringPayments[recurringPayments->Length - 1] = recurringPayment;
+    // tạo mã định kì
+    String ^ recurringPaymentId = Utils::createUniqueID("RP");
+    RecurringPayments ^ recurringPayment = gcnew RecurringPayments(
+        recurringPaymentId, userAccountNumber, customerCodeId,
+        Convert::ToInt32(DateTime::Now.Day));
+    // thêm vào file
+    List<RecurringPayments ^> ^ newList =
+        gcnew List<RecurringPayments ^>(recurringPayments);
+    newList->Add(recurringPayment);
     bool isSave = HandleFile::WriteRecurringPaymentsArray(
-        recurringPayments, "recurringPayments.dat");
+        newList->ToArray(), "recurringPayments.dat");
     if (!isSave) {
         MessageBox::Show("Lỗi máy chủ, thử lại sau !");
         return;
     }
 };
+
+System::Void ServicePaymentForm::submitRecurringPayment_CheckedChanged(
+    System::Object ^ sender, System::EventArgs ^ e) {
+    this->isChangedRecurringPayment = true;
+}
+
+System::Void ServicePaymentForm::label3_Click(System::Object ^ sender,
+                                              System::EventArgs ^ e) {
+    Form ^ form = gcnew RecurringPaymentFollowForm();
+    form->ShowDialog();
+}
+
 }; // namespace BankingAppwinform

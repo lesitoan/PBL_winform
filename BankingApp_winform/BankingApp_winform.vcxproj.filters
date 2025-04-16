@@ -126,6 +126,10 @@
     <ClCompile Include="AdminSavingMoneyForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
+    <ClCompile Include="CodeDetailForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="RecurringPaymentFollowForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -202,7 +206,7 @@
     <ClInclude Include="CompanyBillingForm.h">
       <Filter>Form</Filter>
     </ClInclude>
-    <ClInclude Include="PaymentCodes.h">
+    <ClInclude Include="CustomerCodes.h">
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="RecurringPayments.h">
@@ -220,7 +224,7 @@
     <ClInclude Include="ClientRecurringPaymentForm.h">
       <Filter>Form</Filter>
     </ClInclude>
-    <ClInclude Include="RecurringPaymentRequest.h">
+    <ClInclude Include="CustomerCodeDetails.h">
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="ModifyServiceForm.h">
@@ -256,8 +260,11 @@
     <ClInclude Include="AdminSavingMoneyForm.h">
       <Filter>Form</Filter>
     </ClInclude>
-    <ClInclude Include="GradientHelper.h">
-      <Filter>Utils</Filter>
+    <ClInclude Include="CodeDetailForm.h">
+      <Filter>Form</Filter>
+    </ClInclude>
+    <ClInclude Include="RecurringPaymentFollowForm.h">
+      <Filter>Form</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -274,10 +281,16 @@
     <None Include="services.dat">
       <Filter>Data\files</Filter>
     </None>
-    <None Include="recurringPayments.dat">
+    <None Include="customerCodes.dat">
       <Filter>Data\files</Filter>
     </None>
-    <None Include="codes.dat">
+    <None Include="savingCustomers.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="customerCodeDetails.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="recurringPayments.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>

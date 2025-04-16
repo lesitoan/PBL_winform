@@ -1,6 +1,6 @@
 #pragma once
-#include "PaymentCodes.h"
-#include "RecurringPaymentRequest.h"
+#include "CustomerCodes.h"
+#include "CustomerCodeDetails.h"
 #include "RecurringPayments.h"
 #include "Services.h"
 #include "Transaction.h"
@@ -26,19 +26,21 @@ ref class HandleFile {
                                    String ^ filePath);
     static array<Services ^> ^ ReadServicesArray(String ^ filePath);
 
-    static bool WriteCodeArray(array<PaymentCodes ^> ^ codes,
+    static bool WriteCustomerCodesArray(array<CustomerCodes ^> ^ codes,
                                String ^ filePath);
-    static array<PaymentCodes ^> ^ ReadCodeArray(String ^ filePath);
+    static array<CustomerCodes ^> ^ ReadCustomerCodesArray(String ^ filePath);
 
     static bool WriteRecurringPaymentsArray(array<RecurringPayments ^> ^
                                                 recurringPayments,
                                             String ^ filePath);
     static array<RecurringPayments ^> ^ ReadRecurringPaymentsArray(String ^ filePath);
 
-    static bool WriteRecurringPaymentRequestArray(
-        array<RecurringPaymentRequest ^> ^ recurringRequest, String ^ filePath);
+    static bool WriteCustomerCodeDetailsArray(array<CustomerCodeDetails ^> ^
+                                                  customerCodeDetails,
+                                                  String ^ filePath);
 
-    static array<RecurringPaymentRequest ^> ^ ReadRecurringPaymentRequestArray(String ^ filePath);
+    static array<CustomerCodeDetails ^> ^
+        ReadCustomerCodeDetailsArray(String ^ filePath);
 
     static bool WriteNotificationsArray(array<Notifications ^> ^ notifications,
                                         String ^ filePath);

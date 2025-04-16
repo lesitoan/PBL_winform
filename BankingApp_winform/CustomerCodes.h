@@ -1,50 +1,41 @@
-#ifndef PAYMENTCODES_H
-#define PAYMENTCODES_H
+﻿#ifndef CUSTOMERCODES_H
+#define CUSTOMERCODES_H
 
 using namespace System;
 
 public
-ref class PaymentCodes {
+ref class CustomerCodes {
   private:
     String ^ id;
     String ^ companyAccountNumber;
+
     String ^ code;
-    int amount;
-    int status;
+    int status; // 1: còn hoạt động, 0: đã đóng
     DateTime createdDate;
-    DateTime expiredDate;
 
   public:
-    PaymentCodes(String ^ id, String ^ companyAccountNumber, String ^ code,
-                 int amount,
+    CustomerCodes(String ^ id, String ^ companyAccountNumber, String ^ code,
                  int status,
-                 DateTime createdDate, DateTime expiredDate) {
+                 DateTime createdDate) {
         this->id = id;
         this->companyAccountNumber = companyAccountNumber;
         this->code = code;
-        this->amount = amount;
         this->status = status;
         this->createdDate = createdDate;
-        this->expiredDate = expiredDate;
     }
-    PaymentCodes(String ^ companyAccountNumber, String ^ code, int amount,
-                 int day) {
-        this->id = "";
+    CustomerCodes(String^ id, String ^ companyAccountNumber, String ^ code) {
+        this->id = id;
         this->companyAccountNumber = companyAccountNumber;
         this->code = code;
-        this->amount = amount;
-        this->status = 0;
+        this->status = 1;
         this->createdDate = DateTime::Now;
-        this->expiredDate = DateTime::Now.AddDays(day);
     }
-    PaymentCodes() {
+    CustomerCodes() {
         this->id = "";
         this->companyAccountNumber = "";
         this->code = "";
-        this->amount = 0;
-        this->status = 0;
+        this->status = 1;
         this->createdDate = DateTime::Now;
-        this->expiredDate = DateTime::Now;
     }
 
     property String ^ Id { String ^ get() { return id; }
@@ -57,9 +48,6 @@ ref class PaymentCodes {
         void set(String ^ value) {
             code = value;
         }
-    } property int Amount {
-        int get() { return amount; }
-        void set(int value) { amount = value; }
     }
     property int Status {
         int get() { return status; }
@@ -68,10 +56,6 @@ ref class PaymentCodes {
     property DateTime CreatedDate {
         DateTime get() { return createdDate; }
     }
-    property DateTime ExpiredDate {
-        DateTime get() { return expiredDate; }
-        void set(DateTime value) { expiredDate = value; }
-    }
 };
 
-#endif // PAYMENTCODES_H
+#endif // CUSTOMERCODES_H

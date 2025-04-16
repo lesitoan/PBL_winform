@@ -2,9 +2,9 @@
 
 #include "GlobalData.h"
 #include "HandleFile.h"
-#include "PaymentCodes.h"
-#include "RecurringPaymentRequest.h"
-#include "RecurringPayments.h"
+//#include "PaymentCodes.h"
+//#include "RecurringPaymentRequest.h"
+//#include "RecurringPayments.h"
 #include "Utils.h"
 #include "Notifications.h"
 

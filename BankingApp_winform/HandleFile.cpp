@@ -201,20 +201,19 @@ array<Services ^> ^ HandleFile::ReadServicesArray(String ^ filePath) {
     }
 }
 
-bool HandleFile::WriteCodeArray(array<PaymentCodes ^> ^ codes,
-                                String ^ filePath) {
+
+bool HandleFile::WriteCustomerCodesArray(array<CustomerCodes ^> ^ codes,
+                                    String ^ filePath) {
     try {
         FileStream ^ fs = gcnew FileStream(filePath, FileMode::Create);
         BinaryWriter ^ writer = gcnew BinaryWriter(fs);
         writer->Write(codes->Length);
-        for each (PaymentCodes ^ code in codes) {
+        for each (CustomerCodes ^ code in codes) {
             writer->Write(code->Id);
             writer->Write(code->CompanyAccountNumber);
             writer->Write(code->Code);
-            writer->Write(code->Amount);
             writer->Write(code->Status);
             writer->Write(code->CreatedDate.ToString());
-            writer->Write(code->ExpiredDate.ToString());
         }
         writer->Close();
         fs->Close();
@@ -226,10 +225,10 @@ bool HandleFile::WriteCodeArray(array<PaymentCodes ^> ^ codes,
     }
 }
 
-array<PaymentCodes ^> ^ HandleFile::ReadCodeArray(String ^ filePath) {
+array<CustomerCodes ^> ^ HandleFile::ReadCustomerCodesArray(String ^ filePath) {
     try {
         if (!File::Exists(filePath)) {
-            return gcnew array<PaymentCodes ^>(0);
+            return gcnew array<CustomerCodes ^>(0);
         }
 
         FileStream ^ fs = gcnew FileStream(filePath, FileMode::OpenOrCreate);
@@ -238,23 +237,19 @@ array<PaymentCodes ^> ^ HandleFile::ReadCodeArray(String ^ filePath) {
         if (fs->Length == 0) {
             reader->Close();
             fs->Close();
-            return gcnew array<PaymentCodes ^>(0);
+            return gcnew array<CustomerCodes ^>(0);
         }
 
         int count = reader->ReadInt32();
-        array<PaymentCodes ^> ^ codes = gcnew array<PaymentCodes ^>(count);
+        array<CustomerCodes ^> ^ codes = gcnew array<CustomerCodes ^>(count);
 
         for (int i = 0; i < count; i++) {
             String ^ _id = reader->ReadString();
             String ^ _companyAccountNumber = reader->ReadString();
             String ^ _code = reader->ReadString();
-            int _amount = reader->ReadInt32();
             int _status = reader->ReadInt32();
             DateTime _createdDate = DateTime::Parse(reader->ReadString());
-            DateTime _expiredDate = DateTime::Parse(reader->ReadString());
-            codes[i] =
-                gcnew PaymentCodes(_id, _companyAccountNumber, _code, _amount,
-                                   _status, _createdDate, _expiredDate);
+            codes[i] = gcnew CustomerCodes(_id, _companyAccountNumber, _code, _status, _createdDate);
         }
         reader->Close();
         fs->Close();
@@ -275,10 +270,9 @@ bool HandleFile::WriteRecurringPaymentsArray(array<RecurringPayments ^> ^recurri
         for each (RecurringPayments ^ recurringPayment in recurringPayments) {
             writer->Write(recurringPayment->Id);
             writer->Write(recurringPayment->UserAccountNumber);
-            writer->Write(recurringPayment->CompanyAccountNumber);
+            writer->Write(recurringPayment->CustomerCodeId);
             writer->Write(recurringPayment->Monthly);
-            writer->Write(recurringPayment->PaymentDay.ToString());
-            writer->Write(recurringPayment->Debt);
+            writer->Write(recurringPayment->PaymentDay);
         }
         writer->Close();
         fs->Close();
@@ -313,13 +307,12 @@ array<RecurringPayments ^> ^ HandleFile::ReadRecurringPaymentsArray(String ^ fil
         for (int i = 0; i < count; i++) {
             String ^ _id = reader->ReadString();
             String ^ _userAccountNumber = reader->ReadString();
-            String ^ _companyAccountNumber = reader->ReadString();
+            String ^ _customerCodeId = reader->ReadString();
             int _monthly = reader->ReadInt32();
-            DateTime _paymentDay = DateTime::Parse(reader->ReadString());
-            double _debt = reader->ReadDouble();
+            int _paymentDay = reader->ReadInt32();
             recurringPayments[i] = gcnew RecurringPayments(
-                _id, _userAccountNumber, _companyAccountNumber,
-                                        _monthly, _paymentDay, _debt);
+                _id, _userAccountNumber, _customerCodeId,
+                                        _monthly, _paymentDay);
         }
         reader->Close();
         fs->Close();
@@ -331,19 +324,21 @@ array<RecurringPayments ^> ^ HandleFile::ReadRecurringPaymentsArray(String ^ fil
     }
 }
 
-bool HandleFile::WriteRecurringPaymentRequestArray(
-    array<RecurringPaymentRequest^>^
-    recurringRequests, String^ filePath) {
+bool HandleFile::WriteCustomerCodeDetailsArray(array<CustomerCodeDetails ^> ^
+                                                   customerCodeDetails,
+                                   String ^ filePath) {
     try {
         FileStream ^ fs = gcnew FileStream(filePath, FileMode::Create);
         BinaryWriter ^ writer = gcnew BinaryWriter(fs);
-        writer->Write(recurringRequests->Length);
-        for each (RecurringPaymentRequest ^ request in recurringRequests) {
+        writer->Write(customerCodeDetails->Length);
+        for each (CustomerCodeDetails ^ request in customerCodeDetails) {
             writer->Write(request->Id);
-            writer->Write(request->UserAccountNumber);
-            writer->Write(request->CompanyAccountNumber);
+            writer->Write(request->CustomerCodeId);
+            writer->Write(request->PaymentUserAccountNumber);
             writer->Write(request->Amount);
-            writer->Write(request->RequestDate.ToString());
+            writer->Write(request->CreateDate.ToString());
+            writer->Write(request->PaymentDate);
+            writer->Write(request->ExpiredDate.ToString());
             writer->Write(request->Status);
         }
         writer->Close();
@@ -357,11 +352,11 @@ bool HandleFile::WriteRecurringPaymentRequestArray(
 
 }
 
-array<RecurringPaymentRequest ^> ^
-HandleFile::ReadRecurringPaymentRequestArray(String^ filePath) {
+array<CustomerCodeDetails ^> ^
+    HandleFile::ReadCustomerCodeDetailsArray(String ^ filePath) {
     try {
         if (!File::Exists(filePath)) {
-            return gcnew array<RecurringPaymentRequest ^>(0);
+            return gcnew array<CustomerCodeDetails ^>(0);
         }
 
         FileStream ^ fs = gcnew FileStream(filePath, FileMode::OpenOrCreate);
@@ -370,29 +365,30 @@ HandleFile::ReadRecurringPaymentRequestArray(String^ filePath) {
         if (fs->Length == 0) {
             reader->Close();
             fs->Close();
-            return gcnew array<RecurringPaymentRequest ^>(0);
+            return gcnew array<CustomerCodeDetails ^>(0);
         }
 
         int count = reader->ReadInt32();
-        array<RecurringPaymentRequest ^> ^ recurringRequests =
-            gcnew array<RecurringPaymentRequest ^>(count);
+        array<CustomerCodeDetails ^> ^ customerCodeDetails =
+            gcnew array<CustomerCodeDetails ^>(count);
 
         for (int i = 0; i < count; i++) {
 
             String ^ _id = reader->ReadString();
-            String ^ _userAccountNumber = reader->ReadString();
-            String ^ _companyAccountNumber = reader->ReadString();
+            String ^ _customerCodeId = reader->ReadString();
+            String ^ _paymentUserAccountNumber = reader->ReadString();
             double _amount = reader->ReadDouble();
-            DateTime _requestDate = DateTime::Parse(reader->ReadString());
-            String ^ _status = reader->ReadString();
-
-            recurringRequests[i] = gcnew RecurringPaymentRequest(
-                _id, _userAccountNumber, _companyAccountNumber, _amount,
-                _requestDate, _status);
+            DateTime _createDate = DateTime::Parse(reader->ReadString());
+            String ^ _paymentDate = reader->ReadString();
+            DateTime _expiredDate = DateTime::Parse(reader->ReadString());
+            int _status = reader->ReadInt32();
+            customerCodeDetails[i] = gcnew CustomerCodeDetails(
+                _id, _customerCodeId, _paymentUserAccountNumber, _amount,
+                _createDate, _paymentDate, _expiredDate, _status);
         }
         reader->Close();
         fs->Close();
-        return recurringRequests;
+        return customerCodeDetails;
     } catch (Exception ^ ex) {
         MessageBox::Show(ex->Message, "Thông báo", MessageBoxButtons::OK,
                          MessageBoxIcon::Warning);

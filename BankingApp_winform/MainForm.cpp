@@ -30,7 +30,7 @@ void MainForm::ChangeButtonColor(Button ^ button) {
     if (selectedButton != nullptr) {
         selectedButton->BackColor = System::Drawing::Color::FromArgb(255, 100, 100);
     }
-    AccountForm::axWindowsMediaPlayer2->Ctlcontrols->pause();
+    //AccountForm::axWindowsMediaPlayer2->Ctlcontrols->pause();
 }
 
 void MainForm::InitLoad() {
@@ -83,7 +83,11 @@ System::Void MainForm::btnCode_Click(System::Object ^ sender,
                                      System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew CodeForm());
     ChangeButtonColor(btnCode);
+//<<<<<<< HEAD
     this->headerText->Text = L"CODE MANEGEMENT";
+//=======
+    this->headerText->Text = L"QUẢN LÍ MÃ KHÁCH HÀNG";
+//>>>>>>> f522501fd0973f0b25f1a55b5e6b8c2e0f5933aa
 }
 
 System::Void MainForm::btnServicePayment_Click(System::Object ^ sender,
@@ -98,7 +102,11 @@ System::Void MainForm::btnRecurringPayment_Click(System::Object ^ sender,
     LoadChildForm::LoadForm(this->panelContent,
                             gcnew ClientRecurringPaymentForm());
     ChangeButtonColor(btnServicePayment);
+//<<<<<<< HEAD
     this->headerText->Text = L"RECURRING PAYMENT";
+//=======
+    this->headerText->Text = L"DANH SÁCH ĐANG ĐĂNG KÍ TTĐK";
+//>>>>>>> f522501fd0973f0b25f1a55b5e6b8c2e0f5933aa
 }
 
 System::Void MainForm::btnSaveMoney_Click(System::Object ^ sender,
