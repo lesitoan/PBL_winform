@@ -1,21 +1,22 @@
+#include "ISaveToFile.h"
+
 #ifndef RECURRINGPAYMENTS_H
 #define RECURRINGPAYMENTS_H
 
 using namespace System;
 
 public
-ref class RecurringPayments {
+ref class RecurringPayments : public ISaveToFile {
   private:
-    String^ id;
+    String ^ id;
     String ^ userAccountNumber;
     String ^ customerCodeId;
-    int monthly;         //1,2,3,4,5....12
+    int monthly;    // 1,2,3,4,5....12
     int paymentDay; // 1-31
 
   public:
     RecurringPayments(String ^ id, String ^ userAccountNumber,
-                      String ^ customerCodeId,
-                      int monthly, int paymentDay) {
+                      String ^ customerCodeId, int monthly, int paymentDay) {
         this->id = id;
         this->userAccountNumber = userAccountNumber;
         this->customerCodeId = customerCodeId;
@@ -36,21 +37,19 @@ ref class RecurringPayments {
           customerCodeId(_customerCodeId), monthly(1), paymentDay(_paymentDay) {
     }
 
-
-    property String ^ Id { String ^ get() { return id; }
-    } property String ^
+    property String ^ Id { String ^ get() { return id; } } property String ^
         UserAccountNumber {
-            String ^ get() { return userAccountNumber; } void set(String ^ value) {
+            String ^
+                get() { return userAccountNumber; } void set(String ^ value) {
                 userAccountNumber = value;
             }
-    } property String ^
+        } property String ^
         CustomerCodeId {
             String ^ get() { return customerCodeId; } void set(String ^ value) {
                 customerCodeId = value;
             }
-    }
-    property int Monthly {
-        int get() { return monthly; } 
+        } property int Monthly {
+        int get() { return monthly; }
         void set(int value) { monthly = value; }
     }
     property int PaymentDay {
@@ -58,6 +57,21 @@ ref class RecurringPayments {
         void set(int value) { paymentDay = value; }
     }
 
+    virtual void WriteTo(BinaryWriter ^ writer) {
+        writer->Write(id);
+        writer->Write(userAccountNumber);
+        writer->Write(customerCodeId);
+        writer->Write(monthly);
+        writer->Write(paymentDay);
+    }
+
+    virtual void ReadFrom(BinaryReader ^ reader) {
+        id = reader->ReadString();
+        userAccountNumber = reader->ReadString();
+        customerCodeId = reader->ReadString();
+        monthly = reader->ReadInt32();
+        paymentDay = reader->ReadInt32();
+    }
 };
 
 #endif // RECURRINGPAYMENTS_H

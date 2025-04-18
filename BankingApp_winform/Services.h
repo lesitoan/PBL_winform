@@ -1,10 +1,12 @@
+#include "ISaveToFile.h"
+
 #ifndef SERVICES_H
 #define SERVICES_H
 
 using namespace System;
 
 public
-ref class Services {
+ref class Services : public ISaveToFile {
   private:
     String ^ id;
     String ^ name;
@@ -22,6 +24,15 @@ ref class Services {
         void set(String ^ value) {
             name = value;
         }
+    } virtual void WriteTo(BinaryWriter ^ writer) {
+        writer->Write(id);
+        writer->Write(name);
+
+    }
+
+    virtual void ReadFrom(BinaryReader ^ reader) {
+        id = reader->ReadString();
+        name = reader->ReadString();
     }
 };
 

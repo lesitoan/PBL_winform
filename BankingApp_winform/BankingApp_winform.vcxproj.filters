@@ -24,6 +24,12 @@
     <Filter Include="Data\files">
       <UniqueIdentifier>{82702df1-e03f-47ef-9b0f-01305f36494a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Interfaces">
+      <UniqueIdentifier>{53b9e67d-2dcd-4e42-9ee2-af570d8eee71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Repositories">
+      <UniqueIdentifier>{343a5ef6-7816-4af7-ad9c-278f7bc8194f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HandleFile.cpp">
@@ -268,9 +274,60 @@
     <ClInclude Include="RecurringPaymentFollowForm.h">
       <Filter>Form</Filter>
     </ClInclude>
+    <ClInclude Include="ISaveToFile.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="UserRepository.h">
+      <Filter>Repositories</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomerCodeDetailsRepository.h">
+      <Filter>Repositories</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomerCodesRepository.h">
+      <Filter>Repositories</Filter>
+    </ClInclude>
+    <ClInclude Include="NotificationsRepository.h">
+      <Filter>Repositories</Filter>
+    </ClInclude>
+    <ClInclude Include="RecurringPaymentsRepository.h">
+      <Filter>Repositories</Filter>
+    </ClInclude>
+    <ClInclude Include="SavingCustomersRepository.h">
+      <Filter>Repositories</Filter>
+    </ClInclude>
+    <ClInclude Include="ServicesRepository.h">
+      <Filter>Repositories</Filter>
+    </ClInclude>
+    <ClInclude Include="TransactionsRepository.h">
+      <Filter>Repositories</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
+    <None Include="notifications.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="recurringPayments.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="transactions.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="customerCodeDetails.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="customerCodes.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="services.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="users.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="savingCustomers.dat">
+      <Filter>Data\files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\account.png">
@@ -303,5 +360,10 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="BankingApp_winform.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="historyUpdateData.txt">
+      <Filter>Data\files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

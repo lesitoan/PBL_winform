@@ -1,4 +1,4 @@
-﻿
+﻿#include "ISaveToFile.h"
 
 #ifndef SAVINGCUSTOMERS_H
 #define SAVINGCUSTOMERS_H
@@ -6,7 +6,7 @@
 using namespace System;
 
 public
-ref class SavingCustomers {
+ref class SavingCustomers : public ISaveToFile {
   private:
     String ^ id;
     String ^ userAccountNumber; // so tai khoan khach hang
@@ -96,6 +96,32 @@ ref class SavingCustomers {
         int get() { return status; }
         void set(int value) { status = value; }
     }
+
+    virtual void WriteTo(BinaryWriter ^ writer) {
+        writer->Write(this->id);
+        writer->Write(this->userAccountNumber);
+        writer->Write(this->amount);
+        writer->Write(this->interestAmount);
+        writer->Write(this->type);
+        writer->Write(this->term);
+        writer->Write(this->interestRate);
+        writer->Write(this->depositDate.ToString());
+        writer->Write(this->paymentDate);
+        writer->Write(this->status);
+    }
+    virtual void ReadFrom(BinaryReader ^ reader) {
+        id = reader->ReadString();
+        userAccountNumber = reader->ReadString();
+        amount = reader->ReadDouble();
+        interestAmount = reader->ReadDouble();
+        type = reader->ReadString();
+        term = reader->ReadInt32();
+        interestRate = reader->ReadSingle();
+        depositDate = DateTime::Parse(reader->ReadString());
+        paymentDate = reader->ReadString();
+        status = reader->ReadInt32();
+    }
+
 };
 
 #endif // SAVINGCUSTOMERS_H

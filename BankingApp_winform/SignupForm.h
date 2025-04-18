@@ -4,6 +4,8 @@
 #include "User.h"
 #include "Validate.h"
 #include "Utils.h"
+#include "UserRepository.h"
+
 using namespace System::Drawing;
 using namespace System::Drawing::Drawing2D;
 
@@ -395,8 +397,6 @@ ref class SignupForm : public System::Windows::Forms::Form {
 
     System::Void SignupForm_Load(System::Object ^ sender,
                                  System::EventArgs ^ e) {}
-
-    bool isUsedPhoneNumber(String ^ phoneNumber);
 
   private:
     System::Void label4_Click(System::Object ^ sender, System::EventArgs ^ e);

@@ -101,6 +101,10 @@ System::Void RegisterSavingForm::btnSubmit_Click(System::Object ^ sender,
         newSavingCustomers[savingCustomers->Length] = savingCustomer;
         savingCustomers = newSavingCustomers;
     }
+
+    HandleFile::WriteArrayToFile<SavingCustomers^>(savingCustomers,
+                                                  "savingCustomerssss.dat");
+
     bool isSaved = HandleFile::WriteSavingCustomersArray(savingCustomers,
                                                          "savingCustomers.dat");
     if (isSaved) {

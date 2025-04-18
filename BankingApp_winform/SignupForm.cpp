@@ -2,7 +2,9 @@
 
 namespace BankingAppwinform {
 
-SignupForm::SignupForm(void) { InitializeComponent(); }
+SignupForm::SignupForm(void) {
+    InitializeComponent();
+}
 
 SignupForm::~SignupForm() {
     if (components) {
@@ -12,71 +14,50 @@ SignupForm::~SignupForm() {
 
 System::Void SignupForm::btnSubmit_Click(System::Object ^ sender,
                                          System::EventArgs ^ e) {
-    // kiem tra da nhap du thong tin chua
-    if (fullName->Text->Length == 0 || password->Text->Length == 0 ||
-        passwordConfirm->Text->Length == 0 || phoneNumber->Text->Length == 0) {
-        MessageBox::Show(L"Vui lòng nhập đầy đủ thông tin!", "Error",
-                         MessageBoxButtons::OK, MessageBoxIcon::Error);
-        return;
-    }else if (password->Text != passwordConfirm->Text) {
-        MessageBox::Show(L"Mật khẩu không khớp nhau", "Error",
-                         MessageBoxButtons::OK, MessageBoxIcon::Error);
-        return;
-    } else if (!Validate::isValidPassword(password->Text)) {
-        MessageBox::Show(L"Mật khẩu phải từ 6-9 kí tự, có ít nhất 1 chữ cái và 1 số, không chứ dấu cách", "Error",
-                         MessageBoxButtons::OK, MessageBoxIcon::Error);
-        return;
-    } else if (!Validate::isValidVietnamPhoneNumber(phoneNumber->Text)) {
-        MessageBox::Show(L"Số điện thoại không hợp lệ", "Error",
-                         MessageBoxButtons::OK, MessageBoxIcon::Error);
-        return;
-    } else if (!Validate::isValidCustomerName(fullName->Text)) {
-        MessageBox::Show(L"Tên chỉ được viết in hoa không dấu và ít nhất 2 từ", "Error",
-                         MessageBoxButtons::OK, MessageBoxIcon::Error);
-        return;
-    } else if (isUsedPhoneNumber(phoneNumber->Text)) {
-        MessageBox::Show(L"Số điện thoại đã được sử dụng", "Error",
-                         MessageBoxButtons::OK, MessageBoxIcon::Error);
-        return;
-    }
-
-
-    String ^ accNum = Utils::createUniqueID("");
-    // luu user vao file
-    User ^ user =
-        gcnew User(fullName->Text, password->Text, phoneNumber->Text, accNum);
-    array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-    if (users == nullptr) {
-        users = gcnew array<User ^>{user};
-    } else {
-        array<User ^> ^ newUsers = gcnew array<User ^>(users->Length + 1);
-        for (int i = 0; i < users->Length; i++) {
-            newUsers[i] = users[i];
+    try {
+        // kiem tra da nhap du thong tin chua
+        if (fullName->Text->Length == 0 || password->Text->Length == 0 ||
+            passwordConfirm->Text->Length == 0 || phoneNumber->Text->Length == 0) {
+            MessageBox::Show(L"Vui lòng nhập đầy đủ thông tin!", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        } else if (password->Text != passwordConfirm->Text) {
+            MessageBox::Show(L"Mật khẩu không khớp nhau", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        } else if (!Validate::isValidPassword(password->Text)) {
+            MessageBox::Show(L"Mật khẩu phải từ 6-9 kí tự, có ít nhất 1 chữ cái và 1 số, không chứ dấu cách", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        } else if (!Validate::isValidVietnamPhoneNumber(phoneNumber->Text)) {
+            MessageBox::Show(L"Số điện thoại không hợp lệ", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        } else if (!Validate::isValidCustomerName(fullName->Text)) {
+            MessageBox::Show(L"Tên chỉ được viết in hoa không dấu và ít nhất 2 từ", "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
         }
-        newUsers[users->Length] = user;
-        users = newUsers;
-    }
-    bool isSaved = HandleFile::WriteUserArray(users, "users.dat");
-    if (isSaved) {
-        MessageBox::Show(L"Đăng kí tài khoản thành công !", "Success",
-                         MessageBoxButtons::OK, MessageBoxIcon::Information);
-        // Chuyen sang trang dang nhap
+
+        User ^ currentUser = UserRepository::FindUserByPhoneNumber(phoneNumber->Text);
+        if (currentUser != nullptr) {
+            MessageBox::Show(L"Số điện thoại đã được sử dụng", "Error",MessageBoxButtons::OK, MessageBoxIcon::Error);
+            return;
+        }
+
+        String ^ accNum = Utils::createUniqueID("");
+        User ^ user = gcnew User(fullName->Text, password->Text, phoneNumber->Text, accNum);
+        UserRepository::InsertUser(user);
+        MessageBox::Show(L"Đăng kí tài khoản thành công !", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
         SignupSuccess(this, EventArgs::Empty);
+
+    } catch (Exception ^ ex) {
+        MessageBox::Show(L"Có lỗi xảy ra, thử lại sau", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
     }
 }
 
-bool SignupForm::isUsedPhoneNumber(String ^ phoneNumber) {
-    array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-    for each (User ^ user in users) {
-        if (user->getPhoneNumber() == phoneNumber) {
-            return true;
-        }
-    }
-    return false;
-}
-
-System::Void SignupForm::label4_Click(System::Object^ sender,
-    System::EventArgs^ e) {
+System::Void SignupForm::label4_Click(System::Object ^ sender,
+                                      System::EventArgs ^ e) {
     if (passwordConfirm->PasswordChar == '\0') {
         passwordConfirm->PasswordChar = '\*';
     } else {
@@ -84,8 +65,8 @@ System::Void SignupForm::label4_Click(System::Object^ sender,
     }
 }
 
-System::Void SignupForm::label2_Click(System::Object^ sender,
-    System::EventArgs^ e) {
+System::Void SignupForm::label2_Click(System::Object ^ sender,
+                                      System::EventArgs ^ e) {
     if (password->PasswordChar == '\0') {
         password->PasswordChar = '\*';
     } else {

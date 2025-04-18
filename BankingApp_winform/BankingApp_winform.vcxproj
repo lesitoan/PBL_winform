@@ -173,6 +173,10 @@
     <ClInclude Include="CodeDetailForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="CustomerCodeDetailsRepository.h" />
+    <ClInclude Include="CustomerCodesRepository.h" />
+    <ClInclude Include="TransactionsRepository.h" />
+    <ClInclude Include="ISaveToFile.h" />
     <ClInclude Include="ModifyServiceForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -197,14 +201,17 @@
     <ClInclude Include="Notifications.h" />
     <ClInclude Include="CustomerCodes.h" />
     <ClInclude Include="CustomerCodeDetails.h" />
+    <ClInclude Include="NotificationsRepository.h" />
     <ClInclude Include="RecurringPaymentFollowForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="RecurringPayments.h" />
+    <ClInclude Include="RecurringPaymentsRepository.h" />
     <ClInclude Include="RegisterSavingForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SavingCustomers.h" />
+    <ClInclude Include="SavingCustomersRepository.h" />
     <ClInclude Include="SelectReceiverEventArgs.h" />
     <ClInclude Include="SelectReceiverForm.h">
       <FileType>CppForm</FileType>
@@ -213,6 +220,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Services.h" />
+    <ClInclude Include="ServicesRepository.h" />
     <ClInclude Include="SetAvatarForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -261,6 +269,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="User.h" />
+    <ClInclude Include="UserRepository.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Validate.h" />
     <ClInclude Include="WithdrawMoneyForm.h">
@@ -368,6 +377,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
+    <None Include="customerCodeDetails.dat" />
+    <None Include="customerCodes.dat" />
+    <None Include="notifications.dat" />
+    <None Include="recurringPayments.dat" />
+    <None Include="savingCustomers.dat" />
+    <None Include="services.dat" />
+    <None Include="transactions.dat" />
+    <None Include="users.dat" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="BankingApp_winform.rc" />
@@ -401,6 +418,9 @@
       <Lcid>0</Lcid>
       <Isolated>false</Isolated>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="historyUpdateData.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

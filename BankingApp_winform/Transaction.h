@@ -1,8 +1,10 @@
+#include "ISaveToFile.h"
+
 #pragma once
 using namespace System;
 
 public
-ref class Transaction {
+ref class Transaction : public ISaveToFile {
   private:
     String ^ transactionId;
     String ^ fromAccountNumber;
@@ -33,13 +35,29 @@ ref class Transaction {
         message = other.message;
         createdAt = other.createdAt;
     }
-    String ^ getTransactionId() { return transactionId; }
-    String ^
-        getFromAccount() { return fromAccountNumber; }
-    String ^
-        getToAccount() { return toAccountNumber; }
-    String ^ getMessage() { return message; }
-    String ^ getCreatedAt() { return createdAt; } double getAmount() {
+    String ^ getTransactionId() { return transactionId; } String ^
+        getFromAccount() { return fromAccountNumber; } String ^
+        getToAccount() { return toAccountNumber; } String ^
+        getMessage() { return message; } String ^
+        getCreatedAt() { return createdAt; } double getAmount() {
         return amount;
+    }
+
+    virtual void WriteTo(BinaryWriter ^ writer) {
+        writer->Write(transactionId);
+        writer->Write(fromAccountNumber);
+        writer->Write(toAccountNumber);
+        writer->Write(amount);
+        writer->Write(message);
+        writer->Write(createdAt);
+    }
+
+    virtual void ReadFrom(BinaryReader ^ reader) {
+        transactionId = reader->ReadString();
+        fromAccountNumber = reader->ReadString();
+        toAccountNumber = reader->ReadString();
+        amount = reader->ReadDouble();
+        message = reader->ReadString();
+        createdAt = reader->ReadString();
     }
 };

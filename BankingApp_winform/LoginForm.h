@@ -1,4 +1,5 @@
 #pragma once
+#include "UserRepository.h"
 #include "HandleFile.h"
 #include "User.h"
 #include "GlobalData.h"
