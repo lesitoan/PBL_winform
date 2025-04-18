@@ -21,9 +21,7 @@ ref class RecurringPaymentFollowForm : public System::Windows::Forms::Form {
   public:
     RecurringPaymentFollowForm(void) {
         InitializeComponent();
-        //
-        // TODO: Add the constructor code here
-        //
+        LoadRecurringPaymentFollow();
     }
 
   protected:
@@ -83,14 +81,13 @@ ref class RecurringPaymentFollowForm : public System::Windows::Forms::Form {
         this->StartPosition =
             System::Windows::Forms::FormStartPosition::CenterParent;
         this->Text = L"RecurringPaymentFollowForm";
-        this->Load += gcnew System::EventHandler(
-            this, &RecurringPaymentFollowForm::RecurringPaymentFollowForm_Load);
         this->ResumeLayout(false);
     }
 #pragma endregion
   private:
-    System::Void RecurringPaymentFollowForm_Load(System::Object ^ sender,
-                                                 System::EventArgs ^ e) {
+    /// <summary>
+  private:
+    Void LoadRecurringPaymentFollow() {
         array<RecurringPayments ^> ^ recurringPayments =
             HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
 
@@ -130,6 +127,9 @@ ref class RecurringPaymentFollowForm : public System::Windows::Forms::Form {
                           recurringPayments[i]->PaymentDay;
 
             label->Tag = recurringPayments[i]->Id;
+            label->Click += gcnew EventHandler(
+                this, &RecurringPaymentFollowForm::labelFollow_Click);
+
             this->flowLayoutPanelFollow->Controls->Add(label);
         }
     }
@@ -156,5 +156,41 @@ ref class RecurringPaymentFollowForm : public System::Windows::Forms::Form {
             return nullptr;
         }
     }
+
+
+
+    System::Void
+        labelFollow_Click(System::Object ^ sender, System::EventArgs ^ e) {
+        Label ^ clickedLabel = dynamic_cast<Label ^>(sender);
+        if (clickedLabel != nullptr) {
+            String ^ recurringPaymentId =
+                safe_cast<String ^>(clickedLabel->Tag);
+            System::Windows::Forms::DialogResult result;
+            result = MessageBox::Show(L"Bạn có chắc muốn xóa?", L"Xóa",
+                                      MessageBoxButtons::YesNo,
+                                      MessageBoxIcon::Question);
+            if (result == System::Windows::Forms::DialogResult::Yes) {
+                array<RecurringPayments ^> ^ allPayments =
+                    HandleFile::ReadRecurringPaymentsArray(
+                        "recurringPayments.dat");
+                List<RecurringPayments ^> ^ updatedPayments =
+                    gcnew List<RecurringPayments ^>();
+                for each (RecurringPayments ^ p in allPayments) {
+                    if (p->Id != recurringPaymentId) { // So sánh theo Id
+                        updatedPayments->Add(p);
+                    }
+                }
+                // Ghi lại file
+                HandleFile::WriteRecurringPaymentsArray(
+                    updatedPayments->ToArray(), "recurringPayments.dat");
+                MessageBox::Show(L"Đã xóa thanh toán định kỳ.", "Thành công",
+                                 MessageBoxButtons::OK,
+                                 MessageBoxIcon::Information);
+                this->LoadRecurringPaymentFollow();
+            }
+        }
+    }
+
+
 };
 } // namespace BankingAppwinform

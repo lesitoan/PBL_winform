@@ -2,9 +2,9 @@
 
 #include "GlobalData.h"
 #include "HandleFile.h"
-//#include "PaymentCodes.h"
-//#include "RecurringPaymentRequest.h"
-//#include "RecurringPayments.h"
+#include "RecurringPayments.h"
+#include "User.h"
+#include "CustomerCodes.h"
 #include "Utils.h"
 #include "Notifications.h"
 
@@ -30,21 +30,36 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel1;
     System::Windows::Forms::Panel ^ panel2;
     System::Windows::Forms::Button ^ btnLoadRecurring;
-    System::Windows::Forms::Button ^ btnShowCode;
+
     System::Windows::Forms::Button ^ btnAccount;
     System::Windows::Forms::Panel ^ panelContent;
-    System::Windows::Forms::DataGridView ^ dataGridViewCodes;
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column1;
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column2;
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column3;
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column4;
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column5;
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column6;
+
+  private:
     System::Windows::Forms::DataGridView ^ dataGridViewRecurring;
+
+  private:
+    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column7;
+
+  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column8;
+
+  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column10;
+
+  private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column11;
-    System::Windows::Forms::DataGridViewTextBoxColumn ^ Column12;
+
+
+
+
+
+
+
+
+
+
+
+
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -58,50 +73,26 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
             (gcnew System::Windows::Forms::DataGridViewCellStyle());
         System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle3 =
             (gcnew System::Windows::Forms::DataGridViewCellStyle());
-        System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle4 =
-            (gcnew System::Windows::Forms::DataGridViewCellStyle());
-        System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle5 =
-            (gcnew System::Windows::Forms::DataGridViewCellStyle());
-        System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle6 =
-            (gcnew System::Windows::Forms::DataGridViewCellStyle());
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->btnAccount = (gcnew System::Windows::Forms::Button());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->btnLoadRecurring = (gcnew System::Windows::Forms::Button());
-        this->btnShowCode = (gcnew System::Windows::Forms::Button());
         this->panelContent = (gcnew System::Windows::Forms::Panel());
         this->dataGridViewRecurring =
             (gcnew System::Windows::Forms::DataGridView());
+        this->Column7 =
+            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->Column8 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->Column10 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->Column11 =
             (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column12 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->dataGridViewCodes =
-            (gcnew System::Windows::Forms::DataGridView());
-        this->Column1 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column2 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column3 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column4 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column5 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column6 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->panel1->SuspendLayout();
         this->panel2->SuspendLayout();
         this->panelContent->SuspendLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->dataGridViewRecurring))
-            ->BeginInit();
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->dataGridViewCodes))
             ->BeginInit();
         this->SuspendLayout();
         //
@@ -143,13 +134,12 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         this->btnAccount->TextAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnAccount->UseVisualStyleBackColor = false;
-        this->btnAccount->Click += gcnew System::EventHandler(
-            this, &CompanyBillingForm::btnAccount_Click);
+        this->btnAccount->Click +=
+            gcnew System::EventHandler(this, &CompanyBillingForm::OnUndoClick);
         //
         // panel2
         //
         this->panel2->Controls->Add(this->btnLoadRecurring);
-        this->panel2->Controls->Add(this->btnShowCode);
         this->panel2->Dock = System::Windows::Forms::DockStyle::Top;
         this->panel2->Location = System::Drawing::Point(0, 44);
         this->panel2->Name = L"panel2";
@@ -158,6 +148,11 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         //
         // btnLoadRecurring
         //
+        this->btnLoadRecurring->Anchor =
+            static_cast<System::Windows::Forms::AnchorStyles>(
+                ((System::Windows::Forms::AnchorStyles::Top |
+                  System::Windows::Forms::AnchorStyles::Left) |
+                 System::Windows::Forms::AnchorStyles::Right));
         this->btnLoadRecurring->BackColor = System::Drawing::Color::FromArgb(
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
@@ -174,45 +169,16 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
             System::Drawing::SystemColors::HighlightText;
         this->btnLoadRecurring->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnLoadRecurring->Location = System::Drawing::Point(189, 3);
+        this->btnLoadRecurring->Location = System::Drawing::Point(3, 3);
         this->btnLoadRecurring->Name = L"btnLoadRecurring";
-        this->btnLoadRecurring->Size = System::Drawing::Size(169, 41);
+        this->btnLoadRecurring->Size = System::Drawing::Size(1071, 41);
         this->btnLoadRecurring->TabIndex = 11;
         this->btnLoadRecurring->Text = L"THANH TOÁN ĐỊNH KÌ";
         this->btnLoadRecurring->UseVisualStyleBackColor = false;
-        this->btnLoadRecurring->Click += gcnew System::EventHandler(
-            this, &CompanyBillingForm::btnLoadRecurring_Click);
-        //
-        // btnShowCode
-        //
-        this->btnShowCode->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->btnShowCode->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnShowCode->FlatAppearance->BorderSize = 0;
-        this->btnShowCode->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
-        this->btnShowCode->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->btnShowCode->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnShowCode->ForeColor =
-            System::Drawing::SystemColors::HighlightText;
-        this->btnShowCode->ImageAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnShowCode->Location = System::Drawing::Point(0, 3);
-        this->btnShowCode->Name = L"btnShowCode";
-        this->btnShowCode->Size = System::Drawing::Size(183, 41);
-        this->btnShowCode->TabIndex = 10;
-        this->btnShowCode->Text = L"MÃ CODE THANH TOÁN";
-        this->btnShowCode->UseVisualStyleBackColor = false;
-        this->btnShowCode->Click += gcnew System::EventHandler(
-            this, &CompanyBillingForm::btnShowCode_Click);
         //
         // panelContent
         //
         this->panelContent->Controls->Add(this->dataGridViewRecurring);
-        this->panelContent->Controls->Add(this->dataGridViewCodes);
         this->panelContent->Dock = System::Windows::Forms::DockStyle::Fill;
         this->panelContent->Location = System::Drawing::Point(0, 94);
         this->panelContent->Name = L"panelContent";
@@ -262,12 +228,12 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         this->dataGridViewRecurring->ColumnHeadersHeight = 40;
         this->dataGridViewRecurring->Columns->AddRange(
             gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(4){
-                this->Column8, this->Column10, this->Column11, this->Column12});
+                this->Column7, this->Column8, this->Column10, this->Column11});
         dataGridViewCellStyle3->Alignment =
             System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
         dataGridViewCellStyle3->BackColor = System::Drawing::Color::MintCream;
         dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(
-            L"UTM Facebook K&T", 12, System::Drawing::FontStyle::Regular,
+            L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         dataGridViewCellStyle3->ForeColor =
@@ -290,6 +256,7 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         this->dataGridViewRecurring->RowHeadersBorderStyle =
             System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
         this->dataGridViewRecurring->RowHeadersVisible = false;
+        this->dataGridViewRecurring->RowHeadersWidth = 51;
         this->dataGridViewRecurring->RowTemplate->DefaultCellStyle->BackColor =
             System::Drawing::Color::White;
         this->dataGridViewRecurring->RowTemplate->DefaultCellStyle->Font =
@@ -307,158 +274,35 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         this->dataGridViewRecurring->SelectionMode =
             System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
         this->dataGridViewRecurring->Size = System::Drawing::Size(1077, 617);
-        this->dataGridViewRecurring->TabIndex = 4;
-        this->dataGridViewRecurring->Visible = false;
+        this->dataGridViewRecurring->TabIndex = 6;
+        //
+        // Column7
+        //
+        this->Column7->HeaderText = L"Mã KH";
+        this->Column7->MinimumWidth = 6;
+        this->Column7->Name = L"Column7";
+        this->Column7->ReadOnly = true;
         //
         // Column8
         //
-        this->Column8->HeaderText = L"STK KH";
+        this->Column8->HeaderText = L"Tên Người TT";
+        this->Column8->MinimumWidth = 6;
         this->Column8->Name = L"Column8";
         this->Column8->ReadOnly = true;
         //
         // Column10
         //
-        this->Column10->HeaderText = L"STK CT";
+        this->Column10->HeaderText = L"Số TK người TT";
+        this->Column10->MinimumWidth = 6;
         this->Column10->Name = L"Column10";
         this->Column10->ReadOnly = true;
         //
         // Column11
         //
-        this->Column11->HeaderText = L"Số tiền";
+        this->Column11->HeaderText = L"Ngày đến hạn";
+        this->Column11->MinimumWidth = 6;
         this->Column11->Name = L"Column11";
         this->Column11->ReadOnly = true;
-        //
-        // Column12
-        //
-        this->Column12->HeaderText = L"Trạng thái";
-        this->Column12->Name = L"Column12";
-        this->Column12->ReadOnly = true;
-        //
-        // dataGridViewCodes
-        //
-        this->dataGridViewCodes->AllowUserToAddRows = false;
-        this->dataGridViewCodes->AllowUserToDeleteRows = false;
-        dataGridViewCellStyle4->Alignment =
-            System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-        dataGridViewCellStyle4->BackColor = System::Drawing::Color::Transparent;
-        dataGridViewCellStyle4->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline", 12));
-        dataGridViewCellStyle4->ForeColor = System::Drawing::Color::Black;
-        dataGridViewCellStyle4->SelectionBackColor =
-            System::Drawing::Color::Transparent;
-        dataGridViewCellStyle4->SelectionForeColor =
-            System::Drawing::Color::Transparent;
-        this->dataGridViewCodes->AlternatingRowsDefaultCellStyle =
-            dataGridViewCellStyle4;
-        this->dataGridViewCodes->AutoSizeColumnsMode =
-            System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-        this->dataGridViewCodes->BackgroundColor =
-            System::Drawing::SystemColors::ButtonFace;
-        this->dataGridViewCodes->CellBorderStyle = System::Windows::Forms::
-            DataGridViewCellBorderStyle::SingleHorizontal;
-        this->dataGridViewCodes->ColumnHeadersBorderStyle =
-            System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-        dataGridViewCellStyle5->Alignment =
-            System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-        dataGridViewCellStyle5->BackColor = System::Drawing::Color::Teal;
-        dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        dataGridViewCellStyle5->ForeColor = System::Drawing::Color::White;
-        dataGridViewCellStyle5->SelectionBackColor =
-            System::Drawing::Color::Transparent;
-        dataGridViewCellStyle5->SelectionForeColor =
-            System::Drawing::Color::White;
-        dataGridViewCellStyle5->WrapMode =
-            System::Windows::Forms::DataGridViewTriState::True;
-        this->dataGridViewCodes->ColumnHeadersDefaultCellStyle =
-            dataGridViewCellStyle5;
-        this->dataGridViewCodes->ColumnHeadersHeight = 40;
-        this->dataGridViewCodes->Columns->AddRange(
-            gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(6){
-                this->Column1, this->Column2, this->Column3, this->Column4,
-                this->Column5, this->Column6});
-        dataGridViewCellStyle6->Alignment =
-            System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-        dataGridViewCellStyle6->BackColor = System::Drawing::Color::MintCream;
-        dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(
-            L"UTM Facebook K&T", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        dataGridViewCellStyle6->ForeColor =
-            System::Drawing::SystemColors::ControlText;
-        dataGridViewCellStyle6->SelectionBackColor =
-            System::Drawing::Color::Cyan;
-        dataGridViewCellStyle6->SelectionForeColor =
-            System::Drawing::SystemColors::ControlText;
-        dataGridViewCellStyle6->WrapMode =
-            System::Windows::Forms::DataGridViewTriState::False;
-        this->dataGridViewCodes->DefaultCellStyle = dataGridViewCellStyle6;
-        this->dataGridViewCodes->Dock = System::Windows::Forms::DockStyle::Fill;
-        this->dataGridViewCodes->EnableHeadersVisualStyles = false;
-        this->dataGridViewCodes->GridColor =
-            System::Drawing::SystemColors::ActiveCaptionText;
-        this->dataGridViewCodes->Location = System::Drawing::Point(0, 0);
-        this->dataGridViewCodes->Name = L"dataGridViewCodes";
-        this->dataGridViewCodes->ReadOnly = true;
-        this->dataGridViewCodes->RowHeadersBorderStyle =
-            System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-        this->dataGridViewCodes->RowHeadersVisible = false;
-        this->dataGridViewCodes->RowTemplate->DefaultCellStyle->BackColor =
-            System::Drawing::Color::White;
-        this->dataGridViewCodes->RowTemplate->DefaultCellStyle->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline", 12));
-        this->dataGridViewCodes->RowTemplate->DefaultCellStyle->ForeColor =
-            System::Drawing::Color::Black;
-        this->dataGridViewCodes->RowTemplate->DefaultCellStyle
-            ->SelectionBackColor = System::Drawing::Color::Cyan;
-        this->dataGridViewCodes->RowTemplate->DefaultCellStyle
-            ->SelectionForeColor = System::Drawing::Color::Black;
-        this->dataGridViewCodes->RowTemplate->Height = 40;
-        this->dataGridViewCodes->RowTemplate->ReadOnly = true;
-        this->dataGridViewCodes->RowTemplate->Resizable =
-            System::Windows::Forms::DataGridViewTriState::False;
-        this->dataGridViewCodes->SelectionMode =
-            System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-        this->dataGridViewCodes->Size = System::Drawing::Size(1077, 617);
-        this->dataGridViewCodes->TabIndex = 3;
-        //
-        // Column1
-        //
-        this->Column1->HeaderText = L"ID";
-        this->Column1->Name = L"Column1";
-        this->Column1->ReadOnly = true;
-        //
-        // Column2
-        //
-        this->Column2->HeaderText = L"Mã CODE";
-        this->Column2->Name = L"Column2";
-        this->Column2->ReadOnly = true;
-        //
-        // Column3
-        //
-        this->Column3->HeaderText = L"Số tiền";
-        this->Column3->Name = L"Column3";
-        this->Column3->ReadOnly = true;
-        //
-        // Column4
-        //
-        this->Column4->HeaderText = L"Trạng thái";
-        this->Column4->Name = L"Column4";
-        this->Column4->ReadOnly = true;
-        //
-        // Column5
-        //
-        this->Column5->HeaderText = L"Ngày tạo";
-        this->Column5->Name = L"Column5";
-        this->Column5->ReadOnly = true;
-        //
-        // Column6
-        //
-        this->Column6->HeaderText = L"Ngày hết hạn";
-        this->Column6->Name = L"Column6";
-        this->Column6->ReadOnly = true;
         //
         // CompanyBillingForm
         //
@@ -477,31 +321,34 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->dataGridViewRecurring))
             ->EndInit();
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->dataGridViewCodes))
-            ->EndInit();
         this->ResumeLayout(false);
     }
 #pragma endregion
 
   private:
-    String^ companyAccountNumber;
+    //String^ companyAccountNumber;
 
-    void LoadPaymentCodes();
+    //void LoadPaymentCodes();
 
-    void LoadRecurringPaymentRequest();
+    //void LoadRecurringPaymentRequest();
 
-    System::Void dataGridViewRecurring_CellClick(
-        System::Object ^ sender,
-        System::Windows::Forms::DataGridViewCellEventArgs ^ e);
+    //System::Void dataGridViewRecurring_CellClick(
+    //    System::Object ^ sender,
+    //    System::Windows::Forms::DataGridViewCellEventArgs ^ e);
 
-    System::Void btnAccount_Click(System::Object ^ sender,
-                                  System::EventArgs ^ e);
+    //System::Void btnAccount_Click(System::Object ^ sender,
+    //                              System::EventArgs ^ e);
 
-    System::Void btnShowCode_Click(System::Object ^ sender,
-                                   System::EventArgs ^ e);
+    //System::Void btnShowCode_Click(System::Object ^ sender,
+    //                               System::EventArgs ^ e);
 
-    System::Void btnLoadRecurring_Click(System::Object ^ sender,
-                                        System::EventArgs ^ e);
+    //System::Void btnLoadRecurring_Click(System::Object ^ sender,
+    //                                    System::EventArgs ^ e);
+
+    void loadRecurringPaymentData(String ^ companyAccNumber);
+
+    System::Void dataGridViewRecurring_CellClick(System::Object ^ sender,
+                                                 DataGridViewCellEventArgs ^ e);
+    void OnUndoClick(Object ^ sender, EventArgs ^ e);
 };
 } // namespace BankingAppwinform

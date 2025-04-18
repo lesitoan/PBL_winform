@@ -1,5 +1,4 @@
 ﻿#include <cstdlib>
-#include <cstdlib>
 #include <ctime>
 #include "CompanyBillingForm.h"
 #include "AdminForm.h"
@@ -8,10 +7,10 @@ namespace BankingAppwinform {
 
 CompanyBillingForm::CompanyBillingForm(String^ companyAccNumber) {
     InitializeComponent();
-    this->companyAccountNumber = companyAccNumber;
-
-    LoadPaymentCodes();
-    LoadRecurringPaymentRequest();
+    loadRecurringPaymentData(companyAccNumber);
+    this->dataGridViewRecurring->CellClick +=
+        gcnew DataGridViewCellEventHandler(
+            this, &CompanyBillingForm::dataGridViewRecurring_CellClick);
 }
 
 CompanyBillingForm::~CompanyBillingForm() {
@@ -20,6 +19,126 @@ CompanyBillingForm::~CompanyBillingForm() {
     }
 }
 
+void CompanyBillingForm::loadRecurringPaymentData(String ^ companyAccNumber) {
+    dataGridViewRecurring->Rows->Clear();
+
+    // Thêm cột "Xóa" nếu chưa có
+    if (!dataGridViewRecurring->Columns->Contains(
+            dataGridViewRecurring->Columns["DeleteColumn"])) {
+        DataGridViewButtonColumn ^ deleteColumn =
+            gcnew DataGridViewButtonColumn();
+        deleteColumn->HeaderText = "Xóa";
+        deleteColumn->Text = "Xóa";
+        deleteColumn->UseColumnTextForButtonValue = true;
+        deleteColumn->Name = "DeleteColumn";
+        dataGridViewRecurring->Columns->Add(deleteColumn);
+    }
+
+    // Đọc dữ liệu từ file
+    array<RecurringPayments ^> ^ recurringPayments =
+        HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
+    array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+    array<CustomerCodes ^> ^ customerCodes =
+        HandleFile::ReadCustomerCodesArray("customerCodes.dat");
+
+    if (users == nullptr || recurringPayments == nullptr) {
+        return;
+    }
+
+    // Lấy danh sách mã khách hàng của công ty
+    List<CustomerCodes ^> ^ customerCodesList = gcnew List<CustomerCodes ^>();
+    for each (CustomerCodes ^ code in customerCodes) {
+        if (code->CompanyAccountNumber == companyAccNumber) {
+            customerCodesList->Add(code);
+        }
+    }
+
+    // Lặp qua từng khoản thanh toán định kỳ
+    for each (RecurringPayments ^ payment in recurringPayments) {
+        for each (CustomerCodes ^ currCustomerCode in customerCodesList) {
+            if (payment->CustomerCodeId == currCustomerCode->Id) {
+
+                // Tìm người dùng tương ứng
+                User ^ user = nullptr;
+                for each (User ^ u in users) {
+                    if (u->AccountNumber == payment->UserAccountNumber) {
+                        user = u;
+                        break;
+                    }
+                }
+
+                if (user == nullptr) {
+                    continue;
+                }
+
+                // Thêm dòng vào DataGridView
+                int rowIndex = dataGridViewRecurring->Rows->Add(
+                    currCustomerCode->Code, user->FullName, user->AccountNumber,
+                    payment->PaymentDay);
+
+                dataGridViewRecurring->Rows[rowIndex]->Tag = payment;
+            }
+        }
+    }
+}
+
+System::Void CompanyBillingForm::dataGridViewRecurring_CellClick(
+    System::Object ^ sender,DataGridViewCellEventArgs ^ e) {
+
+    // Kiểm tra click hợp lệ và click vào cột "Xóa"
+    if (e->RowIndex >= 0 &&
+        e->ColumnIndex == dataGridViewRecurring->Columns["DeleteColumn"]->Index) {
+        // Xác nhận xóa
+        System::Windows::Forms::DialogResult result;
+        result = MessageBox::Show(L"Bạn có chắc muốn xóa?",
+                                  L"XÓa", MessageBoxButtons::YesNo,
+                                  MessageBoxIcon::Question);
+        if (result == System::Windows::Forms::DialogResult::Yes) {
+
+            // Lấy dòng hiện tại và payment được lưu trong Tag
+            DataGridViewRow ^ row = dataGridViewRecurring->Rows[e->RowIndex];
+            RecurringPayments ^ paymentToDelete =
+                dynamic_cast<RecurringPayments ^>(row->Tag);
+
+            if (paymentToDelete != nullptr) {
+                // Đọc toàn bộ danh sách payment hiện tại
+                array<RecurringPayments ^> ^ allPayments =
+                    HandleFile::ReadRecurringPaymentsArray(
+                        "recurringPayments.dat");
+
+                // Lọc lại danh sách (loại bỏ payment cần xóa)
+                List<RecurringPayments ^> ^ updatedPayments =
+                    gcnew List<RecurringPayments ^>();
+                for each (RecurringPayments ^ p in allPayments) {
+                    if (p->Id != paymentToDelete->Id) { // So sánh theo Id
+                        updatedPayments->Add(p);
+                    }
+                }
+
+                // Ghi lại file
+                HandleFile::WriteRecurringPaymentsArray(updatedPayments->ToArray(), "recurringPayments.dat");
+
+                // Xóa dòng khỏi giao diện
+                dataGridViewRecurring->Rows->RemoveAt(e->RowIndex);
+
+                MessageBox::Show(L"Đã xóa thanh toán định kỳ.", "Thành công",
+                                 MessageBoxButtons::OK,
+                                 MessageBoxIcon::Information);
+            }
+        }
+    }
+}
+
+void CompanyBillingForm::OnUndoClick(Object ^ sender, EventArgs ^ e) {
+    AdminForm ^ adminForm = dynamic_cast<AdminForm ^>(this->ParentForm);
+    if (adminForm != nullptr) {
+        adminForm->UndoLastForm();
+    }
+}
+
+
+
+    /*
 System::Void CompanyBillingForm::btnAccount_Click(System::Object ^ sender,
                                                   System::EventArgs ^ e) {
     AdminForm ^ adminForm = dynamic_cast<AdminForm ^>(this->ParentForm);
@@ -29,7 +148,6 @@ System::Void CompanyBillingForm::btnAccount_Click(System::Object ^ sender,
 }
 
 void CompanyBillingForm::LoadPaymentCodes() {
-    /*
     dataGridViewCodes->Rows->Clear();
 
     array<PaymentCodes ^> ^ paymentCodes =
@@ -49,12 +167,12 @@ void CompanyBillingForm::LoadPaymentCodes() {
             code->CreatedDate.ToString("dd/MM/yyyy"),
             code->ExpiredDate.ToString("dd/MM/yyyy"));
     }
-    */
 }
-
-void CompanyBillingForm::LoadRecurringPaymentRequest() {
+    */
 
     /*
+void CompanyBillingForm::LoadRecurringPaymentRequest() {
+
     dataGridViewRecurring->Rows->Clear(); // Xóa dữ liệu cũ nếu có
 
     array<RecurringPaymentRequest ^> ^ recurringPaymentRequests =
@@ -103,14 +221,14 @@ void CompanyBillingForm::LoadRecurringPaymentRequest() {
         gcnew DataGridViewCellEventHandler(
             this, &CompanyBillingForm::dataGridViewRecurring_CellClick);
 
-            */
 }
+            */
 
+    /*
 System::Void CompanyBillingForm::dataGridViewRecurring_CellClick(
     System::Object ^ sender,
     System::Windows::Forms::DataGridViewCellEventArgs ^ e) {
 
-    /*
 
     if (e->RowIndex >= 0 &&
         dataGridViewRecurring->Columns[e->ColumnIndex]->Name == "btnPay") {
@@ -221,29 +339,30 @@ System::Void CompanyBillingForm::dataGridViewRecurring_CellClick(
                          request->UserAccountNumber);
         LoadRecurringPaymentRequest();
     }
-    */
 
 }
+    */
 
+    /*
 System::Void CompanyBillingForm::btnShowCode_Click(System::Object ^ sender,
                                                    System::EventArgs ^ e) {
 
-    /*
     if (dataGridViewCodes->Visible)
         return;
     dataGridViewCodes->Visible = true;
     dataGridViewRecurring->Visible = false;
-    */
 }
+    */
+    /*
 System::Void CompanyBillingForm::btnLoadRecurring_Click(System::Object ^ sender,
                                                         System::EventArgs ^ e) {
-    /*
     if (dataGridViewRecurring->Visible)
         return;
     dataGridViewRecurring->Visible = true;
     dataGridViewCodes->Visible = false;
-*/
 }
+*/
+
 
 }; // namespace BankingAppwinform
 
