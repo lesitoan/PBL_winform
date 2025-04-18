@@ -1,11 +1,12 @@
 ﻿#include "AdminSavingMoneyForm.h"
-
+#include "GradientHelper.h"
 namespace BankingAppwinform {
 
 AdminSavingMoneyForm::AdminSavingMoneyForm(void) {
     InitializeComponent();
     loadSavingCustomers();
     loadRequest();
+    GradientColorHelper::ApplyGradient(this->dataGridViewRequests);
 }
 AdminSavingMoneyForm::~AdminSavingMoneyForm() {
     if (components) {

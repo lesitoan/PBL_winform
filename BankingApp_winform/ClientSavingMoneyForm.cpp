@@ -49,7 +49,7 @@ void ClientSavingMoneyForm::loadSavingCustomers() {
         noSavingLabel->Text = L"Chưa có tiết kiệm nào";
         noSavingLabel->ForeColor = Color::White;
         noSavingLabel->Font = gcnew System::Drawing::Font(
-            "Times New Roman", 12, FontStyle::Regular);
+            "Arial", 12, FontStyle::Regular);
         noSavingLabel->AutoSize = true;
         flowLayoutSavingMoney->Controls->Add(noSavingLabel);
         return;
@@ -81,7 +81,7 @@ void ClientSavingMoneyForm::AddSavingItemToFlow(SavingCustomers ^ saving) {
     Label ^ label = gcnew Label();
     label->AutoSize = false;
     label->ForeColor = Color::Black;
-    label->Font = gcnew System::Drawing::Font("Times New Roman", 12,
+    label->Font = gcnew System::Drawing::Font("Arial", 12,
                                               FontStyle::Regular);
     label->TextAlign = ContentAlignment::TopLeft;
     label->Padding = System::Windows::Forms::Padding(5); // padding bên trong
@@ -131,7 +131,7 @@ void ClientSavingMoneyForm::AddSavingItemToFlow(SavingCustomers ^ saving) {
     endLabel->Text =
         saving->Status == 0 ? L"Ấn vào đây để kết thúc tiết kiệm" : L"";
     endLabel->ForeColor = Color::LightYellow;
-    endLabel->Font = gcnew System::Drawing::Font("Times New Roman", 12,
+    endLabel->Font = gcnew System::Drawing::Font("Arial", 12,
                                                  FontStyle::Regular);
     endLabel->AutoSize = false;
     endLabel->Dock = DockStyle::Bottom;

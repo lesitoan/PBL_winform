@@ -5,9 +5,9 @@ namespace BankingAppwinform {
 
 HistoryForm::HistoryForm(void) { 
     InitializeComponent();
-    this->loadTransactionsHistory();
     GradientColorHelper::ApplyGradient(this->label1);
     GradientColorHelper::ApplyGradient(this->label2);
+    this->loadTransactionsHistory();
 }
 
 HistoryForm::~HistoryForm() {

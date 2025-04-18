@@ -102,11 +102,9 @@ System::Void MainForm::btnRecurringPayment_Click(System::Object ^ sender,
     LoadChildForm::LoadForm(this->panelContent,
                             gcnew ClientRecurringPaymentForm());
     ChangeButtonColor(btnServicePayment);
-//<<<<<<< HEAD
+
     this->headerText->Text = L"RECURRING PAYMENT";
-//=======
-    this->headerText->Text = L"DANH SÁCH ĐANG ĐĂNG KÍ TTĐK";
-//>>>>>>> f522501fd0973f0b25f1a55b5e6b8c2e0f5933aa
+
 }
 
 System::Void MainForm::btnSaveMoney_Click(System::Object ^ sender,

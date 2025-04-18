@@ -1,5 +1,5 @@
 ﻿#include "AdminForm.h"
-
+#include"GradientHelper.h"
 #include "EditUserForm.h"
 #include "TableUsersForm.h"
 #include "AuthForm.h"
@@ -9,6 +9,8 @@ namespace BankingAppwinform {
 AdminForm::AdminForm(void) {
     InitializeComponent();
     this->labelFullName->Text = GlobalData::GetCurrentUser()->FullName;
+    GradientColorHelper::ApplyGradient(this->labelHeader);
+    GradientColorHelper::ApplyGradient(this->panelContent);
 }
 
 AdminForm::~AdminForm() {

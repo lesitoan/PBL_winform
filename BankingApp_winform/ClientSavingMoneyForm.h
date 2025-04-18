@@ -124,7 +124,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->btnTermDeposit->BackColor = System::Drawing::Color::White;
         this->btnTermDeposit->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnTermDeposit->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 10.8F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Bold,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->btnTermDeposit->ForeColor =
@@ -152,7 +152,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->btnNonTermDeposit->BackColor = System::Drawing::Color::White;
         this->btnNonTermDeposit->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnNonTermDeposit->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 10.8F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Bold,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->btnNonTermDeposit->ForeColor =
@@ -180,7 +180,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label3->BackColor = System::Drawing::Color::Transparent;
         this->label3->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label3->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 10.2F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Bold,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->label3->ForeColor =
@@ -255,7 +255,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label5->AutoSize = true;
         this->label5->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label5->Font = (gcnew System::Drawing::Font(
-            L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->label5->ForeColor = System::Drawing::Color::Transparent;
@@ -263,7 +263,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label5->Location = System::Drawing::Point(16, 102);
         this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(316, 19);
+        this->label5->Size = System::Drawing::Size(337, 19);
         this->label5->TabIndex = 44;
         this->label5->Text = L"Số tiền thực nhận đến hiện tại: 2050000VNĐ";
         //
@@ -272,7 +272,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label4->AutoSize = true;
         this->label4->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label4->Font = (gcnew System::Drawing::Font(
-            L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->label4->ForeColor = System::Drawing::Color::Transparent;
@@ -280,7 +280,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label4->Location = System::Drawing::Point(16, 79);
         this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label4->Name = L"label4";
-        this->label4->Size = System::Drawing::Size(162, 19);
+        this->label4->Size = System::Drawing::Size(176, 19);
         this->label4->TabIndex = 43;
         this->label4->Text = L"Lãi xuất hàng năm: 4%";
         //
@@ -289,7 +289,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label2->AutoSize = true;
         this->label2->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label2->Font = (gcnew System::Drawing::Font(
-            L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->label2->ForeColor = System::Drawing::Color::Transparent;
@@ -297,7 +297,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label2->Location = System::Drawing::Point(16, 56);
         this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(161, 19);
+        this->label2->Size = System::Drawing::Size(168, 19);
         this->label2->TabIndex = 42;
         this->label2->Text = L"Ngày gửi: 06/04/2025";
         //
@@ -306,7 +306,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label1->AutoSize = true;
         this->label1->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label1->Font = (gcnew System::Drawing::Font(
-            L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->label1->ForeColor = System::Drawing::Color::Transparent;
@@ -314,7 +314,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label1->Location = System::Drawing::Point(16, 33);
         this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(190, 19);
+        this->label1->Size = System::Drawing::Size(196, 19);
         this->label1->TabIndex = 41;
         this->label1->Text = L"Số tiền gửi: 2000000VND";
         //
@@ -323,7 +323,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->labelAuth->AutoSize = true;
         this->labelAuth->Cursor = System::Windows::Forms::Cursors::Hand;
         this->labelAuth->Font = (gcnew System::Drawing::Font(
-            L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->labelAuth->ForeColor = System::Drawing::Color::Transparent;
@@ -331,7 +331,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->labelAuth->Location = System::Drawing::Point(16, 10);
         this->labelAuth->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelAuth->Name = L"labelAuth";
-        this->labelAuth->Size = System::Drawing::Size(198, 19);
+        this->labelAuth->Size = System::Drawing::Size(208, 19);
         this->labelAuth->TabIndex = 40;
         this->labelAuth->Text = L"Loại tiết kiện: Không kì hạn";
         //
@@ -375,7 +375,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label14->AutoSize = true;
         this->label14->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label14->Font = (gcnew System::Drawing::Font(
-            L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->label14->ForeColor = System::Drawing::Color::Transparent;
@@ -383,7 +383,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label14->Location = System::Drawing::Point(16, 102);
         this->label14->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label14->Name = L"label14";
-        this->label14->Size = System::Drawing::Size(316, 19);
+        this->label14->Size = System::Drawing::Size(337, 19);
         this->label14->TabIndex = 44;
         this->label14->Text = L"Số tiền thực nhận đến hiện tại: 2050000VNĐ";
         //
@@ -392,7 +392,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label15->AutoSize = true;
         this->label15->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label15->Font = (gcnew System::Drawing::Font(
-            L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->label15->ForeColor = System::Drawing::Color::Transparent;
@@ -400,7 +400,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label15->Location = System::Drawing::Point(16, 79);
         this->label15->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label15->Name = L"label15";
-        this->label15->Size = System::Drawing::Size(162, 19);
+        this->label15->Size = System::Drawing::Size(176, 19);
         this->label15->TabIndex = 43;
         this->label15->Text = L"Lãi xuất hàng năm: 4%";
         //
@@ -409,7 +409,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label16->AutoSize = true;
         this->label16->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label16->Font = (gcnew System::Drawing::Font(
-            L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->label16->ForeColor = System::Drawing::Color::Transparent;
@@ -417,7 +417,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label16->Location = System::Drawing::Point(16, 56);
         this->label16->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label16->Name = L"label16";
-        this->label16->Size = System::Drawing::Size(161, 19);
+        this->label16->Size = System::Drawing::Size(168, 19);
         this->label16->TabIndex = 42;
         this->label16->Text = L"Ngày gửi: 06/04/2025";
         //
@@ -426,7 +426,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label17->AutoSize = true;
         this->label17->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label17->Font = (gcnew System::Drawing::Font(
-            L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->label17->ForeColor = System::Drawing::Color::Transparent;
@@ -434,7 +434,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label17->Location = System::Drawing::Point(16, 33);
         this->label17->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label17->Name = L"label17";
-        this->label17->Size = System::Drawing::Size(190, 19);
+        this->label17->Size = System::Drawing::Size(196, 19);
         this->label17->TabIndex = 41;
         this->label17->Text = L"Số tiền gửi: 2000000VND";
         //
@@ -443,7 +443,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label18->AutoSize = true;
         this->label18->Cursor = System::Windows::Forms::Cursors::Hand;
         this->label18->Font = (gcnew System::Drawing::Font(
-            L"Times New Roman", 10.2F, System::Drawing::FontStyle::Regular,
+            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
             System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
         this->label18->ForeColor = System::Drawing::Color::Transparent;
@@ -451,7 +451,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->label18->Location = System::Drawing::Point(16, 10);
         this->label18->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label18->Name = L"label18";
-        this->label18->Size = System::Drawing::Size(198, 19);
+        this->label18->Size = System::Drawing::Size(208, 19);
         this->label18->TabIndex = 40;
         this->label18->Text = L"Loại tiết kiện: Không kì hạn";
         //

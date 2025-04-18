@@ -54,7 +54,7 @@ ref class HistoryForm : public System::Windows::Forms::Form {
         this->fullContent->Controls->Add(this->leftContent);
         this->fullContent->Dock = System::Windows::Forms::DockStyle::Fill;
         this->fullContent->Location = System::Drawing::Point(0, 0);
-        this->fullContent->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->fullContent->Margin = System::Windows::Forms::Padding(4);
         this->fullContent->Name = L"fullContent";
         this->fullContent->Size = System::Drawing::Size(877, 614);
         this->fullContent->TabIndex = 1;
@@ -68,7 +68,7 @@ ref class HistoryForm : public System::Windows::Forms::Form {
         this->panelHeader->Controls->Add(this->panelHeaderLeft);
         this->panelHeader->Dock = System::Windows::Forms::DockStyle::Top;
         this->panelHeader->Location = System::Drawing::Point(0, 0);
-        this->panelHeader->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelHeader->Margin = System::Windows::Forms::Padding(4);
         this->panelHeader->Name = L"panelHeader";
         this->panelHeader->Size = System::Drawing::Size(877, 47);
         this->panelHeader->TabIndex = 2;
@@ -84,8 +84,7 @@ ref class HistoryForm : public System::Windows::Forms::Form {
             System::Drawing::Color::DarkSlateGray;
         this->panelHeaderRight->Controls->Add(this->label2);
         this->panelHeaderRight->Location = System::Drawing::Point(427, 0);
-        this->panelHeaderRight->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelHeaderRight->Margin = System::Windows::Forms::Padding(4);
         this->panelHeaderRight->Name = L"panelHeaderRight";
         this->panelHeaderRight->Size = System::Drawing::Size(449, 47);
         this->panelHeaderRight->TabIndex = 1;
@@ -121,8 +120,7 @@ ref class HistoryForm : public System::Windows::Forms::Form {
             System::Drawing::Color::MediumAquamarine;
         this->panelHeaderLeft->Controls->Add(this->label1);
         this->panelHeaderLeft->Location = System::Drawing::Point(0, 0);
-        this->panelHeaderLeft->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelHeaderLeft->Margin = System::Windows::Forms::Padding(4);
         this->panelHeaderLeft->Name = L"panelHeaderLeft";
         this->panelHeaderLeft->Size = System::Drawing::Size(428, 47);
         this->panelHeaderLeft->TabIndex = 0;
@@ -160,8 +158,7 @@ ref class HistoryForm : public System::Windows::Forms::Form {
         this->rightContent->ForeColor =
             System::Drawing::SystemColors::ControlText;
         this->rightContent->Location = System::Drawing::Point(427, 54);
-        this->rightContent->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->rightContent->Margin = System::Windows::Forms::Padding(4);
         this->rightContent->Name = L"rightContent";
         this->rightContent->Size = System::Drawing::Size(451, 560);
         this->rightContent->TabIndex = 1;
@@ -179,7 +176,7 @@ ref class HistoryForm : public System::Windows::Forms::Form {
         this->leftContent->AutoScroll = true;
         this->leftContent->BackColor = System::Drawing::Color::White;
         this->leftContent->Location = System::Drawing::Point(0, 54);
-        this->leftContent->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->leftContent->Margin = System::Windows::Forms::Padding(4);
         this->leftContent->Name = L"leftContent";
         this->leftContent->Size = System::Drawing::Size(428, 560);
         this->leftContent->TabIndex = 0;
@@ -193,7 +190,7 @@ ref class HistoryForm : public System::Windows::Forms::Form {
         this->ClientSize = System::Drawing::Size(877, 614);
         this->Controls->Add(this->fullContent);
         this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->Margin = System::Windows::Forms::Padding(4);
         this->Name = L"HistoryForm";
         this->Text = L"HistoryForm";
         this->Load +=

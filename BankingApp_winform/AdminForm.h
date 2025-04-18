@@ -41,11 +41,14 @@ ref class AdminForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Button ^ btnTransaction;
     System::Windows::Forms::Button ^ btnClient;
     System::Windows::Forms::Panel ^ panel2;
-    System::Windows::Forms::Label ^ labelHeader;
-    System::Windows::Forms::PictureBox ^ pictureBox2;
+
+
 
   protected:
     System::Windows::Forms::Button ^ btnSavingMoney;
+
+  protected:
+    System::Windows::Forms::Label ^ labelHeader;
 
   protected:
 
@@ -58,6 +61,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
                 AdminForm::typeid));
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->panelNav = (gcnew System::Windows::Forms::Panel());
+        this->btnSavingMoney = (gcnew System::Windows::Forms::Button());
         this->panel4 = (gcnew System::Windows::Forms::Panel());
         this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
         this->labelFullName = (gcnew System::Windows::Forms::Label());
@@ -66,19 +70,13 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->btnTransaction = (gcnew System::Windows::Forms::Button());
         this->btnClient = (gcnew System::Windows::Forms::Button());
         this->panelContent = (gcnew System::Windows::Forms::Panel());
-        this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->labelHeader = (gcnew System::Windows::Forms::Label());
-        this->btnSavingMoney = (gcnew System::Windows::Forms::Button());
         this->panel1->SuspendLayout();
         this->panelNav->SuspendLayout();
         this->panel4->SuspendLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->pictureBox1))
-            ->BeginInit();
-        this->panelContent->SuspendLayout();
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->pictureBox2))
             ->BeginInit();
         this->panel2->SuspendLayout();
         this->SuspendLayout();
@@ -92,7 +90,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->panel1->Controls->Add(this->panelNav);
         this->panel1->Dock = System::Windows::Forms::DockStyle::Left;
         this->panel1->Location = System::Drawing::Point(0, 0);
-        this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel1->Margin = System::Windows::Forms::Padding(4);
         this->panel1->Name = L"panel1";
         this->panel1->Size = System::Drawing::Size(276, 937);
         this->panel1->TabIndex = 0;
@@ -103,6 +101,9 @@ ref class AdminForm : public System::Windows::Forms::Form {
             static_cast<System::Int32>(static_cast<System::Byte>(0)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)),
             static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->panelNav->BackgroundImage =
+            (cli::safe_cast<System::Drawing::Image ^>(
+                resources->GetObject(L"panelNav.BackgroundImage")));
         this->panelNav->Controls->Add(this->btnSavingMoney);
         this->panelNav->Controls->Add(this->panel4);
         this->panelNav->Controls->Add(this->btnLogout);
@@ -114,18 +115,61 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->panelNav->ForeColor =
             System::Drawing::SystemColors::InactiveCaptionText;
         this->panelNav->Location = System::Drawing::Point(0, 0);
-        this->panelNav->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelNav->Margin = System::Windows::Forms::Padding(4);
         this->panelNav->MinimumSize = System::Drawing::Size(83, 690);
         this->panelNav->Name = L"panelNav";
         this->panelNav->Size = System::Drawing::Size(276, 937);
         this->panelNav->TabIndex = 2;
         //
+        // btnSavingMoney
+        //
+        this->btnSavingMoney->BackColor = System::Drawing::Color::Transparent;
+        this->btnSavingMoney->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnSavingMoney->FlatAppearance->BorderSize = 0;
+        this->btnSavingMoney->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnSavingMoney->FlatAppearance->MouseDownBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnSavingMoney->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnSavingMoney->FlatStyle =
+            System::Windows::Forms::FlatStyle::Flat;
+        this->btnSavingMoney->Font = (gcnew System::Drawing::Font(
+            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
+        this->btnSavingMoney->ForeColor =
+            System::Drawing::SystemColors::HighlightText;
+        this->btnSavingMoney->Image = (cli::safe_cast<System::Drawing::Image ^>(
+            resources->GetObject(L"btnSavingMoney.Image")));
+        this->btnSavingMoney->ImageAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnSavingMoney->Location = System::Drawing::Point(4, 334);
+        this->btnSavingMoney->Margin = System::Windows::Forms::Padding(4);
+        this->btnSavingMoney->Name = L"btnSavingMoney";
+        this->btnSavingMoney->Size = System::Drawing::Size(276, 71);
+        this->btnSavingMoney->TabIndex = 15;
+        this->btnSavingMoney->Text = L"                 QL TIẾT KIỆM";
+        this->btnSavingMoney->TextAlign =
+            System::Drawing::ContentAlignment::MiddleLeft;
+        this->btnSavingMoney->UseVisualStyleBackColor = false;
+        this->btnSavingMoney->Click +=
+            gcnew System::EventHandler(this, &AdminForm::btnSavingMoney_Click);
+        //
         // panel4
         //
+        this->panel4->BackColor = System::Drawing::Color::Transparent;
         this->panel4->Controls->Add(this->pictureBox1);
         this->panel4->Controls->Add(this->labelFullName);
         this->panel4->Location = System::Drawing::Point(0, 4);
-        this->panel4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel4->Margin = System::Windows::Forms::Padding(4);
         this->panel4->Name = L"panel4";
         this->panel4->Size = System::Drawing::Size(276, 86);
         this->panel4->TabIndex = 14;
@@ -134,10 +178,10 @@ ref class AdminForm : public System::Windows::Forms::Form {
         //
         this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image ^>(
             resources->GetObject(L"pictureBox1.Image")));
-        this->pictureBox1->Location = System::Drawing::Point(16, 15);
-        this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->pictureBox1->Location = System::Drawing::Point(31, 15);
+        this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
         this->pictureBox1->Name = L"pictureBox1";
-        this->pictureBox1->Size = System::Drawing::Size(55, 50);
+        this->pictureBox1->Size = System::Drawing::Size(48, 50);
         this->pictureBox1->SizeMode =
             System::Windows::Forms::PictureBoxSizeMode::StretchImage;
         this->pictureBox1->TabIndex = 5;
@@ -183,7 +227,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->btnLogout->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnLogout->Location = System::Drawing::Point(0, 865);
-        this->btnLogout->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnLogout->Margin = System::Windows::Forms::Padding(4);
         this->btnLogout->Name = L"btnLogout";
         this->btnLogout->Size = System::Drawing::Size(276, 71);
         this->btnLogout->TabIndex = 12;
@@ -196,14 +240,24 @@ ref class AdminForm : public System::Windows::Forms::Form {
         //
         // btnService
         //
-        this->btnService->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnService->BackColor = System::Drawing::Color::Transparent;
         this->btnService->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnService->FlatAppearance->BorderSize = 0;
+        this->btnService->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnService->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnService->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnService->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnService->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
@@ -214,7 +268,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->btnService->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnService->Location = System::Drawing::Point(0, 255);
-        this->btnService->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnService->Margin = System::Windows::Forms::Padding(4);
         this->btnService->Name = L"btnService";
         this->btnService->Size = System::Drawing::Size(276, 71);
         this->btnService->TabIndex = 10;
@@ -227,14 +281,24 @@ ref class AdminForm : public System::Windows::Forms::Form {
         //
         // btnTransaction
         //
-        this->btnTransaction->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnTransaction->BackColor = System::Drawing::Color::Transparent;
         this->btnTransaction->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnTransaction->FlatAppearance->BorderSize = 0;
+        this->btnTransaction->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnTransaction->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnTransaction->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnTransaction->FlatStyle =
             System::Windows::Forms::FlatStyle::Flat;
         this->btnTransaction->Font = (gcnew System::Drawing::Font(
@@ -246,8 +310,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->btnTransaction->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnTransaction->Location = System::Drawing::Point(-4, 176);
-        this->btnTransaction->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnTransaction->Margin = System::Windows::Forms::Padding(4);
         this->btnTransaction->Name = L"btnTransaction";
         this->btnTransaction->Size = System::Drawing::Size(276, 71);
         this->btnTransaction->TabIndex = 9;
@@ -260,14 +323,24 @@ ref class AdminForm : public System::Windows::Forms::Form {
         //
         // btnClient
         //
-        this->btnClient->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnClient->BackColor = System::Drawing::Color::Transparent;
         this->btnClient->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnClient->FlatAppearance->BorderSize = 0;
+        this->btnClient->FlatAppearance->CheckedBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnClient->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnClient->FlatAppearance->MouseOverBackColor =
+            System::Drawing::Color::FromArgb(
+                static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->btnClient->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->btnClient->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
@@ -278,7 +351,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->btnClient->ImageAlign =
             System::Drawing::ContentAlignment::MiddleLeft;
         this->btnClient->Location = System::Drawing::Point(0, 97);
-        this->btnClient->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnClient->Margin = System::Windows::Forms::Padding(4);
         this->btnClient->Name = L"btnClient";
         this->btnClient->Size = System::Drawing::Size(276, 71);
         this->btnClient->TabIndex = 0;
@@ -291,36 +364,25 @@ ref class AdminForm : public System::Windows::Forms::Form {
         //
         // panelContent
         //
-        this->panelContent->BackColor = System::Drawing::Color::Teal;
-        this->panelContent->Controls->Add(this->pictureBox2);
+        this->panelContent->BackColor = System::Drawing::Color::White;
+        this->panelContent->BackgroundImage =
+            (cli::safe_cast<System::Drawing::Image ^>(
+                resources->GetObject(L"panelContent.BackgroundImage")));
+        this->panelContent->BackgroundImageLayout =
+            System::Windows::Forms::ImageLayout::Stretch;
         this->panelContent->Dock = System::Windows::Forms::DockStyle::Fill;
         this->panelContent->Location = System::Drawing::Point(276, 52);
-        this->panelContent->Margin =
-            System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelContent->Margin = System::Windows::Forms::Padding(4);
         this->panelContent->Name = L"panelContent";
         this->panelContent->Size = System::Drawing::Size(1436, 885);
         this->panelContent->TabIndex = 2;
-        //
-        // pictureBox2
-        //
-        this->pictureBox2->Anchor = System::Windows::Forms::AnchorStyles::None;
-        this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"pictureBox2.Image")));
-        this->pictureBox2->Location = System::Drawing::Point(312, 105);
-        this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-        this->pictureBox2->Name = L"pictureBox2";
-        this->pictureBox2->Size = System::Drawing::Size(911, 615);
-        this->pictureBox2->SizeMode =
-            System::Windows::Forms::PictureBoxSizeMode::Zoom;
-        this->pictureBox2->TabIndex = 0;
-        this->pictureBox2->TabStop = false;
         //
         // panel2
         //
         this->panel2->Controls->Add(this->labelHeader);
         this->panel2->Dock = System::Windows::Forms::DockStyle::Top;
         this->panel2->Location = System::Drawing::Point(276, 0);
-        this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel2->Margin = System::Windows::Forms::Padding(4);
         this->panel2->Name = L"panel2";
         this->panel2->Size = System::Drawing::Size(1436, 52);
         this->panel2->TabIndex = 3;
@@ -335,46 +397,15 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->labelHeader->Font = (gcnew System::Drawing::Font(
             L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
         this->labelHeader->ForeColor = System::Drawing::Color::White;
-        this->labelHeader->Location = System::Drawing::Point(29, 0);
+        this->labelHeader->Location = System::Drawing::Point(3, 4);
         this->labelHeader->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelHeader->Name = L"labelHeader";
-        this->labelHeader->Padding =
-            System::Windows::Forms::Padding(9, 9, 9, 9);
+        this->labelHeader->Padding = System::Windows::Forms::Padding(9);
         this->labelHeader->Size = System::Drawing::Size(246, 45);
         this->labelHeader->TabIndex = 4;
         this->labelHeader->Text = L"DANH SÁCH KHÁCH HÀNG";
-        //
-        // btnSavingMoney
-        //
-        this->btnSavingMoney->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->btnSavingMoney->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnSavingMoney->FlatAppearance->BorderSize = 0;
-        this->btnSavingMoney->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::Teal;
-        this->btnSavingMoney->FlatStyle =
-            System::Windows::Forms::FlatStyle::Flat;
-        this->btnSavingMoney->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold));
-        this->btnSavingMoney->ForeColor =
-            System::Drawing::SystemColors::HighlightText;
-        this->btnSavingMoney->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"btnSavingMoney.Image")));
-        this->btnSavingMoney->ImageAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnSavingMoney->Location = System::Drawing::Point(4, 334);
-        this->btnSavingMoney->Margin = System::Windows::Forms::Padding(4);
-        this->btnSavingMoney->Name = L"btnSavingMoney";
-        this->btnSavingMoney->Size = System::Drawing::Size(276, 71);
-        this->btnSavingMoney->TabIndex = 15;
-        this->btnSavingMoney->Text = L"                 QL TIẾT KIỆM";
-        this->btnSavingMoney->TextAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
-        this->btnSavingMoney->UseVisualStyleBackColor = false;
-        this->btnSavingMoney->Click +=
-            gcnew System::EventHandler(this, &AdminForm::btnSavingMoney_Click);
+        this->labelHeader->Click +=
+            gcnew System::EventHandler(this, &AdminForm::labelHeader_Click);
         //
         // AdminForm
         //
@@ -384,7 +415,7 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->panelContent);
         this->Controls->Add(this->panel2);
         this->Controls->Add(this->panel1);
-        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->Margin = System::Windows::Forms::Padding(4);
         this->Name = L"AdminForm";
         this->StartPosition =
             System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -395,10 +426,6 @@ ref class AdminForm : public System::Windows::Forms::Form {
         this->panel4->PerformLayout();
         (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
              this->pictureBox1))
-            ->EndInit();
-        this->panelContent->ResumeLayout(false);
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->pictureBox2))
             ->EndInit();
         this->panel2->ResumeLayout(false);
         this->panel2->PerformLayout();
@@ -424,5 +451,9 @@ ref class AdminForm : public System::Windows::Forms::Form {
   private:
     System::Void btnSavingMoney_Click(System::Object ^ sender,
                                       System::EventArgs ^ e);
+
+  private:
+    System::Void labelHeader_Click(System::Object ^ sender,
+                                   System::EventArgs ^ e) {}
 };
 } // namespace BankingAppwinform
