@@ -88,6 +88,9 @@ ref class RecurringPaymentFollowForm : public System::Windows::Forms::Form {
     /// <summary>
   private:
     Void LoadRecurringPaymentFollow() {
+
+        this->flowLayoutPanelFollow->Controls->Clear();
+
         array<RecurringPayments ^> ^ recurringPayments =
             HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
 

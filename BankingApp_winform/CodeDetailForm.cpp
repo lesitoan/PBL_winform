@@ -160,7 +160,7 @@ System::Void CodeDetailForm::btnSubmit_Click(System::Object ^ sender,
         HandleFile::ReadCustomerCodeDetailsArray("customerCodeDetails.dat");
     if (codeDetails != nullptr) {
         for (int i = 0; i < codeDetails->Length; i++) {
-            if (codeDetails[i]->CustomerCodeId == this->customerCode->Id &&
+            /*if (codeDetails[i]->CustomerCodeId == this->customerCode->Id &&
                 codeDetails[i]->CreateDate.Month == DateTime::Now.Month) {
                 MessageBox::Show(L"Mỗi mã khách hàng chỉ được tạo 1 hóa đơn mỗi tháng",
                                  L"Cảnh báo", MessageBoxButtons::OK,
@@ -169,6 +169,13 @@ System::Void CodeDetailForm::btnSubmit_Click(System::Object ^ sender,
             } else if (codeDetails[i]->CustomerCodeId ==
                            this->customerCode->Id &&
                        codeDetails[i]->Status == 0) {
+                MessageBox::Show(L"Mã khách hàng đã có hóa đơn chưa thanh toán",
+                                 L"Cảnh báo", MessageBoxButtons::OK,
+                                 MessageBoxIcon::Warning);
+            }*/
+
+            if (codeDetails[i]->CustomerCodeId == this->customerCode->Id &&
+                codeDetails[i]->Status == 0) {
                 MessageBox::Show(L"Mã khách hàng đã có hóa đơn chưa thanh toán",
                                  L"Cảnh báo", MessageBoxButtons::OK,
                                  MessageBoxIcon::Warning);
@@ -199,11 +206,101 @@ System::Void CodeDetailForm::btnSubmit_Click(System::Object ^ sender,
         codeDetails, "customerCodeDetails.dat");
     if (isSaveCodeDetail) {
         MessageBox::Show(L"Thêm hóa đơn thành công");
+
+        // thanh toán định kì cho hóa đơn đó nếu có
+        array<RecurringPayments ^> ^ recurringPayments =
+            HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
+        if (recurringPayments != nullptr) {
+            for (int i = 0; i < recurringPayments->Length; i++) {
+
+                if (recurringPayments[i]->CustomerCodeId ==this->customerCode->Id) {
+                    payRecurringPayment(codeDetail, recurringPayments[i]);
+                    break;
+                }
+            }
+        } 
+        //---------
+
         this->loadCodeDetails();
         this->amount->Text = "";
     } else {
         MessageBox::Show(L"Thêm hóa đơn thất bại");
     }
+}
+
+
+
+    // thanh toán định kì cho hóa đơn đó nếu có
+void CodeDetailForm::payRecurringPayment(CustomerCodeDetails ^ request,
+                                         RecurringPayments ^recurringPayment) {
+    User ^ user = nullptr;
+    User ^ company = nullptr;
+
+    // update file users và transactions
+    array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+    int pin = 0;
+
+    for (int i = 0; i < users->Length; i++) {
+        if (users[i]->AccountNumber == this->customerCode->CompanyAccountNumber) {
+            company = users[i];
+        } else if (users[i]->AccountNumber ==
+                   recurringPayment->UserAccountNumber) {
+            pin = users[i]->getPin();
+            user = users[i];
+        }
+    }
+
+    // nếu số dư client không đủ thì gửi thông báo
+    if (user->getBalance() < request->Amount) {
+        String ^ id = Utils::createUniqueID("CB");
+        Notifications ^ notification = gcnew Notifications(
+            id, recurringPayment->UserAccountNumber,
+            L"Thanh toán định kì tại công ty " + company->FullName + " (" +
+                request->Amount + ") " + L" chưa hoàn thành, " +
+                L"hãy nộp thêm tiền vào tài khoản để tiến hành giao dịch",
+            DateTime::Now.ToString("HH:mm:ss dd/MM/yyyy"), 0);
+
+        array<Notifications ^> ^ notifications =
+            HandleFile::ReadNotificationsArray("notifications.dat");
+        if (notifications == nullptr) {
+            notifications = gcnew array<Notifications ^>(0);
+        } else {
+            Array::Resize(notifications, notifications->Length + 1);
+        }
+        for (int i = notifications->Length - 1; i > 0; i--) {
+            notifications[i] = notifications[i - 1];
+        }
+        notifications[0] = notification;
+        HandleFile::WriteNotificationsArray(notifications, "notifications.dat");
+        MessageBox::Show(
+            L"Số dư không đủ để thanh toán định kì từ tài khoản: " +
+            user->FullName + "\n"
+            L"Đã gửi thông báo đến khách hàng");
+        return;
+    }
+
+    bool isTransfer = Utils::transferMoney(user->AccountNumber, company->AccountNumber,
+                                           request->Amount, pin);
+    if (!isTransfer) {
+        return;
+    }
+
+    // update file codeDetails
+    array<CustomerCodeDetails ^> ^ codeDetails =
+        HandleFile::ReadCustomerCodeDetailsArray("customerCodeDetails.dat");
+    for (int i = 0; i < codeDetails->Length; i++) {
+        if (codeDetails[i]->Id == request->Id) {
+            codeDetails[i]->Status = 1;
+            codeDetails[i]->PaymentUserAccountNumber =
+                recurringPayment->UserAccountNumber;
+            codeDetails[i]->PaymentDate = DateTime::Now.ToString("dd/MM/yyyy");
+            break;
+        }
+    }
+    HandleFile::WriteCustomerCodeDetailsArray(codeDetails,
+                                              "customerCodeDetails.dat");
+    MessageBox::Show(L"hóa đơn này đã được thanh toán từ người dùng: " + user->FullName);
+    
 }
 
 } // namespace BankingAppwinform

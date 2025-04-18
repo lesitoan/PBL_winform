@@ -508,15 +508,11 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
 
     System::Void label5_Click(System::Object ^ sender, System::EventArgs ^ e){};
 
-//<<<<<<< HEAD
-    void onSubmitCurrentPayment(String^ userAccountNumber, String^ companyAccountNumber,
-                                int monthly);
-//=======
     private:
     bool isChangedRecurringPayment = false;
-    void onSubmitCurrentPayment(String ^ customerCodeId,
-                                String ^ userAccountNumber);
-//>>>>>>> f522501fd0973f0b25f1a55b5e6b8c2e0f5933aa
+      void onSubmitCurrentPayment(String ^ customerCodeId,
+                                  String ^ CompanyAccountNumber,
+                                  String ^ userAccountNumber);
 
   private:
     System::Void pin_TextChanged(System::Object ^ sender,

@@ -1,4 +1,5 @@
 ﻿#include "CodeForm.h"
+using namespace System::Text::RegularExpressions;
 
 namespace BankingAppwinform {
 
@@ -95,6 +96,11 @@ array<CustomerCodes ^> ^ CodeForm::createListCode(TextBox ^ textBox) {
 
     array<String ^> ^ lines = textBox->Text->Split(
         gcnew array<wchar_t>{'\n'}, StringSplitOptions::RemoveEmptyEntries);
+
+    for (int i = 0; i < lines->Length; i++) {
+        lines[i] = lines[i]->Trim(); // Xóa khoảng trắng đầu/cuối dòng
+    }
+
     if (lines->Length == 0) {
         MessageBox::Show(L"Vui lòng nhập mã thanh toán", L"Cảnh báo",
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
@@ -106,6 +112,10 @@ array<CustomerCodes ^> ^ CodeForm::createListCode(TextBox ^ textBox) {
         if (lines[i]->Length < 5 || lines[i]->Length > 10) {
             MessageBox::Show(L"Mã khách hàng: " + lines[i] +
                              L" phải lớn hơn 5 kí tự và nhỏ hơn 10 kí tự");
+            continue;
+        } else if (!Regex::IsMatch(lines[i], "^[a-zA-Z0-9]+$")) {
+            MessageBox::Show(L"Mã khách hàng: " + lines[i] +
+                             L" không hợp lệ, chỉ chứa chữ cái và số");
             continue;
         }
         //

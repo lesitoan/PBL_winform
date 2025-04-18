@@ -397,7 +397,6 @@ ref class SignupForm : public System::Windows::Forms::Form {
                                  System::EventArgs ^ e) {}
 
     bool isUsedPhoneNumber(String ^ phoneNumber);
-    int randomAccountNumber();
 
   private:
     System::Void label4_Click(System::Object ^ sender, System::EventArgs ^ e);
