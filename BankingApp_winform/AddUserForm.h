@@ -2,6 +2,8 @@
 #include "HandleFile.h"
 #include "Services.h"
 #include "User.h"
+#include "UserRepository.h"
+#include "ServicesRepository.h"
 
 namespace BankingAppwinform {
 
@@ -494,7 +496,6 @@ ref class AddUserForm : public System::Windows::Forms::Form {
 
     System::Void selectAccTypeBox_SelectedIndexChanged(System::Object ^ sender,
                                                        System::EventArgs ^ e);
-    bool isUsedPhoneNumber(String ^ phoneNumber);
     System::Void btnSubmit_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
 };

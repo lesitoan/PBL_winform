@@ -7,16 +7,9 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{0f55c805-fe94-4c24-9ceb-422ba5de8404}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Form">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Models">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Form\Cpp">
-      <UniqueIdentifier>{9b4560cc-d26e-4785-accf-7560eb312e05}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data\images">
       <UniqueIdentifier>{2efb96b2-37db-417f-bf9b-1b08381091ad}</UniqueIdentifier>
@@ -30,6 +23,16 @@
     <Filter Include="Repositories">
       <UniqueIdentifier>{343a5ef6-7816-4af7-ad9c-278f7bc8194f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Ui">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ui\Cpp">
+      <UniqueIdentifier>{9b4560cc-d26e-4785-accf-7560eb312e05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services">
+      <UniqueIdentifier>{23784eaa-78f6-451a-b237-ff991da6dff4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HandleFile.cpp">
@@ -40,103 +43,103 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="AuthForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="AccountForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="ForgotPwForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="HistoryForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="LoginForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="MainForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="SignupForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="TransferMoneyForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="WithdrawMoneyForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="ChangePwForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="SetPinForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="Validate.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="AdminForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="AdminTransactionForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="TableUsersForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="AdminServiceForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="EditUserForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="CompanyForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="CompanyBillingForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="CodeForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="ServicePaymentForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="ClientRecurringPaymentForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="ModifyServiceForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="AddUserForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="SelectReceiverForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="NotificationForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="SetAvatarForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="RegisterSavingForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="ClientSavingMoneyForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="AdminSavingMoneyForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="CodeDetailForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="RecurringPaymentFollowForm.cpp">
-      <Filter>Form\Cpp</Filter>
+      <Filter>Ui\Cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,40 +147,40 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="MainForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="AccountForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="TransferMoneyForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="WithdrawMoneyForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="HistoryForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="AuthForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="LoginForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="SignupForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="LoadChildForm.h">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="ForgotPwForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="ChangePwForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="SetPinForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="Validate.h">
       <Filter>Utils</Filter>
@@ -188,22 +191,22 @@
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="AdminForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="TableUsersForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="AdminTransactionForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="AdminServiceForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="EditUserForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="CompanyForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="Services.h">
       <Filter>Models</Filter>
@@ -212,7 +215,7 @@
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="CompanyBillingForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="CustomerCodes.h">
       <Filter>Models</Filter>
@@ -221,58 +224,58 @@
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="CodeForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="ServicePaymentForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="ClientRecurringPaymentForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="CustomerCodeDetails.h">
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="ModifyServiceForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="AddUserForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="SelectReceiverForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="SelectReceiverEventArgs.h">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="NotificationForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="Notifications.h">
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="SetAvatarForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="ClientSavingMoneyForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="RegisterSavingForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="SavingCustomers.h">
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="AdminSavingMoneyForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="CodeDetailForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="RecurringPaymentFollowForm.h">
-      <Filter>Form</Filter>
+      <Filter>Ui</Filter>
     </ClInclude>
     <ClInclude Include="ISaveToFile.h">
       <Filter>Interfaces</Filter>
@@ -301,31 +304,22 @@
     <ClInclude Include="TransactionsRepository.h">
       <Filter>Repositories</Filter>
     </ClInclude>
+    <ClInclude Include="AuthServices.h">
+      <Filter>Services</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
-    <None Include="notifications.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="recurringPayments.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="transactions.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="customerCodeDetails.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="customerCodes.dat">
-      <Filter>Data\files</Filter>
-    </None>
     <None Include="services.dat">
       <Filter>Data\files</Filter>
     </None>
     <None Include="users.dat">
       <Filter>Data\files</Filter>
     </None>
-    <None Include="savingCustomers.dat">
+    <None Include="customerCodeDetails.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="customerCodes.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>
@@ -357,6 +351,105 @@
     <Image Include="Images\withdraw1.png">
       <Filter>Data\images</Filter>
     </Image>
+    <Image Include="Images\Accounform header.jpg">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\account2.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\AccountFormBackGround.jpg">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\AuthForm.jpg">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\code_service.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\customer.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\data-transfe2.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\delete.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\delete2.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\electric.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\history2.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\Icon-app.ico">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\iconNotification.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\istockphoto-858983438-612x612.jpg">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\istockphoto-1481681927-612x612.jpg">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\logout2.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\LoginForm.jpg">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\more2.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\plus.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\plus2.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\plus3.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\savingMoney.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\service.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\tk_dinh_ki.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\Thiết kế chưa có tên (7).jpg">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\transaction.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\undo.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\undo1.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\undo2.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\Untitled-2.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\user.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\water.png">
+      <Filter>Data\images</Filter>
+    </Image>
+    <Image Include="Images\withdraw2.png">
+      <Filter>Data\images</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="BankingApp_winform.rc" />
@@ -365,5 +458,13 @@
     <Text Include="historyUpdateData.txt">
       <Filter>Data\files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Images\TP.mp4">
+      <Filter>Data\images</Filter>
+    </Media>
+    <Media Include="Images\VideoAuthForm.mp4">
+      <Filter>Data\images</Filter>
+    </Media>
   </ItemGroup>
 </Project>

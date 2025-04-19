@@ -4,6 +4,7 @@
 #define SERVICES_H
 
 using namespace System;
+using namespace System::IO;
 
 public
 ref class Services : public ISaveToFile {
@@ -16,6 +17,11 @@ ref class Services : public ISaveToFile {
         this->id = id;
         this->name = name;
     }
+    Services() {
+        id = "";
+        name = "";
+    }
+
     property String ^ Id {
         String ^ get() { return id; }
     }
