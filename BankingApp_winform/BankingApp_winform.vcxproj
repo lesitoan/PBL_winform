@@ -174,8 +174,14 @@
     <ClInclude Include="CodeDetailForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="CustomerCodeDetailServices.h" />
     <ClInclude Include="CustomerCodeDetailsRepository.h" />
     <ClInclude Include="CustomerCodesRepository.h" />
+    <ClInclude Include="NotificationServices.h" />
+    <ClInclude Include="RecurringPaymentServices.h" />
+    <ClInclude Include="SavingServices.h" />
+    <ClInclude Include="ServiceServices.h" />
+    <ClInclude Include="TransactionServices.h" />
     <ClInclude Include="TransactionsRepository.h" />
     <ClInclude Include="ISaveToFile.h" />
     <ClInclude Include="ModifyServiceForm.h">

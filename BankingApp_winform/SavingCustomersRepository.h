@@ -86,6 +86,25 @@ ref class SavingCustomersRepository {
         }
     }
 
+    static void UpdateById(String ^ id, SavingCustomers ^ savingCustomer) {
+        try {
+            CheckLastUpdateTime();
+            if (savingCustomersCache == nullptr) {
+                return;
+            }
+            for (int i = 0; i < savingCustomersCache->Length; i++) {
+                if (savingCustomersCache[i]->Id == id) {
+                    savingCustomersCache[i] = savingCustomer;
+                    break;
+                }
+            }
+            HandleFile::WriteArrayToFile<SavingCustomers ^>(savingCustomersCache,
+                                                            fileName);
+        } catch (Exception ^ ex) {
+            throw gcnew Exception("Update error !!!", ex);
+        }
+    }
+
     static void DeleteCache() {
         try {
             savingCustomersCache = nullptr;

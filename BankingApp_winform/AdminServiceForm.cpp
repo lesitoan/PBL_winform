@@ -15,35 +15,41 @@ AdminServiceForm::~AdminServiceForm() {
 }
 
 void AdminServiceForm::LoadServices() {
-    flowLayoutPanelContainer->Controls->Clear();
+    try {
+        flowLayoutPanelContainer->Controls->Clear();
 
-    array<Services ^> ^ services =
-        HandleFile::ReadServicesArray("services.dat");
-    if (services == nullptr || services->Length == 0) {
-        return;
-    }
-    for (int i = 0; i < services->Length; i++) {
-        Panel ^ panel = gcnew Panel();
-        panel->Size = System::Drawing::Size(120, 120);
-        panel->BackColor = Color::Aqua;
-        panel->Margin = System::Windows::Forms::Padding(10);
+        array<Services ^> ^ services = ServicesRepository::GetAll();
 
-        Label ^ label = gcnew Label();
-        label->Font =
-            gcnew System::Drawing::Font("UTM Daxline", 12, FontStyle::Bold);
-        label->Cursor = Cursors::Hand;
+        if (services == nullptr || services->Length == 0) {
+            return;
+        }
 
-        label->Text = services[i]->Name;
-        label->Dock = DockStyle::Fill;
-        label->TextAlign = ContentAlignment::MiddleCenter;
+        for (int i = 0; i < services->Length; i++) {
+            Panel ^ panel = gcnew Panel();
+            panel->Size = System::Drawing::Size(120, 120);
+            panel->BackColor = Color::Aqua;
+            panel->Margin = System::Windows::Forms::Padding(10);
 
-        panel->Controls->Add(label);
-        flowLayoutPanelContainer->Controls->Add(panel);
+            Label ^ label = gcnew Label();
+            label->Font =
+                gcnew System::Drawing::Font("UTM Daxline", 12, FontStyle::Bold);
+            label->Cursor = Cursors::Hand;
 
-        // Gán sự kiện click cho panel
-        label->Tag = services[i]->Id; // Lưu ID dịch vụ vào Tag
-        label->Click +=
-            gcnew EventHandler(this, &AdminServiceForm::OnServiceClick);
+            label->Text = services[i]->Name;
+            label->Dock = DockStyle::Fill;
+            label->TextAlign = ContentAlignment::MiddleCenter;
+
+            panel->Controls->Add(label);
+            flowLayoutPanelContainer->Controls->Add(panel);
+
+            // Gán sự kiện click cho panel
+            label->Tag = services[i]->Id; // Lưu ID dịch vụ vào Tag
+            label->Click +=
+                gcnew EventHandler(this, &AdminServiceForm::OnServiceClick);
+        }
+    } catch (Exception ^ ex) {
+        MessageBox::Show(L"Tải thông tinn dịch vụ thất bại. Thử lại sau", L"Thông báo", MessageBoxButtons::OK,
+                         MessageBoxIcon::Error);
     }
 }
 

@@ -82,15 +82,7 @@ System::Void AccountForm::btnLockAccount_Click(System::Object ^ sender,
 
     User ^ userSelected = GlobalData::GetCurrentUser();
 
-    User ^ user = UserRepository::FindUserByPhoneNumber(userSelected->getPhoneNumber());
-
-    if (user == nullptr) {
-        MessageBox::Show(L"Không tìm thấy tài khoản !", L"Cảnh báo",
-                         MessageBoxButtons::OK, MessageBoxIcon::Warning);
-        return;
-    }
-    user->Status = 0; // khóa
-    UserRepository::UpdateUserByAccNumber(user->getAccountNumber(),userSelected);
+    AuthServices::LockAccount(userSelected->getPhoneNumber());
 
     MessageBox::Show(L"Tài khoản của bạn đã bị khóa !", L"Cảnh báo",
                      MessageBoxButtons::OK, MessageBoxIcon::Warning);

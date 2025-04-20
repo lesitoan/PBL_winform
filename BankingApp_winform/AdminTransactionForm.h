@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include "HandleFile.h"
 #include "Transaction.h"
+#include "TransactionsRepository.h"
+#include "TransactionServices.h"
+
 
 namespace BankingAppwinform {
 

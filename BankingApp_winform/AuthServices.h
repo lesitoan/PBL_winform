@@ -73,5 +73,88 @@ ref class AuthServices {
         }
     }
 
+    static String^ ForgotPassword(String ^ phoneNumber, String ^ fullName) {
+        try {
+            if (phoneNumber == "" || fullName == "") {
+                throw gcnew Exception(L"Vui lòng nhập đầy đủ thông tin");
+
+            }
+
+            User ^ user = UserRepository::FindUserByPhoneNumber(phoneNumber);
+
+            if (user == nullptr) {
+                throw gcnew Exception(L"Số điện thoại hoặc tên chưa đúng");
+            }
+            if (user->getFullName() != fullName) {
+                throw gcnew Exception(L"Số điện thoại hoặc tên chưa đúng");
+            }
+            DateTime now = DateTime::Now;
+            String ^ newPassword = "TML" + now.ToString("HHmmss");
+            user->setPassword(newPassword);
+            // Lưu lại thông tin vào file
+            UserRepository::UpdateUserByAccNumber(user->AccountNumber, user);
+
+            return newPassword;
+
+        } catch (Exception ^ ex) {
+            throw ex;
+        }
+    }
+
+    static void LockAccount(String ^ phoneNumber) {
+        try {
+            if (phoneNumber == "") {
+                throw gcnew Exception(L"Vui lòng nhập số điện thoại");
+            }
+
+            User ^ user = UserRepository::FindUserByPhoneNumber(phoneNumber);
+            if (user == nullptr) {
+                throw gcnew Exception(L"Số điện thoại không tồn tại");
+            }
+            user->Status = 0; // khóa tài khoản
+            UserRepository::UpdateUserByAccNumber(user->getAccountNumber(), user);
+        } catch (Exception ^ ex) {
+            throw ex;
+        }
+    }
+
+    static void AddUser(String ^ name, String ^ phone, String ^ accNum,
+                        String ^ password, String^ accType, String^ serviceId) {
+        try {
+
+            if (name == "" || phone == "" || accNum == "" || password == "" ||
+                accType == "") {
+                throw gcnew Exception(L"Vui lòng nhập đầy đủ thông tin");
+
+            } else if (accType == "company" && serviceId == "") {
+                throw gcnew Exception(L"Chưa chọn dịch vụ");
+            }
+
+            User ^ currentUser = UserRepository::FindUserByPhoneNumber(phone);
+
+            if (currentUser != nullptr && currentUser->AccountNumber == accNum) {
+                throw gcnew Exception(L"Số điện thoại đã tồn tại");
+
+            }
+
+            double _balance = 0;
+            int _pin = 0;
+            String ^ _bankName = "BIDV";
+            int _status = 1;
+
+            User ^ user =
+                gcnew User(name, password, phone, accNum, _balance,
+                           accType, _pin, _bankName, _status, serviceId, "BankingApp_winform\\images\\avatars\\default_avatar.png");
+
+            UserRepository::InsertUser(user);
+
+        } catch (Exception ^ ex) {
+
+            MessageBox::Show(ex->ToString(), "Success",
+                             MessageBoxButtons::OK, MessageBoxIcon::Information);
+            throw ex;
+        };
+    }
+
 };
 

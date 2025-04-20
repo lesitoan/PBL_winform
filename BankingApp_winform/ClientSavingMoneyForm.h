@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include "RegisterSavingForm.h"
 #include "GradientHelper.h"
+#include "SavingServices.h"
+#include "SavingCustomersRepository.h"
+
 namespace BankingAppwinform {
 
 using namespace System;

@@ -307,6 +307,24 @@
     <ClInclude Include="AuthServices.h">
       <Filter>Services</Filter>
     </ClInclude>
+    <ClInclude Include="ServiceServices.h">
+      <Filter>Services</Filter>
+    </ClInclude>
+    <ClInclude Include="SavingServices.h">
+      <Filter>Services</Filter>
+    </ClInclude>
+    <ClInclude Include="TransactionServices.h">
+      <Filter>Services</Filter>
+    </ClInclude>
+    <ClInclude Include="RecurringPaymentServices.h">
+      <Filter>Services</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomerCodeDetailServices.h">
+      <Filter>Services</Filter>
+    </ClInclude>
+    <ClInclude Include="NotificationServices.h">
+      <Filter>Services</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />

@@ -16,14 +16,21 @@ System::Void AddUserForm::btnClose_Click(System::Object ^ sender,
 }
 
 void AddUserForm::loadServiceBox() {
-    selectServiceBox->Items->Clear();
+    try {
 
-    array<Services ^> ^ services = ServicesRepository::GetAll();
+        selectServiceBox->Items->Clear();
 
-    for each (Services ^ service in services) {
-        selectServiceBox->Items->Add(service);
+        array<Services ^> ^ services = ServicesRepository::GetAll();
+
+        for each (Services ^ service in services) {
+            selectServiceBox->Items->Add(service);
+        }
+        selectServiceBox->DisplayMember = "Name";
+
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK,
+                         MessageBoxIcon::Error);
     }
-    selectServiceBox->DisplayMember = "Name";
 }
 
 System::Void
@@ -52,38 +59,7 @@ System::Void AddUserForm::btnSubmit_Click(System::Object ^ sender,
             serviceId = selectedService->Id;
         }
 
-        if (name == "" || phone == "" || accNum == "" || password == "" ||
-            accType == "") {
-            MessageBox::Show(L"Vui lòng nhập đầy đủ thông tin", "Error",
-                             MessageBoxButtons::OK, MessageBoxIcon::Error);
-            return;
-        } else if (accType == "company" && serviceId == "") {
-            MessageBox::Show(L"Chưa chọn dịch vụ", "Error", MessageBoxButtons::OK,
-                             MessageBoxIcon::Error);
-            return;
-        }
-
-        User ^ currentUser = UserRepository::FindUserByPhoneNumber(phone);
-        if (currentUser != nullptr) {
-            MessageBox::Show(L"Số điện thoại đã tồn tại", "Error",
-                             MessageBoxButtons::OK, MessageBoxIcon::Error);
-            return;
-        } else if (currentUser->AccountNumber == accNum) {
-            MessageBox::Show(L"Số tài khoản đã tồn tại", "Error",
-                             MessageBoxButtons::OK, MessageBoxIcon::Error);
-            return;
-        }
-
-        double _balance = 0;
-        int _pin = 0;
-        String ^ _bankName = "BIDV";
-        int _status = 1;
-
-        User ^ user =
-            gcnew User(name, password, phone, accNum, _balance,
-                       accType, _pin, _bankName, _status, serviceId, "BankingApp_winform\\images\\avatars\\default_avatar.png");
-
-        UserRepository::InsertUser(user);
+        AuthServices::AddUser(name, phone, accNum, password, accType, serviceId);
 
         MessageBox::Show(L"Tạo tài khoản thành công !", "Success",
                          MessageBoxButtons::OK, MessageBoxIcon::Information);
@@ -92,7 +68,7 @@ System::Void AddUserForm::btnSubmit_Click(System::Object ^ sender,
         this->Close();
 
     } catch (Exception ^ ex) {
-        MessageBox::Show(L"Tạo tài khoản thất bại, thử lại sau", "Error", MessageBoxButtons::OK,
+        MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK,
                          MessageBoxIcon::Error);
     };
 }

@@ -10,13 +10,13 @@ using namespace System;
 using namespace System::IO;
 
 public
-ref class UserRepository {
+ref class TransactionsRepository {
   private:
     static array<Transaction ^> ^ transactionsCache;
     static DateTime lastReadTime = DateTime::MinValue;
     static String ^ fileName;
 
-    static UserRepository() {
+    static TransactionsRepository() {
         transactionsCache = nullptr;
         lastReadTime = DateTime::MinValue;
         fileName = "transactions.dat";
@@ -124,5 +124,5 @@ ref class UserRepository {
             throw gcnew Exception("DeleteCache error !!!", ex);
         }
     };
-
+};
 #endif // TRANSACTIONREPOSITORY_H;

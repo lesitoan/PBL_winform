@@ -34,7 +34,6 @@ ref class UserRepository {
 
   public:
     static array<User ^> ^ GetUsers() {
-
         try {
             // kiểm tra lần chỉnh sửa cuối cùng của file
             CheckLastUpdateTime();
@@ -45,8 +44,8 @@ ref class UserRepository {
             throw gcnew Exception("getUsers error !!!", ex);
         }
     }
-    
-    static void UpdateUserByAccNumber(String ^ accNumber, User^ user) {
+
+        static void UpdateUserByAccNumber(String ^ accNumber, User ^ user) {
         try {
 
             CheckLastUpdateTime();
@@ -60,7 +59,7 @@ ref class UserRepository {
                     break;
                 }
             }
-            HandleFile::WriteArrayToFile<User^>(usersCache, fileName);
+            HandleFile::WriteArrayToFile<User ^>(usersCache, fileName);
 
             // update lại thời gian chỉnh sửa file
             HandleFile::UpdateFilehistoryUpdate(fileName);
@@ -69,7 +68,6 @@ ref class UserRepository {
             throw gcnew Exception("updateUserByAccNumber error !!!", ex);
         }
     }
-
 
     static void InsertUser(User ^ user) {
         try {
@@ -93,7 +91,7 @@ ref class UserRepository {
         }
     }
 
-    static User^ FindUserByPhoneNumber(String ^ phoneNumber) {
+    static User ^ FindUserByPhoneNumber(String ^ phoneNumber) {
         try {
             CheckLastUpdateTime();
 
@@ -111,16 +109,29 @@ ref class UserRepository {
         }
     }
 
-    static void DeteteCache() {
-        try {
-            usersCache = nullptr;
-            lastReadTime = DateTime::MinValue;
-            fileName = "users.dat";
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("Logout error !!!", ex);
-        }
-    }
+        static User
+        ^ FindUserByAccNumber(String ^ accNumber) {
+              try {
+                  CheckLastUpdateTime();
+                  if (usersCache == nullptr) {
+                      return nullptr;
+                  }
+                  for (int i = 0; i < usersCache->Length; i++) {
+                      if (usersCache[i]->getAccountNumber() == accNumber) {
+                          return usersCache[i];
+                      }
+                  }
+                  return nullptr;
+              } catch (Exception ^ ex) {
+                  throw gcnew Exception("findUserByAccNumber error !!!", ex);
+              }
+          }
 
+        static void DeteteCache() {
+        usersCache = nullptr;
+        lastReadTime = DateTime::MinValue;
+        fileName = "users.dat";
+    }
 };
 
 #endif // USERREPONSITORY_H;

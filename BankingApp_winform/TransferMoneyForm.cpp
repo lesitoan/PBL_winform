@@ -24,11 +24,6 @@ System::Void TransferMoneyForm::btnFindAccount_Click(System::Object ^ sender,
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
         panelTransfer->Visible = false;
         return;
-    } else if (!Validate::isAccountNumber(accNumber)) {
-        MessageBox::Show("So tai khoan khong hop le !", "Canh bao",
-                         MessageBoxButtons::OK, MessageBoxIcon::Warning);
-        panelTransfer->Visible = false;
-        return;
     } else {
         // tim user
         array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
@@ -100,7 +95,6 @@ System::Void TransferMoneyForm::btnSubmit_Click(System::Object ^ sender,
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
         return;
     }
-
     bool isTransferSuccess =
         Utils::transferMoney(GlobalData::GetCurrentUser()->getAccountNumber(),
                              receiver->getAccountNumber(), amount, pin);

@@ -2,9 +2,12 @@
 #include "CustomerCodeDetails.h"
 #include "CustomerCodes.h"
 #include "GlobalData.h"
-#include "HandleFile.h"
 #include "Validate.h"
 #include "Utils.h"
+#include "CustomerCodeDetailServices.h"
+#include "RecurringPayments.h"
+#include "RecurringPaymentServices.h"
+#include "RecurringPaymentServices.h"
 
 namespace BankingAppwinform {
 
@@ -471,8 +474,5 @@ ref class CodeDetailForm : public System::Windows::Forms::Form {
     void CodeDetailForm::addLabelToPanel(Panel ^ panel, int % yOffset,
                                          String ^ text);
     void CodeDetailForm::deleteCodeDetail_Click(Object ^ sender, EventArgs ^ e);
-
-    void payRecurringPayment(CustomerCodeDetails ^ request,
-                             RecurringPayments ^ recurringPayment);
 };
 } // namespace BankingAppwinform

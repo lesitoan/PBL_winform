@@ -4,6 +4,8 @@
 #include "HandleFile.h"
 #include "ModifyServiceForm.h"
 #include "Services.h"
+#include "ServiceServices.h"
+#include "ServicesRepository.h"
 
 ref class AdminForm;
 namespace BankingAppwinform {
