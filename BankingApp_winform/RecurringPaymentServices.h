@@ -37,6 +37,31 @@ ref class RecurringPaymentServices {
             throw ex;
         }
     }
+    
+    static array<RecurringPayments ^> ^
+        GetRecurringPaymentsByUserAccNumber(String ^ userAccNumber) {
+            try {
+                if (userAccNumber == "") {
+                    throw gcnew Exception(L"Không có thông tin tài khoản");
+                }
+                array<RecurringPayments ^> ^ recurringPayments = RecurringPaymentsRepository::GetAll();
+                if (recurringPayments == nullptr || recurringPayments->Length == 0) {
+                    return nullptr;
+                }
+                List<RecurringPayments ^> ^ filteredRecurringPayments = gcnew List<RecurringPayments ^>();
+                for (int i = 0; i < recurringPayments->Length; i++) {
+                    if (recurringPayments[i]->UserAccountNumber == userAccNumber) {
+                        filteredRecurringPayments->Add(recurringPayments[i]);
+                    }
+                }
+                if (filteredRecurringPayments->Count == 0) {
+                    return nullptr;
+                }
+                return filteredRecurringPayments->ToArray();
+            } catch (Exception ^ ex) {
+                throw ex;
+            }
+    }
 
     static void PayRecurringPayment(RecurringPayments ^ recurringPayments, CustomerCodeDetails^ customerCodeDetail) {
         try {
@@ -83,6 +108,15 @@ ref class RecurringPaymentServices {
                 customerCode->CompanyAccountNumber, customerCodeDetail->Amount,
                 L"Thanh toán định kì cho mã khách hàng " + customerCode->Code);
 
+        } catch (Exception ^ ex) {
+            
+            throw ex;
+        }
+    }
+
+    static void DeleteRecurringPaymentById(String ^ id) {
+        try {
+            RecurringPaymentsRepository::DeleteById(id);
         } catch (Exception ^ ex) {
             throw ex;
         }

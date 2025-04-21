@@ -1,6 +1,5 @@
 #pragma once
 #include "User.h"
-#include "GlobalData.h"
 #include "AuthServices.h"
 
 namespace BankingAppwinform {

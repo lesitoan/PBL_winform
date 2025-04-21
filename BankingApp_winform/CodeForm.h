@@ -7,6 +7,8 @@
 #include "CustomerCodeDetails.h"
 #include "RecurringPayments.h"
 #include "CodeDetailForm.h"
+#include "CustomerCodeDetailServices.h"
+#include "CustomerCodeServices.h"
 
 namespace BankingAppwinform {
 
@@ -473,8 +475,6 @@ ref class CodeForm : public System::Windows::Forms::Form {
   private:
     System::Void btnAddCode_Click(System::Object ^ sender,
                                   System::EventArgs ^ e);
-
-    array<CustomerCodes ^> ^ createListCode(TextBox ^ textBox);
 
     void loadTableCodes();
     void CodeForm::dataGridViewCodes_CellDoubleClick(Object ^ sender,

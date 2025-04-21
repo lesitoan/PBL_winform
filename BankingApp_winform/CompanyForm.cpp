@@ -19,43 +19,47 @@ namespace BankingAppwinform {
     }
 
     void CompanyForm::LoadCompanies(String^ serviceId) {
-        array<User ^> ^ companies = HandleFile::ReadUserArray("users.dat");
-
-        if (companies == nullptr || companies->Length == 0) {
-            return;
-        }
-
-        // Xóa các panel cũ trước khi load danh sách mới
-        flowLayoutPanelContainer->Controls->Clear();
-
-        for (int i = 0; i < companies->Length; i++) {
-            if (companies[i]->getRole() != "company" ||
-                companies[i]->getServiceId() != serviceId) {
-                continue;
+        try {
+            array<User ^> ^ companies = UserService::GetCompanyByServiceId(serviceId);
+            if (companies == nullptr || companies->Length == 0) {
+                return;
             }
-            Panel ^ panel = gcnew Panel();
-            panel->Size =
-                System::Drawing::Size(139, 147); // Kích thước hình chữ nhật
-            panel->BackColor = Color::LightBlue; // Màu nền xanh nhạt
-            panel->Margin = System::Windows::Forms::Padding(10);
 
-            Label ^ label = gcnew Label();
-            label->Font =
-                gcnew System::Drawing::Font("UTM Daxline", 12, FontStyle::Bold);
-            label->Cursor = Cursors::Hand;
+            // Xóa các panel cũ trước khi load danh sách mới
+            flowLayoutPanelContainer->Controls->Clear();
 
-            label->Text = companies[i]->getFullName();
-            label->Dock = DockStyle::Fill;
-            label->TextAlign = ContentAlignment::MiddleCenter;
-            label->Dock = DockStyle::Fill;
-            label->AutoSize = false; 
+            for (int i = 0; i < companies->Length; i++) {
+                if (companies[i]->getRole() != "company" ||
+                    companies[i]->getServiceId() != serviceId) {
+                    continue;
+                }
+                Panel ^ panel = gcnew Panel();
+                panel->Size =
+                    System::Drawing::Size(139, 147); // Kích thước hình chữ nhật
+                panel->BackColor = Color::LightBlue; // Màu nền xanh nhạt
+                panel->Margin = System::Windows::Forms::Padding(10);
 
-            panel->Controls->Add(label);
-            flowLayoutPanelContainer->Controls->Add(panel);
-            // Gán sự kiện click cho panel
-            label->Tag = companies[i]->getAccountNumber(); // Lưu ID dịch vụ vào Tag
-            label->Click +=
-                gcnew EventHandler(this, &CompanyForm::OnCompanyClick);
+                Label ^ label = gcnew Label();
+                label->Font =
+                    gcnew System::Drawing::Font("UTM Daxline", 12, FontStyle::Bold);
+                label->Cursor = Cursors::Hand;
+
+                label->Text = companies[i]->getFullName();
+                label->Dock = DockStyle::Fill;
+                label->TextAlign = ContentAlignment::MiddleCenter;
+                label->Dock = DockStyle::Fill;
+                label->AutoSize = false;
+
+                panel->Controls->Add(label);
+                flowLayoutPanelContainer->Controls->Add(panel);
+                // Gán sự kiện click cho panel
+                label->Tag = companies[i]->getAccountNumber(); // Lưu ID dịch vụ vào Tag
+                label->Click +=
+                    gcnew EventHandler(this, &CompanyForm::OnCompanyClick);
+            }
+        } catch (Exception ^ ex) {
+            MessageBox::Show(ex->ToString(), "Error",
+                             MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
     }
 

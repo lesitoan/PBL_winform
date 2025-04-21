@@ -13,7 +13,7 @@ ref class SavingCustomers : public ISaveToFile {
     double amount;
     double interestAmount;
     String ^ type; // termDeposit, nonTermDeposit
-    int  term;
+    int term;      // so thang
     float interestRate; 
     DateTime depositDate;
     String^ paymentDate; // khoi tao bang "", vì chưa thanh toán

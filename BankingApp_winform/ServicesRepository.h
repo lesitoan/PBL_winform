@@ -7,8 +7,7 @@
 using namespace System;
 using namespace System::IO;
 
-public
-ref class ServicesRepository {
+public ref class ServicesRepository {
   private:
     static array<Services ^> ^ servicesCache;
     static DateTime lastReadTime = DateTime::MinValue;
@@ -64,6 +63,45 @@ ref class ServicesRepository {
 
         } catch (Exception ^ ex) {
             throw gcnew Exception("DeleteById error !!!", ex);
+        }
+    }
+
+    static Services ^ FindServiceByName(String ^ name) {
+        try {
+            CheckLastUpdateTime();
+            if (servicesCache == nullptr) {
+                return nullptr;
+            }
+
+            for (int i = 0; i < servicesCache->Length; i++) {
+                if (servicesCache[i]->Name->ToLower() == name->ToLower()) {
+                    return servicesCache[i];
+                }
+            }
+            return nullptr;
+        } catch (Exception ^ ex) {
+            throw gcnew Exception("FindServiceByName error !!!", ex);
+        }
+    }
+
+    static void InsertService(Services ^ service) {
+        try {
+            CheckLastUpdateTime();
+            if (servicesCache == nullptr) {
+                servicesCache = gcnew array<Services ^>(1);
+                servicesCache[0] = service;
+            } else {
+                array<Services ^> ^ newServices =
+                    gcnew array<Services ^>(servicesCache->Length + 1);
+                for (int i = 0; i < servicesCache->Length; i++) {
+                    newServices[i] = servicesCache[i];
+                }
+                newServices[servicesCache->Length] = service;
+                servicesCache = newServices;
+            }
+            HandleFile::WriteArrayToFile<Services ^>(servicesCache, fileName);
+        } catch (Exception ^ ex) {
+            throw gcnew Exception("InsertService error !!!", ex);
         }
     }
 

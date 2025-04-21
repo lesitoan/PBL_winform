@@ -253,9 +253,6 @@
     <ClInclude Include="NotificationForm.h">
       <Filter>Ui</Filter>
     </ClInclude>
-    <ClInclude Include="Notifications.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="SetAvatarForm.h">
       <Filter>Ui</Filter>
     </ClInclude>
@@ -325,6 +322,15 @@
     <ClInclude Include="NotificationServices.h">
       <Filter>Services</Filter>
     </ClInclude>
+    <ClInclude Include="Notifications.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="UserServices.h">
+      <Filter>Services</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomerCodeServices.h">
+      <Filter>Services</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
@@ -338,6 +344,18 @@
       <Filter>Data\files</Filter>
     </None>
     <None Include="customerCodes.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="recurringPayments.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="savingCustomers.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="transactions.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="notifications.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>

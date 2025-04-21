@@ -26,10 +26,6 @@ void ServicePaymentForm::LoadServices() {
         panel->Size = System::Drawing::Size(120, 120);
         panel->BackColor = Color::White;
         panel->Margin = System::Windows::Forms::Padding(10);
-//<<<<<<< HEAD
-//=======
-
-//>>>>>>> f522501fd0973f0b25f1a55b5e6b8c2e0f5933aa
         Label ^ label = gcnew Label();
         label->Font =
             gcnew System::Drawing::Font("UTM Daxline", 12, FontStyle::Regular);

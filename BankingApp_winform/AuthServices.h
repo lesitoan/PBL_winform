@@ -1,9 +1,19 @@
 ﻿#pragma once
 #include "HandleFile.h"
 #include "User.h"
-#include "UserRepository.h"
 #include "Validate.h"
 #include "Utils.h"
+#include "GlobalData.h"
+
+#include "UserRepository.h"
+#include "CustomerCodesRepository.h"
+#include "CustomerCodeDetailsRepository.h"
+#include "RecurringPaymentsRepository.h"
+#include "NotificationsRepository.h"
+#include"TransactionsRepository.h"
+#include"ServicesRepository.h"
+#include "SavingCustomersRepository.h"
+
 
 using namespace System;
 using namespace System::IO;
@@ -30,6 +40,7 @@ ref class AuthServices {
                 throw gcnew Exception(L"Tài khoản của bạn đã bị khóa");
             }
 
+            GlobalData::SetCurrentUser(user);
             return user;
 
         } catch (Exception ^ ex) {
@@ -154,6 +165,48 @@ ref class AuthServices {
                              MessageBoxButtons::OK, MessageBoxIcon::Information);
             throw ex;
         };
+    }
+
+    static bool isLogin(String ^ pin) {
+        try {
+            if (pin == "") {
+                throw gcnew Exception(L"Vui lòng nhập mã pin");
+            } else if (!Validate::isPin(pin)) {
+                throw gcnew Exception(L"Mã pin không hợp lệ");
+            }
+            array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+            if (users == nullptr) {
+                throw gcnew Exception(L"Lỗi máy chủ, thử lại sau !");
+            }
+            for (int i = 0; i < users->Length; i++) {
+                if (users[i]->getAccountNumber() == GlobalData::GetCurrentUser()->getAccountNumber()) {
+                    if (users[i]->getPin() != Convert::ToInt32(pin)) {
+                        throw gcnew Exception(L"Mã pin không hợp lệ !");
+                    }
+                }
+            }
+            return true;
+
+        } catch (Exception ^ ex) {
+            throw ex;
+        }
+    }
+
+    static void Logout() {
+        try {
+            GlobalData::SetCurrentUser(nullptr);
+            UserRepository::DeleteCache();
+            CustomerCodesRepository::DeleteCache();
+            CustomerCodeDetailsRepository::DeleteCache();
+            RecurringPaymentsRepository::DeleteCache();
+            NotificationsRepository::DeleteCache();
+            TransactionsRepository::DeleteCache();
+            ServicesRepository::DeleteCache();
+            SavingCustomersRepository::DeleteCache();
+
+        } catch (Exception ^ ex) {
+            throw ex;
+        }
     }
 
 };

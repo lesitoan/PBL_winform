@@ -30,93 +30,57 @@ System::Void ModifyServiceForm::btnClose_Click(System::Object ^ sender,
 }
 
 void ModifyServiceForm::loadServiceBox() {
-    array<Services ^> ^ services =
-        HandleFile::ReadServicesArray("services.dat");
-    if (services == nullptr) {
-        return;
-    }
-    for (int i = 0; i < services->Length; i++) {
-        selectServiceBox->Items->Add(services[i]->Name);
+    try {
+        selectServiceBox->Items->Clear();
+        array<Services ^> ^ services = ServiceServices::GetAllServices();
+        if (services == nullptr) {
+            return;
+        }
+        for (int i = 0; i < services->Length; i++) {
+            selectServiceBox->Items->Add(gcnew KeyValuePair < String ^, Services ^ > (services[i]->Name, services[i]));
+        }
+        selectServiceBox->DisplayMember = "Key";
+        selectServiceBox->ValueMember = "Value";
+
+    } catch (Exception ^ ex) {
+        MessageBox::Show(L"Tải dữ liệu dịch vụ lỗi, thử lại sau.", L"Lỗi", MessageBoxButtons::OK,
+                         MessageBoxIcon::Error);
     }
 }
 
 System::Void ModifyServiceForm::btnSubmit_Click(System::Object ^ sender,
                                                 System::EventArgs ^ e) {
+    try {
+        // handle insert
+        if (this->type == "insert") {
+            ServiceServices::InsertService(serviceName->Text);
+            MessageBox::Show(L"Thêm dịch vụ thành công");
 
-    array<Services ^> ^ services =
-        HandleFile::ReadServicesArray("services.dat");
 
-    // handle insert
-    if (this->type == "insert") {
-        String ^ name = serviceName->Text;
-        if (name->Length == 0) {
-            MessageBox::Show(L"Tên dịch vụ không được để trống");
-            return;
+        } else if (type == "delete") {
+            System::Windows::Forms::DialogResult result;
+            result = MessageBox::Show(L"Bạn có chắc chắn muốn xóa dịch vụ này?",
+                                      L"Xóa", MessageBoxButtons::YesNo,
+                                      MessageBoxIcon::Question);
+            if (result == System::Windows::Forms::DialogResult::No) 
+                return;
+
+            KeyValuePair<String ^, Services ^> ^ selectedItem =
+                dynamic_cast<KeyValuePair<String ^, Services ^> ^>(selectServiceBox->SelectedItem);
+
+            if (selectedItem == nullptr) {
+                return;
+            }
+            String ^ id = selectedItem->Value->Id;
+            ServiceServices::DeleteServiceById(id);
         }
 
-        // tạo id (fix lại sau)
-        Random ^ rand = gcnew Random();
-        String ^ id = Utils::createUniqueID("SER");
-        //
-
-        if (services == nullptr) {
-            services = gcnew array<Services ^>(1);
-            services[0] = gcnew Services(id, name);
-        } else {
-            // check dịch vụ đã tồn tại chưa
-            for (int i = 0; i < services->Length; i++) {
-                if (services[i]->Name == name) {
-                    MessageBox::Show(L"Dịch vụ đã tồn tại");
-                    return;
-                }
-            }
-            array<Services ^> ^ newServices =
-                gcnew array<Services ^>(services->Length + 1);
-            for (int i = 0; i < services->Length; i++) {
-                newServices[i] = services[i];
-            }
-            newServices[services->Length] = gcnew Services(id, name);
-            services = newServices;
-        }
-        HandleFile::WriteServicesArray(services, "services.dat");
-        MessageBox::Show(L"Thêm dịch vụ thành công");
+        ModifyServiceSuccess(this, EventArgs::Empty);
+        this->Close();
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->Message, L"Lỗi", MessageBoxButtons::OK,
+                         MessageBoxIcon::Error);
     }
-
-    // handle delete
-    if (type == "delete") {
-        System::Windows::Forms::DialogResult result;
-        result = MessageBox::Show(L"Bạn có chắc chắn muốn xóa dịch vụ này?",
-                                  L"Xóa", MessageBoxButtons::YesNo,
-                                  MessageBoxIcon::Question);
-        if (result == System::Windows::Forms::DialogResult::Yes) {
-            for (int i = 0; i < services->Length; i++) {
-                if (services[i]->Name == selectServiceBox->Text) {
-                    // check dịch vụ có tồn tại công ty không, nếu có
-                    // thì không được xóa
-                    array<User ^> ^ users =
-                        HandleFile::ReadUserArray("users.dat");
-                    for (int j = 0; j < users->Length; j++) {
-                        if (users[j]->getServiceId() == services[i]->Id) {
-                            MessageBox::Show(L"Dịch vụ này đang được "
-                                             L"sử dụng, không thể xóa");
-                            return;
-                        }
-                    }
-
-                    services[i] = services[services->Length - 1];
-                    Array::Resize(services, services->Length - 1);
-                    HandleFile::WriteServicesArray(services, "services.dat");
-                    MessageBox::Show(L"Xóa dịch vụ thành công");
-                    break;
-                }
-            }
-        } else {
-            return;
-        }
-    }
-
-    ModifyServiceSuccess(this, EventArgs::Empty);
-    this->Close();
 }
 
 } // namespace BankingAppwinform

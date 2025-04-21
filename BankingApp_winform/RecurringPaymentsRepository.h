@@ -95,6 +95,12 @@ ref class RecurringPaymentsRepository {
         }
     }   
 
+    static void DeleteCache() {
+        recurringPaymentsCache = nullptr;
+        lastReadTime = DateTime::MinValue;
+        fileName = "recurringpayments.dat";
+    }
+
 };
 
 //#endif // RECURRINGPAYMENTS_H

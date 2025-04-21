@@ -132,6 +132,12 @@ ref class UserRepository {
         lastReadTime = DateTime::MinValue;
         fileName = "users.dat";
     }
+
+    static void DeleteCache() {
+        usersCache = nullptr;
+        lastReadTime = DateTime::MinValue;
+        fileName = "users.dat";
+    }
 };
 
 #endif // USERREPONSITORY_H;

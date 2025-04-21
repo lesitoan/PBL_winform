@@ -26,6 +26,8 @@ ClientSavingMoneyForm::btnTermDeposit_Click(System::Object ^ sender,
                                             System::EventArgs ^ e) {
     RegisterSavingForm ^ registerSavingForm =
         gcnew RegisterSavingForm("termDeposit");
+    registerSavingForm->AddSavingSuccess +=
+        gcnew EventHandler(this, &ClientSavingMoneyForm::OnAddSavingSuccess);
     registerSavingForm->ShowDialog();
 }
 
@@ -34,6 +36,8 @@ ClientSavingMoneyForm::btnNonTermDeposit_Click(System::Object ^ sender,
                                                System::EventArgs ^ e) {
     RegisterSavingForm ^ registerSavingForm =
         gcnew RegisterSavingForm("nonTermDeposit");
+    registerSavingForm->AddSavingSuccess +=
+        gcnew EventHandler(this, &ClientSavingMoneyForm::OnAddSavingSuccess);
     registerSavingForm->ShowDialog();
 }
 
@@ -55,11 +59,12 @@ void ClientSavingMoneyForm::loadSavingCustomers() {
             return;
         }
 
-        for each (SavingCustomers ^ saving in savingItems) {
-            if (saving->UserAccountNumber == GlobalData::GetCurrentUser()->AccountNumber) {
-                AddSavingItemToFlow(saving);
+        for (int i = savingItems->Length - 1; i >= 0; i--) {
+            if (savingItems[i]->UserAccountNumber == GlobalData::GetCurrentUser()->AccountNumber) {
+                AddSavingItemToFlow(savingItems[i]);
             }
         }
+
     } catch (Exception ^ ex) {
         MessageBox::Show(ex->Message, L"Thông báo", MessageBoxButtons::OK,
                          MessageBoxIcon::Error);
@@ -133,7 +138,7 @@ void ClientSavingMoneyForm::AddSavingItemToFlow(SavingCustomers ^ saving) {
     Label ^ endLabel = gcnew Label();
     endLabel->Text =
         saving->Status == 0 ? L"Ấn vào đây để kết thúc tiết kiệm" : L"";
-    endLabel->ForeColor = Color::LightYellow;
+    endLabel->ForeColor = Color::DarkRed;
     endLabel->Font = gcnew System::Drawing::Font("Times New Roman", 12,
                                                  FontStyle::Regular);
     endLabel->AutoSize = false;
@@ -169,7 +174,7 @@ System::Void ClientSavingMoneyForm::EndSaving_Click(System::Object ^ sender,
             // 0: chưa thanh toán, 1: đã thanh toán, 2: đang yêu cầu
             saving->Status = 2;
             
-            SavingService::UpdateStatusSaving(saving->Id, saving);
+            SavingServices::UpdateStatusSaving(saving->Id, saving);
 
             MessageBox::Show(L"Đã gửi yêu cầu kết thúc tiết kiệm thành công, vui "
                              L"lòng chờ hoàn tất",
@@ -181,6 +186,11 @@ System::Void ClientSavingMoneyForm::EndSaving_Click(System::Object ^ sender,
         MessageBox::Show(ex->Message, L"Thông báo", MessageBoxButtons::OK,
                          MessageBoxIcon::Error);
     }
+}
+
+System::Void ClientSavingMoneyForm::OnAddSavingSuccess(System::Object ^ sender,
+                                System::EventArgs ^ e) {
+    this->loadSavingCustomers();
 }
 
 } // namespace BankingAppwinform

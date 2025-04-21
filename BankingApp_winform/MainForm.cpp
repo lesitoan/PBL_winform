@@ -125,7 +125,9 @@ System::Void MainForm::btnLogout_Click(System::Object ^ sender,
         MessageBox::Show(L"Are you sure you want to log out?", L"Log Out",
                          MessageBoxButtons::YesNo, MessageBoxIcon::Question);
     if (result == System::Windows::Forms::DialogResult::Yes) {
-        GlobalData::SetCurrentUser(nullptr);
+        
+        // Xóa thông tin người dùng hiện tại
+        AuthServices::Logout();
 
         this->Hide();
         AuthForm ^ authForm = gcnew AuthForm();
@@ -133,6 +135,7 @@ System::Void MainForm::btnLogout_Click(System::Object ^ sender,
         this->Close();
     }
 }
+
 System::Void MainForm::timer1_Tick(System::Object ^ sender,
                                    System::EventArgs ^ e) {
     if (isOpenNav) {

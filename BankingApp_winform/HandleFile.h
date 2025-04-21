@@ -70,6 +70,10 @@ ref class HandleFile {
             }
             writer->Close();
             fs->Close();
+
+            // Ghi lại thời gian cập nhật file
+            HandleFile::UpdateFilehistoryUpdate(filePath);
+
             return true;
         } catch (Exception ^) {
             return false;

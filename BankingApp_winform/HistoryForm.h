@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "GlobalData.h"
-#include "HandleFile.h"
 #include "Transaction.h"
+#include "TransactionServices.h"
 
 namespace BankingAppwinform {
 using namespace System;
@@ -196,8 +196,6 @@ ref class HistoryForm : public System::Windows::Forms::Form {
         this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->Name = L"HistoryForm";
         this->Text = L"HistoryForm";
-        this->Load +=
-            gcnew System::EventHandler(this, &HistoryForm::HistoryForm_Load);
         this->fullContent->ResumeLayout(false);
         this->panelHeader->ResumeLayout(false);
         this->panelHeaderRight->ResumeLayout(false);
@@ -208,22 +206,15 @@ ref class HistoryForm : public System::Windows::Forms::Form {
 #pragma endregion
 
   private:
-    array<Transaction ^> ^ transactions;
     Button ^ selectedButton = nullptr;
 
-  private:
-    System::Void HistoryForm_Load(System::Object ^ sender,
-                                  System::EventArgs ^ e);
 
     void AddTransactionPanel(FlowLayoutPanel ^ flowLayoutPanel,
-                             Transaction ^ transaction, int index);
+                             Transaction ^ transaction);
 
     // Cập nhật kích thước Panel khi Form thay đổi kích thước
     void OnResize(FlowLayoutPanel ^ flowLayoutPanel, Object ^ sender,
                   EventArgs ^ e);
-
-  private:
-    void ChangeButtonColor(Button ^ button);
 
   private:
     System::Void fullContent_SizeChanged(System::Object ^ sender,

@@ -67,19 +67,6 @@ System::Void AuthForm::labelAuth_Click(System::Object ^ sender,
     this->labelForgotPw->Visible = true;
 }
 
-//System::Void AuthForm::btnDarkMode_Click(System::Object ^ sender,
-//                                         System::EventArgs ^ e) {
-//    if (theme == "light") {
-//        this->panelRightContent->BackColor = System::Drawing::Color::FromArgb(
-//            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-//            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-//            static_cast<System::Int32>(static_cast<System::Byte>(64)));
-//        this->theme = "dark";
-//    } else {
-//        this->panelRightContent->BackColor = System::Drawing::Color::White;
-//        this->theme = "light";
-//    }
-//}
 
 
 System::Void AuthForm::loadForm() {

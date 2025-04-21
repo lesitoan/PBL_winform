@@ -1,5 +1,5 @@
 ﻿#include "SelectReceiverForm.h"
-#include"GradientHelper.h"
+
 
 namespace BankingAppwinform {
 SelectReceiverForm::SelectReceiverForm(User ^ user) {
@@ -14,42 +14,23 @@ SelectReceiverForm::~SelectReceiverForm() {
     }
 }
 void SelectReceiverForm::loadAccHistory(User ^ user) {
-    array<Transaction ^> ^ transactions =
-        HandleFile::ReadTransactionArray("transactions.dat");
-    array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+    try {
+        selectAccHistory->Items->Clear();
 
-    String^ accNumber = user->AccountNumber;
-
-    accHistory = gcnew List<String ^>();
-
-    int count = 0;
-    int length = transactions->Length;
-
-    while (length > 0 && count < 5) {
-        if (transactions[length - 1]->getFromAccount() == accNumber &&
-            transactions[length - 1]->getToAccount() != "") {
-            for (int j = 0; j < users->Length; j++) {
-                if (users[j]->AccountNumber ==
-                        transactions[length - 1]->getToAccount() &&
-                    users[j]->getRole() == "user") {
-                    String ^ toAcc =
-                        users[j]->getBankName() + " - " +
-                        users[j]->getFullName() + " - " +
-                        transactions[length - 1]->getToAccount() +
-                        " - " +
-                        transactions[length - 1]->getAmount().ToString();
-                    accHistory->Add(toAcc);
-                    break;
-                }
-            }
-            count++;
+        array<String ^> ^ accHistoryString = UserService::GetHistoryReceivers(user->getAccountNumber());
+        if (accHistoryString == nullptr || accHistoryString->Length == 0) {
+            return;
         }
-        length--;
-    }
-    for (int i = 0; i < accHistory->Count; i++) {
-        selectAccHistory->Items->Add(accHistory[i]);
+
+        for (int i = 0; i < accHistoryString->Length; i++) {
+            selectAccHistory->Items->Add(accHistoryString[i]);
+        }
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->ToString(), L"Lỗi", MessageBoxButtons::OK,
+                         MessageBoxIcon::Error);
     }
 }
+
 System::Void SelectReceiverForm::btnSubmit_Click(System::Object ^ sender,
                                                  System::EventArgs ^ e) {
     if (selectAccHistory->Text == "") {

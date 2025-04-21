@@ -16,36 +16,39 @@ HistoryForm::~HistoryForm() {
     }
 }
 
-System::Void HistoryForm::HistoryForm_Load(System::Object ^ sender,
-                                           System::EventArgs ^ e) {
-
-    
-}
-
 void HistoryForm::loadTransactionsHistory() {
-    transactions = HandleFile::ReadTransactionArray("transactions.dat");
-    int index = 0;
-    String^ accountNumber = GlobalData::GetCurrentUser()->getAccountNumber();
-    for each (Transaction ^ transaction in transactions) {
-        // lich su rut tien
-        if (transaction->getFromAccount() == accountNumber &&
-            transaction->getToAccount() == "") {
-            AddTransactionPanel(rightContent, transaction, index);
-            index++;
+    try {
+        String ^ accountNumber = GlobalData::GetCurrentUser()->getAccountNumber();
+        array <Transaction^>^ transactions = TransactionServices::FindTransactionByAccNum(accountNumber);
+        if (transactions == nullptr || transactions->Length == 0) {
+            return;
+        }
 
-          // lich su chuyen tien
-        } else if (transaction->getFromAccount() == accountNumber || 
-            transaction->getToAccount() == accountNumber) {
-            AddTransactionPanel(leftContent, transaction, index);
-            index++;
-        };
+        leftContent->Controls->Clear();
+        rightContent->Controls->Clear();
+        
+        for (int i = transactions->Length - 1; i >= 0; i--) {
+            // lich su rut tien
+            if (transactions[i]->getFromAccount() == accountNumber &&
+                transactions[i]->getToAccount() == "") {
+                AddTransactionPanel(rightContent, transactions[i]);
+
+                // lich su chuyen tien
+            } else if (transactions[i]->getFromAccount() == accountNumber ||
+                       transactions[i]->getToAccount() == accountNumber) {
+                AddTransactionPanel(leftContent, transactions[i]);
+            };
+        }
+        leftContent->PerformLayout();
+        rightContent->PerformLayout();
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->ToString(), L"Error", MessageBoxButtons::OK,
+                         MessageBoxIcon::Error);
     }
-    leftContent->PerformLayout();
-    rightContent->PerformLayout();
 }
 
 void HistoryForm::AddTransactionPanel(FlowLayoutPanel ^ flowLayoutPanel,
-                                      Transaction ^ transaction, int index) {
+                                      Transaction ^ transaction) {
     Panel ^ panel = gcnew Panel();
     panel->BackColor = Color::White;
     panel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
@@ -113,18 +116,6 @@ void HistoryForm::AddTransactionPanel(FlowLayoutPanel ^ flowLayoutPanel,
     panel->Controls->Add(lblAmount);
     yOffset += lineHeight;
 
-    // Số dư cuối
-    Label ^ lblBalance = gcnew Label();
-    /*lblBalance->Text =
-        L"Số dư cuối: " + transaction->getBalance().ToString() + " VND";*/
-    /*lblBalance->Text = L"Số dư cuối: " + "999999" + " VND";
-    lblBalance->ForeColor = Color::Blue;
-    lblBalance->Font = gcnew System::Drawing::Font("Arial", 9, FontStyle::Bold);
-    lblBalance->Location = Point(10, yOffset);
-    lblBalance->AutoSize = true;
-    panel->Controls->Add(lblBalance);
-    yOffset += lineHeight;*/
-
     // Nội dung giao dịch
     Label ^ lblContent = gcnew Label();
     lblContent->Text = L"Nội dung giao dịch: " + transaction->getMessage();
@@ -153,17 +144,6 @@ void HistoryForm::OnResize(FlowLayoutPanel ^ flowLayoutPanel, Object ^ sender,
     }
 }
 
-void HistoryForm::ChangeButtonColor(Button ^ button) {
-    if (selectedButton != nullptr) {
-        selectedButton->BackColor = System::Drawing::Color::Teal;
-    }
-    selectedButton = button;
-    selectedButton->BackColor = System::Drawing::Color::FromArgb(
-        static_cast<System::Int32>(static_cast<System::Byte>(0)),
-        static_cast<System::Int32>(static_cast<System::Byte>(64)),
-        static_cast<System::Int32>(static_cast<System::Byte>(64)));
-}
-
 System::Void HistoryForm::fullContent_SizeChanged(System::Object ^ sender,
                                                   System::EventArgs ^ e) {
     int parentWidth = fullContent->ClientSize.Width;
@@ -190,4 +170,5 @@ System::Void HistoryForm::rightContent_SizeChanged(System::Object ^ sender,
                                                    System::EventArgs ^ e) {
     OnResize(rightContent, sender, e);
 }
+
 }; // namespace BankingAppwinform

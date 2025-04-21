@@ -173,7 +173,7 @@ System::Void AdminSavingMoneyForm::dataGridViewRequests_CellClick(
 
             
             // Xử lý thanh toán yêu cầu rút tiết kiệm
-            SavingService::OnFinishSavingAdmin(savingItem);
+            SavingServices::OnFinishSavingAdmin(savingItem);
 
             MessageBox::Show(L"Đã thanh toán yêu cầu rút tiết kiệm thành công",
                              L"Thông báo", MessageBoxButtons::OK,

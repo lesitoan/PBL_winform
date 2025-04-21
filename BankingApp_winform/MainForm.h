@@ -13,6 +13,8 @@
 #include "ClientSavingMoneyForm.h"
 #include"GradientHelper.h"
 
+#include "AuthServices.h"
+
 namespace BankingAppwinform {
 
 using namespace System;
@@ -798,15 +800,11 @@ ref class MainForm : public System::Windows::Forms::Form {
 
     System::Void btnNotification_Click(System::Object ^ sender,
                                        System::EventArgs ^ e);
-
     void loadAvatar();
 
 private:
     System::Void btnSaveMoney_Click(System::Object ^ sender,
                                     System::EventArgs ^ e);
-
-//private:
-//    System::Void blbShowBalance_Click(System::Object ^ sender, System::EventArgs ^ e);
 
 private:
     System::Void labelBalance_Click(System::Object ^ sender,

@@ -62,6 +62,38 @@ ref class NotificationsRepository {
         }
     }
 
+    static void UpdateById(String ^ id, Notifications^ notification) {
+        try {
+            CheckLastUpdateTime();
+            if (notificationsCache == nullptr) {
+                return;
+            }
+            for (int i = 0; i < notificationsCache->Length; i++) {
+                if (notificationsCache[i]->NotificationId == id) {
+                    notificationsCache[i] = notification;
+                    break;
+                }
+            }
+            HandleFile::WriteArrayToFile<Notifications ^>(notificationsCache,
+                                                          fileName);
+        } catch (Exception ^ ex) {
+            throw gcnew Exception("UpdateById transaction error !!!", ex);
+        }
+    }
+
+    static void UpdateAll(array<Notifications ^> ^ notifications) {
+        try {
+            if (notifications == nullptr || notifications->Length == 0) {
+                return;
+            }
+            notificationsCache = notifications;
+            HandleFile::WriteArrayToFile<Notifications ^>(notificationsCache,
+                                                          fileName);
+        } catch (Exception ^ ex) {
+            throw gcnew Exception("UpdateAll transaction error !!!", ex);
+        }
+    }
+
     static void DeleteCache() {
         try {
             notificationsCache = nullptr;
