@@ -80,19 +80,10 @@ System::Void AccountForm::btnLockAccount_Click(System::Object ^ sender,
         return;
     }
 
-    array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
     User ^ userSelected = GlobalData::GetCurrentUser();
 
-    if (users == nullptr) {
-        return;
-    }
-    for (int i = 0; i < users->Length; i++) {
-        if (users[i]->getAccountNumber() == userSelected->getAccountNumber()) {
-            users[i]->Status = 1 - users[i]->Status;
-            break;
-        }
-    }
-    HandleFile::WriteUserArray(users, "users.dat");
+    AuthServices::LockAccount(userSelected->getPhoneNumber());
+
     MessageBox::Show(L"Tài khoản của bạn đã bị khóa !", L"Cảnh báo",
                      MessageBoxButtons::OK, MessageBoxIcon::Warning);
     GlobalData::SetCurrentUser(nullptr);

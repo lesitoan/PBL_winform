@@ -4,6 +4,11 @@
 #include "RecurringPayments.h"
 #include "User.h"
 #include "Validate.h"
+#include "RecurringPaymentsRepository.h"
+#include "UserRepository.h"
+#include "CustomerCodes.h"
+
+#include "CustomerCodesRepository.h"
 
 namespace BankingAppwinform {
 

@@ -3,6 +3,8 @@
 #include "GlobalData.h"
 #include "HandleFile.h"
 #include "RecurringPayments.h"
+#include"RecurringPaymentServices.h"
+#include "UserServices.h"
 
 namespace BankingAppwinform {
 
@@ -19,20 +21,13 @@ using namespace System::Drawing;
 public
 ref class RecurringPaymentFollowForm : public System::Windows::Forms::Form {
   public:
-    RecurringPaymentFollowForm(void) {
-        InitializeComponent();
-        LoadRecurringPaymentFollow();
-    }
+    RecurringPaymentFollowForm(void);
 
   protected:
     /// <summary>
     /// Clean up any resources being used.
     /// </summary>
-    ~RecurringPaymentFollowForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~RecurringPaymentFollowForm();
 
   private:
     System::Windows::Forms::FlowLayoutPanel ^ flowLayoutPanelFollow;
@@ -87,112 +82,10 @@ ref class RecurringPaymentFollowForm : public System::Windows::Forms::Form {
   private:
     /// <summary>
   private:
-    Void LoadRecurringPaymentFollow() {
-
-        this->flowLayoutPanelFollow->Controls->Clear();
-
-        array<RecurringPayments ^> ^ recurringPayments =
-            HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
-
-        array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-        if (users == nullptr || users->Length == 0) {
-            return;
-        }
-        if (recurringPayments == nullptr || recurringPayments->Length == 0) {
-            return;
-        }
-        for (int i = 0; i < recurringPayments->Length; i++) {
-            if (recurringPayments[i]->UserAccountNumber !=
-                GlobalData::GetCurrentUser()->AccountNumber)
-                continue;
-
-            User ^ company =
-                findCompanyByCodeId(recurringPayments[i]->CustomerCodeId);
-            if (company == nullptr)
-                continue;
-
-            Label ^ label = gcnew Label();
-            label->AutoSize = false; // Tắt AutoSize để mình tự đặt kích thước
-            label->Height = 30;      // Chiều cao dòng
-            label->Width = flowLayoutPanelFollow->ClientSize.Width -
-                           20; // chừa 10 padding mỗi bên
-            label->Font = gcnew System::Drawing::Font("Segoe UI", 10);
-            label->Cursor = Cursors::Hand;
-            label->Margin = System::Windows::Forms::Padding(
-                10, 10, 10, 0); // padding giữa các dòng
-            label->BackColor = Color::WhiteSmoke;
-            label->Padding = System::Windows::Forms::Padding(
-                5, 5, 5, 5); // padding trong label
-            label->TextAlign = ContentAlignment::MiddleLeft;
-
-            label->Text = L"Công ty: " + company->FullName +
-                          L" | Ngày đến hạn: " +
-                          recurringPayments[i]->PaymentDay;
-
-            label->Tag = recurringPayments[i]->Id;
-            label->Click += gcnew EventHandler(
-                this, &RecurringPaymentFollowForm::labelFollow_Click);
-
-            this->flowLayoutPanelFollow->Controls->Add(label);
-        }
-    }
-
-    User ^ findCompanyByCodeId(String ^ codeID) {
-        array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-        array<CustomerCodes ^> ^ customerCodes =
-            HandleFile::ReadCustomerCodesArray("customerCodes.dat");
-        if (customerCodes == nullptr || customerCodes->Length == 0)
-            return nullptr;
-        if (users == nullptr || users->Length == 0)
-            return nullptr;
-
-        for (int i = 0; i < customerCodes->Length; i++) {
-            if (customerCodes[i]->Id != codeID) {
-                continue;
-            }
-            for (int j = 0; j < users->Length; j++) {
-                if (customerCodes[i]->CompanyAccountNumber ==
-                    users[j]->AccountNumber) {
-                    return users[j];
-                }
-            }
-            return nullptr;
-        }
-    }
-
-
+    Void LoadRecurringPaymentFollow();
 
     System::Void
-        labelFollow_Click(System::Object ^ sender, System::EventArgs ^ e) {
-        Label ^ clickedLabel = dynamic_cast<Label ^>(sender);
-        if (clickedLabel != nullptr) {
-            String ^ recurringPaymentId =
-                safe_cast<String ^>(clickedLabel->Tag);
-            System::Windows::Forms::DialogResult result;
-            result = MessageBox::Show(L"Bạn có chắc muốn xóa?", L"Xóa",
-                                      MessageBoxButtons::YesNo,
-                                      MessageBoxIcon::Question);
-            if (result == System::Windows::Forms::DialogResult::Yes) {
-                array<RecurringPayments ^> ^ allPayments =
-                    HandleFile::ReadRecurringPaymentsArray(
-                        "recurringPayments.dat");
-                List<RecurringPayments ^> ^ updatedPayments =
-                    gcnew List<RecurringPayments ^>();
-                for each (RecurringPayments ^ p in allPayments) {
-                    if (p->Id != recurringPaymentId) { // So sánh theo Id
-                        updatedPayments->Add(p);
-                    }
-                }
-                // Ghi lại file
-                HandleFile::WriteRecurringPaymentsArray(
-                    updatedPayments->ToArray(), "recurringPayments.dat");
-                MessageBox::Show(L"Đã xóa thanh toán định kỳ.", "Thành công",
-                                 MessageBoxButtons::OK,
-                                 MessageBoxIcon::Information);
-                this->LoadRecurringPaymentFollow();
-            }
-        }
-    }
+        labelFollow_Click(System::Object ^ sender, System::EventArgs ^ e);
 
 
 };

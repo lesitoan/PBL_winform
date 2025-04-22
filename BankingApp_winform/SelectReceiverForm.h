@@ -3,6 +3,9 @@
 #include "Transaction.h"
 #include "User.h"
 #include "SelectReceiverEventArgs.h"
+#include "UserServices.h"
+
+#include"GradientHelper.h"
 
 namespace BankingAppwinform {
 

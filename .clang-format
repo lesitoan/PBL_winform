@@ -1,3 +1,7 @@
 BasedOnStyle: LLVM
-BreakBeforeBraces: Attach
 IndentWidth: 4
+BreakBeforeBraces: Attach
+AllowShortFunctionsOnASingleLine: None
+AllowShortBlocksOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+ColumnLimit: 0

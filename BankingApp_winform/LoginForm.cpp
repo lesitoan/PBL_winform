@@ -1,8 +1,10 @@
 ﻿#include "LoginForm.h"
 
+
 namespace BankingAppwinform {
-LoginForm::LoginForm(void) { 
-    this->InitializeComponent(); 
+
+LoginForm::LoginForm(void) {
+    this->InitializeComponent();
 }
 
 LoginForm::~LoginForm() {
@@ -12,29 +14,14 @@ LoginForm::~LoginForm() {
 }
 System::Void LoginForm::btnSubmit_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
+    try {
 
-    String ^ phone = this->phoneNumber->Text;
-    String ^ pass = this->password->Text;
-    if (phone == "" || pass == "") {
-        MessageBox::Show(L"Vui lòng nhập đầy đủ thông tin");
-        return;
-    } else {
-        array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-        for each (User ^ user in users) {
-            if (user->getPhoneNumber() == phone &&
-                user->getPassword() == pass) {
-                if (user->Status == 0) {
-                    MessageBox::Show(L"Tài khoản của bạn đã bị khóa");
-                    return;
-                }
+        User ^ user = AuthServices::Login(this->phoneNumber->Text, this->password->Text);
+        MessageBox::Show(L"Đăng nhập thành công", L"Thành công", MessageBoxButtons::OK, MessageBoxIcon::Information);
+        LoginSuccess(this, EventArgs::Empty);
 
-                GlobalData::SetCurrentUser(user);
-                MessageBox::Show(L"Đăng nhập thành công");
-                LoginSuccess(this, EventArgs::Empty);
-                return;
-            }
-        }
-        MessageBox::Show(L"Đăng nhập thất bại");
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->Message, L"Lỗi đăng nhập", MessageBoxButtons::OK, MessageBoxIcon::Error);
     }
 }
 

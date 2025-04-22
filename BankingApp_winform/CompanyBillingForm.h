@@ -1,12 +1,16 @@
 ﻿#pragma once
 
 #include "GlobalData.h"
-#include "HandleFile.h"
 #include "RecurringPayments.h"
 #include "User.h"
+#include "UserRepository.h"
 #include "CustomerCodes.h"
-#include "Utils.h"
 #include "Notifications.h"
+#include "RecurringPaymentServices.h"
+
+#include <cstdlib>
+#include <ctime>
+
 
 ref class AdminForm;
 namespace BankingAppwinform {
@@ -326,24 +330,6 @@ ref class CompanyBillingForm : public System::Windows::Forms::Form {
 #pragma endregion
 
   private:
-    //String^ companyAccountNumber;
-
-    //void LoadPaymentCodes();
-
-    //void LoadRecurringPaymentRequest();
-
-    //System::Void dataGridViewRecurring_CellClick(
-    //    System::Object ^ sender,
-    //    System::Windows::Forms::DataGridViewCellEventArgs ^ e);
-
-    //System::Void btnAccount_Click(System::Object ^ sender,
-    //                              System::EventArgs ^ e);
-
-    //System::Void btnShowCode_Click(System::Object ^ sender,
-    //                               System::EventArgs ^ e);
-
-    //System::Void btnLoadRecurring_Click(System::Object ^ sender,
-    //                                    System::EventArgs ^ e);
 
     void loadRecurringPaymentData(String ^ companyAccNumber);
 

@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include "RegisterSavingForm.h"
 #include "GradientHelper.h"
+#include "SavingServices.h"
+#include "SavingCustomersRepository.h"
+
 namespace BankingAppwinform {
 
 using namespace System;
@@ -476,7 +479,10 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->ResumeLayout(false);
     }
 #pragma endregion
+  
+
   private:
+
     System::Void btnTermDeposit_Click(System::Object ^ sender,
                                       System::EventArgs ^ e);
 
@@ -488,6 +494,9 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
     void AddSavingItemToFlow(SavingCustomers ^ saving);
 
     System::Void EndSaving_Click(System::Object ^ sender,
+                                 System::EventArgs ^ e);
+
+    System::Void OnAddSavingSuccess(System::Object ^ sender,
                                  System::EventArgs ^ e);
 
 };

@@ -1,21 +1,24 @@
+#include "ISaveToFile.h"
+
 #ifndef USER_H
 #define USER_H
 
 using namespace System;
+using namespace System::IO;
 
 public
-ref class User {
+ref class User : public ISaveToFile {
   private:
     String ^ fullName;
     String ^ password;
     String ^ phoneNumber;
-    String^ accountNumber;
+    String ^ accountNumber;
     double balance;
     String ^ role; // user, admin, company
     int pin;
     String ^ bankName;
     int status;
-    String^ serviceId;
+    String ^ serviceId;
     String ^ urlAvatar;
 
   public:
@@ -35,7 +38,8 @@ ref class User {
     }
     User(String ^ _fullName, String ^ _password, String ^ _phoneNumber,
          String ^ _accountNumber, double _balance, String ^ _role, int _pin,
-         String ^ _bankName,int _status,  String^ _serviceId, String^ _avatar) {
+         String ^ _bankName, int _status, String ^ _serviceId,
+         String ^ _avatar) {
         fullName = _fullName;
         password = _password;
         phoneNumber = _phoneNumber;
@@ -69,37 +73,78 @@ ref class User {
     }
 
     String ^ getFullName() { return fullName; } String ^
-        getPassword() { return password; }
-    String ^ getAccountNumber() {
-        return accountNumber;
+        getPassword() { return password; } String ^ getAccountNumber() {
+            return accountNumber;
+        } double getBalance() {
+        return balance;
     }
-    double getBalance() { return balance; }
-    String ^ getRole() { return role; } int getPin() { return pin; }
+    String ^ getRole() { return role; } int getPin() {
+        return pin;
+    }
     String ^ getPhoneNumber() { return phoneNumber; } String ^
         getBankName() { return bankName; } String ^
         getServiceId() {
-        return serviceId;
-    }
+            return serviceId;
+        }
 
-    void setPassword(String ^ _password) { this->password = _password; }
-    void setPin(int _pin) { this->pin = _pin; }
-    void setBalance(double _balance) { this->balance = _balance; }
+        void setPassword(String ^ _password) {
+        this->password = _password;
+    }
+    void setPin(int _pin) {
+        this->pin = _pin;
+    }
+    void setBalance(double _balance) {
+        this->balance = _balance;
+    }
 
     property String ^ FullName { String ^ get() { return fullName; } }
 
-    property String ^
-        AccountNumber { String ^ get() { return accountNumber; }
-    }
+        property String ^
+        AccountNumber {
+            String ^ get() { return accountNumber; }
+        }
 
-    property int Status {
-        int get() { return status; }
-        void set(int value) { status = value; }
+        property int Status {
+        int get() {
+            return status;
+        }
+        void set(int value) {
+            status = value;
+        }
     }
     property String ^ UrlAvatar {
-        String ^ get() { return urlAvatar; }
-        void set(String ^ value) {
+        String ^ get() { return urlAvatar; } void set(String ^ value) {
             urlAvatar = value;
         }
+    }
+
+        virtual void
+        WriteTo(BinaryWriter ^ writer) {
+        writer->Write(getFullName());
+        writer->Write(getPassword());
+        writer->Write(getPhoneNumber());
+        writer->Write(getAccountNumber());
+        writer->Write(getBalance());
+        writer->Write(getRole());
+        writer->Write(getPin());
+        writer->Write(getBankName());
+        writer->Write(Status);
+        writer->Write(getServiceId());
+        writer->Write(UrlAvatar);
+    }
+
+    virtual void ReadFrom(BinaryReader ^ reader) {
+        fullName = reader->ReadString();
+        password = reader->ReadString();
+        phoneNumber = reader->ReadString();
+        accountNumber = reader->ReadString();
+        balance = reader->ReadDouble();
+        role = reader->ReadString();
+        pin = reader->ReadInt32();
+        bankName = reader->ReadString();
+        Status = reader->ReadInt32();
+        serviceId = reader->ReadString();
+        UrlAvatar = reader->ReadString();
     }
 };
 

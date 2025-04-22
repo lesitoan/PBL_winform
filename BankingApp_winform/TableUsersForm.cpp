@@ -16,14 +16,6 @@ TableUsersForm::~TableUsersForm() {
     }
 }
 
-System::Void TableUsersForm::dataGridView1_CellContentClick(
-    System::Object ^ sender,
-    System::Windows::Forms::DataGridViewCellEventArgs ^ e) {}
-
-System::Void TableUsersForm::AdminClientForm_Load(System::Object ^ sender,
-                                                  System::EventArgs ^ e) {
-}
-
 System::Void TableUsersForm::btnModify_Click(System::Object ^ sender,
                                              System::EventArgs ^ e) {
     if (this->userSelected == nullptr) {
@@ -40,34 +32,40 @@ System::Void TableUsersForm::btnModify_Click(System::Object ^ sender,
 }
 
 void TableUsersForm::loadUsers(array<User ^> ^ usersArr) {
-    dataGridViewUsers->Rows->Clear();
+    try {
+        dataGridViewUsers->Rows->Clear();
 
-    if (usersArr == nullptr) {
-        usersArr = HandleFile::ReadUserArray("users.dat");
-        this->users = usersArr;
-    }
-    if (usersArr == nullptr) {
+        if (usersArr == nullptr) {
+            usersArr = UserService::GetAllUsers();
+            this->users = usersArr;
+        }
+        if (usersArr == nullptr) {
+            return;
+        }
+        for (int i = 0; i < usersArr->Length; i++) {
+
+            if (usersArr[i]->getRole() == "admin") {
+                continue;
+            }
+            String ^ status = usersArr[i]->Status == 1 ? L"Hoạt động" : L"Khóa";
+            dataGridViewUsers->Rows->Add(
+                usersArr[i]->getFullName(), usersArr[i]->getPhoneNumber(),
+                usersArr[i]->getBalance(),
+
+                usersArr[i]->getAccountNumber(), usersArr[i]->getRole(),
+                usersArr[i]->getBankName(), status);
+
+            int lastRow = dataGridViewUsers->Rows->Count - 1;
+            dataGridViewUsers->Rows[lastRow]->Tag = usersArr[i];
+        }
+
+        this->dataGridViewUsers->CellClick += gcnew DataGridViewCellEventHandler(
+            this, &TableUsersForm::handleUserRowClick);    
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->ToString(), L"Lỗi", MessageBoxButtons::OK,
+                         MessageBoxIcon::Error);
         return;
     }
-    for (int i = 0; i < usersArr->Length; i++) {
-
-        if (usersArr[i]->getRole() == "admin") {
-            continue;
-        }
-        String ^ status = usersArr[i]->Status == 1 ? L"Hoạt động" : L"Khóa";
-        dataGridViewUsers->Rows->Add(
-            usersArr[i]->getFullName(), usersArr[i]->getPhoneNumber(),
-            usersArr[i]->getBalance(),
-
-            usersArr[i]->getAccountNumber(), usersArr[i]->getRole(),
-            usersArr[i]->getBankName(), status);
-
-        int lastRow = dataGridViewUsers->Rows->Count - 1;
-        dataGridViewUsers->Rows[lastRow]->Tag = usersArr[i];
-    }
-
-    this->dataGridViewUsers->CellClick += gcnew DataGridViewCellEventHandler(
-        this, &TableUsersForm::handleUserRowClick);
 }
 
 
@@ -92,7 +90,7 @@ System::Void TableUsersForm::handleUserRowClick(
 System::Void TableUsersForm::btnLock_Click(System::Object ^ sender,
                                            System::EventArgs ^ e) {
     System::Windows::Forms::DialogResult result;
-    if (userSelected == nullptr) {
+    if (this->userSelected == nullptr) {
         MessageBox::Show(L"Vui lòng chọn một tài khoản", L"Thông báo",
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
         return;
@@ -107,13 +105,10 @@ System::Void TableUsersForm::btnLock_Click(System::Object ^ sender,
     if (users == nullptr) {
         return;
     }
-    for (int i = 0; i < users->Length; i++) {
-        if (users[i]->getAccountNumber() == userSelected->getAccountNumber()) {
-            users[i]->Status = 1 - users[i]->Status;
-            break;
-        }
-    }
-    HandleFile::WriteUserArray(users, "users.dat");
+    int status = userSelected->Status == 1 ? 0 : 1;
+
+    UserService::UpdateStatus(userSelected->getAccountNumber(), status);
+
     MessageBox::Show(L"Thay đổi đã được lưu lại", L"Thành công",
                      MessageBoxButtons::OK, MessageBoxIcon::Information);
     loadUsers(nullptr);
@@ -121,24 +116,20 @@ System::Void TableUsersForm::btnLock_Click(System::Object ^ sender,
 
 void TableUsersForm::btnFind_Click(System::Object ^ sender,
                                    System::EventArgs ^ e) {
-    String ^ find = this->findText->Text;
-    if (find == "")
-        users = HandleFile::ReadUserArray("users.dat");
+    try {
+        String ^ find = this->findText->Text;
+        if (find == "")
+            this->loadUsers(nullptr);
 
-    List<User ^> ^ matchedUsers = gcnew List<User ^>();
+        array<User ^> ^ matchedUsers = UserService::FilterUserMatchName(find);
+        loadUsers(matchedUsers);
 
-    for (int i = 0; i < users->Length; i++) {
-        // Chuyển input thành regex pattern
-        String ^ pattern = ".*" + Regex::Escape(find) + ".*";
-        // Kiểm tra tên có chứa input không (không phân biệt hoa thường)
-        bool isMatch = Regex::IsMatch(users[i]->getFullName(), pattern,
-                                      RegexOptions::IgnoreCase);
-        if (isMatch) {
-            matchedUsers->Add(users[i]);
-        }
+        this->findText->Text = "";
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->ToString(), L"Thông báo", MessageBoxButtons::OK,
+                         MessageBoxIcon::Information);
+        return;
     }
-    this->findText->Text = "";
-    loadUsers(matchedUsers->ToArray());
 }
 
 System::Void TableUsersForm::btnAddUser_Click(System::Object ^ sender,
@@ -153,4 +144,5 @@ System::Void TableUsersForm::onCreateUserSuccess(System::Object ^ sender,
                                                  System::EventArgs ^ e) {
     loadUsers(nullptr);
 }
+
 }; // namespace BankingAppwinform

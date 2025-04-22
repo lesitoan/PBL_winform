@@ -167,12 +167,25 @@
     <ClInclude Include="AdminSavingMoneyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="AuthServices.h" />
     <ClInclude Include="ClientSavingMoneyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CodeDetailForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="CustomerCodeDetailServices.h" />
+    <ClInclude Include="CustomerCodeDetailsRepository.h" />
+    <ClInclude Include="CustomerCodeServices.h" />
+    <ClInclude Include="CustomerCodesRepository.h" />
+    <ClInclude Include="Notifications.h" />
+    <ClInclude Include="NotificationServices.h" />
+    <ClInclude Include="RecurringPaymentServices.h" />
+    <ClInclude Include="SavingServices.h" />
+    <ClInclude Include="ServiceServices.h" />
+    <ClInclude Include="TransactionServices.h" />
+    <ClInclude Include="TransactionsRepository.h" />
+    <ClInclude Include="ISaveToFile.h" />
     <ClInclude Include="ModifyServiceForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -194,17 +207,19 @@
     <ClInclude Include="NotificationForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Notifications.h" />
     <ClInclude Include="CustomerCodes.h" />
     <ClInclude Include="CustomerCodeDetails.h" />
+    <ClInclude Include="NotificationsRepository.h" />
     <ClInclude Include="RecurringPaymentFollowForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="RecurringPayments.h" />
+    <ClInclude Include="RecurringPaymentsRepository.h" />
     <ClInclude Include="RegisterSavingForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SavingCustomers.h" />
+    <ClInclude Include="SavingCustomersRepository.h" />
     <ClInclude Include="SelectReceiverEventArgs.h" />
     <ClInclude Include="SelectReceiverForm.h">
       <FileType>CppForm</FileType>
@@ -213,6 +228,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Services.h" />
+    <ClInclude Include="ServicesRepository.h" />
     <ClInclude Include="SetAvatarForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -261,6 +277,8 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="User.h" />
+    <ClInclude Include="UserRepository.h" />
+    <ClInclude Include="UserServices.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Validate.h" />
     <ClInclude Include="WithdrawMoneyForm.h">
@@ -368,19 +386,59 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
+    <None Include="customerCodeDetails.dat" />
+    <None Include="customerCodes.dat" />
+    <None Include="recurringPayments.dat" />
+    <None Include="savingCustomers.dat" />
+    <None Include="services.dat" />
+    <None Include="transactions.dat" />
+    <None Include="users.dat" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="BankingApp_winform.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Images\Accounform header.jpg" />
     <Image Include="Images\account.png" />
+    <Image Include="Images\account2.png" />
+    <Image Include="Images\AccountFormBackGround.jpg" />
+    <Image Include="Images\AuthForm.jpg" />
     <Image Include="Images\banking-technology-concept-cropped.png" />
+    <Image Include="Images\code_service.png" />
+    <Image Include="Images\customer.png" />
     <Image Include="Images\data-transfe1r.png" />
+    <Image Include="Images\data-transfe2.png" />
+    <Image Include="Images\delete.png" />
+    <Image Include="Images\delete2.png" />
+    <Image Include="Images\electric.png" />
     <Image Include="Images\history1.png" />
+    <Image Include="Images\history2.png" />
+    <Image Include="Images\Icon-app.ico" />
+    <Image Include="Images\iconNotification.png" />
+    <Image Include="Images\istockphoto-1481681927-612x612.jpg" />
+    <Image Include="Images\istockphoto-858983438-612x612.jpg" />
+    <Image Include="Images\LoginForm.jpg" />
     <Image Include="Images\logout1.png" />
+    <Image Include="Images\logout2.png" />
     <Image Include="Images\MESSI.jpg" />
     <Image Include="Images\more1.png" />
+    <Image Include="Images\more2.png" />
+    <Image Include="Images\plus.png" />
+    <Image Include="Images\plus2.png" />
+    <Image Include="Images\plus3.png" />
+    <Image Include="Images\savingMoney.png" />
+    <Image Include="Images\service.png" />
+    <Image Include="Images\Thiết kế chưa có tên (7).jpg" />
+    <Image Include="Images\tk_dinh_ki.png" />
+    <Image Include="Images\transaction.png" />
+    <Image Include="Images\undo.png" />
+    <Image Include="Images\undo1.png" />
+    <Image Include="Images\undo2.png" />
+    <Image Include="Images\Untitled-2.png" />
+    <Image Include="Images\user.png" />
+    <Image Include="Images\water.png" />
     <Image Include="Images\withdraw1.png" />
+    <Image Include="Images\withdraw2.png" />
     <Image Include="Images\—Pngtree—bank icon logo_15456350.png" />
   </ItemGroup>
   <ItemGroup>
@@ -401,6 +459,13 @@
       <Lcid>0</Lcid>
       <Isolated>false</Isolated>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="historyUpdateData.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Images\TP.mp4" />
+    <Media Include="Images\VideoAuthForm.mp4" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

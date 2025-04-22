@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include "AdminForm.h"
-#include "HandleFile.h"
 #include "TableUsersForm.h"
 #include "User.h"
+#include "UserServices.h"
 #include "Validate.h"
 
 namespace BankingAppwinform {
@@ -17,17 +17,10 @@ using namespace System::Drawing;
 public
 ref class EditUserForm : public System::Windows::Forms::Form {
   public:
-    EditUserForm(User ^ userSelected) {
-        InitializeComponent();
-        this->loadUserInfo(userSelected);
-    }
+    EditUserForm(User ^ userSelected);
 
   protected:
-    ~EditUserForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~EditUserForm();
 
   private:
     System::Windows::Forms::Button ^ btnUndo;
@@ -528,9 +521,11 @@ ref class EditUserForm : public System::Windows::Forms::Form {
     }
 #pragma endregion
   private:
+    User ^ userSelected;
+
     System::Void btnUndo_Click(System::Object ^ sender, System::EventArgs ^ e);
 
-    void loadUserInfo(User ^ user);
+    void loadUserInfo();
 
     System::Void btnSubmit_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);

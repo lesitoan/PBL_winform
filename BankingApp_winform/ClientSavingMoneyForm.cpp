@@ -1,10 +1,10 @@
 ﻿#include "ClientSavingMoneyForm.h"
-#include"GradientHelper.h"
 
 namespace BankingAppwinform {
 ClientSavingMoneyForm::ClientSavingMoneyForm(void) {
     InitializeComponent();
     loadSavingCustomers();
+
     GradientColorHelper::ApplyGradient(this);
     GradientColorHelper::ApplyGradient(this->flowLayoutSavingMoney);
     GradientColorHelper::ApplyRoundedCorners(this->btnTermDeposit, 8);
@@ -26,6 +26,8 @@ ClientSavingMoneyForm::btnTermDeposit_Click(System::Object ^ sender,
                                             System::EventArgs ^ e) {
     RegisterSavingForm ^ registerSavingForm =
         gcnew RegisterSavingForm("termDeposit");
+    registerSavingForm->AddSavingSuccess +=
+        gcnew EventHandler(this, &ClientSavingMoneyForm::OnAddSavingSuccess);
     registerSavingForm->ShowDialog();
 }
 
@@ -34,16 +36,19 @@ ClientSavingMoneyForm::btnNonTermDeposit_Click(System::Object ^ sender,
                                                System::EventArgs ^ e) {
     RegisterSavingForm ^ registerSavingForm =
         gcnew RegisterSavingForm("nonTermDeposit");
+    registerSavingForm->AddSavingSuccess +=
+        gcnew EventHandler(this, &ClientSavingMoneyForm::OnAddSavingSuccess);
     registerSavingForm->ShowDialog();
 }
 
 void ClientSavingMoneyForm::loadSavingCustomers() {
 
-    flowLayoutSavingMoney->Controls->Clear();
+    try {
+        flowLayoutSavingMoney->Controls->Clear();
 
-    array<SavingCustomers ^> ^ savingItems =
-        HandleFile::ReadSavingCustomersArray("savingCustomers.dat");
+        array<SavingCustomers ^> ^ savingItems = SavingCustomersRepository::GetAll();
 
+<<<<<<< HEAD
     if (savingItems == nullptr || savingItems->Length == 0) {
         Label ^ noSavingLabel = gcnew Label();
         noSavingLabel->Text = L"Chưa có tiết kiệm nào";
@@ -59,7 +64,28 @@ void ClientSavingMoneyForm::loadSavingCustomers() {
         if (saving->UserAccountNumber ==
             GlobalData::GetCurrentUser()->AccountNumber) {
             AddSavingItemToFlow(saving);
+=======
+        if (savingItems == nullptr || savingItems->Length == 0) {
+            Label ^ noSavingLabel = gcnew Label();
+            noSavingLabel->Text = L"Chưa có tiết kiệm nào";
+            noSavingLabel->ForeColor = Color::White;
+            noSavingLabel->Font = gcnew System::Drawing::Font(
+                "Times New Roman", 12, FontStyle::Regular);
+            noSavingLabel->AutoSize = true;
+            flowLayoutSavingMoney->Controls->Add(noSavingLabel);
+            return;
+>>>>>>> 24ba2f281ab229801caf2d625350111fc8edfa73
         }
+
+        for (int i = savingItems->Length - 1; i >= 0; i--) {
+            if (savingItems[i]->UserAccountNumber == GlobalData::GetCurrentUser()->AccountNumber) {
+                AddSavingItemToFlow(savingItems[i]);
+            }
+        }
+
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->Message, L"Thông báo", MessageBoxButtons::OK,
+                         MessageBoxIcon::Error);
     }
 }
 
@@ -130,8 +156,13 @@ void ClientSavingMoneyForm::AddSavingItemToFlow(SavingCustomers ^ saving) {
     Label ^ endLabel = gcnew Label();
     endLabel->Text =
         saving->Status == 0 ? L"Ấn vào đây để kết thúc tiết kiệm" : L"";
+<<<<<<< HEAD
     endLabel->ForeColor = Color::LightYellow;
     endLabel->Font = gcnew System::Drawing::Font("Arial", 12,
+=======
+    endLabel->ForeColor = Color::DarkRed;
+    endLabel->Font = gcnew System::Drawing::Font("Times New Roman", 12,
+>>>>>>> 24ba2f281ab229801caf2d625350111fc8edfa73
                                                  FontStyle::Regular);
     endLabel->AutoSize = false;
     endLabel->Dock = DockStyle::Bottom;
@@ -153,43 +184,36 @@ void ClientSavingMoneyForm::AddSavingItemToFlow(SavingCustomers ^ saving) {
 
 System::Void ClientSavingMoneyForm::EndSaving_Click(System::Object ^ sender,
                                                     System::EventArgs ^ e) {
-    Label ^ clickedLabel = dynamic_cast<Label ^>(sender);
-    if (clickedLabel != nullptr) {
-        Panel ^ parentPanel = dynamic_cast<Panel ^>(clickedLabel->Parent);
-        if (parentPanel == nullptr)
-            return;
-        SavingCustomers ^ saving =
-            dynamic_cast<SavingCustomers ^>(parentPanel->Tag);
+    try {
+        Label ^ clickedLabel = dynamic_cast<Label ^>(sender);
+        if (clickedLabel != nullptr) {
+            Panel ^ parentPanel = dynamic_cast<Panel ^>(clickedLabel->Parent);
+            if (parentPanel == nullptr) return;
+            SavingCustomers ^ saving = dynamic_cast<SavingCustomers ^>(parentPanel->Tag);
+            if (saving == nullptr || saving->Status != 0)
+                return;
 
-        if (saving == nullptr)
-            return;
-        // Kiểm tra trạng thái tiết kiệm
-        if (saving->Status != 0) {
-            return;
-        }
+            // Xử lý kết thúc tiết kiệm -> sửa status từ 0 thành 2;
+            // 0: chưa thanh toán, 1: đã thanh toán, 2: đang yêu cầu
+            saving->Status = 2;
+            
+            SavingServices::UpdateStatusSaving(saving->Id, saving);
 
-        // Xử lý kết thúc tiết kiệm -> sửa status từ 0 thành 2;
-        // 0: chưa thanh toán, 1: đã thanh toán, 2: đang yêu cầu
-        saving->Status = 2;
-        // Cập nhật lại file
-        array<SavingCustomers ^> ^ savingItems =
-            HandleFile::ReadSavingCustomersArray("savingCustomers.dat");
-        for (int i = 0; i < savingItems->Length; i++) {
-            if (savingItems[i]->UserAccountNumber ==
-                    saving->UserAccountNumber &&
-                savingItems[i]->Id == saving->Id) {
-                savingItems[i]->Status = 2;
-                break;
-            }
+            MessageBox::Show(L"Đã gửi yêu cầu kết thúc tiết kiệm thành công, vui "
+                             L"lòng chờ hoàn tất",
+                             L"Thông báo", MessageBoxButtons::OK,
+                             MessageBoxIcon::Information);
+            loadSavingCustomers();
         }
-        HandleFile::WriteSavingCustomersArray(savingItems,
-                                              "savingCustomers.dat");
-        MessageBox::Show(L"Đã gửi yêu cầu kết thúc tiết kiệm thành công, vui "
-                         L"lòng chờ hoàn tất",
-                         L"Thông báo", MessageBoxButtons::OK,
-                         MessageBoxIcon::Information);
-        loadSavingCustomers();
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->Message, L"Thông báo", MessageBoxButtons::OK,
+                         MessageBoxIcon::Error);
     }
+}
+
+System::Void ClientSavingMoneyForm::OnAddSavingSuccess(System::Object ^ sender,
+                                System::EventArgs ^ e) {
+    this->loadSavingCustomers();
 }
 
 } // namespace BankingAppwinform

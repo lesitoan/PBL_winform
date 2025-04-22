@@ -1,9 +1,10 @@
 ﻿#pragma once
 #include "AddUserForm.h"
 #include "AdminForm.h"
-#include "HandleFile.h"
 #include "LoadChildForm.h"
 #include "User.h"
+
+#include "UserServices.h"
 
 ref class EditUserForm;
 
@@ -16,7 +17,6 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-using namespace System::Text::RegularExpressions;
 
 public
 ref class TableUsersForm : public System::Windows::Forms::Form {
@@ -188,9 +188,6 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
             System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
         this->dataGridViewUsers->Size = System::Drawing::Size(929, 609);
         this->dataGridViewUsers->TabIndex = 2;
-        this->dataGridViewUsers->CellContentClick +=
-            gcnew System::Windows::Forms::DataGridViewCellEventHandler(
-                this, &TableUsersForm::dataGridView1_CellContentClick);
         //
         // panel1
         //
@@ -375,11 +372,6 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
         this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
         this->Name = L"TableUsersForm";
         this->Text = L"AdminClientForm";
-        this->Load += gcnew System::EventHandler(
-            this, &TableUsersForm::AdminClientForm_Load);
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->dataGridViewUsers))
-            ->EndInit();
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
         this->ResumeLayout(false);
@@ -390,12 +382,6 @@ ref class TableUsersForm : public System::Windows::Forms::Form {
     User ^ userSelected = nullptr;
 
   private:
-    System::Void dataGridView1_CellContentClick(
-        System::Object ^ sender,
-        System::Windows::Forms::DataGridViewCellEventArgs ^ e);
-
-    System::Void AdminClientForm_Load(System::Object ^ sender,
-                                      System::EventArgs ^ e);
     System::Void btnModify_Click(System::Object ^ sender,
                                  System::EventArgs ^ e);
     System::Void btnLock_Click(System::Object ^ sender, System::EventArgs ^ e);

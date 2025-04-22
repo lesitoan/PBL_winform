@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "Validate.h"
-#include "HandleFile.h"
+#include "AuthServices.h"
+
+
 using namespace System::Drawing;
 using namespace System::Drawing::Drawing2D;
 
@@ -307,47 +309,6 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
 #pragma endregion
   private:
     System::Void btnSubmit_Click(System::Object ^ sender,
-                                 System::EventArgs ^ e) {
-        // 📌 Lấy thông tin từ form
-        String ^ fullName = this->fullName->Text;
-        String ^ phoneNumber = this->phoneNumber->Text;
-        if (fullName->Length == 0 ||
-            phoneNumber->Length == 0) {
-            MessageBox::Show(L"Lấy lại mật khẩu thất bại!", "Error",
-                             MessageBoxButtons::OK, MessageBoxIcon::Error);
-            return;
-        } else if (!Validate::isValidVietnamPhoneNumber(phoneNumber)) {
-            MessageBox::Show(L"Lấy lại mật khẩu thất bại!", "Error",
-                             MessageBoxButtons::OK, MessageBoxIcon::Error);
-            return;
-        } else if (!Validate::isValidCustomerName(fullName)) {
-            MessageBox::Show(L"Lấy lại mật khẩu thất bại!", "Error",
-                             MessageBoxButtons::OK, MessageBoxIcon::Error);
-            return;
-        }
-        // 📌 Kiểm tra thông tin nhập vào có trùng với thông tin trong file
-        // không
-        array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-        DateTime now = DateTime::Now;
-        String ^ newPassword = "TML" + now.ToString("HHmmss");
-        for each (User ^ user in users) {
-            if (user->getFullName() == fullName &&
-                user->getPhoneNumber() == phoneNumber) {
-                user->setPassword(newPassword);
-                bool isSaved = HandleFile::WriteUserArray(users, "users.dat");
-                if (isSaved) {
-                    MessageBox::Show(L"Mật khẩu mới của bạn là: " + newPassword,
-                                     "Success", MessageBoxButtons::OK,
-                                     MessageBoxIcon::Information);
-                    return;
-                } else {
-                    MessageBox::Show(L"Lấy lại mật khẩu thất bại!", "Error",
-                                     MessageBoxButtons::OK,
-                                     MessageBoxIcon::Error);
-                    return;
-                }
-            }
-        }
-    }
+                                 System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform
