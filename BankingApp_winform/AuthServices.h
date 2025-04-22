@@ -67,7 +67,7 @@ ref class AuthServices {
             } else if (!Validate::isValidCustomerName(fullName)) {
                 throw gcnew Exception(L"Tên chỉ được viết in hoa không dấu và ít nhất 2 từ");
 
-            }
+            } 
 
             User ^ currentUser = UserRepository::FindUserByPhoneNumber(phoneNumber);
 

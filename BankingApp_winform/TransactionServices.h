@@ -18,8 +18,8 @@ ref class TransactionServices {
 
 
             if (transactions == nullptr || transactions->Length == 0) {
-                throw gcnew Exception(L"Không tìm thấy giao dịch nào");
-                //return gcnew array<Transaction ^>(0);
+                //throw gcnew Exception(L"Không tìm thấy giao dịch nào");
+                return gcnew array<Transaction ^>(0);
             }
 
             if (accNum == "") {
@@ -42,8 +42,8 @@ ref class TransactionServices {
                 }
             }
             if (matchedTransactions->Count == 0) {
-                throw gcnew Exception(L"Không tìm thấy giao dịch nào");
-                //return gcnew array<Transaction ^>(0);
+                //throw gcnew Exception(L"Không tìm thấy giao dịch nào");
+                return gcnew array<Transaction ^>(0);
             }
             array<Transaction ^> ^ result = gcnew array<Transaction ^>(matchedTransactions->Count);
             for (int i = 0; i < matchedTransactions->Count; i++) {

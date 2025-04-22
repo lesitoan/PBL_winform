@@ -41,6 +41,7 @@ x64/
 Debug/
 Release/
 BankingApp_winform/x64/
+packages/
 # Build results
 [Bb]in/
 [Oo]bj/
