@@ -461,11 +461,11 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="historyUpdateData.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Media Include="Images\TP.mp4" />
     <Media Include="Images\VideoAuthForm.mp4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="historyUpdateData.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

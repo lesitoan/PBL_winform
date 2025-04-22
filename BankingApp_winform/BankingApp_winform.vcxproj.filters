@@ -488,16 +488,16 @@
     <ResourceCompile Include="BankingApp_winform.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="historyUpdateData.txt">
-      <Filter>Data\files</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <Media Include="Images\TP.mp4">
       <Filter>Data\images</Filter>
     </Media>
     <Media Include="Images\VideoAuthForm.mp4">
       <Filter>Data\images</Filter>
     </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="historyUpdateData.txt">
+      <Filter>Data\files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -48,23 +48,6 @@ void ClientSavingMoneyForm::loadSavingCustomers() {
 
         array<SavingCustomers ^> ^ savingItems = SavingCustomersRepository::GetAll();
 
-<<<<<<< HEAD
-    if (savingItems == nullptr || savingItems->Length == 0) {
-        Label ^ noSavingLabel = gcnew Label();
-        noSavingLabel->Text = L"Chưa có tiết kiệm nào";
-        noSavingLabel->ForeColor = Color::White;
-        noSavingLabel->Font = gcnew System::Drawing::Font(
-            "Arial", 12, FontStyle::Regular);
-        noSavingLabel->AutoSize = true;
-        flowLayoutSavingMoney->Controls->Add(noSavingLabel);
-        return;
-    }
-
-    for each (SavingCustomers ^ saving in savingItems) {
-        if (saving->UserAccountNumber ==
-            GlobalData::GetCurrentUser()->AccountNumber) {
-            AddSavingItemToFlow(saving);
-=======
         if (savingItems == nullptr || savingItems->Length == 0) {
             Label ^ noSavingLabel = gcnew Label();
             noSavingLabel->Text = L"Chưa có tiết kiệm nào";
@@ -74,7 +57,6 @@ void ClientSavingMoneyForm::loadSavingCustomers() {
             noSavingLabel->AutoSize = true;
             flowLayoutSavingMoney->Controls->Add(noSavingLabel);
             return;
->>>>>>> 24ba2f281ab229801caf2d625350111fc8edfa73
         }
 
         for (int i = savingItems->Length - 1; i >= 0; i--) {
@@ -156,13 +138,9 @@ void ClientSavingMoneyForm::AddSavingItemToFlow(SavingCustomers ^ saving) {
     Label ^ endLabel = gcnew Label();
     endLabel->Text =
         saving->Status == 0 ? L"Ấn vào đây để kết thúc tiết kiệm" : L"";
-<<<<<<< HEAD
-    endLabel->ForeColor = Color::LightYellow;
-    endLabel->Font = gcnew System::Drawing::Font("Arial", 12,
-=======
+
     endLabel->ForeColor = Color::DarkRed;
     endLabel->Font = gcnew System::Drawing::Font("Times New Roman", 12,
->>>>>>> 24ba2f281ab229801caf2d625350111fc8edfa73
                                                  FontStyle::Regular);
     endLabel->AutoSize = false;
     endLabel->Dock = DockStyle::Bottom;
