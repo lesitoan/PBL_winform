@@ -158,8 +158,8 @@ System::Void CodeDetailForm::btnSubmit_Click(System::Object ^ sender,
         this->amount->Text = "";
 
     } catch (Exception ^ ex) {
-        MessageBox::Show(ex->Message, L"Lỗi", MessageBoxButtons::OK,
-                         MessageBoxIcon::Error);
+        MessageBox::Show(ex->Message, L"Thông báo", MessageBoxButtons::OK,
+                         MessageBoxIcon::Information);
     }
 }
 

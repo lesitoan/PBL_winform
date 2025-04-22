@@ -48,8 +48,8 @@ ref class CustomerCodesRepository {
         } catch (Exception ^ ex) {
             throw gcnew Exception("getAll transaction error !!!", ex);
         }
-    } static CustomerCodes
-        ^ FindCustomerCodeByCodeString(String ^ codeString) {
+    }
+    static CustomerCodes^ FindCustomerCodeByCodeString(String ^ codeString) {
               try {
                   CheckLastUpdateTime();
                   if (customerCodesCache == nullptr) {

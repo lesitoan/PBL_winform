@@ -42,8 +42,8 @@ void HistoryForm::loadTransactionsHistory() {
         leftContent->PerformLayout();
         rightContent->PerformLayout();
     } catch (Exception ^ ex) {
-        MessageBox::Show(ex->ToString(), L"Error", MessageBoxButtons::OK,
-                         MessageBoxIcon::Error);
+        MessageBox::Show(ex->Message, L"Error", MessageBoxButtons::OK,
+                         MessageBoxIcon::Information);
     }
 }
 

@@ -388,7 +388,6 @@
     <None Include="..\.clang-format" />
     <None Include="customerCodeDetails.dat" />
     <None Include="customerCodes.dat" />
-    <None Include="notifications.dat" />
     <None Include="recurringPayments.dat" />
     <None Include="savingCustomers.dat" />
     <None Include="services.dat" />

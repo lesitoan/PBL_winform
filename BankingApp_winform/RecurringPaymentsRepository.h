@@ -93,7 +93,24 @@ ref class RecurringPaymentsRepository {
         } catch (Exception ^ ex) {
             throw gcnew Exception("DeleteById error !!!", ex);
         }
-    }   
+    }
+
+    static RecurringPayments ^ GetOneById(String ^ id) {
+        try {
+            CheckLastUpdateTime();
+            if (recurringPaymentsCache == nullptr) {
+                return nullptr;
+            }
+            for (int i = 0; i < recurringPaymentsCache->Length; i++) {
+                if (recurringPaymentsCache[i]->Id == id) {
+                    return recurringPaymentsCache[i];
+                }
+            }
+            return nullptr;
+        } catch (Exception ^ ex) {
+            throw gcnew Exception("GetOneById error !!!", ex);
+        }
+    }
 
     static void DeleteCache() {
         recurringPaymentsCache = nullptr;

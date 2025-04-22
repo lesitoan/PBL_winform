@@ -15,6 +15,7 @@ LoginForm::~LoginForm() {
 System::Void LoginForm::btnSubmit_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
     try {
+
         User ^ user = AuthServices::Login(this->phoneNumber->Text, this->password->Text);
         MessageBox::Show(L"Đăng nhập thành công", L"Thành công", MessageBoxButtons::OK, MessageBoxIcon::Information);
         LoginSuccess(this, EventArgs::Empty);

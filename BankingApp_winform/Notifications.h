@@ -23,6 +23,15 @@ ref class Notifications : public ISaveToFile {
         createdAt = _createdAt;
         status = _status;
     }
+    Notifications(String ^ _notificationId, String ^ _userAccNumber,
+                  String ^ _content) {
+        notificationId = _notificationId;
+        userAccNumber = _userAccNumber;
+        content = _content;
+        createdAt = DateTime::Now.ToString("dd/MM/yyyy");
+        status = 0;
+    }
+
     Notifications() : Notifications("", "", "", "", 0) {};
     Notifications(const Notifications % other) {
         notificationId = other.notificationId;

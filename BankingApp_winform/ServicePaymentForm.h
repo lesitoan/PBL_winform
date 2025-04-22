@@ -1,15 +1,19 @@
 ﻿#pragma once
+#include "GradientHelper.h"
+
 #include "CompanyForm.h"
 #include "GlobalData.h"
-#include "HandleFile.h"
 #include "Services.h"
 #include "User.h"
 #include "Utils.h"
-#include "Validate.h"
 #include "RecurringPayments.h"
 #include "CustomerCodes.h"
 #include "CustomerCodeDetails.h"
 #include "RecurringPaymentFollowForm.h"
+#include "ServiceServices.h"
+#include "UserServices.h"
+#include "RecurringPaymentServices.h"
+
 
 namespace BankingAppwinform {
 
@@ -189,10 +193,6 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
         this->submitRecurringPayment->TabIndex = 67;
         this->submitRecurringPayment->Text = L"Đăng kí thanh toán định kì";
         this->submitRecurringPayment->UseVisualStyleBackColor = false;
-        this->submitRecurringPayment->CheckedChanged +=
-            gcnew System::EventHandler(
-                this,
-                &ServicePaymentForm::submitRecurringPayment_CheckedChanged);
         //
         // label2
         //
@@ -508,19 +508,9 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
 
     System::Void label5_Click(System::Object ^ sender, System::EventArgs ^ e){};
 
-    private:
-    bool isChangedRecurringPayment = false;
-      void onSubmitCurrentPayment(String ^ customerCodeId,
-                                  String ^ CompanyAccountNumber,
-                                  String ^ userAccountNumber);
-
   private:
     System::Void pin_TextChanged(System::Object ^ sender,
                                  System::EventArgs ^ e) {}
-
-private:
-    System::Void submitRecurringPayment_CheckedChanged(System::Object ^ sender,
-                                                       System::EventArgs ^ e);
 
 private:
     System::Void label3_Click(System::Object ^ sender, System::EventArgs ^ e);

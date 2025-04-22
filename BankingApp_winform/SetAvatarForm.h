@@ -1,8 +1,9 @@
 ﻿#pragma once
 #include "GlobalData.h"
 #include "User.h"
-#include "HandleFile.h"
 #include"GradientHelper.h"
+#include "UserServices.h"
+
 
 namespace BankingAppwinform {
 
@@ -14,28 +15,13 @@ using namespace System::Data;
 using namespace System::Drawing;
 using namespace System::IO;
 
-/// <summary>
-/// Summary for SetAvatarForm
-/// </summary>
 public
 ref class SetAvatarForm : public System::Windows::Forms::Form {
   public:
-    SetAvatarForm(void) {
-        InitializeComponent();
-        loadAvatar();
-        GradientColorHelper::ApplyGradient(this);
-       /* GradientColorHelper::ApplyGradient(this->panel1);
-        GradientColorHelper::ApplyRoundedCorners(this->panel1, 20);
-        GradientColorHelper::ApplyRoundedCorners(this->btnInsertAvatar, 10);
-        GradientColorHelper::ApplyRoundedCorners(this->button1, 10);*/
-    }
+    SetAvatarForm(void);
 
   protected:
-    ~SetAvatarForm() {
-        if (components) {
-            delete components;
-        }
-    }
+    ~SetAvatarForm();
 
   private:
     System::Windows::Forms::OpenFileDialog ^ openFileDialog;
@@ -213,81 +199,9 @@ ref class SetAvatarForm : public System::Windows::Forms::Form {
 #pragma endregion
   private:
     System::Void btnInsertAvatar_Click(System::Object ^ sender,
-                                       System::EventArgs ^ e){
-        openFileDialog->Filter =
-            "Hình ảnh (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
+                                       System::EventArgs ^ e);
 
-        if (openFileDialog->ShowDialog() ==
-            System::Windows::Forms::DialogResult::OK) {
-
-            String ^ projectPath =
-                System::IO::Directory::GetParent(Application::StartupPath)->Parent->FullName;
-            String ^ avatarFolder = System::IO::Path::Combine(
-                projectPath, "BankingApp_winform\\images\\avatars\\");
-            // Lấy đường dẫn ảnh gốc
-            String ^ originalPath = openFileDialog->FileName;
-
-            String ^ extension = Path::GetExtension(originalPath);
-            String ^ newFileName =
-                "avatar_" + GlobalData::GetCurrentUser()->AccountNumber + extension;
-
-            String ^ destinationPath = Path::Combine(avatarFolder, newFileName);
-
-             //Tạo thư mục Images nếu chưa có
-            if (!Directory::Exists(avatarFolder)) {
-                Directory::CreateDirectory(avatarFolder);
-            }
-            
-            // Xóa ảnh cũ nếu có
-            /*if (GlobalData::GetCurrentUser()->UrlAvatar !=
-                "BankingApp_winform\\images\\avatars\\default_avatar.png") {
-                String ^ oldFilePath = System::IO::Path::Combine(
-                    projectPath, GlobalData::GetCurrentUser()->UrlAvatar);
-                if (File::Exists(oldFilePath)) {
-                    File::Delete(oldFilePath);
-                }
-            }*/
-
-            File::Copy(originalPath, destinationPath);
-
-
-            // Lưu đường dẫn ảnh vào file users.dat
-            GlobalData::GetCurrentUser()->UrlAvatar =
-                "BankingApp_winform\\images\\avatars\\" + newFileName;
-            array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-            for (int i = 0; i < users->Length; i++) {
-                if (users[i]->getAccountNumber() ==
-                    GlobalData::GetCurrentUser()->getAccountNumber()) {
-                    users[i]->UrlAvatar =
-                        GlobalData::GetCurrentUser()->UrlAvatar;
-                    break;
-                }
-            }
-            HandleFile::WriteUserArray(users, "users.dat");
-
-            MessageBox::Show(L"Đã cập nhật ảnh đại diện thành công");
-            
-
-            // Hiển thị ảnh trên pictureBoxAvatar
-            pictureBoxAvatar->Image = Image::FromFile(destinationPath);
-        }
-    
-    }
-
-    void loadAvatar() {
-        String ^ filePath = GlobalData::GetCurrentUser()->UrlAvatar;
-
-        String ^ projectPath =
-            System::IO::Directory::GetParent(Application::StartupPath)
-                ->Parent->FullName;
-        String ^ correctPath = System::IO::Path::Combine(projectPath, filePath);
-
-        if (!System::IO::File::Exists(correctPath)) {
-            return;
-        }
-
-        this->pictureBoxAvatar->Image = Image::FromFile(correctPath);
-    }
+    void loadAvatar();
 
 
 };

@@ -81,19 +81,6 @@ ref class NotificationsRepository {
         }
     }
 
-    static void UpdateAll(array<Notifications ^> ^ notifications) {
-        try {
-            if (notifications == nullptr || notifications->Length == 0) {
-                return;
-            }
-            notificationsCache = notifications;
-            HandleFile::WriteArrayToFile<Notifications ^>(notificationsCache,
-                                                          fileName);
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("UpdateAll transaction error !!!", ex);
-        }
-    }
-
     static void DeleteCache() {
         try {
             notificationsCache = nullptr;

@@ -2,6 +2,8 @@
 #include "ServicesRepository.h"
 #include "UserRepository.h"
 #include "Utils.h"
+#include "CustomerCodesRepository.h"
+#include "UserServices.h"
 
 #ifndef SERVICESERVICES_H
 #define SERVICESERVICES_H
@@ -37,6 +39,56 @@ ref class ServiceServices {
         } catch (Exception ^ ex) {
             throw ex;
         }
+    }
+
+    static void PayCustomerCode(String ^ customerCodeString, String ^ companyAccountNumber,
+        String ^ userAccountNumber, String^ pin) {
+       try {
+           if (customerCodeString == "" || companyAccountNumber == "" ||
+               userAccountNumber == "" || pin == "") {
+               throw gcnew Exception(L"Vui lòng nhập đầy đủ thông tin");
+           }
+           // kiểm tra mã dịch vụ đã tồn tại chưa
+           CustomerCodes ^ customerCode = CustomerCodesRepository::FindCustomerCodeByCodeString(customerCodeString);
+           if (customerCode == nullptr) {
+               throw gcnew Exception(L"Mã dịch vụ không tồn tại");
+           } else if (customerCode->Status == 0) {
+               throw gcnew Exception(L"Mã dịch vụ không còn hoạt động");
+           }
+
+           // kiểm tra xem có hóa đơn chưa thanh toán không
+           array<CustomerCodeDetails ^> ^ codeDetails = 
+               CustomerCodeDetailsRepository::GetCustomerCodeDetailsByCustomerCodeId(customerCode->Id);
+           if (codeDetails == nullptr || codeDetails->Length == 0) {
+               throw gcnew Exception(L"Khách hàng chưa có hóa đơn cần thanh toán");
+           }
+           CustomerCodeDetails ^ currentCodeDetail = nullptr;
+           for (int i = 0; i < codeDetails->Length; i++) {
+               if (codeDetails[i]->CustomerCodeId == customerCode->Id &&
+                   codeDetails[i]->Status == 0 &&
+                   codeDetails[i]->ExpiredDate > DateTime::Now) {
+                   currentCodeDetail = codeDetails[i];
+                   break;
+               }
+           }
+           if (currentCodeDetail == nullptr) {
+               throw gcnew Exception(L"Khách hàng chưa có hóa đơn cần thanh toán");
+           }
+
+           // chuyển tiền
+           UserService::TransferMoney(userAccountNumber, companyAccountNumber,
+                                      currentCodeDetail->Amount, Convert::ToInt32(pin), L"Thanh toán mã hóa đơn: " + customerCodeString);
+
+           // cập nhật hóa đơn
+           currentCodeDetail->Status = 1; // đã thanh toán
+           currentCodeDetail->PaymentDate = DateTime::Now.ToString("dd/MM/yyyy");
+           currentCodeDetail->PaymentUserAccountNumber = userAccountNumber;
+           CustomerCodeDetailsRepository::UpdateById(currentCodeDetail->Id, currentCodeDetail);
+
+
+       } catch (Exception ^ ex) {
+           throw ex;
+       }
     }
 
     static void DeleteServiceById(String ^ id) {

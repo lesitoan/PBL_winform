@@ -24,6 +24,15 @@ ref class Transaction : public ISaveToFile {
         message = _message;
         createdAt = _createdAt;
     }
+    Transaction(String ^ _transactionId, String ^ _fromAccountNumber,
+                String ^ _toAccountNumber, double _amount, String ^ _message) {
+        transactionId = _transactionId;
+        fromAccountNumber = _fromAccountNumber;
+        toAccountNumber = _toAccountNumber;
+        amount = _amount;
+        message = _message;
+        createdAt = DateTime::Now.ToString("dd/MM/yyyy");
+    }
 
     Transaction() : Transaction("", "", "", 0, "", "") {};
 
