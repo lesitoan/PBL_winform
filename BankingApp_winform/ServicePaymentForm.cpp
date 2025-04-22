@@ -142,8 +142,9 @@ System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
             codes[i]->CompanyAccountNumber == companyAccountNumber) {
             customerCode = codes[i];
             break;
-        }
+        } 
     }
+
     if (customerCode == nullptr) {
         MessageBox::Show(L"Mã khách hàng không hợp lệ", "Cảnh báo",
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
@@ -153,6 +154,7 @@ System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
                          MessageBoxButtons::OK, MessageBoxIcon::Warning);
         return;
     }
+    //---------------
 
     /*lấy hóa đơn tương ứng với mã khách hàng*/
     array<CustomerCodeDetails ^> ^ codeDetails =
@@ -203,38 +205,44 @@ System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
         return;
     } else {
         MessageBox::Show("Thanh toán thành công !");
-        onSubmitCurrentPayment(customerCode->Id,
+        onSubmitCurrentPayment(
+            customerCode->Id,
+            customerCode->CompanyAccountNumber,
                                currUserAccNumber); // đăng kí định kì
     }
 }
-
-void ServicePaymentForm::onSubmitCurrentPayment(String ^ userAccountNumber,
-                                                String ^ companyAccountNumber,
-                                                int monthly) {
-    throw gcnew System::NotImplementedException();
-}
-
-void ServicePaymentForm::onSubmitCurrentPayment(String ^ customerCodeId,
+void ServicePaymentForm::onSubmitCurrentPayment(String ^ customerCodeId,String ^ CompanyAccountNumber,
                                                 String ^ userAccountNumber) {
     bool checked = this->submitRecurringPayment->Checked;
     if (!checked)
         return;
 
-    // kiểm tra có user nào đã đk với mã kh đó chưa
     array<RecurringPayments ^> ^ recurringPayments =
         HandleFile::ReadRecurringPaymentsArray("recurringPayments.dat");
     if (recurringPayments == nullptr || recurringPayments->Length == 0) {
         recurringPayments = gcnew array<RecurringPayments ^>(0);
     } else {
+        // kiểm tra hiện tai mình có đang đăng kí cho khách hàng nào ở công ty
+        // đó không
+        array<CustomerCodes ^> ^ customerCodes =
+            HandleFile::ReadCustomerCodesArray("customerCodes.dat");
+
         for (int i = 0; i < recurringPayments->Length; i++) {
-            if (recurringPayments[i]->CustomerCodeId == customerCodeId &&
-                recurringPayments[i]->UserAccountNumber == userAccountNumber) {
-                MessageBox::Show(
-                    "Mã khách hàng đã được đăng kí thanh toán định kì");
-                return;
+            if (recurringPayments[i]->UserAccountNumber == userAccountNumber) {
+                // kiểm tra mã công ty
+                for (int j = 0; j < customerCodes->Length; j++) {
+                    if (customerCodes[j]->CompanyAccountNumber ==
+                        CompanyAccountNumber && customerCodes[j]->Id == recurringPayments[i]->CustomerCodeId) {
+                        MessageBox::Show(L"Bạn đã có đăng kí định kì ở công ty này rồi");
+                        return;
+                    }
+                }
             }
         }
     }
+
+   
+
     // tạo mã định kì
     String ^ recurringPaymentId = Utils::createUniqueID("RP");
     RecurringPayments ^ recurringPayment = gcnew RecurringPayments(

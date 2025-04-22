@@ -471,5 +471,8 @@ ref class CodeDetailForm : public System::Windows::Forms::Form {
     void CodeDetailForm::addLabelToPanel(Panel ^ panel, int % yOffset,
                                          String ^ text);
     void CodeDetailForm::deleteCodeDetail_Click(Object ^ sender, EventArgs ^ e);
+
+    void payRecurringPayment(CustomerCodeDetails ^ request,
+                             RecurringPayments ^ recurringPayment);
 };
 } // namespace BankingAppwinform

@@ -129,7 +129,9 @@
     <ClCompile Include="CodeDetailForm.cpp">
       <Filter>Form\Cpp</Filter>
     </ClCompile>
-    <ClCompile Include="RecurringPaymentFollowForm.cpp" />
+    <ClCompile Include="RecurringPaymentFollowForm.cpp">
+      <Filter>Form\Cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HandleFile.h">
@@ -269,21 +271,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
-    <None Include="transactions.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="users.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="notifications.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="services.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="savingCustomers.dat">
-      <Filter>Data\files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\account.png">

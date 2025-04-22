@@ -75,31 +75,6 @@ bool SignupForm::isUsedPhoneNumber(String ^ phoneNumber) {
     return false;
 }
 
-int SignupForm::randomAccountNumber() {
-    /*Random ^ random = gcnew Random();
-    array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-    if (users == nullptr) {
-        return random->Next(100000000, 1000000000);
-    }
-    while (true) {
-        int accNum = random->Next(100000000, 1000000000);
-        bool isUnique = true;
-        for each (User ^ user in users) {
-            if (user->getAccountNumber() == accNum) {
-                isUnique = false;
-                break;
-            }
-        }
-        if (isUnique) {
-            return accNum;
-        }
-        if (users->Length >= 900000000) {
-            throw gcnew Exception(L"Không thể tạo số tài khoản mới");
-        }
-    }*/
-    return 0;
-}
-
 System::Void SignupForm::label4_Click(System::Object^ sender,
     System::EventArgs^ e) {
     if (passwordConfirm->PasswordChar == '\0') {

@@ -39,16 +39,6 @@ ref class ClientRecurringPaymentForm : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column11;
 
-
-
-
-
-
-
-
-
-
-
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -232,8 +222,6 @@ ref class ClientRecurringPaymentForm : public System::Windows::Forms::Form {
 #pragma endregion
 
   private:
-    String ^ currClientAccountNumber = "";
-    DateTime currClientPaymentDay;
 
     void loadRecurringPaymentData();
 };
