@@ -150,9 +150,9 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnSelectAccHistory->Location = System::Drawing::Point(125, 176);
         this->btnSelectAccHistory->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->btnSelectAccHistory->Name = L"btnSelectAccHistory";
-        this->btnSelectAccHistory->Size = System::Drawing::Size(253, 26);
+        this->btnSelectAccHistory->Size = System::Drawing::Size(226, 26);
         this->btnSelectAccHistory->TabIndex = 60;
-        this->btnSelectAccHistory->Text = L"Select from traded accounts";
+        this->btnSelectAccHistory->Text = L"Chọn Từ Lịch Sử Giao Dịch";
         this->btnSelectAccHistory->Click += gcnew System::EventHandler(this, &TransferMoneyForm::btnSelectAccHistory_Click);
         //
         // panel3
@@ -202,7 +202,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnFindAccount->Name = L"btnFindAccount";
         this->btnFindAccount->Size = System::Drawing::Size(635, 47);
         this->btnFindAccount->TabIndex = 52;
-        this->btnFindAccount->Text = L"Continue";
+        this->btnFindAccount->Text = L"Tiếp Tục";
         this->btnFindAccount->UseVisualStyleBackColor = false;
         this->btnFindAccount->Click += gcnew System::EventHandler(this, &TransferMoneyForm::btnFindAccount_Click);
         //
@@ -219,9 +219,9 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->label1->Location = System::Drawing::Point(395, 11);
         this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(162, 26);
+        this->label1->Size = System::Drawing::Size(125, 26);
         this->label1->TabIndex = 53;
-        this->label1->Text = L"Account Number:";
+        this->label1->Text = L"Số Tài Khoản:";
         //
         // label5
         //
@@ -236,9 +236,9 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->label5->Location = System::Drawing::Point(121, 11);
         this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(60, 26);
+        this->label5->Size = System::Drawing::Size(110, 26);
         this->label5->TabIndex = 51;
-        this->label5->Text = L"Bank:";
+        this->label5->Text = L"Ngân Hàng:";
         //
         // panel4
         //
@@ -384,9 +384,9 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->labelReceiver->Location = System::Drawing::Point(120, 16);
         this->labelReceiver->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelReceiver->Name = L"labelReceiver";
-        this->labelReceiver->Size = System::Drawing::Size(212, 30);
+        this->labelReceiver->Size = System::Drawing::Size(241, 30);
         this->labelReceiver->TabIndex = 66;
-        this->labelReceiver->Text = L"Receiver: LE SI TOAN";
+        this->labelReceiver->Text = L"Người Nhận: LE SI TOAN";
         //
         // label4
         //
@@ -401,9 +401,9 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->label4->Location = System::Drawing::Point(121, 160);
         this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label4->Name = L"label4";
-        this->label4->Size = System::Drawing::Size(115, 26);
+        this->label4->Size = System::Drawing::Size(222, 26);
         this->label4->TabIndex = 65;
-        this->label4->Text = L"Description:";
+        this->label4->Text = L"Nội Dung Chuyển Khoản:";
         //
         // label3
         //
@@ -418,9 +418,9 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->label3->Location = System::Drawing::Point(503, 69);
         this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label3->Name = L"label3";
-        this->label3->Size = System::Drawing::Size(46, 26);
+        this->label3->Size = System::Drawing::Size(75, 26);
         this->label3->TabIndex = 64;
-        this->label3->Text = L"PIN:";
+        this->label3->Text = L"Mã Pin:";
         //
         // label2
         //
@@ -435,9 +435,9 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->label2->Location = System::Drawing::Point(121, 69);
         this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(137, 26);
+        this->label2->Size = System::Drawing::Size(103, 26);
         this->label2->TabIndex = 63;
-        this->label2->Text = L"Enter Amount:";
+        this->label2->Text = L"Nhập Tiền:";
         //
         // btnSubmit
         //
@@ -461,7 +461,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnSubmit->Name = L"btnSubmit";
         this->btnSubmit->Size = System::Drawing::Size(635, 52);
         this->btnSubmit->TabIndex = 62;
-        this->btnSubmit->Text = L"Transfer Money";
+        this->btnSubmit->Text = L"Chuyển Tiền";
         this->btnSubmit->UseVisualStyleBackColor = false;
         this->btnSubmit->Click += gcnew System::EventHandler(this, &TransferMoneyForm::btnSubmit_Click);
         //

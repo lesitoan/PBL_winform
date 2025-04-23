@@ -42,7 +42,7 @@ void MainForm::InitLoad() {
     this->labelFullName->Text = GlobalData::GetCurrentUser()->getFullName();
     this->labelBalance->Text = "**********";
     LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm(this));
-    this->headerText->Text = L"DOASHBOARD";
+    this->headerText->Text = L"Trang Chủ";
 
     if (GlobalData::GetCurrentUser()->getRole() == "company") {
         this->btnCode->Visible = true;
@@ -62,32 +62,31 @@ System::Void MainForm::btnAccount_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
     ChangeButtonColor(btnAccount);
     LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm(this));
-    this->headerText->Text = L"ACCOUNT";
+    this->headerText->Text = L"Tài Khoản";
 }
 System::Void MainForm::btnTransfer_Click(System::Object ^ sender,
                                          System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew TransferMoneyForm());
     ChangeButtonColor(btnTransfer);
-    this->headerText->Text = L"TRANSFER MONEY";
+    this->headerText->Text = L"Chuyển Tiền";
 }
 System::Void MainForm::btnWithdraw_Click(System::Object ^ sender,
                                          System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew WithdrawMoneyForm());
     ChangeButtonColor(btnWithdraw);
-    this->headerText->Text = L"WITHDRAW MONEY";
+    this->headerText->Text = L"Rút Tiền";
 }
 System::Void MainForm::btnHistory_Click(System::Object ^ sender,
                                         System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew HistoryForm());
     ChangeButtonColor(btnHistory);
-    this->headerText->Text = L"HISTORY";
+    this->headerText->Text = L"Lịch Sử Giao Dịch";
 }
 
 System::Void MainForm::btnCode_Click(System::Object ^ sender,
                                      System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew CodeForm());
     ChangeButtonColor(btnCode);
-    this->headerText->Text = L"CODE MANEGEMENT";
     this->headerText->Text = L"QUẢN LÍ MÃ KHÁCH HÀNG";
 }
 
@@ -95,7 +94,7 @@ System::Void MainForm::btnServicePayment_Click(System::Object ^ sender,
                                                System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew ServicePaymentForm());
     ChangeButtonColor(btnServicePayment);
-    this->headerText->Text = L"SERVICE PAYMENT";
+    this->headerText->Text = L"Thanh Toán Dịch Vụ";
 }
 
 System::Void MainForm::btnRecurringPayment_Click(System::Object ^ sender,
@@ -104,7 +103,7 @@ System::Void MainForm::btnRecurringPayment_Click(System::Object ^ sender,
                             gcnew ClientRecurringPaymentForm());
     ChangeButtonColor(btnServicePayment);
 
-    this->headerText->Text = L"RECURRING PAYMENT";
+    this->headerText->Text = L"Thanh Toán Định Kỳ";
 
 }
 
@@ -113,14 +112,14 @@ System::Void MainForm::btnSaveMoney_Click(System::Object ^ sender,
     LoadChildForm::LoadForm(this->panelContent,
                             gcnew ClientSavingMoneyForm());
     ChangeButtonColor(btnSaveMoney);
-    this->headerText->Text = L"MONEY SAVINGS";
+    this->headerText->Text = L"Tiếp Kiệm";
 }
 
 System::Void MainForm::btnLogout_Click(System::Object ^ sender,
                                       System::EventArgs ^ e) {
    System::Windows::Forms::DialogResult result;
    result =
-       MessageBox::Show(L"Are you sure you want to log out?", L"Log Out",
+       MessageBox::Show(L"Bạn Có Muốn Đăng Xuất Không?", L"Đăng Xuất!",
                         MessageBoxButtons::YesNo, MessageBoxIcon::Question);
    if (result == System::Windows::Forms::DialogResult::Yes) {
        

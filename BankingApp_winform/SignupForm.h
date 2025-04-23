@@ -53,9 +53,7 @@ ref class SignupForm : public System::Windows::Forms::Form {
 
 #pragma region Windows Form Designer generated code
     void InitializeComponent(void) {
-        System::ComponentModel::ComponentResourceManager ^ resources =
-            (gcnew System::ComponentModel::ComponentResourceManager(
-                SignupForm::typeid));
+        System::ComponentModel::ComponentResourceManager ^ resources = (gcnew System::ComponentModel::ComponentResourceManager(SignupForm::typeid));
         this->label6 = (gcnew System::Windows::Forms::Label());
         this->labelAuth = (gcnew System::Windows::Forms::Label());
         this->label7 = (gcnew System::Windows::Forms::Label());
@@ -83,51 +81,46 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->label6->AutoSize = true;
         this->label6->BackColor = System::Drawing::Color::Transparent;
         this->label6->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label6->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label6->Font = (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
         this->label6->ForeColor = System::Drawing::Color::Transparent;
         this->label6->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label6->Location = System::Drawing::Point(75, 250);
         this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label6->Name = L"label6";
-        this->label6->Size = System::Drawing::Size(96, 27);
+        this->label6->Size = System::Drawing::Size(93, 27);
         this->label6->TabIndex = 40;
-        this->label6->Text = L"Password";
+        this->label6->Text = L"Mật Khẩu";
         //
         // labelAuth
         //
         this->labelAuth->AutoSize = true;
         this->labelAuth->BackColor = System::Drawing::Color::Transparent;
         this->labelAuth->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->labelAuth->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->labelAuth->Font = (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
         this->labelAuth->ForeColor = System::Drawing::Color::Transparent;
         this->labelAuth->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->labelAuth->Location = System::Drawing::Point(375, 144);
         this->labelAuth->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelAuth->Name = L"labelAuth";
-        this->labelAuth->Size = System::Drawing::Size(178, 27);
+        this->labelAuth->Size = System::Drawing::Size(127, 27);
         this->labelAuth->TabIndex = 39;
-        this->labelAuth->Text = L"Telephone Number";
+        this->labelAuth->Text = L"Số Điện Thoại";
         //
         // label7
         //
         this->label7->AutoSize = true;
         this->label7->BackColor = System::Drawing::Color::Transparent;
-        this->label7->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 24, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label7->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
         this->label7->ForeColor = System::Drawing::Color::White;
         this->label7->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label7->Location = System::Drawing::Point(197, 81);
         this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label7->Name = L"label7";
-        this->label7->Size = System::Drawing::Size(366, 50);
+        this->label7->Size = System::Drawing::Size(255, 50);
         this->label7->TabIndex = 38;
-        this->label7->Text = L"Create Your Account";
-        this->label7->TextAlign =
-            System::Drawing::ContentAlignment::MiddleCenter;
+        this->label7->Text = L"Tạo Tài Khoản";
+        this->label7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
         //
         // btnSubmit
         //
@@ -135,10 +128,8 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnSubmit->FlatAppearance->BorderSize = 0;
         this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->btnSubmit->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 16.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->btnSubmit->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                             static_cast<System::Byte>(0)));
         this->btnSubmit->ForeColor = System::Drawing::Color::White;
         this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->btnSubmit->Location = System::Drawing::Point(73, 461);
@@ -146,42 +137,39 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->btnSubmit->Name = L"btnSubmit";
         this->btnSubmit->Size = System::Drawing::Size(592, 52);
         this->btnSubmit->TabIndex = 35;
-        this->btnSubmit->Text = L"Sign Up";
+        this->btnSubmit->Text = L"Đăng Ký";
         this->btnSubmit->UseVisualStyleBackColor = false;
-        this->btnSubmit->Click +=
-            gcnew System::EventHandler(this, &SignupForm::btnSubmit_Click);
+        this->btnSubmit->Click += gcnew System::EventHandler(this, &SignupForm::btnSubmit_Click);
         //
         // label9
         //
         this->label9->AutoSize = true;
         this->label9->BackColor = System::Drawing::Color::Transparent;
         this->label9->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label9->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label9->Font = (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
         this->label9->ForeColor = System::Drawing::Color::Transparent;
         this->label9->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label9->Location = System::Drawing::Point(75, 144);
         this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label9->Name = L"label9";
-        this->label9->Size = System::Drawing::Size(63, 27);
+        this->label9->Size = System::Drawing::Size(44, 27);
         this->label9->TabIndex = 43;
-        this->label9->Text = L"Name";
+        this->label9->Text = L"Tên";
         //
         // label1
         //
         this->label1->AutoSize = true;
         this->label1->BackColor = System::Drawing::Color::Transparent;
         this->label1->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label1->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
+        this->label1->Font = (gcnew System::Drawing::Font(L"UTM Daxline Medium", 12));
         this->label1->ForeColor = System::Drawing::Color::Transparent;
         this->label1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label1->Location = System::Drawing::Point(75, 356);
         this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(168, 27);
+        this->label1->Size = System::Drawing::Size(176, 27);
         this->label1->TabIndex = 45;
-        this->label1->Text = L"Confirm Password";
+        this->label1->Text = L"Xác Nhận Mật Khẩu";
         //
         // panel1
         //
@@ -195,15 +183,9 @@ ref class SignupForm : public System::Windows::Forms::Form {
         //
         // fullName
         //
-        this->fullName->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->fullName->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->fullName->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->fullName->Font =
-            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->fullName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->fullName->Location = System::Drawing::Point(24, 7);
         this->fullName->Margin = System::Windows::Forms::Padding(4);
         this->fullName->MaxLength = 35;
@@ -224,16 +206,9 @@ ref class SignupForm : public System::Windows::Forms::Form {
         //
         // phoneNumber
         //
-        this->phoneNumber->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->phoneNumber->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->phoneNumber->Font =
-            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->phoneNumber->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
+        this->phoneNumber->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->phoneNumber->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->phoneNumber->Location = System::Drawing::Point(24, 7);
         this->phoneNumber->Margin = System::Windows::Forms::Padding(4);
         this->phoneNumber->MaxLength = 10;
@@ -256,28 +231,20 @@ ref class SignupForm : public System::Windows::Forms::Form {
         // label2
         //
         this->label2->BackColor = System::Drawing::Color::Transparent;
-        this->label2->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"label2.Image")));
+        this->label2->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"label2.Image")));
         this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label2->Location = System::Drawing::Point(520, 7);
         this->label2->Name = L"label2";
         this->label2->Size = System::Drawing::Size(66, 34);
         this->label2->TabIndex = 52;
         this->label2->Text = L"            ";
-        this->label2->Click +=
-            gcnew System::EventHandler(this, &SignupForm::label2_Click);
+        this->label2->Click += gcnew System::EventHandler(this, &SignupForm::label2_Click);
         //
         // password
         //
-        this->password->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->password->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->password->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->password->Font =
-            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->password->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->password->Location = System::Drawing::Point(24, 7);
         this->password->Margin = System::Windows::Forms::Padding(4);
         this->password->MaxLength = 9;
@@ -301,29 +268,20 @@ ref class SignupForm : public System::Windows::Forms::Form {
         // label4
         //
         this->label4->BackColor = System::Drawing::Color::Transparent;
-        this->label4->Image = (cli::safe_cast<System::Drawing::Image ^>(
-            resources->GetObject(L"label4.Image")));
+        this->label4->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"label4.Image")));
         this->label4->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label4->Location = System::Drawing::Point(522, 7);
         this->label4->Name = L"label4";
         this->label4->Size = System::Drawing::Size(66, 34);
         this->label4->TabIndex = 51;
         this->label4->Text = L"            ";
-        this->label4->Click +=
-            gcnew System::EventHandler(this, &SignupForm::label4_Click);
+        this->label4->Click += gcnew System::EventHandler(this, &SignupForm::label4_Click);
         //
         // passwordConfirm
         //
-        this->passwordConfirm->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->passwordConfirm->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->passwordConfirm->Font =
-            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->passwordConfirm->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
+        this->passwordConfirm->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->passwordConfirm->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->passwordConfirm->Location = System::Drawing::Point(24, 7);
         this->passwordConfirm->Margin = System::Windows::Forms::Padding(4);
         this->passwordConfirm->MaxLength = 9;
@@ -339,8 +297,7 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->BackColor = System::Drawing::Color::HotPink;
-        this->BackgroundImageLayout =
-            System::Windows::Forms::ImageLayout::Stretch;
+        this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
         this->ClientSize = System::Drawing::Size(729, 601);
         this->Controls->Add(this->panel4);
         this->Controls->Add(this->panel3);
@@ -355,10 +312,8 @@ ref class SignupForm : public System::Windows::Forms::Form {
         this->Margin = System::Windows::Forms::Padding(4);
         this->Name = L"SignupForm";
         this->Text = L"SignupForm";
-        this->Load +=
-            gcnew System::EventHandler(this, &SignupForm::SignupForm_Load);
-        this->Paint += gcnew System::Windows::Forms::PaintEventHandler(
-            this, &SignupForm::SignupForm_Paint);
+        this->Load += gcnew System::EventHandler(this, &SignupForm::SignupForm_Load);
+        this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &SignupForm::SignupForm_Paint);
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
         this->panel2->ResumeLayout(false);

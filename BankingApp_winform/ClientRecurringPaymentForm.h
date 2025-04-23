@@ -52,133 +52,87 @@ ref class ClientRecurringPaymentForm : public System::Windows::Forms::Form {
     /// the contents of this method with the code editor.
     /// </summary>
     void InitializeComponent(void) {
-        System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle1 =
-            (gcnew System::Windows::Forms::DataGridViewCellStyle());
-        System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle2 =
-            (gcnew System::Windows::Forms::DataGridViewCellStyle());
-        System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle3 =
-            (gcnew System::Windows::Forms::DataGridViewCellStyle());
+        System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+        System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+        System::Windows::Forms::DataGridViewCellStyle ^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
-        this->dataGridViewRecurring =
-            (gcnew System::Windows::Forms::DataGridView());
-        this->Column7 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column8 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column10 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-        this->Column11 =
-            (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->dataGridViewRecurring = (gcnew System::Windows::Forms::DataGridView());
+        this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column10 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+        this->Column11 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
         this->panel2->SuspendLayout();
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->dataGridViewRecurring))
-            ->BeginInit();
+        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->dataGridViewRecurring))->BeginInit();
         this->SuspendLayout();
         //
         // panel2
         //
-        this->panel2->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->panel2->BackColor = System::Drawing::Color::Teal;
         this->panel2->Controls->Add(this->dataGridViewRecurring);
-        this->panel2->Location = System::Drawing::Point(12, 12);
+        this->panel2->Location = System::Drawing::Point(16, 15);
+        this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->panel2->Name = L"panel2";
-        this->panel2->Size = System::Drawing::Size(634, 475);
+        this->panel2->Size = System::Drawing::Size(845, 585);
         this->panel2->TabIndex = 1;
         //
         // dataGridViewRecurring
         //
         this->dataGridViewRecurring->AllowUserToAddRows = false;
         this->dataGridViewRecurring->AllowUserToDeleteRows = false;
-        dataGridViewCellStyle1->Alignment =
-            System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+        dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
         dataGridViewCellStyle1->BackColor = System::Drawing::Color::Transparent;
-        dataGridViewCellStyle1->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline", 12));
+        dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12));
         dataGridViewCellStyle1->ForeColor = System::Drawing::Color::Black;
-        dataGridViewCellStyle1->SelectionBackColor =
-            System::Drawing::Color::Transparent;
-        dataGridViewCellStyle1->SelectionForeColor =
-            System::Drawing::Color::Transparent;
-        this->dataGridViewRecurring->AlternatingRowsDefaultCellStyle =
-            dataGridViewCellStyle1;
-        this->dataGridViewRecurring->AutoSizeColumnsMode =
-            System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-        this->dataGridViewRecurring->BackgroundColor =
-            System::Drawing::SystemColors::ButtonFace;
-        this->dataGridViewRecurring->CellBorderStyle = System::Windows::Forms::
-            DataGridViewCellBorderStyle::SingleHorizontal;
-        this->dataGridViewRecurring->ColumnHeadersBorderStyle =
-            System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-        dataGridViewCellStyle2->Alignment =
-            System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-        dataGridViewCellStyle2->BackColor = System::Drawing::Color::Teal;
-        dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Bold,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::Transparent;
+        dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::Transparent;
+        this->dataGridViewRecurring->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+        this->dataGridViewRecurring->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+        this->dataGridViewRecurring->BackgroundColor = System::Drawing::SystemColors::ButtonFace;
+        this->dataGridViewRecurring->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
+        this->dataGridViewRecurring->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
+        dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+        dataGridViewCellStyle2->BackColor = System::Drawing::Color::MediumOrchid;
+        dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                                                                    static_cast<System::Byte>(0)));
         dataGridViewCellStyle2->ForeColor = System::Drawing::Color::White;
-        dataGridViewCellStyle2->SelectionBackColor =
-            System::Drawing::Color::Transparent;
-        dataGridViewCellStyle2->SelectionForeColor =
-            System::Drawing::Color::White;
-        dataGridViewCellStyle2->WrapMode =
-            System::Windows::Forms::DataGridViewTriState::True;
-        this->dataGridViewRecurring->ColumnHeadersDefaultCellStyle =
-            dataGridViewCellStyle2;
+        dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                                                                                      static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        dataGridViewCellStyle2->SelectionForeColor = System::Drawing::Color::White;
+        dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+        this->dataGridViewRecurring->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
         this->dataGridViewRecurring->ColumnHeadersHeight = 40;
-        this->dataGridViewRecurring->Columns->AddRange(
-            gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(4){
-                this->Column7, this->Column8, this->Column10, this->Column11});
-        dataGridViewCellStyle3->Alignment =
-            System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+        this->dataGridViewRecurring->Columns->AddRange(gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(4){this->Column7,
+                                                                                                                         this->Column8, this->Column10, this->Column11});
+        dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
         dataGridViewCellStyle3->BackColor = System::Drawing::Color::MintCream;
-        dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(
-            L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        dataGridViewCellStyle3->ForeColor =
-            System::Drawing::SystemColors::ControlText;
-        dataGridViewCellStyle3->SelectionBackColor =
-            System::Drawing::Color::Cyan;
-        dataGridViewCellStyle3->SelectionForeColor =
-            System::Drawing::SystemColors::ControlText;
-        dataGridViewCellStyle3->WrapMode =
-            System::Windows::Forms::DataGridViewTriState::False;
+        dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                                    static_cast<System::Byte>(0)));
+        dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::ControlText;
+        dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::Cyan;
+        dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::ControlText;
+        dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
         this->dataGridViewRecurring->DefaultCellStyle = dataGridViewCellStyle3;
-        this->dataGridViewRecurring->Dock =
-            System::Windows::Forms::DockStyle::Fill;
+        this->dataGridViewRecurring->Dock = System::Windows::Forms::DockStyle::Fill;
         this->dataGridViewRecurring->EnableHeadersVisualStyles = false;
-        this->dataGridViewRecurring->GridColor =
-            System::Drawing::SystemColors::ActiveCaptionText;
+        this->dataGridViewRecurring->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
         this->dataGridViewRecurring->Location = System::Drawing::Point(0, 0);
+        this->dataGridViewRecurring->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->dataGridViewRecurring->Name = L"dataGridViewRecurring";
         this->dataGridViewRecurring->ReadOnly = true;
-        this->dataGridViewRecurring->RowHeadersBorderStyle =
-            System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
+        this->dataGridViewRecurring->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
         this->dataGridViewRecurring->RowHeadersVisible = false;
         this->dataGridViewRecurring->RowHeadersWidth = 51;
-        this->dataGridViewRecurring->RowTemplate->DefaultCellStyle->BackColor =
-            System::Drawing::Color::White;
-        this->dataGridViewRecurring->RowTemplate->DefaultCellStyle->Font =
-            (gcnew System::Drawing::Font(L"UTM Daxline", 12));
-        this->dataGridViewRecurring->RowTemplate->DefaultCellStyle->ForeColor =
-            System::Drawing::Color::Black;
-        this->dataGridViewRecurring->RowTemplate->DefaultCellStyle
-            ->SelectionBackColor = System::Drawing::Color::Cyan;
-        this->dataGridViewRecurring->RowTemplate->DefaultCellStyle
-            ->SelectionForeColor = System::Drawing::Color::Black;
+        this->dataGridViewRecurring->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::White;
+        this->dataGridViewRecurring->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12));
+        this->dataGridViewRecurring->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::Color::Black;
+        this->dataGridViewRecurring->RowTemplate->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::Cyan;
+        this->dataGridViewRecurring->RowTemplate->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::Black;
         this->dataGridViewRecurring->RowTemplate->Height = 40;
         this->dataGridViewRecurring->RowTemplate->ReadOnly = true;
-        this->dataGridViewRecurring->RowTemplate->Resizable =
-            System::Windows::Forms::DataGridViewTriState::False;
-        this->dataGridViewRecurring->SelectionMode =
-            System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-        this->dataGridViewRecurring->Size = System::Drawing::Size(634, 475);
+        this->dataGridViewRecurring->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+        this->dataGridViewRecurring->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+        this->dataGridViewRecurring->Size = System::Drawing::Size(845, 585);
         this->dataGridViewRecurring->TabIndex = 5;
         //
         // Column7
@@ -211,17 +165,16 @@ ref class ClientRecurringPaymentForm : public System::Windows::Forms::Form {
         //
         // ClientRecurringPaymentForm
         //
-        this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+        this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->ClientSize = System::Drawing::Size(658, 499);
+        this->ClientSize = System::Drawing::Size(877, 614);
         this->Controls->Add(this->panel2);
         this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->Name = L"ClientRecurringPaymentForm";
         this->Text = L"ClientRecurringPaymentForm";
         this->panel2->ResumeLayout(false);
-        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(
-             this->dataGridViewRecurring))
-            ->EndInit();
+        (cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->dataGridViewRecurring))->EndInit();
         this->ResumeLayout(false);
     }
 #pragma endregion

@@ -1,4 +1,5 @@
 ﻿#include "CodeDetailForm.h"
+#include"GradientHelper.h"
 
 namespace BankingAppwinform {
 
@@ -6,6 +7,7 @@ CodeDetailForm::CodeDetailForm(CustomerCodes ^ customerCode) {
     InitializeComponent();
     this->customerCode = customerCode;
     loadCodeDetails();
+    GradientColorHelper::ApplyGradient(this->leftContent);
 }
 
 CodeDetailForm::~CodeDetailForm() {

@@ -165,7 +165,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnSaveMoney->Name = L"btnSaveMoney";
         this->btnSaveMoney->Size = System::Drawing::Size(276, 71);
         this->btnSaveMoney->TabIndex = 18;
-        this->btnSaveMoney->Text = L"                 Deposit Savings";
+        this->btnSaveMoney->Text = L"                 Gửi Tiền Tiếp Kiệm";
         this->btnSaveMoney->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnSaveMoney->UseVisualStyleBackColor = false;
         this->btnSaveMoney->Visible = false;
@@ -193,7 +193,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnHistory->Name = L"btnHistory";
         this->btnHistory->Size = System::Drawing::Size(276, 71);
         this->btnHistory->TabIndex = 11;
-        this->btnHistory->Text = L"                 History";
+        this->btnHistory->Text = L"                 Lịch Sử Giao Dịch";
         this->btnHistory->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnHistory->UseVisualStyleBackColor = false;
         this->btnHistory->Click += gcnew System::EventHandler(this, &MainForm::btnHistory_Click);
@@ -220,7 +220,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnServicePayment->Name = L"btnServicePayment";
         this->btnServicePayment->Size = System::Drawing::Size(276, 71);
         this->btnServicePayment->TabIndex = 16;
-        this->btnServicePayment->Text = L"                Service Information";
+        this->btnServicePayment->Text = L"                Thông Tin Dịch Vụ";
         this->btnServicePayment->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnServicePayment->UseVisualStyleBackColor = false;
         this->btnServicePayment->Click += gcnew System::EventHandler(this, &MainForm::btnServicePayment_Click);
@@ -247,7 +247,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnRecurringPayment->Name = L"btnRecurringPayment";
         this->btnRecurringPayment->Size = System::Drawing::Size(276, 71);
         this->btnRecurringPayment->TabIndex = 17;
-        this->btnRecurringPayment->Text = L"                Payment Request";
+        this->btnRecurringPayment->Text = L"                Yêu Cầu Thanh Toán";
         this->btnRecurringPayment->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnRecurringPayment->UseVisualStyleBackColor = false;
         this->btnRecurringPayment->Visible = false;
@@ -275,7 +275,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnCode->Name = L"btnCode";
         this->btnCode->Size = System::Drawing::Size(276, 71);
         this->btnCode->TabIndex = 15;
-        this->btnCode->Text = L"                Service Code";
+        this->btnCode->Text = L"                Mã Dịch Vụ";
         this->btnCode->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnCode->UseVisualStyleBackColor = false;
         this->btnCode->Visible = false;
@@ -303,7 +303,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnWithdraw->Name = L"btnWithdraw";
         this->btnWithdraw->Size = System::Drawing::Size(276, 71);
         this->btnWithdraw->TabIndex = 10;
-        this->btnWithdraw->Text = L"                Withdraw Money";
+        this->btnWithdraw->Text = L"                Rút Tiền";
         this->btnWithdraw->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnWithdraw->UseVisualStyleBackColor = false;
         this->btnWithdraw->Click += gcnew System::EventHandler(this, &MainForm::btnWithdraw_Click);
@@ -330,7 +330,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnTransfer->Name = L"btnTransfer";
         this->btnTransfer->Size = System::Drawing::Size(276, 71);
         this->btnTransfer->TabIndex = 9;
-        this->btnTransfer->Text = L"                Transfer Money";
+        this->btnTransfer->Text = L"                Tài Khoản";
         this->btnTransfer->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnTransfer->UseVisualStyleBackColor = false;
         this->btnTransfer->Click += gcnew System::EventHandler(this, &MainForm::btnTransfer_Click);
@@ -357,7 +357,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnAccount->Name = L"btnAccount";
         this->btnAccount->Size = System::Drawing::Size(276, 71);
         this->btnAccount->TabIndex = 0;
-        this->btnAccount->Text = L"                Account";
+        this->btnAccount->Text = L"                Tài Khoản";
         this->btnAccount->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnAccount->UseVisualStyleBackColor = false;
         this->btnAccount->Click += gcnew System::EventHandler(this, &MainForm::btnAccount_Click);
@@ -459,7 +459,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnLogout->Name = L"btnLogout";
         this->btnLogout->Size = System::Drawing::Size(276, 71);
         this->btnLogout->TabIndex = 12;
-        this->btnLogout->Text = L"                  Log Out";
+        this->btnLogout->Text = L"                  Đăng Xuất";
         this->btnLogout->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnLogout->UseVisualStyleBackColor = false;
         this->btnLogout->Click += gcnew System::EventHandler(this, &MainForm::btnLogout_Click);
@@ -517,7 +517,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->headerText->Name = L"headerText";
         this->headerText->Size = System::Drawing::Size(903, 52);
         this->headerText->TabIndex = 0;
-        this->headerText->Text = L"HEADER";
+        this->headerText->Text = L"Trang Chủ";
         this->headerText->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
         //
         // panel3
@@ -528,7 +528,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->panel3->Location = System::Drawing::Point(276, 52);
         this->panel3->Margin = System::Windows::Forms::Padding(4);
         this->panel3->Name = L"panel3";
-        this->panel3->Size = System::Drawing::Size(903, 637);
+        this->panel3->Size = System::Drawing::Size(903, 627);
         this->panel3->TabIndex = 3;
         //
         // panelx
@@ -557,7 +557,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         //
         this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->ClientSize = System::Drawing::Size(1179, 689);
+        this->ClientSize = System::Drawing::Size(1179, 679);
         this->Controls->Add(this->panel3);
         this->Controls->Add(this->panelHeader);
         this->Controls->Add(this->panelNav);

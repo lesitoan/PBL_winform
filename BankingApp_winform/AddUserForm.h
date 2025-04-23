@@ -114,9 +114,9 @@ ref class AddUserForm : public System::Windows::Forms::Form {
         this->label2->Location = System::Drawing::Point(57, 209);
         this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(116, 27);
+        this->label2->Size = System::Drawing::Size(126, 27);
         this->label2->TabIndex = 90;
-        this->label2->Text = L"Số tài khoản";
+        this->label2->Text = L"Số Tài Khoản:";
         //
         // label1
         //
@@ -129,9 +129,9 @@ ref class AddUserForm : public System::Windows::Forms::Form {
         this->label1->Location = System::Drawing::Point(467, 118);
         this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(123, 27);
+        this->label1->Size = System::Drawing::Size(133, 27);
         this->label1->TabIndex = 89;
-        this->label1->Text = L"Số điện thoại";
+        this->label1->Text = L"Số Điện Thoại:";
         //
         // labelAuth
         //
@@ -144,9 +144,9 @@ ref class AddUserForm : public System::Windows::Forms::Form {
         this->labelAuth->Location = System::Drawing::Point(57, 118);
         this->labelAuth->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelAuth->Name = L"labelAuth";
-        this->labelAuth->Size = System::Drawing::Size(44, 27);
+        this->labelAuth->Size = System::Drawing::Size(50, 27);
         this->labelAuth->TabIndex = 88;
-        this->labelAuth->Text = L"Tên";
+        this->labelAuth->Text = L"Tên:";
         //
         // panel6
         //
@@ -310,6 +310,7 @@ ref class AddUserForm : public System::Windows::Forms::Form {
         //
         // panelService
         //
+        this->panelService->BackColor = System::Drawing::Color::Transparent;
         this->panelService->Controls->Add(this->label3);
         this->panelService->Controls->Add(this->panel3);
         this->panelService->Location = System::Drawing::Point(459, 293);

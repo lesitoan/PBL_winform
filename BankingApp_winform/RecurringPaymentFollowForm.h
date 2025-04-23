@@ -47,35 +47,35 @@ ref class RecurringPaymentFollowForm : public System::Windows::Forms::Form {
     /// the contents of this method with the code editor.
     /// </summary>
     void InitializeComponent(void) {
-        this->flowLayoutPanelFollow =
-            (gcnew System::Windows::Forms::FlowLayoutPanel());
+        System::ComponentModel::ComponentResourceManager ^ resources = (gcnew System::ComponentModel::ComponentResourceManager(RecurringPaymentFollowForm::typeid));
+        this->flowLayoutPanelFollow = (gcnew System::Windows::Forms::FlowLayoutPanel());
         this->SuspendLayout();
         //
         // flowLayoutPanelFollow
         //
-        this->flowLayoutPanelFollow->Dock =
-            System::Windows::Forms::DockStyle::Fill;
+        this->flowLayoutPanelFollow->Dock = System::Windows::Forms::DockStyle::Fill;
         this->flowLayoutPanelFollow->Location = System::Drawing::Point(0, 0);
+        this->flowLayoutPanelFollow->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
         this->flowLayoutPanelFollow->Name = L"flowLayoutPanelFollow";
-        this->flowLayoutPanelFollow->Size = System::Drawing::Size(505, 241);
+        this->flowLayoutPanelFollow->Size = System::Drawing::Size(671, 287);
         this->flowLayoutPanelFollow->TabIndex = 0;
         //
         // RecurringPaymentFollowForm
         //
-        this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+        this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->BackColor = System::Drawing::Color::Teal;
-        this->ClientSize = System::Drawing::Size(505, 241);
+        this->ClientSize = System::Drawing::Size(671, 287);
         this->Controls->Add(this->flowLayoutPanelFollow);
         this->ForeColor = System::Drawing::SystemColors::ControlText;
-        this->FormBorderStyle =
-            System::Windows::Forms::FormBorderStyle::FixedToolWindow;
-        this->MaximumSize = System::Drawing::Size(521, 280);
-        this->MinimumSize = System::Drawing::Size(521, 280);
+        this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
+        this->Icon = (cli::safe_cast<System::Drawing::Icon ^>(resources->GetObject(L"$this.Icon")));
+        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->MaximumSize = System::Drawing::Size(689, 334);
+        this->MinimumSize = System::Drawing::Size(689, 334);
         this->Name = L"RecurringPaymentFollowForm";
-        this->StartPosition =
-            System::Windows::Forms::FormStartPosition::CenterParent;
-        this->Text = L"RecurringPaymentFollowForm";
+        this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
+        this->Text = L"Thanh Toán Định Kỳ";
         this->ResumeLayout(false);
     }
 #pragma endregion

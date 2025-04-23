@@ -164,7 +164,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         //
         // btnSetPin
         //
-        this->btnSetPin->BackColor = System::Drawing::Color::SeaShell;
+        this->btnSetPin->BackColor = System::Drawing::Color::White;
         this->btnSetPin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
         this->btnSetPin->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnSetPin->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -184,7 +184,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->btnSetPin->Name = L"btnSetPin";
         this->btnSetPin->Size = System::Drawing::Size(177, 53);
         this->btnSetPin->TabIndex = 6;
-        this->btnSetPin->Text = L"Change Pin Code";
+        this->btnSetPin->Text = L"Đổi Mã Pin";
         this->btnSetPin->UseVisualStyleBackColor = false;
         this->btnSetPin->Click += gcnew System::EventHandler(this, &AccountForm::btnSetPin_Click);
         //
@@ -201,7 +201,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         // buttonSetAvatar
         //
         this->buttonSetAvatar->AutoSize = true;
-        this->buttonSetAvatar->BackColor = System::Drawing::Color::SeaShell;
+        this->buttonSetAvatar->BackColor = System::Drawing::Color::White;
         this->buttonSetAvatar->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
         this->buttonSetAvatar->Cursor = System::Windows::Forms::Cursors::Hand;
         this->buttonSetAvatar->Dock = System::Windows::Forms::DockStyle::Top;
@@ -221,7 +221,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->buttonSetAvatar->Name = L"buttonSetAvatar";
         this->buttonSetAvatar->Size = System::Drawing::Size(232, 53);
         this->buttonSetAvatar->TabIndex = 10;
-        this->buttonSetAvatar->Text = L"Change Avatar";
+        this->buttonSetAvatar->Text = L"Đổi Hình Đại Diện";
         this->buttonSetAvatar->UseVisualStyleBackColor = false;
         this->buttonSetAvatar->Click += gcnew System::EventHandler(this, &AccountForm::buttonSetAvatar_Click);
         //
@@ -238,7 +238,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         // btnLockAccount
         //
         this->btnLockAccount->AutoSize = true;
-        this->btnLockAccount->BackColor = System::Drawing::Color::SeaShell;
+        this->btnLockAccount->BackColor = System::Drawing::Color::White;
         this->btnLockAccount->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
         this->btnLockAccount->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnLockAccount->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -258,7 +258,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->btnLockAccount->Name = L"btnLockAccount";
         this->btnLockAccount->Size = System::Drawing::Size(237, 53);
         this->btnLockAccount->TabIndex = 9;
-        this->btnLockAccount->Text = L"Block Account";
+        this->btnLockAccount->Text = L"Khóa Tài Khoản";
         this->btnLockAccount->UseVisualStyleBackColor = false;
         this->btnLockAccount->Click += gcnew System::EventHandler(this, &AccountForm::btnLockAccount_Click);
         //
@@ -289,7 +289,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         //
         // btnChangePw
         //
-        this->btnChangePw->BackColor = System::Drawing::Color::SeaShell;
+        this->btnChangePw->BackColor = System::Drawing::Color::White;
         this->btnChangePw->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
         this->btnChangePw->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnChangePw->FlatAppearance->CheckedBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
@@ -308,7 +308,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->btnChangePw->Name = L"btnChangePw";
         this->btnChangePw->Size = System::Drawing::Size(232, 53);
         this->btnChangePw->TabIndex = 10;
-        this->btnChangePw->Text = L"Change Password";
+        this->btnChangePw->Text = L"Đổi Mật Khẩu";
         this->btnChangePw->UseVisualStyleBackColor = false;
         this->btnChangePw->Click += gcnew System::EventHandler(this, &AccountForm::btnChangePw_Click);
         //
@@ -362,11 +362,11 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->label3->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                                                           static_cast<System::Byte>(0)));
         this->label3->ForeColor = System::Drawing::Color::White;
-        this->label3->Location = System::Drawing::Point(213, 53);
+        this->label3->Location = System::Drawing::Point(230, 52);
         this->label3->Name = L"label3";
-        this->label3->Size = System::Drawing::Size(103, 16);
+        this->label3->Size = System::Drawing::Size(80, 16);
         this->label3->TabIndex = 6;
-        this->label3->Text = L"Account Number:";
+        this->label3->Text = L"Số Tài Khoản:";
         //
         // label2
         //
@@ -377,9 +377,9 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->label2->ForeColor = System::Drawing::Color::White;
         this->label2->Location = System::Drawing::Point(197, 9);
         this->label2->Name = L"label2";
-        this->label2->Size = System::Drawing::Size(122, 16);
+        this->label2->Size = System::Drawing::Size(120, 16);
         this->label2->TabIndex = 5;
-        this->label2->Text = L"Account Information:";
+        this->label2->Text = L"Thông Tin Tài Khoản:";
         //
         // pictureBoxAvatar
         //

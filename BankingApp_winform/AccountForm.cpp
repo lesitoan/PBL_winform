@@ -36,9 +36,9 @@ AccountForm::~AccountForm() {
 
 System::Void AccountForm::AccountForm_Load(System::Object ^ sender,
                                            System::EventArgs ^ e) {
-    if (!GlobalData::GetCurrentUser()->getPin()) {
-        this->btnSetPin->Text = "Tao PIN";
-    }
+    /*if (!GlobalData::GetCurrentUser()->getPin()) {
+        this->btnSetPin->Text = "Đổi Mã PIN";
+    }*/
     this->labelFullName->Text = GlobalData::GetCurrentUser()->getFullName();
     this->labelAccountNumber->Text =
         GlobalData::GetCurrentUser()->getAccountNumber();

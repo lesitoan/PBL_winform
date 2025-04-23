@@ -18,7 +18,7 @@ System::Void AuthForm::AuthForm_Load(System::Object ^ sender,
     loginForm->LoginSuccess +=
         gcnew EventHandler(this, &AuthForm::OnLoginSuccess);
     LoadChildForm::LoadForm(this->panelContent, loginForm);
-    this->labelAuth->Text = L"Don't have un account?";
+    this->labelAuth->Text = L"Không Có Tài Khoản?";
 
     //
     String ^ projectPath =
@@ -42,7 +42,7 @@ System::Void AuthForm::labelForgotPw_Click(System::Object ^ sender,
     LoadChildForm::LoadForm(this->panelContent, forgotPwForm);
     this->currentForm = "forgotpw";
     this->labelForgotPw->Visible = false;
-    this->labelAuth->Text = L"Sign In";
+    this->labelAuth->Text = L"Đăng Nhập";
 }
 
 System::Void AuthForm::labelAuth_Click(System::Object ^ sender,
@@ -52,7 +52,7 @@ System::Void AuthForm::labelAuth_Click(System::Object ^ sender,
         LoadChildForm::LoadForm(this->panelContent, loginForm);  
         loginForm->LoginSuccess +=
             gcnew EventHandler(this, &AuthForm::OnLoginSuccess);
-        this->labelAuth->Text = L"Don't have un account?";
+        this->labelAuth->Text = L"Không Có Tài Khoản?";
         currentForm = "login";
 
     } else {
@@ -60,7 +60,7 @@ System::Void AuthForm::labelAuth_Click(System::Object ^ sender,
         LoadChildForm::LoadForm(this->panelContent, signupForm);
         signupForm->SignupSuccess +=
             gcnew EventHandler(this, &AuthForm::OnSignupSuccess);
-        this->labelAuth->Text = L"Sign In";
+        this->labelAuth->Text = L"Đăng Nhập";
         // signupForm->AutoScroll = true;
         currentForm = "signup";
     }
@@ -97,7 +97,7 @@ System::Void AuthForm::OnSignupSuccess(System::Object ^ sender,
     loginForm->LoginSuccess +=
         gcnew EventHandler(this, &AuthForm::OnLoginSuccess);
     LoadChildForm::LoadForm(this->panelContent, loginForm);
-    this->labelAuth->Text = L"Don't have un account?";
+    this->labelAuth->Text = L"Không Có Tài Khoản?";
 }
 
 }; // namespace BankingAppwinform

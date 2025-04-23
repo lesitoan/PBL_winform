@@ -1,10 +1,11 @@
 ﻿#include "RecurringPaymentFollowForm.h"
-
+#include"GradientHelper.h"
 namespace BankingAppwinform {
 
 RecurringPaymentFollowForm::RecurringPaymentFollowForm(void) {
     InitializeComponent();
     LoadRecurringPaymentFollow();
+    GradientColorHelper::ApplyGradient(this->flowLayoutPanelFollow);
 }
 
 RecurringPaymentFollowForm::~RecurringPaymentFollowForm() {
@@ -44,7 +45,7 @@ Void RecurringPaymentFollowForm::LoadRecurringPaymentFollow() {
             label->Cursor = Cursors::Hand;
             label->Margin = System::Windows::Forms::Padding(
                 10, 10, 10, 0); // padding giữa các dòng
-            label->BackColor = Color::WhiteSmoke;
+            label->BackColor = Color::Transparent;
             label->Padding = System::Windows::Forms::Padding(
                 5, 5, 5, 5); // padding trong label
             label->TextAlign = ContentAlignment::MiddleLeft;

@@ -80,38 +80,33 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         //
         this->label6->AutoSize = true;
         this->label6->BackColor = System::Drawing::Color::Transparent;
-        this->label6->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 16.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label6->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
         this->label6->ForeColor = System::Drawing::Color::White;
         this->label6->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label6->Location = System::Drawing::Point(260, 113);
         this->label6->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
         this->label6->Name = L"label6";
-        this->label6->Size = System::Drawing::Size(210, 35);
+        this->label6->Size = System::Drawing::Size(193, 35);
         this->label6->TabIndex = 43;
-        this->label6->Text = L"Forgot Password";
-        this->label6->TextAlign =
-            System::Drawing::ContentAlignment::MiddleCenter;
+        this->label6->Text = L"Quên Mật Khẩu";
+        this->label6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
         //
         // labelAuth
         //
         this->labelAuth->AutoSize = true;
         this->labelAuth->BackColor = System::Drawing::Color::Transparent;
         this->labelAuth->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->labelAuth->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->labelAuth->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                             static_cast<System::Byte>(0)));
         this->labelAuth->ForeColor = System::Drawing::Color::Transparent;
         this->labelAuth->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->labelAuth->Location = System::Drawing::Point(73, 247);
         this->labelAuth->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
         this->labelAuth->Name = L"labelAuth";
-        this->labelAuth->Size = System::Drawing::Size(178, 26);
+        this->labelAuth->Size = System::Drawing::Size(127, 26);
         this->labelAuth->TabIndex = 47;
-        this->labelAuth->Text = L"Telephone Number";
+        this->labelAuth->Text = L"Số Điện Thoại";
         //
         // btnSubmit
         //
@@ -119,10 +114,8 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
         this->btnSubmit->FlatAppearance->BorderSize = 0;
         this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->btnSubmit->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->btnSubmit->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                             static_cast<System::Byte>(0)));
         this->btnSubmit->ForeColor = System::Drawing::Color::White;
         this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->btnSubmit->Location = System::Drawing::Point(79, 445);
@@ -130,28 +123,25 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->btnSubmit->Name = L"btnSubmit";
         this->btnSubmit->Size = System::Drawing::Size(585, 52);
         this->btnSubmit->TabIndex = 45;
-        this->btnSubmit->Text = L"Reset My Password";
+        this->btnSubmit->Text = L"Làm Mới Mật Khẩu";
         this->btnSubmit->UseVisualStyleBackColor = false;
-        this->btnSubmit->Click +=
-            gcnew System::EventHandler(this, &ForgotPwForm::btnSubmit_Click);
+        this->btnSubmit->Click += gcnew System::EventHandler(this, &ForgotPwForm::btnSubmit_Click);
         //
         // label7
         //
         this->label7->AutoSize = true;
         this->label7->BackColor = System::Drawing::Color::Transparent;
         this->label7->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label7->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label7->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
         this->label7->ForeColor = System::Drawing::Color::Transparent;
         this->label7->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label7->Location = System::Drawing::Point(74, 156);
         this->label7->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
         this->label7->Name = L"label7";
-        this->label7->Size = System::Drawing::Size(63, 26);
+        this->label7->Size = System::Drawing::Size(44, 26);
         this->label7->TabIndex = 51;
-        this->label7->Text = L"Name";
+        this->label7->Text = L"Tên";
         //
         // panel1
         //
@@ -165,15 +155,9 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         //
         // fullName
         //
-        this->fullName->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->fullName->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->fullName->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->fullName->Font =
-            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->fullName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->fullName->Location = System::Drawing::Point(5, 7);
         this->fullName->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
         this->fullName->MaxLength = 35;
@@ -194,16 +178,9 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         //
         // phoneNumber
         //
-        this->phoneNumber->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->phoneNumber->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->phoneNumber->Font =
-            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->phoneNumber->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
+        this->phoneNumber->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->phoneNumber->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->phoneNumber->Location = System::Drawing::Point(5, 8);
         this->phoneNumber->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
         this->phoneNumber->MaxLength = 20;
@@ -216,10 +193,8 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         //
         this->label1->AutoSize = true;
         this->label1->BackColor = System::Drawing::Color::Transparent;
-        this->label1->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label1->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
         this->label1->ForeColor = System::Drawing::Color::White;
         this->label1->Location = System::Drawing::Point(74, 339);
         this->label1->Name = L"label1";
@@ -239,15 +214,9 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         //
         // txtEmail
         //
-        this->txtEmail->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->txtEmail->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->txtEmail->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->txtEmail->Font =
-            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->txtEmail->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->txtEmail->Location = System::Drawing::Point(5, 2);
         this->txtEmail->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
         this->txtEmail->MaxLength = 20;
@@ -262,8 +231,7 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
         this->BackColor = System::Drawing::Color::HotPink;
-        this->BackgroundImageLayout =
-            System::Windows::Forms::ImageLayout::Stretch;
+        this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
         this->ClientSize = System::Drawing::Size(729, 601);
         this->Controls->Add(this->panel3);
         this->Controls->Add(this->label1);
@@ -275,6 +243,7 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->label6);
         this->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
         this->Name = L"ForgotPwForm";
+        this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &ForgotPwForm::ForgotPwForm_Paint);
         this->panel1->ResumeLayout(false);
         this->panel1->PerformLayout();
         this->panel2->ResumeLayout(false);
@@ -283,9 +252,6 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->panel3->PerformLayout();
         this->ResumeLayout(false);
         this->PerformLayout();
-
-        this->Paint += gcnew System::Windows::Forms::PaintEventHandler(
-            this, &ForgotPwForm::ForgotPwForm_Paint);
     }
 
   private:

@@ -129,9 +129,9 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         this->label4->Location = System::Drawing::Point(117, 210);
         this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label4->Name = L"label4";
-        this->label4->Size = System::Drawing::Size(141, 26);
+        this->label4->Size = System::Drawing::Size(124, 26);
         this->label4->TabIndex = 57;
-        this->label4->Text = L"Enter Pin Code:";
+        this->label4->Text = L"Nhập Mã Pin:";
         //
         // label5
         //
@@ -146,9 +146,9 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         this->label5->Location = System::Drawing::Point(119, 110);
         this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(137, 26);
+        this->label5->Size = System::Drawing::Size(103, 26);
         this->label5->TabIndex = 55;
-        this->label5->Text = L"Enter Amount:";
+        this->label5->Text = L"Nhập Tiền:";
         //
         // button1
         //
@@ -170,7 +170,7 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         this->button1->Name = L"button1";
         this->button1->Size = System::Drawing::Size(635, 52);
         this->button1->TabIndex = 53;
-        this->button1->Text = L"Withdraw Money";
+        this->button1->Text = L"Rút Tiền";
         this->button1->UseVisualStyleBackColor = false;
         //
         // panel2
@@ -186,20 +186,20 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         //
         // labelBalance
         //
-        this->labelBalance->BackColor = System::Drawing::Color::Transparent;
+        this->labelBalance->BackColor = System::Drawing::Color::White;
         this->labelBalance->Cursor = System::Windows::Forms::Cursors::Hand;
         this->labelBalance->Dock = System::Windows::Forms::DockStyle::Fill;
         this->labelBalance->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->labelBalance->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                                                                 static_cast<System::Byte>(0)));
-        this->labelBalance->ForeColor = System::Drawing::Color::White;
+        this->labelBalance->ForeColor = System::Drawing::Color::MediumOrchid;
         this->labelBalance->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->labelBalance->Location = System::Drawing::Point(0, 0);
         this->labelBalance->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelBalance->Name = L"labelBalance";
         this->labelBalance->Size = System::Drawing::Size(877, 84);
         this->labelBalance->TabIndex = 58;
-        this->labelBalance->Text = L"Balance: 123000 VNĐ";
+        this->labelBalance->Text = L"Số dư: 123000 vnđ";
         this->labelBalance->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
         //
         // WithdrawMoneyForm

@@ -54,9 +54,7 @@ ref class LoginForm : public System::Windows::Forms::Form {
 #pragma region Windows Form Designer generated code
 
     void InitializeComponent(void) {
-        System::ComponentModel::ComponentResourceManager ^ resources =
-            (gcnew System::ComponentModel::ComponentResourceManager(
-                LoginForm::typeid));
+        System::ComponentModel::ComponentResourceManager ^ resources = (gcnew System::ComponentModel::ComponentResourceManager(LoginForm::typeid));
         this->btnSubmit = (gcnew System::Windows::Forms::Button());
         this->label3 = (gcnew System::Windows::Forms::Label());
         this->labelAuth = (gcnew System::Windows::Forms::Label());
@@ -80,8 +78,7 @@ ref class LoginForm : public System::Windows::Forms::Form {
         this->btnSubmit->ForeColor = System::Drawing::Color::White;
         this->btnSubmit->Name = L"btnSubmit";
         this->btnSubmit->UseVisualStyleBackColor = false;
-        this->btnSubmit->Click +=
-            gcnew System::EventHandler(this, &LoginForm::btnSubmit_Click);
+        this->btnSubmit->Click += gcnew System::EventHandler(this, &LoginForm::btnSubmit_Click);
         //
         // label3
         //
@@ -109,8 +106,7 @@ ref class LoginForm : public System::Windows::Forms::Form {
         // phoneNumber
         //
         resources->ApplyResources(this->phoneNumber, L"phoneNumber");
-        this->phoneNumber->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
+        this->phoneNumber->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->phoneNumber->Name = L"phoneNumber";
         //
         // panel1
@@ -133,8 +129,7 @@ ref class LoginForm : public System::Windows::Forms::Form {
         this->btnShowPassword->BackColor = System::Drawing::Color::Transparent;
         resources->ApplyResources(this->btnShowPassword, L"btnShowPassword");
         this->btnShowPassword->Name = L"btnShowPassword";
-        this->btnShowPassword->Click +=
-            gcnew System::EventHandler(this, &LoginForm::btnShowPassword_Click);
+        this->btnShowPassword->Click += gcnew System::EventHandler(this, &LoginForm::btnShowPassword_Click);
         //
         // password
         //
@@ -146,10 +141,8 @@ ref class LoginForm : public System::Windows::Forms::Form {
         //
         resources->ApplyResources(this->label2, L"label2");
         this->label2->BackColor = System::Drawing::Color::Transparent;
-        this->label2->ForeColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(224)),
-            static_cast<System::Int32>(static_cast<System::Byte>(224)),
-            static_cast<System::Int32>(static_cast<System::Byte>(224)));
+        this->label2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
+                                                                   static_cast<System::Int32>(static_cast<System::Byte>(224)));
         this->label2->Name = L"label2";
         //
         // LoginForm
@@ -157,10 +150,8 @@ ref class LoginForm : public System::Windows::Forms::Form {
         this->AcceptButton = this->btnSubmit;
         resources->ApplyResources(this, L"$this");
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(255)),
-            static_cast<System::Int32>(static_cast<System::Byte>(128)),
-            static_cast<System::Int32>(static_cast<System::Byte>(255)));
+        this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+                                                           static_cast<System::Int32>(static_cast<System::Byte>(255)));
         this->Controls->Add(this->label2);
         this->Controls->Add(this->panel2);
         this->Controls->Add(this->panel1);

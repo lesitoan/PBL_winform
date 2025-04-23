@@ -248,9 +248,9 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->label6->Location = System::Drawing::Point(117, 223);
         this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label6->Name = L"label6";
-        this->label6->Size = System::Drawing::Size(217, 26);
+        this->label6->Size = System::Drawing::Size(218, 26);
         this->label6->TabIndex = 50;
-        this->label6->Text = L"Confirm New Password:";
+        this->label6->Text = L"Xác Nhận Mật Khẩu Mới:";
         //
         // label5
         //
@@ -264,9 +264,9 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->label5->Location = System::Drawing::Point(117, 116);
         this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label5->Name = L"label5";
-        this->label5->Size = System::Drawing::Size(290, 26);
+        this->label5->Size = System::Drawing::Size(135, 26);
         this->label5->TabIndex = 47;
-        this->label5->Text = L"New Password(At least 6 chars):";
+        this->label5->Text = L"Mật Khẩu Mới:";
         //
         // label4
         //
@@ -281,9 +281,9 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->label4->Location = System::Drawing::Point(117, 15);
         this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label4->Name = L"label4";
-        this->label4->Size = System::Drawing::Size(134, 26);
+        this->label4->Size = System::Drawing::Size(123, 26);
         this->label4->TabIndex = 44;
-        this->label4->Text = L"Old Password:";
+        this->label4->Text = L"Mật Khẩu Cũ:";
         //
         // btnSubmit
         //
@@ -305,7 +305,7 @@ ref class ChangePwForm : public System::Windows::Forms::Form {
         this->btnSubmit->Name = L"btnSubmit";
         this->btnSubmit->Size = System::Drawing::Size(535, 52);
         this->btnSubmit->TabIndex = 42;
-        this->btnSubmit->Text = L"Change Account Password";
+        this->btnSubmit->Text = L"Đổi Mật Khẩu";
         this->btnSubmit->UseVisualStyleBackColor = false;
         this->btnSubmit->Click += gcnew System::EventHandler(this, &ChangePwForm::btnSubmit_Click);
         //

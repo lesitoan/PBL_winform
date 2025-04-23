@@ -95,8 +95,7 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         this->btnTermDeposit = (gcnew System::Windows::Forms::Label());
         this->btnNonTermDeposit = (gcnew System::Windows::Forms::Label());
         this->label3 = (gcnew System::Windows::Forms::Label());
-        this->flowLayoutSavingMoney =
-            (gcnew System::Windows::Forms::FlowLayoutPanel());
+        this->flowLayoutSavingMoney = (gcnew System::Windows::Forms::FlowLayoutPanel());
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->label6 = (gcnew System::Windows::Forms::Label());
         this->label5 = (gcnew System::Windows::Forms::Label());
@@ -119,77 +118,49 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         // btnTermDeposit
         //
         this->btnTermDeposit->AllowDrop = true;
-        this->btnTermDeposit->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                ((System::Windows::Forms::AnchorStyles::Top |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->btnTermDeposit->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->btnTermDeposit->BackColor = System::Drawing::Color::White;
         this->btnTermDeposit->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnTermDeposit->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Bold,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        this->btnTermDeposit->ForeColor =
-            System::Drawing::SystemColors::ActiveCaptionText;
+        this->btnTermDeposit->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                                  static_cast<System::Byte>(0)));
+        this->btnTermDeposit->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
         this->btnTermDeposit->Location = System::Drawing::Point(52, 30);
-        this->btnTermDeposit->Margin =
-            System::Windows::Forms::Padding(4, 0, 4, 0);
+        this->btnTermDeposit->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->btnTermDeposit->Name = L"btnTermDeposit";
         this->btnTermDeposit->Size = System::Drawing::Size(767, 85);
         this->btnTermDeposit->TabIndex = 1;
         this->btnTermDeposit->Text = L"Gửi Tiết Kiệm Có Kì Hạn(6%/Năm)";
-        this->btnTermDeposit->TextAlign =
-            System::Drawing::ContentAlignment::MiddleCenter;
-        this->btnTermDeposit->Click += gcnew System::EventHandler(
-            this, &ClientSavingMoneyForm::btnTermDeposit_Click);
+        this->btnTermDeposit->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+        this->btnTermDeposit->Click += gcnew System::EventHandler(this, &ClientSavingMoneyForm::btnTermDeposit_Click);
         //
         // btnNonTermDeposit
         //
         this->btnNonTermDeposit->AllowDrop = true;
-        this->btnNonTermDeposit->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                ((System::Windows::Forms::AnchorStyles::Top |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->btnNonTermDeposit->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->btnNonTermDeposit->BackColor = System::Drawing::Color::White;
         this->btnNonTermDeposit->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->btnNonTermDeposit->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Bold,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        this->btnNonTermDeposit->ForeColor =
-            System::Drawing::SystemColors::ActiveCaptionText;
+        this->btnNonTermDeposit->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                                     static_cast<System::Byte>(0)));
+        this->btnNonTermDeposit->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
         this->btnNonTermDeposit->Location = System::Drawing::Point(52, 131);
-        this->btnNonTermDeposit->Margin =
-            System::Windows::Forms::Padding(4, 0, 4, 0);
+        this->btnNonTermDeposit->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->btnNonTermDeposit->Name = L"btnNonTermDeposit";
         this->btnNonTermDeposit->Size = System::Drawing::Size(767, 85);
         this->btnNonTermDeposit->TabIndex = 2;
         this->btnNonTermDeposit->Text = L"Gửi Tiết Kiệm Không Kì Hạn(4%/Năm)";
-        this->btnNonTermDeposit->TextAlign =
-            System::Drawing::ContentAlignment::MiddleCenter;
-        this->btnNonTermDeposit->Click += gcnew System::EventHandler(
-            this, &ClientSavingMoneyForm::btnNonTermDeposit_Click);
+        this->btnNonTermDeposit->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+        this->btnNonTermDeposit->Click += gcnew System::EventHandler(this, &ClientSavingMoneyForm::btnNonTermDeposit_Click);
         //
         // label3
         //
         this->label3->AllowDrop = true;
-        this->label3->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                ((System::Windows::Forms::AnchorStyles::Top |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->label3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->label3->BackColor = System::Drawing::Color::Transparent;
         this->label3->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label3->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Bold,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
-        this->label3->ForeColor =
-            System::Drawing::SystemColors::ButtonHighlight;
-        this->label3->ImageAlign =
-            System::Drawing::ContentAlignment::MiddleLeft;
+        this->label3->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
+        this->label3->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+        this->label3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->label3->Location = System::Drawing::Point(52, 246);
         this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label3->Name = L"label3";
@@ -200,17 +171,10 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         // flowLayoutSavingMoney
         //
-        this->flowLayoutSavingMoney->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                ((System::Windows::Forms::AnchorStyles::Top |
-                  System::Windows::Forms::AnchorStyles::Bottom) |
-                 System::Windows::Forms::AnchorStyles::Left));
+        this->flowLayoutSavingMoney->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left));
         this->flowLayoutSavingMoney->AutoScroll = true;
-        this->flowLayoutSavingMoney->BackColor =
-            System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(224)),
-                static_cast<System::Int32>(static_cast<System::Byte>(224)),
-                static_cast<System::Int32>(static_cast<System::Byte>(224)));
+        this->flowLayoutSavingMoney->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)),
+                                                                                  static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)));
         this->flowLayoutSavingMoney->Controls->Add(this->panel1);
         this->flowLayoutSavingMoney->Controls->Add(this->panel3);
         this->flowLayoutSavingMoney->Location = System::Drawing::Point(56, 296);
@@ -220,10 +184,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         // panel1
         //
-        this->panel1->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                                                                   static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->panel1->Controls->Add(this->label6);
         this->panel1->Controls->Add(this->label5);
         this->panel1->Controls->Add(this->label4);
@@ -240,10 +202,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->label6->AutoSize = true;
         this->label6->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label6->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline Medium", 7.8F, System::Drawing::FontStyle::Italic,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label6->Font = (gcnew System::Drawing::Font(L"UTM Daxline Medium", 7.8F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
         this->label6->ForeColor = System::Drawing::Color::Transparent;
         this->label6->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label6->Location = System::Drawing::Point(541, 134);
@@ -257,10 +217,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->label5->AutoSize = true;
         this->label5->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label5->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label5->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
         this->label5->ForeColor = System::Drawing::Color::Transparent;
         this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label5->Location = System::Drawing::Point(16, 102);
@@ -274,10 +232,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->label4->AutoSize = true;
         this->label4->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label4->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label4->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
         this->label4->ForeColor = System::Drawing::Color::Transparent;
         this->label4->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label4->Location = System::Drawing::Point(16, 79);
@@ -291,10 +247,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->label2->AutoSize = true;
         this->label2->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label2->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
         this->label2->ForeColor = System::Drawing::Color::Transparent;
         this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label2->Location = System::Drawing::Point(16, 56);
@@ -308,10 +262,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->label1->AutoSize = true;
         this->label1->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label1->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
         this->label1->ForeColor = System::Drawing::Color::Transparent;
         this->label1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label1->Location = System::Drawing::Point(16, 33);
@@ -325,10 +277,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->labelAuth->AutoSize = true;
         this->labelAuth->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->labelAuth->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->labelAuth->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                             static_cast<System::Byte>(0)));
         this->labelAuth->ForeColor = System::Drawing::Color::Transparent;
         this->labelAuth->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->labelAuth->Location = System::Drawing::Point(16, 10);
@@ -340,10 +290,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         // panel3
         //
-        this->panel3->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->panel3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                                                                   static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->panel3->Controls->Add(this->label13);
         this->panel3->Controls->Add(this->label14);
         this->panel3->Controls->Add(this->label15);
@@ -360,10 +308,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->label13->AutoSize = true;
         this->label13->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label13->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline Medium", 7.8F, System::Drawing::FontStyle::Italic,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label13->Font = (gcnew System::Drawing::Font(L"UTM Daxline Medium", 7.8F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+                                                           static_cast<System::Byte>(0)));
         this->label13->ForeColor = System::Drawing::Color::Transparent;
         this->label13->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label13->Location = System::Drawing::Point(558, 135);
@@ -377,10 +323,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->label14->AutoSize = true;
         this->label14->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label14->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label14->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                           static_cast<System::Byte>(0)));
         this->label14->ForeColor = System::Drawing::Color::Transparent;
         this->label14->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label14->Location = System::Drawing::Point(16, 102);
@@ -394,10 +338,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->label15->AutoSize = true;
         this->label15->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label15->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label15->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                           static_cast<System::Byte>(0)));
         this->label15->ForeColor = System::Drawing::Color::Transparent;
         this->label15->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label15->Location = System::Drawing::Point(16, 79);
@@ -411,10 +353,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->label16->AutoSize = true;
         this->label16->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label16->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label16->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                           static_cast<System::Byte>(0)));
         this->label16->ForeColor = System::Drawing::Color::Transparent;
         this->label16->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label16->Location = System::Drawing::Point(16, 56);
@@ -428,10 +368,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->label17->AutoSize = true;
         this->label17->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label17->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label17->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                           static_cast<System::Byte>(0)));
         this->label17->ForeColor = System::Drawing::Color::Transparent;
         this->label17->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label17->Location = System::Drawing::Point(16, 33);
@@ -445,10 +383,8 @@ ref class ClientSavingMoneyForm : public System::Windows::Forms::Form {
         //
         this->label18->AutoSize = true;
         this->label18->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label18->Font = (gcnew System::Drawing::Font(
-            L"Arial", 10.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label18->Font = (gcnew System::Drawing::Font(L"Arial", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                           static_cast<System::Byte>(0)));
         this->label18->ForeColor = System::Drawing::Color::Transparent;
         this->label18->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label18->Location = System::Drawing::Point(16, 10);

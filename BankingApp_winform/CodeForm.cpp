@@ -1,4 +1,5 @@
 ﻿#include "CodeForm.h"
+#include "GradientHelper.h"
 using namespace System::Text::RegularExpressions;
 
 namespace BankingAppwinform {
@@ -6,6 +7,7 @@ namespace BankingAppwinform {
 CodeForm::CodeForm(void) {
     InitializeComponent();
     loadTableCodes();
+    GradientColorHelper::ApplyGradient(this->panel1);
 }
 CodeForm::~CodeForm() {
     if (components) {

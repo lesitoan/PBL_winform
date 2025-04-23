@@ -53,7 +53,7 @@ void ClientSavingMoneyForm::loadSavingCustomers() {
             noSavingLabel->Text = L"Chưa có tiết kiệm nào";
             noSavingLabel->ForeColor = Color::White;
             noSavingLabel->Font = gcnew System::Drawing::Font(
-                "UTM Dexine", 12, FontStyle::Regular);
+                "Segoe UI", 12, FontStyle::Regular);
             noSavingLabel->AutoSize = true;
             noSavingLabel->BackColor = Color::Transparent;
 

@@ -296,7 +296,7 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
         this->header->BackColor = System::Drawing::Color::White;
         this->header->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                                                           static_cast<System::Byte>(0)));
-        this->header->ForeColor = System::Drawing::Color::Black;
+        this->header->ForeColor = System::Drawing::Color::Indigo;
         this->header->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->header->Location = System::Drawing::Point(5, 0);
         this->header->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
@@ -315,7 +315,7 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
         this->labelBalance->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
         this->labelBalance->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                                                                 static_cast<System::Byte>(0)));
-        this->labelBalance->ForeColor = System::Drawing::Color::SpringGreen;
+        this->labelBalance->ForeColor = System::Drawing::Color::MediumOrchid;
         this->labelBalance->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->labelBalance->Location = System::Drawing::Point(11, 124);
         this->labelBalance->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);

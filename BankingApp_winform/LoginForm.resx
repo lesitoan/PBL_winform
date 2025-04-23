@@ -142,7 +142,7 @@
     <value>20</value>
   </data>
   <data name="btnSubmit.Text" xml:space="preserve">
-    <value>Log In</value>
+    <value>Đăng Nhập</value>
   </data>
   <data name="&gt;&gt;btnSubmit.Name" xml:space="preserve">
     <value>btnSubmit</value>
@@ -169,13 +169,13 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 46</value>
+    <value>418, 46</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Login to your account</value>
+    <value>Đăng Nhập Vào Tài Khoản</value>
   </data>
   <data name="label3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -205,13 +205,13 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="labelAuth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>262, 26</value>
+    <value>219, 26</value>
   </data>
   <data name="labelAuth.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
   </data>
   <data name="labelAuth.Text" xml:space="preserve">
-    <value>User name or mobile number</value>
+    <value>Tài Khoản/Số Điện Thoại</value>
   </data>
   <data name="&gt;&gt;labelAuth.Name" xml:space="preserve">
     <value>labelAuth</value>
@@ -241,13 +241,13 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 26</value>
+    <value>93, 26</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Password</value>
+    <value>Mật Khẩu</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>

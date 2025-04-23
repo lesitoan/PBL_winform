@@ -58,8 +58,7 @@ ref class HistoryForm : public System::Windows::Forms::Form {
         this->fullContent->Name = L"fullContent";
         this->fullContent->Size = System::Drawing::Size(877, 614);
         this->fullContent->TabIndex = 1;
-        this->fullContent->SizeChanged += gcnew System::EventHandler(
-            this, &HistoryForm::fullContent_SizeChanged);
+        this->fullContent->SizeChanged += gcnew System::EventHandler(this, &HistoryForm::fullContent_SizeChanged);
         //
         // panelHeader
         //
@@ -75,13 +74,8 @@ ref class HistoryForm : public System::Windows::Forms::Form {
         //
         // panelHeaderRight
         //
-        this->panelHeaderRight->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                ((System::Windows::Forms::AnchorStyles::Top |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->panelHeaderRight->BackColor =
-            System::Drawing::Color::DarkSlateGray;
+        this->panelHeaderRight->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
+        this->panelHeaderRight->BackColor = System::Drawing::Color::DarkSlateGray;
         this->panelHeaderRight->Controls->Add(this->label2);
         this->panelHeaderRight->Location = System::Drawing::Point(427, 0);
         this->panelHeaderRight->Margin = System::Windows::Forms::Padding(4);
@@ -91,33 +85,22 @@ ref class HistoryForm : public System::Windows::Forms::Form {
         //
         // label2
         //
-        this->label2->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->label2->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->label2->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 10, System::Drawing::FontStyle::Bold));
-        this->label2->ForeColor =
-            System::Drawing::SystemColors::ButtonHighlight;
+        this->label2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                                                                   static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->label2->Dock = System::Windows::Forms::DockStyle::Fill;
+        this->label2->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 10, System::Drawing::FontStyle::Bold));
+        this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
         this->label2->Location = System::Drawing::Point(0, 0);
         this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label2->Name = L"label2";
         this->label2->Size = System::Drawing::Size(449, 47);
         this->label2->TabIndex = 1;
         this->label2->Text = L"LỊCH SỬ RÚT TIỀN";
-        this->label2->TextAlign =
-            System::Drawing::ContentAlignment::MiddleCenter;
+        this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
         //
         // panelHeaderLeft
         //
-        this->panelHeaderLeft->BackColor =
-            System::Drawing::Color::MediumAquamarine;
+        this->panelHeaderLeft->BackColor = System::Drawing::Color::MediumAquamarine;
         this->panelHeaderLeft->Controls->Add(this->label1);
         this->panelHeaderLeft->Location = System::Drawing::Point(0, 0);
         this->panelHeaderLeft->Margin = System::Windows::Forms::Padding(4);
@@ -127,52 +110,35 @@ ref class HistoryForm : public System::Windows::Forms::Form {
         //
         // label1
         //
-        this->label1->BackColor = System::Drawing::Color::FromArgb(
-            static_cast<System::Int32>(static_cast<System::Byte>(0)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)),
-            static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->label1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                                                                   static_cast<System::Int32>(static_cast<System::Byte>(64)));
         this->label1->Dock = System::Windows::Forms::DockStyle::Fill;
-        this->label1->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 10, System::Drawing::FontStyle::Bold));
-        this->label1->ForeColor =
-            System::Drawing::SystemColors::ButtonHighlight;
+        this->label1->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 10, System::Drawing::FontStyle::Bold));
+        this->label1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
         this->label1->Location = System::Drawing::Point(0, 0);
         this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label1->Name = L"label1";
         this->label1->Size = System::Drawing::Size(428, 47);
         this->label1->TabIndex = 0;
         this->label1->Text = L"LỊCH SỬ CHUYỂN KHOẢN";
-        this->label1->TextAlign =
-            System::Drawing::ContentAlignment::MiddleCenter;
+        this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
         //
         // rightContent
         //
-        this->rightContent->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->rightContent->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->rightContent->AutoScroll = true;
         this->rightContent->BackColor = System::Drawing::Color::White;
-        this->rightContent->ForeColor =
-            System::Drawing::SystemColors::ControlText;
+        this->rightContent->ForeColor = System::Drawing::SystemColors::ControlText;
         this->rightContent->Location = System::Drawing::Point(427, 54);
         this->rightContent->Margin = System::Windows::Forms::Padding(4);
         this->rightContent->Name = L"rightContent";
         this->rightContent->Size = System::Drawing::Size(451, 560);
         this->rightContent->TabIndex = 1;
-        this->rightContent->SizeChanged += gcnew System::EventHandler(
-            this, &HistoryForm::rightContent_SizeChanged);
+        this->rightContent->SizeChanged += gcnew System::EventHandler(this, &HistoryForm::rightContent_SizeChanged);
         //
         // leftContent
         //
-        this->leftContent->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->leftContent->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->leftContent->AutoScroll = true;
         this->leftContent->BackColor = System::Drawing::Color::White;
         this->leftContent->Location = System::Drawing::Point(0, 54);
@@ -180,8 +146,7 @@ ref class HistoryForm : public System::Windows::Forms::Form {
         this->leftContent->Name = L"leftContent";
         this->leftContent->Size = System::Drawing::Size(428, 560);
         this->leftContent->TabIndex = 0;
-        this->leftContent->SizeChanged += gcnew System::EventHandler(
-            this, &HistoryForm::leftContent_SizeChanged);
+        this->leftContent->SizeChanged += gcnew System::EventHandler(this, &HistoryForm::leftContent_SizeChanged);
         //
         // HistoryForm
         //

@@ -78,7 +78,7 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->panel1->Controls->Add(this->labelAuth);
         this->panel1->Controls->Add(this->button1);
         this->panel1->Location = System::Drawing::Point(16, 43);
-        this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel1->Margin = System::Windows::Forms::Padding(4);
         this->panel1->Name = L"panel1";
         this->panel1->Size = System::Drawing::Size(803, 370);
         this->panel1->TabIndex = 0;
@@ -89,7 +89,7 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->panel3->BackColor = System::Drawing::Color::White;
         this->panel3->Controls->Add(this->pin);
         this->panel3->Location = System::Drawing::Point(123, 74);
-        this->panel3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel3->Margin = System::Windows::Forms::Padding(4);
         this->panel3->Name = L"panel3";
         this->panel3->Size = System::Drawing::Size(589, 46);
         this->panel3->TabIndex = 57;
@@ -100,7 +100,7 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->pin->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->pin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->pin->Location = System::Drawing::Point(13, 7);
-        this->pin->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->pin->Margin = System::Windows::Forms::Padding(4);
         this->pin->MaxLength = 6;
         this->pin->Multiline = true;
         this->pin->Name = L"pin";
@@ -113,7 +113,7 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->panel2->BackColor = System::Drawing::Color::White;
         this->panel2->Controls->Add(this->password);
         this->panel2->Location = System::Drawing::Point(123, 164);
-        this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel2->Margin = System::Windows::Forms::Padding(4);
         this->panel2->Name = L"panel2";
         this->panel2->Size = System::Drawing::Size(525, 46);
         this->panel2->TabIndex = 56;
@@ -124,7 +124,7 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->password->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->password->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->password->Location = System::Drawing::Point(12, 4);
-        this->password->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->password->Margin = System::Windows::Forms::Padding(4);
         this->password->MaxLength = 15;
         this->password->Multiline = true;
         this->password->Name = L"password";
@@ -160,9 +160,9 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->label1->Location = System::Drawing::Point(117, 134);
         this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(101, 26);
+        this->label1->Size = System::Drawing::Size(98, 26);
         this->label1->TabIndex = 46;
-        this->label1->Text = L"Password:";
+        this->label1->Text = L"Mật Khẩu:";
         //
         // labelAuth
         //
@@ -175,9 +175,9 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->labelAuth->Location = System::Drawing::Point(117, 44);
         this->labelAuth->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelAuth->Name = L"labelAuth";
-        this->labelAuth->Size = System::Drawing::Size(88, 26);
+        this->labelAuth->Size = System::Drawing::Size(112, 26);
         this->labelAuth->TabIndex = 44;
-        this->labelAuth->Text = L"New Pin:";
+        this->labelAuth->Text = L"Mã Pin Mới:";
         //
         // button1
         //
@@ -194,11 +194,11 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->button1->ForeColor = System::Drawing::Color::Honeydew;
         this->button1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->button1->Location = System::Drawing::Point(123, 255);
-        this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->button1->Margin = System::Windows::Forms::Padding(4);
         this->button1->Name = L"button1";
         this->button1->Size = System::Drawing::Size(589, 49);
         this->button1->TabIndex = 43;
-        this->button1->Text = L"Change Pin Code";
+        this->button1->Text = L"Đổi Mã Pin";
         this->button1->UseVisualStyleBackColor = false;
         this->button1->Click += gcnew System::EventHandler(this, &SetPinForm::btnSubmit_Click);
         //
@@ -210,7 +210,7 @@ ref class SetPinForm : public System::Windows::Forms::Form {
         this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
         this->ClientSize = System::Drawing::Size(835, 452);
         this->Controls->Add(this->panel1);
-        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->Margin = System::Windows::Forms::Padding(4);
         this->Name = L"SetPinForm";
         this->Text = L"SetPinForm";
         this->panel1->ResumeLayout(false);

@@ -8,7 +8,6 @@ WithdrawMoneyForm::WithdrawMoneyForm(void) {
                                GlobalData::GetCurrentUser()->getBalance() +
                                L" VNĐ";
     GradientColorHelper::ApplyGradient(this->panel1);
-    GradientColorHelper::ApplyGradient(this->labelBalance);
 }
 WithdrawMoneyForm::~WithdrawMoneyForm() {
     if (components) {

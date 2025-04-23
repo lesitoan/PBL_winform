@@ -97,7 +97,7 @@ ref class SetAvatarForm : public System::Windows::Forms::Form {
         this->button1->Name = L"button1";
         this->button1->Size = System::Drawing::Size(263, 50);
         this->button1->TabIndex = 39;
-        this->button1->Text = L"View Image";
+        this->button1->Text = L"Xem Hình Đại Diện";
         this->button1->UseVisualStyleBackColor = false;
         //
         // btnInsertAvatar
@@ -121,7 +121,7 @@ ref class SetAvatarForm : public System::Windows::Forms::Form {
         this->btnInsertAvatar->Name = L"btnInsertAvatar";
         this->btnInsertAvatar->Size = System::Drawing::Size(263, 50);
         this->btnInsertAvatar->TabIndex = 38;
-        this->btnInsertAvatar->Text = L"Change Avatar";
+        this->btnInsertAvatar->Text = L"Đổi Hình Đại Diện";
         this->btnInsertAvatar->UseVisualStyleBackColor = false;
         this->btnInsertAvatar->Click += gcnew System::EventHandler(this, &SetAvatarForm::btnInsertAvatar_Click);
         //
