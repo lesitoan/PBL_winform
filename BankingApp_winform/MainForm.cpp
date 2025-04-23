@@ -30,7 +30,11 @@ void MainForm::ChangeButtonColor(Button ^ button) {
     if (selectedButton != nullptr) {
         selectedButton->BackColor = System::Drawing::Color::FromArgb(255, 100, 100);
     }
-    //AccountForm::axWindowsMediaPlayer2->Ctlcontrols->pause();
+    // Ensure axWindowsMediaPlayer2 is accessed through an instance of AccountForm
+    AccountForm ^ accountForm = dynamic_cast<AccountForm ^>(this->panelContent->Controls[0]);
+    if (accountForm != nullptr && accountForm->axWindowsMediaPlayer2 != nullptr) {
+        accountForm->axWindowsMediaPlayer2->Ctlcontrols->pause();
+    }
 }
 
 void MainForm::InitLoad() {
@@ -83,11 +87,8 @@ System::Void MainForm::btnCode_Click(System::Object ^ sender,
                                      System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew CodeForm());
     ChangeButtonColor(btnCode);
-//<<<<<<< HEAD
     this->headerText->Text = L"CODE MANEGEMENT";
-//=======
     this->headerText->Text = L"QUẢN LÍ MÃ KHÁCH HÀNG";
-//>>>>>>> f522501fd0973f0b25f1a55b5e6b8c2e0f5933aa
 }
 
 System::Void MainForm::btnServicePayment_Click(System::Object ^ sender,
@@ -115,23 +116,23 @@ System::Void MainForm::btnSaveMoney_Click(System::Object ^ sender,
     this->headerText->Text = L"MONEY SAVINGS";
 }
 
-
 System::Void MainForm::btnLogout_Click(System::Object ^ sender,
-                                       System::EventArgs ^ e) {
-    System::Windows::Forms::DialogResult result;
-    result =
-        MessageBox::Show(L"Are you sure you want to log out?", L"Log Out",
-                         MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-    if (result == System::Windows::Forms::DialogResult::Yes) {
-        
-        // Xóa thông tin người dùng hiện tại
-        AuthServices::Logout();
+                                      System::EventArgs ^ e) {
+   System::Windows::Forms::DialogResult result;
+   result =
+       MessageBox::Show(L"Are you sure you want to log out?", L"Log Out",
+                        MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+   if (result == System::Windows::Forms::DialogResult::Yes) {
+       
+       // Xóa thông tin người dùng hiện tại
+       ChangeButtonColor(btnLogout);
+       AuthServices::Logout();
 
-        this->Hide();
-        AuthForm ^ authForm = gcnew AuthForm();
-        authForm->ShowDialog();
-        this->Close();
-    }
+       this->Hide(); 
+       AuthForm ^ authForm = gcnew AuthForm();
+       authForm->ShowDialog();
+       this->Close();
+   }
 }
 
 System::Void MainForm::timer1_Tick(System::Object ^ sender,

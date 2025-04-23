@@ -5,7 +5,25 @@ namespace BankingAppwinform {
 AccountForm::AccountForm(Form ^ parentForm) { 
     InitializeComponent();
     loadAvatar();
+
     this->parentForm = parentForm;
+    // load video
+    axWindowsMediaPlayer2->uiMode = "none";
+    axWindowsMediaPlayer2->settings->setMode("loop", true);
+    String ^ projectPath =
+        System::IO::Directory::GetParent(Application::StartupPath)
+            ->Parent->FullName;
+    String ^ correctPath = System::IO::Path::Combine(
+        projectPath, "BankingApp_winform\\images\\TP.mp4");
+    if (!System::IO::File::Exists(correctPath)) {
+        return;
+    }
+    axWindowsMediaPlayer2->URL = correctPath;
+    axWindowsMediaPlayer2->Ctlcontrols->play();
+
+    GradientColorHelper::ApplyGradient(this->panel1);
+    GradientColorHelper::ApplyGradient(this->panel2);
+    //
 }
 
 AccountForm::~AccountForm() {
@@ -26,51 +44,28 @@ System::Void AccountForm::AccountForm_Load(System::Object ^ sender,
     this->labelBalance->Text =
         GlobalData::GetCurrentUser()->getBalance() + " VND";
 
-
-    //load video
-    axWindowsMediaPlayer2->uiMode = "none";
-    axWindowsMediaPlayer2->settings->setMode("loop", true);
-    String ^ projectPath =
-        System::IO::Directory::GetParent(Application::StartupPath)
-            ->Parent->FullName;
-    String ^ correctPath = System::IO::Path::Combine(
-        projectPath, "BankingApp_winform\\images\\TP.mp4");
-    if (!System::IO::File::Exists(correctPath)) {
-        return;
-    }
-    axWindowsMediaPlayer2->URL = correctPath;
-    axWindowsMediaPlayer2->Ctlcontrols->play();
-
-
-    GradientColorHelper::ApplyGradient(this->panel1);
-    GradientColorHelper::ApplyGradient(this->panel2);
-    //
 }
 
 System::Void AccountForm::btnChangePw_Click(System::Object ^ sender,
                                             System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew ChangePwForm());
-    /*ChangeButtonColor(btnChangePw);*/
     axWindowsMediaPlayer2->Ctlcontrols->pause();
 }
 
 System::Void AccountForm::btnSetPin_Click(System::Object ^ sender,
                                           System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew SetPinForm());
-    /*ChangeButtonColor(btnSetPin);*/
     axWindowsMediaPlayer2->Ctlcontrols->pause();
 }
 
 System::Void AccountForm::buttonSetAvatar_Click(System::Object ^ sender,
                                                 System::EventArgs ^ e) {
     LoadChildForm::LoadForm(this->panelContent, gcnew SetAvatarForm());
-    /*ChangeButtonColor(buttonSetAvatar);*/
     axWindowsMediaPlayer2->Ctlcontrols->pause();
 }
 
 System::Void AccountForm::btnLockAccount_Click(System::Object ^ sender,
                                                  System::EventArgs ^ e) {
-    //ChangeButtonColor(btnLockAccount);
     axWindowsMediaPlayer2->Ctlcontrols->pause();
     System::Windows::Forms::DialogResult result;
     result = MessageBox::Show(L"Bạn có chắc chắn muốn khóa tài khoản, sau khi khóa chỉ có thể đến NH để mở khóa !",

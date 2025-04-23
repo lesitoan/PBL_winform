@@ -1,11 +1,12 @@
 ﻿#include "EditUserForm.h"
-
+#include"GradientHelper.h"
 namespace BankingAppwinform {
 
 EditUserForm::EditUserForm(User ^ userSelected) {
     InitializeComponent();
     this->userSelected = userSelected;
     this->loadUserInfo();
+    GradientColorHelper::ApplyGradient(this);
 }
 
 EditUserForm::~EditUserForm() {

@@ -10,7 +10,6 @@ AdminForm::AdminForm(void) {
     InitializeComponent();
     this->labelFullName->Text = GlobalData::GetCurrentUser()->FullName;
     GradientColorHelper::ApplyGradient(this->labelHeader);
-    GradientColorHelper::ApplyGradient(this->panelContent);
 }
 
 AdminForm::~AdminForm() {

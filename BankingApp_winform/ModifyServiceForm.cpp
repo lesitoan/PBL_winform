@@ -1,9 +1,11 @@
 ﻿#include "ModifyServiceForm.h"
+#include"GradientHelper.h"
 
 namespace BankingAppwinform {
 
 ModifyServiceForm::ModifyServiceForm(String ^ type) {
     InitializeComponent();
+    GradientColorHelper::ApplyGradient(this);
     this->type = type;
     if (type == "") {
         this->Close();

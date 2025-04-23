@@ -1,8 +1,12 @@
 ﻿#include "AddUserForm.h"
+#include"GradientHelper.h"
 
 namespace BankingAppwinform {
 
-AddUserForm::AddUserForm(void) { InitializeComponent(); }
+AddUserForm::AddUserForm(void) { 
+    InitializeComponent();
+    GradientColorHelper::ApplyGradient(this);
+}
 
 AddUserForm::~AddUserForm() {
     if (components) {

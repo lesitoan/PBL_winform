@@ -6,7 +6,6 @@ AdminSavingMoneyForm::AdminSavingMoneyForm(void) {
     InitializeComponent();
     loadSavingCustomers();
     loadRequest();
-    GradientColorHelper::ApplyGradient(this->dataGridViewRequests);
 }
 AdminSavingMoneyForm::~AdminSavingMoneyForm() {
     if (components) {
