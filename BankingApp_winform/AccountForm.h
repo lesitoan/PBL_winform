@@ -136,7 +136,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panelContent->Controls->Add(this->axWindowsMediaPlayer2);
         this->panelContent->Dock = System::Windows::Forms::DockStyle::Fill;
         this->panelContent->Location = System::Drawing::Point(0, 159);
-        this->panelContent->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelContent->Margin = System::Windows::Forms::Padding(4);
         this->panelContent->Name = L"panelContent";
         this->panelContent->Size = System::Drawing::Size(855, 407);
         this->panelContent->TabIndex = 3;
@@ -157,7 +157,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panelBtn1->BackColor = System::Drawing::Color::White;
         this->panelBtn1->Controls->Add(this->btnSetPin);
         this->panelBtn1->Location = System::Drawing::Point(0, 0);
-        this->panelBtn1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelBtn1->Margin = System::Windows::Forms::Padding(4);
         this->panelBtn1->Name = L"panelBtn1";
         this->panelBtn1->Size = System::Drawing::Size(177, 53);
         this->panelBtn1->TabIndex = 0;
@@ -180,7 +180,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->btnSetPin->ForeColor = System::Drawing::Color::Purple;
         this->btnSetPin->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnSetPin->Location = System::Drawing::Point(0, 0);
-        this->btnSetPin->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnSetPin->Margin = System::Windows::Forms::Padding(4);
         this->btnSetPin->Name = L"btnSetPin";
         this->btnSetPin->Size = System::Drawing::Size(177, 53);
         this->btnSetPin->TabIndex = 6;
@@ -193,7 +193,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panelBtn3->BackColor = System::Drawing::Color::White;
         this->panelBtn3->Controls->Add(this->buttonSetAvatar);
         this->panelBtn3->Location = System::Drawing::Point(397, 0);
-        this->panelBtn3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelBtn3->Margin = System::Windows::Forms::Padding(4);
         this->panelBtn3->Name = L"panelBtn3";
         this->panelBtn3->Size = System::Drawing::Size(232, 53);
         this->panelBtn3->TabIndex = 2;
@@ -217,7 +217,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->buttonSetAvatar->ForeColor = System::Drawing::Color::Purple;
         this->buttonSetAvatar->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->buttonSetAvatar->Location = System::Drawing::Point(0, 0);
-        this->buttonSetAvatar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->buttonSetAvatar->Margin = System::Windows::Forms::Padding(4);
         this->buttonSetAvatar->Name = L"buttonSetAvatar";
         this->buttonSetAvatar->Size = System::Drawing::Size(232, 53);
         this->buttonSetAvatar->TabIndex = 10;
@@ -230,7 +230,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panelBtn4->BackColor = System::Drawing::Color::White;
         this->panelBtn4->Controls->Add(this->btnLockAccount);
         this->panelBtn4->Location = System::Drawing::Point(627, 0);
-        this->panelBtn4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelBtn4->Margin = System::Windows::Forms::Padding(4);
         this->panelBtn4->Name = L"panelBtn4";
         this->panelBtn4->Size = System::Drawing::Size(237, 53);
         this->panelBtn4->TabIndex = 3;
@@ -254,7 +254,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->btnLockAccount->ForeColor = System::Drawing::Color::Purple;
         this->btnLockAccount->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnLockAccount->Location = System::Drawing::Point(0, 0);
-        this->btnLockAccount->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnLockAccount->Margin = System::Windows::Forms::Padding(4);
         this->btnLockAccount->Name = L"btnLockAccount";
         this->btnLockAccount->Size = System::Drawing::Size(237, 53);
         this->btnLockAccount->TabIndex = 9;
@@ -271,7 +271,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panelNav->Controls->Add(this->panelBtn1);
         this->panelNav->Dock = System::Windows::Forms::DockStyle::Top;
         this->panelNav->Location = System::Drawing::Point(0, 106);
-        this->panelNav->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelNav->Margin = System::Windows::Forms::Padding(4);
         this->panelNav->Name = L"panelNav";
         this->panelNav->Size = System::Drawing::Size(855, 53);
         this->panelNav->TabIndex = 2;
@@ -282,7 +282,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panelBtn2->BackColor = System::Drawing::Color::White;
         this->panelBtn2->Controls->Add(this->btnChangePw);
         this->panelBtn2->Location = System::Drawing::Point(177, 0);
-        this->panelBtn2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelBtn2->Margin = System::Windows::Forms::Padding(4);
         this->panelBtn2->Name = L"panelBtn2";
         this->panelBtn2->Size = System::Drawing::Size(224, 53);
         this->panelBtn2->TabIndex = 1;
@@ -304,9 +304,9 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->btnChangePw->ForeColor = System::Drawing::Color::Purple;
         this->btnChangePw->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnChangePw->Location = System::Drawing::Point(-3, 0);
-        this->btnChangePw->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnChangePw->Margin = System::Windows::Forms::Padding(4);
         this->btnChangePw->Name = L"btnChangePw";
-        this->btnChangePw->Size = System::Drawing::Size(224, 53);
+        this->btnChangePw->Size = System::Drawing::Size(232, 53);
         this->btnChangePw->TabIndex = 10;
         this->btnChangePw->Text = L"Change Password";
         this->btnChangePw->UseVisualStyleBackColor = false;
@@ -350,7 +350,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panel2->Controls->Add(this->labelAccountNumber);
         this->panel2->Dock = System::Windows::Forms::DockStyle::Right;
         this->panel2->Location = System::Drawing::Point(-182, 0);
-        this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel2->Margin = System::Windows::Forms::Padding(4);
         this->panel2->Name = L"panel2";
         this->panel2->Size = System::Drawing::Size(1037, 106);
         this->panel2->TabIndex = 6;
@@ -384,10 +384,9 @@ ref class AccountForm : public System::Windows::Forms::Form {
         // pictureBoxAvatar
         //
         this->pictureBoxAvatar->BackColor = System::Drawing::Color::Transparent;
-        this->pictureBoxAvatar->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
         this->pictureBoxAvatar->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBoxAvatar.Image")));
         this->pictureBoxAvatar->Location = System::Drawing::Point(340, 17);
-        this->pictureBoxAvatar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->pictureBoxAvatar->Margin = System::Windows::Forms::Padding(4);
         this->pictureBoxAvatar->Name = L"pictureBoxAvatar";
         this->pictureBoxAvatar->Size = System::Drawing::Size(70, 68);
         this->pictureBoxAvatar->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -431,7 +430,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->panel1->Controls->Add(this->labelBalance);
         this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
         this->panel1->Location = System::Drawing::Point(0, 0);
-        this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel1->Margin = System::Windows::Forms::Padding(4);
         this->panel1->Name = L"panel1";
         this->panel1->Size = System::Drawing::Size(855, 106);
         this->panel1->TabIndex = 0;
@@ -445,7 +444,7 @@ ref class AccountForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->panelContent);
         this->Controls->Add(this->panelNav);
         this->Controls->Add(this->panel1);
-        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->Margin = System::Windows::Forms::Padding(4);
         this->MinimumSize = System::Drawing::Size(870, 601);
         this->Name = L"AccountForm";
         this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;

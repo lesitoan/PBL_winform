@@ -7,6 +7,7 @@ ServicePaymentForm::ServicePaymentForm(void) {
     InitializeComponent();
     LoadServices();
     GradientColorHelper::ApplyGradient(this->flowLayoutPanelServices);
+    GradientColorHelper::AttachHoverEffect(this->panel5, Color::FromArgb(255, 128, 128));
 }
 
 ServicePaymentForm::~ServicePaymentForm() {

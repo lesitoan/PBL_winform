@@ -131,13 +131,13 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->name->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->name->Cursor = System::Windows::Forms::Cursors::No;
         this->name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->name->Location = System::Drawing::Point(4, 4);
+        this->name->Location = System::Drawing::Point(17, 4);
         this->name->Margin = System::Windows::Forms::Padding(4);
         this->name->MaxLength = 40;
         this->name->Multiline = true;
         this->name->Name = L"name";
         this->name->ReadOnly = true;
-        this->name->Size = System::Drawing::Size(344, 35);
+        this->name->Size = System::Drawing::Size(331, 35);
         this->name->TabIndex = 29;
         //
         // panel1
@@ -169,12 +169,12 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->amount->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->amount->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->amount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->amount->Location = System::Drawing::Point(-2, -1);
+        this->amount->Location = System::Drawing::Point(17, -1);
         this->amount->Margin = System::Windows::Forms::Padding(4);
         this->amount->MaxLength = 40;
         this->amount->Multiline = true;
         this->amount->Name = L"amount";
-        this->amount->Size = System::Drawing::Size(1169, 40);
+        this->amount->Size = System::Drawing::Size(1150, 40);
         this->amount->TabIndex = 29;
         //
         // panel5
@@ -196,13 +196,13 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->phone->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->phone->Cursor = System::Windows::Forms::Cursors::No;
         this->phone->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->phone->Location = System::Drawing::Point(4, 4);
+        this->phone->Location = System::Drawing::Point(17, 4);
         this->phone->Margin = System::Windows::Forms::Padding(4);
         this->phone->MaxLength = 40;
         this->phone->Multiline = true;
         this->phone->Name = L"phone";
         this->phone->ReadOnly = true;
-        this->phone->Size = System::Drawing::Size(348, 35);
+        this->phone->Size = System::Drawing::Size(335, 35);
         this->phone->TabIndex = 29;
         //
         // panel6
@@ -224,13 +224,13 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->accNum->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->accNum->Cursor = System::Windows::Forms::Cursors::No;
         this->accNum->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->accNum->Location = System::Drawing::Point(4, -1);
+        this->accNum->Location = System::Drawing::Point(16, -1);
         this->accNum->Margin = System::Windows::Forms::Padding(4);
         this->accNum->MaxLength = 40;
         this->accNum->Multiline = true;
         this->accNum->Name = L"accNum";
         this->accNum->ReadOnly = true;
-        this->accNum->Size = System::Drawing::Size(348, 40);
+        this->accNum->Size = System::Drawing::Size(336, 40);
         this->accNum->TabIndex = 29;
         //
         // panel2
@@ -252,13 +252,13 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->acctype->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->acctype->Cursor = System::Windows::Forms::Cursors::No;
         this->acctype->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->acctype->Location = System::Drawing::Point(-2, -1);
+        this->acctype->Location = System::Drawing::Point(17, -1);
         this->acctype->Margin = System::Windows::Forms::Padding(4);
         this->acctype->MaxLength = 40;
         this->acctype->Multiline = true;
         this->acctype->Name = L"acctype";
         this->acctype->ReadOnly = true;
-        this->acctype->Size = System::Drawing::Size(354, 40);
+        this->acctype->Size = System::Drawing::Size(335, 40);
         this->acctype->TabIndex = 29;
         //
         // panel3
@@ -280,13 +280,13 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->bankName->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->bankName->Cursor = System::Windows::Forms::Cursors::No;
         this->bankName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->bankName->Location = System::Drawing::Point(-1, -1);
+        this->bankName->Location = System::Drawing::Point(18, -1);
         this->bankName->Margin = System::Windows::Forms::Padding(4);
         this->bankName->MaxLength = 40;
         this->bankName->Multiline = true;
         this->bankName->Name = L"bankName";
         this->bankName->ReadOnly = true;
-        this->bankName->Size = System::Drawing::Size(353, 40);
+        this->bankName->Size = System::Drawing::Size(334, 40);
         this->bankName->TabIndex = 29;
         //
         // panel7
@@ -308,13 +308,13 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->status->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->status->Cursor = System::Windows::Forms::Cursors::No;
         this->status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->status->Location = System::Drawing::Point(-1, -1);
+        this->status->Location = System::Drawing::Point(16, -1);
         this->status->Margin = System::Windows::Forms::Padding(4);
         this->status->MaxLength = 40;
         this->status->Multiline = true;
         this->status->Name = L"status";
         this->status->ReadOnly = true;
-        this->status->Size = System::Drawing::Size(353, 40);
+        this->status->Size = System::Drawing::Size(336, 40);
         this->status->TabIndex = 29;
         //
         // labelAuth

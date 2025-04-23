@@ -54,12 +54,7 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         //
         // panel1
         //
-        this->panel1->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->panel1->BackColor = System::Drawing::Color::Teal;
         this->panel1->Controls->Add(this->panel3);
         this->panel1->Controls->Add(this->panel6);
@@ -75,10 +70,7 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         //
         // panel3
         //
-        this->panel3->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Left |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
         this->panel3->BackColor = System::Drawing::Color::White;
         this->panel3->Controls->Add(this->textBox1);
         this->panel3->Location = System::Drawing::Point(123, 241);
@@ -89,15 +81,9 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         //
         // textBox1
         //
-        this->textBox1->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->textBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
         this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->textBox1->Font =
-            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->textBox1->Location = System::Drawing::Point(28, 7);
         this->textBox1->Margin = System::Windows::Forms::Padding(4);
         this->textBox1->MaxLength = 6;
@@ -108,10 +94,7 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         //
         // panel6
         //
-        this->panel6->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Left |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->panel6->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
         this->panel6->BackColor = System::Drawing::Color::White;
         this->panel6->Controls->Add(this->amountInput);
         this->panel6->Location = System::Drawing::Point(123, 140);
@@ -122,16 +105,9 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         //
         // amountInput
         //
-        this->amountInput->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (((System::Windows::Forms::AnchorStyles::Top |
-                   System::Windows::Forms::AnchorStyles::Bottom) |
-                  System::Windows::Forms::AnchorStyles::Left) |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->amountInput->BorderStyle =
-            System::Windows::Forms::BorderStyle::None;
-        this->amountInput->Font =
-            (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->amountInput->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
+        this->amountInput->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->amountInput->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->amountInput->Location = System::Drawing::Point(28, 7);
         this->amountInput->Margin = System::Windows::Forms::Padding(4);
         this->amountInput->MaxLength = 9;
@@ -142,17 +118,12 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         //
         // label4
         //
-        this->label4->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Left |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->label4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
         this->label4->AutoSize = true;
         this->label4->BackColor = System::Drawing::Color::Transparent;
         this->label4->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label4->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label4->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
         this->label4->ForeColor = System::Drawing::Color::White;
         this->label4->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label4->Location = System::Drawing::Point(117, 210);
@@ -164,17 +135,12 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         //
         // label5
         //
-        this->label5->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Left |
-                 System::Windows::Forms::AnchorStyles::Right));
+        this->label5->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
         this->label5->AutoSize = true;
         this->label5->BackColor = System::Drawing::Color::Transparent;
         this->label5->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->label5->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 12, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->label5->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                          static_cast<System::Byte>(0)));
         this->label5->ForeColor = System::Drawing::Color::White;
         this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->label5->Location = System::Drawing::Point(119, 110);
@@ -186,29 +152,17 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         //
         // button1
         //
-        this->button1->Anchor =
-            static_cast<System::Windows::Forms::AnchorStyles>(
-                (System::Windows::Forms::AnchorStyles::Left |
-                 System::Windows::Forms::AnchorStyles::Right));
-        this->button1->BackColor = System::Drawing::Color::Green;
+        this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
+        this->button1->BackColor = System::Drawing::Color::Indigo;
         this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->button1->FlatAppearance->BorderColor =
-            System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(64)),
-                static_cast<System::Int32>(static_cast<System::Byte>(64)),
-                static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->button1->FlatAppearance->MouseDownBackColor =
-            System::Drawing::Color::White;
-        this->button1->FlatAppearance->MouseOverBackColor =
-            System::Drawing::Color::FromArgb(
-                static_cast<System::Int32>(static_cast<System::Byte>(255)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->button1->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                                                                                      static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->button1->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
+        this->button1->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                                                                                             static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
         this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->button1->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 13.8F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->button1->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                           static_cast<System::Byte>(0)));
         this->button1->ForeColor = System::Drawing::Color::White;
         this->button1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->button1->Location = System::Drawing::Point(123, 334);
@@ -236,22 +190,17 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         this->labelBalance->Cursor = System::Windows::Forms::Cursors::Hand;
         this->labelBalance->Dock = System::Windows::Forms::DockStyle::Fill;
         this->labelBalance->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->labelBalance->Font = (gcnew System::Drawing::Font(
-            L"UTM Daxline", 16.2F, System::Drawing::FontStyle::Regular,
-            System::Drawing::GraphicsUnit::Point,
-            static_cast<System::Byte>(0)));
+        this->labelBalance->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                                static_cast<System::Byte>(0)));
         this->labelBalance->ForeColor = System::Drawing::Color::White;
-        this->labelBalance->ImeMode =
-            System::Windows::Forms::ImeMode::NoControl;
+        this->labelBalance->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->labelBalance->Location = System::Drawing::Point(0, 0);
-        this->labelBalance->Margin =
-            System::Windows::Forms::Padding(4, 0, 4, 0);
+        this->labelBalance->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
         this->labelBalance->Name = L"labelBalance";
         this->labelBalance->Size = System::Drawing::Size(877, 84);
         this->labelBalance->TabIndex = 58;
         this->labelBalance->Text = L"Balance: 123000 VNĐ";
-        this->labelBalance->TextAlign =
-            System::Drawing::ContentAlignment::MiddleCenter;
+        this->labelBalance->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
         //
         // WithdrawMoneyForm
         //

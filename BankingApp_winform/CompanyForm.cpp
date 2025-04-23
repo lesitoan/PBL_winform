@@ -1,6 +1,6 @@
 ﻿#include <vector>
 #include "CompanyForm.h"
-
+#include"GradientHelper.h"
 #pragma once
 #include "AdminForm.h"
 #include "User.h"
@@ -37,9 +37,10 @@ namespace BankingAppwinform {
                 panel->Size =
                     System::Drawing::Size(139, 147); // Kích thước hình chữ nhật
                 panel->BackColor = Color::LightBlue; // Màu nền xanh nhạt
-                panel->Margin = System::Windows::Forms::Padding(10);
+                panel->Margin = System::Windows::Forms::Padding(10);    
 
                 Label ^ label = gcnew Label();
+                GradientColorHelper::ApplyRoundedCorners(panel, 10);
                 label->Font =
                     gcnew System::Drawing::Font("UTM Daxline", 12, FontStyle::Bold);
                 label->Cursor = Cursors::Hand;

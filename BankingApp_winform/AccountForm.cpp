@@ -23,6 +23,7 @@ AccountForm::AccountForm(Form ^ parentForm) {
 
     GradientColorHelper::ApplyGradient(this->panel1);
     GradientColorHelper::ApplyGradient(this->panel2);
+    GradientColorHelper::AttachPanelClickHandlers(this->panelBtn2);
     //
 }
 
