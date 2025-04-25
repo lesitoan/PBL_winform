@@ -4,6 +4,7 @@
 #include "SavingCustomers.h"
 #include "Validate.h"
 #include "Utils.h"
+#include "GlobalData.h"
 
 #ifndef SAVINGSERVICE_H
 #define SAVINGSERVICE_H

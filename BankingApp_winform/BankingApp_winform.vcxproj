@@ -158,26 +158,33 @@
     <ClCompile Include="WithdrawMoneyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractUser.h" />
     <ClInclude Include="AccountForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AddUserForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Admin.h" />
     <ClInclude Include="AdminSavingMoneyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AuthServices.h" />
+    <ClInclude Include="BaseEntity.h" />
+    <ClInclude Include="Client.h" />
     <ClInclude Include="ClientSavingMoneyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CodeDetailForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Company.h" />
     <ClInclude Include="CustomerCodeDetailServices.h" />
     <ClInclude Include="CustomerCodeDetailsRepository.h" />
     <ClInclude Include="CustomerCodeServices.h" />
     <ClInclude Include="CustomerCodesRepository.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="ENV.h" />
     <ClInclude Include="Notifications.h" />
     <ClInclude Include="NotificationServices.h" />
     <ClInclude Include="RecurringPaymentServices.h" />
@@ -386,7 +393,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
+    <None Include="customerCodeDetails.dat" />
+    <None Include="customerCodes.dat" />
+    <None Include="recurringPayments.dat" />
+    <None Include="savingCustomers.dat" />
+    <None Include="savingCustomerssss.dat" />
     <None Include="services.dat" />
+    <None Include="transactions.dat" />
     <None Include="users.dat" />
   </ItemGroup>
   <ItemGroup>

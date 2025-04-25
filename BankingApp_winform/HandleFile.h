@@ -1,12 +1,4 @@
 ﻿#pragma once
-#include "CustomerCodeDetails.h"
-#include "CustomerCodes.h"
-#include "Notifications.h"
-#include "RecurringPayments.h"
-#include "SavingCustomers.h"
-#include "Services.h"
-#include "Transaction.h"
-#include "User.h"
 
 #include "ISaveToFile.h"
 
@@ -17,47 +9,6 @@ using namespace System::Windows::Forms;
 
 ref class HandleFile {
   public:
-    static bool WriteUserArray(array<User ^> ^ users, String ^ filePath);
-    static array<User ^> ^ ReadUserArray(String ^ filePath);
-
-    static bool WriteTransactionArray(array<Transaction ^> ^ transactions,
-                                      String ^ filePath);
-    static array<Transaction ^> ^ ReadTransactionArray(String ^ filePath);
-
-    static bool WriteServicesArray(array<Services ^> ^ services,
-                                   String ^ filePath);
-    static array<Services ^> ^ ReadServicesArray(String ^ filePath);
-
-    static bool WriteCustomerCodesArray(array<CustomerCodes ^> ^ codes,
-                                        String ^ filePath);
-    static array<CustomerCodes ^> ^ ReadCustomerCodesArray(String ^ filePath);
-
-    static bool WriteRecurringPaymentsArray(array<RecurringPayments ^> ^
-                                                recurringPayments,
-                                            String ^ filePath);
-    static array<RecurringPayments ^> ^
-        ReadRecurringPaymentsArray(String ^ filePath);
-
-    static bool WriteCustomerCodeDetailsArray(array<CustomerCodeDetails ^> ^
-                                                  customerCodeDetails,
-                                              String ^ filePath);
-
-    static array<CustomerCodeDetails ^> ^
-        ReadCustomerCodeDetailsArray(String ^ filePath);
-
-    static bool WriteNotificationsArray(array<Notifications ^> ^ notifications,
-                                        String ^ filePath);
-
-    static array<Notifications ^> ^ ReadNotificationsArray(String ^ filePath);
-
-    static bool WriteSavingCustomersArray(array<SavingCustomers ^> ^
-                                              savingCustomers,
-                                          String ^ filePath);
-
-    static array<SavingCustomers ^> ^
-        ReadSavingCustomersArray(String ^ filePath);
-
-    //-------------------------------------------------
 
     generic<typename T> where T : ISaveToFile static bool
                                   WriteArrayToFile(array<T> ^ items, String ^ filePath) {

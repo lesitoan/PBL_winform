@@ -174,7 +174,7 @@ ref class AuthServices {
             } else if (!Validate::isPin(pin)) {
                 throw gcnew Exception(L"Mã pin không hợp lệ");
             }
-            array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
+            array<User ^> ^ users = UserRepository::GetUsers();
             if (users == nullptr) {
                 throw gcnew Exception(L"Lỗi máy chủ, thử lại sau !");
             }

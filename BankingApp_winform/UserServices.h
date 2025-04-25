@@ -5,6 +5,7 @@
 #include "TransactionsRepository.h"
 #include "User.h"
 #include "UserRepository.h"
+#include "GlobalData.h"
 
 #ifndef USERSERVICE_H
 #define USERSERVICE_H
@@ -308,6 +309,29 @@ ref class UserService {
             return matchedUsers->ToArray();
         } catch (Exception ^ ex) {
             return gcnew array<User ^>(0);
+        }
+    }
+
+    static void ChangePassword(String ^ oldPw, String^ newPw, String^ newPwComfirm) {
+        try {
+            if (oldPw == "" || newPw == "" || newPwComfirm == "") {
+                throw gcnew Exception(L"Vui lòng nhập đầy đủ thông tin");
+            } else if (oldPw == newPw) {
+                throw gcnew Exception(L"Mật khẩu mới không được giống mật khẩu cũ");
+            } else if (newPw != newPwComfirm) {
+                throw gcnew Exception(L"Mật khẩu xác nhận không đúng");
+            } else if (!Validate::isValidPassword(newPwComfirm)) {
+                throw gcnew Exception(L"Mật khẩu phải từ 6-9 kí tự, có ít nhất 1 chữ cái và 1 số, không chứ dấu cách");
+            }
+            String ^ accNum = GlobalData::GetCurrentUser()->AccountNumber;
+            User ^ user = UserRepository::FindUserByAccNumber(accNum);
+            if (user == nullptr) {
+                throw gcnew Exception(L"Tài khoản không tồn tại");
+            }
+            user->setPassword(newPwComfirm);
+            UserRepository::UpdateUserByAccNumber(user->AccountNumber, user);
+        } catch (Exception ^ ex) {
+            throw ex;
         }
     }
 };

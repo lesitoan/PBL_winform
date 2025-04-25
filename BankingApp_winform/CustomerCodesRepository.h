@@ -7,6 +7,7 @@
 #include "UserRepository.h"
 #include "Utils.h"
 #include "Validate.h"
+#include "CustomerCodes.h"
 
 #ifndef CUSTOMERCODESREPOSITORY_H
 #define CUSTOMERCODESREPOSITORY_H

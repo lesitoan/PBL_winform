@@ -18,45 +18,19 @@ ChangePwForm::~ChangePwForm() {
 
 System::Void ChangePwForm::btnSubmit_Click(System::Object ^ sender,
                                            System::EventArgs ^ e) {
-    if (oldPassword->Text == "" || newPassword->Text == "" ||
-        newPasswordConfirm->Text == "") {
-        MessageBox::Show("Vui long nhap day du thong tin !", "Tiêu đề",
-                         MessageBoxButtons::OK, MessageBoxIcon::Warning);
-    } else if (newPassword->Text != newPasswordConfirm->Text) {
-        MessageBox::Show("Mat khau moi khong trung khop !", "Tiêu đề",
-                         MessageBoxButtons::OK, MessageBoxIcon::Warning);
-    } else if (oldPassword->Text !=
-               GlobalData::GetCurrentUser()->getPassword()) {
-        MessageBox::Show("Mat khau khong dung !", "Tiêu đề",
-                         MessageBoxButtons::OK, MessageBoxIcon::Warning);
-    } else {
-        // luu user vao file
-        array<User ^> ^ users = HandleFile::ReadUserArray("users.dat");
-        if (users == nullptr) {
-            MessageBox::Show("Co loi xay ra !", "Tiêu đề",
-                             MessageBoxButtons::OK, MessageBoxIcon::Error);
-            return;
-        } else {
-            for (int i = 0; i < users->Length; i++) {
-                if (users[i]->getAccountNumber() ==
-                    GlobalData::GetCurrentUser()->getAccountNumber()) {
-                    users[i]->setPassword(newPassword->Text);
-                    GlobalData::SetCurrentUser(users[i]);
-                    break;
-                }
-            }
-        }
-        bool isSaved = HandleFile::WriteUserArray(users, "users.dat");
-        if (isSaved) {
-            MessageBox::Show("Doi mat khau thanh cong !", "Tiêu đề",
-                             MessageBoxButtons::OK,
-                             MessageBoxIcon::Information);
-        } else {
-            MessageBox::Show("Co loi xay ra !", "Tiêu đề",
-                             MessageBoxButtons::OK, MessageBoxIcon::Error);
-        }
+    try {
+        UserService::ChangePassword(oldPassword->Text, newPassword->Text, newPasswordConfirm->Text);
+        MessageBox::Show(L"Đổi mật khẩu thành công", "Tiêu đề",
+                         MessageBoxButtons::OK, MessageBoxIcon::Information);
+        this->oldPassword->Text = "";
+        this->newPassword->Text = "";
+        this->newPasswordConfirm->Text = "";
+
+    } catch (Exception ^ ex) {
+        MessageBox::Show(ex->Message, L"Thông báo", MessageBoxButtons::OK,
+                         MessageBoxIcon::Information);
     }
-}
+    }
 
 bool ChangePwForm::handleClickShowBtn(bool status,
                                       System::Windows::Forms::TextBox ^
