@@ -1,4 +1,4 @@
-﻿#include "ISaveToFile.h"
+﻿#include "BaseEntity.h"
 
 #ifndef CUSTOMERCODES_H
 #define CUSTOMERCODES_H
@@ -6,69 +6,67 @@
 using namespace System;
 
 public
-ref class CustomerCodes : public ISaveToFile {
+ref class CustomerCodes : public BaseEntity {
   private:
-    String ^ id;
-    String ^ companyAccountNumber;
 
+    String ^ companyId;
     String ^ code;
     int status; // 1: còn hoạt động, 0: đã đóng
-    DateTime createdDate;
 
   public:
-    CustomerCodes(String ^ id, String ^ companyAccountNumber, String ^ code,
-                  int status, DateTime createdDate) {
-        this->id = id;
-        this->companyAccountNumber = companyAccountNumber;
+    CustomerCodes(String ^ id, DateTime createAt, DateTime updatedAt, String ^ companyId, String ^ code,
+                  int status)
+        : BaseEntity(id, createAt, updatedAt)
+    {
+        this->companyId = companyId;
         this->code = code;
         this->status = status;
-        this->createdDate = createdDate;
-    }
-    CustomerCodes(String ^ id, String ^ companyAccountNumber, String ^ code) {
-        this->id = id;
-        this->companyAccountNumber = companyAccountNumber;
-        this->code = code;
-        this->status = 1;
-        this->createdDate = DateTime::Now;
-    }
-    CustomerCodes() {
-        this->id = "";
-        this->companyAccountNumber = "";
-        this->code = "";
-        this->status = 1;
-        this->createdDate = DateTime::Now;
     }
 
-    property String ^ Id { String ^ get() { return id; } } property String ^
-        CompanyAccountNumber {
-            String ^ get() { return companyAccountNumber; }
-        } property String ^
+    CustomerCodes(String ^ companyId, String ^ code)
+        : BaseEntity()
+    {
+        this->companyId = companyId;
+        this->code = code;
+        this->status = 1;
+    }
+
+    CustomerCodes()
+        : BaseEntity() {
+        this->companyId = "";
+        this->code = "";
+        this->status = 1;
+    }
+
+    property String ^
+        CompanyId {
+            String ^ get() { return companyId; }
+        }
+    property String ^
         Code {
             String ^ get() { return code; } void set(String ^ value) {
                 code = value;
             }
-        } property int Status {
+        }
+    property int Status {
         int get() { return status; }
         void set(int value) { status = value; }
     }
-    property DateTime CreatedDate {
-        DateTime get() { return createdDate; }
-    }
 
-    virtual void WriteTo(BinaryWriter ^ writer) {
-        writer->Write(id);
-        writer->Write(companyAccountNumber);
+    virtual void WriteTo(BinaryWriter ^ writer) override {
+        BaseEntity::WriteTo(writer);
+
+        writer->Write(companyId);
         writer->Write(code);
         writer->Write(status);
-        writer->Write(createdDate.ToString("yyyy-MM-dd HH:mm:ss"));
     }
 
-    virtual void ReadFrom(BinaryReader ^ reader) {
-        id = reader->ReadString();
-        companyAccountNumber = reader->ReadString();
+    virtual void ReadFrom(BinaryReader ^ reader) override {
+        BaseEntity::ReadFrom(reader);
+
+        companyId = reader->ReadString();
         code = reader->ReadString();
         status = reader->ReadInt32();
-        createdDate = DateTime::Parse(reader->ReadString());
     }
 };
 

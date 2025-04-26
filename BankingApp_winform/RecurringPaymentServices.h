@@ -39,9 +39,9 @@ ref class RecurringPaymentServices {
     }
     
     static array<RecurringPayments ^> ^
-        GetRecurringPaymentsByUserAccNumber(String ^ userAccNumber) {
+        GetRecurringPaymentsByUserId(String ^ userId) {
             try {
-                if (userAccNumber == "") {
+                if (userId == "") {
                     throw gcnew Exception(L"Không có thông tin tài khoản");
                 }
                 array<RecurringPayments ^> ^ recurringPayments = RecurringPaymentsRepository::GetAll();
@@ -50,7 +50,7 @@ ref class RecurringPaymentServices {
                 }
                 List<RecurringPayments ^> ^ filteredRecurringPayments = gcnew List<RecurringPayments ^>();
                 for (int i = 0; i < recurringPayments->Length; i++) {
-                    if (recurringPayments[i]->UserAccountNumber == userAccNumber) {
+                    if (recurringPayments[i]->UserId == userId) {
                         filteredRecurringPayments->Add(recurringPayments[i]);
                     }
                 }
@@ -66,7 +66,7 @@ ref class RecurringPaymentServices {
     static void PayRecurringPayment(RecurringPayments ^ recurringPayments, CustomerCodeDetails^ customerCodeDetail) {
         try {
 
-            User ^ user = UserRepository::FindUserByAccNumber(recurringPayments->UserAccountNumber);
+            User ^ user = UserRepository::FindById(recurringPayments->UserId);
             if (user == nullptr) {
                 throw gcnew Exception(L"Không tìm thấy thông tin khách hàng");
             }
@@ -74,7 +74,8 @@ ref class RecurringPaymentServices {
             if (customerCode == nullptr) {
                 throw gcnew Exception(L"Không tìm thấy thông tin mã khách hàng");
             }
-            User ^ company = UserRepository::FindUserByAccNumber(customerCode->CompanyAccountNumber);
+
+            User ^ company = UserRepository::FindById(customerCode->CompanyId);
             if (company == nullptr) {
                 throw gcnew Exception(L"Không tìm thấy thông tin công ty");
             }
@@ -85,27 +86,27 @@ ref class RecurringPaymentServices {
                                    customerCodeDetail->Amount + L") " + L" chưa hoàn thành, " +
                                    L"hãy nộp thêm tiền vào tài khoản để tiến hành giao dịch";
 
-                NotificationsServices::InsertNotification(recurringPayments->UserAccountNumber, content);
+                NotificationsServices::InsertNotification(recurringPayments->UserId, content);
                 throw gcnew Exception(L"Khách hàng không đủ số dư để thanh toán định kì hóa đơn này");
             }
 
             // update code detail
             customerCodeDetail->Status = 1; // đã thanh toán
-            customerCodeDetail->PaymentDate = DateTime::Now.ToString("dd/MM/yyyy");
-            customerCodeDetail->PaymentUserAccountNumber = recurringPayments->UserAccountNumber;
+            customerCodeDetail->PaymentDate = DateTime::Now;
+            customerCodeDetail->PaymentUserId = recurringPayments->UserId;
             CustomerCodeDetailsRepository::UpdateById(customerCodeDetail->Id, customerCodeDetail);
 
             // update số dư của khách hàng
             user->setBalance(user->getBalance() - customerCodeDetail->Amount);
-            UserRepository::UpdateUserByAccNumber(user->getAccountNumber(), user);
+            UserRepository::UpdateById(user->Id, user);
 
             // update số dư của công ty
             company->setBalance(company->getBalance() + customerCodeDetail->Amount);
-            UserRepository::UpdateUserByAccNumber(company->getAccountNumber(), company);
+            UserRepository::UpdateById(company->Id, company);
 
             // thêm lịch sử
-            TransactionServices::InsertTransaction(recurringPayments->UserAccountNumber,
-                customerCode->CompanyAccountNumber, customerCodeDetail->Amount,
+            TransactionServices::InsertTransaction(recurringPayments->UserId,
+                customerCode->CompanyId, customerCodeDetail->Amount,
                 L"Thanh toán định kì cho mã khách hàng " + customerCode->Code);
 
         } catch (Exception ^ ex) {
@@ -114,9 +115,9 @@ ref class RecurringPaymentServices {
         }
     }
 
-    static void RegisterRecurringPayment(String^ customerCodeString, String^ accNum) {
+    static void RegisterRecurringPayment(String^ customerCodeString, String^ userId) {
         try {
-            if (customerCodeString == "" || accNum == "") {
+            if (customerCodeString == "" || userId == "") {
                 throw gcnew Exception(L"Vui lòng nhập đầy đủ thông tin");
             }
             
@@ -135,7 +136,7 @@ ref class RecurringPaymentServices {
             }
 
             // kiểm tra khách hàng đã đăng kí mã nào nào công ty này chưa
-            array<RecurringPayments ^> ^ myRecurringPayments = RecurringPaymentServices::GetRecurringPaymentsByUserAccNumber(accNum);
+            array<RecurringPayments ^> ^ myRecurringPayments = RecurringPaymentServices::GetRecurringPaymentsByUserId(userId);
             if (myRecurringPayments != nullptr) {
                 for (int i = 0; i < myRecurringPayments->Length; i++) {
                     if (myRecurringPayments[i]->CustomerCodeId == customerCode->Id) {
@@ -144,18 +145,17 @@ ref class RecurringPaymentServices {
                 }
             }
 
-            String ^ id = Utils::createUniqueID("RP");
             RecurringPayments ^ newRecurringPayment =
-                gcnew RecurringPayments(id, accNum, customerCode->Id, Convert::ToInt32(DateTime::Now.Day));
+                gcnew RecurringPayments(userId, customerCode->Id, Convert::ToInt32(DateTime::Now.Day));
 
             RecurringPaymentsRepository::InsertOne(newRecurringPayment);
 
             // thêm thông báo cho khách hàng và công ty
             String ^ content = L"Đăng kí thanh toán định kì cho mã khách hàng " + customerCode->Code + L" thành công";
-            NotificationsServices::InsertNotification(accNum, content);
+            NotificationsServices::InsertNotification(userId, content);
 
-            content = L"Khách hàng " + accNum + L" đã đăng kí thanh toán định kì cho mã khách hàng " + customerCode->Code;
-            NotificationsServices::InsertNotification(customerCode->CompanyAccountNumber, content);
+            content = L"Khách hàng " + userId + L" đã đăng kí thanh toán định kì cho mã khách hàng " + customerCode->Code;
+            NotificationsServices::InsertNotification(customerCode->CompanyId, content);
 
         } catch (Exception ^ ex) {
             throw ex;
@@ -177,10 +177,10 @@ ref class RecurringPaymentServices {
             }
 
             String ^ content = L"Đã hủy thanh toán định kì cho mã khách hàng " + customerCode->Code;
-            NotificationsServices::InsertNotification(recurringPayment->UserAccountNumber, content);
+            NotificationsServices::InsertNotification(recurringPayment->UserId, content);
 
-            content = L"Khách hàng " + recurringPayment->UserAccountNumber + L" đã hủy thanh toán định kì cho mã khách hàng " + customerCode->Code;
-            NotificationsServices::InsertNotification(customerCode->CompanyAccountNumber, content);
+            content = L"Khách hàng " + recurringPayment->UserId + L" đã hủy thanh toán định kì cho mã khách hàng " + customerCode->Code;
+            NotificationsServices::InsertNotification(customerCode->CompanyId, content);
 
             RecurringPaymentsRepository::DeleteById(id);
 

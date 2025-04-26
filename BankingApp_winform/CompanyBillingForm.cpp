@@ -40,10 +40,10 @@ void CompanyBillingForm::loadRecurringPaymentData(String ^ companyAccNumber) {
         // Lặp qua từng khoản thanh toán định kỳ
         for each (RecurringPayments ^ payment in recurringPayments) {
             CustomerCodes ^ currCustomerCode = CustomerCodesRepository::FindCustomerCodeById(payment->CustomerCodeId);
-            if (currCustomerCode == nullptr || currCustomerCode->CompanyAccountNumber != companyAccNumber) {
+            if (currCustomerCode == nullptr || currCustomerCode->CompanyId != companyAccNumber) {
                 continue;
             }
-            User ^ user = UserRepository::FindUserByAccNumber(payment->UserAccountNumber);
+            User ^ user = UserRepository::FindById(payment->UserId);
             if (user == nullptr) {
                 continue;
             }

@@ -1,72 +1,84 @@
-#include "ISaveToFile.h"
+﻿#include "BaseEntity.h"
+
 
 #pragma once
 using namespace System;
 
 public
-ref class Transaction : public ISaveToFile {
+ref class Transaction : public BaseEntity {
   private:
-    String ^ transactionId;
-    String ^ fromAccountNumber;
-    String ^ toAccountNumber;
+    String ^ fromUserId;
+    String ^ toUserId;
     double amount;
     String ^ message;
-    String ^ createdAt;
+    String ^ type;
 
   public:
-    Transaction(String ^ _transactionId, String ^ _fromAccountNumber,
-                String ^ _toAccountNumber, double _amount, String ^ _message,
-                String ^ _createdAt) {
-        transactionId = _transactionId;
-        fromAccountNumber = _fromAccountNumber;
-        toAccountNumber = _toAccountNumber;
+    Transaction(String ^ id, DateTime createAt, DateTime updatedAt, String ^ _fromUserId,
+                String ^ _toUserId, double _amount, String ^ _message, String ^ _type)
+        : BaseEntity(id, createAt, updatedAt)
+    {
+        fromUserId = _fromUserId;
+        toUserId = _toUserId;
         amount = _amount;
         message = _message;
-        createdAt = _createdAt;
-    }
-    Transaction(String ^ _transactionId, String ^ _fromAccountNumber,
-                String ^ _toAccountNumber, double _amount, String ^ _message) {
-        transactionId = _transactionId;
-        fromAccountNumber = _fromAccountNumber;
-        toAccountNumber = _toAccountNumber;
+        type = _type;
+    } 
+
+    Transaction( String ^ _fromUserId,String ^ _toUserId, double _amount, String ^ _message, String^ _type)
+        : BaseEntity() {
+        fromUserId = _fromUserId;
+        toUserId = _toUserId;
         amount = _amount;
         message = _message;
-        createdAt = DateTime::Now.ToString("dd/MM/yyyy");
-    }
+        type = _type;
+    } 
 
-    Transaction() : Transaction("", "", "", 0, "", "") {};
+    Transaction()
+        : Transaction("", DateTime::MinValue, DateTime::MinValue, "", "", 0, "", "") {};
 
-    Transaction(const Transaction % other) {
-        transactionId = other.transactionId;
-        fromAccountNumber = other.fromAccountNumber;
-        toAccountNumber = other.toAccountNumber;
-        amount = other.amount;
-        message = other.message;
-        createdAt = other.createdAt;
+    property String ^
+        FromUserId {
+            String ^ get() { return fromUserId; }
+        }
+    property String ^
+        ToUserId {
+            String ^ get() { return toUserId; }
+        }
+    property double Amount{
+        double get() {
+            return amount;
+        }
     }
-    String ^ getTransactionId() { return transactionId; } String ^
-        getFromAccount() { return fromAccountNumber; } String ^
-        getToAccount() { return toAccountNumber; } String ^
-        getMessage() { return message; } String ^
-        getCreatedAt() { return createdAt; } double getAmount() {
-        return amount;
-    }
+    property String ^
+        Message {
+            String ^ get() { return message; } void set(String ^ value) {
+                message = value;
+            }
+        }
+    property String ^
+        Type {
+            String ^ get() { return type; }
+        }
 
-    virtual void WriteTo(BinaryWriter ^ writer) {
-        writer->Write(transactionId);
-        writer->Write(fromAccountNumber);
-        writer->Write(toAccountNumber);
+
+    virtual void WriteTo(BinaryWriter ^ writer) override {
+        BaseEntity::WriteTo(writer);
+
+        writer->Write(fromUserId);
+        writer->Write(toUserId);
         writer->Write(amount);
         writer->Write(message);
-        writer->Write(createdAt);
+        writer->Write(type);
     }
 
-    virtual void ReadFrom(BinaryReader ^ reader) {
-        transactionId = reader->ReadString();
-        fromAccountNumber = reader->ReadString();
-        toAccountNumber = reader->ReadString();
+    virtual void ReadFrom(BinaryReader ^ reader) override {
+        BaseEntity::ReadFrom(reader);
+
+        fromUserId = reader->ReadString();
+        toUserId = reader->ReadString();
         amount = reader->ReadDouble();
         message = reader->ReadString();
-        createdAt = reader->ReadString();
+        type = reader->ReadString();
     }
 };

@@ -62,7 +62,7 @@ void ClientSavingMoneyForm::loadSavingCustomers() {
         }
 
         for (int i = savingItems->Length - 1; i >= 0; i--) {
-            if (savingItems[i]->UserAccountNumber == GlobalData::GetCurrentUser()->AccountNumber) {
+            if (savingItems[i]->UserId == GlobalData::GetCurrentUser()->Id) {
                 AddSavingItemToFlow(savingItems[i]);
             }
         }
@@ -102,13 +102,9 @@ void ClientSavingMoneyForm::AddSavingItemToFlow(SavingCustomers ^ saving) {
 
     String ^ endPriceMesage = "";
     if (saving->Status == 1) { // đã thanh toán
-        endPriceMesage = L"Số tiền đã nhận: " + saving->InterestAmount;
+        endPriceMesage = L"Số tiền đã nhận: " + saving->TotalAmount();
     } else {
-        TimeSpan duration = DateTime::Now - saving->DepositDate;
-        double receivedAmount =
-            saving->Amount +
-            (saving->Amount * saving->InterestRate * duration.Days / 365.0);
-
+        double receivedAmount = saving->CalculateInterestAmount() + saving->Amount;
         endPriceMesage = L"Số tiền thực nhận đến hiện tại: " + receivedAmount;
     }
 

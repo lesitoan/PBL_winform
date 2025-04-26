@@ -49,8 +49,10 @@ ref class CustomerCodeDetailsRepository {
             if (customerCodeDetailsCache == nullptr) {
                 customerCodeDetailsCache = gcnew array<CustomerCodeDetails ^>(0);
             }
+
             array<CustomerCodeDetails ^> ^ newCustomerCodeDetailsCache =
                 gcnew array<CustomerCodeDetails ^>(customerCodeDetailsCache->Length + 1);
+
             for (int i = 0; i < customerCodeDetailsCache->Length; i++) {
                 newCustomerCodeDetailsCache[i] = customerCodeDetailsCache[i];
             }
@@ -82,6 +84,7 @@ ref class CustomerCodeDetailsRepository {
             throw gcnew Exception("UpdateTransactionById error !!!", ex);
         }
     }
+
     static void DeleteById(String ^ id) {
         try {
             CheckLastUpdateTime();

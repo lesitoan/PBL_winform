@@ -20,8 +20,8 @@ Void RecurringPaymentFollowForm::LoadRecurringPaymentFollow() {
         this->flowLayoutPanelFollow->Controls->Clear();
 
         array<RecurringPayments ^> ^ myRecurringPayments =
-            RecurringPaymentServices::GetRecurringPaymentsByUserAccNumber(
-                GlobalData::GetCurrentUser()->AccountNumber
+            RecurringPaymentServices::GetRecurringPaymentsByUserId(
+                GlobalData::GetCurrentUser()->Id
             );
 
         if (myRecurringPayments == nullptr || myRecurringPayments->Length == 0) {

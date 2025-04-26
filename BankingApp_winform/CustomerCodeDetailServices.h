@@ -57,10 +57,8 @@ ref class CustomerCodeDetailServices {
                 }
             }
             // tạo hóa đơn mới
-            String ^ codeDetailId = Utils::createUniqueID("CCD");
             DateTime expiredDate = DateTime::Now.AddDays(days);
-            CustomerCodeDetails ^ codeDetail = gcnew CustomerCodeDetails(
-                codeDetailId, customerCodeId, amount, expiredDate);
+            CustomerCodeDetails ^ codeDetail = gcnew CustomerCodeDetails(customerCodeId, amount, expiredDate);
 
             // thêm hóa đơn vào danh sách
             CustomerCodeDetailsRepository::InsertOne(codeDetail);

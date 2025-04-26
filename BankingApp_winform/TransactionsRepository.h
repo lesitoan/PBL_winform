@@ -48,7 +48,7 @@ ref class TransactionsRepository {
     }
 
         static array<Transaction ^> ^
-        GetTransactionsByAccNum(String ^ accNum) {
+        GetTransactionsByUserId(String ^ userId) {
             try {
                 CheckLastUpdateTime();
 
@@ -59,14 +59,15 @@ ref class TransactionsRepository {
                 List<Transaction ^> ^ transactionsList = gcnew List<Transaction ^>();
 
                 for (int i = 0; i < transactionsCache->Length; i++) {
-                    if (transactionsCache[i]->getFromAccount() == accNum) {
+                    if (transactionsCache[i]->FromUserId == userId ||
+                        transactionsCache[i]->ToUserId== userId){
                         transactionsList->Add(transactionsCache[i]);
                     }
                 }
 
                 return transactionsList->ToArray();
             } catch (Exception ^ ex) {
-                throw gcnew Exception("GetTransactionsByAccNum error !!!", ex);
+                throw gcnew Exception("GetTransactionsByUserId error !!!", ex);
             }
         }
 
@@ -102,7 +103,7 @@ ref class TransactionsRepository {
             }
 
             for (int i = 0; i < transactionsCache->Length; i++) {
-                if (transactionsCache[i]->getTransactionId() == transactionId) {
+                if (transactionsCache[i]->Id == transactionId) {
                     transactionsCache[i] = transaction;
                     break;
                 }

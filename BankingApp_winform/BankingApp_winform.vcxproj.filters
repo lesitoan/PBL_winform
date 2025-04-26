@@ -36,9 +36,6 @@
     <Filter Include="BaseModels">
       <UniqueIdentifier>{9f3d87f0-263b-44c6-a206-8643da2afac6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BaseModels\Models">
-      <UniqueIdentifier>{ce565206-33e1-49ec-88c3-719d0ab7fd6e}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HandleFile.cpp">
@@ -110,9 +107,6 @@
     </ClCompile>
     <ClCompile Include="ServicePaymentForm.cpp">
       <Filter>Ui\Cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="ClientRecurringPaymentForm.cpp">
       <Filter>Ui\Cpp</Filter>
@@ -217,9 +211,6 @@
     <ClInclude Include="Services.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="CompanyBillingForm.h">
       <Filter>Ui</Filter>
     </ClInclude>
@@ -234,9 +225,6 @@
     </ClInclude>
     <ClInclude Include="ServicePaymentForm.h">
       <Filter>Ui</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="ClientRecurringPaymentForm.h">
       <Filter>Ui</Filter>
@@ -337,9 +325,6 @@
     <ClInclude Include="CustomerCodeServices.h">
       <Filter>Services</Filter>
     </ClInclude>
-    <ClInclude Include="AbstractUser.h">
-      <Filter>BaseModels</Filter>
-    </ClInclude>
     <ClInclude Include="BaseEntity.h">
       <Filter>BaseModels</Filter>
     </ClInclude>
@@ -347,14 +332,8 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="ENV.h" />
-    <ClInclude Include="Client.h">
-      <Filter>BaseModels\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="Admin.h">
-      <Filter>BaseModels\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="Company.h">
-      <Filter>BaseModels\Models</Filter>
+    <ClInclude Include="User.h">
+      <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -362,25 +341,10 @@
     <None Include="services.dat">
       <Filter>Data\files</Filter>
     </None>
+    <None Include="notifications.dat">
+      <Filter>Data\files</Filter>
+    </None>
     <None Include="users.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="transactions.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="customerCodeDetails.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="savingCustomers.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="savingCustomerssss.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="recurringPayments.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="customerCodes.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>

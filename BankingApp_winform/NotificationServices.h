@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "Notifications.h"
 #include "NotificationsRepository.h"
-#include "Utils.h"
 
 #ifndef NOTIFICATIONSERVICES_H
 #define NOTIFICATIONSERVICES_H
@@ -11,18 +10,15 @@ using namespace System::IO;
 public
 ref class NotificationsServices {
  public:
-   static void InsertNotification(String ^ userAccNumber, String ^ content) {
+   static void InsertNotification(String ^ userId, String ^ content) {
        try {
 
            const int MAX_MY_NOTIFICATIONS = 10;
-           String ^ id = Utils::createUniqueID("NTF");
-           String ^ createdAt = DateTime::Now.ToString("dd/MM/yyyy");
-           int status = 0; // chuwa ddoc
            Notifications ^ notification =
-               gcnew Notifications(id, userAccNumber, content, createdAt, status);
+               gcnew Notifications(userId, content);
 
            // Chỉ tạo tối đa 10 thông báo mới nhất
-           array<Notifications ^> ^ myNotifications = NotificationsServices::GetNotificationsByUserAccNumber(userAccNumber);
+           array<Notifications ^> ^ myNotifications = NotificationsServices::GetNotificationsByUserId(userId);
 
            if (myNotifications != nullptr && myNotifications->Length >= MAX_MY_NOTIFICATIONS) {
                // Sắp xếp tăng dần theo ngày tạo 
@@ -33,7 +29,7 @@ ref class NotificationsServices {
                Array::Sort(sorted, gcnew Comparison<Notifications ^>(&NotificationsServices::CompareNotificationsByDate));
 
                // thay thế cái cũ nhất
-               NotificationsRepository::UpdateById(sorted[0]->NotificationId, notification);
+               NotificationsRepository::UpdateById(sorted[0]->Id, notification);
            }
 
            NotificationsRepository::InsertOne(notification);
@@ -53,7 +49,7 @@ ref class NotificationsServices {
    }
 
        static array<Notifications ^> ^
-       GetNotificationsByUserAccNumber(String ^ userAccNumber) {
+       GetNotificationsByUserId(String ^ userId) {
            try {
                array<Notifications ^> ^ allNotifications =
                    NotificationsRepository::GetAll();
@@ -63,7 +59,7 @@ ref class NotificationsServices {
 
                List<Notifications ^> ^ filteredNotifications = gcnew List<Notifications ^>();
                for (int i = 0; i < allNotifications->Length; i++) {
-                   if (allNotifications[i]->UserAccNumber == userAccNumber) {
+                   if (allNotifications[i]->UserId == userId) {
                        filteredNotifications->Add(allNotifications[i]);
                    }
                }
@@ -91,7 +87,7 @@ ref class NotificationsServices {
                return;
            }
            for (int i = 0; i < allNotifications->Length; i++) {
-               if (allNotifications[i]->NotificationId == id) {
+               if (allNotifications[i]->Id == id) {
                    notification = allNotifications[i];
                    break;
                }
@@ -107,8 +103,8 @@ ref class NotificationsServices {
 
  private:
    static int CompareNotificationsByDate(Notifications ^ a, Notifications ^ b) {
-       DateTime d1 = DateTime::ParseExact(a->CreatedAt, "dd/MM/yyyy", nullptr);
-       DateTime d2 = DateTime::ParseExact(b->CreatedAt, "dd/MM/yyyy", nullptr);
+       DateTime d1 = a->CreatedAt;
+       DateTime d2 = b->CreatedAt;
        return DateTime::Compare(d1, d2);
    }
 

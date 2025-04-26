@@ -35,43 +35,40 @@ void AdminSavingMoneyForm::loadSavingCustomers() {
     try {
         this->dataGridViewSavingMoney->Rows->Clear();
 
-        array<SavingCustomers ^> ^ savingItems = SavingCustomersRepository::GetAll();
+        array<SavingDTO ^> ^ savingItems = SavingServices::GetAllSavingCustomers();
 
         if (savingItems == nullptr || savingItems->Length == 0) {
             return;
         }
+
         for (int i = 0; i < savingItems->Length; i++) {
 
             double currentAmount = 0;
-            if (savingItems[i]->Status == 1) {
-                currentAmount = savingItems[i]->InterestAmount;
+            if (savingItems[i]->SavingCustomer->Status == 1) {
+                currentAmount = savingItems[i]->SavingCustomer->TotalAmount();
             } else {
-                TimeSpan duration = DateTime::Now - savingItems[i]->DepositDate;
-                currentAmount = savingItems[i]->Amount +
-                                (savingItems[i]->Amount *
-                                 savingItems[i]->InterestRate * duration.Days) /
-                                    365.0;
+                currentAmount = savingItems[i]->SavingCustomer->Amount + savingItems[i]->SavingCustomer->CalculateInterestAmount();
             }
 
             String ^ statusMessage = "";
-            if (savingItems[i]->Status == 0) {
+            if (savingItems[i]->SavingCustomer->Status == 0) {
                 statusMessage = L"Đang hoạt động";
-            } else if (savingItems[i]->Status == 1) {
+            } else if (savingItems[i]->SavingCustomer->Status == 1) {
                 statusMessage = L"Đã tất toán";
-            } else if (savingItems[i]->Status == 2) {
+            } else if (savingItems[i]->SavingCustomer->Status == 2) {
                 statusMessage = L"Yêu cầu tất toán";
             } else {
                 statusMessage = L"Không xác định";
             }
 
             this->dataGridViewSavingMoney->Rows->Add(
-                savingItems[i]->UserAccountNumber,
-                savingItems[i]->Type == "nonTermDeposit" ? L"Không kì hạn"
+                savingItems[i]->CurrUser->FullName,
+                savingItems[i]->SavingCustomer->Type == "nonTermDeposit" ? L"Không kì hạn"
                                                          : L"Có kì hạn",
-                savingItems[i]->InterestRate, savingItems[i]->Amount,
-                savingItems[i]->DepositDate.ToString("dd/MM/yyyy"), currentAmount,
+                savingItems[i]->SavingCustomer->InterestRate, savingItems[i]->SavingCustomer->Amount,
+                savingItems[i]->SavingCustomer->DepositDate.ToString("dd/MM/yyyy"), currentAmount,
                 statusMessage,
-                savingItems[i]->Status == 1 ? savingItems[i]->PaymentDate
+                savingItems[i]->SavingCustomer->Status == 1 ? savingItems[i]->SavingCustomer->PaymentDate.ToString()
                                             : L"Chưa có");
         }
 
@@ -88,7 +85,7 @@ void AdminSavingMoneyForm::AdminSavingMoneyForm::loadRequest() {
         this->dataGridViewRequests->Rows->Clear();
 
         // Đọc danh sách khách hàng tiết kiệm
-        array<SavingCustomers ^> ^ savingItems = SavingCustomersRepository::GetAll();
+        array<SavingDTO ^> ^ savingItems = SavingServices::GetAllSavingCustomers();
 
         if (savingItems == nullptr || savingItems->Length == 0) {
             return;
@@ -110,22 +107,18 @@ void AdminSavingMoneyForm::AdminSavingMoneyForm::loadRequest() {
         int rowIndex = 0;
 
         for (int i = 0; i < savingItems->Length; i++) {
-            if (savingItems[i]->Status == 2) {
+            if (savingItems[i]->SavingCustomer->Status == 2) {
 
-                TimeSpan duration = DateTime::Now - savingItems[i]->DepositDate;
-                double currentAmount =
-                    savingItems[i]->Amount +
-                    (savingItems[i]->Amount * savingItems[i]->InterestRate *
-                     duration.Days) /
-                        365.0;
+                double currentAmount = savingItems[i]->SavingCustomer->Amount + savingItems[i]->SavingCustomer->CalculateInterestAmount();
+
 
                 this->dataGridViewRequests->Rows->Add(
-                    savingItems[i]->UserAccountNumber,
-                    savingItems[i]->Type == "nonTermDeposit" ? L"Không kì hạn"
+                    savingItems[i]->CurrUser->FullName,
+                    savingItems[i]->SavingCustomer->Type == "nonTermDeposit" ? L"Không kì hạn"
                                                              : L"Có kì hạn",
-                    savingItems[i]->InterestRate.ToString(),
-                    savingItems[i]->Amount.ToString(),
-                    savingItems[i]->DepositDate.ToString("dd/MM/yyyy"),
+                    savingItems[i]->SavingCustomer->InterestRate.ToString(),
+                    savingItems[i]->SavingCustomer->Amount.ToString(),
+                    savingItems[i]->SavingCustomer->DepositDate.ToString("dd/MM/yyyy"),
                     currentAmount);
 
                 // Gán dữ liệu vào Tag để xử lý khi click
@@ -157,23 +150,25 @@ void AdminSavingMoneyForm::AdminSavingMoneyForm::loadRequest() {
 System::Void AdminSavingMoneyForm::dataGridViewRequests_CellClick(
     System::Object ^ sender,
     System::Windows::Forms::DataGridViewCellEventArgs ^ e) {
+
     try {
+
         if (e->RowIndex < 0 || e->ColumnIndex < 0) {
             return;
         }
 
         if (dataGridViewRequests->Columns[e->ColumnIndex]->Name == "btnSubmit") {
-            SavingCustomers ^ savingItem = dynamic_cast<SavingCustomers ^>(
+            SavingDTO ^ savingItem = dynamic_cast<SavingDTO ^>(
                 dataGridViewRequests->Rows[e->RowIndex]->Tag);
 
+                    
             if (savingItem == nullptr) return;
 
-            MessageBox::Show(savingItem->UserAccountNumber);
-
+            SavingCustomers ^ savingCustomer = savingItem->SavingCustomer;
 
             
             // Xử lý thanh toán yêu cầu rút tiết kiệm
-            SavingServices::OnFinishSavingAdmin(savingItem);
+            SavingServices::OnFinishSavingAdmin(savingCustomer);
 
             MessageBox::Show(L"Đã thanh toán yêu cầu rút tiết kiệm thành công",
                              L"Thông báo", MessageBoxButtons::OK,

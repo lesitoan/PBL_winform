@@ -2,7 +2,6 @@
 #include "HandleFile.h"
 #include "User.h"
 #include "Validate.h"
-#include "Utils.h"
 #include "GlobalData.h"
 
 #include "UserRepository.h"
@@ -75,8 +74,7 @@ ref class AuthServices {
                 throw gcnew Exception(L"Số điện thoại đã được sử dụng");
             }
 
-            String ^ accNum = Utils::createUniqueID("");
-            User ^ user = gcnew User(fullName, password, phoneNumber, accNum);
+            User ^ user = gcnew User(fullName, password, phoneNumber);
             UserRepository::InsertUser(user);
 
         } catch (Exception ^ ex) {
@@ -103,7 +101,7 @@ ref class AuthServices {
             String ^ newPassword = "TML" + now.ToString("HHmmss");
             user->setPassword(newPassword);
             // Lưu lại thông tin vào file
-            UserRepository::UpdateUserByAccNumber(user->AccountNumber, user);
+            UserRepository::UpdateById(user->Id, user);
 
             return newPassword;
 
@@ -123,7 +121,7 @@ ref class AuthServices {
                 throw gcnew Exception(L"Số điện thoại không tồn tại");
             }
             user->Status = 0; // khóa tài khoản
-            UserRepository::UpdateUserByAccNumber(user->getAccountNumber(), user);
+            UserRepository::UpdateById(user->Id, user);
         } catch (Exception ^ ex) {
             throw ex;
         }

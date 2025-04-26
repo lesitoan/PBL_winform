@@ -29,8 +29,8 @@ void ClientRecurringPaymentForm::loadRecurringPaymentData() {
         // lấy các mã khách hàng của công ty
         List<CustomerCodes ^> ^ customerCodesList = gcnew List<CustomerCodes ^>();
         for each (CustomerCodes ^ code in customerCodes) {
-            if (code->CompanyAccountNumber ==
-                GlobalData::GetCurrentUser()->getAccountNumber()) {
+            if (code->CompanyId ==
+                GlobalData::GetCurrentUser()->Id) {
                 customerCodesList->Add(code);
             }
         }
@@ -43,7 +43,7 @@ void ClientRecurringPaymentForm::loadRecurringPaymentData() {
                     // tìm người dùng có mã tài khoản là mã khách hàng để lấy tên và stk
                     User ^ user = nullptr;
                     for each (User ^ u in users) {
-                        if (u->AccountNumber == payment->UserAccountNumber) {
+                        if (u->Id == payment->UserId) {
                             user = u;
                             break;
                         }

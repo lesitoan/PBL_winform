@@ -5,7 +5,6 @@
 #include "SavingCustomersRepository.h"
 #include "User.h"
 #include "UserRepository.h"
-#include "Utils.h"
 #include "Validate.h"
 #include "CustomerCodes.h"
 
@@ -68,7 +67,7 @@ ref class CustomerCodesRepository {
           }
 
         static CustomerCodes
-        ^ InsertOne(String ^ CodeString, String ^ CompanyAccNum) {
+        ^ InsertOne(String ^ CodeString, String ^ CompanyId) {
               try {
                   CheckLastUpdateTime();
                   if (customerCodesCache == nullptr) {
@@ -83,12 +82,8 @@ ref class CustomerCodesRepository {
                       throw gcnew Exception(L"Mã khách hàng " + CodeString + L" đã tồn tại.");
                   }
 
-                  // ở đây vì cho phép công ty tạo nhiều mã khách hàng cùng lúc nên => trung ID => thêm random cho khỏi trùng
-                  Random ^ rand = gcnew Random();
-                  int randomSuffix = rand->Next(100, 999);
-                  String ^ id = Utils::createUniqueID("CC") + randomSuffix;
                   CustomerCodes ^ item =
-                      gcnew CustomerCodes(id, CompanyAccNum, CodeString);
+                      gcnew CustomerCodes(CompanyId, CodeString);
 
                   array<CustomerCodes ^> ^ newCustomerCodes =
                       gcnew array<CustomerCodes ^>(customerCodesCache->Length + 1);

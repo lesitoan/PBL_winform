@@ -20,9 +20,9 @@ ref class CustomerCodeServices {
                 return;
             }
 
-            String ^ CompanyAccNum = GlobalData::GetCurrentUser()->getAccountNumber();
+            String ^ companyId = GlobalData::GetCurrentUser()->Id;
             for (int i = 0; i < customerCodesString->Length; i++) {
-                CustomerCodes ^ newCustomerCode = CustomerCodesRepository::InsertOne(customerCodesString[i], CompanyAccNum);
+                CustomerCodes ^ newCustomerCode = CustomerCodesRepository::InsertOne(customerCodesString[i], companyId);
                 if (newCustomerCode != nullptr) {
                     MessageBox::Show(L"Thêm mã khách hàng: " + newCustomerCode->Code + L" thành công");
                 }
@@ -75,7 +75,7 @@ ref class CustomerCodeServices {
     }
 
         static array<CustomerCodes ^> ^
-        GetCustomerCodesByCompanyAccNum(String ^ companyAccNumber) {
+        GetCustomerCodesByCompanyId(String ^ companyId) {
             try {
                 array<CustomerCodes ^> ^ customerCodes = CustomerCodesRepository::GetAll();
 
@@ -84,7 +84,7 @@ ref class CustomerCodeServices {
                 }
                 List<CustomerCodes ^> ^ customerCodesList = gcnew List<CustomerCodes ^>();
                 for (int i = 0; i < customerCodes->Length; i++) {
-                    if (customerCodes[i]->CompanyAccountNumber == companyAccNumber) {
+                    if (customerCodes[i]->CompanyId == companyId) {
                         customerCodesList->Add(customerCodes[i]);
                     }
                 }

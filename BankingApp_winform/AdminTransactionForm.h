@@ -1,7 +1,5 @@
 ﻿#pragma once
-#include "HandleFile.h"
 #include "Transaction.h"
-#include "TransactionsRepository.h"
 #include "TransactionServices.h"
 
 
@@ -241,7 +239,7 @@ ref class AdminTransactionForm : public System::Windows::Forms::Form {
     System::Void AdminTransactionForm_Load(System::Object ^ sender,
                                            System::EventArgs ^ e);
 
-    void loadTransactions(array<Transaction ^> ^ transactions);
+    void loadTransactions(array<TransactionDTO ^> ^ transactions);
 
     void btnFind_Click(System::Object ^ sender, System::EventArgs ^ e);
 

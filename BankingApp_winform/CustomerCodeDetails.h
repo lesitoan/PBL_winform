@@ -1,4 +1,4 @@
-﻿#include "ISaveToFile.h"
+﻿#include "BaseEntity.h"
 
 
 #pragma once
@@ -7,74 +7,68 @@
 
 using namespace System;
 
-ref class CustomerCodeDetails : public ISaveToFile {
+ref class CustomerCodeDetails : public BaseEntity {
   private:
-    String ^ id;
     String ^ customerCodeId;
-    String ^ paymentUserAccountNumber;
+    String ^ paymentUserId;
     double amount;
-    DateTime createDate;
-    String ^ paymentDate;
+    DateTime paymentDate;
     DateTime expiredDate;
     int status; // 1: đã nôp tiền, 0: chưa nộp tiền
 
   public:
-    CustomerCodeDetails(String ^ codeDetailId, String ^ customerCodeId,
-                        double amt, DateTime expiredDate) {
-        id = codeDetailId;
+    CustomerCodeDetails(String ^ customerCodeId,double amt, DateTime expiredDate)
+        : BaseEntity()
+    {
         this->customerCodeId = customerCodeId;
-        this->paymentUserAccountNumber = "";
+        this->paymentUserId = "";
         amount = amt;
-        createDate = DateTime::Now;
-        paymentDate = "";
+        paymentDate = DateTime::MinValue;
         this->expiredDate = expiredDate;
         status = 0;
     }
 
-    CustomerCodeDetails(String ^ codeDetailId, String ^ customerCodeId,
-                        String ^ paymentUserAccountNumber, double amt,
-                        DateTime createDate, String ^ paymentDate,
-                        DateTime expiredDate, int stat) {
-        id = codeDetailId;
+    CustomerCodeDetails(String ^ id, DateTime createAt, DateTime updatedAt, String ^ customerCodeId,
+                        String ^ paymentUserId, double amt, DateTime paymentDate,
+                        DateTime expiredDate, int stat)
+        : BaseEntity(id, createAt, updatedAt) {
         this->customerCodeId = customerCodeId;
-        this->paymentUserAccountNumber = paymentUserAccountNumber;
+        this->paymentUserId = paymentUserId;
         amount = amt;
-        this->createDate = createDate;
         this->paymentDate = paymentDate;
         this->expiredDate = expiredDate;
         status = stat;
     }
 
-    CustomerCodeDetails() {
-        id = "";
+    CustomerCodeDetails() : BaseEntity() {
         customerCodeId = "";
-        paymentUserAccountNumber = "";
+        paymentUserId = "";
         amount = 0;
-
-        createDate = DateTime::Now;
-        paymentDate = "";
+        paymentDate = DateTime::MinValue;
         expiredDate = DateTime::Now;
         status = 0;
     }
 
-    property String ^ Id { String ^ get() { return id; } } property String ^
-        CustomerCodeId {
-            String ^ get() { return customerCodeId; }
-        } property String ^
-        PaymentUserAccountNumber {
+    property String ^ CustomerCodeId {
+        String ^ get() { return customerCodeId; } void set(String ^ value) {
+            customerCodeId = value;
+        }
+    }
+
+    property String ^
+        PaymentUserId {
             String ^ get() {
-                return paymentUserAccountNumber;
+                return paymentUserId;
             } void set(String ^ value) {
-                paymentUserAccountNumber = value;
+                paymentUserId = value;
             }
-        } property double Amount {
+        }
+    property double Amount {
         double get() { return amount; }
     }
-    property DateTime CreateDate {
-        DateTime get() { return createDate; }
-    }
-    property String ^ PaymentDate {
-        String ^ get() { return paymentDate; } void set(String ^ value) {
+
+    property DateTime PaymentDate {
+        DateTime get() { return paymentDate; } void set(DateTime value) {
             paymentDate = value;
         }
     } property DateTime ExpiredDate {
@@ -86,25 +80,25 @@ ref class CustomerCodeDetails : public ISaveToFile {
         void set(int value) { status = value; }
     }
 
-    virtual void WriteTo(BinaryWriter ^ writer) {
-        writer->Write(id);
+    virtual void WriteTo(BinaryWriter ^ writer) override {
+        BaseEntity::WriteTo(writer);
+
         writer->Write(customerCodeId);
-        writer->Write(paymentUserAccountNumber);
+        writer->Write(paymentUserId);
         writer->Write(amount);
-        writer->Write(createDate.ToString());
-        writer->Write(paymentDate);
-        writer->Write(expiredDate.ToString());
+        writer->Write(paymentDate.ToBinary());
+        writer->Write(expiredDate.ToBinary());
         writer->Write(status);
     }
 
-    virtual void ReadFrom(BinaryReader ^ reader) {
-        id = reader->ReadString();
+    virtual void ReadFrom(BinaryReader ^ reader) override {
+        BaseEntity::ReadFrom(reader);
+
         customerCodeId = reader->ReadString();
-        paymentUserAccountNumber = reader->ReadString();
+        paymentUserId = reader->ReadString();
         amount = reader->ReadDouble();
-        createDate = DateTime::Parse(reader->ReadString());
-        paymentDate = reader->ReadString();
-        expiredDate = DateTime::Parse(reader->ReadString());
+        paymentDate = DateTime::FromBinary(reader->ReadInt64());
+        expiredDate = DateTime::FromBinary(reader->ReadInt64());
         status = reader->ReadInt32();
     }
 };

@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "ServicesRepository.h"
 #include "UserRepository.h"
-#include "Utils.h"
 #include "CustomerCodesRepository.h"
 #include "UserServices.h"
 
@@ -25,8 +24,7 @@ ref class ServiceServices {
                 throw gcnew Exception(L"Dịch vụ đã tồn tại");
             }
 
-            String ^ id = Utils::createUniqueID("SER");
-            Services ^ newService = gcnew Services(id, name);
+            Services ^ newService = gcnew Services(name);
             ServicesRepository::InsertService(newService);
             
         } catch (Exception ^ ex) {
@@ -42,10 +40,10 @@ ref class ServiceServices {
     }
 
     static void PayCustomerCode(String ^ customerCodeString, String ^ companyAccountNumber,
-        String ^ userAccountNumber, String^ pin) {
+        String ^ userId, String^ pin) {
        try {
            if (customerCodeString == "" || companyAccountNumber == "" ||
-               userAccountNumber == "" || pin == "") {
+               userId == "" || pin == "") {
                throw gcnew Exception(L"Vui lòng nhập đầy đủ thông tin");
            }
            // kiểm tra mã dịch vụ đã tồn tại chưa
@@ -76,13 +74,13 @@ ref class ServiceServices {
            }
 
            // chuyển tiền
-           UserService::TransferMoney(userAccountNumber, companyAccountNumber,
+           UserService::TransferMoney(userId, companyAccountNumber,
                                       currentCodeDetail->Amount, Convert::ToInt32(pin), L"Thanh toán mã hóa đơn: " + customerCodeString);
 
            // cập nhật hóa đơn
            currentCodeDetail->Status = 1; // đã thanh toán
-           currentCodeDetail->PaymentDate = DateTime::Now.ToString("dd/MM/yyyy");
-           currentCodeDetail->PaymentUserAccountNumber = userAccountNumber;
+           currentCodeDetail->PaymentDate = DateTime::Now;
+           currentCodeDetail->PaymentUserId = userId;
            CustomerCodeDetailsRepository::UpdateById(currentCodeDetail->Id, currentCodeDetail);
 
 

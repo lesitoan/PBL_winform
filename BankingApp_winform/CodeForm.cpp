@@ -34,7 +34,7 @@ System::Void CodeForm::btnAddCode_Click(System::Object ^ sender,
 void CodeForm::loadTableCodes() {
     try {
         dataGridViewCodes->Rows->Clear();
-        array<CustomerCodes ^> ^ codes = CustomerCodeServices::GetCustomerCodesByCompanyAccNum(GlobalData::GetCurrentUser()->getAccountNumber());
+        array<CustomerCodes ^> ^ codes = CustomerCodeServices::GetCustomerCodesByCompanyId(GlobalData::GetCurrentUser()->Id);
         if (codes == nullptr || codes->Length == 0) {
             return;
         }
@@ -42,7 +42,7 @@ void CodeForm::loadTableCodes() {
         for (int i = 0; i < codes->Length; i++) {
             String ^ status = codes[i]->Status ? L"Hoạt động" : L"Khóa";
             dataGridViewCodes->Rows->Add(
-                codes[i]->Code, codes[i]->CreatedDate.ToString("dd/MM/yyyy"),
+                codes[i]->Code, codes[i]->CreatedAt,
                 status);
             int lastRow = dataGridViewCodes->Rows->Count - 1;
             dataGridViewCodes->Rows[lastRow]->Tag = codes[i];

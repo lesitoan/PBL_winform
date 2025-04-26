@@ -62,7 +62,7 @@ Panel ^ CodeDetailForm::createCodeDetailPanel(CustomerCodeDetails ^ detail) {
                     L"Số tiền: " + detail->Amount.ToString("N0") + " vnd");
     addLabelToPanel(panel, yOffset,
                     L"Ngày tạo: " +
-                        detail->CreateDate.ToString("dd/MM/yyyy hh:mm:ss tt"));
+                        detail->CreatedAt);
     addLabelToPanel(panel, yOffset,
                     L"Ngày hết hạn: " +
                         detail->ExpiredDate.ToString("dd/MM/yyyy hh:mm:ss tt"));
@@ -72,7 +72,7 @@ Panel ^ CodeDetailForm::createCodeDetailPanel(CustomerCodeDetails ^ detail) {
                                            : L"chưa thanh toán"));
     addLabelToPanel(panel, yOffset,
                     L"Tài khoản thanh toán: " +
-                        detail->PaymentUserAccountNumber);
+                        detail->PaymentUserId);
     addLabelToPanel(panel, yOffset, L"Ngày thanh toán: " + detail->PaymentDate);
 
     // Nút "Xóa hóa đơn"

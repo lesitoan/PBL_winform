@@ -18,8 +18,8 @@ void NotificationForm::loadNotifications() {
     try {
         flowLayoutContainer->Controls->Clear();
 
-        String ^ accNumber = GlobalData::GetCurrentUser()->AccountNumber;
-        array<Notifications ^> ^ notifications = NotificationsServices::GetNotificationsByUserAccNumber(accNumber);
+        String ^ currUserId = GlobalData::GetCurrentUser()->Id;
+        array<Notifications ^> ^ notifications = NotificationsServices::GetNotificationsByUserId(currUserId);
         if (notifications == nullptr) {
             return;
         }
@@ -54,7 +54,7 @@ void NotificationForm::addNotificationPanel(FlowLayoutPanel ^ flowLayoutPanel,
 
     // Tạo nhãn thời gian thông báo
     Label ^ timeLabel = gcnew Label();
-    timeLabel->Text = notification->CreatedAt;
+    timeLabel->Text = notification->CreatedAt.ToString();
     timeLabel->Font =
         gcnew System::Drawing::Font("Arial", 9, FontStyle::Italic);
     timeLabel->Location = System::Drawing::Point(100, 5);
@@ -118,7 +118,7 @@ System::Void NotificationForm::label1_Click(System::Object ^ sender, System::Eve
             clickedLabel->Cursor = Cursors::No;
 
             // Cập nhật trạng thái đã đọc
-            NotificationsServices::UpdateNotificationStatus(notification->NotificationId, 1);
+            NotificationsServices::UpdateNotificationStatus(notification->Id, 1);
 
             this->loadNotifications();
         }

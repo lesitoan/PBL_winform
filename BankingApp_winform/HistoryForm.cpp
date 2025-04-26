@@ -18,8 +18,8 @@ HistoryForm::~HistoryForm() {
 
 void HistoryForm::loadTransactionsHistory() {
     try {
-        String ^ accountNumber = GlobalData::GetCurrentUser()->getAccountNumber();
-        array <Transaction^>^ transactions = TransactionServices::FindTransactionByAccNum(accountNumber);
+        String ^ currUserId = GlobalData::GetCurrentUser()->Id;
+        array<TransactionDTO ^> ^ transactions = TransactionServices::FindTransactionByUserId(currUserId);
         if (transactions == nullptr || transactions->Length == 0) {
             return;
         }
@@ -28,16 +28,13 @@ void HistoryForm::loadTransactionsHistory() {
         rightContent->Controls->Clear();
         
         for (int i = transactions->Length - 1; i >= 0; i--) {
-            // lich su rut tien
-            if (transactions[i]->getFromAccount() == accountNumber &&
-                transactions[i]->getToAccount() == "") {
+            // lich su rut tien, gửi nhận tiết kiệm
+            if (transactions[i]->FromUser == nullptr || transactions[i]->ToUser == nullptr) {
                 AddTransactionPanel(rightContent, transactions[i]);
-
+            } else {
                 // lich su chuyen tien
-            } else if (transactions[i]->getFromAccount() == accountNumber ||
-                       transactions[i]->getToAccount() == accountNumber) {
                 AddTransactionPanel(leftContent, transactions[i]);
-            };
+            }
         }
         leftContent->PerformLayout();
         rightContent->PerformLayout();
@@ -48,7 +45,7 @@ void HistoryForm::loadTransactionsHistory() {
 }
 
 void HistoryForm::AddTransactionPanel(FlowLayoutPanel ^ flowLayoutPanel,
-                                      Transaction ^ transaction) {
+                                      TransactionDTO ^ data) {
     Panel ^ panel = gcnew Panel();
     panel->BackColor = Color::White;
     panel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
@@ -72,42 +69,46 @@ void HistoryForm::AddTransactionPanel(FlowLayoutPanel ^ flowLayoutPanel,
 
     // Thời gian GD
     Label ^ lblTime = gcnew Label();
-    lblTime->Text = L"Thời gian GD: " + transaction->getCreatedAt();
+    lblTime->Text = L"Thời gian GD: " + data->ThisTransaction->CreatedAt;
     lblTime->Location = Point(10, yOffset);
     lblTime->AutoSize = true;
     panel->Controls->Add(lblTime);
     yOffset += lineHeight;
 
     // Tài khoản gửi
-    Label ^ lblFromAccount = gcnew Label();
-    lblFromAccount->Text = L"STK người gửi: " + transaction->getFromAccount();
-    lblFromAccount->Font =
-        gcnew System::Drawing::Font("Arial", 9, FontStyle::Bold);
-    lblFromAccount->Location = Point(10, yOffset);
-    lblFromAccount->AutoSize = true;
-    panel->Controls->Add(lblFromAccount);
-    yOffset += lineHeight;
+    if (data->FromUser) {
+        Label ^ lblFromAccount = gcnew Label();
+        lblFromAccount->Text = L"Người gửi: " + data->FromUser->FullName;
+        lblFromAccount->Font =
+            gcnew System::Drawing::Font("Arial", 9, FontStyle::Bold);
+        lblFromAccount->Location = Point(10, yOffset);
+        lblFromAccount->AutoSize = true;
+        panel->Controls->Add(lblFromAccount);
+        yOffset += lineHeight;
+    }
 
     // Tài khoản nhận
-    Label ^ lblToAccount = gcnew Label();
-    lblToAccount->Text = L"STK người nhận: " + transaction->getToAccount();
-    lblToAccount->Font =
-        gcnew System::Drawing::Font("Arial", 9, FontStyle::Bold);
-    lblToAccount->Location = Point(10, yOffset);
-    lblToAccount->AutoSize = true;
-    panel->Controls->Add(lblToAccount);
-    yOffset += lineHeight;
+    if (data->ToUser) {
+        Label ^ lblToAccount = gcnew Label();
+        lblToAccount->Text = L"Người nhận: " + data->ToUser->FullName;
+        lblToAccount->Font =
+            gcnew System::Drawing::Font("Arial", 9, FontStyle::Bold);
+        lblToAccount->Location = Point(10, yOffset);
+        lblToAccount->AutoSize = true;
+        panel->Controls->Add(lblToAccount);
+        yOffset += lineHeight;
+    }
 
     // Số tiền GD
     Label ^ lblAmount = gcnew Label();
-    if (transaction->getFromAccount() ==
-        GlobalData::GetCurrentUser()->getAccountNumber()) {
+    if (data->FromUser && data->FromUser->Id ==
+        GlobalData::GetCurrentUser()->Id){
         lblAmount->Text =
-            L"Số tiền: -" + transaction->getAmount().ToString() + " VND";
+            L"Số tiền: -" + data->ThisTransaction->Amount.ToString() + " VND";
         lblAmount->ForeColor = Color::Red;
     } else {
         lblAmount->Text =
-            L"Số tiền: +" + transaction->getAmount().ToString() + " VND";
+            L"Số tiền: +" + data->ThisTransaction->Amount.ToString() + " VND";
         lblAmount->ForeColor = Color::Green;
     }
     lblAmount->Font = gcnew System::Drawing::Font("Arial", 9, FontStyle::Bold);
@@ -118,7 +119,7 @@ void HistoryForm::AddTransactionPanel(FlowLayoutPanel ^ flowLayoutPanel,
 
     // Nội dung giao dịch
     Label ^ lblContent = gcnew Label();
-    lblContent->Text = L"Nội dung giao dịch: " + transaction->getMessage();
+    lblContent->Text = L"Nội dung giao dịch: " + data->ThisTransaction->Message;
     lblContent->ForeColor = Color::Black;
     lblContent->Font = gcnew System::Drawing::Font("Arial", 9);
     lblContent->Location = Point(10, yOffset);

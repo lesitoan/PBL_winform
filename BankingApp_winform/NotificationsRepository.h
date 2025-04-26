@@ -69,7 +69,7 @@ ref class NotificationsRepository {
                 return;
             }
             for (int i = 0; i < notificationsCache->Length; i++) {
-                if (notificationsCache[i]->NotificationId == id) {
+                if (notificationsCache[i]->Id == id) {
                     notificationsCache[i] = notification;
                     break;
                 }

@@ -54,7 +54,7 @@ ref class UserService {
         }
 
         static array<String ^> ^
-        GetHistoryReceivers(String ^ accNumber) {
+        GetHistoryReceivers(String ^ fromUserId) {
             try {
                 array<Transaction ^> ^ transactions = TransactionsRepository::GetAll();
                 if (transactions == nullptr || transactions->Length == 0) {
@@ -67,18 +67,18 @@ ref class UserService {
                     if (count == 5) {
                         break;
                     }
-                    if (transactions[i]->getFromAccount() == accNumber &&
-                        transactions[i]->getToAccount() != "") {
-                        User ^ user = UserRepository::FindUserByAccNumber(transactions[i]->getToAccount());
+                    if (transactions[i]->FromUserId == fromUserId &&
+                        transactions[i]->ToUserId != "") {
+                        User ^ user = UserRepository::FindById(transactions[i]->FromUserId);
                         if (user->getRole() != "user") {
                             continue;
                         }
                         String ^ toAcc =
                             user->getBankName() + " - " +
                             user->getFullName() + " - " +
-                            transactions[i]->getToAccount() +
+                            transactions[i]->FromUserId+
                             " - " +
-                            transactions[i]->getAmount().ToString();
+                            transactions[i]->Amount;
 
                         receiverString->Add(toAcc);
                         count++;
@@ -107,7 +107,7 @@ ref class UserService {
                   if (customerCode == nullptr) {
                       throw gcnew Exception(L"Không tìm thấy thông tin mã khách hàng");
                   }
-                  User ^ company = UserRepository::FindUserByAccNumber(customerCode->CompanyAccountNumber);
+                  User ^ company = UserRepository::FindById(customerCode->CompanyId);
                   if (company == nullptr) {
                       throw gcnew Exception(L"Không tìm thấy thông tin công ty");
                   }
@@ -115,13 +115,16 @@ ref class UserService {
               } catch (Exception ^ ex) {
                   throw gcnew Exception("GetCompanyByServiceId error !!!", ex);
               }
-          } static void UpdateUserByAccNumber(String ^ accNumber, User ^ user) {
-        try {
-            UserRepository::UpdateUserByAccNumber(accNumber, user);
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("UpdateUserByAccNumber error !!!", ex);
+          }
+        
+        
+        static void UpdateUserById(String ^ userId, User ^ user) {
+            try {
+            UserRepository::UpdateById(userId, user);
+            } catch (Exception ^ ex) {
+                throw gcnew Exception("UpdateUserByAccNumber error !!!", ex);
+            }
         }
-    }
 
     static void TransferMoney(String ^ fromAcc, String ^ toAcc,
                               double amount, int pin, String ^ message) {
@@ -137,16 +140,19 @@ ref class UserService {
             }
 
             // kiểm tra xem tài khoản có tồn tại không
-            User ^ sender = UserRepository::FindUserByAccNumber(fromAcc);
+            User ^ sender = UserService::FindUserByAccNumber(fromAcc);
             if (sender == nullptr) {
                 throw gcnew Exception(L"Tài khoản người gửi không tồn tại !");
             } else if (sender->getBalance() < amount) {
                 throw gcnew Exception(L"Số dư không đủ để thực hiện giao dịch !");
+            } else if (sender->getPin() == 0) {
+                throw gcnew Exception(L"Khách hàng chưa đạt mã pin");
+                
             } else if (sender->getPin() != pin) {
                 throw gcnew Exception(L"Mã pin không chính xác");
-            }
+            } 
 
-            User ^ receiver = UserRepository::FindUserByAccNumber(toAcc);
+            User ^ receiver = UserService::FindUserByAccNumber(toAcc);
             if (receiver == nullptr) {
                 throw gcnew Exception(L"Tài khoản người nhận không tồn tại !");
             } else if (receiver->Status == 0) {
@@ -155,28 +161,26 @@ ref class UserService {
 
             // chỉnh sửa thông tin và lưu
             sender->setBalance(sender->getBalance() - amount);
-            UserRepository::UpdateUserByAccNumber(fromAcc, sender);
+            UserRepository::UpdateById(sender->Id, sender);
 
             receiver->setBalance(receiver->getBalance() + amount);
-            UserRepository::UpdateUserByAccNumber(toAcc, receiver);
+            UserRepository::UpdateById(receiver->Id, receiver);
 
             // update phiên đăng nhập hiện tại
             GlobalData::SetCurrentUser(sender);
 
             // lưu lịch sử giao dịch
-            String ^ transactionId = Utils::createUniqueID("T");
             if (message == "") {
                 message = sender->FullName + L" chuyển tiền";
             }
             Transaction ^ transaction =
-                gcnew Transaction(transactionId, fromAcc, toAcc, amount, message);
+                gcnew Transaction(sender->Id, receiver->Id, amount, message, "transfer");
             TransactionsRepository::InsertOne(transaction);
 
             // thêm thông báo cho người nhận
-            String ^ notificationId = Utils::createUniqueID("N");
             String ^ notificationMessage = L"Nhận " + amount + L" từ tài khoản " + fromAcc;
             Notifications ^ notification =
-                gcnew Notifications(notificationId, toAcc, notificationMessage);
+                gcnew Notifications(receiver->Id, notificationMessage);
             NotificationsRepository::InsertOne(notification);
 
         } catch (Exception ^ ex) {
@@ -189,11 +193,15 @@ ref class UserService {
             if (AccNum == "") {
                 throw gcnew Exception(L"Không có thông tin tài khoản");
             }
-            User ^ user = UserRepository::FindUserByAccNumber(AccNum);
-            if (user == nullptr) {
-                throw gcnew Exception(L"Tài khoản không tồn tại");
+            array<User ^> ^ users = UserRepository::GetUsers();
+
+            for (int i = 0; i < users->Length; i++) {
+                if (users[i]->AccountNumber == AccNum) {
+                    return users[i];
+                }
             }
-            return user;
+            
+            return nullptr;
         } catch (Exception ^ ex) {
             throw ex;
         }
@@ -232,7 +240,7 @@ ref class UserService {
                       GlobalData::GetCurrentUser()->UrlAvatar =
                           "BankingApp_winform\\images\\avatars\\" + newFileName;
 
-                      UserRepository::UpdateUserByAccNumber(GlobalData::GetCurrentUser()->AccountNumber, GlobalData::GetCurrentUser());
+                      UserRepository::UpdateById(GlobalData::GetCurrentUser()->Id, GlobalData::GetCurrentUser());
 
                       return destinationPath;
                   }
@@ -249,8 +257,8 @@ ref class UserService {
                 throw gcnew Exception(L"Mã pin phải có 6 kí tự");
             }
 
-            String ^ accNum = GlobalData::GetCurrentUser()->AccountNumber;
-            User ^ user = UserRepository::FindUserByAccNumber(accNum);
+            String ^ currUserId = GlobalData::GetCurrentUser()->Id;
+            User ^ user = UserRepository::FindById(currUserId);
             if (user == nullptr) {
                 throw gcnew Exception(L"Tài khoản không tồn tại");
             } else if (user->getPassword() != password) {
@@ -262,24 +270,24 @@ ref class UserService {
             user->setPin(Convert::ToInt32(pin));
             GlobalData::SetCurrentUser(user);
 
-            UserRepository::UpdateUserByAccNumber(user->AccountNumber, user);
+            UserRepository::UpdateById(user->Id, user);
 
         } catch (Exception ^ ex) {
             throw ex;
         }
     }
 
-    static void UpdateStatus(String ^ accNum, int status) {
+    static void UpdateStatus(String ^ userId, int status) {
         try {
-            if (accNum == "") {
+            if (userId == "") {
                 throw gcnew Exception(L"Không có thông tin tài khoản");
             }
-            User ^ user = UserRepository::FindUserByAccNumber(accNum);
+            User ^ user = UserRepository::FindById(userId);
             if (user == nullptr) {
                 throw gcnew Exception(L"Tài khoản không tồn tại");
             }
             user->Status = status;
-            UserRepository::UpdateUserByAccNumber(user->AccountNumber, user);
+            UserRepository::UpdateById(user->Id, user);
         } catch (Exception ^ ex) {
             throw ex;
         }
@@ -323,13 +331,13 @@ ref class UserService {
             } else if (!Validate::isValidPassword(newPwComfirm)) {
                 throw gcnew Exception(L"Mật khẩu phải từ 6-9 kí tự, có ít nhất 1 chữ cái và 1 số, không chứ dấu cách");
             }
-            String ^ accNum = GlobalData::GetCurrentUser()->AccountNumber;
-            User ^ user = UserRepository::FindUserByAccNumber(accNum);
+            String ^ currUserId = GlobalData::GetCurrentUser()->Id;
+            User ^ user = UserRepository::FindById(currUserId);
             if (user == nullptr) {
                 throw gcnew Exception(L"Tài khoản không tồn tại");
             }
             user->setPassword(newPwComfirm);
-            UserRepository::UpdateUserByAccNumber(user->AccountNumber, user);
+            UserRepository::UpdateById(user->Id, user);
         } catch (Exception ^ ex) {
             throw ex;
         }

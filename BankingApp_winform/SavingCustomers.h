@@ -1,4 +1,4 @@
-﻿#include "ISaveToFile.h"
+﻿#include "BaseEntity.h"
 
 #ifndef SAVINGCUSTOMERS_H
 #define SAVINGCUSTOMERS_H
@@ -6,25 +6,25 @@
 using namespace System;
 
 public
-ref class SavingCustomers : public ISaveToFile {
+ref class SavingCustomers : public BaseEntity {
   private:
-    String ^ id;
-    String ^ userAccountNumber; // so tai khoan khach hang
+    String ^ userId;
     double amount;
     double interestAmount;
     String ^ type; // termDeposit, nonTermDeposit
     int term;      // so thang
     float interestRate; 
     DateTime depositDate;
-    String^ paymentDate; // khoi tao bang "", vì chưa thanh toán
+    DateTime paymentDate;
     int status; // 0: chưa thanh toán, 1: đã thanh toán, 2 đang yêu cầu
 
   public:
-    SavingCustomers(String ^ _id, String^ _accNumber, double _amount, double _interserAmount, String^ _type, int _term,
-                    float _rate,
-                    DateTime _depositDate, String^ _paymentDate, int _status) {
-        id = _id;
-        userAccountNumber = _accNumber;
+    SavingCustomers(String ^ id, DateTime createAt, DateTime updatedAt, String ^ _userId, double _amount, double _interserAmount, String ^ _type, int _term,
+                    float _rate, DateTime _depositDate, DateTime _paymentDate, int _status)
+    
+        : BaseEntity(id, createAt, updatedAt)
+    {
+        userId = _userId;
         amount = _amount;
         interestAmount = _interserAmount;
         type = _type;
@@ -34,12 +34,14 @@ ref class SavingCustomers : public ISaveToFile {
         paymentDate = _paymentDate;
         status = _status;
     }
-    SavingCustomers()
-        : SavingCustomers("", "", 0, 0, "", 0, 0, DateTime::Now, "", 0) {};
 
-    SavingCustomers(String^ _id,String^ _accNumber,  double _amount, String^ _type, int _term) {
-        id = _id;
-        userAccountNumber = _accNumber;
+    SavingCustomers()
+        : SavingCustomers("", DateTime::MinValue, DateTime::MinValue, "", 0, 0, "", 0, 0, DateTime::MinValue, DateTime::MinValue, 0) {};
+
+    SavingCustomers(String ^ _userId, double _amount, String ^ _type, int _term) 
+        : BaseEntity()
+    {
+        userId = _userId;
         amount = _amount;
         interestAmount = 0;
         type = _type;
@@ -57,15 +59,26 @@ ref class SavingCustomers : public ISaveToFile {
                 interestRate = 0.06;
         }
         depositDate = DateTime::Now;
-        paymentDate = "";
+        paymentDate = DateTime::MinValue;
         status = 0;
     }
-    property String ^ Id {
-        String ^ get() { return id; }
-    } property String ^
-        UserAccountNumber {
+
+    double CalculateInterestAmount() {
+        DateTime currDate = depositDate.AddMonths(term);
+        if (currDate > DateTime::Now) {
+            currDate = DateTime::Now;
+        }
+        TimeSpan duration = currDate - depositDate;
+        return amount * interestRate * duration.Days / 365.0;
+    }
+    Double TotalAmount() {
+        return amount + interestAmount;
+    }
+
+    property String ^
+        UserId {
             String ^
-                get() { return userAccountNumber; } 
+                get() { return userId; } 
         }
     property double Amount {
         double get() { return amount; }
@@ -86,9 +99,11 @@ ref class SavingCustomers : public ISaveToFile {
     property DateTime DepositDate {
         DateTime get() { return depositDate; }
     }
-    property String ^ PaymentDate {
-        String ^ get() { return paymentDate; }
-        void set(String ^ value) {
+    property DateTime PaymentDate {
+        DateTime get() {
+            return paymentDate;
+        }
+        void set(DateTime value) {
             paymentDate = value;
         }
     }
@@ -97,28 +112,30 @@ ref class SavingCustomers : public ISaveToFile {
         void set(int value) { status = value; }
     }
 
-    virtual void WriteTo(BinaryWriter ^ writer) {
-        writer->Write(this->id);
-        writer->Write(this->userAccountNumber);
+    virtual void WriteTo(BinaryWriter ^ writer) override {
+        BaseEntity::WriteTo(writer);
+
+        writer->Write(this->userId);
         writer->Write(this->amount);
         writer->Write(this->interestAmount);
         writer->Write(this->type);
         writer->Write(this->term);
         writer->Write(this->interestRate);
-        writer->Write(this->depositDate.ToString());
-        writer->Write(this->paymentDate);
+        writer->Write(this->depositDate.ToBinary());
+        writer->Write(this->paymentDate.ToBinary());
         writer->Write(this->status);
     }
-    virtual void ReadFrom(BinaryReader ^ reader) {
-        id = reader->ReadString();
-        userAccountNumber = reader->ReadString();
+    virtual void ReadFrom(BinaryReader ^ reader) override {
+        BaseEntity::ReadFrom(reader);
+
+        userId = reader->ReadString();
         amount = reader->ReadDouble();
         interestAmount = reader->ReadDouble();
         type = reader->ReadString();
         term = reader->ReadInt32();
         interestRate = reader->ReadSingle();
-        depositDate = DateTime::Parse(reader->ReadString());
-        paymentDate = reader->ReadString();
+        depositDate = DateTime::FromBinary(reader->ReadInt64());
+        paymentDate = DateTime::FromBinary(reader->ReadInt64());
         status = reader->ReadInt32();
     }
 

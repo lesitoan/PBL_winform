@@ -51,7 +51,7 @@ System::Void EditUserForm::btnSubmit_Click(System::Object ^ sender,
             throw gcnew Exception(L"Số dư không hợp lệ");
         }
         this->userSelected->setBalance(Convert::ToDouble(this->amount->Text));
-        UserService::UpdateUserByAccNumber(this->userSelected->getAccountNumber(),
+        UserService::UpdateUserById(this->userSelected->Id,
                                             this->userSelected);
         MessageBox::Show(L"Cập nhật thông tin thành công", L"Thông báo",
                          MessageBoxButtons::OK, MessageBoxIcon::Information);

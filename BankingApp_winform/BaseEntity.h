@@ -1,8 +1,9 @@
 #pragma once
+#include "ISaveToFile.h"
 
 using namespace System;
 
-ref class BaseEntity abstract {
+public ref class BaseEntity abstract : public ISaveToFile {
  protected:
    String ^ id;
    DateTime createdAt;

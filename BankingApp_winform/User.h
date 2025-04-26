@@ -1,4 +1,4 @@
-#include "ISaveToFile.h"
+#include "BaseEntity.h"
 
 #ifndef USER_H
 #define USER_H
@@ -7,7 +7,7 @@ using namespace System;
 using namespace System::IO;
 
 public
-ref class User : public ISaveToFile {
+ref class User : public BaseEntity {
   private:
     String ^ fullName;
     String ^ password;
@@ -21,25 +21,49 @@ ref class User : public ISaveToFile {
     String ^ serviceId;
     String ^ urlAvatar;
 
+    String^ createAccNum() {
+      DateTime now = DateTime::Now;
+      return now.ToString("MdHHmmssff");
+    }
+
   public:
-    User(String ^ _fullName, String ^ _password, String ^ _phoneNumber,
-         String ^ accNum) {
+    User(String ^ _fullName, String ^ _password, String ^ _phoneNumber)
+        : BaseEntity() {
         fullName = _fullName;
         password = _password;
         phoneNumber = _phoneNumber;
         balance = 1000000;
         role = "user"; // user, admin, company
         pin = 0;
-        accountNumber = accNum;
+        accountNumber = this->createAccNum();
         bankName = "BIDV";
         status = 1;
         serviceId = "";
         urlAvatar = "BankingApp_winform\\images\\avatars\\default_avatar.png";
     }
+    User(String ^ _id, DateTime _createdAt, DateTime _updatedAt, String ^ _fullName, String ^ _password, String ^ _phoneNumber,
+         String ^ _accountNumber, double _balance, String ^ _role, int _pin,
+         String ^ _bankName, int _status, String ^ _serviceId,
+         String ^ _avatar)
+        : BaseEntity(_id, _createdAt, _updatedAt) {
+        fullName = _fullName;
+        password = _password;
+        phoneNumber = _phoneNumber;
+        balance = _balance;
+        role = _role;
+        pin = _pin;
+        accountNumber = _accountNumber;
+        bankName = _bankName;
+        status = _status;
+        serviceId = _serviceId;
+        urlAvatar = _avatar;
+    }
+
     User(String ^ _fullName, String ^ _password, String ^ _phoneNumber,
          String ^ _accountNumber, double _balance, String ^ _role, int _pin,
          String ^ _bankName, int _status, String ^ _serviceId,
-         String ^ _avatar) {
+         String ^ _avatar)
+        : BaseEntity() {
         fullName = _fullName;
         password = _password;
         phoneNumber = _phoneNumber;
@@ -54,10 +78,12 @@ ref class User : public ISaveToFile {
     }
 
     User()
-        : User("", "", "", "", 0, "user", 0, "BIDV", 1, "",
+        : User("", DateTime::MinValue, DateTime::MinValue, "", "", "", "", 0, "user", 0, "BIDV", 1, "",
                "BankingApp_winform\\images\\avatars\\default_avatar.png") {};
 
-    User(String ^ _bankName, String ^ _fullName, String ^ _accNumber) {
+    /*User(String ^ _bankName, String ^ _fullName, String ^ _accNumber) 
+        : BaseEntity()
+    {
         bankName = _bankName;
         fullName = _fullName;
         accountNumber = _accNumber;
@@ -70,7 +96,7 @@ ref class User : public ISaveToFile {
         status = 1;
         serviceId = "";
         urlAvatar = "BankingApp_winform\\images\\avatars\\default_avatar.png";
-    }
+    }*/
 
     String ^ getFullName() { return fullName; } String ^
         getPassword() { return password; } String ^ getAccountNumber() {
@@ -119,7 +145,9 @@ ref class User : public ISaveToFile {
     }
 
         virtual void
-        WriteTo(BinaryWriter ^ writer) {
+        WriteTo(BinaryWriter ^ writer) override {
+        BaseEntity::WriteTo(writer);
+
         writer->Write(getFullName());
         writer->Write(getPassword());
         writer->Write(getPhoneNumber());
@@ -133,7 +161,9 @@ ref class User : public ISaveToFile {
         writer->Write(UrlAvatar);
     }
 
-    virtual void ReadFrom(BinaryReader ^ reader) {
+    virtual void ReadFrom(BinaryReader ^ reader) override {
+        BaseEntity::ReadFrom(reader);
+
         fullName = reader->ReadString();
         password = reader->ReadString();
         phoneNumber = reader->ReadString();

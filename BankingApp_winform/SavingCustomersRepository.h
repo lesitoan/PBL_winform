@@ -46,7 +46,7 @@ ref class SavingCustomersRepository {
     }
 
     static array<SavingCustomers ^> ^
-        GetSavingCustomersByAccNum(String ^ accNum) {
+        GetSavingCustomersByUserId(String ^ userId) {
             try {
                 CheckLastUpdateTime();
                 if (savingCustomersCache == nullptr) {
@@ -55,13 +55,13 @@ ref class SavingCustomersRepository {
                 List<SavingCustomers ^> ^ savingCustomersList =
                     gcnew List<SavingCustomers ^>();
                 for (int i = 0; i < savingCustomersCache->Length; i++) {
-                    if (savingCustomersCache[i]->UserAccountNumber == accNum) {
+                    if (savingCustomersCache[i]->UserId == userId) {
                         savingCustomersList->Add(savingCustomersCache[i]);
                     }
                 }
                 return savingCustomersList->ToArray();
             } catch (Exception ^ ex) {
-                throw gcnew Exception("GetSavingCustomersByAccNum error !!!", ex);
+                throw gcnew Exception("GetSavingCustomersByUserId error !!!", ex);
             }
         }
 

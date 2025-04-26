@@ -45,29 +45,48 @@ ref class UserRepository {
         }
     }
 
-        static void UpdateUserByAccNumber(String ^ accNumber, User ^ user) {
+    static void UpdateById(String ^ id, User ^ user) {
         try {
-
-            CheckLastUpdateTime();
-
             if (usersCache == nullptr) {
                 return;
             }
             for (int i = 0; i < usersCache->Length; i++) {
-                if (usersCache[i]->getAccountNumber() == accNumber) {
+                if (usersCache[i]->Id == id) {
                     usersCache[i] = user;
                     break;
                 }
             }
             HandleFile::WriteArrayToFile<User ^>(usersCache, fileName);
 
-            // update lại thời gian chỉnh sửa file
-            HandleFile::UpdateFilehistoryUpdate(fileName);
-
+            //HandleFile::UpdateFilehistoryUpdate(fileName);
         } catch (Exception ^ ex) {
-            throw gcnew Exception("updateUserByAccNumber error !!!", ex);
+            throw gcnew Exception("updateById error !!!", ex);
         }
     }
+
+    //    static void UpdateUserByAccNumber(String ^ accNumber, User ^ user) {
+    //    try {
+
+    //        CheckLastUpdateTime();
+
+    //        if (usersCache == nullptr) {
+    //            return;
+    //        }
+    //        for (int i = 0; i < usersCache->Length; i++) {
+    //            if (usersCache[i]->getAccountNumber() == accNumber) {
+    //                usersCache[i] = user;
+    //                break;
+    //            }
+    //        }
+    //        HandleFile::WriteArrayToFile<User ^>(usersCache, fileName);
+
+    //        // update lại thời gian chỉnh sửa file
+    //        //HandleFile::UpdateFilehistoryUpdate(fileName);
+
+    //    } catch (Exception ^ ex) {
+    //        throw gcnew Exception("updateUserByAccNumber error !!!", ex);
+    //    }
+    //}
 
     static void InsertUser(User ^ user) {
         try {
@@ -85,7 +104,7 @@ ref class UserRepository {
             HandleFile::WriteArrayToFile<User ^>(usersCache, fileName);
 
             // update lại thời gian chỉnh sửa file
-            HandleFile::UpdateFilehistoryUpdate(fileName);
+            //HandleFile::UpdateFilehistoryUpdate(fileName);
         } catch (Exception ^ ex) {
             throw gcnew Exception("addUser error !!!", ex);
         }
@@ -109,23 +128,40 @@ ref class UserRepository {
         }
     }
 
-        static User
-        ^ FindUserByAccNumber(String ^ accNumber) {
-              try {
-                  CheckLastUpdateTime();
-                  if (usersCache == nullptr) {
-                      return nullptr;
-                  }
-                  for (int i = 0; i < usersCache->Length; i++) {
-                      if (usersCache[i]->getAccountNumber() == accNumber) {
-                          return usersCache[i];
-                      }
-                  }
-                  return nullptr;
-              } catch (Exception ^ ex) {
-                  throw gcnew Exception("findUserByAccNumber error !!!", ex);
-              }
-          }
+        //static User
+        //^ FindUserByAccNumber(String ^ accNumber) {
+        //      try {
+        //          CheckLastUpdateTime();
+        //          if (usersCache == nullptr) {
+        //              return nullptr;
+        //          }
+        //          for (int i = 0; i < usersCache->Length; i++) {
+        //              if (usersCache[i]->getAccountNumber() == accNumber) {
+        //                  return usersCache[i];
+        //              }
+        //          }
+        //          return nullptr;
+        //      } catch (Exception ^ ex) {
+        //          throw gcnew Exception("findUserByAccNumber error !!!", ex);
+        //      }
+        //  }
+
+        static User^ FindById(String ^ id) {
+        try {
+            CheckLastUpdateTime();
+            if (usersCache == nullptr) {
+                return nullptr;
+            }
+            for (int i = 0; i < usersCache->Length; i++) {
+                if (usersCache[i]->Id == id) {
+                    return usersCache[i];
+                }
+            }
+            return nullptr;
+        } catch (Exception ^ ex) {
+            throw gcnew Exception("findById error !!!", ex);
+        }
+    }
 
         static void DeteteCache() {
         usersCache = nullptr;
