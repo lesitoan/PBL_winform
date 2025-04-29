@@ -75,13 +75,15 @@ ref class ServiceServices {
 
            // chuyển tiền
            UserService::TransferMoney(userId, companyAccountNumber,
-                                      currentCodeDetail->Amount, Convert::ToInt32(pin), L"Thanh toán mã hóa đơn: " + customerCodeString);
+                                      currentCodeDetail->Amount, Convert::ToInt32(pin), L"Thanh toán mã hóa đơn: " + customerCodeString, "service");
 
            // cập nhật hóa đơn
            currentCodeDetail->Status = 1; // đã thanh toán
            currentCodeDetail->PaymentDate = DateTime::Now;
            currentCodeDetail->PaymentUserId = userId;
            CustomerCodeDetailsRepository::UpdateById(currentCodeDetail->Id, currentCodeDetail);
+
+           // gửi thông báo
 
 
        } catch (Exception ^ ex) {

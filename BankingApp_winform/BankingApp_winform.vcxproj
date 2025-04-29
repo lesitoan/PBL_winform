@@ -168,6 +168,7 @@
     </ClInclude>
     <ClInclude Include="AuthServices.h" />
     <ClInclude Include="BaseEntity.h" />
+    <ClInclude Include="BaseRepository.h" />
     <ClInclude Include="ClientSavingMoneyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -387,8 +388,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
+    <None Include="customerCodeDetails.dat" />
+    <None Include="customercodes.dat" />
     <None Include="notifications.dat" />
+    <None Include="savingcustomers.dat" />
     <None Include="services.dat" />
+    <None Include="transactions.dat" />
     <None Include="users.dat" />
   </ItemGroup>
   <ItemGroup>

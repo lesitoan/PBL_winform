@@ -335,6 +335,9 @@
     <ClInclude Include="User.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="BaseRepository.h">
+      <Filter>BaseModels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
@@ -345,6 +348,18 @@
       <Filter>Data\files</Filter>
     </None>
     <None Include="users.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="customerCodeDetails.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="customercodes.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="savingcustomers.dat">
+      <Filter>Data\files</Filter>
+    </None>
+    <None Include="transactions.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>

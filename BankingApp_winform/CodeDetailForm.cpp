@@ -55,7 +55,7 @@ Panel ^ CodeDetailForm::createCodeDetailPanel(CustomerCodeDetails ^ detail) {
     int yOffset = 10;
     int lineHeight = 20;
 
-    addLabelToPanel(panel, yOffset, L"Mã hóa đơn: " + detail->Id);
+    //addLabelToPanel(panel, yOffset, L"Mã hóa đơn: " + detail->Id);
     addLabelToPanel(panel, yOffset,
                     L"Mã khách hàng: " + this->customerCode->Code);
     addLabelToPanel(panel, yOffset,
@@ -73,7 +73,15 @@ Panel ^ CodeDetailForm::createCodeDetailPanel(CustomerCodeDetails ^ detail) {
     addLabelToPanel(panel, yOffset,
                     L"Tài khoản thanh toán: " +
                         detail->PaymentUserId);
-    addLabelToPanel(panel, yOffset, L"Ngày thanh toán: " + detail->PaymentDate);
+
+    if (detail->Status == 1) {
+        addLabelToPanel(panel, yOffset,
+                        L"Ngày thanh toán: " +
+                            detail->PaymentDate.ToString("dd/MM/yyyy hh:mm:ss tt"));
+    } else {
+        addLabelToPanel(panel, yOffset,
+                        L"Ngày thanh toán: chưa thanh toán");
+    }
 
     // Nút "Xóa hóa đơn"
     if (detail->Status == 0) {

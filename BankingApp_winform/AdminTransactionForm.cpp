@@ -42,6 +42,7 @@ void AdminTransactionForm::loadTransactions(array<TransactionDTO ^> ^
             }
             
             String ^ type = "";
+
             if (transaction->ThisTransaction->Type == "transfer") {
                 type = L"Chuyển khoản";
             } else if (transaction->ThisTransaction->Type == "withdraw") {
@@ -54,6 +55,8 @@ void AdminTransactionForm::loadTransactions(array<TransactionDTO ^> ^
                 type = L"Rút tiết kiệm";
             } else if (transaction->ThisTransaction->Type == "savingTransfer") {
                 type = L"Chuyển khoản tiết kiệm";
+            } else if (transaction->ThisTransaction->Type == "service") {
+                type = L"Thanh toán dịch vụ";
             }
             dataGridViewTransactions->Rows->Add(
                 type, fromUserName, toUserName,

@@ -1,13 +1,43 @@
 ﻿#pragma once
 #include "HandleFile.h"
 #include "Services.h"
+#include "BaseRepository.h"
 
 #ifndef SERVICESREPOSITORY_H
 #define SERVICESREPOSITORY_H
 using namespace System;
 using namespace System::IO;
 
-public ref class ServicesRepository {
+
+//public
+//ref class ServicesRepository : public BaseRepository<Services ^> {
+// private:
+//   static ServicesRepository() {
+//       BaseRepository::InitializeRepository("services.dat");
+//   }
+//
+// public:
+//   static Services ^ FindServiceByName(String ^ name) {
+//       try {
+//           CheckLastUpdateTime();
+//           if (cache == nullptr) {
+//               return nullptr;
+//           }
+//
+//           for (int i = 0; i < cache->Length; i++) {
+//               if (cache[i]->Name->ToLower() == name->ToLower()) {
+//                   return cache[i];
+//               }
+//           }
+//           return nullptr;
+//       } catch (Exception ^ ex) {
+//           throw gcnew Exception("FindServiceByName error !!!", ex);
+//       }
+//   }
+//};
+
+public
+ref class ServicesRepository {
   private:
     static array<Services ^> ^ servicesCache;
     static DateTime lastReadTime = DateTime::MinValue;
@@ -84,7 +114,7 @@ public ref class ServicesRepository {
         }
     }
 
-    static void InsertService(Services ^ service) {
+        static void InsertService(Services ^ service) {
         try {
             CheckLastUpdateTime();
             if (servicesCache == nullptr) {
@@ -117,3 +147,4 @@ public ref class ServicesRepository {
 };
 
 #endif // SERVICESREPOSITORY_H
+

@@ -80,12 +80,12 @@ ref class TransactionServices {
             try {
 
                 if (userName == "") {
-                    return gcnew array<TransactionDTO ^>(0);
+                    return nullptr;
                 }
                 array<Transaction ^> ^ transactions = TransactionsRepository::GetAll();
 
                 if (transactions == nullptr || transactions->Length == 0) {
-                    return gcnew array<TransactionDTO ^>(0);
+                    return nullptr;
                 }
 
                 // chuyen sang kieu class moi

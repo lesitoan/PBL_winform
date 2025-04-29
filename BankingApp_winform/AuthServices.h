@@ -177,8 +177,11 @@ ref class AuthServices {
                 throw gcnew Exception(L"Lỗi máy chủ, thử lại sau !");
             }
             for (int i = 0; i < users->Length; i++) {
-                if (users[i]->getAccountNumber() == GlobalData::GetCurrentUser()->getAccountNumber()) {
-                    if (users[i]->getPin() != Convert::ToInt32(pin)) {
+                if (users[i]->getAccountNumber() == GlobalData::GetCurrentUser()->AccountNumber) {
+                    if (users[i]->getPin() == 0) {
+                        throw gcnew Exception(L"Hãy đạt mã PIN trước khi thêm mã thanh toán");
+
+                    } else if (users[i]->getPin() != Convert::ToInt32(pin)) {
                         throw gcnew Exception(L"Mã pin không hợp lệ !");
                     }
                 }

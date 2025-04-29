@@ -69,14 +69,14 @@ ref class UserService {
                     }
                     if (transactions[i]->FromUserId == fromUserId &&
                         transactions[i]->ToUserId != "") {
-                        User ^ user = UserRepository::FindById(transactions[i]->FromUserId);
-                        if (user->getRole() != "user") {
+                        User ^ receiver = UserRepository::FindById(transactions[i]->ToUserId);
+                        if (receiver->getRole() != "user") {
                             continue;
                         }
                         String ^ toAcc =
-                            user->getBankName() + " - " +
-                            user->getFullName() + " - " +
-                            transactions[i]->FromUserId+
+                            receiver->getBankName() + " - " +
+                            receiver->getFullName() + " - " +
+                            receiver->AccountNumber +
                             " - " +
                             transactions[i]->Amount;
 
@@ -127,9 +127,9 @@ ref class UserService {
         }
 
     static void TransferMoney(String ^ fromAcc, String ^ toAcc,
-                              double amount, int pin, String ^ message) {
+                              double amount, int pin, String ^ message, String^ type) {
         try {
-            if (pin == 0) {
+            if (pin == 0 && type != "service") {
                 throw gcnew Exception(L"Bạn chưa đặt mã pin, hãy đặt mã pin rồi quay lại !");
             } else if (fromAcc == "" || toAcc == "") {
                 throw gcnew Exception(L"Thiếu thông tin người gửi, hoặc nhận");
@@ -138,6 +138,8 @@ ref class UserService {
             } else if (amount <= 0) {
                 throw gcnew Exception(L"Số tiền chuyển khoản không hợp lệ");
             }
+            if (type == "")
+                type = "transfer";
 
             // kiểm tra xem tài khoản có tồn tại không
             User ^ sender = UserService::FindUserByAccNumber(fromAcc);
@@ -145,12 +147,16 @@ ref class UserService {
                 throw gcnew Exception(L"Tài khoản người gửi không tồn tại !");
             } else if (sender->getBalance() < amount) {
                 throw gcnew Exception(L"Số dư không đủ để thực hiện giao dịch !");
-            } else if (sender->getPin() == 0) {
-                throw gcnew Exception(L"Khách hàng chưa đạt mã pin");
-                
-            } else if (sender->getPin() != pin) {
-                throw gcnew Exception(L"Mã pin không chính xác");
-            } 
+            }
+
+            if (type != "service") {
+                if (sender->getPin() == 0) {
+                    throw gcnew Exception(L"Khách hàng chưa đạt mã pin");
+                }
+                else if (sender->getPin() != pin) {
+                    throw gcnew Exception(L"Mã pin không chính xác");
+                } 
+            }
 
             User ^ receiver = UserService::FindUserByAccNumber(toAcc);
             if (receiver == nullptr) {
@@ -167,21 +173,27 @@ ref class UserService {
             UserRepository::UpdateById(receiver->Id, receiver);
 
             // update phiên đăng nhập hiện tại
-            GlobalData::SetCurrentUser(sender);
+            //GlobalData::SetCurrentUser(sender);
 
             // lưu lịch sử giao dịch
             if (message == "") {
                 message = sender->FullName + L" chuyển tiền";
             }
             Transaction ^ transaction =
-                gcnew Transaction(sender->Id, receiver->Id, amount, message, "transfer");
+                gcnew Transaction(sender->Id, receiver->Id, amount, message, type);
             TransactionsRepository::InsertOne(transaction);
 
             // thêm thông báo cho người nhận
-            String ^ notificationMessage = L"Nhận " + amount + L" từ tài khoản " + fromAcc;
-            Notifications ^ notification =
-                gcnew Notifications(receiver->Id, notificationMessage);
-            NotificationsRepository::InsertOne(notification);
+            String ^ notificationMessage1 = L"Nhận " + amount + L" từ tài khoản " + fromAcc;
+            Notifications ^ notification1 =
+                gcnew Notifications(receiver->Id, notificationMessage1);
+            NotificationsRepository::InsertOne(notification1);
+
+            // thêm thông báo người chuyển
+            String ^ notificationMessage2 = L"trừ " + amount + L" VNĐ";
+            Notifications ^ notification2 =
+                gcnew Notifications(sender->Id, notificationMessage2);
+            NotificationsRepository::InsertOne(notification2);
 
         } catch (Exception ^ ex) {
             throw ex;

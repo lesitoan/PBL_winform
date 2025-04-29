@@ -66,7 +66,7 @@ System::Void TransferMoneyForm::btnSubmit_Click(System::Object ^ sender,
         
         UserService::TransferMoney(
             GlobalData::GetCurrentUser()->AccountNumber, accNumber, amount,
-            pin, message);
+            pin, message, "");
 
         MessageBox::Show(L"Chuyển tiền thành công", "Thong bao",
                          MessageBoxButtons::OK, MessageBoxIcon::Information);

@@ -111,6 +111,7 @@ System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
         String ^ pinInput = this->pin->Text;
         String ^ companyAccountNumber = this->currComapnyAccNumber;
         String ^ currUserAccNumber = GlobalData::GetCurrentUser()->AccountNumber;
+        String ^ currUserId = GlobalData::GetCurrentUser()->Id;
 
         if (code == "" || companyAccountNumber == "" || currUserAccNumber == "") {
             MessageBox::Show("Vui lòng nhập đầy đủ thông tin");
@@ -125,7 +126,7 @@ System::Void ServicePaymentForm::btnTransfer_Click(System::Object ^ sender,
 
         if (this->submitRecurringPayment->Checked) {
             RecurringPaymentServices::RegisterRecurringPayment(code,
-                                                               currUserAccNumber);
+                                                               currUserId);
             MessageBox::Show(L"Đăng kí thanh toán định kì thành công", L"Thông báo",
                              MessageBoxButtons::OK, MessageBoxIcon::Information);
         }

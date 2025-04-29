@@ -9,7 +9,6 @@ using namespace System::Windows::Forms;
 
 ref class HandleFile {
   public:
-
     generic<typename T> where T : ISaveToFile static bool
                                   WriteArrayToFile(array<T> ^ items, String ^ filePath) {
         try {
@@ -69,21 +68,24 @@ ref class HandleFile {
               }
           }
 
-    static void UpdateFilehistoryUpdate(String ^ dataFileName) {
+              static void UpdateFilehistoryUpdate(String ^ dataFileName) {
         try {
             String ^ logFilePath = "historyUpdateData.txt";
             DateTime time = DateTime::Now;
 
             List<String ^> ^ lines = gcnew List<String ^>();
 
-            // Nếu file log đã tồn tại, đọc tất cả dòng
-            if (File::Exists(logFilePath)) {
-                array<String ^> ^ existingLines = File::ReadAllLines(logFilePath);
-                for each (String ^ line in existingLines) {
-                    // Nếu không phải dòng liên quan tới file cần cập nhật thì giữ lại
-                    if (!line->StartsWith(dataFileName + "|")) {
-                        lines->Add(line);
-                    }
+            if (!File::Exists(logFilePath)) {
+                // Tạo file mới nếu không tồn tại
+                FileStream ^ fs = File::Create(logFilePath);
+                fs->Close();
+            }
+
+            array<String ^> ^ existingLines = File::ReadAllLines(logFilePath);
+            for each (String ^ line in existingLines) {
+                // Nếu không phải dòng liên quan tới file cần cập nhật thì giữ lại
+                if (!line->StartsWith(dataFileName + "|")) {
+                    lines->Add(line);
                 }
             }
 
@@ -102,7 +104,9 @@ ref class HandleFile {
         try {
             String ^ logFilePath = "historyUpdateData.txt";
             if (!File::Exists(logFilePath)) {
-                throw gcnew FileNotFoundException("Log file not found.");
+                // Tạo file mới nếu không tồn tại
+                FileStream ^ fs = File::Create(logFilePath);
+                fs->Close();
             }
 
             array<String ^> ^ existingLines = File::ReadAllLines(logFilePath);
@@ -120,6 +124,4 @@ ref class HandleFile {
             throw gcnew Exception("GetLastUpdateTime error !!!", ex);
         }
     }
-
-
 };

@@ -54,7 +54,7 @@ namespace BankingAppwinform {
                 panel->Controls->Add(label);
                 flowLayoutPanelContainer->Controls->Add(panel);
                 // Gán sự kiện click cho panel
-                label->Tag = companies[i]->getAccountNumber(); // Lưu ID dịch vụ vào Tag
+                label->Tag = companies[i]->Id; // Lưu ID dịch vụ vào Tag
                 label->Click +=
                     gcnew EventHandler(this, &CompanyForm::OnCompanyClick);
             }

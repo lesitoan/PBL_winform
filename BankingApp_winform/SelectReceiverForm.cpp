@@ -17,7 +17,7 @@ void SelectReceiverForm::loadAccHistory(User ^ user) {
     try {
         selectAccHistory->Items->Clear();
 
-        array<String ^> ^ accHistoryString = UserService::GetHistoryReceivers(user->getAccountNumber());
+        array<String ^> ^ accHistoryString = UserService::GetHistoryReceivers(user->Id);
         if (accHistoryString == nullptr || accHistoryString->Length == 0) {
             return;
         }
