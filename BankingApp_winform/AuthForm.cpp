@@ -80,7 +80,7 @@ System::Void AuthForm::OnLoginSuccess(System::Object ^ sender,
                                       System::EventArgs ^ e) {
     User ^ currentUser = GlobalData::GetCurrentUser();
     this->Hide();
-    if (currentUser->getRole() == "admin") {
+    if (currentUser->getRole() == Role::Admin) {
         AdminForm ^ adminForm = gcnew AdminForm();
         adminForm->ShowDialog();
         this->axWindowsMediaPlayer1->Ctlcontrols->pause();

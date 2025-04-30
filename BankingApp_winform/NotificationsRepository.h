@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include "Notifications.h"
 #include "HandleFile.h"
+#include "BaseRepository.h"
+#include "ENV.h"
+
 
 #ifndef NOTIFICATIONSREPOSITORY_H
 #define NOTIFICATIONSREPOSITORY_H
@@ -8,27 +11,10 @@ using namespace System;
 using namespace System::IO;
 
 public
-ref class NotificationsRepository {
+ref class NotificationsRepository : public BaseRepository<Notifications ^> {
   private:
-    static array<Notifications ^> ^ notificationsCache;
-    static DateTime lastReadTime = DateTime::MinValue;
-    static String ^ fileName;
     static NotificationsRepository() {
-        notificationsCache = nullptr;
-        lastReadTime = DateTime::MinValue;
-        fileName = "notifications.dat";
-    }
-    static void CheckLastUpdateTime() {
-        try {
-            DateTime lastUpdateTime = HandleFile::GetLastUpdateTime(fileName);
-            if (lastUpdateTime >= lastReadTime) {
-                notificationsCache =
-                    HandleFile::ReadArrayFromFile<Notifications ^>(fileName);
-                lastReadTime = lastUpdateTime;
-            }
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("CheckLastUpdateTime error !!!", ex);
-        }
+        InitializeRepository(ENV::NOTIFICATION_FILE);
     }
 
   public:
@@ -36,7 +22,7 @@ ref class NotificationsRepository {
         try {
             // kiểm tra lần chỉnh sửa cuối cùng của file
             CheckLastUpdateTime();
-            return notificationsCache;
+            return cache;
         } catch (Exception ^ ex) {
             throw gcnew Exception("getAll transaction error !!!", ex);
         }
@@ -45,17 +31,17 @@ ref class NotificationsRepository {
     static void InsertOne(Notifications ^ notifications) {
         try {
             CheckLastUpdateTime();
-            if (notificationsCache == nullptr) {
-                notificationsCache = gcnew array<Notifications ^>(0);
+            if (cache == nullptr) {
+                cache = gcnew array<Notifications ^>(0);
             }
-            array<Notifications ^> ^ newNotificationsCache =
-                gcnew array<Notifications ^>(notificationsCache->Length + 1);
-            for (int i = 0; i < notificationsCache->Length; i++) {
-                newNotificationsCache[i] = notificationsCache[i];
+            array<Notifications ^> ^ newcache =
+                gcnew array<Notifications ^>(cache->Length + 1);
+            for (int i = 0; i < cache->Length; i++) {
+                newcache[i] = cache[i];
             }
-            newNotificationsCache[notificationsCache->Length] = notifications;
-            notificationsCache = newNotificationsCache;
-            HandleFile::WriteArrayToFile<Notifications ^>(notificationsCache,
+            newcache[cache->Length] = notifications;
+            cache = newcache;
+            HandleFile::WriteArrayToFile<Notifications ^>(cache,
                                                           fileName);
         } catch (Exception ^ ex) {
             throw gcnew Exception("InsertOne transaction error !!!", ex);
@@ -65,31 +51,21 @@ ref class NotificationsRepository {
     static void UpdateById(String ^ id, Notifications^ notification) {
         try {
             CheckLastUpdateTime();
-            if (notificationsCache == nullptr) {
+            if (cache == nullptr) {
                 return;
             }
-            for (int i = 0; i < notificationsCache->Length; i++) {
-                if (notificationsCache[i]->Id == id) {
-                    notificationsCache[i] = notification;
+            for (int i = 0; i < cache->Length; i++) {
+                if (cache[i]->Id == id) {
+                    cache[i] = notification;
                     break;
                 }
             }
-            HandleFile::WriteArrayToFile<Notifications ^>(notificationsCache,
+            HandleFile::WriteArrayToFile<Notifications ^>(cache,
                                                           fileName);
         } catch (Exception ^ ex) {
             throw gcnew Exception("UpdateById transaction error !!!", ex);
         }
     }
-
-    static void DeleteCache() {
-        try {
-            notificationsCache = nullptr;
-            lastReadTime = DateTime::MinValue;
-            fileName = "notifications.dat";
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("DeleteCache error !!!", ex);
-        }
-    };
 
 };
 

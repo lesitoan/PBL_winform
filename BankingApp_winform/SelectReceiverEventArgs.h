@@ -1,15 +1,16 @@
 #pragma once
+#include "User.h"
 using namespace System;
 
 public
 ref class SelectReceiverEventArgs : public EventArgs {
   public:
-    String ^ BankName;
+    Bank BankName;
     String ^ AccountName;
     String^ AccountNumber;
     double Amount;
 
-    SelectReceiverEventArgs( String^ bankName ,String ^ accName, String^ accNumber, double amount) {
+    SelectReceiverEventArgs( Bank bankName ,String ^ accName, String^ accNumber, double amount) {
         BankName = bankName;
         AccountName = accName;
         AccountNumber = accNumber;

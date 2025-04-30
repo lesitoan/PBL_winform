@@ -1,5 +1,7 @@
 ﻿#include "HandleFile.h"
 #include "User.h"
+#include "BaseRepository.h"
+#include "ENV.h"
 
 #ifndef USERREPONSITORY_H
 #define USERREPONSITORY_H
@@ -8,28 +10,11 @@ using namespace System;
 using namespace System::IO;
 
 public
-ref class UserRepository {
+ref class UserRepository : public BaseRepository<User ^> {
   private:
-    static array<User ^> ^ usersCache;
-    static DateTime lastReadTime = DateTime::MinValue;
-    static String ^ fileName;
 
     static UserRepository() {
-        usersCache = nullptr;
-        lastReadTime = DateTime::MinValue;
-        fileName = "users.dat";
-    }
-
-    static void CheckLastUpdateTime() {
-        try {
-            DateTime lastUpdateTime = HandleFile::GetLastUpdateTime(fileName);
-            if (lastUpdateTime >= lastReadTime) {
-                usersCache = HandleFile::ReadArrayFromFile<User ^>(fileName);
-                lastReadTime = lastUpdateTime;
-            }
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("CheckLastUpdateTime error !!!", ex);
-        }
+        InitializeRepository(ENV::USER_FILE);
     }
 
   public:
@@ -38,7 +23,7 @@ ref class UserRepository {
             // kiểm tra lần chỉnh sửa cuối cùng của file
             CheckLastUpdateTime();
 
-            return usersCache;
+            return cache;
 
         } catch (Exception ^ ex) {
             throw gcnew Exception("getUsers error !!!", ex);
@@ -47,16 +32,16 @@ ref class UserRepository {
 
     static void UpdateById(String ^ id, User ^ user) {
         try {
-            if (usersCache == nullptr) {
+            if (cache == nullptr) {
                 return;
             }
-            for (int i = 0; i < usersCache->Length; i++) {
-                if (usersCache[i]->Id == id) {
-                    usersCache[i] = user;
+            for (int i = 0; i < cache->Length; i++) {
+                if (cache[i]->Id == id) {
+                    cache[i] = user;
                     break;
                 }
             }
-            HandleFile::WriteArrayToFile<User ^>(usersCache, fileName);
+            HandleFile::WriteArrayToFile<User ^>(cache, fileName);
 
             //HandleFile::UpdateFilehistoryUpdate(fileName);
         } catch (Exception ^ ex) {
@@ -64,44 +49,20 @@ ref class UserRepository {
         }
     }
 
-    //    static void UpdateUserByAccNumber(String ^ accNumber, User ^ user) {
-    //    try {
-
-    //        CheckLastUpdateTime();
-
-    //        if (usersCache == nullptr) {
-    //            return;
-    //        }
-    //        for (int i = 0; i < usersCache->Length; i++) {
-    //            if (usersCache[i]->getAccountNumber() == accNumber) {
-    //                usersCache[i] = user;
-    //                break;
-    //            }
-    //        }
-    //        HandleFile::WriteArrayToFile<User ^>(usersCache, fileName);
-
-    //        // update lại thời gian chỉnh sửa file
-    //        //HandleFile::UpdateFilehistoryUpdate(fileName);
-
-    //    } catch (Exception ^ ex) {
-    //        throw gcnew Exception("updateUserByAccNumber error !!!", ex);
-    //    }
-    //}
-
     static void InsertUser(User ^ user) {
         try {
             CheckLastUpdateTime();
 
-            if (usersCache == nullptr) {
-                usersCache = gcnew array<User ^>(0);
+            if (cache == nullptr) {
+                cache = gcnew array<User ^>(0);
             }
-            array<User ^> ^ newUsersCache = gcnew array<User ^>(usersCache->Length + 1);
-            for (int i = 0; i < usersCache->Length; i++) {
-                newUsersCache[i] = usersCache[i];
+            array<User ^> ^ newcache = gcnew array<User ^>(cache->Length + 1);
+            for (int i = 0; i < cache->Length; i++) {
+                newcache[i] = cache[i];
             }
-            newUsersCache[usersCache->Length] = user;
-            usersCache = newUsersCache;
-            HandleFile::WriteArrayToFile<User ^>(usersCache, fileName);
+            newcache[cache->Length] = user;
+            cache = newcache;
+            HandleFile::WriteArrayToFile<User ^>(cache, fileName);
 
             // update lại thời gian chỉnh sửa file
             //HandleFile::UpdateFilehistoryUpdate(fileName);
@@ -114,12 +75,12 @@ ref class UserRepository {
         try {
             CheckLastUpdateTime();
 
-            if (usersCache == nullptr) {
+            if (cache == nullptr) {
                 return nullptr;
             }
-            for (int i = 0; i < usersCache->Length; i++) {
-                if (usersCache[i]->getPhoneNumber() == phoneNumber) {
-                    return usersCache[i];
+            for (int i = 0; i < cache->Length; i++) {
+                if (cache[i]->getPhoneNumber() == phoneNumber) {
+                    return cache[i];
                 }
             }
             return nullptr;
@@ -128,33 +89,15 @@ ref class UserRepository {
         }
     }
 
-        //static User
-        //^ FindUserByAccNumber(String ^ accNumber) {
-        //      try {
-        //          CheckLastUpdateTime();
-        //          if (usersCache == nullptr) {
-        //              return nullptr;
-        //          }
-        //          for (int i = 0; i < usersCache->Length; i++) {
-        //              if (usersCache[i]->getAccountNumber() == accNumber) {
-        //                  return usersCache[i];
-        //              }
-        //          }
-        //          return nullptr;
-        //      } catch (Exception ^ ex) {
-        //          throw gcnew Exception("findUserByAccNumber error !!!", ex);
-        //      }
-        //  }
-
         static User^ FindById(String ^ id) {
         try {
             CheckLastUpdateTime();
-            if (usersCache == nullptr) {
+            if (cache == nullptr) {
                 return nullptr;
             }
-            for (int i = 0; i < usersCache->Length; i++) {
-                if (usersCache[i]->Id == id) {
-                    return usersCache[i];
+            for (int i = 0; i < cache->Length; i++) {
+                if (cache[i]->Id == id) {
+                    return cache[i];
                 }
             }
             return nullptr;
@@ -163,17 +106,6 @@ ref class UserRepository {
         }
     }
 
-        static void DeteteCache() {
-        usersCache = nullptr;
-        lastReadTime = DateTime::MinValue;
-        fileName = "users.dat";
-    }
-
-    static void DeleteCache() {
-        usersCache = nullptr;
-        lastReadTime = DateTime::MinValue;
-        fileName = "users.dat";
-    }
 };
 
 #endif // USERREPONSITORY_H;

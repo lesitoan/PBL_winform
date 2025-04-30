@@ -44,7 +44,7 @@ void TableUsersForm::loadUsers(array<User ^> ^ usersArr) {
         }
         for (int i = 0; i < usersArr->Length; i++) {
 
-            if (usersArr[i]->getRole() == "admin") {
+            if (usersArr[i]->getRole() == Role::Admin) {
                 continue;
             }
             String ^ status = usersArr[i]->Status == 1 ? L"Hoạt động" : L"Khóa";
@@ -52,9 +52,8 @@ void TableUsersForm::loadUsers(array<User ^> ^ usersArr) {
                 usersArr[i]->getFullName(), usersArr[i]->getPhoneNumber(),
                 usersArr[i]->getBalance(),
 
-                usersArr[i]->getAccountNumber(), usersArr[i]->getRole(),
-                usersArr[i]->getBankName(), status);
-
+                usersArr[i]->getAccountNumber(), usersArr[i]->getRole().ToString(),
+                usersArr[i]->getBankName().ToString(), status);
             int lastRow = dataGridViewUsers->Rows->Count - 1;
             dataGridViewUsers->Rows[lastRow]->Tag = usersArr[i];
         }

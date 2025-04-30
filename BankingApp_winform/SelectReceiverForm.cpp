@@ -42,12 +42,14 @@ System::Void SelectReceiverForm::btnSubmit_Click(System::Object ^ sender,
         gcnew array<String ^>{" - "}, StringSplitOptions::RemoveEmptyEntries);
 
     String ^ bankName = parts[0];
+    Bank bankEnum = static_cast<Bank>(Enum::Parse(Bank::typeid, bankName));
+
     String ^ accName = parts[1];
     String ^ accNumber = parts[2];
     double amount = Convert::ToDouble(parts[3]);
 
     SelectReceiverSuccess(this, gcnew SelectReceiverEventArgs(
-                                    bankName, accName, accNumber, amount));
+                                    bankEnum, accName, accNumber, amount));
 
     this->Close();
 }

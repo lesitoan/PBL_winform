@@ -44,11 +44,11 @@ void MainForm::InitLoad() {
     LoadChildForm::LoadForm(this->panelContent, gcnew AccountForm(this));
     this->headerText->Text = L"Trang Chủ";
 
-    if (GlobalData::GetCurrentUser()->getRole() == "company") {
+    if (GlobalData::GetCurrentUser()->getRole() == Role::Company) {
         this->btnCode->Visible = true;
         this->btnServicePayment->Visible = false;
         this->btnRecurringPayment->Visible = true;
-    } else if (GlobalData::GetCurrentUser()->getRole() == "user") {
+    } else if (GlobalData::GetCurrentUser()->getRole() == Role::User) {
         this->btnCode->Visible = false;
         this->btnServicePayment->Visible = true;
         this->btnRecurringPayment->Visible = false;

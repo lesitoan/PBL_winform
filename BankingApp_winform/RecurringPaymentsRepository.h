@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "HandleFile.h"
 #include "RecurringPayments.h"
+#include "BaseRepository.h"
+#include "ENV.h"
 
 //#ifndef RECURRINGPAYMENTS_H
 //#define RECURRINGPAYMENTS_H
@@ -9,30 +11,11 @@ using namespace System;
 using namespace System::IO;
 
 public
-ref class RecurringPaymentsRepository {
+ref class RecurringPaymentsRepository : public BaseRepository<RecurringPayments ^> {
   private:
-    static array<RecurringPayments ^> ^ recurringPaymentsCache;
-    static DateTime lastReadTime = DateTime::MinValue;
-    static String ^ fileName;
 
     static RecurringPaymentsRepository() {
-        recurringPaymentsCache = nullptr;
-        lastReadTime = DateTime::MinValue;
-        fileName = "recurringpayments.dat";
-    }
-
-    static void CheckLastUpdateTime() {
-        try {
-            DateTime lastUpdateTime =
-                HandleFile::GetLastUpdateTime(fileName);
-            if (lastUpdateTime >= lastReadTime) {
-                recurringPaymentsCache =
-                    HandleFile::ReadArrayFromFile<RecurringPayments ^>(fileName);
-                lastReadTime = lastUpdateTime;
-            }
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("CheckLastUpdateTime error !!!", ex);
-        }
+        InitializeRepository(ENV::RECURRING_PAYMENT_FILE);
     }
 
   public:
@@ -40,7 +23,7 @@ ref class RecurringPaymentsRepository {
         try {
             // kiểm tra lần chỉnh sửa cuối cùng của file
             CheckLastUpdateTime();
-            return recurringPaymentsCache;
+            return cache;
         } catch (Exception ^ ex) {
             throw gcnew Exception("getAll transaction error !!!", ex);
         }
@@ -49,21 +32,21 @@ ref class RecurringPaymentsRepository {
     static void InsertOne(RecurringPayments ^ recurringPayments) {
         try {
             CheckLastUpdateTime();
-            if (recurringPaymentsCache == nullptr) {
-                recurringPaymentsCache = gcnew array<RecurringPayments ^>(0);
+            if (cache == nullptr) {
+                cache = gcnew array<RecurringPayments ^>(0);
             }
-            array<RecurringPayments ^> ^ newRecurringPaymentsCache =
+            array<RecurringPayments ^> ^ newcache =
                 gcnew array<RecurringPayments ^>(
-                    recurringPaymentsCache->Length + 1);
+                    cache->Length + 1);
 
-            for (int i = 0; i < recurringPaymentsCache->Length; i++) {
-                newRecurringPaymentsCache[i] = recurringPaymentsCache[i];
+            for (int i = 0; i < cache->Length; i++) {
+                newcache[i] = cache[i];
             }
-            newRecurringPaymentsCache[recurringPaymentsCache->Length] =
+            newcache[cache->Length] =
                 recurringPayments;
-            recurringPaymentsCache = newRecurringPaymentsCache;
+            cache = newcache;
             HandleFile::WriteArrayToFile<RecurringPayments ^>(
-                recurringPaymentsCache, fileName);
+                cache, fileName);
 
             // update lại thời gian chỉnh sửa file
             HandleFile::UpdateFilehistoryUpdate(fileName);
@@ -74,22 +57,22 @@ ref class RecurringPaymentsRepository {
     static void DeleteById(String ^ id) {
         try {
             CheckLastUpdateTime();
-            if (recurringPaymentsCache == nullptr) {
+            if (cache == nullptr) {
                 return;
             }
             List<RecurringPayments ^> ^ recurringPaymentsList =
                 gcnew List<RecurringPayments ^>();
-            for (int i = 0; i < recurringPaymentsCache->Length; i++) {
-                if (recurringPaymentsCache[i]->Id != id) {
-                    recurringPaymentsList->Add(recurringPaymentsCache[i]);
+            for (int i = 0; i < cache->Length; i++) {
+                if (cache[i]->Id != id) {
+                    recurringPaymentsList->Add(cache[i]);
                 }
             }
-            if (recurringPaymentsList->Count == recurringPaymentsCache->Length) {
+            if (recurringPaymentsList->Count == cache->Length) {
                 return;
             }
-            recurringPaymentsCache = recurringPaymentsList->ToArray();
+            cache = recurringPaymentsList->ToArray();
             HandleFile::WriteArrayToFile<RecurringPayments ^>(
-                recurringPaymentsCache, fileName);
+                cache, fileName);
         } catch (Exception ^ ex) {
             throw gcnew Exception("DeleteById error !!!", ex);
         }
@@ -98,24 +81,18 @@ ref class RecurringPaymentsRepository {
     static RecurringPayments ^ GetOneById(String ^ id) {
         try {
             CheckLastUpdateTime();
-            if (recurringPaymentsCache == nullptr) {
+            if (cache == nullptr) {
                 return nullptr;
             }
-            for (int i = 0; i < recurringPaymentsCache->Length; i++) {
-                if (recurringPaymentsCache[i]->Id == id) {
-                    return recurringPaymentsCache[i];
+            for (int i = 0; i < cache->Length; i++) {
+                if (cache[i]->Id == id) {
+                    return cache[i];
                 }
             }
             return nullptr;
         } catch (Exception ^ ex) {
             throw gcnew Exception("GetOneById error !!!", ex);
         }
-    }
-
-    static void DeleteCache() {
-        recurringPaymentsCache = nullptr;
-        lastReadTime = DateTime::MinValue;
-        fileName = "recurringpayments.dat";
     }
 
 };

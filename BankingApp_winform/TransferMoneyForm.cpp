@@ -4,6 +4,7 @@
 namespace BankingAppwinform {
 TransferMoneyForm::TransferMoneyForm(void) { 
     InitializeComponent(); 
+    loadBank();
     GradientColorHelper::ApplyGradient(this->panelTransfer);
     GradientColorHelper::ApplyGradient(this->panel1);
     GradientColorHelper::ApplyGradient(this->panel2);
@@ -18,32 +19,37 @@ TransferMoneyForm::~TransferMoneyForm() {
 System::Void TransferMoneyForm::btnFindAccount_Click(System::Object ^ sender,
                                                      System::EventArgs ^ e) {
     try {
-        String ^ bank = selectBankBox->Text;
-        String ^ accNumber = accountNumber->Text;
+        if (selectBankBox->SelectedIndex == -1 || accountNumber->Text->Trim() == "") {
+            MessageBox::Show("Nhập đầy đủ thông tin!", "Cảnh báo",
+                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
+            panelTransfer->Visible = false;
+            return;
+        }
 
-        if (bank == "" || accNumber == "") {
-            MessageBox::Show("Nhap day du thong tin !", "Canh bao",
-                             MessageBoxButtons::OK, MessageBoxIcon::Warning);
-            panelTransfer->Visible = false;
-            return;
-        }
-        // tim user
+        String ^ accNumber = accountNumber->Text->Trim();
+        String ^ bankText = selectBankBox->SelectedItem->ToString();
+        Bank bank = static_cast<Bank>(Enum::Parse(Bank::typeid, bankText));
+
+        // tìm user theo số tài khoản và ngân hàng
         User ^ receiver = UserService::FindUserByAccNumber(accNumber);
-        if (receiver == nullptr) {
-            MessageBox::Show("Khong tim thay tai khoan !", "Canh bao",
+
+        if (receiver == nullptr || bank != receiver->getBankName()) {
+            MessageBox::Show(L"Không tìm thấy tài khoản!", "Cảnh báo",
                              MessageBoxButtons::OK, MessageBoxIcon::Warning);
             panelTransfer->Visible = false;
             return;
         }
+
         this->receiver = receiver;
         panelTransfer->Visible = true;
         labelReceiver->Text = L"Người nhận: " + receiver->getFullName();
- 
+
     } catch (Exception ^ ex) {
-        MessageBox::Show(ex->Message, L"Thông tin", MessageBoxButtons::OK,
-                         MessageBoxIcon::Information);
+        MessageBox::Show(ex->Message, L"Lỗi", MessageBoxButtons::OK,
+                         MessageBoxIcon::Error);
     }
 }
+
 
 System::Void TransferMoneyForm::btnSubmit_Click(System::Object ^ sender,
                                                 System::EventArgs ^ e) {
@@ -68,6 +74,10 @@ System::Void TransferMoneyForm::btnSubmit_Click(System::Object ^ sender,
             GlobalData::GetCurrentUser()->AccountNumber, accNumber, amount,
             pin, message, "");
 
+        // Cập nhật số dư của người gửi và người nhận
+        GlobalData::GetCurrentUser()->setBalance(
+            GlobalData::GetCurrentUser()->getBalance() - Convert::ToDouble(amount));
+
         MessageBox::Show(L"Chuyển tiền thành công", "Thong bao",
                          MessageBoxButtons::OK, MessageBoxIcon::Information);
         this->accountNumber->Text = "";
@@ -85,12 +95,12 @@ System::Void
 TransferMoneyForm::onSelectReceiverSuccess(System::Object ^ sender,
                                            SelectReceiverEventArgs ^ e) {
     // Nhận dữ liệu từ sự kiện
-    String ^ selectedBankName = e->BankName;
+    Bank selectedBankName = e->BankName;
     String ^ selectedAccountName = e->AccountName;
     String ^ selectedAccountNumber = e->AccountNumber;
     double selectedAmount = e->Amount;
 
-    selectBankBox->Text = selectedBankName;
+    selectBankBox->Text = selectedBankName.ToString();
     accountNumber->Text = selectedAccountNumber;
 
     panelTransfer->Visible = true;
@@ -130,6 +140,18 @@ TransferMoneyForm::selectBankBox_TextChanged(System::Object ^ sender,
     labelReceiver->Text = "";
     amountInput->Text = "";
     pinInput->Text = "";
+}
+
+void TransferMoneyForm::loadBank() {
+    selectBankBox->Items->Clear();
+
+    // Thêm tất cả các giá trị enum Bank vào ComboBox
+    for each (Bank bank in Enum::GetValues(Bank::typeid)) {
+        selectBankBox->Items->Add(bank.ToString());
+    }
+
+    // Tùy chọn: đặt mặc định không chọn gì
+    selectBankBox->SelectedIndex = -1;
 }
 
 }; // namespace BankingAppwinform

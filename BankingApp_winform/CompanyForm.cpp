@@ -29,7 +29,7 @@ namespace BankingAppwinform {
             flowLayoutPanelContainer->Controls->Clear();
 
             for (int i = 0; i < companies->Length; i++) {
-                if (companies[i]->getRole() != "company" ||
+                if (companies[i]->getRole() != Role::Company ||
                     companies[i]->getServiceId() != serviceId) {
                     continue;
                 }

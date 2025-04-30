@@ -328,15 +328,12 @@
     <ClInclude Include="BaseEntity.h">
       <Filter>BaseModels</Filter>
     </ClInclude>
-    <ClInclude Include="Enums.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="ENV.h" />
-    <ClInclude Include="User.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="BaseRepository.h">
       <Filter>BaseModels</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -345,21 +342,6 @@
       <Filter>Data\files</Filter>
     </None>
     <None Include="notifications.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="users.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="customerCodeDetails.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="customercodes.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="savingcustomers.dat">
-      <Filter>Data\files</Filter>
-    </None>
-    <None Include="transactions.dat">
       <Filter>Data\files</Filter>
     </None>
   </ItemGroup>

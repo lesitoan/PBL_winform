@@ -29,10 +29,12 @@ ref class AuthServices {
 
             User ^ user = UserRepository::FindUserByPhoneNumber(phone);
 
+
             if (user == nullptr) {
                 throw gcnew Exception(L"Đăng nhập thất bại, thử lại sau");
             }
-            if (user->getPassword() != pass) {
+
+            if (user->getPassword() != user->Hash(pass)) {
                 throw gcnew Exception(L"Số điện thoại hoặc mật khẩu không đúng");
             }
             if (user->Status == 0) {
@@ -128,14 +130,13 @@ ref class AuthServices {
     }
 
     static void AddUser(String ^ name, String ^ phone, String ^ accNum,
-                        String ^ password, String^ accType, String^ serviceId) {
+                        String ^ password, Role accType, String^ serviceId) {
         try {
 
-            if (name == "" || phone == "" || accNum == "" || password == "" ||
-                accType == "") {
+            if (name == "" || phone == "" || accNum == "" || password == "") {
                 throw gcnew Exception(L"Vui lòng nhập đầy đủ thông tin");
 
-            } else if (accType == "company" && serviceId == "") {
+            } else if (accType == Role::Company && serviceId == "") {
                 throw gcnew Exception(L"Chưa chọn dịch vụ");
             }
 
@@ -148,12 +149,12 @@ ref class AuthServices {
 
             double _balance = 0;
             int _pin = 0;
-            String ^ _bankName = "BIDV";
             int _status = 1;
+            Bank bankName = Bank::BIDV;
 
             User ^ user =
                 gcnew User(name, password, phone, accNum, _balance,
-                           accType, _pin, _bankName, _status, serviceId, "BankingApp_winform\\images\\avatars\\default_avatar.png");
+                           accType, _pin, bankName, _status, serviceId);
 
             UserRepository::InsertUser(user);
 
@@ -196,14 +197,14 @@ ref class AuthServices {
     static void Logout() {
         try {
             GlobalData::SetCurrentUser(nullptr);
-            UserRepository::DeleteCache();
+            /*UserRepository::DeleteCache();
             CustomerCodesRepository::DeleteCache();
             CustomerCodeDetailsRepository::DeleteCache();
             RecurringPaymentsRepository::DeleteCache();
             NotificationsRepository::DeleteCache();
             TransactionsRepository::DeleteCache();
             ServicesRepository::DeleteCache();
-            SavingCustomersRepository::DeleteCache();
+            SavingCustomersRepository::DeleteCache();*/
 
         } catch (Exception ^ ex) {
             throw ex;

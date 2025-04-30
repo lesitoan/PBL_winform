@@ -179,7 +179,6 @@
     <ClInclude Include="CustomerCodeDetailsRepository.h" />
     <ClInclude Include="CustomerCodeServices.h" />
     <ClInclude Include="CustomerCodesRepository.h" />
-    <ClInclude Include="Enums.h" />
     <ClInclude Include="ENV.h" />
     <ClInclude Include="Notifications.h" />
     <ClInclude Include="NotificationServices.h" />
@@ -388,13 +387,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.clang-format" />
-    <None Include="customerCodeDetails.dat" />
-    <None Include="customercodes.dat" />
     <None Include="notifications.dat" />
-    <None Include="savingcustomers.dat" />
     <None Include="services.dat" />
-    <None Include="transactions.dat" />
-    <None Include="users.dat" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="BankingApp_winform.rc" />

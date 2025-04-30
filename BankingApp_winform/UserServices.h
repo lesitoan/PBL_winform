@@ -38,7 +38,7 @@ ref class UserService {
                 }
                 List<User ^> ^ companies = gcnew List<User ^>();
                 for (int i = 0; i < users->Length; i++) {
-                    if (users[i]->getRole() == "company" &&
+                    if (users[i]->getRole() == Role::Company &&
                         users[i]->getServiceId() == serviceId) {
                         companies->Add(users[i]);
                     }
@@ -63,18 +63,18 @@ ref class UserService {
                 List<String ^> ^ receiverString = gcnew List<String ^>();
                 int count = 0;
 
-                for (int i = transactions->Length - 1; i > 0; i--) {
+                for (int i = transactions->Length - 1; i >= 0; i--) {
                     if (count == 5) {
                         break;
                     }
                     if (transactions[i]->FromUserId == fromUserId &&
                         transactions[i]->ToUserId != "") {
                         User ^ receiver = UserRepository::FindById(transactions[i]->ToUserId);
-                        if (receiver->getRole() != "user") {
+                        if (receiver->getRole() != Role::User) {
                             continue;
                         }
                         String ^ toAcc =
-                            receiver->getBankName() + " - " +
+                            receiver->getBankName().ToString() + " - " +
                             receiver->getFullName() + " - " +
                             receiver->AccountNumber +
                             " - " +
@@ -273,7 +273,7 @@ ref class UserService {
             User ^ user = UserRepository::FindById(currUserId);
             if (user == nullptr) {
                 throw gcnew Exception(L"Tài khoản không tồn tại");
-            } else if (user->getPassword() != password) {
+            } else if (user->getPassword() != user->Hash(password)) {
                 throw gcnew Exception(L"Mật khẩu không chính xác");
             } else if (user->getPin() == Convert::ToInt32(pin)) {
                 return;
@@ -313,7 +313,7 @@ ref class UserService {
             }
             List<User ^> ^ matchedUsers = gcnew List<User ^>();
             for (int i = 0; i < users->Length; i++) {
-                if (users[i]->getRole() != "admin") {
+                if (users[i]->getRole() != Role::Admin) {
                     String ^ pattern = ".*" + Regex::Escape(name) + ".*";
                     // Kiểm tra tên có chứa input không (không phân biệt hoa thường)
                     bool isMatch = Regex::IsMatch(users[i]->getFullName(), pattern,
@@ -350,6 +350,43 @@ ref class UserService {
             }
             user->setPassword(newPwComfirm);
             UserRepository::UpdateById(user->Id, user);
+        } catch (Exception ^ ex) {
+            throw ex;
+        }
+    }
+
+    static void WithDrawMoney(String ^ pin, double amount) {
+        try {
+            if (pin == "" || amount <= 0) {
+                throw gcnew Exception(L"Vui lòng nhập đầy đủ thông tin");
+            } else if (amount > GlobalData::GetCurrentUser()->getBalance()) {
+                throw gcnew Exception(L"Số tiền rút không được lớn hơn số dư");
+            }
+
+            User ^ curr = UserRepository::FindById(GlobalData::GetCurrentUser()->Id);
+            if (curr == nullptr) {
+                throw gcnew Exception(L"Tài khoản không tồn tại");
+            } else if (curr->getPin() == 0) {
+                throw gcnew Exception(L"Khách hàng chưa đạt mã pin");
+            } else if (curr->getPin() != Convert::ToInt32(pin)) {
+                throw gcnew Exception(L"Mã pin không chính xác");
+            }
+            curr->setBalance(curr->getBalance() - amount);
+            UserRepository::UpdateById(curr->Id, curr);
+
+            GlobalData::SetCurrentUser(curr);
+
+            // lưu lịch sử giao dịch
+            Transaction ^ transaction =
+                gcnew Transaction(curr->Id, "", amount, L"Rút tiền: " + amount + L" VNĐ", "withdraw");
+            TransactionsRepository::InsertOne(transaction);
+
+            // thêm thông báo người chuyển
+            String ^ notificationMessage2 = L"Rút tiền " + amount + L" VNĐ";
+            Notifications ^ notification2 =
+                gcnew Notifications(curr->Id, notificationMessage2);
+            NotificationsRepository::InsertOne(notification2);
+
         } catch (Exception ^ ex) {
             throw ex;
         }

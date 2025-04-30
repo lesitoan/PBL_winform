@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "GlobalData.h"
+#include "UserServices.h"
 
 namespace BankingAppwinform {
 
@@ -26,24 +27,33 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
     System::Windows::Forms::Panel ^ panel2;
     System::Windows::Forms::Label ^ label4;
     System::Windows::Forms::Label ^ label5;
-    System::Windows::Forms::Button ^ button1;
+
+  private:
+    System::Windows::Forms::Button ^ btnSubmit;
+
     System::Windows::Forms::Label ^ labelBalance;
     System::Windows::Forms::Panel ^ panel3;
-    System::Windows::Forms::TextBox ^ textBox1;
+
+  private:
+    System::Windows::Forms::TextBox ^ pin;
+
     System::Windows::Forms::Panel ^ panel6;
-    System::Windows::Forms::TextBox ^ amountInput;
+
+  private:
+    System::Windows::Forms::TextBox ^ amount;
+
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
     void InitializeComponent(void) {
         this->panel1 = (gcnew System::Windows::Forms::Panel());
         this->panel3 = (gcnew System::Windows::Forms::Panel());
-        this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+        this->pin = (gcnew System::Windows::Forms::TextBox());
         this->panel6 = (gcnew System::Windows::Forms::Panel());
-        this->amountInput = (gcnew System::Windows::Forms::TextBox());
+        this->amount = (gcnew System::Windows::Forms::TextBox());
         this->label4 = (gcnew System::Windows::Forms::Label());
         this->label5 = (gcnew System::Windows::Forms::Label());
-        this->button1 = (gcnew System::Windows::Forms::Button());
+        this->btnSubmit = (gcnew System::Windows::Forms::Button());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->labelBalance = (gcnew System::Windows::Forms::Label());
         this->panel1->SuspendLayout();
@@ -60,7 +70,7 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         this->panel1->Controls->Add(this->panel6);
         this->panel1->Controls->Add(this->label4);
         this->panel1->Controls->Add(this->label5);
-        this->panel1->Controls->Add(this->button1);
+        this->panel1->Controls->Add(this->btnSubmit);
         this->panel1->ForeColor = System::Drawing::Color::MistyRose;
         this->panel1->Location = System::Drawing::Point(0, 91);
         this->panel1->Margin = System::Windows::Forms::Padding(4);
@@ -72,49 +82,49 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         //
         this->panel3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
         this->panel3->BackColor = System::Drawing::Color::White;
-        this->panel3->Controls->Add(this->textBox1);
+        this->panel3->Controls->Add(this->pin);
         this->panel3->Location = System::Drawing::Point(123, 241);
         this->panel3->Margin = System::Windows::Forms::Padding(4);
         this->panel3->Name = L"panel3";
         this->panel3->Size = System::Drawing::Size(635, 46);
         this->panel3->TabIndex = 62;
         //
-        // textBox1
+        // pin
         //
-        this->textBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
-        this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->textBox1->Location = System::Drawing::Point(28, 7);
-        this->textBox1->Margin = System::Windows::Forms::Padding(4);
-        this->textBox1->MaxLength = 6;
-        this->textBox1->Multiline = true;
-        this->textBox1->Name = L"textBox1";
-        this->textBox1->Size = System::Drawing::Size(607, 34);
-        this->textBox1->TabIndex = 29;
+        this->pin->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
+        this->pin->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->pin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->pin->Location = System::Drawing::Point(28, 7);
+        this->pin->Margin = System::Windows::Forms::Padding(4);
+        this->pin->MaxLength = 6;
+        this->pin->Multiline = true;
+        this->pin->Name = L"pin";
+        this->pin->Size = System::Drawing::Size(607, 34);
+        this->pin->TabIndex = 29;
         //
         // panel6
         //
         this->panel6->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
         this->panel6->BackColor = System::Drawing::Color::White;
-        this->panel6->Controls->Add(this->amountInput);
+        this->panel6->Controls->Add(this->amount);
         this->panel6->Location = System::Drawing::Point(123, 140);
         this->panel6->Margin = System::Windows::Forms::Padding(4);
         this->panel6->Name = L"panel6";
         this->panel6->Size = System::Drawing::Size(635, 46);
         this->panel6->TabIndex = 61;
         //
-        // amountInput
+        // amount
         //
-        this->amountInput->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
-        this->amountInput->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->amountInput->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->amountInput->Location = System::Drawing::Point(28, 7);
-        this->amountInput->Margin = System::Windows::Forms::Padding(4);
-        this->amountInput->MaxLength = 9;
-        this->amountInput->Multiline = true;
-        this->amountInput->Name = L"amountInput";
-        this->amountInput->Size = System::Drawing::Size(607, 34);
-        this->amountInput->TabIndex = 29;
+        this->amount->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
+        this->amount->BorderStyle = System::Windows::Forms::BorderStyle::None;
+        this->amount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+        this->amount->Location = System::Drawing::Point(28, 7);
+        this->amount->Margin = System::Windows::Forms::Padding(4);
+        this->amount->MaxLength = 9;
+        this->amount->Multiline = true;
+        this->amount->Name = L"amount";
+        this->amount->Size = System::Drawing::Size(607, 34);
+        this->amount->TabIndex = 29;
         //
         // label4
         //
@@ -150,28 +160,29 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         this->label5->TabIndex = 55;
         this->label5->Text = L"Nhập Tiền:";
         //
-        // button1
+        // btnSubmit
         //
-        this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
-        this->button1->BackColor = System::Drawing::Color::Indigo;
-        this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
-        this->button1->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
-                                                                                      static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
-        this->button1->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
-        this->button1->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
-                                                                                             static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
-        this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-        this->button1->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                                                           static_cast<System::Byte>(0)));
-        this->button1->ForeColor = System::Drawing::Color::White;
-        this->button1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->button1->Location = System::Drawing::Point(123, 334);
-        this->button1->Margin = System::Windows::Forms::Padding(4);
-        this->button1->Name = L"button1";
-        this->button1->Size = System::Drawing::Size(635, 52);
-        this->button1->TabIndex = 53;
-        this->button1->Text = L"Rút Tiền";
-        this->button1->UseVisualStyleBackColor = false;
+        this->btnSubmit->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
+        this->btnSubmit->BackColor = System::Drawing::Color::Indigo;
+        this->btnSubmit->Cursor = System::Windows::Forms::Cursors::Hand;
+        this->btnSubmit->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
+                                                                                        static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
+        this->btnSubmit->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
+        this->btnSubmit->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+                                                                                               static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
+        this->btnSubmit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+        this->btnSubmit->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                             static_cast<System::Byte>(0)));
+        this->btnSubmit->ForeColor = System::Drawing::Color::White;
+        this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+        this->btnSubmit->Location = System::Drawing::Point(123, 334);
+        this->btnSubmit->Margin = System::Windows::Forms::Padding(4);
+        this->btnSubmit->Name = L"btnSubmit";
+        this->btnSubmit->Size = System::Drawing::Size(635, 52);
+        this->btnSubmit->TabIndex = 53;
+        this->btnSubmit->Text = L"Rút Tiền";
+        this->btnSubmit->UseVisualStyleBackColor = false;
+        this->btnSubmit->Click += gcnew System::EventHandler(this, &WithdrawMoneyForm::btnSubmit_Click);
         //
         // panel2
         //
@@ -223,5 +234,7 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         this->ResumeLayout(false);
     }
 #pragma endregion
+  private:
+    System::Void btnSubmit_Click(System::Object ^ sender, System::EventArgs ^ e);
 };
 } // namespace BankingAppwinform

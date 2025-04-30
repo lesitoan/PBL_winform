@@ -7,6 +7,8 @@
 #include "UserRepository.h"
 #include "Validate.h"
 #include "CustomerCodes.h"
+#include "BaseRepository.h"
+#include "ENV.h"
 
 #ifndef CUSTOMERCODESREPOSITORY_H
 #define CUSTOMERCODESREPOSITORY_H
@@ -15,28 +17,11 @@ using namespace System;
 using namespace System::IO;
 
 public
-ref class CustomerCodesRepository {
+ref class CustomerCodesRepository : public BaseRepository<CustomerCodes ^> {
   private:
-    static array<CustomerCodes ^> ^ customerCodesCache;
-    static DateTime lastReadTime = DateTime::MinValue;
-    static String ^ fileName;
 
     static CustomerCodesRepository() {
-        customerCodesCache = nullptr;
-        lastReadTime = DateTime::MinValue;
-        fileName = "customercodes.dat";
-    }
-    static void CheckLastUpdateTime() {
-        try {
-            DateTime lastUpdateTime = HandleFile::GetLastUpdateTime(fileName);
-            if (lastUpdateTime >= lastReadTime) {
-                customerCodesCache =
-                    HandleFile::ReadArrayFromFile<CustomerCodes ^>(fileName);
-                lastReadTime = lastUpdateTime;
-            }
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("CheckLastUpdateTime error !!!", ex);
-        }
+        InitializeRepository(ENV::CUSTOMER_CODE_FILE);
     }
 
   public:
@@ -44,7 +29,7 @@ ref class CustomerCodesRepository {
         try {
             // kiểm tra lần chỉnh sửa cuối cùng của file
             CheckLastUpdateTime();
-            return customerCodesCache;
+            return cache;
         } catch (Exception ^ ex) {
             throw gcnew Exception("getAll transaction error !!!", ex);
         }
@@ -52,12 +37,12 @@ ref class CustomerCodesRepository {
     static CustomerCodes^ FindCustomerCodeByCodeString(String ^ codeString) {
               try {
                   CheckLastUpdateTime();
-                  if (customerCodesCache == nullptr) {
+                  if (cache == nullptr) {
                       return nullptr;
                   }
-                  for (int i = 0; i < customerCodesCache->Length; i++) {
-                      if (customerCodesCache[i]->Code == codeString) {
-                          return customerCodesCache[i];
+                  for (int i = 0; i < cache->Length; i++) {
+                      if (cache[i]->Code == codeString) {
+                          return cache[i];
                       }
                   }
                   return nullptr;
@@ -70,8 +55,8 @@ ref class CustomerCodesRepository {
         ^ InsertOne(String ^ CodeString, String ^ CompanyId) {
               try {
                   CheckLastUpdateTime();
-                  if (customerCodesCache == nullptr) {
-                      customerCodesCache = gcnew array<CustomerCodes ^>(0);
+                  if (cache == nullptr) {
+                      cache = gcnew array<CustomerCodes ^>(0);
                   }
                   if (CodeString == nullptr || CodeString == "") {
                       throw gcnew Exception(L"Mã khách hàng " + CodeString + L" không hợp lệ.");
@@ -86,13 +71,13 @@ ref class CustomerCodesRepository {
                       gcnew CustomerCodes(CompanyId, CodeString);
 
                   array<CustomerCodes ^> ^ newCustomerCodes =
-                      gcnew array<CustomerCodes ^>(customerCodesCache->Length + 1);
-                  for (int i = 0; i < customerCodesCache->Length; i++) {
-                      newCustomerCodes[i] = customerCodesCache[i];
+                      gcnew array<CustomerCodes ^>(cache->Length + 1);
+                  for (int i = 0; i < cache->Length; i++) {
+                      newCustomerCodes[i] = cache[i];
                   }
-                  newCustomerCodes[customerCodesCache->Length] = item;
-                  customerCodesCache = newCustomerCodes;
-                  HandleFile::WriteArrayToFile<CustomerCodes ^>(customerCodesCache,
+                  newCustomerCodes[cache->Length] = item;
+                  cache = newCustomerCodes;
+                  HandleFile::WriteArrayToFile<CustomerCodes ^>(cache,
                                                                 fileName);
                   return item;
 
@@ -107,12 +92,12 @@ ref class CustomerCodesRepository {
         ^ FindCustomerCodeById(String ^ id) {
               try {
                   CheckLastUpdateTime();
-                  if (customerCodesCache == nullptr) {
+                  if (cache == nullptr) {
                       return nullptr;
                   }
-                  for (int i = 0; i < customerCodesCache->Length; i++) {
-                      if (customerCodesCache[i]->Id == id) {
-                          return customerCodesCache[i];
+                  for (int i = 0; i < cache->Length; i++) {
+                      if (cache[i]->Id == id) {
+                          return cache[i];
                       }
                   }
                   return nullptr;
@@ -124,7 +109,7 @@ ref class CustomerCodesRepository {
         static void DeleteById(String ^ id) {
         try {
             CheckLastUpdateTime();
-            if (customerCodesCache == nullptr) {
+            if (cache == nullptr) {
                 return;
             }
 
@@ -137,16 +122,16 @@ ref class CustomerCodesRepository {
             array<CustomerCodeDetails ^> ^ currCodeDetails = CustomerCodeDetailsRepository::GetCustomerCodeDetailsByCustomerCodeId(id);
             if (currCodeDetails == nullptr || currCodeDetails->Length == 0) {
                 array<CustomerCodes ^> ^ newCustomerCodes =
-                    gcnew array<CustomerCodes ^>(customerCodesCache->Length - 1);
+                    gcnew array<CustomerCodes ^>(cache->Length - 1);
 
-                for (int i = 0; i < customerCodesCache->Length; i++) {
-                    if (customerCodesCache[i]->Id != id) {
-                        newCustomerCodes[i] = customerCodesCache[i];
+                for (int i = 0; i < cache->Length; i++) {
+                    if (cache[i]->Id != id) {
+                        newCustomerCodes[i] = cache[i];
                     }
                 }
 
-                customerCodesCache = newCustomerCodes;
-                HandleFile::WriteArrayToFile<CustomerCodes ^>(customerCodesCache, fileName);
+                cache = newCustomerCodes;
+                HandleFile::WriteArrayToFile<CustomerCodes ^>(cache, fileName);
                 return;
             }
 
@@ -168,26 +153,20 @@ ref class CustomerCodesRepository {
     static void UpdateCustomerCodeById(String ^ id, CustomerCodes ^ customerCode) {
         try {
             CheckLastUpdateTime();
-            if (customerCodesCache == nullptr) {
+            if (cache == nullptr) {
                 return;
             }
-            for (int i = 0; i < customerCodesCache->Length; i++) {
-                if (customerCodesCache[i]->Id == id) {
-                    customerCodesCache[i] = customerCode;
+            for (int i = 0; i < cache->Length; i++) {
+                if (cache[i]->Id == id) {
+                    cache[i] = customerCode;
                     break;
                 }
             }
-            HandleFile::WriteArrayToFile<CustomerCodes ^>(customerCodesCache,
+            HandleFile::WriteArrayToFile<CustomerCodes ^>(cache,
                                                           fileName);
         } catch (Exception ^ ex) {
             throw gcnew Exception("UpdateCustomerCodeById error !!!", ex);
         }
-    }
-
-    static void DeleteCache() {
-        customerCodesCache = nullptr;
-        lastReadTime = DateTime::MinValue;
-        fileName = "customercodes.dat";
     }
 };
 #endif // CUSTOMERCODESREPOSITORY_H

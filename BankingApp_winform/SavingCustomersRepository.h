@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "HandleFile.h"
 #include "SavingCustomers.h"
+#include "BaseRepository.h"
+#include "ENV.h"
 
 #ifndef SAVINGCUSTOMER_H
 #define SAVINGCUSTOMER_H
@@ -8,30 +10,11 @@ using namespace System;
 using namespace System::IO;
 
 public
-ref class SavingCustomersRepository {
+ref class SavingCustomersRepository : public BaseRepository<SavingCustomers ^> {
   private:
-    static array<SavingCustomers ^> ^ savingCustomersCache;
-    static DateTime lastReadTime = DateTime::MinValue;
-    static String ^ fileName;
 
     static SavingCustomersRepository() {
-        savingCustomersCache = nullptr;
-        lastReadTime = DateTime::MinValue;
-        fileName = "savingcustomers.dat";
-    }
-
-    static void CheckLastUpdateTime() {
-        try {
-            DateTime lastUpdateTime =
-                HandleFile::GetLastUpdateTime(fileName);
-            if (lastUpdateTime >= lastReadTime) {
-                savingCustomersCache =
-                    HandleFile::ReadArrayFromFile<SavingCustomers ^>(fileName);
-                lastReadTime = lastUpdateTime;
-            }
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("CheckLastUpdateTime error !!!", ex);
-        }
+        InitializeRepository(ENV::SAVING_CUSTOMER_FILE);
     }
 
   public:
@@ -39,7 +22,7 @@ ref class SavingCustomersRepository {
         try {
             // kiểm tra lần chỉnh sửa cuối cùng của file
             CheckLastUpdateTime();
-            return savingCustomersCache;
+            return cache;
         } catch (Exception ^ ex) {
             throw gcnew Exception("getAll transaction error !!!", ex);
         }
@@ -49,14 +32,14 @@ ref class SavingCustomersRepository {
         GetSavingCustomersByUserId(String ^ userId) {
             try {
                 CheckLastUpdateTime();
-                if (savingCustomersCache == nullptr) {
+                if (cache == nullptr) {
                     return nullptr;
                 }
                 List<SavingCustomers ^> ^ savingCustomersList =
                     gcnew List<SavingCustomers ^>();
-                for (int i = 0; i < savingCustomersCache->Length; i++) {
-                    if (savingCustomersCache[i]->UserId == userId) {
-                        savingCustomersList->Add(savingCustomersCache[i]);
+                for (int i = 0; i < cache->Length; i++) {
+                    if (cache[i]->UserId == userId) {
+                        savingCustomersList->Add(cache[i]);
                     }
                 }
                 return savingCustomersList->ToArray();
@@ -68,18 +51,18 @@ ref class SavingCustomersRepository {
     static void InsertOne(SavingCustomers ^ savingCustomer) {
         try {
             CheckLastUpdateTime();
-            if (savingCustomersCache == nullptr) {
-                savingCustomersCache = gcnew array<SavingCustomers ^>(0);
+            if (cache == nullptr) {
+                cache = gcnew array<SavingCustomers ^>(0);
             }
             
-            array<SavingCustomers ^> ^ temp = gcnew array<SavingCustomers ^>(savingCustomersCache->Length + 1);
+            array<SavingCustomers ^> ^ temp = gcnew array<SavingCustomers ^>(cache->Length + 1);
 
-            for (int i = 0; i < savingCustomersCache->Length; i++) {
-                temp[i] = savingCustomersCache[i];
+            for (int i = 0; i < cache->Length; i++) {
+                temp[i] = cache[i];
             }
-            temp[savingCustomersCache->Length] = savingCustomer;
-            savingCustomersCache = temp;
-            HandleFile::WriteArrayToFile<SavingCustomers ^>(savingCustomersCache,
+            temp[cache->Length] = savingCustomer;
+            cache = temp;
+            HandleFile::WriteArrayToFile<SavingCustomers ^>(cache,
                                                             fileName);
         } catch (Exception ^ ex) {
             throw gcnew Exception("InsertOne error !!!", ex);
@@ -89,29 +72,19 @@ ref class SavingCustomersRepository {
     static void UpdateById(String ^ id, SavingCustomers ^ savingCustomer) {
         try {
             CheckLastUpdateTime();
-            if (savingCustomersCache == nullptr) {
+            if (cache == nullptr) {
                 return;
             }
-            for (int i = 0; i < savingCustomersCache->Length; i++) {
-                if (savingCustomersCache[i]->Id == id) {
-                    savingCustomersCache[i] = savingCustomer;
+            for (int i = 0; i < cache->Length; i++) {
+                if (cache[i]->Id == id) {
+                    cache[i] = savingCustomer;
                     break;
                 }
             }
-            HandleFile::WriteArrayToFile<SavingCustomers ^>(savingCustomersCache,
+            HandleFile::WriteArrayToFile<SavingCustomers ^>(cache,
                                                             fileName);
         } catch (Exception ^ ex) {
             throw gcnew Exception("Update error !!!", ex);
-        }
-    }
-
-    static void DeleteCache() {
-        try {
-            savingCustomersCache = nullptr;
-            lastReadTime = DateTime::MinValue;
-            fileName = "savingcustomers.dat";
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("DeleteCache error !!!", ex);
         }
     }
 };

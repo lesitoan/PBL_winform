@@ -5,6 +5,7 @@ namespace BankingAppwinform {
 
 AddUserForm::AddUserForm(void) { 
     InitializeComponent();
+    loadAccTypeBox();
     GradientColorHelper::ApplyGradient(this);
 }
 
@@ -37,10 +38,23 @@ void AddUserForm::loadServiceBox() {
     }
 }
 
+void AddUserForm::loadAccTypeBox() {
+    for each (Role role in Enum::GetValues(Role::typeid)) {
+        selectAccTypeBox->Items->Add(role.ToString());
+    }
+}
+
 System::Void
 AddUserForm::selectAccTypeBox_SelectedIndexChanged(System::Object ^ sender,
                                                    System::EventArgs ^ e) {
-    if (selectAccTypeBox->Text == "company") {
+    if (selectAccTypeBox->SelectedIndex == -1)
+        return;
+
+    // Parse selected item to Role enum
+    Role selectedRole = static_cast<Role>(
+        Enum::Parse(Role::typeid, selectAccTypeBox->SelectedItem->ToString()));
+
+    if (selectedRole == Role::Company) {
         panelService->Visible = true;
         loadServiceBox();
     } else {
@@ -55,7 +69,14 @@ System::Void AddUserForm::btnSubmit_Click(System::Object ^ sender,
         String ^ phone = this->phone->Text;
         String ^ accNum = this->accNum->Text;
         String ^ password = this->password->Text;
-        String ^ accType = this->selectAccTypeBox->Text;
+
+        if (selectAccTypeBox->SelectedIndex == -1) {
+            throw gcnew Exception("Vui lòng chọn loại tài khoản!");
+        }
+
+        // Parse từ ComboBox thành Role enum
+        Role accType = static_cast<Role>(
+            Enum::Parse(Role::typeid, selectAccTypeBox->SelectedItem->ToString()));
 
         String ^ serviceId = "";
         Services ^ selectedService = dynamic_cast<Services ^>(selectServiceBox->SelectedItem);
@@ -76,5 +97,6 @@ System::Void AddUserForm::btnSubmit_Click(System::Object ^ sender,
                          MessageBoxIcon::Error);
     };
 }
+
 
 }; // namespace BankingAppwinform

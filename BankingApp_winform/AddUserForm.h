@@ -300,7 +300,6 @@ ref class AddUserForm : public System::Windows::Forms::Form {
         this->selectAccTypeBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
         this->selectAccTypeBox->ForeColor = System::Drawing::Color::Black;
         this->selectAccTypeBox->FormattingEnabled = true;
-        this->selectAccTypeBox->Items->AddRange(gcnew cli::array<System::Object ^>(2){L"user", L"company"});
         this->selectAccTypeBox->Location = System::Drawing::Point(1, 9);
         this->selectAccTypeBox->Margin = System::Windows::Forms::Padding(4);
         this->selectAccTypeBox->Name = L"selectAccTypeBox";
@@ -449,6 +448,8 @@ ref class AddUserForm : public System::Windows::Forms::Form {
     System::Void btnClose_Click(System::Object ^ sender, System::EventArgs ^ e);
 
     void loadServiceBox();
+
+    void loadAccTypeBox();
 
     System::Void selectAccTypeBox_SelectedIndexChanged(System::Object ^ sender,
                                                        System::EventArgs ^ e);

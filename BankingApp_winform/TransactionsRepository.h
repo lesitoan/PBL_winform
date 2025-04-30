@@ -2,6 +2,8 @@
 
 #include "HandleFile.h"
 #include "Transaction.h"
+#include "BaseRepository.h"
+#include "ENV.h"
 
 #ifndef TRANSACTIONREPOSITORY_H
 #define TRANSACTIONREPOSITORY_H
@@ -10,28 +12,10 @@ using namespace System;
 using namespace System::IO;
 
 public
-ref class TransactionsRepository {
+ref class TransactionsRepository : public BaseRepository<Transaction ^> {
   private:
-    static array<Transaction ^> ^ transactionsCache;
-    static DateTime lastReadTime = DateTime::MinValue;
-    static String ^ fileName;
-
     static TransactionsRepository() {
-        transactionsCache = nullptr;
-        lastReadTime = DateTime::MinValue;
-        fileName = "transactions.dat";
-    }
-
-    static void CheckLastUpdateTime() {
-        try {
-            DateTime lastUpdateTime = HandleFile::GetLastUpdateTime(fileName);
-            if (lastUpdateTime >= lastReadTime) {
-                transactionsCache = HandleFile::ReadArrayFromFile<Transaction ^>(fileName);
-                lastReadTime = lastUpdateTime;
-            }
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("CheckLastUpdateTime error !!!", ex);
-        }
+            InitializeRepository(ENV::TRANSACTION_FILE);
     }
 
   public:
@@ -40,7 +24,7 @@ ref class TransactionsRepository {
             // kiểm tra lần chỉnh sửa cuối cùng của file
             CheckLastUpdateTime();
 
-            return transactionsCache;
+            return cache;
 
         } catch (Exception ^ ex) {
             throw gcnew Exception("getAll transaction error !!!", ex);
@@ -52,16 +36,16 @@ ref class TransactionsRepository {
             try {
                 CheckLastUpdateTime();
 
-                if (transactionsCache == nullptr) {
+                if (cache == nullptr) {
                     return nullptr;
                 }
 
                 List<Transaction ^> ^ transactionsList = gcnew List<Transaction ^>();
 
-                for (int i = 0; i < transactionsCache->Length; i++) {
-                    if (transactionsCache[i]->FromUserId == userId ||
-                        transactionsCache[i]->ToUserId== userId){
-                        transactionsList->Add(transactionsCache[i]);
+                for (int i = 0; i < cache->Length; i++) {
+                    if (cache[i]->FromUserId == userId ||
+                        cache[i]->ToUserId== userId){
+                        transactionsList->Add(cache[i]);
                     }
                 }
 
@@ -75,18 +59,18 @@ ref class TransactionsRepository {
         try {
             CheckLastUpdateTime();
 
-            if (transactionsCache == nullptr) {
-                transactionsCache = gcnew array<Transaction ^>(0);
+            if (cache == nullptr) {
+                cache = gcnew array<Transaction ^>(0);
             }
 
-            array<Transaction ^> ^ newTransactionsCache =
-                gcnew array<Transaction ^>(transactionsCache->Length + 1);
-            for (int i = 0; i < transactionsCache->Length; i++) {
-                newTransactionsCache[i] = transactionsCache[i];
+            array<Transaction ^> ^ newcache =
+                gcnew array<Transaction ^>(cache->Length + 1);
+            for (int i = 0; i < cache->Length; i++) {
+                newcache[i] = cache[i];
             }
-            newTransactionsCache[transactionsCache->Length] = transaction;
-            transactionsCache = newTransactionsCache;
-            HandleFile::WriteArrayToFile<Transaction ^>(transactionsCache, fileName);
+            newcache[cache->Length] = transaction;
+            cache = newcache;
+            HandleFile::WriteArrayToFile<Transaction ^>(cache, fileName);
             // update lại thời gian chỉnh sửa file
             HandleFile::UpdateFilehistoryUpdate(fileName);
         } catch (Exception ^ ex) {
@@ -98,17 +82,17 @@ ref class TransactionsRepository {
         try {
             CheckLastUpdateTime();
 
-            if (transactionsCache == nullptr) {
+            if (cache == nullptr) {
                 return;
             }
 
-            for (int i = 0; i < transactionsCache->Length; i++) {
-                if (transactionsCache[i]->Id == transactionId) {
-                    transactionsCache[i] = transaction;
+            for (int i = 0; i < cache->Length; i++) {
+                if (cache[i]->Id == transactionId) {
+                    cache[i] = transaction;
                     break;
                 }
             }
-            HandleFile::WriteArrayToFile<Transaction ^>(transactionsCache, fileName);
+            HandleFile::WriteArrayToFile<Transaction ^>(cache, fileName);
             // update lại thời gian chỉnh sửa file
             HandleFile::UpdateFilehistoryUpdate(fileName);
         } catch (Exception ^ ex) {
@@ -116,14 +100,5 @@ ref class TransactionsRepository {
         }
     }
 
-    static void DeleteCache() {
-        try {
-            transactionsCache = nullptr;
-            lastReadTime = DateTime::MinValue;
-            fileName = "transactions.dat";
-        } catch (Exception ^ ex) {
-            throw gcnew Exception("DeleteCache error !!!", ex);
-        }
-    };
 };
 #endif // TRANSACTIONREPOSITORY_H;

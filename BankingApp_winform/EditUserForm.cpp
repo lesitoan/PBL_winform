@@ -29,8 +29,8 @@ void EditUserForm::loadUserInfo() {
     this->name->Text = user->getFullName();
     this->phone->Text = user->getPhoneNumber();
     this->accNum->Text = user->getAccountNumber();
-    this->acctype->Text = user->getRole();
-    this->bankName->Text = user->getBankName();
+    this->acctype->Text = user->getRole().ToString();
+    this->bankName->Text = user->getBankName().ToString();
     this->status->Text = user->Status == 1 ? L"Hoạt động" : L"Khóa";
     this->amount->Text = user->getBalance().ToString();
 }
