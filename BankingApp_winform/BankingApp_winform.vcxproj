@@ -389,6 +389,8 @@
     <None Include="..\.clang-format" />
     <None Include="notifications.dat" />
     <None Include="services.dat" />
+    <None Include="transactions.dat" />
+    <None Include="users.dat" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="BankingApp_winform.rc" />

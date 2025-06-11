@@ -378,7 +378,7 @@ ref class AdminSavingMoneyForm : public System::Windows::Forms::Form {
         this->btnShowRequest->TabIndex = 11;
         this->btnShowRequest->Text = L"YÊU CẦU RÚT TIẾT KIỆM";
         this->btnShowRequest->UseVisualStyleBackColor = false;
-        this->btnShowRequest->Click += gcnew System::EventHandler(this, &AdminSavingMoneyForm::btnShowRequest_Click);
+        this->btnShowRequest->Visible = false;
         //
         // btnShowCustomer
         //

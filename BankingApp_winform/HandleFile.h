@@ -68,7 +68,7 @@ ref class HandleFile {
               }
           }
 
-              static void UpdateFilehistoryUpdate(String ^ dataFileName) {
+     static void UpdateFilehistoryUpdate(String ^ dataFileName) {
         try {
             String ^ logFilePath = "historyUpdateData.txt";
             DateTime time = DateTime::Now;

@@ -63,6 +63,15 @@ ref class CodeForm : public System::Windows::Forms::Form {
 
   private:
     System::Windows::Forms::DataGridViewTextBoxColumn ^ Column3;
+
+  private:
+
+
+  private:
+
+
+  private:
+
     System::ComponentModel::Container ^ components;
 
 #pragma region Windows Form Designer generated code
@@ -169,9 +178,10 @@ ref class CodeForm : public System::Windows::Forms::Form {
         this->pin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->pin->Location = System::Drawing::Point(24, 7);
         this->pin->Margin = System::Windows::Forms::Padding(4);
-        this->pin->MaxLength = 15;
+        this->pin->MaxLength = 6;
         this->pin->Multiline = true;
         this->pin->Name = L"pin";
+        this->pin->PasswordChar = '*';
         this->pin->Size = System::Drawing::Size(306, 32);
         this->pin->TabIndex = 29;
         //
@@ -336,7 +346,7 @@ ref class CodeForm : public System::Windows::Forms::Form {
         //
         // Column1
         //
-        this->Column1->HeaderText = L"Mã KH";
+        this->Column1->HeaderText = L"Mã Hóa Đơn";
         this->Column1->MinimumWidth = 6;
         this->Column1->Name = L"Column1";
         this->Column1->ReadOnly = true;

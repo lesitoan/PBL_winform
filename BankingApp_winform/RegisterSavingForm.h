@@ -130,6 +130,7 @@ ref class RegisterSavingForm : public System::Windows::Forms::Form {
         this->pinInput->MaxLength = 6;
         this->pinInput->Multiline = true;
         this->pinInput->Name = L"pinInput";
+        this->pinInput->PasswordChar = '*';
         this->pinInput->Size = System::Drawing::Size(219, 32);
         this->pinInput->TabIndex = 29;
         //

@@ -137,6 +137,10 @@ ref class UserService {
                 throw gcnew Exception(L"Chuyển khoản thất bại");
             } else if (amount <= 0) {
                 throw gcnew Exception(L"Số tiền chuyển khoản không hợp lệ");
+            } else if (amount < 10000 || amount > 10000000) {
+                throw gcnew Exception(L"Số tiền chuyển khoản phải từ 10.000 đến 10.000.000 VNĐ");
+            } else if (message->Length > 30) {
+                throw gcnew Exception(L"Nội dung giao dịch không được quá 30 kí tự");
             }
             if (type == "")
                 type = "transfer";
@@ -361,6 +365,10 @@ ref class UserService {
                 throw gcnew Exception(L"Vui lòng nhập đầy đủ thông tin");
             } else if (amount > GlobalData::GetCurrentUser()->getBalance()) {
                 throw gcnew Exception(L"Số tiền rút không được lớn hơn số dư");
+            }
+
+            if (amount < 50000 || amount > 5000000) {
+                throw gcnew Exception(L"Số tiền rút phải từ 50.000 VNĐ đến 5.000.000 VNĐ");
             }
 
             User ^ curr = UserRepository::FindById(GlobalData::GetCurrentUser()->Id);

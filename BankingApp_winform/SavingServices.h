@@ -75,6 +75,14 @@ ref class SavingServices {
             if (savingCustomer == nullptr) {
                 throw gcnew Exception(L"Không có thông tin khách hàng");
             }
+            if (savingCustomer->Status != 0) {
+                throw gcnew Exception(L"Tiết kiệm đã được tất toán");
+            }
+
+            if (savingCustomer->Type == "termDeposit" && savingCustomer->CreatedAt.AddMonths(savingCustomer->Term) > System::DateTime::Now) {
+                throw gcnew Exception(L"Tiết kiệm có kì hạn chưa đến hạn thanh toán");
+            }
+
 
             savingCustomer->Status = 1; // Đã tất toán
             savingCustomer->PaymentDate = DateTime::Now;

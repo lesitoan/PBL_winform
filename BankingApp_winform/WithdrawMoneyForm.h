@@ -99,6 +99,7 @@ ref class WithdrawMoneyForm : public System::Windows::Forms::Form {
         this->pin->MaxLength = 6;
         this->pin->Multiline = true;
         this->pin->Name = L"pin";
+        this->pin->PasswordChar = '*';
         this->pin->Size = System::Drawing::Size(607, 34);
         this->pin->TabIndex = 29;
         //

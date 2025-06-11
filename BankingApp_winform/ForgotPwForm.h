@@ -45,13 +45,13 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
     System::Windows::Forms::TextBox ^ phoneNumber;
 
   private:
-    System::Windows::Forms::Label ^ label1;
+
 
   private:
-    System::Windows::Forms::Panel ^ panel3;
+
 
   private:
-    System::Windows::Forms::TextBox ^ txtEmail;
+
 
   private:
 
@@ -68,12 +68,8 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->fullName = (gcnew System::Windows::Forms::TextBox());
         this->panel2 = (gcnew System::Windows::Forms::Panel());
         this->phoneNumber = (gcnew System::Windows::Forms::TextBox());
-        this->label1 = (gcnew System::Windows::Forms::Label());
-        this->panel3 = (gcnew System::Windows::Forms::Panel());
-        this->txtEmail = (gcnew System::Windows::Forms::TextBox());
         this->panel1->SuspendLayout();
         this->panel2->SuspendLayout();
-        this->panel3->SuspendLayout();
         this->SuspendLayout();
         //
         // label6
@@ -118,7 +114,7 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
                                                              static_cast<System::Byte>(0)));
         this->btnSubmit->ForeColor = System::Drawing::Color::White;
         this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-        this->btnSubmit->Location = System::Drawing::Point(79, 445);
+        this->btnSubmit->Location = System::Drawing::Point(78, 370);
         this->btnSubmit->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
         this->btnSubmit->Name = L"btnSubmit";
         this->btnSubmit->Size = System::Drawing::Size(585, 52);
@@ -189,42 +185,6 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->phoneNumber->Size = System::Drawing::Size(577, 34);
         this->phoneNumber->TabIndex = 29;
         //
-        // label1
-        //
-        this->label1->AutoSize = true;
-        this->label1->BackColor = System::Drawing::Color::Transparent;
-        this->label1->Font = (gcnew System::Drawing::Font(L"UTM Daxline", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                                                          static_cast<System::Byte>(0)));
-        this->label1->ForeColor = System::Drawing::Color::White;
-        this->label1->Location = System::Drawing::Point(74, 339);
-        this->label1->Name = L"label1";
-        this->label1->Size = System::Drawing::Size(59, 26);
-        this->label1->TabIndex = 54;
-        this->label1->Text = L"Email";
-        //
-        // panel3
-        //
-        this->panel3->BackColor = System::Drawing::Color::White;
-        this->panel3->Controls->Add(this->txtEmail);
-        this->panel3->Location = System::Drawing::Point(79, 367);
-        this->panel3->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
-        this->panel3->Name = L"panel3";
-        this->panel3->Size = System::Drawing::Size(585, 46);
-        this->panel3->TabIndex = 54;
-        //
-        // txtEmail
-        //
-        this->txtEmail->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) | System::Windows::Forms::AnchorStyles::Left) | System::Windows::Forms::AnchorStyles::Right));
-        this->txtEmail->BorderStyle = System::Windows::Forms::BorderStyle::None;
-        this->txtEmail->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-        this->txtEmail->Location = System::Drawing::Point(5, 2);
-        this->txtEmail->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
-        this->txtEmail->MaxLength = 20;
-        this->txtEmail->Multiline = true;
-        this->txtEmail->Name = L"txtEmail";
-        this->txtEmail->Size = System::Drawing::Size(577, 34);
-        this->txtEmail->TabIndex = 29;
-        //
         // ForgotPwForm
         //
         this->AcceptButton = this->btnSubmit;
@@ -233,8 +193,6 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->BackColor = System::Drawing::Color::HotPink;
         this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
         this->ClientSize = System::Drawing::Size(729, 601);
-        this->Controls->Add(this->panel3);
-        this->Controls->Add(this->label1);
         this->Controls->Add(this->panel2);
         this->Controls->Add(this->panel1);
         this->Controls->Add(this->label7);
@@ -248,8 +206,6 @@ ref class ForgotPwForm : public System::Windows::Forms::Form {
         this->panel1->PerformLayout();
         this->panel2->ResumeLayout(false);
         this->panel2->PerformLayout();
-        this->panel3->ResumeLayout(false);
-        this->panel3->PerformLayout();
         this->ResumeLayout(false);
         this->PerformLayout();
     }

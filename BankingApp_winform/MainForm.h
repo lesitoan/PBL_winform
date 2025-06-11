@@ -330,7 +330,7 @@ ref class MainForm : public System::Windows::Forms::Form {
         this->btnTransfer->Name = L"btnTransfer";
         this->btnTransfer->Size = System::Drawing::Size(276, 71);
         this->btnTransfer->TabIndex = 9;
-        this->btnTransfer->Text = L"                Tài Khoản";
+        this->btnTransfer->Text = L"                Chuyển TIền";
         this->btnTransfer->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
         this->btnTransfer->UseVisualStyleBackColor = false;
         this->btnTransfer->Click += gcnew System::EventHandler(this, &MainForm::btnTransfer_Click);

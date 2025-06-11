@@ -132,7 +132,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->panel1->Controls->Add(this->panel4);
         this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
         this->panel1->Location = System::Drawing::Point(0, 0);
-        this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel1->Margin = System::Windows::Forms::Padding(4);
         this->panel1->Name = L"panel1";
         this->panel1->Size = System::Drawing::Size(877, 226);
         this->panel1->TabIndex = 0;
@@ -161,7 +161,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->panel3->BackColor = System::Drawing::Color::White;
         this->panel3->Controls->Add(this->accountNumber);
         this->panel3->Location = System::Drawing::Point(392, 42);
-        this->panel3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel3->Margin = System::Windows::Forms::Padding(4);
         this->panel3->Name = L"panel3";
         this->panel3->Size = System::Drawing::Size(369, 46);
         this->panel3->TabIndex = 58;
@@ -172,7 +172,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->accountNumber->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->accountNumber->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->accountNumber->Location = System::Drawing::Point(28, 7);
-        this->accountNumber->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->accountNumber->Margin = System::Windows::Forms::Padding(4);
         this->accountNumber->MaxLength = 20;
         this->accountNumber->Multiline = true;
         this->accountNumber->Name = L"accountNumber";
@@ -198,7 +198,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnFindAccount->ForeColor = System::Drawing::Color::White;
         this->btnFindAccount->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->btnFindAccount->Location = System::Drawing::Point(127, 111);
-        this->btnFindAccount->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnFindAccount->Margin = System::Windows::Forms::Padding(4);
         this->btnFindAccount->Name = L"btnFindAccount";
         this->btnFindAccount->Size = System::Drawing::Size(635, 47);
         this->btnFindAccount->TabIndex = 52;
@@ -246,7 +246,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->panel4->BackColor = System::Drawing::Color::White;
         this->panel4->Controls->Add(this->selectBankBox);
         this->panel4->Location = System::Drawing::Point(127, 42);
-        this->panel4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel4->Margin = System::Windows::Forms::Padding(4);
         this->panel4->Name = L"panel4";
         this->panel4->Size = System::Drawing::Size(248, 46);
         this->panel4->TabIndex = 59;
@@ -260,7 +260,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->selectBankBox->ForeColor = System::Drawing::Color::Black;
         this->selectBankBox->FormattingEnabled = true;
         this->selectBankBox->Location = System::Drawing::Point(4, 7);
-        this->selectBankBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->selectBankBox->Margin = System::Windows::Forms::Padding(4);
         this->selectBankBox->Name = L"selectBankBox";
         this->selectBankBox->Size = System::Drawing::Size(239, 33);
         this->selectBankBox->TabIndex = 3;
@@ -272,7 +272,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->panel2->BackColor = System::Drawing::SystemColors::ActiveCaption;
         this->panel2->Controls->Add(this->panelTransfer);
         this->panel2->Location = System::Drawing::Point(0, 234);
-        this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel2->Margin = System::Windows::Forms::Padding(4);
         this->panel2->Name = L"panel2";
         this->panel2->Size = System::Drawing::Size(877, 383);
         this->panel2->TabIndex = 1;
@@ -290,7 +290,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->panelTransfer->Controls->Add(this->label2);
         this->panelTransfer->Controls->Add(this->btnSubmit);
         this->panelTransfer->Location = System::Drawing::Point(0, 4);
-        this->panelTransfer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panelTransfer->Margin = System::Windows::Forms::Padding(4);
         this->panelTransfer->Name = L"panelTransfer";
         this->panelTransfer->Size = System::Drawing::Size(877, 378);
         this->panelTransfer->TabIndex = 15;
@@ -302,7 +302,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->panel7->BackColor = System::Drawing::Color::White;
         this->panel7->Controls->Add(this->message);
         this->panel7->Location = System::Drawing::Point(127, 191);
-        this->panel7->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel7->Margin = System::Windows::Forms::Padding(4);
         this->panel7->Name = L"panel7";
         this->panel7->Size = System::Drawing::Size(635, 46);
         this->panel7->TabIndex = 69;
@@ -313,7 +313,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->message->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->message->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->message->Location = System::Drawing::Point(28, 7);
-        this->message->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->message->Margin = System::Windows::Forms::Padding(4);
         this->message->MaxLength = 50;
         this->message->Multiline = true;
         this->message->Name = L"message";
@@ -326,7 +326,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->panel6->BackColor = System::Drawing::Color::White;
         this->panel6->Controls->Add(this->amountInput);
         this->panel6->Location = System::Drawing::Point(127, 100);
-        this->panel6->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel6->Margin = System::Windows::Forms::Padding(4);
         this->panel6->Name = L"panel6";
         this->panel6->Size = System::Drawing::Size(363, 46);
         this->panel6->TabIndex = 68;
@@ -337,7 +337,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->amountInput->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->amountInput->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->amountInput->Location = System::Drawing::Point(28, 7);
-        this->amountInput->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->amountInput->Margin = System::Windows::Forms::Padding(4);
         this->amountInput->MaxLength = 9;
         this->amountInput->Multiline = true;
         this->amountInput->Name = L"amountInput";
@@ -350,7 +350,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->panel5->BackColor = System::Drawing::Color::White;
         this->panel5->Controls->Add(this->pinInput);
         this->panel5->Location = System::Drawing::Point(501, 100);
-        this->panel5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->panel5->Margin = System::Windows::Forms::Padding(4);
         this->panel5->Name = L"panel5";
         this->panel5->Size = System::Drawing::Size(260, 46);
         this->panel5->TabIndex = 67;
@@ -361,10 +361,11 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->pinInput->BorderStyle = System::Windows::Forms::BorderStyle::None;
         this->pinInput->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
         this->pinInput->Location = System::Drawing::Point(28, 7);
-        this->pinInput->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->pinInput->Margin = System::Windows::Forms::Padding(4);
         this->pinInput->MaxLength = 6;
         this->pinInput->Multiline = true;
         this->pinInput->Name = L"pinInput";
+        this->pinInput->PasswordChar = '*';
         this->pinInput->Size = System::Drawing::Size(232, 34);
         this->pinInput->TabIndex = 29;
         //
@@ -455,7 +456,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->btnSubmit->ForeColor = System::Drawing::Color::White;
         this->btnSubmit->ImeMode = System::Windows::Forms::ImeMode::NoControl;
         this->btnSubmit->Location = System::Drawing::Point(127, 283);
-        this->btnSubmit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->btnSubmit->Margin = System::Windows::Forms::Padding(4);
         this->btnSubmit->Name = L"btnSubmit";
         this->btnSubmit->Size = System::Drawing::Size(635, 52);
         this->btnSubmit->TabIndex = 62;
@@ -472,7 +473,7 @@ ref class TransferMoneyForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->panel2);
         this->Controls->Add(this->panel1);
         this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-        this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+        this->Margin = System::Windows::Forms::Padding(4);
         this->Name = L"TransferMoneyForm";
         this->Text = L"TransferMoneyForm";
         this->panel1->ResumeLayout(false);

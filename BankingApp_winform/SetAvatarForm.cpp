@@ -39,9 +39,9 @@ System::Void SetAvatarForm::btnInsertAvatar_Click(System::Object ^ sender,
         // Hiển thị ảnh trên pictureBoxAvatar
         pictureBoxAvatar->Image = Image::FromFile(destinationPath);
     } catch (Exception ^ ex) {
-        MessageBox::Show(ex->ToString(), L"Lỗi", MessageBoxButtons::OK,
+        MessageBox::Show(L"Có lỗi khi đổi Avatar, hãy chọn ảnh khác phù hợp", L"Lỗi", MessageBoxButtons::OK,
                          MessageBoxIcon::Error);
-        throw ex;
+        return;
     }
 }
 } // namespace BankingAppwinform

@@ -122,7 +122,6 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->btnSubmit->TabIndex = 39;
         this->btnSubmit->Text = L"OK";
         this->btnSubmit->UseVisualStyleBackColor = false;
-        this->btnSubmit->Click += gcnew System::EventHandler(this, &EditUserForm::btnSubmit_Click);
         //
         // name
         //
@@ -174,6 +173,7 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->amount->MaxLength = 40;
         this->amount->Multiline = true;
         this->amount->Name = L"amount";
+        this->amount->ReadOnly = true;
         this->amount->Size = System::Drawing::Size(1150, 40);
         this->amount->TabIndex = 29;
         //
@@ -444,6 +444,7 @@ ref class EditUserForm : public System::Windows::Forms::Form {
         this->Controls->Add(this->btnUndo);
         this->Controls->Add(this->btnSubmit);
         this->Controls->Add(this->panel1);
+        this->Cursor = System::Windows::Forms::Cursors::No;
         this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
         this->Margin = System::Windows::Forms::Padding(4);
         this->Name = L"EditUserForm";

@@ -171,14 +171,20 @@ System::Void ClientSavingMoneyForm::EndSaving_Click(System::Object ^ sender,
 
             // Xử lý kết thúc tiết kiệm -> sửa status từ 0 thành 2;
             // 0: chưa thanh toán, 1: đã thanh toán, 2: đang yêu cầu
-            saving->Status = 2;
+            //saving->Status = 2;
             
-            SavingServices::UpdateStatusSaving(saving->Id, saving);
+            /*SavingServices::UpdateStatusSaving(saving->Id, saving);
 
             MessageBox::Show(L"Đã gửi yêu cầu kết thúc tiết kiệm thành công, vui "
                              L"lòng chờ hoàn tất",
                              L"Thông báo", MessageBoxButtons::OK,
+                             MessageBoxIcon::Information);*/
+
+            SavingServices::OnFinishSavingAdmin(saving);
+            MessageBox::Show(L"Đã thanh toán yêu cầu rút tiết kiệm thành công",
+                             L"Thông báo", MessageBoxButtons::OK,
                              MessageBoxIcon::Information);
+
             loadSavingCustomers();
         }
     } catch (Exception ^ ex) {

@@ -336,15 +336,17 @@ ref class AdminForm : public System::Windows::Forms::Form {
 #pragma endregion
 
     private:
-        System::Collections::Generic::Stack<Form ^> ^ formHistory = gcnew System::Collections::Generic::Stack<Form ^>();
-    System::Void btnClient_Click(System::Object ^ sender,
-                                 System::EventArgs ^ e);
-    System::Void btnTransaction_Click(System::Object ^ sender,
+        System::Collections::Generic::Stack<Form ^> ^ formHistory =
+            gcnew System::Collections::Generic::Stack<Form ^>();
+
+        System::Void btnClient_Click(System::Object ^ sender,
+                                     System::EventArgs ^ e);
+        System::Void btnTransaction_Click(System::Object ^ sender,
+                                          System::EventArgs ^ e);
+        System::Void btnService_Click(System::Object ^ sender,
                                       System::EventArgs ^ e);
-    System::Void btnService_Click(System::Object ^ sender,
-                                  System::EventArgs ^ e);
-    System::Void btnLogout_Click(System::Object ^ sender,
-                                 System::EventArgs ^ e);
+        System::Void btnLogout_Click(System::Object ^ sender,
+                                     System::EventArgs ^ e);
 
     public:
     void LoadForm(Form ^ childForm);

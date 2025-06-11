@@ -104,9 +104,10 @@ System::Void TableUsersForm::btnLock_Click(System::Object ^ sender,
     if (users == nullptr) {
         return;
     }
+
     int status = userSelected->Status == 1 ? 0 : 1;
 
-    UserService::UpdateStatus(userSelected->getAccountNumber(), status);
+    UserService::UpdateStatus(userSelected->Id, status);
 
     MessageBox::Show(L"Thay đổi đã được lưu lại", L"Thành công",
                      MessageBoxButtons::OK, MessageBoxIcon::Information);

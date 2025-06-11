@@ -205,6 +205,7 @@ ref class ServicePaymentForm : public System::Windows::Forms::Form {
         this->pin->MaxLength = 10;
         this->pin->Multiline = true;
         this->pin->Name = L"pin";
+        this->pin->PasswordChar = '*';
         this->pin->Size = System::Drawing::Size(386, 44);
         this->pin->TabIndex = 29;
         this->pin->TextChanged += gcnew System::EventHandler(this, &ServicePaymentForm::pin_TextChanged);
